@@ -1,7 +1,5 @@
 #!/bin/bash
-
-# version 0.01, on: https://github.com/sm00thb00th/bash-dev-enviro, no release, sm00thb00th
-
+# version 0.01, no release, sm00thb00th
 # depends on shi3lD.sh
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
@@ -13,7 +11,6 @@ IFS=$(echo -e "\n\b") ;
 	then
 		sudo "$0" ;
 else
-
 	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD.sh | awk '{print $2}' | wc -l) " -gt "1" ]] ;
 then
 stopLoop="0" ;
@@ -45,7 +42,7 @@ start_s(){
 		echo -e "snort is allready running ...\n" ;
 	else
 		#chmod o+r /dev/bpf*;
-	    systemctl restart snort.service && echo -e "snort is running ...\n" ;
+		systemctl restart snort.service && echo -e "snort is running ...\n" ;
 		sleep 2 ;
 fi
 }
@@ -109,18 +106,18 @@ ifUPAntiVirusFireWall(){
 
 		until [[ $(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | wc -l | tr -d ' ') = "2" ]] ;
 	do
-	    ifDown0=$(ps aux | grep -v grep | grep clamd | grep -v nano | awk '{print $11}') ;
-		ifDown1=$(ps aux | grep -v grep | grep snort | grep -v nano | awk '{print $11}') ;	
+		ifDown0=$(ps aux | grep -vE "grep" | grep -v nano | grep clamd | awk '{print $11}') ;
+		ifDown1=$(ps aux | grep -vE "grep" | grep -v nano | grep snort | awk '{print $11}') ;
 
 		if [[ "$ifDown0" != "$binarie0" ]]
 	then
 		echo -e "restarting ClamAV ...\n" ;
 		start_c && return ;
-	fi	
+	fi
 	    if [[ "$ifDown1" != "$binarie1" ]]
 	then
 		echo -e "restarting Snort ...\n" ;
-	    start_s && return ;
+		start_s && return ;
 fi
 done
 }
@@ -136,18 +133,18 @@ m41N__(){
         clear ;
         echo -e "\n - WE HAVE shi3lD ::\n" ;
         echo -e " \
-        done ! we go throught $(netstat -ar | grep -v grep | grep default | awk '{print $2}') \n\n \
-        $(ip route | grep -v grep | grep src) \n\n \
+        done ! we go throught $(netstat -ar | grep -vE "grep" | grep default | awk '{print $2}') \n\n \
+        $(ip route | grep -vE "grep" | grep src) \n\n \
         and $m4c has now this MAC-Address: $(ip link show "$m4c" | grep ether | awk '{print $2}')\n" ;
         writeM4C_Connected ;
     else
         echo -e "no connection with this $(ip link show "$m4c" | grep ether | awk '{print $2}'), I try again ..."
         . /usr/local/bin/stop_shield.sh ;
-		writeM4C_SelfAssigned ;
+	writeM4C_SelfAssigned ;
 	fi
 done
 }
-		m41N__ ;
+	m41N__ ;
 fi
 
 fi

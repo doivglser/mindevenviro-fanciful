@@ -1,7 +1,5 @@
 #!/bin/bash
-
-# version 0.01, on: https://github.com/sm00thb00th/bash-dev-enviro, no release, sm00thb00th
-
+# version 0.01, no release, sm00thb00th
 # depends on shi3lD.sh
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
@@ -17,12 +15,14 @@ else
 then
 
 stop_network(){
+	#
 	ip link set dev "$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | tr -d '\ ')" down ; sleep 1 ;
 }
 
 take_a_look(){
-	ifDown0=$(ps aux | grep -v grep | grep clamd | grep -v nano | awk '{print $11}') ;
-	ifDown1=$(ps aux | grep -v grep | grep snort | grep -v nano | awk '{print $11}') ;
+
+	ifDown0=$(ps aux | grep -vE "grep" | grep -v nano | grep clamd | awk '{print $11}') ;
+	ifDown1=$(ps aux | grep -vE "grep" | grep -v nano | grep snort | awk '{print $11}') ;
 
 	if [[ "$ifDown0" = '' ]] ;
 then

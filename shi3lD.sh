@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# version 0.01, no release, sm00thb00th, free for use, no license
+# version 0.01,	no release, no license, free for use, runs only with systems with systemd and no network-managers
+# 		you must have a running version of both: ClamAV and Snort. You must have an entry in the sudoers file.
 
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
 # restart clamd and snort if failure, cut the Ethernet Interface connection, while starting up
@@ -15,17 +16,19 @@ else
 
 clear && echo -e "\n" ;
 nnumberr="0" ;
-interface=$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | tr -d '\ ') ;
+interface=$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | head -n1 | tr -d '\ ') ;
 
-		if [ -e "/home/$SUDO_USER/vendorsmac" ] ;
+		if [ -e "/home/$SUDO_USER/vendorsmac" ] && [[ "$(wc -l /home/$SUDO_USER/vendorsmac)" = "1" ]] ;
 	then
-		echo "";
+		echo " . -installed";
 	else
-		ip link show | grep ether | awk '{print $2}' | tee -a "/home/$SUDO_USER/vendorsmac" ;
+		> /home/$SUDO_USER/vendorsmac
+
+		ip link show | grep ether | awk '{print $2}' | tee -a /home/$SUDO_USER/vendorsmac ;
 fi
 
 puffeRR(){
-		if [[ "$(cat $HOME/vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
+		if [[ "$(cat /home/$SUDO_USER/vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
 	then
 		. /usr/local/bin/stop_shield.sh ;
 	else
@@ -43,10 +46,10 @@ exitHandler(){
 
 			if [[ $REPLY =~ y|Y|j|J ]] ;
 		then
-			ip link set dev "$interface" down && sleep 5 && 
-			ip link set dev "$interface" address "$(cat /home/${SUDO_USER}/vendorsmac)" && 
+			ip link set dev "$interface" down && sleep 5 &&
+			ip link set dev "$interface" address "$(cat /home/${SUDO_USER}/vendorsmac)" &&
 			ip link set dev "$interface" up && sleep 2 ;
-			systemctl restart snort.service && clear && 
+			systemctl restart snort.service && clear &&
 			echo -e "\n .You where surfing with this MAC:\n\n
 			$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
 			awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n" ;
@@ -77,4 +80,3 @@ exitHandler(){
 done
 
 fi
-
