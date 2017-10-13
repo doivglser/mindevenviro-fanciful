@@ -46,9 +46,7 @@ Restarts Apache2, MySQL, sendmail, takes care about free space and notifiy on: /
 
 # Files:
 
-installed # the list of the installed components, in $HOME (sCRYPtUPdater.sh)
-
-installed1 # the list of the installed components, in $HOME (shi3lD.sh)
+installed and installed1 # the list of the installed components, in $HOME/[file]
 
 shi3lD.sh # changes MAC's and ensure that Snort and ClamAV are running
 
