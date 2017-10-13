@@ -1,0 +1,65 @@
+# sh13lD
+
+Requirements:
+
+- A fresh base installation of Debian GNU/Linux 9 Stretch (net-install-live-cd)
+- Root privileges to make an entry for $USER in the /etc/sudoers file
+- An Internet Connection
+
+° For Debian GNU/Linux with systemd. version 0.01
+
+° Syntaxcheck with "pychecker", "perl -wc" and "shellcheck"
+
+° Restart Server's
+
+° Customizable Scripts
+
+° For Programmers and Administrators
+
+# Usage:
+
+run ./inst4Ll.sh from ../sh13lD. You must have an entry in the sudoers file
+
+The script will install all needed components:
+
+vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan snort
+
+run ./iNST4LL.sh from ../sh13lD. You must have an entry in the sudoers file
+
+The script will install all needed components:
+
+apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl dwww git
+
+Run from Terminal: sCRYPtUPdater.sh to:
+
+Edit your Projects with your favorite Editor, upload your Scripts or packed versions of perl or python to 
+
+/usr/local/bin, stop a big compile with ctrl+4, be sure you change more then one byte. Close with ctrl+C.
+
+redundanz.sh :
+
+Restarts Apache2, MySQL, sendmail, takes care about free space and notifiy on: /dev/pts3 and per email.
+
+# Files:
+
+installed # the list of the installed components, in $HOME (sCRYPtUPdater.sh)
+
+installed1 # the list of the installed components, in $HOME (shi3lD.sh)
+
+shi3lD.sh # changes MAC's and ensure that Snort and ClamAV are running
+
+start_shield.sh # depends on shi3lD.sh
+
+stop_shield.sh # depends on shi3lD.sh
+
+redundanz.sh # restart servers
+
+server-monitor.sh # depends on redundanz.sh
+
+serv-if-up.sh # depends on redundanz.sh
+
+sCRYPtUPdater.sh # Syntaxchecker and update to /usr/local/bin
+
+iNST4LL.sh # installs the environment for sCRYPtUPdater.sh and copy the scripts to: /usr/local/bin
+
+inst4Ll.sh # installs the environment for shi3lD.sh and copy the scripts to: /usr/local/bin
