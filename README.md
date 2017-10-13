@@ -58,7 +58,7 @@ Change your MAC address, to obtain a new IP, and ensure the snort and clamav dae
 
 installed and installed1 # the list of the installed components, in $HOME/[file]
 
-shi3lD.sh # changes MAC's and ensure that Snort and ClamAV are running
+shi3lD.sh # changes MAC's and ensure that Snort and ClamAV are up
 
 start_shield.sh # depends on shi3lD.sh
 
