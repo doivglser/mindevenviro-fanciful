@@ -75,3 +75,9 @@ sCRYPtUPdater.sh # Syntaxchecker and update to /usr/local/bin
 install-d3V-enviro.sh # installs the environment for sCRYPtUPdater.sh and copy the scripts to: /usr/local/bin
 
 install-min-desk.sh # installs the environment for shi3lD.sh and copy the scripts to: /usr/local/bin
+
+# Coming soon:
+
+An anonym Mail solution, I want to use phyton because some C C++ libs and build the GUI in GTK+ because, GTK+ is cross-platform.
+
+https://github.com/sm00thb00th/bash-dev-enviro/projects
