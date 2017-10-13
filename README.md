@@ -19,13 +19,17 @@ Requirements:
 # Usage:
 
 run:
+
 ./install-d3V-enviro.sh
+
 installs a minimal Desktop with Antivirus and Firewall:
 
 vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan snort
 
 run:
+
 ./install-min-desk.sh
+
 installs the Deployment Environment:
 
 apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl dwww git
