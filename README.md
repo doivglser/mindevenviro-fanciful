@@ -18,15 +18,15 @@ Requirements:
 
 # Usage:
 
-run ./inst4Ll.sh from ../sh13lD. You must have an entry in the sudoers file
-
-The script will install all needed components:
+run:
+./install-d3V-enviro.sh
+installs a minimal Desktop with Antivirus and Firewall:
 
 vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan snort
 
-run ./iNST4LL.sh from ../sh13lD. You must have an entry in the sudoers file
-
-The script will install all needed components:
+run:
+./install-min-desk.sh
+installs the Deployment Environment:
 
 apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl dwww git
 
@@ -52,14 +52,14 @@ start_shield.sh # depends on shi3lD.sh
 
 stop_shield.sh # depends on shi3lD.sh
 
-redundanz.sh # restart servers
+redundanz.sh # shows the status on a Terminal
 
-server-monitor.sh # depends on redundanz.sh
+server-monitor.sh # depends on redundanz.sh, status
 
-serv-if-up.sh # depends on redundanz.sh
+serv-if-up.sh # depends on redundanz.sh, restart servers.
 
 sCRYPtUPdater.sh # Syntaxchecker and update to /usr/local/bin
 
-iNST4LL.sh # installs the environment for sCRYPtUPdater.sh and copy the scripts to: /usr/local/bin
+install-d3V-enviro.sh # installs the environment for sCRYPtUPdater.sh and copy the scripts to: /usr/local/bin
 
-inst4Ll.sh # installs the environment for shi3lD.sh and copy the scripts to: /usr/local/bin
+install-min-desk.sh # installs the environment for shi3lD.sh and copy the scripts to: /usr/local/bin
