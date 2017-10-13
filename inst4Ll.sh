@@ -11,7 +11,7 @@ myPrograms="vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt 
 
 LANG="C" ;
 
-environinstall="sh13lD.sh stop_shield.sh start_shield.sh" ;
+environinstall="shi3lD.sh stop_shield.sh start_shield.sh" ;
 
 		if [ ! $EUID = 0 ] ;
 	then
