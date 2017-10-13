@@ -2,7 +2,7 @@
 
 Requirements:
 
-- A fresh base installation of Debian GNU/Linux 9 Stretch (net-install-live-cd)
+- A fresh base-install of Debian GNU/Linux 9 Stretch. While installing: crypt drive, don't choose any desktop, choose a root and an user password. https://www.debian.org/devel/debian-installer/
 - Root privileges to make an entry for $USER in the /etc/sudoers file
 - An Internet Connection
 
@@ -24,7 +24,7 @@ run:
 
 installs a minimal Desktop with Antivirus and Firewall:
 
-vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan snort
+vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan snort
 
 run:
 
