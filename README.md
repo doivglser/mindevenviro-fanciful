@@ -20,7 +20,7 @@ Requirements:
 
 run:
 
-./install-d3V-enviro.sh
+./install-min-desk.sh
 
 installs a minimal Desktop with Antivirus and Firewall:
 
@@ -28,7 +28,7 @@ vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano c
 
 run:
 
-./install-min-desk.sh
+./install-d3V-enviro.sh
 
 installs the Deployment Environment:
 
