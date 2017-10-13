@@ -18,7 +18,7 @@ Requirements:
 
 # Usage:
 
-run:
+# run first:
 
 ./install-min-desk.sh
 
@@ -26,7 +26,7 @@ installs a minimal Desktop with Antivirus and Firewall:
 
 vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan snort
 
-run:
+# run first:
 
 ./install-d3V-enviro.sh
 
@@ -34,15 +34,25 @@ installs the Deployment Environment:
 
 apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl dwww git
 
-Run from Terminal: sCRYPtUPdater.sh to:
+# run:
+
+from Terminal: sCRYPtUPdater.sh to:
 
 Edit your Projects with your favorite Editor, upload your Scripts or packed versions of perl or python to 
 
 /usr/local/bin, stop a big compile with ctrl+4, be sure you change more then one byte. Close with ctrl+C.
 
-redundanz.sh :
+# run:
+
+from Terminal: redundanz.sh to:
 
 Restarts Apache2, MySQL, sendmail, takes care about free space and notifiy on: /dev/pts3 and per email.
+
+# run:
+
+from Terminal: shi3lD.sh to:
+
+Change your MAC address, to obtain a new IP, and ensure the snort and clamd daemons are running as well.
 
 # Files:
 
