@@ -5,7 +5,7 @@
 # run this script like: ../sh13lD/./inst4Ll
 # You can Add Programs to myPrograms, but remove bevor $HOME/installed
 
-myPrograms="vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan snort" ;
+myPrograms="vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan snort" ;
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
