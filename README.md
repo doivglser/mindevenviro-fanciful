@@ -40,11 +40,9 @@ apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck p
 
 # run:
 
-from Terminal: sCRYPtUPdater.sh to:
+from Terminal: shi3lD.sh to:
 
-Edit your Projects with your favorite Editor and upload your Scripts or packed versions of perl or python to 
-
-/usr/local/bin, stop a big compile with ctrl+4, be sure you change more then one byte. Close with ctrl+C.
+Change your MAC addresses, does a list with working and not working MAC's, and ensure the snort and clamav daemons are up. Version 0.01,	runs only on systems with systemd, without network-managers.
 
 # run:
 
@@ -54,9 +52,11 @@ Restarts Apache2, MySQL, sendmail, takes care about free space and notifiy on: /
 
 # run:
 
-from Terminal: shi3lD.sh to:
+from Terminal: sCRYPtUPdater.sh to:
 
-Change your MAC addresses, does a list with working and not working MAC's, and ensure the snort and clamav daemons are up. Version 0.01,	runs only on systems with systemd, without network-managers.
+Edit your Projects with your favorite Editor and upload your Scripts or packed versions of perl or python to 
+
+/usr/local/bin, stop a big compile with ctrl+4, be sure you change more then one byte. Close with ctrl+C.
 
 # Files:
 
