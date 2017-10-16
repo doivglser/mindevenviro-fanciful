@@ -12,6 +12,7 @@ printf "here: "; read -r dirINhome ;
 # TODO:
 #		reset the time interval, because "du" stderr
 #		invalid byte sequence with "tr -cd '\11\12\15\40-\176'"
+#		implement bash-completion, for TAB'ing
 #set -x
 
 		if [ ! $EUID = 0 ] ;
