@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# version 0.01,	no release, no license, free for use, runs only with systems with systemd and no network-managers
-# 		you must have a running version of both: ClamAV and Snort. You must have an entry in the sudoers file.
+# version 0.01,	runs only with systems with systemd and no network-managers
+# 		you must have a running version of both: ClamAV and Snort.
 
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
 # restart clamd and snort if failure, cut the Ethernet Interface connection, while starting up
