@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.01, no release, sm00thb00th
+# version 0.01
 # depends on shi3lD.sh
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
