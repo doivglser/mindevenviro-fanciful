@@ -2,7 +2,9 @@
 
 Requirements:
 
-- A fresh base-install of Debian GNU/Linux 9 Stretch. While installing: crypt drive, don't choose any desktop, choose a root and an user password. https://www.debian.org/devel/debian-installer/
+- A fresh base-install of Debian GNU/Linux 9 Stretch. 
+- While installing: crypt your drive, don't choose any desktop or servers, choose a root and an user password.
+- Debian mirrors: https://www.debian.org/devel/debian-installer/
 - Root privileges to make an entry for $USER in the /etc/sudoers file
 - An Internet Connection
 
@@ -52,7 +54,7 @@ Restarts Apache2, MySQL, sendmail, takes care about free space and notifiy on: /
 
 from Terminal: shi3lD.sh to:
 
-Change your MAC addresses, does a list with working and no working MAC's, and ensure the snort and clamav daemons are up. Version 0.01,	runs only on systems with systemd, without network-managers.
+Change your MAC addresses, does a list with working and not working MAC's, and ensure the snort and clamav daemons are up. Version 0.01,	runs only on systems with systemd, without network-managers.
 
 # Files:
 
