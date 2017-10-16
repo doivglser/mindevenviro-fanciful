@@ -52,7 +52,7 @@ Restarts Apache2, MySQL, sendmail, takes care about free space and notifiy on: /
 
 from Terminal: shi3lD.sh to:
 
-Change your MAC address, to obtain a new IP, and ensure the snort and clamav daemons are up
+Change your MAC addresses, do a list with working and no working MAC's, and ensure the snort and clamav daemons are up. Version 0.01,	runs only on systems with systemd, without network-managers.
 
 # Files:
 
