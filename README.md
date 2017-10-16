@@ -42,7 +42,7 @@ apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck p
 
 from Terminal: shi3lD.sh to:
 
-Change your MAC addresses, does a list with working and not working MAC's, and ensure the snort and clamav daemons are up. Version 0.01,	runs only on systems with systemd, without network-managers.
+Change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are up. Version 0.01, this script	runs only on systems with systemd, without network-managers.
 
 # run:
 
