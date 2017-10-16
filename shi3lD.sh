@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# version 0.01,	runs only with systems with systemd and no network-managers
+# version 0.01,	runs only on systems with systemd, without network-managers,
 # 		you must have a running version of both: ClamAV and Snort.
 
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
