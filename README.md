@@ -10,6 +10,8 @@ Requirements:
 
 ° For Debian GNU/Linux with systemd. version 0.01
 
+° Change MAC - Addresses, to obtain a new IP, "ctrl+C", quit and revert connected interface, to vendor's MAC - Address.
+
 ° Syntaxcheck with "pychecker", "perl -wc" and "shellcheck"
 
 ° Restart Server's
