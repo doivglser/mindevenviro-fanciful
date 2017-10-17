@@ -10,7 +10,7 @@ Requirements:
 
 ° For Debian GNU/Linux with systemd. version 0.01
 
-° Change MAC - Addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to the vendor's MAC - Address.
+° Change MAC - Addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - Address.
 
 ° Syntaxcheck with "pychecker", "perl -wc" and "shellcheck"
 
