@@ -57,7 +57,7 @@ users1="$(ps aux | grep "$prgtotesta" | grep -v grep | awk '{print $1}' | uniq)"
 
 usersPID=$(ps aux | grep "$prgtotesta" | grep -v grep | awk '{print $1}' | wc -l) ;
 
-echo -e "\n :: $usersPID PID from $file01a by: "$users1"\n" ;
+echo -e "\n :: $usersPID PID from $file01a by: $users1\n" ;
 
 ps aux | grep "$prgtotesta" | grep -v grep | tail -n1 ;
 
@@ -83,7 +83,7 @@ users7=$(ps aux | grep "$prgtotestg" | grep -v grep | awk '{print $1}' | uniq) ;
 
 usersPID7=$(ps aux | grep "$prgtotestg" | grep -v grep | awk '{print $1}' | wc -l) ;
 
-echo -e "\n :: $usersPID7 PID from $file01g by: "$users7"\n" ;
+echo -e "\n :: $usersPID7 PID from $file01g by: $users7\n" ;
 
 ps aux | grep "$prgtotestg" | grep -v grep | tail -n1 ;
 
