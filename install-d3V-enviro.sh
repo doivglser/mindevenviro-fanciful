@@ -55,7 +55,7 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/vendorsmac" ;
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/installed" ;
 
-		if [[ "$PWD" =~ 'bash-dev-enviro' ]] && [[ ! "$environinstall" =~ "$(ls /usr/local/bin/*)" ]] || [[ "$(ls /usr/local/bin/*)" =~ '' ]] ;
+		if [[ $PWD =~ 'bash-dev-enviro' ]] && [[ ! $environinstall =~ $(ls /usr/local/bin/*) ]] || [[ $(ls /usr/local/bin/*) =~ '' ]] ;
 	then
 		while [[ "$nNuM2" != "0" ]] ;
 	do
