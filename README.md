@@ -23,9 +23,7 @@ Deployment Environment for Debian 9 GNU/Linux Stretch, in a minimal Desktop with
 
 ° For Programmers and Administrators
 
-
-
-# install
+# Install
 
 * ./install-min-desk.sh
 
@@ -47,13 +45,9 @@ apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck p
 
 To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are running. This script	runs only on systems with systemd, without network-managers.
 
-# run:
-
 * from Terminal: redundanz.sh to:
 
 Restarts Apache2, MySQL, sendmail, takes care about free space and notifiy on: /dev/pts3 and per email.
-
-# run:
 
 * from Terminal: sCRYPtUPdater.sh to:
 
@@ -63,7 +57,11 @@ Edit your Projects with your favorite Editor (I use nano) and upload your Script
 
 # Files:
 
-installed and installed1 # the list of the installed components, in $HOME/[file]
+* in $HOME
+
+installed and installed1 # the list of the installed components
+
+* in /usr/local/bin
 
 shi3lD.sh # changes MAC's and ensure that Snort and ClamAV are up
 
@@ -73,15 +71,11 @@ stop_shield.sh # depends on shi3lD.sh
 
 redundanz.sh # shows the status on a Terminal
 
-server-monitor.sh # depends on redundanz.sh, status
+server-monitor.sh # depends on redundanz.sh, UP status.
 
-serv-if-up.sh # depends on redundanz.sh, restart servers.
+serv-if-up.sh # background process, depends on redundanz.sh, restart servers. On failure, writes to /dev/pts/3 and to mailbox.
 
-sCRYPtUPdater.sh # Syntaxchecker and update to /usr/local/bin
-
-install-d3V-enviro.sh # installs the environment for sCRYPtUPdater.sh and copy the scripts to: /usr/local/bin
-
-install-min-desk.sh # installs the environment for shi3lD.sh and copy the scripts to: /usr/local/bin
+sCRYPtUPdater.sh # Syntax check and update to /usr/local/bin
 
 # Coming soon:
 
