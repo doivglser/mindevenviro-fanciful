@@ -5,8 +5,9 @@ Deployment Environment for Debian 9 GNU/Linux Stretch, in a minimal Desktop with
 Requirements:
 
 - A fresh base-install of Debian GNU/Linux 9 Stretch.
-- While installing: crypt your drive, don't choose any desktop or servers, choose a root and an user password.
+- Choose netinst CD image, and burn it on a blank CD-R.
 - Debian mirrors: https://www.debian.org/releases/stretch/debian-installer/
+- While installing: crypt your drive, don't choose any desktop or servers, choose a root and an user password.
 - Root access, to make an entry for $USER in the /etc/sudoers file
 - An Internet Connection
 
