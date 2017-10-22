@@ -4,7 +4,7 @@ Deployment Environment for Debian 9 GNU/Linux Stretch, in a minimal Desktop with
 
 Requirements:
 
-- A fresh base-install of Debian GNU/Linux 9 Stretch. 
+- A fresh base-install of Debian GNU/Linux 9 Stretch.
 - While installing: crypt your drive, don't choose any desktop or servers, choose a root and an user password.
 - Debian mirrors: https://www.debian.org/releases/stretch/debian-installer/
 - Root access, to make an entry for $USER in the /etc/sudoers file
@@ -12,9 +12,9 @@ Requirements:
 
 ° For Debian GNU/Linux.
 
-° Change MAC - Addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - Address.
+° Changes MAC - Addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - Address.
 
-° Syntaxcheck with "pychecker", "perl -wc" and "shellcheck"
+° Checks syntax with "pychecker", "perl -wc" and "shellcheck"
 
 ° Restart Server's
 
