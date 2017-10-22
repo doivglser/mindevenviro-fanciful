@@ -85,5 +85,3 @@ install-min-desk.sh # installs the environment for shi3lD.sh and copy the script
 An anonym Mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
 
 https://github.com/doivglser/dev-shell-enviro/projects
-
-
