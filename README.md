@@ -51,9 +51,7 @@ Restarts Apache2, MySQL, sendmail, takes care about free space and notifiy on: /
 
 * from Terminal: sCRYPtUPdater.sh to:
 
-Edit your Projects with your favorite Editor (I use nano) and upload your Scripts or packed versions of perl or python to 
-
-/usr/local/bin, stop a big compile with ctrl+4, be sure you change more then one byte. Close with ctrl+C.
+Edit your Projects with your favorite Editor (I use nano) and upload your Scripts or packed versions of perl or python to /usr/local/bin, stop a big compile with ctrl+4, be sure you change more then one byte. Close with ctrl+C.
 
 # Files:
 
