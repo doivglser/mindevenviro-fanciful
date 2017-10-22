@@ -10,7 +10,7 @@ Requirements:
 - Root access, to make an entry for $USER in the /etc/sudoers file
 - An Internet Connection
 
-° For Debian GNU/Linux with systemd. version 0.01
+° For Debian GNU/Linux.
 
 ° Change MAC - Addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - Address.
 
