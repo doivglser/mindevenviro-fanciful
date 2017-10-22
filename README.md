@@ -2,7 +2,7 @@
 
 Deployment Environment for Debian 9 GNU/Linux Stretch, in a minimal Desktop with Antivirus and Firewall. 
 
-Requirements:
+# Requirements:
 
 - A fresh base-install of Debian GNU/Linux 9 Stretch.
 - Choose netinst CD image, and burn it on a blank CD-R.
@@ -88,3 +88,13 @@ install-min-desk.sh # installs the environment for shi3lD.sh and copy the script
 An anonym Mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
 
 https://github.com/doivglser/dev-shell-enviro/projects
+
+# TODO:
+
+* shi3lD.sh
+- Change the User Agent while changing the Mac-Addresses.
+
+* sCRYPtUPdater.sh
+- Outside the work interval, refer to the exit handler, if false, reset work-interval.
+
+# .
