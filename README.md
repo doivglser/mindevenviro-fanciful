@@ -92,10 +92,9 @@ https://github.com/doivglser/dev-shell-enviro/projects
 # TODO:
 
 * shi3lD.sh
-
-- Change the User Agent while changing the Mac-Addresses.
+Change the User Agent while changing the Mac-Addresses.
 
 * sCRYPtUPdater.sh
+Outside the work interval, refer to the exit handler, if false, reset work-interval.
 
-- Outside the work interval, refer to the exit handler, if false, reset work-interval.
 # .
