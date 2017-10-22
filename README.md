@@ -2,15 +2,6 @@
 
 Deployment Environment for Debian 9 GNU/Linux Stretch, in a minimal Desktop with Antivirus and NIDS. 
 
-# Requirements:
-
-- A fresh base-install of Debian GNU/Linux 9 Stretch.
-- Choose netinst CD image, and burn it on a blank CD-R.
-- Debian mirrors: https://www.debian.org/releases/stretch/debian-installer/
-- While installing: crypt your drive, don't choose any desktop or servers, choose a root and an user password.
-- Root access, to make an entry for $USER in the /etc/sudoers file
-- An Internet Connection
-
 ° For Debian GNU/Linux.
 
 ° Changes MAC - Addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - Address.
@@ -22,6 +13,15 @@ Deployment Environment for Debian 9 GNU/Linux Stretch, in a minimal Desktop with
 ° Customizable Scripts
 
 ° For Programmers and Administrators
+
+# Requirements:
+
+- A fresh base-install of Debian GNU/Linux 9 Stretch.
+- Choose netinst CD image, and burn it on a blank CD-R.
+- Debian mirrors: https://www.debian.org/releases/stretch/debian-installer/
+- While installing: crypt your drive, don't choose any desktop or servers, choose a root and an user password.
+- Root access, to make an entry for $USER in the /etc/sudoers file
+- An Internet Connection
 
 # Install
 
