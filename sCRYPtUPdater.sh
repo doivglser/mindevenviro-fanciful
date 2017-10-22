@@ -3,6 +3,8 @@
 # version 0.01
 # Set the time interval, and just hit enter to update, to stop "pychecker" or "perl -wc" hit ctrl+4
 # Set the path to your Scripts like: dirINhome="myDistro" or dirINhome="Desktop/bash"
+# dirINhome="YOUR_WORK_DIR"
+# Or Type your working Directory
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
