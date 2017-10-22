@@ -23,39 +23,39 @@ Deployment Environment for Debian 9 GNU/Linux Stretch, in a minimal Desktop with
 
 ° For Programmers and Administrators
 
-# Usage:
 
-# run first:
 
-./install-min-desk.sh
+# install
+
+* ./install-min-desk.sh
 
 installs a minimal Desktop with Antivirus and Firewall:
 
 vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan snort
 
-# run first:
-
-./install-d3V-enviro.sh
+* ./install-d3V-enviro.sh
 
 installs the Deployment Environment:
 
 apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl dwww git
 
+# USAGE:
+
 # run:
 
-from Terminal: shi3lD.sh to:
+* from Terminal: shi3lD.sh to:
 
 To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are running. This script	runs only on systems with systemd, without network-managers.
 
 # run:
 
-from Terminal: redundanz.sh to:
+* from Terminal: redundanz.sh to:
 
 Restarts Apache2, MySQL, sendmail, takes care about free space and notifiy on: /dev/pts3 and per email.
 
 # run:
 
-from Terminal: sCRYPtUPdater.sh to:
+* from Terminal: sCRYPtUPdater.sh to:
 
 Edit your Projects with your favorite Editor (I use nano) and upload your Scripts or packed versions of perl or python to 
 
