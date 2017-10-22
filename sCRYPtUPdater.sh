@@ -4,17 +4,12 @@
 # Set the time interval, and just hit enter to update, to stop "pychecker" or "perl -wc" hit ctrl+4
 # Set the path to your Scripts like: dirINhome="myDistro" or dirINhome="Desktop/bash"
 
-echo -e "\nplease type a DIR in $HOME\n" ;
-
-printf "here: "; read -r dirINhome ;
-
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
 #		reset the time interval, because "du" stderr
 #		invalid byte sequence with "tr -cd '\11\12\15\40-\176'"
 #		implement bash-completion, for TAB'ing
 #set -x
-
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
@@ -23,16 +18,20 @@ else
 LANG="C" ;
 IFS=$(echo -en "\n\b") ;
 syntaxCHkr="pychecker shellcheck perl" ;
-
+# Ask for working Directory
+echo -e "\nplease type a working Directory in $HOME and hit Return.\n" ;
+# type the working Directory
+printf "here: "; read -r dirINhome ;
 # the Work Directory
 userHome="/home/${SUDO_USER}/${dirINhome}" ;
-# the temp folder
-	if [[ "$(df -h | grep -E /dev/shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
+
+	if [[ "$(df -h | grep -E /dev/shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; # temp folder
 then
 	tmpfolder="$(df -h | grep -E /dev/shm$ | cut -f2 -d% | tr -d '\ ')" ;
 else
 	tmpfolder="/tmp" ;
 fi
+
 # User Host Control
 echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: WORK -\n" >>"$userHome/wH0rUNSon" ;
 # wholeC0unt4: to start by zero after first 
