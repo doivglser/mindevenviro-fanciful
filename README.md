@@ -90,4 +90,3 @@ Change the User Agent while changing the Mac-Addresses.
 * sCRYPtUPdater.sh
 
 Outside the work interval, refer to the exit handler, if false, reset work-interval.
-# .
