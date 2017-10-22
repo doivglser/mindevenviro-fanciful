@@ -1,5 +1,7 @@
 # dev-shell-enviro
 
+Deployment Environment for Debian 9 GNU/Linux Stretch, in a minimal Desktop with Antivirus and Firewall. 
+
 Requirements:
 
 - A fresh base-install of Debian GNU/Linux 9 Stretch. 
