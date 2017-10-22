@@ -6,7 +6,7 @@ Requirements:
 
 - A fresh base-install of Debian GNU/Linux 9 Stretch. 
 - While installing: crypt your drive, don't choose any desktop or servers, choose a root and an user password.
-- Debian mirrors: https://www.debian.org/devel/debian-installer/
+- Debian mirrors: https://www.debian.org/releases/stretch/debian-installer/
 - Root access, to make an entry for $USER in the /etc/sudoers file
 - An Internet Connection
 
