@@ -3,7 +3,6 @@
 # depends on shi3lD.sh
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 
@@ -20,7 +19,6 @@ stop_network(){
 }
 
 take_a_look(){
-
 	ifDown0=$(ps aux | grep -vE "grep" | grep -v nano | grep clamd | awk '{print $11}') ;
 	ifDown1=$(ps aux | grep -vE "grep" | grep -v nano | grep snort | awk '{print $11}') ;
 
@@ -42,8 +40,5 @@ main_(){
 	then
 		main_ ;
 fi
-
 fi
-
 fi
-
