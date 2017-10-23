@@ -5,7 +5,6 @@
 # Set the path to your Scripts like: dirINhome="myDistro" or dirINhome="Desktop/bash"
 # dirINhome="YOUR_WORK_DIR"
 # Or Type your working Directory
-
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
 #		reset the time interval, because "du" stderr
@@ -44,9 +43,7 @@ listONmest4tus="0" ;
 excULEC0D3s="SC2009,SC2172,SC2162,SC2010,SC2126,SC2016,SC2034,SC2005,SC2013,SC2059,SC2086,SC2027,SC1091,SC2076,SC2116" ; 
 export excULEC0D3s ;
 
-
 sC4n(){
-
 # toDayChanged: do a list of changed files in userHome
 toDayChanged=$(find "$userHome" -cmin -"$minut3S" -type f | grep -v grep | grep -vE '.kate.swp|.save|.[a-zA-Z][a-zA-Z][0-9][0-9][0-9][0-9]|.[a-zA-Z][0-9][0-9][0-9][0-9][0-9]|wH0rUNSon' | grep -v "$crapC0D3" | grep -vE '.wav|.jpg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|iNST4LL.sh|master|HEAD|COMMIT_EDITMSG|config|description|sample|index|exclude|refs' | grep -vE '[a-z0-9]{38}') ;
 
@@ -63,7 +60,6 @@ fi
 }
 
 prepare_(){
-
 # listONme: put the list in reverse and take the take the last entry
 listONme="$(echo "$toDayChanged" | sort -r | head -n"$wholeC0unt4" | tail -n1)" ;
 # listONmeIS: to determine the file type to check the syntax
@@ -77,8 +73,6 @@ takeLASTword2=$(echo "$listONme" | sed 's/\//\ /g' | sed 's/\./\ /g' | wc -w) ;
 # fF1l3suffix: determine the file suffix
 fF1l3suffix=$(echo "$listONme" | sed 's/\//\ /g'| sed 's/\./\ /g' | awk '{print $'"$takeLASTword2"'}') ; export fF1l3suffix ;
 
-### ###
-
 	if [[ "$(du -b "$listONme" | cut -f1 2>/dev/null)" -gt "$(du -b "/usr/local/bin/$toC0pyIS" | cut -f1 2>/dev/null)" ]] && [[ "$toC0pyIS" != "wH0rUNSon" ]] && [[ "$toDayChanged" != '' ]] ;
 then
 	let listONmest4tus=$(du -b "$listONme" | cut -f1)-$(du -b "/usr/local/bin/$toC0pyIS" | cut -f1) 2>/dev/null
@@ -91,11 +85,9 @@ then
 else
 		maincall ;
 fi
-### ###
 }
 
 touchtoC0pyinbin(){
-
 			if [[ "$toC0pyIS" != "wH0rUNSon" ]] ;
 		then
 			figlet new ; printf "..%s.." "$toC0pyIS" ;
@@ -118,9 +110,7 @@ fi
 
 
 diffANDchecksyntax(){
-
 ch3kingSnx='' ;
-
             if [ -e "/usr/local/bin/$toC0pyIS" ] ;
 	then
 			echo -e "\n check syntax for: $toC0pyIS\n" ;
@@ -165,13 +155,12 @@ fi
             copyToPath ;
 		fi
 	fi
-        else
+	else
             touchtoC0pyinbin ;
 fi
 }
 
 copyToPath(){
-
 			if [[ "$listONmest4tus" -ge "0" ]] && [ -e "/usr/local/bin/$toC0pyIS" ] ;
         then
 			echo -e "\n" ;
@@ -195,7 +184,6 @@ copyToPath(){
 fi
 }
 
-
 exiter(){
 		sudo rm -f "$tmpfolder"/convert-T0-utf-8.tmp 2>/dev/null;
 		echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: exit --\n" >>"$userHome/wH0rUNSon" &&
@@ -203,7 +191,6 @@ exiter(){
 }
 
 cont1NU3(){
-
 		if [[ $ch3kingSnx =~ $syntaxCHkr ]] ;
 	then
 		 ps aux | grep -v grep | grep "$ch3kingSnx" | awk '{print $2}' | xargs sudo kill -15 ;
@@ -213,7 +200,6 @@ fi
 }
 
 maincall(){
-
         if [ -e "$userHome" ] ;
     then
 		((wholeC0unt4--)) ;
@@ -233,16 +219,15 @@ fi
 		figlet no.changes && read -p "waiting..." ;
 		sC4n ;
 fi
-### ###
 	else
 		echo -e "\n\nCheck the 'dirINhome' var at the Top of this script\n" && exit 2 ;
 fi
+
 }
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+ 
 echo -e "\nHello $SUDO_USER, type the interval in minutes, you\b
 ussualy need to: write , save and hit enter.\b
 update from $userHome to /usr/local/bin.\n" ;
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 printf "type here in minutes: " ; read minut3S ;
 
 	if [[ "$minut3S" = '' ]] ;
