@@ -1,6 +1,6 @@
 #!/bin/bash
 # version 1.00
-#REDUNDANZ
+# REDUNDANZ
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
@@ -235,7 +235,6 @@ Subject:running_out_of_disk_space
 _________________________________________________
 /
 
-
 redundanz: On host $(uname -n) :: ;
 
 Warn percentage on /: $WARN01 %
@@ -250,11 +249,8 @@ Used Inodes on /: $USEDON .
 
 Free Inodes on host $(uname -n): $FREEINODES
 
-
-
 _________________________________________________
 /home
-
 
 Warn percentage on /home: $WARN02 %
 
@@ -283,7 +279,5 @@ else
 killall serv-if-up.sh ;
 
 fi
-
 fi
-
 fi
