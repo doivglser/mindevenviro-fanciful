@@ -1,6 +1,5 @@
 #!/bin/bash
-
-# version 0.01
+# version 1.00
 # first run installs the environment
 # run this script like: ../sh13lD/./inst4Ll
 # You can Add Programs to myPrograms, but remove bevor $HOME/installed
