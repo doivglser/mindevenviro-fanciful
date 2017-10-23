@@ -3,10 +3,8 @@
 # depends on shi3lD.sh
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
-
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
@@ -19,7 +17,6 @@ binarie1="/usr/sbin/snort" ;
 homeordner="/home/${SUDO_USER}/" ;
 
 puff_MACs(){
-
 interface=$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | tr -d '\ ') ;
 nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 
@@ -36,7 +33,6 @@ done
 }
 
 start_s(){
-
 		if [[ $(ps aux | grep snort | grep -v grep | grep -v nano | awk '{print $11}') = "$binarie0" ]]
 	then
 		echo -e "snort is allready running ...\n" ;
@@ -48,7 +44,6 @@ fi
 }
 
 start_c(){
-
 		if [[ $(ps aux | grep clamd | grep -v grep | grep -v nano | awk '{print $11}') = "$binarie1" ]]
 	then
 		echo -e "clamd is allready running ...\n" ;
@@ -60,25 +55,20 @@ fi
 }
 
 permissions(){
-
 		chown "$SUDO_USER":"$SUDO_USER" "${homeordner}$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_recieves_dhcp_lease" 2>/dev/null && stopLoop="1" ;
-
 		chmod 0750 "${homeordner}$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_recieves_dhcp_lease" 2>/dev/null && stopLoop="1" ;
 }
 
 writeM4C_Connected(){
-
 		if [[ -e "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" ]]
 	then
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_recieves_dhcp_lease" && permissions ;
 	else
-
 		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" && permissions ;
-
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_recieves_dhcp_lease" && permissions ;
@@ -86,16 +76,13 @@ fi
 }
 
 writeM4C_SelfAssigned(){
-
 		if [[ -e "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease" ]]
 	then
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "$homeordner$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_no_dhcp_lease" && permissions ;
 	else
-
 		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease" && permissions ;
-
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "$homeordner$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_no_dhcp_lease" && permissions ;
@@ -103,7 +90,6 @@ fi
 }
 
 ifUPAntiVirusFireWall(){
-
 		until [[ $(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | wc -l | tr -d ' ') = "2" ]] ;
 	do
 		ifDown0=$(ps aux | grep -vE "grep" | grep -v nano | grep clamd | awk '{print $11}') ;
@@ -118,12 +104,11 @@ ifUPAntiVirusFireWall(){
 	then
 		echo -e "restarting Snort ...\n" ;
 		start_s && return ;
-fi
+	fi
 done
 }
 
 m41N__(){
-
 		while [[ $stopLoop != "1" ]]
 	do
 		puff_MACs && ifUPAntiVirusFireWall ;
@@ -146,6 +131,4 @@ done
 }
 	m41N__ ;
 fi
-
 fi
-
