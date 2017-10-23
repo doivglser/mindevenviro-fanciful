@@ -30,14 +30,12 @@ fi
 puffeRR(){
 		if [[ "$(cat /home/"$SUDO_USER"/vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
 	then
-		clear ;
 		. /usr/local/bin/stop_shield.sh ;		
 		echo -e "\n ::    D A N G E R      ::" ;
 		echo -e "\n :: changing macaddress :: \n" && 
 		. /usr/local/bin/start_shield.sh ;	
 	else
-		clear ;
-		echo -e "\n ::     We have shield     ::\n" ;
+		echo -e "\n ::     MAC's allready changed     ::\n" ;
 	fi
 }
 
