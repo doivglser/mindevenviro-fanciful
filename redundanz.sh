@@ -1,12 +1,8 @@
 #!/bin/bash
-
-# version 0.01
+# version 1.00
 # monitors the servers and applications, defined in server-monitor.sh
-
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-
 LANG="C" ;
-
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
