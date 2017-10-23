@@ -1,11 +1,8 @@
 #!/bin/bash
-
-# version 0.01
-
-#MONITOR
+# version 1.00
+# MONITOR
 
 LANG="C" ;
-
 IFS="$(echo -en "\n\b")" ;
 
 		if [ ! $EUID = 0 ] ;
@@ -17,15 +14,12 @@ else
 then
 
 # dEFINe vars
-
 loadav=$(uptime | awk '{print $7, $8, $9, $10, $11}') ;
 
 ## shi3lD.sh
-
 file01a="shi3lD.sh"
 
 ## serv-if-up.sh
-
 file01g="serv-if-up.sh"
 
 ###
@@ -61,7 +55,6 @@ echo -e "\n :: $usersPID PID from $file01a by: $users1\n" ;
 
 ps aux | grep "$prgtotesta" | grep -v grep | tail -n1 ;
 
-
 ###
 #
 # serv-if-up.sh pids users and number of processes
@@ -86,7 +79,6 @@ usersPID7=$(ps aux | grep "$prgtotestg" | grep -v grep | awk '{print $1}' | wc -
 echo -e "\n :: $usersPID7 PID from $file01g by: $users7\n" ;
 
 ps aux | grep "$prgtotestg" | grep -v grep | tail -n1 ;
-
 
 fi
 fi
