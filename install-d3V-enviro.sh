@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # version 1.00
 # first run installs the environment
 # run this script like: ../bash-dev-enviro/./iNSTALL.sh
