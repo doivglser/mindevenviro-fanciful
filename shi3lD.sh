@@ -35,6 +35,7 @@ puffeRR(){
 		echo -e "\n :: changing macaddress :: \n" && 
 		. /usr/local/bin/start_shield.sh ;	
 	else
+		clear ;
 		echo -e "\n ::     MAC's allready changed     ::\n" ;
 	fi
 }
