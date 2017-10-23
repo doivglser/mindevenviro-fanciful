@@ -1,13 +1,10 @@
 #!/bin/bash
-
-# version 0.01
+# version 1.00
 #REDUNDANZ
-
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
 else
-
 	if [[ "$(ps aux | grep -v grep | grep -v nano | grep redundanz.sh | awk '{print $2}' | wc -l) " -gt "1" ]] ;
 then
 
