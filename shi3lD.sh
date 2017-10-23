@@ -42,10 +42,9 @@ puffeRR(){
 
 exitHandler(){
 
-		echo -e "-"
-		printf " quit? (y/n) " ; read
-		echo -e "-"
-
+	echo -e "-"
+	printf " quit? (y/n) " ; read
+	echo -e "-"
 			if [[ $REPLY =~ y|Y|j|J ]] ;
 		then
 			ip link set dev "$interface" down && sleep 5 &&
@@ -80,5 +79,4 @@ exitHandler(){
 		puffeRR ;
 	fi
 done
-
 fi
