@@ -1,6 +1,8 @@
 #!/bin/bash
 # version 1.00
-# REDUNDANZ
+# REDUNDANZ, depends on redundanz.sh
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
