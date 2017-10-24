@@ -53,6 +53,12 @@ Set the workflow interval in minutes and edit your projects with your favorite e
 
 installed # The list of the installed components.
 
+Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's addresses.
+
+Oct2017.mac_no_dhcp_lease # Depends on shi3lD.sh, a list of NOT working MAC's addresses.
+
+wH0rUNSon # Depends on sCRYPtUPdater.sh, writes the username and the host with a timestamp.
+
 * in /usr/local/bin
 
 shi3lD.sh # Changes MAC's Snort and ClamAV UP status.
@@ -61,10 +67,6 @@ start_shield.sh # Depends on shi3lD.sh.
 
 stop_shield.sh # Depends on shi3lD.sh.
 
-Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's addresses in $HOME.
-
-Oct2017.mac_no_dhcp_lease # Depends on shi3lD.sh, a list of NOT working MAC's addresses in $HOME.
-
 redundanz.sh # Shows the status on a terminal.
 
 server-monitor.sh # Depends on redundanz.sh, UP status.
@@ -72,8 +74,6 @@ server-monitor.sh # Depends on redundanz.sh, UP status.
 serv-if-up.sh # Depends on redundanz.sh, background process.
 
 sCRYPtUPdater.sh # Syntax check and update to /usr/local/bin.
-
-wH0rUNSon # Depends on sCRYPtUPdater.sh, writes the username and the host with a timestamp to $HOME.
 
 # Coming soon:
 
