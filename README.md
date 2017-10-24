@@ -69,7 +69,7 @@ serv-if-up.sh # Depends on redundanz.sh, background process.
 
 sCRYPtUPdater.sh # Syntax check and update to /usr/local/bin.
 
-wH0rUNSon # Depends on sCRYPtUPdater.sh, write the username and the host with a timestamp to $HOME.
+wH0rUNSon # Depends on sCRYPtUPdater.sh, writes the username and the host with a timestamp to $HOME.
 
 # Coming soon:
 
