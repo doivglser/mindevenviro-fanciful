@@ -31,28 +31,29 @@ puffeRR(){
 		. /usr/local/bin/stop_shield.sh ;		
 		echo -e "\n :: changing macaddress :: \n" && 
 		. /usr/local/bin/start_shield.sh ;	
-	fi
+fi
 }
 
 exitHandler(){
-	echo -e "-"
-	printf " quit? (y/n) " ; read
-	echo -e "-"
-			if [[ $REPLY =~ y|Y|j|J ]] ;
-		then
-			ip link set dev "$interface" down && sleep 2 &&
-			ip link set dev "$interface" address "$(cat /home/"${SUDO_USER}"/vendorsmac)" &&
-			ip link set dev "$interface" up && sleep 2 ;
-			systemctl restart snort.service && clear &&
-			echo -e "\n .You where surfing with this MAC:\n\n
-			$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
-			awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n" ;
-			exit 0 ;
 
-			elif [[ $REPLY =~ n|N ]] ;
-		then
-			return ;
-	fi
+echo -e "-"
+printf " quit? (y/n) " ; read
+echo -e "-"
+		if [[ $REPLY =~ y|Y|j|J ]] ;
+	then
+		ip link set dev "$interface" down && sleep 2 &&
+		ip link set dev "$interface" address "$(cat /home/"${SUDO_USER}"/vendorsmac)" &&
+		ip link set dev "$interface" up && sleep 2 ;
+		systemctl restart snort.service && clear &&
+		echo -e "\n .You where surfing with this MAC:\n\n
+		$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
+		awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n" ;
+		exit 0 ;
+
+		elif [[ $REPLY =~ n|N ]] ;
+	then
+		return ;
+fi
 }
 		while trap 'exitHandler' SIGINT ;
 	do
