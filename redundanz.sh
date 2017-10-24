@@ -19,6 +19,6 @@ ex1Th4ndler(){
 		if [ -e "/home/$SUDO_USER/installed" ] ;
 	then
 		setsid serv-if-up.sh >/dev/null 2>&1 < /dev/null &
-		watch -n3 -t --color server-monitor.sh ;
+		watch -n6 -t --color server-monitor.sh ;
 	fi
 fi
