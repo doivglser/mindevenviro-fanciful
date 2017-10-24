@@ -73,7 +73,7 @@ done
 	echo -e "\nwe have bash-dev-enviro successfully installed" ;
 
 	else
-		echo -e "\nAllready installed, for new install, remove /home/$SUDO_USER/installed" ;
+		echo -e "\nAllready installed, for a new install, remove /home/$SUDO_USER/installed" ;
 fi
 fi
 fi
