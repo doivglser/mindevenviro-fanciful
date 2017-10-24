@@ -65,9 +65,11 @@ redundanz.sh # Shows the status on a terminal.
 
 server-monitor.sh # Depends on redundanz.sh, UP status.
 
-serv-if-up.sh # Background process, depends on redundanz.sh.
+serv-if-up.sh # Depends on redundanz.sh, background process.
 
 sCRYPtUPdater.sh # Syntax check and update to /usr/local/bin.
+
+wH0rUNSon # Depends on sCRYPtUPdater.sh, write the username and the host with a timestamp to $HOME.
 
 # Coming soon:
 
