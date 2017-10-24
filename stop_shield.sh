@@ -1,8 +1,8 @@
 #!/bin/bash
-# version 0.01
+# version 1.00
 # depends on shi3lD.sh
-
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 
@@ -39,6 +39,6 @@ main_(){
 		if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD.sh | awk '{print $2}' | wc -l) " -gt "1" ]] ;
 	then
 		main_ ;
-fi
+	fi
 fi
 fi
