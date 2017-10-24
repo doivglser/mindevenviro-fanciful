@@ -55,7 +55,7 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/vendorsmac" ;
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/installed" ;
 
-		if [[ $PWD =~ 'dev-shell-enviro' ]] && [[ ! $environinstall =~ $(ls /usr/local/bin/*) ]] ;
+		if [[ $PWD =~ 'dev-shell-enviro' ]] ;
 	then
 		while [[ "$nNuM2" != "0" ]] ;
 	do
@@ -73,7 +73,7 @@ done
 	echo -e "\nwe have bash-dev-enviro successfully installed" ;
 
 	else
-		echo -e "\nallready installed, remove /home/$SUDO_USER/installed \nif you want to add new Programs to myPrograms" ;
+		echo -e "\nAllready installed, for new install, remove /home/$SUDO_USER/installed" ;
 fi
 fi
 fi
