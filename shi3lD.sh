@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # version 0.01,	runs only on systems with systemd, without network-managers,
 # 		you must have a running version of both: ClamAV and Snort.
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
@@ -28,13 +27,10 @@ fi
 puffeRR(){
 		if [[ "$(cat /home/"$SUDO_USER"/vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
 	then
+		echo -e "\n :: stopping interfaces ::" ;
 		. /usr/local/bin/stop_shield.sh ;		
-		echo -e "\n ::    D A N G E R      ::" ;
 		echo -e "\n :: changing macaddress :: \n" && 
 		. /usr/local/bin/start_shield.sh ;	
-	else
-		clear ;
-		echo -e "\n ::     MAC's allready changed     ::\n" ;
 	fi
 }
 
@@ -44,7 +40,7 @@ exitHandler(){
 	echo -e "-"
 			if [[ $REPLY =~ y|Y|j|J ]] ;
 		then
-			ip link set dev "$interface" down && sleep 5 &&
+			ip link set dev "$interface" down && sleep 2 &&
 			ip link set dev "$interface" address "$(cat /home/"${SUDO_USER}"/vendorsmac)" &&
 			ip link set dev "$interface" up && sleep 2 ;
 			systemctl restart snort.service && clear &&
