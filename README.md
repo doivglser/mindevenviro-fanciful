@@ -29,7 +29,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 installs a minimal desktop with antivirus and a NIDS:
 
-vtwm firefox-esr vlc gnome-terminal transset display figlet mc mutt eject nano openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan snort
+openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan figlet mc mutt eject nano snort firefox-esr vlc terminator transset display vtwm
 
 * ./install-d3V-enviro.sh
 
