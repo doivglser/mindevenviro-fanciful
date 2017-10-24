@@ -47,7 +47,7 @@ To change your MAC addresses, shi3lD.sh does a list with working and not working
 
 * from terminal: redundanz.sh to:
 
-Restarts Apache2, MySQL, sendmail, takes care about free space, if  notifi /dev/pts3 and per email.
+Restarts Apache2, MySQL, Sendmail. If false, or lack of space, writes to /dev/pts/3 and to mailbox.
 
 * from terminal: sCRYPtUPdater.sh to:
 
@@ -71,7 +71,7 @@ redundanz.sh # Shows the status on a terminal.
 
 server-monitor.sh # Depends on redundanz.sh, UP status.
 
-serv-if-up.sh # Background process, depends on redundanz.sh, restart servers. If false or lack of space, writes to /dev/pts/3 and to mailbox.
+serv-if-up.sh # Background process, depends on redundanz.sh.
 
 sCRYPtUPdater.sh # Syntax check and update to /usr/local/bin.
 
