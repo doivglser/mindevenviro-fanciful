@@ -1,7 +1,8 @@
 #!/bin/bash
 # version 1.00
-# monitors the servers and applications, defined in server-monitor.sh
+# Displays on a terminal the UP status.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
 LANG="C" ;
 		if [ ! $EUID = 0 ] ;
 	then
