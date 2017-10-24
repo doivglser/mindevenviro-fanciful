@@ -51,7 +51,7 @@ Set the workflow interval in minutes and edit your projects with your favorite e
 
 * in $HOME
 
-installed and installed1 # The list of the installed components.
+installed # The list of the installed components.
 
 * in /usr/local/bin
 
