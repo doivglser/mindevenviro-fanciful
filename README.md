@@ -47,7 +47,7 @@ To change your MAC addresses, shi3lD.sh does a list with working and not working
 
 * from terminal: redundanz.sh to:
 
-Restarts Apache2, MySQL, Sendmail. If false, or lack of space, writes to /dev/pts/3 and to mailbox.
+Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/3 and to mailbox.
 
 * from terminal: sCRYPtUPdater.sh to:
 
