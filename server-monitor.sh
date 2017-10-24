@@ -1,6 +1,7 @@
 #!/bin/bash
 # version 1.00
-# MONITOR
+# MONITOR, depends on redundanz.sh
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
 IFS="$(echo -en "\n\b")" ;
