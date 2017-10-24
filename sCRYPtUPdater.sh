@@ -1,14 +1,12 @@
 #!/bin/bash
 # version 1.00
-# Set the path to your Scripts like: dirINhome="myDistro" or dirINhome="Desktop/bash"
-# dirINhome="YOUR_WORK_DIR"
-# Or Type your working Directory
+# syntax check and update to /urs/local/bin
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
 #		reset the time interval, because "du" stderr
 #		invalid byte sequence with "tr -cd '\11\12\15\40-\176'"
 #		implement bash-completion, for TAB'ing
-#set -x
+# set -x
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
