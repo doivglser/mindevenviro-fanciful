@@ -44,7 +44,8 @@ fi
 		if [ "$nNuM" = "0" ]
 	then
 		clear ;
-		echo -e "\n done." ;
+		echo -e "\n done!" ;
+		sleep 5 ;
 fi
 # ON THE SCREEN
 		printf "\rtesting for apps, $nNuM remaining, $apPR" ; sleep 0.5 ;
@@ -70,10 +71,10 @@ done
 		((nNuM2--)) ;
 done
 
-	echo -e "\nwe have bash-dev-enviro successfully installed" ;
+	echo -e "\n We have dev-shell-enviro successfully installed" ;
 
 	else
-		echo -e "\nAllready installed, for a new install, remove /home/$SUDO_USER/installed" ;
+		echo -e "\n Allready installed, for a new install, remove /home/$SUDO_USER/installed" ;
 fi
 fi
 fi
