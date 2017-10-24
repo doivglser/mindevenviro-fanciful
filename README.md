@@ -1,6 +1,6 @@
 # dev-shell-enviro
 
-Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and a NIDS. 
+Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
 
 ° For Debian GNU/Linux.
 
@@ -27,7 +27,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 * ./install
 
-Installs the deployment environment and the minimal desktop with antivirus and a NIDS:
+Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
 dwww git apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan figlet mc mutt eject nano snort vtwm firefox-esr vlc terminator transset display
 
