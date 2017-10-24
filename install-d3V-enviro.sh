@@ -1,8 +1,8 @@
 #!/bin/bash
 # version 1.00
 # first run installs the environment
-# run this script like: ../bash-dev-enviro/./iNSTALL.sh
-# You can Add Programs to myPrograms, but remove bevor $HOME/installed
+# run this script like: ../dev-shell-enviro/./iNSTALL.sh
+# You can Add Programs to $myPrograms, but remove bevor $HOME/installed
 
 myPrograms="apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl dwww git" ;
 
