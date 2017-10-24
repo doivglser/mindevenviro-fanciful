@@ -17,6 +17,7 @@ binarie1="/usr/sbin/snort" ;
 homeordner="/home/${SUDO_USER}/" ;
 
 puff_MACs(){
+
 interface=$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | tr -d '\ ') ;
 nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 
@@ -28,7 +29,7 @@ nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 		ip link set dev "$m4c" address "$newM4CnewM4C" && sleep 1 &&
 		((nnumberOFinterface--)) &&
 		ip link set dev "$m4c" up &&
-		sleep 12 ;
+		sleep 9 ;
 done
 }
 
