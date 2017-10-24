@@ -44,8 +44,8 @@ fi
 		if [ "$nNuM" = "0" ]
 	then
 		clear ;
-		echo -e "\n done!" ;
-		sleep 5 ;
+		echo -e "\n apt-get done." ;
+		sleep 3 ;
 fi
 # ON THE SCREEN
 		printf "\rtesting for apps, $nNuM remaining, $apPR" ; sleep 0.5 ;
