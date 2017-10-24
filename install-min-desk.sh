@@ -1,16 +1,16 @@
 #!/bin/bash
 # version 1.00
 # first run installs the environment
-# run this script like: ../sh13lD/./inst4Ll
-# You can Add Programs to myPrograms, but remove bevor $HOME/installed
+# run this script like: ../dev-shell-enviro/./inst4Ll
+# You can Add Programs to $myPrograms, but remove bevor $HOME/installed
 
-myPrograms="openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan figlet mc mutt eject nano snort vtwm firefox-esr vlc terminator transset display" ;
+myPrograms="dwww git apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan figlet mc mutt eject nano snort vtwm firefox-esr vlc terminator transset display" ;
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
 
-environinstall="shi3lD.sh stop_shield.sh start_shield.sh" ;
+environinstall="redundanz.sh server-monitor.sh serv-if-up.sh sCRYPtUPdater.sh shi3lD.sh stop_shield.sh start_shield.sh" ;
 
 		if [ ! $EUID = 0 ] ;
 	then
@@ -55,7 +55,7 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/vendorsmac" ;
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/installed" ;
 
-		if [[ $PWD =~ 'bash-dev-enviro' ]] && [[ ! $environinstall =~ $(ls /usr/local/bin/*) ]] || [[ $(ls /usr/local/bin/*) =~ '' ]] ;
+		if [[ $PWD =~ 'dev-shell-enviro' ]] && [[ ! $environinstall =~ $(ls /usr/local/bin/*) ]] ;
 	then
 		while [[ "$nNuM2" != "0" ]] ;
 	do
