@@ -1,6 +1,5 @@
 #!/bin/bash
 # version 1.00
-# Set the time interval, and just hit enter to update, to stop "pychecker" or "perl -wc" hit ctrl+4
 # Set the path to your Scripts like: dirINhome="myDistro" or dirINhome="Desktop/bash"
 # dirINhome="YOUR_WORK_DIR"
 # Or Type your working Directory
@@ -223,10 +222,10 @@ fi
 fi
 
 }
- 
-echo -e "\nHello $SUDO_USER, type the interval in minutes, you\b
-ussualy need to: write , save and hit enter.\b
-update from $userHome to /usr/local/bin.\n" ;
+
+figlet hello "$SUDO_USER" ;
+echo -e "\n Set the workflow interval:\n" ;
+echo -e "\nupdate from $userHome to /usr/local/bin\n\n" ;
 printf "type here in minutes: " ; read minut3S ;
 
 	if [[ "$minut3S" = '' ]] ;
