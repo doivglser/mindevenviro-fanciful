@@ -25,6 +25,10 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 # Install
 
+* log in over SSH and copy/paste the line below:
+
+cd $HOME && wget https://github.com/doivglser/dev-shell-enviro/archive/v1.0.0.tar.gz && tar -xvzf v1.0.0.tar.gz && cd dev-shell-enviro-1.0.0 && ls -ahls --color=auto && pwd
+
 * ./install
 
 Installs the deployment environment and the minimal desktop with antivirus and NIDS:
