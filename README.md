@@ -61,6 +61,10 @@ start_shield.sh # Depends on shi3lD.sh.
 
 stop_shield.sh # Depends on shi3lD.sh.
 
+Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's addresses in $HOME.
+
+Oct2017.mac_no_dhcp_lease # Depends on shi3lD.sh, a list of NOT working MAC's addresses in $HOME.
+
 redundanz.sh # Shows the status on a terminal.
 
 server-monitor.sh # Depends on redundanz.sh, UP status.
