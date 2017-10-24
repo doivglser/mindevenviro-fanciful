@@ -61,7 +61,7 @@ Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's 
 
 Oct2017.mac_no_dhcp_lease # Depends on shi3lD.sh, a list of NOT working MAC's addresses.
 
-wH0rUNSon # Depends on sCRYPtUPdater.sh, writes the username and the host with a timestamp.
+wH0rUNSon # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username and the host with a timestamp.
 
 * in /usr/local/bin
 
