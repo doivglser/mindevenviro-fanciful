@@ -224,7 +224,7 @@ fi
 figlet hello "$SUDO_USER" ;
 echo -e "\n Set the workflow interval:\n" ;
 echo -e "\nupdate from $userHome to /usr/local/bin\n\n" ;
-printf "type here in minutes: " ; read minut3S ;
+printf "type here in minutes: " ; read -r minut3S ;
 
 	if [[ "$minut3S" = '' ]] ;
 then
