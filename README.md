@@ -89,7 +89,7 @@ https://github.com/doivglser/min-dev-enviro/projects
 
 * shi3lD.sh
 
-Workaround to change the user-agent while changing the Mac - addresses.
+Workaround to change the user-agent while changing the MAC - addresses.
 
 * sCRYPtUPdater.sh
 
