@@ -16,7 +16,7 @@ LANG="C" ;
 IFS=$(echo -en "\n\b") ;
 syntaxCHkr="pychecker shellcheck perl" ;
 # Ask for working Directory
-echo -e "\nplease type a working Directory in $HOME and hit Return.\n" ;
+echo -e "\nplease type a working Directory in /home/${SUDO_USER} and hit Return.\n" ;
 # type the working Directory
 printf "here: "; read -r dirINhome ;
 # the Work Directory
