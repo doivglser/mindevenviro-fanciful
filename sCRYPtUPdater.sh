@@ -69,17 +69,22 @@ takeLASTword2=$(echo "$listONme" | sed 's/\//\ /g' | sed 's/\./\ /g' | wc -w) ;
 # fF1l3suffix: determine the file suffix
 fF1l3suffix=$(echo "$listONme" | sed 's/\//\ /g'| sed 's/\./\ /g' | awk '{print $'"$takeLASTword2"'}') ; export fF1l3suffix ;
 
-	if [[ "$(du -b "$listONme" | cut -f1 2>/dev/null)" -gt "$(du -b "/usr/local/bin/$toC0pyIS" | cut -f1 2>/dev/null)" ]] && [[ "$toC0pyIS" != "wH0rUNSon" ]] && [[ "$toDayChanged" != '' ]] ;
+	if [ -e /usr/local/bin/$toC0pyIS ]
 then
-	let listONmest4tus=$(du -b "$listONme" | cut -f1)-$(du -b "/usr/local/bin/$toC0pyIS" | cut -f1) 2>/dev/null
+	if [[ "$(du -b "$listONme" 2>/dev/null | cut -f1)" -gt "$(du -b "/usr/local/bin/$toC0pyIS" 2>/dev/null | cut -f1)" ]] ;
+then
+	let listONmest4tus=$(du -b "$listONme" 2>/dev/null | cut -f1)-$(du -b "/usr/local/bin/$toC0pyIS" 2>/dev/null | cut -f1)	
 	diffANDchecksyntax ;
 
-	elif [[ "$(du -b "$listONme" | cut -f1 2>/dev/null)" -lt "$(du -b "/usr/local/bin/$toC0pyIS" | cut -f1 2>/dev/null)" ]] && [[ "$toC0pyIS" != "wH0rUNSon" ]] && [[ "$toDayChanged" != '' ]] ;
+	elif [[ "$(du -b "$listONme" | cut -f1 2>/dev/null)" -lt "$(du -b "/usr/local/bin/$toC0pyIS" | cut -f1 2>/dev/null)" ]] ;
 then
-	let listONmest4tus=$(du -b "/usr/local/bin/$toC0pyIS" | cut -f1)-$(du -b "$listONme" | cut -f1) 2>/dev/null
+	let listONmest4tus=$(du -b "/usr/local/bin/$toC0pyIS" 2>/dev/null | cut -f1)-$(du -b "$listONme" 2>/dev/null | cut -f1)
 	diffANDchecksyntax ;
 else
 		maincall ;
+fi
+	else
+		touchtoC0pyinbin ;
 fi
 }
 
