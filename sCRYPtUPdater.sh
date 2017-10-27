@@ -89,8 +89,6 @@ fi
 }
 
 touchtoC0pyinbin(){
-			if [[ "$toC0pyIS" != "wH0rUNSon" ]] ;
-		then
 			figlet new ; printf "..%s.." "$toC0pyIS" ;
 			echo -e "\n" ;
 			printf "type 'touch' here: " ; read -r ;
@@ -104,9 +102,6 @@ touchtoC0pyinbin(){
 			echo -e "\ntype correctly" ;
 		fi
 ### ###
-	else
-		maincall ;
-fi
 }
 
 
@@ -114,6 +109,7 @@ diffANDchecksyntax(){
 ch3kingSnx='' ;
             if [ -e "/usr/local/bin/$toC0pyIS" ] ;
 	then
+			figlet check.syntax ;
 			echo -e "\n check syntax for: $toC0pyIS\n" ;
 			diff -i "$listONme" "/usr/local/bin/$toC0pyIS" ;
 
@@ -153,11 +149,11 @@ fi
 			echo -e "\nnothing to check.\n" ;
 		else
 			echo -e "\n$listONme appears to be ok.\n" ;
-            copyToPath ;
+            		copyToPath ;
 		fi
 	fi
 	else
-            touchtoC0pyinbin ;
+		touchtoC0pyinbin ;
 fi
 }
 
