@@ -14,7 +14,7 @@ else
 
 LANG="C" ;
 IFS=$(echo -en "\n\b") ;
-syntaxCHkr="pychecker shellcheck perl" ;
+syntaxCHkr="pychecker bash perl" ;
 # Ask for working Directory
 echo -e "\nplease type a working Directory in /home/${SUDO_USER} and hit Return.\n" ;
 # type the working Directory
@@ -117,9 +117,8 @@ ch3kingSnx='' ;
 		then
 			if [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
 		then
-			ch3kingSnx="shellcheck" ;
-			LANG="enUS.UTF-8" ;
-			echo "$listONme" | xargs $ch3kingSnx -x -e "$excULEC0D3s" ;
+			ch3kingSnx="bash" ;
+			echo "$listONme" | xargs $ch3kingSnx -xv ;
 			exitc0de=$(echo $?) ;
 			
 			elif [[ "$listONmeIS" =~ 'Python ' ]] ;
