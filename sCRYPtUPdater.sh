@@ -29,6 +29,15 @@ else
 	tmpfolder="/tmp" ;
 fi
 
+f1GLEt=$(whereis figlet | cut -f2 -d: | cut -f2 -d\ ) ;
+# Title's
+		if [[ "${#f1GLEt}" != "0" ]] ;
+then
+		tiTl3="figlet"
+	else
+		tiTl3="echo"
+fi
+
 # User Host Control
 echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: WORK -\n" >>"$userHome/wH0rUNSon" ;
 # wholeC0unt4: to start by zero after first 
@@ -89,7 +98,7 @@ fi
 }
 
 touchtoC0pyinbin(){
-			figlet new ; printf "..%s.." "$toC0pyIS" ;
+			$ "new" ; printf "..%s.." "$toC0pyIS" ;
 			echo -e "\n" ;
 			printf "type 'touch' here: " ; read -r ;
 ### ###			
@@ -109,7 +118,7 @@ diffANDchecksyntax(){
 ch3kingSnx='' ;
             if [ -e "/usr/local/bin/$toC0pyIS" ] ;
 	then
-			figlet check.syntax ;
+			$tiTl3 "check.syntax" ;
 			echo -e "\n check syntax for: $toC0pyIS\n" ;
 			diff -i "$listONme" "/usr/local/bin/$toC0pyIS" ;
 
@@ -171,7 +180,7 @@ copyToPath(){
 			sudo chown root:root "/usr/local/bin/$toC0pyIS" ;
 			sudo chmod 4755 "/usr/local/bin/$toC0pyIS" ;
 			sudo chmod u+s "/usr/local/bin/$toC0pyIS" ;
-			figlet "$toC0pyIS"
+			$tiTl3 "$toC0pyIS"
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall ;
 		else
@@ -213,7 +222,7 @@ fi
 		sC4n ;
 	else
 		listONmest4tus="0" ;
-		figlet no.changes && read -p "waiting..." ;
+		$tiTl3 "no.changes" && read -p "waiting..." ;
 		sC4n ;
 fi
 	else
@@ -222,7 +231,7 @@ fi
 
 }
 
-figlet hello "$SUDO_USER" ;
+$tiTl3 "hello" "$SUDO_USER" ;
 echo -e "\n Set the workflow interval:\n" ;
 echo -e "\nupdate from $userHome to /usr/local/bin\n\n" ;
 printf "type here in minutes: " ; read -r minut3S ;
