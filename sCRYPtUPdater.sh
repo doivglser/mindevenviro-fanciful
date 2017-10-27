@@ -118,7 +118,7 @@ ch3kingSnx='' ;
 			if [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
 		then
 			ch3kingSnx="bash" ;
-			echo "$listONme" | xargs $ch3kingSnx -xv ;
+			echo "$listONme" | xargs $ch3kingSnx -xvn ;
 			exitc0de=$(echo $?) ;
 			
 			elif [[ "$listONmeIS" =~ 'Python ' ]] ;
