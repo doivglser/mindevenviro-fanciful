@@ -1,10 +1,10 @@
 #!/bin/bash
-# version 1.00
+# version 1.05
 # first run installs the environment
 # run this script like: min-dev-enviro/./install.sh
 # You can Add Programs to $myPrograms, but remove bevor $HOME/installed
 
-myPrograms="dwww git apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan figlet mc mutt eject nano snort vtwm firefox-esr vlc terminator transset display" ;
+myPrograms="openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan git apache2 dwww mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl figlet mc mutt eject nano vtwm transset display terminator firefox-esr vlc snort" ;
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
