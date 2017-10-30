@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 1.00
+# version 1.05
 # Displays on a terminal the UP status.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
