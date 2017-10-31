@@ -40,7 +40,7 @@ export excULEC0D3s ;
 
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
-toDayChanged=$(find "$userHome" -cmin -"$minut3S" -type f | grep -v grep | grep -vE '^\.' | grep -vE '.wav|.jpg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install.sh|installed|master|HEAD|COMMIT_EDITMSG|config|description|sample|index|exclude|refs|wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
+toDayChanged=$(find "$userHome" -cmin -"$minut3S" -type f | grep -v grep | grep -vE "^\." | grep -vE '.wav|.jpg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install.sh|installed|master|HEAD|COMMIT_EDITMSG|config|description|sample|index|exclude|refs|wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
 
 			if [[ "$toDayChanged" != '' ]] ;
 	then
