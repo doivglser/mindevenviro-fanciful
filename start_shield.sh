@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 1.05
+# version 1.06
 # depends on shi3lD.sh
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
@@ -12,16 +12,15 @@ IFS=$(echo -e "\n\b") ;
 else
 	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD.sh | awk '{print $2}' | wc -l) " -gt "1" ]] ;
 then
+
 stopLoop="0" ;
 binarie0="/usr/sbin/clamd" ;
 binarie1="/usr/sbin/snort" ;
 homeordner="/home/${SUDO_USER}/" ;
-
-puff_MACs(){
-
 interface=$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | tr -d '\ ') ;
 nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 
+puff_MACs(){
 		until [[ "$nnumberOFinterface" = "0" ]] ;
 	do
 		echo -e "puffing MACs ...\n" ;
