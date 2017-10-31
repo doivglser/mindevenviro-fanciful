@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 1.05
+# version 1.06
 # MONITOR, depends on redundanz.sh
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
@@ -15,7 +15,6 @@ else
 then
 
 # dEFINe vars
-loadav=$(uptime | awk '{print $7, $8, $9, $10, $11}') ;
 
 ## shi3lD.sh
 file01a="shi3lD.sh"
@@ -23,13 +22,9 @@ file01a="shi3lD.sh"
 ## serv-if-up.sh
 file01g="serv-if-up.sh"
 
-###
-#
 # loadav
-#
-###
 
-echo "$loadav" ;
+echo "$(uptime | awk '{print $7, $8, $9, $10, $11}')" ;
 
 ###
 #
