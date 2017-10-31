@@ -58,9 +58,9 @@ fi
 
 permissions(){
 		chown "$SUDO_USER":"$SUDO_USER" "${homeordner}$(date | awk '{print $2,$6}' | \
-		sed 's/\ //g').mac_recieves_dhcp_lease" 2>/dev/null && stopLoop="1" ;
+		sed 's/\ //g').mac_recieves_dhcp_lease" 2>/dev/null ;
 		chmod 0750 "${homeordner}$(date | awk '{print $2,$6}' | \
-		sed 's/\ //g').mac_recieves_dhcp_lease" 2>/dev/null && stopLoop="1" ;
+		sed 's/\ //g').mac_recieves_dhcp_lease" 2>/dev/null ;
 }
 
 writeM4C_Connected(){
@@ -124,6 +124,7 @@ m41N__(){
         $(ip route | grep -vE "grep" | grep src) \n\n \
         and $m4c has now this MAC-Address: $(ip link show "$m4c" | grep ether | awk '{print $2}')\n" ;
         writeM4C_Connected ;
+	stopLoop="1" ;
     else
         echo -e "no connection with this $(ip link show "$m4c" | grep ether | awk '{print $2}'), I try again ..."
         . /usr/local/bin/stop_shield.sh ;
