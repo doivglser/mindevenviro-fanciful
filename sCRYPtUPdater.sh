@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 1.05
+# version 1.06
 # syntax check and update to /urs/local/bin
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
@@ -104,6 +104,44 @@ touchtoC0pyinbin(){
 ### ###
 }
 
+copyToPath(){
+			if [[ "$listONmest4tus" -ge "0" ]] && [ -e "/usr/local/bin/$toC0pyIS" ] ;
+        then
+			echo -e "\n" ;
+			printf " :: update? | 'n' " ; read -r
+			echo -e "\n" ;
+
+			if [[ "$REPLY" != "n" ]] ;
+		then
+			echo -e "\n" ;
+			sudo cp -f "$listONme" "/usr/local/bin/$toC0pyIS" ;
+			sudo chown root:root "/usr/local/bin/$toC0pyIS" ;
+			sudo chmod 4755 "/usr/local/bin/$toC0pyIS" ;
+			sudo chmod u+s "/usr/local/bin/$toC0pyIS" ;
+			echo "$toC0pyIS"
+			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			maincall ;
+		else
+			echo ":: nothing updated" ;
+			maincall ;
+	fi
+fi
+}
+
+exiter(){
+		sudo rm -f "$tmpfolder"/convert-T0-utf-8.tmp 2>/dev/null;
+		echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: exit --\n" >>"$userHome/wH0rUNSon" &&
+		echo -e "\n\ngood bye, have a nice Day.\n" && exit 0 ;
+}
+
+cont1NU3(){
+		if [[ $ch3kingSnx =~ $syntaxCHkr ]] ;
+	then
+		 ps aux | grep -v grep | grep "$ch3kingSnx" | awk '{print $2}' | xargs sudo kill -15 ;
+	else
+		echo -e "\nnothing checked"
+fi
+}
 
 diffANDchecksyntax(){
 ch3kingSnx='' ;
@@ -153,45 +191,6 @@ fi
 	fi
 	else
 		touchtoC0pyinbin ;
-fi
-}
-
-copyToPath(){
-			if [[ "$listONmest4tus" -ge "0" ]] && [ -e "/usr/local/bin/$toC0pyIS" ] ;
-        then
-			echo -e "\n" ;
-			printf " :: update? | 'n' " ; read -r
-			echo -e "\n" ;
-
-			if [[ "$REPLY" != "n" ]] ;
-		then
-			echo -e "\n" ;
-			sudo cp -f "$listONme" "/usr/local/bin/$toC0pyIS" ;
-			sudo chown root:root "/usr/local/bin/$toC0pyIS" ;
-			sudo chmod 4755 "/usr/local/bin/$toC0pyIS" ;
-			sudo chmod u+s "/usr/local/bin/$toC0pyIS" ;
-			echo "$toC0pyIS"
-			echo -e "updated: $(date | awk '{print $4}')\n" ;
-			maincall ;
-		else
-			echo ":: nothing updated" ;
-			maincall ;
-	fi
-fi
-}
-
-exiter(){
-		sudo rm -f "$tmpfolder"/convert-T0-utf-8.tmp 2>/dev/null;
-		echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: exit --\n" >>"$userHome/wH0rUNSon" &&
-		echo -e "\n\ngood bye, have a nice Day.\n" && exit 0 ;
-}
-
-cont1NU3(){
-		if [[ $ch3kingSnx =~ $syntaxCHkr ]] ;
-	then
-		 ps aux | grep -v grep | grep "$ch3kingSnx" | awk '{print $2}' | xargs sudo kill -15 ;
-	else
-		echo -e "\nnothing checked"
 fi
 }
 
