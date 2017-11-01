@@ -1,5 +1,4 @@
 #!/bin/bash
-# version 1.08
 # syntax check and update to /urs/local/bin
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
