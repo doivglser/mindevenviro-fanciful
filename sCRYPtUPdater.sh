@@ -14,12 +14,8 @@ else
 LANG="C" ;
 IFS=$(echo -en "\n\b") ;
 syntaxCHkr="pychecker bash perl" ;
-# Ask for working Directory
-echo -e "\nplease type a working directory in /home/${SUDO_USER} and hit Return.\n" ;
-# type the working Directory
-printf "here: "; read -r dirINhome ;
 # the Work Directory
-userHome="/home/${SUDO_USER}/${dirINhome}" ;
+userHome="/home/${SUDO_USER}" ;
 
 	if [[ "$(df -h | grep -E /dev/shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; # temp folder
 then
