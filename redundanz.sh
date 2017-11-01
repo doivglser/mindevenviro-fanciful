@@ -1,5 +1,4 @@
 #!/bin/bash
-# version 1.08
 # Displays on a terminal the UP status.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
