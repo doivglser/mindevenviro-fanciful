@@ -13,7 +13,7 @@ else
 
 LANG="C" ;
 IFS=$(echo -en "\n\b") ;
-syntaxCHkr="pychecker bash perl" ;
+syntaxCHkr="python bash perl" ;
 # the Work Directory
 userHome="/home/${SUDO_USER}" ;
 # User Host Control
@@ -155,8 +155,8 @@ ch3kingSnx='' ;
 			
 			elif [[ "$listONmeIS" =~ 'Python ' ]] ;
 		then
-			ch3kingSnx="pychecker" ;
-			echo "$listONme" | xargs $ch3kingSnx ;
+			ch3kingSnx="python" ;
+			echo "$listONme" | xargs $ch3kingSnx -m py_compile ;
 			exitc0de=$(echo $?) ;
 
 			elif [[ "$listONmeIS" =~ 'Perl ' ]] ;
