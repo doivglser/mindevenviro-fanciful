@@ -16,14 +16,6 @@ IFS=$(echo -en "\n\b") ;
 syntaxCHkr="pychecker bash perl" ;
 # the Work Directory
 userHome="/home/${SUDO_USER}" ;
-
-	if [[ "$(df -h | grep -E /dev/shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; # temp folder
-then
-	tmpfolder="$(df -h | grep -E /dev/shm$ | cut -f2 -d% | tr -d '\ ')" ;
-else
-	tmpfolder="/tmp" ;
-fi
-
 # User Host Control
 echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: WORK -\n" >>"$userHome/wH0rUNSon" ;
 # wholeC0unt4: to start by zero after first 
@@ -33,6 +25,14 @@ listONmest4tus="0" ;
 # excULEC0D3s
 excULEC0D3s="SC2009,SC2172,SC2162,SC2010,SC2126,SC2016,SC2034,SC2005,SC2013,SC2059,SC2086,SC2027,SC1091,SC2076,SC2116" ; 
 export excULEC0D3s ;
+# temp folder
+	if [[ "$(df -h | grep -E /dev/shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+then
+	tmpfolder="$(df -h | grep -E /dev/shm$ | cut -f2 -d% | tr -d '\ ')" ;
+else
+	tmpfolder="/tmp" ;
+fi
+# temp folder END
 
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
@@ -87,7 +87,7 @@ touchtoC0pyinbin(){
 			echo "new" ; printf "..%s.." "$toC0pyIS" ;
 			echo -e "\n" ;
 			printf "type 'touch' here: " ; read -r ;
-### ###			
+	
 			if [[ "$REPLY" = "touch" ]] ;
 		then
 			sudo touch "/usr/local/bin/$toC0pyIS" ;
@@ -96,7 +96,6 @@ touchtoC0pyinbin(){
 		else
 			echo -e "\ntype correctly" ;
 		fi
-### ###
 }
 
 copyToPath(){
@@ -124,7 +123,7 @@ fi
 }
 
 exiter(){
-		sudo rm -f "$tmpfolder"/convert-T0-utf-8.tmp 2>/dev/null;
+		#sudo rm -f "$tmpfolder"/convert-T0-utf-8.tmp 2>/dev/null;
 		echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: exit --\n" >>"$userHome/wH0rUNSon" &&
 		echo -e "\n\ngood bye, have a nice Day.\n" && exit 0 ;
 }
@@ -132,7 +131,7 @@ exiter(){
 cont1NU3(){
 		if [[ $ch3kingSnx =~ $syntaxCHkr ]] ;
 	then
-		 ps aux | grep -v grep | grep "$ch3kingSnx" | awk '{print $2}' | xargs sudo kill -15 ;
+		ps aux | grep -v grep | grep "$ch3kingSnx" | awk '{print $2}' | xargs sudo kill -15 ;
 	else
 		echo -e "\nnothing checked"
 fi
@@ -193,7 +192,7 @@ maincall(){
         if [ -e "$userHome" ] ;
     then
 		((wholeC0unt4--)) ;
-### ###
+
 		if [[ "$listONmest4tus" != "0" ]] ;
 	then
 		if [[ "$listONmest4tus" = "1" ]] ;
