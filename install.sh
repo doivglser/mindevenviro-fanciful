@@ -1,5 +1,4 @@
 #!/bin/bash
-# version 1.08
 # first run installs the environment
 # run this script like: min-dev-enviro/./install.sh
 # You can Add Programs to $myPrograms, but remove bevor $HOME/installed
