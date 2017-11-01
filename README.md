@@ -6,7 +6,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 ° Changes MAC - addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - address.
 
-° Checks syntax with "pychecker", "perl -wc" and "shellcheck"
+° Checks syntax with "python -m pgb", "perl -wc" and "bash -xvn"
 
 ° Restart Server's
 
@@ -49,7 +49,7 @@ Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev
 
 * from terminal: sCRYPtUPdater.sh to:
 
-Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Upload your scripts, or packed versions of perl or python to /usr/local/bin, stop a big compile with ctrl+4, be sure you change more then one byte (if you change just one digit, do a space or something). Close with ctrl+C.
+Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Upload your scripts, or packed versions of perl or python to /usr/local/bin, stop a python, perl, bash, syntax check with ctrl+4, be sure you change more then one byte (if you change just one digit, do a space or something). Close with ctrl+C.
 
 # Files:
 
