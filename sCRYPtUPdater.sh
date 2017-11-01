@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 1.06
+# version 1.07
 # syntax check and update to /urs/local/bin
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
