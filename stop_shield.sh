@@ -1,5 +1,4 @@
 #!/bin/bash
-# version 1.07
 # depends on shi3lD.sh
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
