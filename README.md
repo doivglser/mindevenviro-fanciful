@@ -27,7 +27,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.6.tar.gz && tar -xvzf v1.0.0.tar.gz && cd min-dev-enviro-1.0.6 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.7.tar.gz && tar -xvzf v1.0.7.tar.gz && cd min-dev-enviro-1.0.7 && ls -ahls --color=auto && pwd
 
 * ./install
 
