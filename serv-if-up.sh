@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 1.06
+# version 1.07
 # REDUNDANZ, depends on redundanz.sh
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
