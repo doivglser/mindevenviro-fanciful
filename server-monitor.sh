@@ -1,5 +1,4 @@
 #!/bin/bash
-# version 1.07
 # MONITOR, depends on redundanz.sh
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
