@@ -1,9 +1,10 @@
 #!/bin/bash
-# version 1.07	runs on systems with systemd, "WITHOUT" network-managers,
-# 		you must have a running version of both: ClamAV and Snort.
-# Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
-# Restart clamd and snort if DOWN and change MAC's agein.
-# ctrl+C cut's Ethernet Interface connection and revert to your vendors MAC-ADDRESS.
+# runs on systems with systemd, "WITHOUT" network-managers,
+# you must have a running version of both: ClamAV and Snort.
+# Changes your MAC-ADDRESS and do a list of usable and not 
+# usable MAC-ADDRESSES in $HOME. Restart clamd and snort if 
+# DOWN and change MAC's agein. ctrl+C cut's Ethernet Interface 
+# connection and revert to your vendors MAC-ADDRESS.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 		if [ ! $EUID = 0 ] ;
