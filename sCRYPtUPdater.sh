@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 1.07
+# version 1.08
 # syntax check and update to /urs/local/bin
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
@@ -13,7 +13,7 @@ else
 
 LANG="C" ;
 IFS=$(echo -en "\n\b") ;
-syntaxCHkr="python bash perl" ;
+syntaxCHkr="bash perl python" ;
 # the Work Directory
 userHome="/home/${SUDO_USER}" ;
 # User Host Control
@@ -156,7 +156,7 @@ ch3kingSnx='' ;
 			elif [[ "$listONmeIS" =~ 'Python ' ]] ;
 		then
 			ch3kingSnx="python" ;
-			echo "$listONme" | xargs $ch3kingSnx -m py_compile ;
+			echo "$listONme" | xargs $ch3kingSnx -m pdb ;
 			exitc0de=$(echo $?) ;
 
 			elif [[ "$listONmeIS" =~ 'Perl ' ]] ;
