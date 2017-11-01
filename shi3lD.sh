@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 1.06	runs on systems with systemd, "WITHOUT" network-managers,
+# version 1.07	runs on systems with systemd, "WITHOUT" network-managers,
 # 		you must have a running version of both: ClamAV and Snort.
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
 # Restart clamd and snort if DOWN and change MAC's agein.
