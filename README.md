@@ -33,7 +33,7 @@ cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.8.tar.
 
 Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
-dwww git apache2 mysql-server php5 php5-mysql php5-mcrypt sendmail pychecker shellcheck perl openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan figlet mc mutt eject nano snort vtwm firefox-esr vlc terminator transset display
+openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan git apache2 dwww mysql-server php5 php5-mysql php5-mcrypt sendmail python-gtk2-dbg shellcheck perl figlet mc mutt eject nano vtwm transset display terminator firefox-esr vlc snort
 
 # USAGE:
 
