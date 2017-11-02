@@ -1,13 +1,9 @@
 #!/bin/bash
-# first run installs the environment
-# run this script like: min-dev-enviro/./install.sh
-# You can Add Programs to $myPrograms, but remove bevor $HOME/installed
-
-myPrograms="openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan git apache2 dwww mysql-server php5 php5-mysql php5-mcrypt sendmail python-gtk2-dbg shellcheck perl figlet mc mutt eject nano vtwm transset display terminator firefox-esr vlc snort" ;
-
+# installs min-dev-enviro
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
+myPrograms="openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan git apache2 dwww mysql-server php5 php5-mysql php5-mcrypt sendmail python-gtk2-dbg shellcheck perl figlet mc mutt eject nano vtwm transset display terminator firefox-esr vlc snort" ;
 environinstall="redundanz.sh server-monitor.sh serv-if-up.sh sCRYPtUPdater.sh shi3lD.sh stop_shield.sh start_shield.sh" ;
 
 		if [ ! $EUID = 0 ] ;
