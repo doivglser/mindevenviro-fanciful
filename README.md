@@ -27,7 +27,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.9.tar.gz && tar -xvzf v1.0.9.tar.gz && cd min-dev-enviro-1.0.9 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.10.tar.gz && tar -xvzf v1.0.10.tar.gz && cd min-dev-enviro-1.0.10 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -37,17 +37,23 @@ openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdsca
 
 # USAGE:
 
+* Login with your user name as $USER, on both: TTY1 (for shi3lD.sh) and to X.
+
 # run:
 
-* from terminal: shi3lD.sh to:
+* On X, running vtwm:
+
+Firefox, VLC, terminator (multiple GNOME terminals in one window), mc (file manager), mutt (system emails), nano (editor).
+
+* from terminator: shi3lD.sh to:
 
 To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are running. This script	runs only on systems with systemd, without network-managers.
 
-* from terminal: redundanz.sh to:
+* from terminator: redundanz.sh to:
 
 Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/3 and to mailbox.
 
-* from terminal: sCRYPtUPdater.sh to:
+* from terminator: sCRYPtUPdater.sh to:
 
 Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Upload your scripts, or packed versions of perl or python to /usr/local/bin, stop a python, perl, bash, syntax check with ctrl+4, be sure you change more then one byte (if you change just one digit, do a space or something). Close with ctrl+C.
 
@@ -86,6 +92,14 @@ An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to
 https://github.com/doivglser/min-dev-enviro/projects
 
 # TODO:
+
+* ~/.twmrc
+
+A ~/.twmrc with the geometries and entries for the apps above.
+
+* ~/.config/terminator/config
+
+A ~/.config/terminator/config with the layout and the geometries.
 
 * shi3lD.sh
 
