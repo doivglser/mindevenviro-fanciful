@@ -14,6 +14,26 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 ° For programmers and administrators
 
+# TODO:
+
+* ~/.twmrc
+
+A ~/.twmrc with the geometries and entries for the apps above.
+
+* ~/.config/terminator/config
+
+A ~/.config/terminator/config with the layout and the geometries.
+
+* shi3lD.sh
+
+Workaround to change the user-agent while changing the MAC - addresses.
+
+* sCRYPtUPdater.sh
+
+If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
+Scan in $HOME for file suffixes or the header with dd, to determine the working directory.
+Implement Programmable Completion, to auto-complete the command sequence with the [Tab] key.
+
 # Requirements:
 
 - A fresh base-install of Debian GNU/Linux 9 Stretch.
@@ -27,7 +47,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.10.tar.gz && tar -xvzf v1.0.10.tar.gz && cd min-dev-enviro-1.0.10 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.11.tar.gz && tar -xvzf v1.0.11.tar.gz && cd min-dev-enviro-1.0.11 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -41,13 +61,13 @@ openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdsca
 
 # run:
 
+* from TTY1: shi3lD.sh to:
+
+To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are running. This script	runs only on systems with systemd, without network-managers.
+
 * On X, running vtwm:
 
 Firefox, VLC, terminator (multiple GNOME terminals in one window), mc (file manager), mutt (system emails), nano (editor).
-
-* from terminator: shi3lD.sh to:
-
-To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are running. This script	runs only on systems with systemd, without network-managers.
 
 * from terminator: redundanz.sh to:
 
@@ -56,6 +76,10 @@ Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev
 * from terminator: sCRYPtUPdater.sh to:
 
 Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Upload your scripts, or packed versions of perl or python to /usr/local/bin, stop a python, perl, bash, syntax check with ctrl+4, be sure you change more then one byte (if you change just one digit, do a space or something). Close with ctrl+C.
+
+* from terminator: nano to:
+
+Edit your projects with nano. To get a good overview on the screen, you have two more grids in the terminator window with the shell scripts: redundanz.sh and sCRYPtUPdater.sh.
 
 # Files:
 
@@ -90,23 +114,3 @@ sCRYPtUPdater.sh # Syntax check and update to /usr/local/bin.
 An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
 
 https://github.com/doivglser/min-dev-enviro/projects
-
-# TODO:
-
-* ~/.twmrc
-
-A ~/.twmrc with the geometries and entries for the apps above.
-
-* ~/.config/terminator/config
-
-A ~/.config/terminator/config with the layout and the geometries.
-
-* shi3lD.sh
-
-Workaround to change the user-agent while changing the MAC - addresses.
-
-* sCRYPtUPdater.sh
-
-If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
-Scan in $HOME for file suffixes or the header with dd, to determine the working directory.
-Implement Programmable Completion, to auto-complete the command sequence with the [Tab] key.
