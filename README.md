@@ -88,7 +88,7 @@ Set the workflow interval in minutes and edit your projects with your favorite e
 
 * from terminator: nano to:
 
-Edit your projects with nano. To get a good overview on the screen, you have two more grids in the terminator window with the shell scripts: redundanz.sh and sCRYPtUPdater.sh.
+Edit your projects with nano. To get a good overview on the screen, you have two more grids in the terminator window, with the shell scripts: redundanz.sh and sCRYPtUPdater.sh.
 
 # Files:
 
