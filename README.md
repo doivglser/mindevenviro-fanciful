@@ -18,30 +18,30 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 * ~/.config/mc/ini
 
-- A ~/.config/mc/ini, to color screen a little.
+A ~/.config/mc/ini, to color screen a little.
 
 * ~/.nanorc
 
-- A ~/.nanorc, to enhance code highlighting.
+A ~/.nanorc, to enhance code highlighting.
 
 * ~/.twmrc
 
-- A ~/.twmrc, with the geometries and entries for the apps.
+A ~/.twmrc, with the geometries and entries for the apps.
 
 * ~/.config/terminator/config
 
-- A ~/.config/terminator/config, with the layout and the geometries.
+A ~/.config/terminator/config, with the layout and the geometries.
 
 * shi3lD.sh
 
-- Workaround to change the user-agent while changing the MAC - addresses.
+Workaround to change the user-agent while changing the MAC - addresses.
 
 * sCRYPtUPdater.sh
 
-- To search for brackets and braces, to split the content of the source code into short code snippets.
-- If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
-- Scan in $HOME for file suffixes or the header with dd, to determine the working directory.
-- Implement Programmable Completion, to auto-complete the command sequence with the [Tab] key.
+To search for brackets and braces, to split the content of the source code into short code snippets.
+If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
+Scan in $HOME for file suffixes or the header with dd, to determine the working directory.
+Implement Programmable Completion, to auto-complete the command sequence with the [Tab] key.
 
 # Requirements:
 
