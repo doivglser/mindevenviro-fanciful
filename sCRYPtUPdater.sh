@@ -12,7 +12,7 @@ else
 
 LANG="C" ;
 IFS=$(echo -en "\n\b") ;
-syntaxCHkr="bash perl python" ;
+syntaxCHkr="bash perl python php" ;
 # the Work Directory
 userHome="/home/${SUDO_USER}" ;
 # User Host Control
@@ -156,6 +156,12 @@ ch3kingSnx='' ;
 		then
 			ch3kingSnx="python" ;
 			echo "$listONme" | xargs $ch3kingSnx -m pdb ;
+			exitc0de=$(echo $?) ;
+
+			elif [[ "$listONmeIS" =~ 'PHP ' ]] ;
+		then
+			ch3kingSnx="php" ;
+			echo "$listONme" | xargs $ch3kingSnx -l ;
 			exitc0de=$(echo $?) ;
 
 			elif [[ "$listONmeIS" =~ 'Perl ' ]] ;
