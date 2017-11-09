@@ -75,7 +75,7 @@ Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev
 
 * from terminator: sCRYPtUPdater.sh to:
 
-Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Upload your scripts, or packed versions of perl or python to /usr/local/bin, stop a python, perl, bash, syntax check with ctrl+4, be sure you change more then one byte (if you change just one digit, do a space or something). Close with ctrl+C.
+Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Upload your scripts, or packed versions of perl or python to /usr/local/bin. Stop a python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or something). Close with ctrl+C.
 
 * from terminator: nano to:
 
