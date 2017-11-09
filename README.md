@@ -18,7 +18,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 * ~/.twmrc
 
-A ~/.twmrc with the geometries and entries for the apps above.
+A ~/.twmrc with the geometries and entries for the apps.
 
 * ~/.config/terminator/config
 
