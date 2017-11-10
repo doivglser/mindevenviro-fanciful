@@ -57,7 +57,7 @@ Implement Programmable Completion, to auto-complete the command sequence with th
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.12.tar.gz && tar -xvzf v1.0.12.tar.gz && cd min-dev-enviro-1.0.12 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.13.tar.gz && tar -xvzf v1.0.13.tar.gz && cd min-dev-enviro-1.0.13 && ls -ahls --color=auto && pwd
 
 * ./install
 
