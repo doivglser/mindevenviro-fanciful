@@ -46,10 +46,26 @@ fi
 		clear ;
 done
 
+# ON THE SCREEN ::ENDE
+
+	# save vendors MAC-Address
 	ip link show | grep ether | awk '{print $2}' | tee -a "/home/$SUDO_USER/vendorsmac" ;
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/vendorsmac" ;
-	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/installed" ;
+	
+	# create $HOME directories
+	mkdir -p $HOME/{testphp,testbash,testperl,testpython,Downloads} ;
+	
+	# set aliases
+	echo "alias ls='ls --color=auto -s'" >> $HOME/.bashrc ;
+	
+	# set the upload path for PHP scripts
+	sudo mkdir -p /var/www/testphp ;
+	sudo echo "Alias /testphp/ /var/www/testphp/" >> /etc/apache2/sites-available/default ;
+	systemctl restart apache2.service && wait ;
 
+	# set the rights for installed
+	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/installed" ;
+	
 		if [[ $PWD =~ 'min-dev-enviro' ]] ;
 	then
 		while [[ "$nNuM2" != "0" ]] ;
@@ -64,7 +80,6 @@ done
 		printf "\r$toCopyPath" ; sleep 0.5 ;
 		((nNuM2--)) ;
 done
-
 	echo -e "\n We have dev-shell-enviro successfully installed" ;
 
 	else
