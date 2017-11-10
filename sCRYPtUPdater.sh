@@ -106,6 +106,17 @@ copyToPath(){
 
 			if [[ "$REPLY" != "n" ]] ;
 		then
+			if [[ "$listONmeIS" =~ 'PHP ' ]] ;
+		then
+			echo -e "\n" ;
+			sudo cp -f "$listONme" "/var/www/testphp/$toC0pyIS" ;
+			sudo chown root:root "/var/www/testphp/$toC0pyIS" ;
+			sudo chmod 4755 "/var/www/testphp/$toC0pyIS" ;
+			sudo chmod u+s "/var/www/testphp/$toC0pyIS" ;
+			echo "$toC0pyIS"
+			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			maincall ;
+		else
 			echo -e "\n" ;
 			sudo cp -f "$listONme" "/usr/local/bin/$toC0pyIS" ;
 			sudo chown root:root "/usr/local/bin/$toC0pyIS" ;
@@ -114,6 +125,7 @@ copyToPath(){
 			echo "$toC0pyIS"
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall ;
+		fi
 		else
 			echo ":: nothing updated" ;
 			maincall ;
