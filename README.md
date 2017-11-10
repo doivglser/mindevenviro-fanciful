@@ -16,13 +16,13 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 # TODO:
 
-* ~/.config/mc/ini
-
-A ~/.config/mc/ini, to color screen a little.
-
 * ~/.nanorc
 
 A ~/.nanorc, to enhance code highlighting.
+
+* ~/.config/mc/ini
+
+A ~/.config/mc/ini, to color screen a little.
 
 * ~/.twmrc
 
@@ -38,6 +38,7 @@ Workaround to change the user-agent while changing the MAC - addresses.
 
 * sCRYPtUPdater.sh
 
+Workaround to update python (compile) and perl scripts (a ScriptAlias for Apache2).
 To search for brackets and braces, to split the content of the source code into short code snippets.
 If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
 Scan in $HOME for file suffixes or the header with dd, to determine the working directory.
@@ -66,7 +67,7 @@ openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdsca
 
 # USAGE:
 
-* Login with your user name as $USER, on both: TTY1 (for shi3lD.sh) and to X.
+* Login with your user name as $USER, on both: TTY1 (for shi3lD.sh,mutt,mc) and to X.
 
 # run:
 
@@ -76,7 +77,17 @@ To change your MAC addresses, shi3lD.sh does a list with working and not working
 
 * On X, running vtwm:
 
-Firefox, VLC, terminator (multiple GNOME terminals in one window), mc (file manager), mutt (system emails), nano (editor).
+Firefox (type: your_hostname for dwww and/or open a tab and type: hostname/testphp for your php stuff)
+
+VLC (your music and/or videos)
+
+terminator (multiple GNOME terminals in one window)
+
+mc (file manager)
+
+mutt (system emails)
+
+nano (editor)
 
 * from terminator: redundanz.sh to:
 
@@ -84,7 +95,7 @@ Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev
 
 * from terminator: sCRYPtUPdater.sh to:
 
-Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Update your scripts, or packed versions of perl or python to /usr/local/bin. Stop a python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or something). Close with ctrl+C.
+Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Update your scripts to /usr/local/bin or to /var/www/testphp. Stop a python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or something). Close with ctrl+C.
 
 * from terminator: nano to:
 
