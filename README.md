@@ -46,6 +46,10 @@ If the workflow interval in minutes is over, refer to the exit handler, if false
 Scan in $HOME for file suffixes or the header with dd, to determine the working directory.
 Implement Programmable Completion, to auto-complete the command sequence with the [Tab] key.
 
+* min-dev-enviro.rules
+
+iptables drop rules for /etc/snort/rules/
+
 # Requirements:
 
 - A fresh base-install of Debian GNU/Linux 9 Stretch.
