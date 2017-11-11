@@ -61,7 +61,7 @@ Implement Programmable Completion, to auto-complete the command sequence with th
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.18.tar.gz && tar -xvzf v1.0.18.tar.gz && cd min-dev-enviro-1.0.18 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.19.tar.gz && tar -xvzf v1.0.19.tar.gz && cd min-dev-enviro-1.0.19 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -79,31 +79,29 @@ openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdsca
 
 To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are running. This script	runs only on systems without network-managers.
 
-* from TTY1: mc
-
-file manager
-
 * from TTY2: mutt
 
-system emails
+MUA to view system emails and notifications from redundanz.sh.
 
-* from TTY3: gnu nano 
+* from TTY3: mc
 
-editor
+File manager
 
 # On X, running vtwm:
 
 * Firefox
 
-type: your_hostname for dwww and/or open a tab and type: hostname/testphp for your php stuff.
+type: localhost/dwww for dwww. ( dwww collects information from /usr/share/{man,doc} )
+
+type: localhost/testphp for your php stuff.
 
 * VLC 
 
-your music and/or videos
+Listen to your music and/or videos.
 
 * terminator
 
-multiple GNOME terminals in one window
+Multiple GNOME terminals in one window.
 
 * from terminator: redundanz.sh
 
