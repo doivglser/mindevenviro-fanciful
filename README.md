@@ -155,9 +155,9 @@ https://github.com/doivglser/min-dev-enviro/projects
 
 ![LPIC-1](https://www.theurbanpenguin.com/wp-content/uploads/2016/08/LPIC-1-Medium.png)
 ![Bash](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Gnu-bash-logo.svg/245px-Gnu-bash-logo.svg.png)
-![mutt](https://upload.wikimedia.org/wikipedia/commons/e/ef/Mutt.gif)
 ![MC](https://midnight-commander.org/chrome/site/MidnightCommander.png)
 ![vtwm](http://www.xwinman.org/images/vtwm.gif)
+![mutt](https://upload.wikimedia.org/wikipedia/commons/e/ef/Mutt.gif)
 ![Debian](https://www.notebookcheck.net/fileadmin/_processed_/a/4/csm_Debian_logo_81d29e8578.jpg)
 ![ClamAV](https://www.clamav.net/assets/clamav-trademark.png)
 ![gnu nano](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gnu-nano.svg/256px-Gnu-nano.svg.png)
