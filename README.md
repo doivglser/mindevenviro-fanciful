@@ -154,9 +154,11 @@ https://github.com/doivglser/min-dev-enviro/projects
 # Thank's
 
 ![Bash](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Gnu-bash-logo.svg/245px-Gnu-bash-logo.svg.png)
+![vtwm](http://www.xwinman.org/images/vtwm.gif)
+![Debian](http://www.ethicalhackx.com/wp-content/uploads/debian.png)
+![ClamAV](https://www.clamav.net/assets/clamav-trademark.png)
 ![Apache](http://apache.org/img/asf_logo.png)
 ![PHP/MySQL](https://disenowebakus.net/imagenes/articulos/aprender-php-mysql-bases-de-datos-paginas-web-dinamicas.jpg)
 ![Perl](https://www.textmagic.com/wp-content/themes/textmagic-genesis/assets/vendor/textmagic/marketing/images/api/prog-lang-logos/perl.png)
 ![Python](https://www.raspberrypi.org/documentation/usage/python/images/python-logo.png)
-![ClamAV](https://www.clamav.net/assets/clamav-trademark.png)
 ![Snort](https://www.snort.org/assets/SnortTM.png)
