@@ -6,9 +6,13 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 ° Changes MAC - addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - address.
 
+° Antivirus engine ClamAV and NIDS solution Snort.
+
 ° Checks syntax with "python -m pgb", "perl -wc", "bash -xvn" and "php -l"
 
 ° Restart Server's
+
+° Web surfing with Firefox-esr and local/web media experience with VLC
 
 ° Customizable scripts
 
@@ -57,7 +61,7 @@ Implement Programmable Completion, to auto-complete the command sequence with th
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.13.tar.gz && tar -xvzf v1.0.13.tar.gz && cd min-dev-enviro-1.0.13 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.14.tar.gz && tar -xvzf v1.0.14.tar.gz && cd min-dev-enviro-1.0.14 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -67,37 +71,49 @@ openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdsca
 
 # USAGE:
 
-* Login with your user name as $USER, on both: TTY1 (for shi3lD.sh,mutt,mc) and to X.
+* Login with your user name as $USER, on both: TTY1 (shi3lD.sh), TTY2 (mutt), TTY3 (mc), and to X.
 
 # run:
 
-* from TTY1: shi3lD.sh to:
+* from TTY1: shi3lD.sh
 
-To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are running. This script	runs only on systems with systemd, without network-managers.
+To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are running. This script	runs only on systems without network-managers.
 
-* On X, running vtwm:
+* from TTY1: mc
 
-Firefox (type: your_hostname for dwww and/or open a tab and type: hostname/testphp for your php stuff)
+file manager
 
-VLC (your music and/or videos)
+* from TTY2: mutt
 
-terminator (multiple GNOME terminals in one window)
+system emails
 
-mc (file manager)
+* from TTY3: nano 
 
-mutt (system emails)
+editor
 
-nano (editor)
+# On X, running vtwm:
 
-* from terminator: redundanz.sh to:
+* Firefox
+
+type: your_hostname for dwww and/or open a tab and type: hostname/testphp for your php stuff.
+
+* VLC 
+
+your music and/or videos
+
+* terminator
+
+multiple GNOME terminals in one window
+
+* from terminator: redundanz.sh
 
 Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/3 and to mailbox.
 
-* from terminator: sCRYPtUPdater.sh to:
+* from terminator: sCRYPtUPdater.sh
 
-Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Update your scripts to /usr/local/bin or to /var/www/testphp. Stop a python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or something). Close with ctrl+C.
+Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Update your scripts to /usr/local/bin or to /var/www/testphp. Stop a python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
 
-* from terminator: nano to:
+* from terminator: nano
 
 Edit your projects with nano. To get a good overview on the screen, you have two more grids in the terminator window, with the shell scripts: redundanz.sh and sCRYPtUPdater.sh.
 
@@ -134,3 +150,13 @@ sCRYPtUPdater.sh # Syntax check and update to /usr/local/bin.
 An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
 
 https://github.com/doivglser/min-dev-enviro/projects
+
+# Thank's
+
+![Bash](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Gnu-bash-logo.svg/245px-Gnu-bash-logo.svg.png)
+![Apache](http://apache.org/img/asf_logo.png)
+![PHP/MySQL](https://disenowebakus.net/imagenes/articulos/aprender-php-mysql-bases-de-datos-paginas-web-dinamicas.jpg)
+![Perl](https://www.textmagic.com/wp-content/themes/textmagic-genesis/assets/vendor/textmagic/marketing/images/api/prog-lang-logos/perl.png)
+![Python](https://www.raspberrypi.org/documentation/usage/python/images/python-logo.png)
+![ClamAV](https://www.clamav.net/assets/clamav-trademark.png)
+![Snort](https://www.snort.org/assets/SnortTM.png)
