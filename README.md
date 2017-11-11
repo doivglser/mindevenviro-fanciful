@@ -162,7 +162,7 @@ https://github.com/doivglser/min-dev-enviro/projects
 ![ClamAV](https://www.clamav.net/assets/clamav-trademark.png)
 ![gnu nano](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gnu-nano.svg/256px-Gnu-nano.svg.png)
 ![Apache](http://www.linuxbrigade.com/wp-content/uploads/2014/06/apache318x260.png)
-![google](http://www.userlogos.org/files/logos/Minerva/Google.png)
+![google](http://www.fayerwayer.com/up/2008/02/google-07.png)
 ![stackoverflow](http://devlup.com/wp-content/uploads/2011/06/stackoverflow.png)
 ![github](http://www.toolswatch.org/wp-content/uploads/2014/09/logo_GitHub.jpg)
 ![Snort](https://www.snort.org/assets/SnortTM.png)
