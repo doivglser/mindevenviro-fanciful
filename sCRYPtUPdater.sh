@@ -206,7 +206,7 @@ fi
 }
 
 maincall(){
-        if [ -e "$userHome" ] ;
+        if [ -e "$userHome/installed" ] ;
     then
 		((wholeC0unt4--)) ;
 
@@ -226,7 +226,7 @@ fi
 		sC4n ;
 fi
 	else
-		echo -e "\n\nCheck the 'dirINhome' var at the Top of this script\n" && exit 2 ;
+		echo -e "\n download min-dev-enviro from https://github.com/doivglser \n or remove /installed in line 209." && exit 2 ;
 fi
 
 }
