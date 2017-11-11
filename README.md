@@ -4,17 +4,15 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 ° For Debian GNU/Linux.
 
-° Changes MAC - addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - address.
-
 ° Antivirus engine ClamAV and NIDS solution Snort.
 
 ° Checks syntax with "python -m pgb", "perl -wc", "bash -xvn" and "php -l"
 
-° Restart Server's
+° Changes MAC - addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - address.
 
 ° Web surfing with Firefox-esr and local/web media experience with VLC
 
-° Customizable scripts
+° Restarts apache2, mysqld, sendmail,
 
 ° For programmers and administrators
 
