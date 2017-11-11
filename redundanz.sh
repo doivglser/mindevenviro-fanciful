@@ -1,5 +1,6 @@
 #!/bin/bash
 # Displays on a terminal the UP status.
+#TODO: display the number of unread messages in inbox ()
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
@@ -18,6 +19,6 @@ ex1Th4ndler(){
 		if [ -e "/home/$SUDO_USER/installed" ] ;
 	then
 		setsid serv-if-up.sh >/dev/null 2>&1 < /dev/null &
-		watch -n6 -t --color server-monitor.sh ;
+		watch -n9 -t --color server-monitor.sh ;
 	fi
 fi
