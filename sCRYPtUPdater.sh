@@ -1,5 +1,5 @@
 #!/bin/bash
-# syntax check and update to /urs/local/bin
+# syntax check and update to /urs/local/bin or to /var/www/testphp
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
 #	invalid byte sequence with "tr -cd '\11\12\15\40-\176'"
