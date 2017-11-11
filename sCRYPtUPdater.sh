@@ -152,10 +152,10 @@ diffANDchecksyntax(){
 ch3kingSnx='' ;
             if [ -e "/usr/local/bin/$toC0pyIS" ] ;
 	then
-			echo "check.syntax" ;
-			echo -e "\n check syntax for: $toC0pyIS\n" ;
 			diff -i "$listONme" "/usr/local/bin/$toC0pyIS" ;
-
+			read -p "check.syntax" ;
+			echo -e "\n syntax-check for: $toC0pyIS\n\n" ;
+			
 			if [[ "$?" != 0 ]] ;
 		then
 			if [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
