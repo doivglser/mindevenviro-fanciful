@@ -54,7 +54,7 @@ iptables drop rules for /etc/snort/rules/
 
 - A fresh base-install of Debian GNU/Linux 9 Stretch.
 - Choose netinst CD image, and burn it on a blank CD-R.
-- Debian 9 GNU/Linux Stretch: ![www.debian.org/releases/stretch/debian-installer](https://www.debian.org/releases/stretch/debian-installer/)
+- Debian 9 GNU/Linux Stretch: https://www.debian.org/releases/stretch/debian-installer/
 - While installing: crypt your drive, don't choose any desktop or servers, choose a root and an user password.
 - Root access, to make an entry for $USER in the /etc/sudoers file
 - An Internet connection
@@ -63,7 +63,7 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget ![github.com/doivglser/min-dev-enviro](https://github.com/doivglser/min-dev-enviro/archive/v1.0.19.tar.gz && tar -xvzf v1.0.19.tar.gz && cd min-dev-enviro-1.0.19) && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.20.tar.gz && tar -xvzf v1.0.20.tar.gz && cd min-dev-enviro-1.0.20 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -149,7 +149,7 @@ sCRYPtUPdater.sh # Syntax check and update to /usr/local/bin.
 
 An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
 
-* ![github.com/doivglser/min-dev-enviro/projects](https://github.com/doivglser/min-dev-enviro/projects)
+* https://github.com/doivglser/min-dev-enviro/projects
 
 # Thank's
 
