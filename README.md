@@ -158,7 +158,7 @@ https://github.com/doivglser/min-dev-enviro/projects
 ![mutt](https://upload.wikimedia.org/wikipedia/commons/e/ef/Mutt.gif)
 ![MC](https://midnight-commander.org/chrome/site/MidnightCommander.png)
 ![vtwm](http://www.xwinman.org/images/vtwm.gif)
-![Debian](http://theopensourcefeed.com/assets/images/post-images/Debian%209.png)
+![Debian](https://www.notebookcheck.net/fileadmin/_processed_/a/4/csm_Debian_logo_81d29e8578.jpg)
 ![ClamAV](https://www.clamav.net/assets/clamav-trademark.png)
 ![Snort](https://www.snort.org/assets/SnortTM.png)
 ![gnu nano](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gnu-nano.svg/256px-Gnu-nano.svg.png)
