@@ -57,9 +57,14 @@ done
 	
 	# set aliases
 	echo "alias ls='ls --color=auto -s'" >> $HOME/.bashrc ;
-	
-		if [[ ! "$(cat /etc/apache2/sites-available/default | grep cgi-bin)" =~ '/usr/lib/cgi-bin/' ]] ;
+	# set the upload path for PHP scripts
+	mkdir -p /var/www/testphp 2>/dev/null ;
+	echo "Alias /testphp/ /var/www/testphp/" >> /etc/apache2/sites-available/default ;
+		
+		if [[ ! "$(cat /etc/apache2/sites-available/default | grep cgi-bin)" =~ '/usr/lib/cgi-bin/' ]] \
+		&& [ -e /usr/lib/cgi-bin/ ] ;
 	then
+		mkdir -p /usr/lib/cgi-bin/ 2>/dev/null ;
 		echo -e "\nScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\r
 		<Directory "/usr/lib/cgi-bin">\r
 		AllowOverride None\r
@@ -70,9 +75,6 @@ done
 	else
 		echo "cgi-bin dir exists" ;
 fi
-		# set the upload path for PHP scripts
-		mkdir -p /var/www/testphp ;
-		echo "Alias /testphp/ /var/www/testphp/" >> /etc/apache2/sites-available/default ;
 		# update apache2 configuration
 		a2enmod cgid && wait ;
 		# restart server
