@@ -63,7 +63,7 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.21.tar.gz && tar -xvzf v1.0.21.tar.gz && cd min-dev-enviro-1.0.21 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.22.tar.gz && tar -xvzf v1.0.22.tar.gz && cd min-dev-enviro-1.0.22 && ls -ahls --color=auto && pwd
 
 * ./install
 
