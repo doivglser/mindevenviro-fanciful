@@ -1,5 +1,5 @@
 #!/bin/bash
-# syntax check and update to /urs/local/bin or to /var/www/testphp
+# syntax check and update to /urs/local/bin, /var/www/testphp, /usr/lib/cgi-bin
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
 #	invalid byte sequence with "tr -cd '\11\12\15\40-\176'"
@@ -254,10 +254,8 @@ fi
 
 }
 
-echo -e "\n hello" "$SUDO_USER" ;
-echo -e " Set the workflow interval:\n" ;
-echo -e "\n update from $userHome to /usr/local/bin, or to /var/www/testphp\n\n" ;
-printf "type here in minutes: " ; read -r minut3S ;
+echo -e "\n hello $SUDO_USER\r updates bash and python to: /urs/local/bin, php to: /var/www/testphp and perl to: /usr/lib/cgi-bin \r Set the workflow interval:\n" ;
+printf " type here in minutes: " ; read -r minut3S ;
 
 	if [[ "$minut3S" = '' ]] ;
 then
