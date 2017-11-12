@@ -110,13 +110,26 @@ copyToPath(){
 		then
 			echo -e "\n" ;
 			sudo cp -f "$listONme" "/var/www/testphp/$toC0pyIS" ;
-			sudo chown root:root "/var/www/testphp/$toC0pyIS" ;
-			sudo chmod 4755 "/var/www/testphp/$toC0pyIS" ;
+			sudo chown www:www "/var/www/testphp/$toC0pyIS" ;
+			sudo chmod 0755 "/var/www/testphp/$toC0pyIS" ;
 			sudo chmod u+s "/var/www/testphp/$toC0pyIS" ;
 			echo "$toC0pyIS"
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall ;
-		else
+			
+			elif [[ "$listONmeIS" =~ 'Perl ' ]] ;
+		then
+			echo -e "\n" ;
+			sudo cp -f "$listONme" "/usr/lib/cgi-bin/$toC0pyIS" ;
+			sudo chown www:www "/usr/lib/cgi-bin/$toC0pyIS" ;
+			sudo chmod 0755 "/usr/lib/cgi-bin/$toC0pyIS" ;
+			sudo chmod u+s "/usr/lib/cgi-bin/$toC0pyIS" ;
+			echo "$toC0pyIS"
+			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			maincall ;
+			
+			elif [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
+		then
 			echo -e "\n" ;
 			sudo cp -f "$listONme" "/usr/local/bin/$toC0pyIS" ;
 			sudo chown root:root "/usr/local/bin/$toC0pyIS" ;
@@ -125,6 +138,19 @@ copyToPath(){
 			echo "$toC0pyIS"
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall ;
+			
+			elif [[ "$listONmeIS" =~ 'Python ' ]] ;
+		then
+			echo -e "\n" ;
+			sudo cp -f "$listONme" "/usr/local/bin/$toC0pyIS" ;
+			sudo chown root:root "/usr/local/bin/$toC0pyIS" ;
+			sudo chmod 4755 "/usr/local/bin/$toC0pyIS" ;
+			sudo chmod u+s "/usr/local/bin/$toC0pyIS" ;
+			echo "$toC0pyIS"
+			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			maincall ;
+		else
+			echo -e "\nYour scripts should have a SheBang entry on the first line. \r #!/usr/bin/env perl OR #!/bin/bash OR #!/usr/bin/env python OR <¿php OR <¿PHP \r On Windows additionally a file suffix correspondent to the SheBang. \n" ;
 		fi
 		else
 			echo ":: nothing updated" ;
