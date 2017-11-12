@@ -6,15 +6,15 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 ° Antivirus engine ClamAV and NIDS solution Snort.
 
-° Checks syntax with "python -m pgb", "perl -wc", "bash -xvn" and "php -l"
+° Checks syntax with "python -m pgb", "perl -wc", "bash -xvn" and "php -l".
 
 ° Changes MAC - addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - address.
 
-° Web surfing with Firefox-esr and local/web media experience with VLC
+° Web surfing with Firefox-esr and local/web media experience with VLC.
 
-° Restarts apache2, mysqld, sendmail,
+° Restarts apache2, mysqld, sendmail.
 
-° For programmers and administrators
+° For programmers and administrators.
 
 # TODO:
 
@@ -63,13 +63,13 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.20.tar.gz && tar -xvzf v1.0.20.tar.gz && cd min-dev-enviro-1.0.20 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.21.tar.gz && tar -xvzf v1.0.21.tar.gz && cd min-dev-enviro-1.0.21 && ls -ahls --color=auto && pwd
 
 * ./install
 
 Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
-openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan git apache2 dwww mysql-server php5 php5-mysql php5-mcrypt sendmail python-gtk2-dbg shellcheck perl figlet mc mutt eject nano vtwm transset display terminator firefox-esr vlc snort
+snort scrot ttf-mscorefonts-installer playonlinux transset display terminator firefox-esr vlc vtwm openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php5-mysql php5-mcrypt php5 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl figlet mc mutt eject nano
 
 # USAGE:
 
@@ -100,6 +100,10 @@ type: localhost/testphp for your php stuff.
 * VLC 
 
 Listen to your music and/or videos.
+
+* PlayOnLinux
+
+Install your Ableton 9 Suite copy.
 
 * terminator
 
