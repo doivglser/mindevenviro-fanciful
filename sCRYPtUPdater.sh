@@ -112,7 +112,6 @@ copyToPath(){
 			sudo cp -f "$listONme" "/var/www/testphp/$toC0pyIS" ;
 			sudo chown www:www "/var/www/testphp/$toC0pyIS" ;
 			sudo chmod 0755 "/var/www/testphp/$toC0pyIS" ;
-			sudo chmod u+s "/var/www/testphp/$toC0pyIS" ;
 			echo "$toC0pyIS"
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall ;
@@ -123,7 +122,6 @@ copyToPath(){
 			sudo cp -f "$listONme" "/usr/lib/cgi-bin/$toC0pyIS" ;
 			sudo chown www:www "/usr/lib/cgi-bin/$toC0pyIS" ;
 			sudo chmod 0755 "/usr/lib/cgi-bin/$toC0pyIS" ;
-			sudo chmod u+s "/usr/lib/cgi-bin/$toC0pyIS" ;
 			echo "$toC0pyIS"
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall ;
@@ -144,8 +142,7 @@ copyToPath(){
 			echo -e "\n" ;
 			sudo cp -f "$listONme" "/usr/local/bin/$toC0pyIS" ;
 			sudo chown root:root "/usr/local/bin/$toC0pyIS" ;
-			sudo chmod 4755 "/usr/local/bin/$toC0pyIS" ;
-			sudo chmod u+s "/usr/local/bin/$toC0pyIS" ;
+			sudo chmod 0755 "/usr/local/bin/$toC0pyIS" ;
 			echo "$toC0pyIS"
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall ;
