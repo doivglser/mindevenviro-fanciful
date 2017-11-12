@@ -3,14 +3,14 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
-myPrograms="openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan git apache2 dwww mysql-server php5 php5-mysql php5-mcrypt sendmail python-gtk2-dbg shellcheck perl figlet mc mutt eject nano vtwm transset display terminator firefox-esr vlc snort" ;
+myPrograms="openssl clamav clamav-daemon clamav-base clamav-freshclam clamav-milter clamdscan git apache2 dwww mysql-server php5 php5-mysql php5-mcrypt sendmail python-gtk2-dbg shellcheck perl libcgi-pm-perl figlet mc mutt eject nano vtwm scrot ttf-mscorefonts-installer playonlinux transset display terminator firefox-esr vlc snort" ;
 environinstall="redundanz.sh server-monitor.sh serv-if-up.sh sCRYPtUPdater.sh shi3lD.sh stop_shield.sh start_shield.sh" ;
 
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
 else
-		if [ ! -e "/home/$SUDO_USER/installed" ] ;
+		if [ ! -e "/home/$SUDO_USER/installed" ] && [[ $PWD =~ 'min-dev-enviro' ]] ;
 	then
 
 	nNuM=$(echo "$myPrograms" | wc -w) ;
@@ -58,16 +58,28 @@ done
 	# set aliases
 	echo "alias ls='ls --color=auto -s'" >> $HOME/.bashrc ;
 	
-	# set the upload path for PHP scripts
-	sudo mkdir -p /var/www/testphp ;
-	sudo echo "Alias /testphp/ /var/www/testphp/" >> /etc/apache2/sites-available/default ;
-	systemctl restart apache2.service && wait ;
-
-	# set the rights for installed
-	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/installed" ;
-	
-		if [[ $PWD =~ 'min-dev-enviro' ]] ;
+		if [[ ! "$(cat /etc/apache2/sites-available/default | grep cgi-bin)" =~ '/usr/lib/cgi-bin/' ]] ;
 	then
+		echo -e "\nScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\r
+		<Directory "/usr/lib/cgi-bin">\r
+		AllowOverride None\r
+		Options ExecCGI -MultiViews +SymLinksIfOwnerMatch\r
+		Order allow,deny\r
+		Allow from all\r
+		</Directory>\n" >> /etc/apache2/sites-available/default ;
+	else
+		echo "cgi-bin dir exists" ;
+fi
+		# set the upload path for PHP scripts
+		mkdir -p /var/www/testphp ;
+		echo "Alias /testphp/ /var/www/testphp/" >> /etc/apache2/sites-available/default ;
+		# update apache2 configuration
+		a2enmod cgid && wait ;
+		# restart server
+		systemctl restart apache2.service && wait ;
+		# set the rights for installed
+		chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/installed" ;
+	
 		while [[ "$nNuM2" != "0" ]] ;
 	do
 		clear ;
@@ -84,6 +96,5 @@ done
 
 	else
 		echo -e "\n Allready installed, for a new install, remove /home/$SUDO_USER/installed" ;
-fi
 fi
 fi
