@@ -10,7 +10,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 ° Changes MAC - addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - address.
 
-° Web surfing with Firefox-esr and local/web media experience with VLC.
+° Web surfing with Firefox-ESR and local/web media experience with VLC.
 
 ° Restarts apache2, mysqld, sendmail, snort, clamd.
 
@@ -62,11 +62,11 @@ snort scrot ttf-mscorefonts-installer playonlinux transset display terminator fi
 
 * from TTY1: shi3lD.sh (network-manager)
 
-To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd daemons are running. While running shi3lD.sh Firefox-ESR will be killed after each MAC-puffing. This script	runs only on systems without network-managers.
+To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd daemons are running. While running shi3lD.sh Firefox-ESR will be killed after each MAC-puffing. This script	runs only on systems without network-managers. PLEASE DON'T USE shi3lD.sh, IF YOU WANT TO LOGIN TO: facebook.com, or a free-web-mail-service (Or Firefox will open your previous session and you loose a MAC-ADDRESS and an IP-ADDRESS).
 
 # On X, running vtwm:
 
-* Firefox
+* Firefox-ESR
 
 type: localhost/dwww for dwww. ( dwww collects information from /usr/share/{man,doc} )
 
