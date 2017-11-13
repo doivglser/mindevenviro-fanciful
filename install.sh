@@ -53,23 +53,27 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/vendorsmac" ;
 	
 	# create $HOME directories
-	mkdir -p $HOME/{testphp,testbash,testperl,testpython,Downloads} 2>/dev/null ;
-	mkdir -p .local/share/mc/skins/ 2>/dev/null ;
+	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads} 2>/dev/null ;
+	#mkdir -p /home/$SUDO_USER/.local/share/mc/skins/ 2>/dev/null ;
 	
 	# copy the .config/mc/ini to $HOME
-	cp -f ini $HOME/.config/mc/ini ;
-	chown "$SUDO_USER":"$SUDO_USER" $HOME/.config/mc/ini ;
+	cp -f ini /home/$SUDO_USER/.config/mc/ini ;
+	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/mc/ini ;
 	
 	# copy the .twmrc to $HOME
-	cp -f .twmrc $HOME/.twmrc ;
-	chown "$SUDO_USER":"$SUDO_USER" $HOME/.config/mc/ini ;
+	cp -f twmrc /home/$SUDO_USER/.twmrc ;
+	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.twmrc ;
+	
+	# copy the ~/.config/terminator/config to $HOME
+	cp -f config /home/$SUDO_USER/.config/terminator/config ;
+	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/terminator/config ;
 	
 	# copy the ~/.nanorc to $HOME
 	wget https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh -O- | sh && wait ;
 	# thank you scopatz for the good work
 	
 	# set aliases
-	echo "alias ls='ls --color=auto -s'" >> $HOME/.bashrc ;
+	echo "alias ls='ls --color=auto -s'" >> /home/$SUDO_USER/.bashrc ;
 	
 	# set the upload path for PHP scripts
 	mkdir -p /var/www/testphp 2>/dev/null ;
