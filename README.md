@@ -56,21 +56,13 @@ snort scrot ttf-mscorefonts-installer playonlinux transset display terminator fi
 
 # USAGE:
 
-* Login with your user name as $USER, on both: TTY1 (shi3lD.sh), TTY2 (mutt), TTY3 (mc), and to X.
+* Login with your user name as $USER, on both: TTY1 (shi3lD.sh) and to X.
 
 # run:
 
 * from TTY1: shi3lD.sh
 
 To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are running. This script	runs only on systems without network-managers.
-
-* from TTY2: mutt
-
-MUA to view system emails and notifications from redundanz.sh.
-
-* from TTY3: mc
-
-File manager
 
 # On X, running vtwm:
 
@@ -92,7 +84,7 @@ Install your Ableton 9 Suite copy.
 
 Multiple GNOME terminals in one window.
 
-* from terminator: redundanz.sh
+* from terminator: redundanz.sh in /dev/pts/2
 
 Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/2 and to mailbox.
 
@@ -103,6 +95,8 @@ Set the workflow interval in minutes and edit your projects with your favorite e
 * from terminator: nano
 
 Edit your projects with nano. To get a good overview on the screen, you have two more grids in the terminator window, with the shell scripts: redundanz.sh and sCRYPtUPdater.sh.
+
+* from terminator: mutt, nmon, mc
 
 # Files:
 
