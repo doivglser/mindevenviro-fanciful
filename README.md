@@ -12,7 +12,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 ° Web surfing with Firefox-esr and local/web media experience with VLC.
 
-° Restarts apache2, mysqld, sendmail.
+° Restarts apache2, mysqld, sendmail, snort, clamd.
 
 ° For programmers and administrators.
 
@@ -46,13 +46,13 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.26.tar.gz && tar -xvzf v1.0.26.tar.gz && cd min-dev-enviro-1.0.26 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.27.tar.gz && tar -xvzf v1.0.27.tar.gz && cd min-dev-enviro-1.0.27 && ls -ahls --color=auto && pwd
 
 * ./install
 
 Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
-snort scrot ttf-mscorefonts-installer playonlinux transset display terminator firefox-esr vlc feh vtwm zip openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php5-mysql php5-mcrypt php5 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl figlet mc mutt eject nano 
+snort scrot ttf-mscorefonts-installer playonlinux transset display terminator firefox-esr vlc feh vtwm zip openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php5-mysql php5-mcrypt php5 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl figlet mc mutt eject nano nmon 
 
 # USAGE:
 
@@ -62,7 +62,7 @@ snort scrot ttf-mscorefonts-installer playonlinux transset display terminator fi
 
 * from TTY1: shi3lD.sh
 
-To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamav daemons are running. This script	runs only on systems without network-managers.
+To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd daemons are running. This script	runs only on systems without network-managers.
 
 # On X, running vtwm:
 
@@ -120,7 +120,7 @@ wH0rUNSon # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username an
 
 * in /usr/local/bin
 
-shi3lD.sh # Changes MAC's Snort and ClamAV UP status.
+shi3lD.sh # Networkmanager
 
 start_shield.sh # Depends on shi3lD.sh.
 
