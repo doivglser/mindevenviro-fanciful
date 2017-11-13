@@ -1,0 +1,68 @@
+NoGrabServer
+RestartPreviousState
+DecorateTransients
+TitleFont       "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+ResizeFont      "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+MenuFont        "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+IconFont        "-adobe-helvetica-bold-r-normal--*-80-*-*-*-*-*-*"
+IconManagerFont "-adobe-helvetica-bold-r-normal--*-80-*-*-*"
+
+Color
+{
+    BorderColor              "slategrey"
+    DefaultBackground        "rgb:2/a/9"
+    DefaultForeground        "gray60"
+    TitleBackground          "rgb:2/a/9"
+    TitleForeground          "gray60"
+    MenuBackground           "rgb:2/a/9"
+    MenuForeground           "gray30"
+    MenuBorderColor          "slategrey"
+    MenuTitleBackground      "gray70"
+    MenuTitleForeground      "rgb:2/a/9"
+    IconBackground           "rgb:2/a/9"
+    IconForeground           "gray60"
+    IconBorderColor          "gray50"
+    IconManagerBackground    "rgb:2/a/9"
+    IconManagerForeground    "gray10"
+}
+
+# Define some useful functions for motion-based actions.
+MoveDelta 3
+Function "move-or-lower"   { f.move f.deltastop f.lower }
+Function "move-or-raise"   { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+
+# Set some useful bindings.  Sort of uwm-ish, sort of simple-button-ish
+Button1 = : root : f.menu "defops"
+
+Button1 = m : window|icon : f.function "move-or-lower"
+Button2 = m : window|icon : f.iconify
+Button3 = m : window|icon : f.function "move-or-raise"
+
+Button1 = : title : f.function "move-or-raise"
+Button2 = : title : f.raiselower
+
+Button1 = : icon : f.function "move-or-iconify"
+Button2 = : icon : f.iconify
+
+Button1 = : iconmgr : f.iconify
+Button2 = : iconmgr : f.iconify
+
+# Menu
+menu "defops"
+{
+    "Menu"            f.title
+    "Terminator"           f.exec "exec terminator &"
+    ""                f.nop
+    "Firefox-ESR"           f.exec "exec firefox-esr"
+    ""                f.nop
+    "VLC"                   f.exec "exec vlc &"
+    ""                f.nop
+    "PlayOnLinux"                   f.exec "exec playonlinux &"
+    ""                f.nop
+    "Kill"            f.destroy
+    "Delete"          f.delete
+    ""                f.nop
+    "Restart"         f.restart
+    "Exit"            f.quit
+}
