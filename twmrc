@@ -52,13 +52,13 @@ Button2 = : iconmgr : f.iconify
 menu "defops"
 {
     "Menu"            f.title
-    "change-bg"       f.exec "exec feh-bg.sh"
+    "change-bg"       f.exec "exec feh-bg.sh &"
     ""                f.nop
-    "Firefox-ESR"     f.exec "exec firefox-esr"
+    "Firefox-ESR"     f.exec "exec firefox-esr &"
     ""                f.nop
-    "VLC"             f.exec "exec vlc"
+    "VLC"             f.exec "exec vlc &"
     ""                f.nop
-    "PlayOnLinux"     f.exec "exec playonlinux"
+    "PlayOnLinux"     f.exec "exec playonlinux &"
     ""                f.nop
     "Terminator"      f.exec "exec terminator &"
     ""                f.nop
