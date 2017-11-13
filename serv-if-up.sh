@@ -71,9 +71,9 @@ then
 	if systemctl start "$webserver".service ;
 then
 
-echo -e "\n\n:: $webserver fails, but restartet successfully, you got an email ::\n" > /dev/pts/3 ;
+echo -e "\n\n:: $webserver fails, but restartet successfully, you got an email ::\n" > /dev/pts/2 ;
 
-date > /dev/pts/3 ;
+date > /dev/pts/2 ;
 
 systemctl status "$webserver".service > /tmp/mailapache2status ;
 
@@ -96,9 +96,9 @@ $(cat /tmp/mailapache2status)
 
 EOM
 
-echo -e "\n\n:: you got email, $webserver fails, cannot restart ::\n" > /dev/pts/3 ;
+echo -e "\n\n:: you got email, $webserver fails, cannot restart ::\n" > /dev/pts/2 ;
 
-date > /dev/pts/3 ;
+date > /dev/pts/2 ;
 
 	fi
 fi
@@ -134,9 +134,9 @@ $(cat /tmp/mailsendmailstatus)
 
 EOM
 
-echo -e "\n\n:: $mta is accepting connections again, you got an email ::\n" > /dev/pts/3 ;
+echo -e "\n\n:: $mta is accepting connections again, you got an email ::\n" > /dev/pts/2 ;
 
-date > /dev/pts/3 ;
+date > /dev/pts/2 ;
 
 	else
 
@@ -150,9 +150,9 @@ $(cat /tmp/mailsenmailfail)
 
 EOM
 
-echo -e "\n\n:: you got email, $mta cannot restart ::\n" > /dev/pts/3 ;
+echo -e "\n\n:: you got email, $mta cannot restart ::\n" > /dev/pts/2 ;
 
-date > /dev/pts/3 ;
+date > /dev/pts/2 ;
 
 	fi
 fi
@@ -187,9 +187,9 @@ $(cat /tmp/mailmysqlstatus)
 
 EOM
 
-echo -e "\n\n:: $datenbank is accepting connections again, you got an email ::\n" > /dev/pts/3 ;
+echo -e "\n\n:: $datenbank is accepting connections again, you got an email ::\n" > /dev/pts/2 ;
 
-date > /dev/pts/3 ;
+date > /dev/pts/2 ;
 
 	else
 
@@ -203,9 +203,9 @@ $(cat /tmp/mailmysqlstatus )
 
 EOM
 
-echo -e "\n\n:: you got email, $datenbank cannot restart ::\n" > /dev/pts/3 ;
+echo -e "\n\n:: you got email, $datenbank cannot restart ::\n" > /dev/pts/2 ;
 
-date > /dev/pts/3 ;
+date > /dev/pts/2 ;
 
 	fi
 fi
@@ -261,9 +261,9 @@ Size on /home: $SIZEONHOME GB
 
 EOM
 
-echo -e "\n\n::WARNING:: your over $WARN01 % or $WARN02 %, you got mail::\n" > /dev/pts/3 ;
+echo -e "\n\n::WARNING:: your over $WARN01 % or $WARN02 %, you got mail::\n" > /dev/pts/2 ;
 
-date > /dev/pts/3 ;
+date > /dev/pts/2 ;
 
 fi
 
