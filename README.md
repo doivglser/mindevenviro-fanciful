@@ -84,19 +84,19 @@ Install your Ableton 9 Suite copy.
 
 Multiple GNOME terminals in one window.
 
-* from terminator: redundanz.sh in /dev/pts/2
-
-Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/2 and to mailbox.
-
-* from terminator: sCRYPtUPdater.sh
-
-Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Update your scripts to /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
-
-* from terminator: nano
+* from terminator tab 1: a shell
 
 Edit your projects with nano. To get a good overview on the screen, you have two more grids in the terminator window, with the shell scripts: redundanz.sh and sCRYPtUPdater.sh.
 
-* from terminator: mutt, nmon, mc
+* from terminator tab 1: sCRYPtUPdater.sh
+
+Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Update your scripts to /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
+
+* from terminator tab 1: redundanz.sh in /dev/pts/2
+
+Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/2 and to mailbox.
+
+* from terminator tab 2: mutt, nmon, mc
 
 # Files:
 
