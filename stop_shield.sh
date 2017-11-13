@@ -14,9 +14,9 @@ then
 
 stop_network(){
 	#
-	ip link set dev "$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | tr -d '\ ')" down ; sleep 3 ;
-	#
 	killall firefox-esr ;
+	#
+	ip link set dev "$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | tr -d '\ ')" down ; sleep 3 ;
 }
 
 take_a_look(){
