@@ -18,18 +18,6 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 # TODO:
 
-* ~/.config/mc/ini
-
-A ~/.config/mc/ini, to color screen a little.
-
-* ~/.nanorc
-
-A ~/.nanorc, to enhance code highlighting.
-
-* ~/.twmrc
-
-A ~/.twmrc, with the geometries and entries for the apps.
-
 * ~/.config/terminator/config
 
 A ~/.config/terminator/config, with the layout and the geometries.
