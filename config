@@ -1,0 +1,73 @@
+[global_config]
+  geometry_hinting = False
+  enabled_plugins = ,
+  tab_position = hidden
+  borderless = True
+[keybindings]
+  scaled_zoom = <Shift><Control>u
+  go_up = <Shift>Up
+  next_tab = <Shift>Right
+  split_horiz = <Shift><Control>t
+  move_tab_right = <Shift><Alt>Right
+  prev_tab = <Shift>Left
+  go_down = <Shift>Down
+  move_tab_left = <Shift><Alt>Left
+  go_next = <Shift><Control>o
+  new_tab = <Shift><Control>n
+[profiles]
+  [[default]]
+    use_system_font = False
+    background_darkness = 0.77
+    scrollback_lines = 1000
+    background_type = transparent
+    scrollbar_position = hidden
+    foreground_color = "#FFB536"
+    font = Monospace 8
+    background_color = "#18435C"
+    scrollback_infinite = True
+  [[root]]
+    use_system_font = False
+    font = Monospace 9
+    background_color = "#4A205A"
+    foreground_color = "#FF36F1"
+[layouts]
+  [[default]]
+    [[[child0]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+      profile = None
+  [[min-dev-enviro]]
+    [[[child0]]]
+      position = 30:30
+      type = Window
+      order = 0
+      parent = ""
+      size = 1200, 900
+    [[[NANO]]]
+      profile = default
+      parent = child0
+      position = 30:30
+      size = 1200, 600
+      command = nano
+      type = Terminal
+      order = 0
+    [[[sCRYPtUPdater]]]
+      profile = default
+      parent = child0
+      position = 30:630
+      size = 1200, 200
+      command = sCRYPtUPdater.sh
+      type = Terminal
+      order = 1
+    [[[REDUNDANZ]]]
+      profile = default
+      parent = child0
+      position = 30:800
+      size = 1200, 100
+      command = redundanz.sh
+      type = Terminal
+      order = 2
