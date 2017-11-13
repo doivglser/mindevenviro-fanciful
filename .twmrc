@@ -52,15 +52,15 @@ Button2 = : iconmgr : f.iconify
 menu "defops"
 {
     "Menu"            f.title
-    "Transset"           f.exec "exec transset 0.7 &"
+    "Transset"        f.exec "exec transset 0.7 &"
     ""                f.nop
-    "Terminator"           f.exec "exec terminator &"
+    "Terminator"      f.exec "exec terminator &"
     ""                f.nop
-    "Firefox-ESR"           f.exec "exec firefox-esr"
+    "Firefox-ESR"     f.exec "exec firefox-esr"
     ""                f.nop
-    "VLC"                   f.exec "exec vlc &"
+    "VLC"             f.exec "exec vlc &"
     ""                f.nop
-    "PlayOnLinux"                   f.exec "exec playonlinux &"
+    "PlayOnLinux"     f.exec "exec playonlinux &"
     ""                f.nop
     "Kill"            f.destroy
     "Delete"          f.delete
