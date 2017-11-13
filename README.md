@@ -120,7 +120,7 @@ wH0rUNSon # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username an
 
 * in /usr/local/bin
 
-shi3lD.sh # Networkmanager
+shi3lD.sh # network-manager
 
 start_shield.sh # Depends on shi3lD.sh.
 
