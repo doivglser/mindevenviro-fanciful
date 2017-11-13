@@ -46,7 +46,7 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.27.tar.gz && tar -xvzf v1.0.27.tar.gz && cd min-dev-enviro-1.0.27 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.28.tar.gz && tar -xvzf v1.0.28.tar.gz && cd min-dev-enviro-1.0.28 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -60,9 +60,9 @@ snort scrot ttf-mscorefonts-installer playonlinux transset display terminator fi
 
 # run:
 
-* from TTY1: shi3lD.sh
+* from TTY1: shi3lD.sh (network-manager)
 
-To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd daemons are running. This script	runs only on systems without network-managers.
+To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd daemons are running. While running shi3lD.sh Firefox-ESR will be killed after each MAC-puffing. This script	runs only on systems without network-managers.
 
 # On X, running vtwm:
 
