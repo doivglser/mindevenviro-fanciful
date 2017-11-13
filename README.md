@@ -46,7 +46,7 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.24.tar.gz && tar -xvzf v1.0.24.tar.gz && cd min-dev-enviro-1.0.24 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.25.tar.gz && tar -xvzf v1.0.25.tar.gz && cd min-dev-enviro-1.0.25 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -94,7 +94,7 @@ Multiple GNOME terminals in one window.
 
 * from terminator: redundanz.sh
 
-Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/3 and to mailbox.
+Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/2 and to mailbox.
 
 * from terminator: sCRYPtUPdater.sh
 
