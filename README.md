@@ -116,6 +116,14 @@ Oct2017.mac_no_dhcp_lease # Depends on shi3lD.sh, a list of NOT working MAC's ad
 
 wH0rUNSon # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username and the host with a timestamp.
 
+.twmrc # vtwm layout
+
+.config/terminator/config # terminator config
+
+.config/mc/ini # coloring mc
+
+.nanorc # https://github.com/scopatz/nanorc (thank's)
+
 * in /usr/local/bin
 
 shi3lD.sh # Changes MAC's Snort and ClamAV UP status.
