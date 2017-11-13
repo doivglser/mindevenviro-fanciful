@@ -4,7 +4,7 @@
 
 LANG="C" ;
 myPrograms="snort scrot ttf-mscorefonts-installer playonlinux transset display terminator firefox-esr vlc vtwm openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php5-mysql php5-mcrypt php5 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl figlet mc mutt eject nano" ;
-environinstall="redundanz.sh server-monitor.sh serv-if-up.sh sCRYPtUPdater.sh shi3lD.sh stop_shield.sh start_shield.sh" ;
+environinstall="redundanz.sh server-monitor.sh serv-if-up.sh sCRYPtUPdater.sh shi3lD.sh stop_shield.sh start_shield.sh " ;
 
 		if [ ! $EUID = 0 ] ;
 	then
@@ -53,10 +53,24 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/vendorsmac" ;
 	
 	# create $HOME directories
-	mkdir -p $HOME/{testphp,testbash,testperl,testpython,Downloads} ;
+	mkdir -p $HOME/{testphp,testbash,testperl,testpython,Downloads} 2>/dev/null ;
+	mkdir -p .local/share/mc/skins/ 2>/dev/null ;
+	
+	# copy the .config/mc/ini to $HOME
+	cp -f ini $HOME/.config/mc/ini ;
+	chown "$SUDO_USER":"$SUDO_USER" $HOME/.config/mc/ini ;
+	
+	# copy the .twmrc to $HOME
+	cp -f ini $HOME/.config/mc/ini ;
+	chown "$SUDO_USER":"$SUDO_USER" $HOME/.config/mc/ini ;
+	
+	# copy the ~/.nanorc to $HOME
+	wget https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh -O- | sh && wait ;
+	# thank you scopatz for the good work
 	
 	# set aliases
 	echo "alias ls='ls --color=auto -s'" >> $HOME/.bashrc ;
+	
 	# set the upload path for PHP scripts
 	mkdir -p /var/www/testphp 2>/dev/null ;
 	echo "Alias /testphp/ /var/www/testphp/" >> /etc/apache2/sites-available/default ;
