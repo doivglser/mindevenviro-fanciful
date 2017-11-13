@@ -5,8 +5,10 @@
   borderless = True
 [keybindings]
   prev_tab = <Shift>Left
+  next_tab = <Shift>Right
   go_down = <Shift>Down
   move_tab_left = <Shift><Alt>Left
+  move_tab_right = <Shift><Alt>Right
   new_tab = <Shift><Control>t
 [profiles]
   [[default]]
@@ -16,7 +18,7 @@
     background_type = transparent
     scrollbar_position = hidden
     foreground_color = "#FFB536"
-    font = Monospace 8
+    font = Monospace 9
     background_color = "#18435C"
     scrollback_infinite = True
   [[root]]
@@ -74,4 +76,4 @@
       command = mc
       type = Terminal
       order = 5
-      
+ 
