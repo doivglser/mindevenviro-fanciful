@@ -3,8 +3,8 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
-myPrograms="snort scrot ttf-mscorefonts-installer playonlinux transset display terminator firefox-esr vlc feh libjpeg-progs vtwm openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php5-mysql php5-mcrypt php5 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl figlet mc mutt eject nano" ;
-environinstall="redundanz.sh server-monitor.sh serv-if-up.sh sCRYPtUPdater.sh shi3lD.sh stop_shield.sh start_shield.sh " ;
+myPrograms="snort scrot ttf-mscorefonts-installer playonlinux transset display terminator firefox-esr vlc feh libjpeg-progs vtwm openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php5-mysql php5-mcrypt php5 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl figlet mc mutt eject nano " ;
+environinstall="redundanz.sh server-monitor.sh serv-if-up.sh sCRYPtUPdater.sh shi3lD.sh stop_shield.sh start_shield.sh feh-bg.sh " ;
 
 		if [ ! $EUID = 0 ] ;
 	then
