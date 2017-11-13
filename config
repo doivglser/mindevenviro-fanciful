@@ -4,16 +4,10 @@
   tab_position = hidden
   borderless = True
 [keybindings]
-  scaled_zoom = <Shift><Control>u
-  go_up = <Shift>Up
-  next_tab = <Shift>Right
-  split_horiz = <Shift><Control>t
-  move_tab_right = <Shift><Alt>Right
   prev_tab = <Shift>Left
   go_down = <Shift>Down
   move_tab_left = <Shift><Alt>Left
-  go_next = <Shift><Control>o
-  new_tab = <Shift><Control>n
+  new_tab = <Shift><Control>t
 [profiles]
   [[default]]
     use_system_font = False
@@ -32,31 +26,22 @@
     foreground_color = "#FF36F1"
 [layouts]
   [[default]]
-    [[[child0]]]
-      type = Terminal
-      parent = window0
-      profile = default
     [[[window0]]]
       type = Window
       parent = ""
       profile = None
-  [[min-dev-enviro]]
     [[[child0]]]
       position = 30:30
-      type = Window
-      order = 0
-      parent = ""
+      parent = "window0"
       size = 1200, 900
-    [[[NANO]]]
-      profile = default
+    [[[SHELL]]]
       parent = child0
       position = 30:30
       size = 1200, 600
-      command = nano
+      command = ""
       type = Terminal
       order = 0
     [[[sCRYPtUPdater]]]
-      profile = default
       parent = child0
       position = 30:630
       size = 1200, 200
@@ -64,10 +49,29 @@
       type = Terminal
       order = 1
     [[[REDUNDANZ]]]
-      profile = default
       parent = child0
       position = 30:800
       size = 1200, 100
       command = redundanz.sh
       type = Terminal
       order = 2
+    [[[child1]]]
+      position = 30:30
+      parent = "window0"
+      size = 1200, 900
+    [[[MUTT]]]
+      parent = child1
+      command = mutt
+      type = Terminal
+      order = 3
+    [[[NMON]]]
+      parent = child1
+      command = nmon
+      type = Terminal
+      order = 4
+    [[[MC]]]
+      parent = child1
+      command = mc
+      type = Terminal
+      order = 5
+      
