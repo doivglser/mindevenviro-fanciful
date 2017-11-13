@@ -61,7 +61,7 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" $HOME/.config/mc/ini ;
 	
 	# copy the .twmrc to $HOME
-	cp -f ini $HOME/.config/mc/ini ;
+	cp -f .twmrc $HOME/.twmrc ;
 	chown "$SUDO_USER":"$SUDO_USER" $HOME/.config/mc/ini ;
 	
 	# copy the ~/.nanorc to $HOME
