@@ -52,6 +52,8 @@ Button2 = : iconmgr : f.iconify
 menu "defops"
 {
     "Menu"            f.title
+    "Transset"           f.exec "exec transset 0.7 &"
+    ""                f.nop
     "Terminator"           f.exec "exec terminator &"
     ""                f.nop
     "Firefox-ESR"           f.exec "exec firefox-esr"
