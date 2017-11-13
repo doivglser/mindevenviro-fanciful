@@ -42,6 +42,7 @@ printf " quit? (y/n) " ; read
 echo -e "-"
 		if [[ $REPLY =~ y|Y|j|J ]] ;
 	then
+		killall firefox-esr ;
 		ip link set dev "$interface" down && sleep 2 &&
 		ip link set dev "$interface" address "$(cat /home/"${SUDO_USER}"/vendorsmac)" &&
 		ip link set dev "$interface" up && sleep 2 ;
