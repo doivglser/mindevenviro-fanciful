@@ -18,9 +18,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 # TODO:
 
-* ~/.config/terminator/config
-
-A ~/.config/terminator/config, with the layout and the geometries.
+* ~/.config/terminator/config, with the layout and the geometries.
 
 * shi3lD.sh
 
