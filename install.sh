@@ -90,7 +90,7 @@ done
 		echo "cgi-bin dir exists" ;
 fi
 		# update apache2 configuration
-		a2enmod cgid && wait ;
+		a2dismod mpmevent && a2enmod mpmprefork && a2enmod cgid && wait ;
 		# restart server
 		systemctl restart apache2.service && wait ;
 		# set the rights for installed
