@@ -24,7 +24,6 @@ Workaround to change the user-agent while changing the MAC - addresses.
 
 * sCRYPtUPdater.sh
 
-Workaround to update python (compile) and perl scripts (a ScriptAlias for Apache2).
 To search for brackets and braces, to split the content of the source code into short code snippets.
 If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
 Scan in $HOME for file suffixes or the header with dd, to determine the working directory.
