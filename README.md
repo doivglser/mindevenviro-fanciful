@@ -98,7 +98,7 @@ Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev
 
 * from terminator: sCRYPtUPdater.sh
 
-Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Update your scripts to /usr/local/bin or to /var/www/testphp. Stop a php, python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
+Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Update your scripts to /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
 
 * from terminator: nano
 
