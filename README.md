@@ -130,7 +130,9 @@ server-monitor.sh # Depends on redundanz.sh, UP status.
 
 serv-if-up.sh # Depends on redundanz.sh, background process.
 
-sCRYPtUPdater.sh # Syntax check and update to /usr/local/bin.
+sCRYPtUPdater.sh # Syntax check and update to the path.
+
+feh-bg.sh # changes the background on vtwm.
 
 # Coming soon:
 
