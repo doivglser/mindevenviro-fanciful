@@ -68,15 +68,11 @@ done
 	cp -f config /home/$SUDO_USER/.config/terminator/config ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/terminator/config ;
 	
-	# copy the ~/.nanorc to $HOME
-	wget https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh -O- | sh && wait ;
-	# thank you scopatz for the good work
-	
 	# set aliases
 	echo "alias ls='ls --color=auto -s'" >> /home/$SUDO_USER/.bashrc ;
 	
 	# set background Pictures
-	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures ;
+	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures/ ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/Pictures/* ;
 	
 	# set the upload path for PHP scripts
