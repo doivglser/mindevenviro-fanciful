@@ -46,7 +46,7 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.31.tar.gz && tar -xvzf v1.0.31.tar.gz && cd min-dev-enviro-1.0.31 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.32.tar.gz && tar -xvzf v1.0.32.tar.gz && cd min-dev-enviro-1.0.32 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -78,7 +78,7 @@ Listen to your music and/or videos.
 
 * PlayOnLinux
 
-Install your Ableton 9 Suite copy.
+Manage your projects with Ableton 9 Suite (Windows).
 
 * terminator
 
