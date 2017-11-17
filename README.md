@@ -46,7 +46,7 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.30.tar.gz && tar -xvzf v1.0.30.tar.gz && cd min-dev-enviro-1.0.30 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.31.tar.gz && tar -xvzf v1.0.31.tar.gz && cd min-dev-enviro-1.0.31 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -115,8 +115,6 @@ wH0rUNSon # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username an
 .config/terminator/config # terminator config
 
 .config/mc/ini # coloring mc
-
-.nanorc # https://github.com/scopatz/nanorc (thank's)
 
 * in /usr/local/bin
 
