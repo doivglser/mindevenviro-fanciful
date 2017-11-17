@@ -1,3 +1,3 @@
 #!/bin/bash
 # changes the background in vtwm, hold it from right-click
-feh --bg-scale "$(sort -R "$HOME/Pictures/*.jpg" | head -n1)" ;
+ls $HOME/Pictures/* | sort -R | head -n1 | xargs feh --bg-scale ;
