@@ -7,6 +7,9 @@
 # connection and revert to your vendors MAC-ADDRESS.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
+LANG="C" ;
+IFS=$(echo -e "\n\b") ;
+
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
@@ -50,7 +53,7 @@ echo -e "-"
 		echo -e "\n .You where surfing with this MAC:\n\n
 		$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
 		awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n" ;
-		firefox-esr 2>&1 < /dev/null &
+		sudo -u "$SUDO_USER" firefox-esr 2>&1 < /dev/null &
 		exit 0 ;
 
 		elif [[ $REPLY =~ n|N ]] ;
