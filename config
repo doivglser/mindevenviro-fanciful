@@ -13,17 +13,17 @@
 [profiles]
   [[default]]
     use_system_font = False
-    background_darkness = 0.77
+    background_darkness = 0.60
     scrollback_lines = 1000
     background_type = transparent
     scrollbar_position = hidden
     foreground_color = "#FFB536"
-    font = Monospace 9
+    font = Monospace 10
     background_color = "#18435C"
     scrollback_infinite = True
   [[root]]
     use_system_font = False
-    font = Monospace 9
+    font = Monospace 10
     background_color = "#4A205A"
     foreground_color = "#FF36F1"
 [layouts]
@@ -52,7 +52,7 @@
       order = 1
     [[[REDUNDANZ]]]
       parent = child0
-      position = 30:800
+      position = 30:830
       size = 1200, 100
       command = redundanz.sh
       type = Terminal
@@ -63,17 +63,25 @@
       size = 1200, 900
     [[[MUTT]]]
       parent = child1
+      position = 30:30
+      size = 1200, 700
       command = mutt
       type = Terminal
       order = 3
+    [[[shi3lD]]]
+      parent = child1
+      position = 30:730
+      size = 1200, 200      
+      command = shi3lD.sh
+      type = Terminal
+      order = 4
     [[[NMON]]]
       parent = child1
       command = nmon
       type = Terminal
-      order = 4
+      order = 5
     [[[MC]]]
       parent = child1
       command = mc
       type = Terminal
-      order = 5
- 
+      order = 6
