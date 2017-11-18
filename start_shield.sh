@@ -25,7 +25,7 @@ puff_MACs(){
 		echo -e "puffing MACs ...\n" ;
 		m4c=$(echo "$interface" | awk '{print $'"$nnumberOFinterface"'}') &&
 		newM4CnewM4C=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//') &&
-		ip link set dev "$m4c" address "$newM4CnewM4C" && sleep 1 &&
+		ip link set dev "$m4c" address "$newM4CnewM4C" && sleep 3 &&
 		((nnumberOFinterface--)) &&
 		ip link set dev "$m4c" up &&
 		sleep 9 ;
