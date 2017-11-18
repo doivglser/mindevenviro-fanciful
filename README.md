@@ -56,15 +56,9 @@ snort scrot ttf-mscorefonts-installer playonlinux transset display terminator fi
 
 # USAGE:
 
-* Login with your user name as $USER, on both: TTY1 (shi3lD.sh) and to X.
+* Login just to X.
 
-# run:
-
-* from TTY1: shi3lD.sh (network-manager)
-
-To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd daemons are running. While running shi3lD.sh Firefox-ESR will be killed after each MAC-puffing. This script	runs only on systems without network-managers. PLEASE DON'T USE shi3lD.sh, IF YOU WANT TO LOGIN TO: facebook.com, or a free-web-mail-service (Or Firefox will open your previous session and you loose a MAC-ADDRESS and an IP-ADDRESS).
-
-# On X, running vtwm:
+# RUN on X, running vtwm:
 
 * Firefox-ESR
 
@@ -96,7 +90,11 @@ Set the workflow interval in minutes and edit your projects with your favorite e
 
 Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/2 and to mailbox.
 
-* from terminator tab 2: mutt, nmon, mc
+* from terminator tab 2: mutt, nmon|shi3lD.sh , mc
+
+* from terminator tab 2: shi3lD.sh (network-manager)
+
+To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd daemons are running. While running shi3lD.sh Firefox-ESR will be killed after each MAC-puffing. This script	runs only on systems without network-managers. PLEASE DON'T USE shi3lD.sh, IF YOU WANT TO LOGIN TO: facebook.com, or a free-web-mail-service (Or Firefox will open your previous session and you loose a MAC-ADDRESS and an IP-ADDRESS).
 
 # Files:
 
