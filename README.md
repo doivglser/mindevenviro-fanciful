@@ -46,7 +46,7 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.32.tar.gz && tar -xvzf v1.0.32.tar.gz && cd min-dev-enviro-1.0.32 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.33.tar.gz && tar -xvzf v1.0.33.tar.gz && cd min-dev-enviro-1.0.33 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -128,7 +128,7 @@ redundanz.sh # Shows the status on a terminal.
 
 server-monitor.sh # Depends on redundanz.sh, UP status.
 
-serv-if-up.sh # Depends on redundanz.sh, background process.
+serv-if-up.sh # Depends on redundanz.sh, background process, restarts servers.
 
 sCRYPtUPdater.sh # Syntax check and update to the path.
 
