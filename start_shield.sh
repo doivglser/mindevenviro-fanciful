@@ -20,6 +20,8 @@ interface=$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | tr -d '
 nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 
 puff_MACs(){
+		if [[ "$(cat /home/"$SUDO_USER"/vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
+	then
 		until [[ "$nnumberOFinterface" = "0" ]] ;
 	do
 		echo -e "puffing MACs ...\n" ;
@@ -30,6 +32,7 @@ puff_MACs(){
 		ip link set dev "$m4c" up &&
 		sleep 9 ;
 done
+fi
 }
 
 start_s(){
