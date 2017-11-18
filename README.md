@@ -46,7 +46,7 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.33.tar.gz && tar -xvzf v1.0.33.tar.gz && cd min-dev-enviro-1.0.33 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.34.tar.gz && tar -xvzf v1.0.34.tar.gz && cd min-dev-enviro-1.0.34 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -76,9 +76,9 @@ type: localhost/testphp for your php stuff.
 
 Listen to your music and/or videos.
 
-* PlayOnLinux
+* PlayOnLinux (manage's wine)
 
-Manage your projects with Ableton 9 Suite (Windows).
+Install MS-Office, or Manage your projects with Ableton 9.
 
 * terminator
 
