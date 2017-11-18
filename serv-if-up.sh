@@ -1,5 +1,6 @@
 #!/bin/bash
 # REDUNDANZ, depends on redundanz.sh
+# Restarts $webserver, $datenbank und $mta.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 		if [ ! $EUID = 0 ] ;
