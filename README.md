@@ -46,7 +46,7 @@ iptables drop rules for /etc/snort/rules/
 
 * log in over SSH and copy/paste the line below:
 
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.34.tar.gz && tar -xvzf v1.0.34.tar.gz && cd min-dev-enviro-1.0.34 && ls -ahls --color=auto && pwd
+cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.35.tar.gz && tar -xvzf v1.0.35.tar.gz && cd min-dev-enviro-1.0.35 && ls -ahls --color=auto && pwd
 
 * ./install
 
@@ -152,11 +152,11 @@ An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to
 ![gnu nano](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gnu-nano.svg/256px-Gnu-nano.svg.png)
 ![Apache](http://www.linuxbrigade.com/wp-content/uploads/2014/06/apache318x260.png)
 ![playonlinux](http://www.playonlinux.com/images/uploads/196.jpg?w=240)
+![github](http://www.toolswatch.org/wp-content/uploads/2014/09/logo_GitHub.jpg)
 ![VLC](https://nightlies.videolan.org/cone-soppera10.png)
 ![FIREFOX-ESR](http://lh4.googleusercontent.com/-ES6QFwghMpc/Tz5DbjB7zlI/AAAAAAAAA9o/T13MxP5CUrc/s1600/Firefox-ESR.png)
-![google](http://www.fayerwayer.com/up/2008/02/google-07.png)
-![github](http://www.toolswatch.org/wp-content/uploads/2014/09/logo_GitHub.jpg)
 ![stackoverflow](http://devlup.com/wp-content/uploads/2011/06/stackoverflow.png)
+![google](http://www.fayerwayer.com/up/2008/02/google-07.png)
 ![Snort](https://www.snort.org/assets/SnortTM.png)
 ![PHP/MySQL](https://disenowebakus.net/imagenes/articulos/aprender-php-mysql-bases-de-datos-paginas-web-dinamicas.jpg)
 ![Python](http://www.coderdojo-helmond.nl/wp-content/uploads/2015/10/python-programming-assignment-help.png)
