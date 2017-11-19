@@ -1,0 +1,31 @@
+! $XConsortium: Xresources /main/8 1996/11/11 09:24:46 swick $
+xlogin*login.translations: #override\
+        CtrlR: abort-display()\n\
+        F1: set-session-argument(failsafe) finish-field()\n\
+        CtrlReturn: set-session-argument(failsafe) finish-field()\n\
+        Return: set-session-argument() finish-field()
+xlogin*borderWidth: 0
+xlogin*geometry: 400x200+1+1
+xlogin*greeting: min-dev-enviro  
+xlogin*namePrompt: login:\040
+xlogin*fail: #@!
+#ifdef COLOR
+xlogin*greetColor: #fe1a4e
+xlogin*failColor: red
+*Foreground: #1e1e1e
+*Background: black
+#else
+xlogin*Foreground: grey
+xlogin*Background: black
+#endif
+XConsole.text.geometry: 480x130
+XConsole.verbose:       true
+XConsole*iconic:        true
+XConsole*font:          fixed
+
+Chooser*geometry:               700x500+100+100
+Chooser*allowShellResize:       false
+Chooser*viewport.forceBars:     true
+Chooser*label.label:            min-dev-enviro
+Chooser*list.font:              -*-*-medium-r-normal-*-*-230-*-*-c-*-iso8859-1
+Chooser*Command.font:           *-new century schoolbook-bold-r-normal-*-120-*
