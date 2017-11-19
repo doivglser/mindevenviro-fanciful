@@ -64,6 +64,10 @@ done
 	cp -f twmrc /home/$SUDO_USER/.twmrc ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.twmrc ;
 	
+	# copy Xresources
+	cp -f Xresources /etc/X11/xdm/ ;
+	chmod 755 /etc/X11/xdm/Xresources ;
+	
 	# copy the ~/.config/terminator/config to $HOME
 	cp -f config /home/$SUDO_USER/.config/terminator/config ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/terminator/config ;
