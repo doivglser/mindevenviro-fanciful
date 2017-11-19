@@ -32,7 +32,8 @@ puffeRR(){
 		if [[ "$(cat /home/"$SUDO_USER"/vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] || \ 
 		[[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | wc -l | tr -d ' ')" != "2" ]] ;
 	then
-		echo -e "\n :: stopping interfaces ::" ;
+		echo -e "\n :: shi3lD.sh ::\n :: shut down interfaces : ??? :" ;
+		read -p " enter to continue" ;
 		. /usr/local/bin/stop_shield.sh ;		
 		echo -e "\n :: changing macaddress :: \n" && 
 		. /usr/local/bin/start_shield.sh ;	
