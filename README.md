@@ -90,7 +90,7 @@ Set the workflow interval in minutes and edit your projects with your favorite e
 
 Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/2 and to mailbox.
 
-* from terminator tab 2: mutt, nmon|shi3lD.sh , mc
+* from terminator tab 2: mutt|shi3lD.sh, nmon , mc
 
 * from terminator tab 2: shi3lD.sh (network-manager)
 
