@@ -40,7 +40,7 @@
       parent = child0
       position = 30:30
       size = 1200, 600
-      command = ""
+      command = "feh-bg.sh &"
       type = Terminal
       order = 0
     [[[sCRYPtUPdater]]]
