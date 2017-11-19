@@ -58,7 +58,7 @@ snort scrot ttf-mscorefonts-installer playonlinux transset display terminator fi
 
 * Login just to X.
 
-# RUN on X, running vtwm:
+# On vtwm:
 
 * Firefox-ESR
 
