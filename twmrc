@@ -12,17 +12,17 @@ Color
     BorderColor              "slategrey"
     DefaultBackground        "black"
     DefaultForeground        "white"
-    TitleBackground          "rgb:2/a/9"
+    TitleBackground          "rgb:3/f/9"
     TitleForeground          "gray60"
-    MenuBackground           "rgb:2/a/9"
+    MenuBackground           "rgb:3/f/9"
     MenuForeground           "gray30"
     MenuBorderColor          "red"
-    MenuTitleBackground      "green"
-    MenuTitleForeground      "rgb:2/a/9"
-    IconBackground           "rgb:2/a/9"
+    MenuTitleBackground      "yellow"
+    MenuTitleForeground      "rgb:5/e/7"
+    IconBackground           "rgb:5/e/7"
     IconForeground           "gray60"
     IconBorderColor          "gray50"
-    IconManagerBackground    "rgb:2/a/9"
+    IconManagerBackground    "rgb:5/e/1"
     IconManagerForeground    "gray10"
 }
 
@@ -51,7 +51,7 @@ Button2 = : iconmgr : f.iconify
 # Menu
 menu "defops"
 {
-    "Menu"            f.title
+    "min-dev-enviro"  f.title
     "change-bg"       f.exec "exec feh-bg.sh &"
     ""                f.nop
     "Firefox-ESR"     f.exec "exec firefox-esr &"
