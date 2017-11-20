@@ -83,8 +83,7 @@ done
 	mkdir -p /var/www/testphp 2>/dev/null ;
 	echo "Alias /testphp/ /var/www/testphp/" >> /etc/apache2/sites-available/default ;
 		
-		if [[ ! "$(cat /etc/apache2/sites-available/default | grep cgi-bin)" =~ '/usr/lib/cgi-bin/' ]] \
-		&& [ ! -e /usr/lib/cgi-bin/ ] ;
+		if [[ ! "$(cat /etc/apache2/sites-available/default | grep cgi-bin)" =~ '/usr/lib/cgi-bin/' ]] ;
 	then
 		mkdir -p /usr/lib/cgi-bin/ 2>/dev/null ;
 		echo -e "\nScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\r
