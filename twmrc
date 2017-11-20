@@ -61,6 +61,8 @@ menu "defops"
     ""                          f.nop
     "::    Terminator      ::"  f.exec "exec terminator &"
     ""                          f.nop
+    "::    lpe Editor      ::"  f.exec "exec lpe &"
+    ""                          f.nop
     "::    change-bg       ::"  f.exec "exec feh-bg.sh &"
     ""                          f.nop    
     "::    Kill            ::"  f.destroy
