@@ -84,7 +84,7 @@ done
 	echo "Alias /testphp/ /var/www/testphp/" >> /etc/apache2/sites-available/default ;
 		
 		if [[ ! "$(cat /etc/apache2/sites-available/default | grep cgi-bin)" =~ '/usr/lib/cgi-bin/' ]] \
-		&& [ -e /usr/lib/cgi-bin/ ] ;
+		&& [ ! -e /usr/lib/cgi-bin/ ] ;
 	then
 		mkdir -p /usr/lib/cgi-bin/ 2>/dev/null ;
 		echo -e "\nScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\r
@@ -101,7 +101,7 @@ fi
 		a2dismod mpmevent && a2enmod mpmprefork && a2enmod cgid && wait ;
 		# restart server
 		systemctl restart apache2.service && wait ;
-		# set the rights for installed
+		# set the rights for installed (to remove it later)
 		chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/installed" ;
 	
 		while [[ "$nNuM2" != "0" ]] ;
