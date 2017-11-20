@@ -150,6 +150,7 @@ An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to
 ![stackoverflow](http://devlup.com/wp-content/uploads/2011/06/stackoverflow.png)
 ![google](http://www.fayerwayer.com/up/2008/02/google-07.png)
 ![Snort](https://www.snort.org/assets/SnortTM.png)
+![lpe](https://screenshots.debian.net/screenshots/000/006/877/large.png)
 ![PHP/MySQL](https://disenowebakus.net/imagenes/articulos/aprender-php-mysql-bases-de-datos-paginas-web-dinamicas.jpg)
 ![Python](http://www.coderdojo-helmond.nl/wp-content/uploads/2015/10/python-programming-assignment-help.png)
 ![Perl](https://www.textmagic.com/wp-content/themes/textmagic-genesis/assets/vendor/textmagic/marketing/images/api/prog-lang-logos/perl.png)
