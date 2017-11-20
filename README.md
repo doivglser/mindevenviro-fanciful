@@ -108,9 +108,9 @@ wH0rUNSon # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username an
 
 .twmrc # vtwm layout
 
-.config/terminator/config # terminator config
+config/terminator/config # terminator config
 
-.config/mc/ini # coloring mc
+config/mc/ini # coloring mc
 
 * in /usr/local/bin
 
@@ -120,11 +120,7 @@ start_shield.sh # Depends on shi3lD.sh.
 
 stop_shield.sh # Depends on shi3lD.sh.
 
-redundanz.sh # Shows the status on a terminal.
-
-server-monitor.sh # Depends on redundanz.sh, UP status.
-
-serv-if-up.sh # Depends on redundanz.sh, background process, restarts servers.
+serv-if-up.sh # Depends on shi3lD.sh, background process, restarts servers.
 
 sCRYPtUPdater.sh # Syntax check and update to the path.
 
