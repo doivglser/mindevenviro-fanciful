@@ -68,6 +68,10 @@ done
 	cp -f Xresources /etc/X11/xdm/ ;
 	chmod 755 /etc/X11/xdm/Xresources ;
 	
+	# copy VLC skin
+	cp -f 165521-KeepItCleanv1.vlt /usr/share/vlc/skins2/ ;
+	chmod 755 /usr/share/vlc/skins2/165521-KeepItCleanv1.vlt ;
+	
 	# copy the ~/.config/terminator/config to $HOME
 	cp -f config /home/$SUDO_USER/.config/terminator/config ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/terminator/config ;
