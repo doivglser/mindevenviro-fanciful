@@ -14,6 +14,10 @@ IFS=$(echo -e "\n\b") ;
 	then
 		sudo "$0" ;
 else
+	if [[ ! "$(ps aux | grep -v grep | grep -v nano | grep serv-if-up.sh | awk '{print $2}' | wc -l)" -gt "1" ]] ;
+then
+	setsid serv-if-up.sh >/dev/null 2>&1 < /dev/null &
+fi
 
 clear && echo -e "\n" ;
 nnumberr="0" ;
