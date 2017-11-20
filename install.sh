@@ -53,7 +53,7 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/vendorsmac" ;
 	
 	# create $HOME directories
-	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents} 2>/dev/null ;
+	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton} 2>/dev/null ;
 	#mkdir -p /home/$SUDO_USER/.local/share/mc/skins/ 2>/dev/null ;
 	
 	# copy the .config/mc/ini to $HOME
@@ -79,6 +79,10 @@ done
 	# copy the .xinitrc to $HOME
 	cp -f xinitrc /home/$SUDO_USER/.xinitrc ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.xinitrc ;
+	
+	# copy the startup sound to $HOME/Music
+	cp -f 76256__ganscaile__startup.mp3 /home/$SUDO_USER/Music/ ;
+	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/Music/* ;
 	
 	# set aliases
 	echo "alias ls='ls --color=auto -s'" >> /home/$SUDO_USER/.bashrc ;
