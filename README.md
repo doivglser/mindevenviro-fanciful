@@ -92,7 +92,11 @@ To change your MAC addresses, shi3lD.sh does a list with working and not working
 
 shi3lD.sh invokes serv-if-up.sh. "serv-if-up.sh" Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/2 and to mailbox.
 
-* from terminator tab 2: mutt, nmon, mc
+* from terminator tab 2: mutt
+
+* from terminator tab 3: nmon
+
+* from terminator tab 4: mc
 
 # Files:
 
