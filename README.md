@@ -12,6 +12,8 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 ° Web surfing with Firefox-ESR and local/web media experience with VLC.
 
+° PlayOnLinux I use Ableton Suite.
+
 ° Restarts apache2, mysqld, sendmail, snort, clamd.
 
 ° For programmers and administrators.
@@ -86,15 +88,17 @@ Edit your projects with nano. To get a good overview on the screen, you have two
 
 Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Update your scripts to /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
 
-* from terminator tab 1: redundanz.sh in /dev/pts/2
+* from terminator tab 1: redundanz.sh
 
-Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/2 and to mailbox.
+
 
 * from terminator tab 2: mutt|shi3lD.sh, nmon , mc
 
-* from terminator tab 2: shi3lD.sh (network-manager)
+* from terminator tab 2: shi3lD.sh (network-manager) in /dev/pts/2
 
 To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd daemons are running. While running shi3lD.sh Firefox-ESR will be killed after each MAC-puffing. This script	runs only on systems without network-managers. PLEASE DON'T USE shi3lD.sh, IF YOU WANT TO LOGIN TO: facebook.com, or a free-web-mail-service (Or Firefox will open your previous session and you loose a MAC-ADDRESS and an IP-ADDRESS).
+
+shi3lD.sh invokes serv-if-up.sh. "serv-if-up.sh" Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/2 and to mailbox.
 
 # Files:
 
