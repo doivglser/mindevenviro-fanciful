@@ -1,6 +1,5 @@
 [global_config]
   geometry_hinting = False
-  enabled_plugins = ,
   tab_position = hidden
   borderless = True
 [keybindings]
