@@ -76,6 +76,10 @@ done
 	cp -f config /home/$SUDO_USER/.config/terminator/config ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/terminator/config ;
 	
+	# copy the .xinitrc to $HOME
+	cp -f xinitrc /home/$SUDO_USER/.xinitrc ;
+	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.xinitrc ;
+	
 	# set aliases
 	echo "alias ls='ls --color=auto -s'" >> /home/$SUDO_USER/.bashrc ;
 	
