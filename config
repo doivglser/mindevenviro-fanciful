@@ -35,53 +35,46 @@
     [[[child0]]]
       position = 30:30
       parent = "window0"
-      size = 1200, 900
+      size = 1000, 800
     [[[SHELL]]]
       parent = child0
       position = 30:30
-      size = 1200, 600
+      size = 1000, 550
       command = "feh-bg.sh &"
       type = Terminal
       order = 0
     [[[sCRYPtUPdater]]]
       parent = child0
       position = 30:630
-      size = 1200, 200
+      size = 1000, 250
       command = sCRYPtUPdater.sh
       type = Terminal
       order = 1
-    [[[REDUNDANZ]]]
-      parent = child0
-      position = 30:830
-      size = 1200, 100
-      command = redundanz.sh
-      type = Terminal
-      order = 2
     [[[child1]]]
       position = 30:30
       parent = "window0"
-      size = 1200, 900
-    [[[MUTT]]]
+      size = 1000, 800
+    [[[shi3lD]]]
       parent = child1
       position = 30:30
-      size = 1200, 700
+      size = 1000, 100      
+      command = shi3lD.sh
+      type = Terminal
+      order = 2
+    [[[MUTT]]]
+      parent = child1
+      position = 30:130
+      size = 1000, 700
       command = mutt
       type = Terminal
       order = 3
-    [[[shi3lD]]]
-      parent = child1
-      position = 30:730
-      size = 1200, 200      
-      command = shi3lD.sh
-      type = Terminal
-      order = 4
     [[[NMON]]]
       parent = child1
       command = nmon
       type = Terminal
-      order = 5
+      order = 4
     [[[MC]]]
       parent = child1
       command = mc
       type = Terminal
-      order = 6
+      order = 5
