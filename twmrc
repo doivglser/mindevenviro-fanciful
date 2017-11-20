@@ -53,7 +53,7 @@ menu "defops"
 {
 ":: - M1N-D3V-3NV1R0 - ::"  f.title
 ""                          f.nop
-"::  VLC Media Player  ::"  f.exec "exec vlc -I skins2 --skins2-last=/usr/share/vlc/skins2/165521-KeepItCleanv1.vlt &"
+"::  VLC Media Player  ::"  f.exec "exec vlc -I skins2 --skins2-last=/usr/share/vlc/skins2/169311-inkyV2.vlt &"
 ""                          f.nop
 "::    Firefox-ESR     ::"  f.exec "exec firefox-esr &"
 ""                          f.nop
