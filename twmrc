@@ -9,7 +9,7 @@ IconManagerFont "-adobe-helvetica-bold-r-normal--*-80-*-*-*"
 
 Color
 {
-    BorderColor              "slategrey"
+    BorderColor              "green"
     DefaultBackground        "black"
     DefaultForeground        "white"
     TitleBackground          "rgb:3/f/9"
@@ -17,7 +17,7 @@ Color
     MenuBackground           "rgb:3/f/9"
     MenuForeground           "gray30"
     MenuBorderColor          "red"
-    MenuTitleBackground      "yellow"
+    MenuTitleBackground      "orange"
     MenuTitleForeground      "rgb:5/e/7"
     IconBackground           "rgb:5/e/7"
     IconForeground           "gray60"
