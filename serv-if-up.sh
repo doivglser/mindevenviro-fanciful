@@ -7,7 +7,7 @@
 	then
 		sudo "$0" ;
 else
-	if [[ "$(ps aux | grep -v grep | grep -v nano | grep redundanz.sh | awk '{print $2}' | wc -l) " -gt "1" ]] ;
+	if [[ "$(ps aux | grep -v grep | grep -v nano | grep sh13lD.sh | awk '{print $2}' | wc -l)" -gt "1" ]] ;
 then
 
 LANG="C";
