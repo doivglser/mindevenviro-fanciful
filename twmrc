@@ -57,6 +57,8 @@ menu "defops"
 ""                          f.nop
 "::    Firefox-ESR     ::"  f.exec "exec firefox-esr &"
 ""                          f.nop
+"::    screensaver     ::"  f.exec "exec xscreensaver-command -exit && xscreensaver -nosplash &"
+""                          f.nop
 "::    PlayOnLinux     ::"  f.exec "exec playonlinux &"
 ""                          f.nop
 "::    Terminator      ::"  f.exec "exec terminator &"
@@ -65,9 +67,4 @@ menu "defops"
 ""                          f.nop
 "::    change-bg       ::"  f.exec "exec feh-bg.sh &"
 ""                          f.nop    
-"::    Kill            ::"  f.destroy
-"::    Delete          ::"  f.delete
-""                          f.nop
-"::    Restart         ::"  f.restart
-"::    Exit            ::"  f.quit
 }
