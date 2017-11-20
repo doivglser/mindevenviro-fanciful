@@ -54,7 +54,7 @@ cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.0.tar.
 
 Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
-snort scrot ttf-mscorefonts-installer playonlinux mupdf display terminator xul-ext-ublock-origin firefox-esr vlc feh vtwm x11-apps xdm zip openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php5-mysql php5-mcrypt php5 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl figlet mc mutt eject nano nmon 
+snort scrot ttf-mscorefonts-installer playonlinux mupdf display terminator xul-ext-ublock-origin firefox-esr vlc feh lpe vtwm x11-apps xdm zip openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php5-mysql php5-mcrypt php5 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl figlet mc mutt eject nano nmon 
 
 # USAGE:
 
@@ -86,7 +86,7 @@ Edit your projects with nano. To get a good overview on the screen, you have two
 
 * from terminator tab 1: sCRYPtUPdater.sh
 
-Set the workflow interval in minutes and edit your projects with your favorite editor (I use nano). Update your scripts to /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
+Set the workflow interval in minutes and edit your projects with your favorite editor (I use lpe). Update your scripts to /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
 
 * from terminator tab 1: redundanz.sh
 
