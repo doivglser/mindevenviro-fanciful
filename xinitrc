@@ -1,2 +1,2 @@
 exec feh-bg.sh &
-xclock -transparent -bg navy -fg orange -update 1 -geometry 50x50-1+1 &
+oclock -transparent -bg navy -fg orange -minute red -hour red -bd yellow -bw 0 -geometry 50x50-1+1 &
