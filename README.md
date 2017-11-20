@@ -12,7 +12,7 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 ° Web surfing with Firefox-ESR and local/web media experience with VLC.
 
-° PlayOnLinux I use Ableton Suite.
+° PlayOnLinux, I use Ableton Suite.
 
 ° Restarts apache2, mysqld, sendmail, snort, clamd.
 
