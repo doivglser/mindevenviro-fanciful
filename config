@@ -33,38 +33,38 @@
       parent = ""
       profile = None
     [[[child0]]]
-      position = 30:30
+      position = 60:100
       parent = "window0"
-      size = 1000, 800
+      size = 900, 800
     [[[SHELL]]]
       parent = child0
-      position = 30:30
-      size = 1000, 550
+      position = 60:100
+      size = 900, 200
       command = "feh-bg.sh &"
       type = Terminal
       order = 0
     [[[sCRYPtUPdater]]]
       parent = child0
-      position = 30:630
-      size = 1000, 250
+      position = 60:300
+      size = 900, 500
       command = sCRYPtUPdater.sh
       type = Terminal
       order = 1
     [[[child1]]]
-      position = 30:30
+      position = 60:100
       parent = "window0"
-      size = 1000, 800
+      size = 900, 800
     [[[shi3lD]]]
       parent = child1
-      position = 30:30
-      size = 1000, 100      
+      position = 60:100
+      size = 900, 200     
       command = shi3lD.sh
       type = Terminal
       order = 2
     [[[MUTT]]]
       parent = child1
-      position = 30:130
-      size = 1000, 700
+      position = 60:300
+      size = 900, 500
       command = mutt
       type = Terminal
       order = 3
