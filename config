@@ -40,14 +40,14 @@
       position = 60:100
       size = 900, 100
       command = "feh-bg.sh &"
-      type = Terminal
+      type = HPaned
       order = 0
     [[[sCRYPtUPdater]]]
       parent = child0
       position = 60:200
       size = 900, 500
       command = sCRYPtUPdater.sh
-      type = Terminal
+      type = HPaned
       order = 1
     [[[window1]]]
       type = Window
@@ -62,14 +62,14 @@
       position = 60:100
       size = 900, 200     
       command = shi3lD.sh
-      type = Terminal
+      type = HPaned
       order = 2
     [[[MUTT]]]
       parent = child1
       position = 60:300
       size = 900, 500
       command = mutt
-      type = Terminal
+      type = HPaned
       order = 3
     [[[window2]]]
       type = Window
