@@ -33,8 +33,7 @@ interface=$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | head -n
 fi
 
 puffeRR(){
-		if [[ "$(cat /home/"$SUDO_USER"/vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] || \ 
-		[[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | wc -l | tr -d ' ')" != "2" ]] ;
+		if [[ "$(cat /home/"$SUDO_USER"/vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] || [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | wc -l | tr -d ' ')" != "2" ]] ;
 	then
 		echo -e "\n :: shi3lD.sh ::\n :: shut down interfaces : ??? :" ;
 		read -p " enter to continue" ;
@@ -69,14 +68,12 @@ fi
 }
 		while trap 'exitHandler' SIGINT ;
 	do
-		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | \
-		wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /home/${SUDO_USER}/vendorsmac)" ]] ;
+		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /home/${SUDO_USER}/vendorsmac)" ]] ;
 	then
 		spin='.oOo' ; i=0 ;
 		spin2='-\|/' ;
 
-		while [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | \
-		wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /home/${SUDO_USER}/vendorsmac)" ]] ;
+		while [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /home/${SUDO_USER}/vendorsmac)" ]] ;
 	do
 		((nnumberr++));
 		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1} UPTIME:$nnumberr${spin:$i:1} " ; sleep .1 ;
