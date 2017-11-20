@@ -1,5 +1,5 @@
 #!/bin/bash
-# REDUNDANZ, depends on redundanz.sh
+# REDUNDANZ, depends on sh13lD.sh
 # Restarts $webserver, $datenbank und $mta.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
