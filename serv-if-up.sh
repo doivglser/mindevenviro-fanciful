@@ -14,7 +14,7 @@ LANG="C";
 
 countwarn="0" ;
 
-PIDof=$(pgrep redundanz.sh) ;
+PIDof=$(pgrep sh13lD.sh) ;
 
 		if [[ "$PIDof" != '' ]] ;
 then
