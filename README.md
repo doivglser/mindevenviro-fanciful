@@ -108,9 +108,9 @@ wH0rUNSon # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username an
 
 .twmrc # vtwm layout
 
-config/terminator/config # terminator config
+.config/terminator/config # terminator config
 
-config/mc/ini # coloring mc
+.config/mc/ini # coloring mc
 
 * in /usr/local/bin
 
