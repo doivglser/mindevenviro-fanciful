@@ -51,21 +51,21 @@ Button2 = : iconmgr : f.iconify
 # Menu
 menu "defops"
 {
-    ":: M1N-D3V-3NV1R0 ::"  f.title
-    ""                  f.nop
-    "VLC Media Player"  f.exec "exec vlc &"
-    ""                  f.nop
-    "Firefox-ESR"       f.exec "exec firefox-esr &"
-    ""                  f.nop
-    "PlayOnLinux"       f.exec "exec playonlinux &"
-    ""                  f.nop
-    "Terminator"        f.exec "exec terminator &"
-    ""                  f.nop
-    "change-bg"         f.exec "exec feh-bg.sh &"
-    ""                  f.nop    
-    "Kill"              f.destroy
-    "Delete"            f.delete
-    ""                  f.nop
-    "Restart"           f.restart
-    "Exit"              f.quit
+    ":: - M1N-D3V-3NV1R0 - ::"  f.title
+    ""                          f.nop
+    "::  VLC Media Player  ::"  f.exec "exec vlc &"
+    ""                          f.nop
+    "::    Firefox-ESR     ::"  f.exec "exec firefox-esr &"
+    ""                          f.nop
+    "::    PlayOnLinux     ::"  f.exec "exec playonlinux &"
+    ""                          f.nop
+    "::    Terminator      ::"  f.exec "exec terminator &"
+    ""                          f.nop
+    "::    change-bg       ::"  f.exec "exec feh-bg.sh &"
+    ""                          f.nop    
+    "::    Kill            ::"  f.destroy
+    "::    Delete          ::"  f.delete
+    ""                          f.nop
+    "::    Restart         ::"  f.restart
+    "::    Exit            ::"  f.quit
 }
