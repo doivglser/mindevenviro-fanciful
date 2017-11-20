@@ -175,9 +175,9 @@ diffANDchecksyntax(){
 ch3kingSnx='' ;
             if [ -e "/usr/local/bin/$toC0pyIS" ] ;
 	then
+			echo -e "\n DIFF OF: $toC0pyIS\n\n" ;
 			diff -i "$listONme" "/usr/local/bin/$toC0pyIS" ;
-			read -p "check.syntax" ;
-			echo -e "\n syntax-check for: $toC0pyIS\n\n" ;
+			read -p "check.syntax?" ;
 			
 			if [[ "$?" != 0 ]] ;
 		then
