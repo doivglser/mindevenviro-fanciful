@@ -11,59 +11,44 @@ else
 then
 
 LANG="C";
-
 countwarn="0" ;
-
 PIDof=$(pgrep sh13lD.sh) ;
 
 		if [[ "$PIDof" != '' ]] ;
 then
 
+# temp folder
+	if [[ "$(df -h | grep -E /dev/shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+then
+	tmpfolder="$(df -h | grep -E /dev/shm$ | cut -f2 -d% | tr -d '\ ')" ;
+else
+	tmpfolder="/tmp" ;
+fi
+# temp folder END
+
 webserver="apache2" ;
-
 datenbank="mysql" ;
-
 mta="sendmail" ;
-
 mailer="sendmail" ;
-
 empty02='' ;
-
 nohomePartition="No Home Partition on this computer" ;
-
 WARN01="80" ;
-
 WARN02="85" ;
-
 PERCENTUSED01=$(df -h | grep -E /$ | awk '{ print $5 }' | sed -n 's/%//p') ;
-
 PERCENTUSED02=$(df -h | grep -E /home$ | awk '{ print $5 }' | sed -n 's/%//p') ;
-
 IFHOMEEXIST=$(df -h | grep -E /home$) && SIZEONHOME=$(df -h | grep -E /home$ | awk '{print $2}') ;
-
 SIZEON=$(df -h | grep -E /$ | awk '{ print $2 }') ;
-
 USEDON=$(df -h | grep -E /$ | awk '{ print $3 }') ;
-
 INODES=$(df -i | grep -E /$ | awk '{ print $2 }') ;
-
 FREEINODES=$(df -i | grep -E /$ | awk '{ print $4 }') ;
-
-> /tmp/mailapache2status ;
-
-> /tmp/mailsendmailstatus ;
-
-> /tmp/mailmysqlstatus ;
+> $tmpfolder/mailapache2status ;
+> $tmpfolder/mailsendmailstatus ;
+> $tmpfolder/mailmysqlstatus ;
 
 while true
 
 do
-
-checkport80=$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1) ;
-
-sleep 2 ;
-
-        if [[ "$checkport80" = '' ]];
+        if [[ "$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1)" = '' ]];
 then
 	systemctl stop "$webserver".service ;
 
@@ -76,24 +61,24 @@ echo -e "\n\n:: $webserver fails, but restartet successfully, you got an email :
 
 date > /dev/pts/2 ;
 
-systemctl status "$webserver".service > /tmp/mailapache2status ;
+systemctl status "$webserver".service >$tmpfolder/mailapache2status ;
 
 cat << EOM | mail "$SUDO_USER"@localhost
 
 Subject:"$webserver" restartet
 
-$(cat /tmp/mailapache2status)
+$(cat$tmpfolder/mailapache2status)
 
 EOM
 	else
 
-systemctl status "$webserver".service > /tmp/mailapache2status ;
+systemctl status "$webserver".service >$tmpfolder/mailapache2status ;
 
 cat << EOM | mail "$SUDO_USER"@localhost
 
 Subject:"$webserver" cannot_restart
 
-$(cat /tmp/mailapache2status)
+$(cat$tmpfolder/mailapache2status)
 
 EOM
 
@@ -103,12 +88,7 @@ date > /dev/pts/2 ;
 
 	fi
 fi
-
-checkport25=$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1) ;
-
-sleep 2 ;
-
-        if [[ "$checkport25" = '' ]];
+        if [[ "$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1)" = '' ]];
 then
 
 checkprog2=$(whereis "$mta" | awk '{print $2}') ;
@@ -119,11 +99,11 @@ then
 
 sleep 1 ;
 
-        systemctl start "$mta".service > /tmp/mailsendmailstatus ;
+        systemctl start "$mta".service >$tmpfolder/mailsendmailstatus ;
 
-        systemctl status "$mta".service >> /tmp/mailsendmailstatus ;
+        systemctl status "$mta".service >>$tmpfolder/mailsendmailstatus ;
 
-	echo "$?" >> /tmp/mailsendmailstatus ;
+	echo "$?" >>$tmpfolder/mailsendmailstatus ;
 
 sleep 1 ;
 
@@ -131,7 +111,7 @@ cat << EOM | mail "$SUDO_USER"@localhost
 
 Subject:"$mta" restartet
 
-$(cat /tmp/mailsendmailstatus)
+$(cat$tmpfolder/mailsendmailstatus)
 
 EOM
 
@@ -141,13 +121,13 @@ date > /dev/pts/2 ;
 
 	else
 
-	date "+Start Attempt, Failure Time: %H.%M" > /tmp/mailsendmailstatus ;
+	date "+Start Attempt, Failure Time: %H.%M" >$tmpfolder/mailsendmailstatus ;
 
 cat << EOM | mail "$SUDO_USER"@localhost
 
 Subject:"$mta" cannot_restart
 
-$(cat /tmp/mailsenmailfail)
+$(cat$tmpfolder/mailsenmailfail)
 
 EOM
 
@@ -158,11 +138,7 @@ date > /dev/pts/2 ;
 	fi
 fi
 
-checkport3306=$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1) ;
-
-sleep 2 ;
-
-        if [[ "$checkport3306" = '' ]];
+        if [[ "$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1)" = '' ]];
 then
 
 checkprog3=$(whereis "$datenbank" | awk '{print $2}') ;
@@ -172,11 +148,11 @@ then
 	/etc/init.d/"$datenbank" stop ;
 
 sleep 1 ;
-        /etc/init.d/"$datenbank" start > /tmp/mailmysqlstatus ;
+        /etc/init.d/"$datenbank" start >$tmpfolder/mailmysqlstatus ;
 
-        /etc/init.d/"$datenbank" status >> /tmp/mailmysqlstatus ;
+        /etc/init.d/"$datenbank" status >>$tmpfolder/mailmysqlstatus ;
 
-	echo "$?" >> /tmp/mailmysqlstatus ;
+	echo "$?" >>$tmpfolder/mailmysqlstatus ;
 
 sleep 1 ;
 
@@ -184,7 +160,7 @@ cat << EOM | mail "$SUDO_USER"@localhost
 
 Subject:"$datenbank" restartet
 
-$(cat /tmp/mailmysqlstatus)
+$(cat$tmpfolder/mailmysqlstatus)
 
 EOM
 
@@ -194,13 +170,13 @@ date > /dev/pts/2 ;
 
 	else
 
-	date "+Start Attempt, Failure Time: %H.%M" > /tmp/mailmysqlstatus ;
+	date "+Start Attempt, Failure Time: %H.%M" >$tmpfolder/mailmysqlstatus ;
 
 cat << EOM | "$datenbank" "$SUDO_USER"@localhost
 
 Subject:$datenbank failure.
 
-$(cat /tmp/mailmysqlstatus )
+$(cat$tmpfolder/mailmysqlstatus )
 
 EOM
 
@@ -270,11 +246,11 @@ fi
 
 done
 
-rm -f /tmp/mailapache2status ;
+rm -f $tmpfolder/mailapache2status ;
 
-rm -f /tmp/mailsendmailstatus ;
+rm -f $tmpfolder/mailsendmailstatus ;
 
-rm -f /tmp/mailmysqlstatus ;
+rm -f $tmpfolder/mailmysqlstatus ;
 
 else
 
