@@ -35,25 +35,29 @@
     [[[child0]]]
       position = 60:100
       parent = "window0"
-      size = 900, 800
+      size = 900, 700
     [[[SHELL]]]
       parent = child0
       position = 60:100
-      size = 900, 200
+      size = 900, 100
       command = "feh-bg.sh &"
       type = Terminal
       order = 0
     [[[sCRYPtUPdater]]]
       parent = child0
-      position = 60:300
+      position = 60:200
       size = 900, 500
       command = sCRYPtUPdater.sh
       type = Terminal
       order = 1
+    [[[window1]]]
+      type = Window
+      parent = ""
+      profile = None
     [[[child1]]]
       position = 60:100
-      parent = "window0"
-      size = 900, 800
+      parent = "window1"
+      size = 900, 700
     [[[shi3lD]]]
       parent = child1
       position = 60:100
@@ -68,13 +72,29 @@
       command = mutt
       type = Terminal
       order = 3
+    [[[window2]]]
+      type = Window
+      parent = ""
+      profile = None
+    [[[child2]]]
+      position = 60:100
+      parent = "window2"
+      size = 900, 700
     [[[NMON]]]
-      parent = child1
+      parent = child2
       command = nmon
       type = Terminal
       order = 4
+     [[[window3]]]
+      type = Window
+      parent = ""
+      profile = None
+    [[[child3]]]
+      position = 60:100
+      parent = "window3"
+      size = 900, 700
     [[[MC]]]
-      parent = child1
+      parent = child3
       command = mc
       type = Terminal
       order = 5
