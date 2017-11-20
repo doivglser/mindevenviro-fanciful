@@ -39,7 +39,7 @@
       parent = child0
       position = 60:100
       size = 900, 100
-      command = "feh-bg.sh &"
+      command = "fortunes-es"
       type = HPaned
       order = 0
     [[[sCRYPtUPdater]]]
