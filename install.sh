@@ -38,10 +38,23 @@ fi
 		if [ "$nNuM" = "0" ]
 	then
 		clear ;
-		echo -e "\n apt-get done." ;
+		echo -e "\n ... apt-get done." ;
 		sleep 3 ;
 fi
-		echo -e " ... testing for apps, $nNuM remaining, $apPR\n" ;
+		printf "\r ... testing for apps, $nNuM remaining, $apPRn" ; sleep 0.5 ;
+		clear ;
+done
+	echo -e "\n ... copy scripts to /usr/local/bin" ;
+	
+		while [[ "$nNuM2" != "0" ]] ;
+	do
+		toCopyPath=$(awk '{print $'"$nNuM2"'}'<<<"$environinstall") ;
+		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$toCopyPath" ;
+		sudo chown root:root "/usr/local/bin/$toCopyPath" ;
+		sudo chmod 4755 "/usr/local/bin/$toCopyPath" ;
+		sudo chmod u+s "/usr/local/bin/$toCopyPath" ;
+		printf "\r$toCopyPath" ; sleep 0.5 ;
+		((nNuM2--)) ;
 done
 	echo -e "\n ... save vendors MAC-Address" ;
 	ip link show | grep ether | awk '{print $2}' | tee -a "/home/$SUDO_USER/vendorsmac" ;
@@ -103,7 +116,7 @@ done
 		Allow from all\r
 		</Directory>\n" >> /etc/apache2/sites-available/default ;
 	else
-		echo "cgi-bin dir exists" ;
+		echo -e "\n ... cgi-bin dir exists" ;
 fi
 		echo -e "\n ... update apache2 configuration" ;
 		a2dismod mpmevent && a2enmod mpmprefork && a2enmod cgid && wait ;
@@ -112,21 +125,8 @@ fi
 		echo -e "\n ... set the rights for installed (to remove it later)" ;
 		chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/installed" ;
 
-		echo -e "\n ...update scripts to path" ;
-		
-		while [[ "$nNuM2" != "0" ]] ;
-	do
-		toCopyPath=$(awk '{print $'"$nNuM2"'}'<<<"$environinstall") ;
-		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$toCopyPath" ;
-		sudo chown root:root "/usr/local/bin/$toCopyPath" ;
-		sudo chmod 4755 "/usr/local/bin/$toCopyPath" ;
-		sudo chmod u+s "/usr/local/bin/$toCopyPath" ;
-		printf "\r$toCopyPath" ; sleep 0.5 ;
-		((nNuM2--)) ;
-done
-	echo -e "\n We have dev-shell-enviro successfully installed" ;
-
-	else
-		echo -e "\n Allready installed, for a new install, remove /home/$SUDO_USER/installed" ;
+		echo -e "\n\n ... Congratulations we have dev-shell-enviro successfully installed!\r" ;
+else
+		echo -e "\n Allready installed, for a new install, remove /home/$SUDO_USER/installed\r" ;
 fi
 fi
