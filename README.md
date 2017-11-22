@@ -1,6 +1,6 @@
 # min-dev-enviro
 
-Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
+:::  Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
 
 ° For Debian GNU/Linux.
 
@@ -22,18 +22,18 @@ Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with
 
 * shi3lD.sh
 
-Workaround to change the user-agent while changing the MAC - addresses.
+  Workaround to change the user-agent while changing the MAC - addresses.
 
 * sCRYPtUPdater.sh
 
-To search for brackets and braces, to split the content of the source code into short code snippets.
-If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
-Scan in $HOME for file suffixes or the header with dd, to determine the working directory.
-Implement Programmable Completion, to auto-complete the command sequence with the [Tab] key.
+  To search for brackets and braces, to split the content of the source code into short code snippets.
+  If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
+  Scan in $HOME for file suffixes or the header with dd, to determine the working directory.
+  Implement Programmable Completion, to auto-complete the command sequence with the [Tab] key.
 
 * mindevenviro.rules
 
-iptables drop rules for /etc/snort/rules/
+  iptables drop rules for /etc/snort/rules/
 
 # Requirements:
 
@@ -52,9 +52,12 @@ cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.0.tar.
 
 * ./install
 
-Installs the deployment environment and the minimal desktop with antivirus and NIDS:
+  Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
-snort scrot ttf-mscorefonts-installer playonlinux mupdf display terminator xul-ext-ublock-origin firefox-esr vlc feh lpe xscreensaver vtwm x11-apps xdm zip openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php5-mysql php5-mcrypt php5 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes-es figlet mc mutt eject nano nmon 
+  snort scrot ttf-mscorefonts-installer playonlinux mupdf display terminator xul-ext-ublock-origin firefox-esr vlc feh lpe
+  xscreensaver vtwm x11-apps xdm zip openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav 
+  mysql-server php5-mysql php5-mcrypt php5 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl 
+  fortunes-es figlet mc mutt eject nano nmon 
 
 # USAGE:
 
@@ -64,33 +67,39 @@ snort scrot ttf-mscorefonts-installer playonlinux mupdf display terminator xul-e
 
 * Firefox-ESR
 
-type: localhost/dwww for dwww. ( dwww collects information from /usr/share/{man,doc} )
+  type: localhost/dwww for dwww. ( dwww collects information from /usr/share/{man,doc} )
 
-type: localhost/testphp for your php stuff.
+  type: localhost/testphp for your php stuff.
 
 * VLC 
 
-Listen to your music and/or videos.
+  Listen to your music and/or videos.
 
 * PlayOnLinux (manage's wine)
 
-Install MS-Office, or Manage your projects with Ableton 9.
+  Install MS-Office, or Manage your projects with Ableton 9.
 
 * terminator
 
-Multiple GNOME terminals in one window.
+  Multiple GNOME terminals in one window.
 
 * from terminator tab 1: a shell
 
 * from terminator tab 1: sCRYPtUPdater.sh
 
-Set the workflow interval in minutes and edit your projects with your favorite editor (I use lpe). Update your scripts to /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
+  Set the workflow interval in minutes and edit your projects with your favorite editor (I use lpe). Update your scripts to
+  /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. 
+  Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
 
 * from terminator tab 2: shi3lD.sh (network-manager) in /dev/pts/2
 
-To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd daemons are running. While running shi3lD.sh Firefox-ESR will be killed after each MAC-puffing. This script	runs only on systems without network-managers. PLEASE DON'T USE shi3lD.sh, IF YOU WANT TO LOGIN TO: facebook.com, or a free-web-mail-service (Or Firefox will open your previous session and you loose a MAC-ADDRESS and an IP-ADDRESS).
+  To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd 
+  daemons are running. While running shi3lD.sh Firefox-ESR will be killed after each MAC-puffing. This script	runs only 
+  on systems without network-managers. PLEASE DON'T USE shi3lD.sh, IF YOU WANT TO LOGIN TO: facebook.com, or a 
+  free-web-mail-service (Or Firefox will open your previous session and you loose a MAC-ADDRESS and an IP-ADDRESS).
 
-shi3lD.sh invokes serv-if-up.sh. "serv-if-up.sh" Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, writes to /dev/pts/2 and to mailbox.
+  shi3lD.sh invokes serv-if-up.sh. "serv-if-up.sh" Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, 
+  writes to /dev/pts/2 and to mailbox.
 
 * from terminator tab 2: mutt
 
@@ -102,37 +111,38 @@ shi3lD.sh invokes serv-if-up.sh. "serv-if-up.sh" Restarts Apache2, MySQL, Sendma
 
 * in $HOME
 
-installed # The list of the installed components.
+  installed # The list of the installed components.
 
-Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's addresses.
+  Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's addresses.
 
-Oct2017.mac_no_dhcp_lease # Depends on shi3lD.sh, a list of NOT working MAC's addresses.
+  Oct2017.mac_no_dhcp_lease # Depends on shi3lD.sh, a list of NOT working MAC's addresses.
 
-wH0rUNSon # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username and the host with a timestamp.
+  wH0rUNSon # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username and the host with a timestamp.
 
-.twmrc # vtwm layout
+  .twmrc # vtwm layout
 
-.config/terminator/config # terminator config
+  .config/terminator/config # terminator config
 
-.config/mc/ini # coloring mc
+  .config/mc/ini # coloring mc
 
 * in /usr/local/bin
 
-shi3lD.sh # network-manager
+  shi3lD.sh # network-manager
 
-start_shield.sh # Depends on shi3lD.sh.
+  start_shield.sh # Depends on shi3lD.sh.
 
-stop_shield.sh # Depends on shi3lD.sh.
+  stop_shield.sh # Depends on shi3lD.sh.
 
-serv-if-up.sh # Depends on shi3lD.sh, background process, restarts servers.
+  serv-if-up.sh # Depends on shi3lD.sh, background process, restarts servers.
 
-sCRYPtUPdater.sh # Syntax check and update to the path.
+  sCRYPtUPdater.sh # Syntax check and update to the path.
 
-feh-bg.sh # changes the background on vtwm.
+  feh-bg.sh # changes the background on vtwm.
 
 # Coming soon:
 
-An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
+  An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, 
+  C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
 
 * https://github.com/doivglser/min-dev-enviro/projects
 
