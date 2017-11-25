@@ -16,6 +16,12 @@ else
 	nNuM=$(echo "$myPrograms" | wc -w) ;
 	nNuM2=$(echo "$environinstall" | wc -w) ;
 
+		if [[ "$(df -h | grep -E /dev/run$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E /run/shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
 		while [[ "$nNuM" != "0" ]] ;
 	do
 		toInst=$(awk '{print $'"$nNuM"'}'<<<"$myPrograms") ;
