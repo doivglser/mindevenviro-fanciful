@@ -124,6 +124,8 @@ cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.0.tar.
   .config/terminator/config # terminator config
 
   .config/mc/ini # coloring mc
+  
+  .bash_profile # startup sound, clock and background.
 
 * in /usr/local/bin
 
