@@ -83,15 +83,7 @@ cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.0.tar.
 
   Multiple GNOME terminals in one window.
 
-* from terminator tab 1: a shell
-
-* from terminator tab 1: sCRYPtUPdater.sh
-
-  Set the workflow interval in minutes and edit your projects with your favorite editor (I use lpe). Update your scripts to
-  /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. 
-  Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
-
-* from terminator tab 2: shi3lD.sh (network-manager) in /dev/pts/2
+* from terminator tab-1 H-Paned: shi3lD.sh (network-manager)
 
   To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd 
   daemons are running. While running shi3lD.sh Firefox-ESR will be killed after each MAC-puffing. This script	runs only 
@@ -101,11 +93,19 @@ cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.0.tar.
   shi3lD.sh invokes serv-if-up.sh. "serv-if-up.sh" Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, 
   writes to /dev/pts/2 and to mailbox.
 
-* from terminator tab 2: mutt
+* from terminator tab-1 H-Paned: sCRYPtUPdater.sh
 
-* from terminator tab 3: nmon
+  Set the workflow interval in minutes and edit your projects with your favorite editor (I use lpe). Update your scripts to
+  /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. 
+  Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
 
-* from terminator tab 4: mc
+* from terminator tab-2 H-Paned: a shell (STDOUT from serv-if-up.sh to /dev/pts/2, reports failures)
+
+* from terminator tab-2 H-Paned: mutt
+
+* from terminator tab-3: nmon
+
+* from terminator tab-4: mc
 
 # Files:
 
