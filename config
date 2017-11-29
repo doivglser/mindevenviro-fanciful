@@ -35,11 +35,11 @@
       position = 60:100
       parent = "window0"
       size = 900, 700
-    [[[SHELL]]]
-      parent = child0
+    [[[shi3lD]]]
+      parent = child1
       position = 60:100
-      size = 900, 100
-      command = "fortunes-es"
+      size = 900, 200     
+      command = shi3lD.sh
       type = HPaned
       order = 0
     [[[sCRYPtUPdater]]]
@@ -57,13 +57,13 @@
       position = 60:100
       parent = "window1"
       size = 900, 700
-    [[[shi3lD]]]
-      parent = child1
+    [[[SHELL]]]
+      parent = child0
       position = 60:100
-      size = 900, 200     
-      command = shi3lD.sh
+      size = 900, 200
+      command = fortunes-es
       type = HPaned
-      order = 2
+      order = 2      
     [[[MUTT]]]
       parent = child1
       position = 60:300
