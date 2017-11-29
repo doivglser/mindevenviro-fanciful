@@ -90,15 +90,15 @@ done
 	cp -f config /home/$SUDO_USER/.config/terminator/config ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/terminator/config ;
 	
-	echo -e "\n ... copy the .xinitrc to $HOME" ;
-	cp -f xinitrc /home/$SUDO_USER/.xinitrc ;
-	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.xinitrc ;
+	echo -e "\n ... copy the bash_profile to $HOME" ;
+	cp -f bash_profile /home/$SUDO_USER/.bash_profile ;
+	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.bash_profile ;
 	
 	echo -e "\n ... copy the startup sound to $HOME/Music" ;
 	cp -f 76256__ganscaile__startup.mp3 /home/$SUDO_USER/Music/ ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/Music/* ;
 	
-	echo -e "\n ... set aliases" ;
+	echo -e "\n ... set aliases in .bashrc" ;
 	echo "alias ls='ls --color=auto -s'" >> /home/$SUDO_USER/.bashrc ;
 	
 	echo -e "\n ... set background Pictures" ;
