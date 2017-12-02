@@ -18,9 +18,9 @@ PIDof=$(pgrep sh13lD.sh) ;
 then
 
 # temp folder
-			if [[ "$(df -h | grep -E /dev/run$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+			if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
 	then
-		tmpfolder="$(df -h | grep -E /run/shm$ | cut -f2 -d% | tr -d '\ ')" ;
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
 	else
 		tmpfolder="/tmp" ;
 fi
