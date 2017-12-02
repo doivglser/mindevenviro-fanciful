@@ -172,6 +172,7 @@ cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.0.tar.
 ![VLC](https://nightlies.videolan.org/cone-soppera10.png)
 ![FIREFOX-ESR](http://lh4.googleusercontent.com/-ES6QFwghMpc/Tz5DbjB7zlI/AAAAAAAAA9o/T13MxP5CUrc/s1600/Firefox-ESR.png)
 ![stackoverflow](http://devlup.com/wp-content/uploads/2011/06/stackoverflow.png)
+![transmission](https://itsfoss.com/wp-content/uploads/2015/08/transmission-logo.png)
 ![google](http://www.fayerwayer.com/up/2008/02/google-07.png)
 ![Snort](https://www.snort.org/assets/SnortTM.png)
 ![lpe](https://screenshots.debian.net/screenshots/000/006/877/large.png)
