@@ -41,9 +41,9 @@ SIZEON=$(df -h | grep -E /$ | awk '{ print $2 }') ;
 USEDON=$(df -h | grep -E /$ | awk '{ print $3 }') ;
 INODES=$(df -i | grep -E /$ | awk '{ print $2 }') ;
 FREEINODES=$(df -i | grep -E /$ | awk '{ print $4 }') ;
-> $tmpfolder/mailapache2status ;
-> $tmpfolder/mailsendmailstatus ;
-> $tmpfolder/mailmysqlstatus ;
+>! $tmpfolder/mailapache2status ;
+>| $tmpfolder/mailsendmailstatus ;
+>| $tmpfolder/mailmysqlstatus ;
 
 while true
 
@@ -57,17 +57,17 @@ then
 
 echo -e "\n\n:: $webserver fails, but restartet successfully, you got an email ::\n" > /dev/pts/2 ;
 date > /dev/pts/2 ;
-systemctl status "$webserver".service >$tmpfolder/mailapache2status ;
+systemctl status "$webserver".service >|$tmpfolder/mailapache2status ;
 cat << EOM | mail "$SUDO_USER"@localhost
 Subject:"$webserver" restartet
-$(cat$tmpfolder/mailapache2status)
+$(cat $tmpfolder/mailapache2status)
 EOM
 	else
 
-systemctl status "$webserver".service >$tmpfolder/mailapache2status ;
+systemctl status "$webserver".service >|$tmpfolder/mailapache2status ;
 cat << EOM | mail "$SUDO_USER"@localhost
 Subject:"$webserver" cannot_restart
-$(cat$tmpfolder/mailapache2status)
+$(cat $tmpfolder/mailapache2status)
 EOM
 echo -e "\n\n:: you got email, $webserver fails, cannot restart ::\n" > /dev/pts/2 ;
 date > /dev/pts/2 ;
@@ -83,23 +83,23 @@ checkprog2=$(whereis "$mta" | awk '{print $2}') ;
 then
 	systemctl stop "$mta".service
 	sleep 1 ;
-        systemctl start "$mta".service >$tmpfolder/mailsendmailstatus ;
+        systemctl start "$mta".service >|$tmpfolder/mailsendmailstatus ;
         systemctl status "$mta".service >>$tmpfolder/mailsendmailstatus ;
 	echo "$?" >>$tmpfolder/mailsendmailstatus ;
 	sleep 1 ;
 cat << EOM | mail "$SUDO_USER"@localhost
 Subject:"$mta" restartet
-$(cat$tmpfolder/mailsendmailstatus)
+$(cat $tmpfolder/mailsendmailstatus)
 EOM
 echo -e "\n\n:: $mta is accepting connections again, you got an email ::\n" > /dev/pts/2 ;
 date > /dev/pts/2 ;
 
 	else
 
-date "+Start Attempt, Failure Time: %H.%M" >$tmpfolder/mailsendmailstatus ;
+date "+Start Attempt, Failure Time: %H.%M" >|$tmpfolder/mailsendmailstatus ;
 cat << EOM | mail "$SUDO_USER"@localhost
 Subject:"$mta" cannot_restart
-$(cat$tmpfolder/mailsenmailfail)
+$(cat $tmpfolder/mailsenmailfail)
 EOM
 echo -e "\n\n:: you got email, $mta cannot restart ::\n" > /dev/pts/2 ;
 date > /dev/pts/2 ;
@@ -115,23 +115,23 @@ checkprog3=$(whereis "$datenbank" | awk '{print $2}') ;
 then
 	/etc/init.d/"$datenbank" stop ;
 	sleep 1 ;
-        /etc/init.d/"$datenbank" start >$tmpfolder/mailmysqlstatus ;
+        /etc/init.d/"$datenbank" start >|$tmpfolder/mailmysqlstatus ;
         /etc/init.d/"$datenbank" status >>$tmpfolder/mailmysqlstatus ;
 	echo "$?" >>$tmpfolder/mailmysqlstatus ;
 sleep 1 ;
 cat << EOM | mail "$SUDO_USER"@localhost
 Subject:"$datenbank" restartet
-$(cat$tmpfolder/mailmysqlstatus)
+$(cat $tmpfolder/mailmysqlstatus)
 EOM
 echo -e "\n\n:: $datenbank is accepting connections again, you got an email ::\n" > /dev/pts/2 ;
 date > /dev/pts/2 ;
 
 	else
 
-date "+Start Attempt, Failure Time: %H.%M" >$tmpfolder/mailmysqlstatus ;
+date "+Start Attempt, Failure Time: %H.%M" >|$tmpfolder/mailmysqlstatus ;
 cat << EOM | "$datenbank" "$SUDO_USER"@localhost
 Subject:$datenbank failure.
-$(cat$tmpfolder/mailmysqlstatus )
+$(cat $tmpfolder/mailmysqlstatus)
 EOM
 echo -e "\n\n:: you got email, $datenbank cannot restart ::\n" > /dev/pts/2 ;
 date > /dev/pts/2 ;
