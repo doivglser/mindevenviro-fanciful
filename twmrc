@@ -50,6 +50,8 @@ menu "mindevenviro"
 ""                          f.nop
 "::  VLC Media Player  ::"  f.exec "exec vlc -I skins2 --skins2-last=/usr/share/vlc/skins2/169311-inkyV2.vlt &"
 ""                          f.nop
+"::   Transmission     ::"  f.exec "exec transmission &"
+""                          f.nop
 "::    Firefox-ESR     ::"  f.exec "exec firefox-esr &"
 ""                          f.nop
 "::    screensaver     ::"  f.exec "exec xscreensaver-command -exit && xscreensaver -nosplash &"
