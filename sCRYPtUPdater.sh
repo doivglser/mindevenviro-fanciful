@@ -25,9 +25,9 @@ listONmest4tus="0" ;
 excULEC0D3s="SC2009,SC2172,SC2162,SC2010,SC2126,SC2016,SC2034,SC2005,SC2013,SC2059,SC2086,SC2027,SC1091,SC2076,SC2116" ; 
 export excULEC0D3s ;
 # temp folder
-		if [[ "$(df -h | grep -E /dev/run$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
 	then
-		tmpfolder="$(df -h | grep -E /run/shm$ | cut -f2 -d% | tr -d '\ ')" ;
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
 	else
 		tmpfolder="/tmp" ;
 fi
