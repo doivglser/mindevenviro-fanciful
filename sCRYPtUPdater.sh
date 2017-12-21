@@ -158,7 +158,7 @@ fi
 
 exiter(){
 		#sudo rm -f "$tmpfolder"/convert-T0-utf-8.tmp 2>/dev/null;
-		echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: exit --\n" >>"$userHome/wH0rUNSon" &&
+		echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: exit --\n" >>"root/wH0rUNSon" &&
 		echo -e "\n\ngood bye, have a nice Day.\n" && exit 0 ;
 }
 
