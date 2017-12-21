@@ -8,7 +8,7 @@
 
 ° Checks syntax with "python -m pgb", "perl -wc", "bash -xvn" and "php -l".
 
-° Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - address.
+° Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC.
 
 ° Web surfing with Firefox-ESR and local/web media experience with VLC.
 
