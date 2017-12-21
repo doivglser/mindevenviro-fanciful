@@ -119,7 +119,7 @@ cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.0.tar.
 
 * in /root
 
-  wH0rUNSon (Workflow) # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username and the host with a timestamp.
+  wH0rUNSon # Depends on sCRYPtUPdater.sh, $USER workflow control.
 
 * in $HOME
 
