@@ -8,7 +8,7 @@
 
 ° Checks syntax with "python -m pgb", "perl -wc", "bash -xvn" and "php -l".
 
-° Changes MAC - addresses, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - address.
+° Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC - address.
 
 ° Web surfing with Firefox-ESR and local/web media experience with VLC.
 
@@ -117,6 +117,10 @@ cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.0.tar.
 
 # Files:
 
+* in /root
+
+  wH0rUNSon (Workflow) # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username and the host with a timestamp.
+
 * in $HOME
 
   installed # The list of the installed components.
@@ -124,8 +128,6 @@ cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.0.tar.
   Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's addresses.
 
   Oct2017.mac_no_dhcp_lease # Depends on shi3lD.sh, a list of NOT working MAC's addresses.
-
-  wH0rUNSon # Depends on sCRYPtUPdater.sh, sCRYPtUPdater.sh writes the username and the host with a timestamp.
 
   .twmrc # vtwm layout
 
