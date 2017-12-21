@@ -16,7 +16,7 @@ syntaxCHkr="bash perl python php" ;
 # the Work Directory
 userHome="/home/${SUDO_USER}" ;
 # User Host Control
-echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: WORK -\n" >>"$userHome/wH0rUNSon" ;
+echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: WORK -\n" >>"root/wH0rUNSon" ;
 # wholeC0unt4: to start by zero after first 
 wholeC0unt4="1" ;
 # listONmest4tus: to print how many bytes you've changed the last file you've edited
