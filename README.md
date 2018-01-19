@@ -79,9 +79,9 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
   lightweight BitTorrent client
   
-* lpe
+* geany
 
-  Lightweight Programmer's Editor
+  fast and lightweight IDE
 
 * PlayOnLinux (manage's wine)
 
@@ -89,41 +89,17 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
 * terminator
 
-  Multiple GNOME terminals in one window.
-
-* from terminator tab-1 H-Paned: shi3lD.sh (network-manager)
-
-  To change your MAC addresses, shi3lD.sh does a list with working and not working MAC's, and ensure the snort and clamd 
-  daemons are running. While running shi3lD.sh Firefox-ESR will be killed after each MAC-puffing. This script	runs only 
-  on systems without network-managers. PLEASE DON'T USE shi3lD.sh, IF YOU WANT TO LOGIN TO: facebook.com, or a 
-  free-web-mail-service (Or Firefox will open your previous session and you loose a MAC-ADDRESS and an IP-ADDRESS).
-
-  shi3lD.sh invokes serv-if-up.sh. "serv-if-up.sh" Restarts Apache2, MySQL, Sendmail. If false, or on lack of space, 
-  writes to /dev/pts/2 and to mailbox.
-
-* from terminator tab-1 H-Paned: sCRYPtUPdater.sh
-
-  Set the workflow interval in minutes and edit your projects with your favorite editor (I use lpe). Update your scripts to
-  /usr/local/bin, to /var/www/testphp or to /usr/lib/cgi-bin. Stop a php, python, perl or bash syntax-check, with ctrl+4. 
-  Be sure you change more then one byte (if you change just one digit, do a space or a hash with a comment). Close with ctrl+C.
-
-* from terminator tab-2 H-Paned: a shell (STDOUT from serv-if-up.sh to /dev/pts/2, reports failures)
-
-* from terminator tab-2 H-Paned: mutt
-
-* from terminator tab-3: nmon
-
-* from terminator tab-4: mc
+  Multiple GNOME terminals in one window. (soon with config)
 
 # Files:
 
-* in /root
+* in ~/
 
-  wH0rUNSon # Depends on sCRYPtUPdater.sh, $USER workflow control.
+  wH0rUNSon # Depends on sCRYPtUPdater.sh; $USER workflow control.
 
 * in $HOME
 
-  installed # The list of the installed components.
+  .installed # The list of the installed components.
 
   Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's addresses.
 
@@ -131,12 +107,8 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
   .twmrc # vtwm layout
 
-  .config/terminator/config # terminator config
-
   .config/mc/ini # coloring mc
   
-  .bash_profile # startup sound, clock and background.
-
 * in /usr/local/bin
 
   shi3lD.sh # network-manager
@@ -150,6 +122,8 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
   sCRYPtUPdater.sh # Syntax check and update to the path.
 
   feh-bg.sh # changes the background on vtwm.
+  
+  hi.sh # startup
 
 # Coming soon:
 
