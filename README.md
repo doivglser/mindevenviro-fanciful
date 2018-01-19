@@ -21,7 +21,8 @@
 # TODO:
 
 * shi3lD.sh
-
+  
+  Workaround to change more then one MAC - address.
   Workaround to change the user-agent while changing the MAC - addresses.
 
 * sCRYPtUPdater.sh
@@ -40,7 +41,9 @@
 - A fresh base-install of Debian GNU/Linux 9 Stretch.
 - Choose netinst CD image, and burn it on a blank CD-R.
 - Debian 9 GNU/Linux Stretch: https://www.debian.org/releases/stretch/debian-installer/
-- While installing: crypt your drive, don't choose any desktop or servers, choose a root and an user password.
+- While installing: 
+  crypt your drive, don't choose any desktop or servers, choose SSH-Server, choose a root and an user password.
+  
 - Root access, to make an entry for $USER in the /etc/sudoers file
 - An Internet connection
 
