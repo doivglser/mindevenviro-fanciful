@@ -3,7 +3,7 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
-IFS=$(echo -e "\n\b") ;
+IFS=$(echo -en "\n\b") ;
 
 		if [ ! $EUID = 0 ] ;
 	then
@@ -16,11 +16,11 @@ stopLoop="0" ;
 binarie0="/usr/sbin/clamd" ;
 binarie1="/usr/sbin/snort" ;
 homeordner="/home/${SUDO_USER}/" ;
-interface=$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | tr -d '\ ') ;
+
 nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 
 puff_MACs(){
-		if [[ "$(cat /home/"$SUDO_USER"/vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
+		if [[ "$(cat /home/"$SUDO_USER"/.vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
 	then
 		until [[ "$nnumberOFinterface" = "0" ]] ;
 	do
