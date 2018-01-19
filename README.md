@@ -20,9 +20,14 @@
 
 # TODO:
 
+* terminator
+
+  config
+
 * shi3lD.sh
   
   Workaround to change more then one MAC - address.
+  
   Workaround to change the user-agent while changing the MAC - addresses.
 
 * sCRYPtUPdater.sh
@@ -83,9 +88,9 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
   fast and lightweight IDE
 
-* PlayOnLinux (manage's wine)
+* PlayOnLinux (manage's wine win32/win64)
 
-  Install MS-Office, or Manage your projects with Ableton 9.
+  Install: MS-Office, Ableton Suite, Games, etc.
 
 * terminator
 
@@ -99,11 +104,13 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
 * in $HOME
 
-  .installed # The list of the installed components.
-
   Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's addresses.
 
   Oct2017.mac_no_dhcp_lease # Depends on shi3lD.sh, a list of NOT working MAC's addresses.
+
+  .installed # The list of the installed components.
+  
+  .vendorsmac # The list of the MAC-Adresses.
 
   .twmrc # vtwm layout
 
