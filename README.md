@@ -18,6 +18,14 @@
 
 ° For programmers and administrators.
 
+# PROBLEMS:
+
+* install.sh:
+
+  while installing snort: debconf asks for interface eth0 no workaround for "eno[0-9]" interfaces
+  
+  Take a look in to "ip route show" and "sudo dpkg --configure -a" with the name of your interface.
+
 # TODO:
 
 * terminator
