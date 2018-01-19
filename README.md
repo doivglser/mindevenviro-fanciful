@@ -34,7 +34,7 @@
 
   To search for brackets and braces, to split the content of the source code into short code snippets.
   If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
-  Scan in $HOME for file suffixes or the header with dd, to determine the working directory.
+  Scan in ~/ for file suffixes or the header with dd, to determine the working directory.
   Implement Programmable Completion, to auto-complete the command sequence with the [Tab] key.
 
 * mindevenviro.rules
@@ -102,7 +102,7 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
   wH0rUNSon # Depends on sCRYPtUPdater.sh; $USER workflow control.
 
-* in $HOME
+* in ~/
 
   Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's addresses.
 
