@@ -1,67 +1,90 @@
+NoDefaults
 NoGrabServer
 RestartPreviousState
 DecorateTransients
-TitleFont       "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
-ResizeFont      "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
-MenuFont        "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
-IconFont        "-adobe-helvetica-bold-r-normal--*-80-*-*-*-*-*-*"
+UsePPosition "on"
+TitleFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+ResizeFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+MenuFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
+IconFont "-adobe-helvetica-bold-r-normal--*-80-*-*-*-*-*-*"
 IconManagerFont "-adobe-helvetica-bold-r-normal--*-80-*-*-*"
+
+Cursors {
+	Frame	"top_left_arrow"
+	Title	"top_left_arrow"
+	Icon	"top_left_arrow"
+	IconMgr	"top_left_arrow"
+	Move	"fleur"
+	Resize	"fleur"
+	Menu	"sb_left_arrow"
+	Button	"hand2"
+	Wait	"watch"
+	Select	"dot"
+	Destroy	"pirate"
+}
 
 Color
 {
-    BorderColor              "green"
-    DefaultBackground        "black"
-    DefaultForeground        "white"
-    TitleBackground          "rgb:3/f/9"
-    TitleForeground          "gray60"
-    MenuBackground           "rgb:3/f/9"
-    MenuForeground           "gray30"
-    MenuBorderColor          "red"
-    MenuTitleBackground      "orange"
-    MenuTitleForeground      "rgb:5/e/7"
-    IconBackground           "rgb:5/e/7"
-    IconForeground           "gray60"
-    IconBorderColor          "gray50"
-    IconManagerBackground    "rgb:5/e/1"
-    IconManagerForeground    "gray10"
+BorderColor         "#4E4E4E"
+DefaultBackground   "#D6D6D6"
+DefaultForeground   "#000000"
+
+TitleBackground     "#4E4E4E"
+TitleForeground     "White"
+
+MenuTitleBackground "#4E4E4E"
+MenuTitleForeground "White"
+
+MenuBackground      "#1a1a1a"
+MenuForeground      "#4E4E4E"
+
+MenuShadowColor     "#1ef81e"
+MenuBorderColor     "#f81e00"
 }
 
-# Define some useful functions for motion-based actions.
-MoveDelta 3
-Function "move-or-lower"   { f.move f.deltastop f.lower }
-Function "move-or-raise"   { f.move f.deltastop f.raise }
-Function "move-or-iconify" { f.move f.deltastop f.iconify }
 # Set some useful bindings.  Sort of uwm-ish, sort of simple-button-ish
-Button1 = : root : f.menu "mindevenviro"
+
+MoveDelta 3
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+
+Button1 = : root : f.menu "defops"
+
 Button1 = m : window|icon : f.function "move-or-lower"
 Button2 = m : window|icon : f.iconify
 Button3 = m : window|icon : f.function "move-or-raise"
+
 Button1 = : title : f.function "move-or-raise"
 Button2 = : title : f.raiselower
+
 Button1 = : icon : f.function "move-or-iconify"
 Button2 = : icon : f.iconify
+
 Button1 = : iconmgr : f.iconify
 Button2 = : iconmgr : f.iconify
 
-# Menu
-menu "mindevenviro"
+Button1 = : frame : f.resize
+
+LeftTitleButton ":xlogo" = f.iconify
+RightTitleButton ":resize" = f.fullzoom
+
+Button1 = : virtual | desktop : f.movescreen
+
+#
+# And a menus with the usual things
+#
+menu "defops"
 {
 ":: - M1N-D3V-3NV1R0 - ::"  f.title
-""                          f.nop
-"::  VLC Media Player  ::"  f.exec "exec vlc -I skins2 --skins2-last=/usr/share/vlc/skins2/169311-inkyV2.vlt &"
-""                          f.nop
-"::   Transmission     ::"  f.exec "exec transmission &"
-""                          f.nop
-"::    Firefox-ESR     ::"  f.exec "exec firefox-esr &"
-""                          f.nop
-"::    screensaver     ::"  f.exec "exec xscreensaver-command -exit && xscreensaver -nosplash &"
-""                          f.nop
-"::    PlayOnLinux     ::"  f.exec "exec playonlinux &"
-""                          f.nop
-"::    Terminator      ::"  f.exec "exec terminator &"
-""                          f.nop
-"::    lpe Editor      ::"  f.exec "exec lpe &"
-""                          f.nop
-"::    change-bg       ::"  f.exec "exec feh-bg.sh &"
-""                          f.nop    
+":: VLC Media Player"  f.exec "exec vlc -I skins2 --skins2-last=/usr/share/vlc/skins2/169311-inkyV2.vlt &"
+":: Geany Editor"  f.exec "exec geany &"
+":: Transmission"  f.exec "exec transmission-gtk &"
+":: Firefox-ESR"  f.exec "exec firefox-esr &"
+":: PlayOnLinux"  f.exec "exec playonlinux &"
+":: Background"  f.exec "exec feh-bg.sh &"
+":: Terminator"  f.exec "exec /usr/local/bin/hi.sh &"
+"Kill"		f.destroy
+"Restart"	f.restart
+"Exit"		f.quit
 }

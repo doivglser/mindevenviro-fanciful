@@ -5,27 +5,27 @@ xlogin*login.translations: #override\
         CtrlReturn: set-session-argument(failsafe) finish-field()\n\
         Return: set-session-argument() finish-field()
 xlogin*borderWidth: 0
-xlogin*geometry: 360x200+1+1
+xlogin*geometry: 460x620+1+1
 xlogin*greeting: min-dev-enviro
 xlogin*namePrompt: dear:
 xlogin*fail: #@!
 #ifdef COLOR
 xlogin*greetColor: #3a6f3e
-xlogin*failColor: red
+xlogin*failColor: #ff0000
 *Foreground: #1e1e1e
 *Background: #000000
 #else
 xlogin*Foreground: #1e1e1e
 xlogin*Background: black
 #endif
-XConsole.text.geometry: 420x90
+XConsole.text.geometry: 620x790
 XConsole.verbose:       true
 XConsole*iconic:        true
 XConsole*font:          fixed
 
-Chooser*geometry:               512x420+100+100
+Chooser*geometry:               512x620+300+300
 Chooser*allowShellResize:       false
 Chooser*viewport.forceBars:     true
-Chooser*label.label:            min-dev-enviro
-Chooser*list.font:               -adobe-helvetica-bold-r-*-*-12-*
-Chooser*Command.font:            -adobe-helvetica-bold-r-*-*-12-*
+Chooser*label.label:            M1N-D3V-3NV1R0
+Chooser*list.font:               -adobe-helvetica-bold-r-*-*-10-*
+Chooser*Command.font:            -adobe-helvetica-bold-r-*-*-10-*

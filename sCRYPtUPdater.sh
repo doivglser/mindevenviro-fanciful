@@ -1,9 +1,12 @@
 #!/bin/bash
 # syntax check and update to /urs/local/bin, /var/www/testphp, /usr/lib/cgi-bin
+
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
 # TODO:
 #	invalid byte sequence with "tr -cd '\11\12\15\40-\176'"
 #	implement bash-completion, for TAB'ing
+# 	
 
 		if [ ! $EUID = 0 ] ;
 	then
@@ -16,7 +19,7 @@ syntaxCHkr="bash perl python php" ;
 # the Work Directory
 userHome="/home/${SUDO_USER}" ;
 # User Host Control
-echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: WORK -\n" >>"root/wH0rUNSon" ;
+echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: WORK -\n" >>"$HOME/wH0rUNSon" ;
 # wholeC0unt4: to start by zero after first 
 wholeC0unt4="1" ;
 # listONmest4tus: to print how many bytes you've changed the last file you've edited
@@ -35,7 +38,7 @@ fi
 
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
-toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '.wav|.jpg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install.sh|installed|master|HEAD|COMMIT_EDITMSG|config|description|sample|index|exclude|refs|wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
+toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '.wav|.jpg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install.sh|.installed|master|HEAD|COMMIT_EDITMSG|config|description|sample|index|exclude|refs|wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
 
 			if [[ "$toDayChanged" != '' ]] ;
 	then
@@ -158,7 +161,7 @@ fi
 
 exiter(){
 		#sudo rm -f "$tmpfolder"/convert-T0-utf-8.tmp 2>/dev/null;
-		echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: exit --\n" >>"root/wH0rUNSon" &&
+		echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: exit --\n" >>"$HOME/wH0rUNSon" &&
 		echo -e "\n\ngood bye, have a nice Day.\n" && exit 0 ;
 }
 
@@ -179,8 +182,6 @@ ch3kingSnx='' ;
 			diff -i "$listONme" "/usr/local/bin/$toC0pyIS" ;
 			read -p "check.syntax?" ;
 			
-			if [[ "$?" != 0 ]] ;
-		then
 			if [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
 		then
 			ch3kingSnx="bash" ;
@@ -222,14 +223,13 @@ fi
 			echo -e "\n$listONme appears to be ok.\n" ;
             		copyToPath ;
 		fi
-	fi
 	else
 		touchtoC0pyinbin ;
 fi
 }
 
 maincall(){
-        if [ -e "$userHome/installed" ] ;
+        if [ -e "$userHome/.installed" ] ;
     then
 		((wholeC0unt4--)) ;
 
@@ -245,17 +245,18 @@ fi
 		sC4n ;
 	else
 		listONmest4tus="0" ;
-		echo "no.changes" && read -p "waiting..." ;
+		echo -e "\nno.changes" && read -p "waiting..." ;
 		sC4n ;
 fi
 	else
-		echo -e "\n download min-dev-enviro from https://github.com/doivglser \n or remove /installed in line 209." && exit 2 ;
+		echo -e "\n download min-dev-enviro from https://github.com/doivglser \n or remove /.installed in line 209." && exit 2 ;
 fi
 
 }
 
-echo -e "\n hello $SUDO_USER\r updates bash and python to: /urs/local/bin, php to: /var/www/testphp and perl to: /usr/lib/cgi-bin \r Set the workflow interval:\n" ;
-printf " type here in minutes: " ; read -r minut3S ;
+echo -e "\n hello $SUDO_USER\n\n BASH/PYTHON to: /urs/local/bin\n PHP to: /var/www/testphp\n PERL to: /usr/lib/cgi-bin\n" ;
+
+printf " Set the workflow interval in minutes: " ; read -r minut3S ;
 
 	if [[ "$minut3S" = '' ]] ;
 then
