@@ -1,0 +1,77 @@
+[global_config]
+  broadcast_default = off
+  enabled_plugins = InactivityWatch, ActivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  extra_styling = False
+  focus = mouse
+  hide_from_taskbar = True
+  homogeneous_tabbar = False
+  inactive_color_offset = 0.0
+  scroll_tabbar = True
+  tab_position = hidden
+  title_use_system_font = False
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 20:20
+      size = 1200, 750
+      title = ivo@x0x: ~
+      type = Window
+    [[[child1]]]
+      active_page = 0
+      labels = None, None, None, None
+      last_active_term = caa469aa-4444-4e22-bb8b-1ee6812179c6, 9b48492d-168f-4a23-ad3b-2b0d6840d722, 999c3675-5772-4b96-b820-4f73b7d76d9d, bdd98a40-7ba4-4a41-8a61-e9e296c057e1
+      order = 0
+      parent = child0
+      type = Notebook
+    [[[child2]]]
+      order = 0
+      parent = child1
+      position = 0
+      ratio = 0.0
+      type = VPaned
+    [[[terminal3]]]
+      command = mutt
+      order = 0
+      parent = child2
+      profile = default
+      type = VPaned
+      uuid = 5c53599e-1b52-4efb-b3e9-006fb7f9f31c
+    [[[terminal7]]]
+      command = nmon
+      order = 1
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 9b48492d-168f-4a23-ad3b-2b0d6840d722
+    [[[terminal8]]]
+      command = mc
+      order = 2
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 999c3675-5772-4b96-b820-4f73b7d76d9d
+    [[[terminal9]]]
+      command = sCRYPtUPdater.sh
+      order = 3
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = bdd98a40-7ba4-4a41-8a61-e9e296c057e1
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.0
+    cursor_color = "#73d216"
+    cursor_color_fg = False
+    font = Noto Mono Bold 10
+    scroll_on_keystroke = False
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_system_font = False

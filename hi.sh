@@ -1,4 +1,5 @@
 #!/bin/bash
+#
 # startup file on /usr/local/bin
 #
 
@@ -13,10 +14,17 @@ sleep 4 ;
 feh-bg.sh &
 	}
 
-		if [[ $(ps axu | grep -v grep | grep oclock) != '' ]] || [[  $(ps axu | grep -v grep | grep xload) != ''  ]] || [[  $(ps axu | grep -v grep | grep xscreensaver) != ''  ]] ;
+		if [[ $(pgrep terminator) = '' ]] && \
+		[[ $(ps axu | grep -v grep | grep xload) != '' ]] && \
+		[[ $(ps axu | grep -v grep | grep xscreensaver) != '' ]] ;
 	then
-		echo -e " ... hi $USER" ;
-		/usr/games/fortune ;
-	else
+		terminator &
+
+		elif [[ $(ps axu | grep -v grep | grep oclock) = '' ]] || \
+		[[ $(ps axu | grep -v grep | grep xload) = '' ]] || \
+		[[ $(ps axu | grep -v grep | grep xscreensaver) = '' ]] ;
+	then
 		to_star_up ;
+	else
+		exit 0 ;
 fi

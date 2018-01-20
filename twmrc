@@ -25,11 +25,11 @@ Cursors {
 
 Color
 {
-BorderColor         "#4E4E4E"
+BorderColor         "#1ef600"
 DefaultBackground   "#D6D6D6"
 DefaultForeground   "#000000"
 
-TitleBackground     "#4E4E4E"
+TitleBackground     "#a06e32"
 TitleForeground     "White"
 
 MenuTitleBackground "#4E4E4E"

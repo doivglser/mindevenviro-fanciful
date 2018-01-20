@@ -95,6 +95,11 @@ done
 	mkdir -p /home/$SUDO_USER/.config/mc ;
 	cp -f ini /home/$SUDO_USER/.config/mc/ini ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/mc/ini ;
+
+	echo -e "\n ... copy the config file to /home/$SUDO_USER/.config/terminator/config" ;
+	mkdir -p /home/$SUDO_USER/.config/terminator/config ;
+	cp -f ini /home/$SUDO_USER/.config/terminator/config ;
+	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/terminator/config ;
 	
 	echo -e "\n ... copy the .twmrc file to /home/$SUDO_USER" ;
 	cp -f twmrc /home/$SUDO_USER/.twmrc ;
