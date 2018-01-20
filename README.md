@@ -20,6 +20,8 @@
 
 # PROBLEMS:
 
+* shi3lD.sh may not work, if your network is down.
+
 * install.sh:
 
   while installing snort: debconf asks for interface eth0 no workaround for "eno[0-9]" interfaces
@@ -29,8 +31,6 @@
 # TODO:
 
 * shi3lD.sh is not working
-  
-  Workaround to change more then one MAC - address.
   
   Workaround to change the user-agent while changing the MAC - addresses.
 
