@@ -16,7 +16,8 @@ stopLoop="0" ;
 binarie0="/usr/sbin/clamd" ;
 binarie1="/usr/sbin/snort" ;
 homeordner="/home/${SUDO_USER}/" ;
-
+cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1 >| "$tmpfolder"/interface ;
+interface="$(cat "$tmpfolder"/interface)" ;
 nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 
 puff_MACs(){
@@ -28,8 +29,8 @@ puff_MACs(){
 		m4c=$(echo "$interface" | awk '{print $'"$nnumberOFinterface"'}') &&
 		newM4CnewM4C=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//') &&
 		ip link set dev "$m4c" address "$newM4CnewM4C" && sleep 3 &&
-		((nnumberOFinterface--)) &&
 		ip link set dev "$m4c" up &&
+		((nnumberOFinterface--)) &&
 		sleep 9 ;
 done
 fi

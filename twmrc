@@ -1,13 +1,132 @@
-NoDefaults
+# $Id: system.vtwmrc-menu 62 2005-11-06 00:12:18Z branden $
+
+# Based on:
+# $XConsortium: system.twmrc,v 1.8 91/04/23 21:10:58 gildea Exp $
+
+#
+# Variables
+#
+
 NoGrabServer
+NoDefaults
 RestartPreviousState
-DecorateTransients
-UsePPosition "on"
-TitleFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
-ResizeFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
-MenuFont "-adobe-helvetica-bold-r-normal--*-100-*-*-*-*-*-*"
-IconFont "-adobe-helvetica-bold-r-normal--*-80-*-*-*-*-*-*"
-IconManagerFont "-adobe-helvetica-bold-r-normal--*-80-*-*-*"
+ShowIconManager
+SortIconManager
+IconifyByUnmapping
+RightHandSidePulldownMenus
+
+ButtonColorIsFrame
+ShallowReliefWindowButton
+
+FixManagedVirtualGeometries
+FixTransientVirtualGeometries
+
+BorderWidth		1
+
+BorderBevelWidth	1
+ButtonBevelWidth	0
+IconBevelWidth		1
+IconManagerBevelWidth	0
+InfoBevelWidth		1
+MenuBevelWidth		1
+TitleBevelWidth		0
+
+ClearBevelContrast	40
+DarkBevelContrast	40
+
+MoveDelta		3
+
+ResizeRegion		"NorthEast"
+VirtualDesktop		"3x3-0-0" 24
+
+TitleFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+ResizeFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+MenuFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+MenuTitleFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+IconFont		"-adobe-helvetica-bold-r-normal--*-70-*-*-*-*-*-*"
+InfoFont		"-adobe-helvetica-bold-r-normal--*-70-*-*-*-*-*-*"
+IconManagerFont		"-adobe-helvetica-bold-r-normal--*-70-*-*-*-*-*-*"
+
+#
+# Lists
+#
+
+WarpCursor
+
+NailedDown
+{
+	"VTWM Icon Manager"
+	"VTWM Desktop"
+}
+
+NoTitle
+{
+	"VTWM Icon Manager"
+}
+
+DontShowInDisplay
+{
+	"VTWM Icon Manager"
+	"VTWM Desktop"
+}
+
+IconManagerDontShow
+{
+	"VTWM Icon Manager"
+	"VTWM Desktop"
+}
+
+Color
+{
+	BorderColor			"grey70"
+	BorderTileBackground		"gray60"
+	BorderTileForeground		"gray60"
+	DefaultBackground		"maroon"
+	DefaultForeground		"gray85"
+	TitleBackground			"maroon"
+	TitleForeground			"gray85"
+	MenuBackground			"maroon"
+	MenuForeground			"gray85"
+	MenuTitleBackground		"gray70"
+	MenuTitleForeground		"maroon"
+	IconBackground			"maroon"
+	IconForeground			"gray85"
+	IconBorderColor			"gray85"
+	IconManagerBackground		"maroon"
+	IconManagerForeground		"gray85"
+	VirtualBackground		"maroon"
+	VirtualForeground		"black"
+	DesktopDisplayBackground	"grey60"
+}
+
+#
+# Functions and Bindings
+#
+
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+
+RightTitleButton ":xpm:dot" = f.iconify
+RightTitleButton ":xpm:resize" = f.resize
+
+Button1 = : root : f.menu "main"
+Button3 = : root : f.version
+
+Button1 = : title : f.function "move-or-raise"
+Button3 = : title : f.lower
+
+Button1 = : frame : f.function "move-or-raise"
+Button2 = : frame : f.resize
+Button3 = : frame : f.iconify
+
+Button1 = : icon : f.function "move-or-iconify"
+Button3 = : icon : f.menu "windowops"
+
+Button1 = : iconmgr : f.iconify
+Button3 = : iconmgr : f.warp
+
+Button1 = : virtual | desktop : f.movescreen
 
 Cursors {
 	Frame	"top_left_arrow"
@@ -42,39 +161,10 @@ MenuShadowColor     "#1ef81e"
 MenuBorderColor     "#f81e00"
 }
 
-# Set some useful bindings.  Sort of uwm-ish, sort of simple-button-ish
-
-MoveDelta 3
-Function "move-or-lower" { f.move f.deltastop f.lower }
-Function "move-or-raise" { f.move f.deltastop f.raise }
-Function "move-or-iconify" { f.move f.deltastop f.iconify }
-
-Button1 = : root : f.menu "defops"
-
-Button1 = m : window|icon : f.function "move-or-lower"
-Button2 = m : window|icon : f.iconify
-Button3 = m : window|icon : f.function "move-or-raise"
-
-Button1 = : title : f.function "move-or-raise"
-Button2 = : title : f.raiselower
-
-Button1 = : icon : f.function "move-or-iconify"
-Button2 = : icon : f.iconify
-
-Button1 = : iconmgr : f.iconify
-Button2 = : iconmgr : f.iconify
-
-Button1 = : frame : f.resize
-
-LeftTitleButton ":xlogo" = f.iconify
-RightTitleButton ":resize" = f.fullzoom
-
-Button1 = : virtual | desktop : f.movescreen
-
 #
 # And a menus with the usual things
 #
-menu "defops"
+menu "main"
 {
 ":: - M1N-D3V-3NV1R0 - ::"  f.title
 ":: VLC Media Player"  f.exec "exec vlc -I skins2 --skins2-last=/usr/share/vlc/skins2/169311-inkyV2.vlt &"
@@ -84,6 +174,7 @@ menu "defops"
 ":: PlayOnLinux"  f.exec "exec playonlinux &"
 ":: Background"  f.exec "exec feh-bg.sh &"
 ":: Terminator"  f.exec "exec /usr/local/bin/hi.sh &"
+"Lock"		f.exec "exec xscreensaver-command -lock &"
 "Kill"		f.destroy
 "Restart"	f.restart
 "Exit"		f.quit

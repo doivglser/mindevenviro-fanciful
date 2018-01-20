@@ -12,11 +12,14 @@ else
 	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD.sh | awk '{print $2}' | wc -l) " -gt "1" ]] ;
 then
 
+cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1 >| "$tmpfolder"/interface ;
+interface="$(cat "$tmpfolder"/interface)" ;
+
 stop_network(){
 	#
 	killall firefox-esr ;
 	#
-	ip link set dev "$(ip link show | grep -v grep | grep MULTICAST | cut -f2 -d: | tr -d '\ ')" down ; sleep 3 ;
+	ip link set dev "$interface" down ; sleep 3 ;
 }
 
 take_a_look(){

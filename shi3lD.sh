@@ -14,23 +14,44 @@ IFS=$(echo -en "\n\b") ;
 	then
 		sudo "$0" ;
 else
+
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# temp folder END
+
+# daemon to restart servers
 	if [[ ! "$(ps aux | grep -v grep | grep -v nano | grep serv-if-up.sh | awk '{print $2}' | wc -l)" -gt "1" ]] ;
 then
 	setsid serv-if-up.sh >/dev/null 2>&1 < /dev/null &
 fi
 
-clear && echo -e "\n" ;
-nnumberr="0" ;
-ifaceIT=$(ip route | grep -v grep | grep default | cut -f2 -d: | awk '{print $3}') ;
-ifaceUP=$(ip link | grep -v grep | grep MULTICAST | awk '{print $2}' | sed 's/://') ;
-
-		if [ -e "/home/$SUDO_USER/.vendorsmac" ] && [[ "$(wc -l /home/"$SUDO_USER"/.vendorsmac)" = "1" ]] ;
+# vendors mac-address
+		if [ -e "/home/$SUDO_USER/.vendorsmac" ] && [[ "$(wc -l /home/"$SUDO_USER"/.vendorsmac)" -ge "1" ]] ;
 	then
 		echo " . -installed";
 	else
 		> /home/"$SUDO_USER"/.vendorsmac ;
 
 		ip link show | grep ether | awk '{print $2}' | tee -a /home/"$SUDO_USER"/.vendorsmac ;
+fi
+
+clear && echo -e "\n" ;
+nnumberr="0" ;
+cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1 >| "$tmpfolder"/interface ;
+interface="$(cat "$tmpfolder"/interface)" ;
+
+		if [[ "$interface" =~ 'eno|eth' ]] ;
+	then
+		whoUP="1" ;
+
+		elif [[ "$interface" =~ 'wl|wi' ]] ;
+	then
+		whoUP="2" ;
 fi
 
 puffeRR(){
@@ -53,7 +74,7 @@ echo -e "-"
 	then
 		killall firefox-esr ;
 		ip link set dev "$interface" down && sleep 2 &&
-		ip link set dev "$interface" address "$(cat /home/"${SUDO_USER}"/.vendorsmac)" &&
+		ip link set dev "$interface" address "$(cat /home/"${SUDO_USER}"/.vendorsmac | head -n$whoUP)" &&
 		ip link set dev "$interface" up && sleep 2 ;
 		systemctl restart snort.service && clear &&
 		echo -e "\n .You where surfing with this MAC:\n\n
