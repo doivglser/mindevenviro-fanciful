@@ -52,8 +52,11 @@
 - Debian 9 GNU/Linux Stretch: https://www.debian.org/releases/stretch/debian-installer/
 - While installing: 
 
-  crypt your drive, don't choose any desktop or servers, 
-  but choose SSH-Server, choose a root and an user password.
+  Choose a root and an user password,
+  Guided - use entire disk and set up envrypted LVM,
+  Separate /home, /var, and /tmp partitions,
+  Don't choose any desktop or servers, 
+  but standard system utilities.
   
 - Root access, to make an entry for $USER in the /etc/sudoers file
 - An Internet connection
