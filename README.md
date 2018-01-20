@@ -28,10 +28,6 @@
 
 # TODO:
 
-* terminator
-
-  config
-
 * shi3lD.sh
   
   Workaround to change more then one MAC - address.
@@ -55,7 +51,9 @@
 - Choose netinst CD image, and burn it on a blank CD-R.
 - Debian 9 GNU/Linux Stretch: https://www.debian.org/releases/stretch/debian-installer/
 - While installing: 
-  crypt your drive, don't choose any desktop or servers, choose SSH-Server, choose a root and an user password.
+
+  crypt your drive, don't choose any desktop or servers, 
+  but choose SSH-Server, choose a root and an user password.
   
 - Root access, to make an entry for $USER in the /etc/sudoers file
 - An Internet connection
@@ -102,7 +100,7 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
 * terminator
 
-  Multiple GNOME terminals in one window. (soon with config)
+  Multiple GNOME terminals in one window.
 
 # Files:
 
