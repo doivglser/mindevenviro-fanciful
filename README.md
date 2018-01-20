@@ -28,7 +28,7 @@
 
 # TODO:
 
-* shi3lD.sh
+* shi3lD.sh is not working
   
   Workaround to change more then one MAC - address.
   
@@ -60,11 +60,7 @@
 
 # Install
 
-* log in over SSH and copy/paste the line below:
-
-cd $HOME && wget https://github.com/doivglser/min-dev-enviro/archive/v1.0.0.tar.gz && tar -xvzf v1.0.0.tar.gz && cd min-dev-enviro-1.0.0 && ls -ahls --color=auto && pwd
-
-* ./install
+* ~/min-dev-enviro$ sudo ./install.sh
 
   Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
