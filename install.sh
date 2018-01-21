@@ -90,8 +90,10 @@ done
 	chmod 755 /etc/X11/xdm/Xresources ;
 
 	echo -e "\n ... update .bashrc" ;
+	echo "set -o noclobber" >> /home/$SUDO_USER/.bashrc ;	
 	echo "alias ls='ls --color=auto -s'" >> /home/$SUDO_USER/.bashrc ;
-	echo "set -o noclobber" >> /home/$SUDO_USER/.bashrc ;
+	echo "alias check='ps aux | grep -v grep | grep clamd && ps aux | grep -v grep | grep snort'" >> /home/$SUDO_USER/.bashrc ;
+	echo "alias snortup='sudo -u root setsid snort -i wlp3s0b1 >/dev/null 2>&1 < /dev/null &'" >> /home/$SUDO_USER/.bashrc ;
 
 	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
 	mkdir -p /home/$SUDO_USER/.config/mc 2>/dev/null ;
