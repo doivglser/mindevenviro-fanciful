@@ -6,7 +6,7 @@
 
 LANG="C" ;
 myPrograms="snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
-environinstall="serv-if-up.sh sCRYPtUPdater.sh shi3lD.sh stop_shield.sh start_shield.sh feh-bg.sh hi.sh " ;
+environinstall="serv-if-up.sh sCRYPtUPdater.sh shi3lD.sh stop_shield.sh start_shield.sh feh-bg.sh hi.sh hi_geany.sh hi_transmission-gtk.sh hi_firefox-esr.sh hi_playonlinux.sh hi_vlc.sh " ;
 
 		if [ ! $EUID = 0 ] ;
 	then
@@ -52,7 +52,7 @@ done
 	cp -f 76256__ganscaile__startup.mp3 /home/$SUDO_USER/Music/ && wait ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/Music/* ;
 
-	echo -e "\n ... going to install programs\r ... copy sources.list\r ... and do a first update\r" ;
+	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
 	cp -f sources.list /etc/apt/sources.list
 	apt-get update && wait ;
 
@@ -65,6 +65,7 @@ done
 		if [[ "${#wH3RE}" != "0" ]] ;
 	then
 		apPR="$toInst, allready installed" ;
+		echo -e "\n$apPR" | tee -a "/home/$SUDO_USER/.installed";
 		((nNuM2--)) ;
 	else
 		echo -e "\ninstalling ${toInst}..." ;
@@ -72,6 +73,7 @@ done
 		wait ;
 		sleep 1 ;
 		apPR="$toInst, INSTALLED! " ;
+		echo -e "\n$apPR" | tee -a "/home/$SUDO_USER/.installed";		
 		sleep 0.5 ;
 		((nNuM2--)) ;
 fi
@@ -92,13 +94,13 @@ done
 	echo "set -o noclobber" >> /home/$SUDO_USER/.bashrc ;
 
 	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
-	mkdir -p /home/$SUDO_USER/.config/mc ;
+	mkdir -p /home/$SUDO_USER/.config/mc 2>/dev/null ;
 	cp -f ini /home/$SUDO_USER/.config/mc/ini ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/mc/ini ;
 
 	echo -e "\n ... copy the config file to /home/$SUDO_USER/.config/terminator/config" ;
-	mkdir -p /home/$SUDO_USER/.config/terminator/config ;
-	cp -f ini /home/$SUDO_USER/.config/terminator/config ;
+	mkdir -p /home/$SUDO_USER/.config/terminator/config 2>/dev/null ;
+	cp -f config /home/$SUDO_USER/.config/terminator/config ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/terminator/config ;
 	
 	echo -e "\n ... copy the .twmrc file to /home/$SUDO_USER" ;
@@ -110,25 +112,25 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.xscreensaver ;	
 
 	echo -e "\n ... copy VLC skin" ;
-	cp -f 169311-inkyV2.vlt /usr/share/vlc/skins2/ ;
-	chmod 755 /usr/share/vlc/skins2/169311-inkyV2.vlt ;
+	cp -f STRYPER-VLC.vlt /usr/share/vlc/skins2/ ;
+	chmod 755 /usr/share/vlc/skins2/STRYPER-VLC.vlt ;
 
 	echo -e "\n ... set the upload path for PHP scripts" ;
-	mkdir -p /var/www/testphp 2>/dev/null ;
-	echo "Alias /testphp/ /var/www/testphp/" >> /etc/apache2/sites-available/default ;
+	mkdir -p /var/www/html/testphp/ 2>/dev/null ;
+	echo "Alias /testphp/ /var/www/html/testphp/" >> /etc/apache2/sites-available/000-default.conf ;
 	
-	echo -e "\n ...check for cgi-bin on drive" ;
+	echo -e "\n ... check for cgi-bin on drive" ;
 	
-		if [[ ! "$(cat /etc/apache2/sites-available/default | grep cgi-bin)" =~ '/usr/lib/cgi-bin/' ]] ;
+		if [[ ! "$(cat /etc/apache2/sites-available/000-default.conf | grep cgi-bin)" =~ '/usr/lib/cgi-bin/' ]] ;
 	then
 		mkdir -p /usr/lib/cgi-bin/ 2>/dev/null ;
 		echo -e "\nScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\r
 		<Directory "/usr/lib/cgi-bin">\r
 		AllowOverride None\r
-		Options ExecCGI -MultiViews +SymLinksIfOwnerMatch\r
+		Options +ExecCGI +MultiViews +SymLinksIfOwnerMatch\r
 		Order allow,deny\r
 		Allow from all\r
-		</Directory>\n" >> /etc/apache2/sites-available/default ;
+		</Directory>\n" >> /etc/apache2/sites-available/000-default.conf ;
 	else
 		echo -e "\n ... cgi-bin dir exists" ;
 fi
@@ -144,7 +146,7 @@ fi
 		echo -e "\n ... set the rights for installed (to remove it later)" ;
 		chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/.installed" ;
 
-		echo -e "\n\n ... Congratulations we have dev-shell-enviro successfully installed!\r" ;
+		echo -e "\n\n ... Congratulations we have min-dev-enviro successfully installed!\r" ;
 else
 		echo -e "\n Allready installed, for a new install, remove /home/$SUDO_USER/.installed\r" ;
 fi

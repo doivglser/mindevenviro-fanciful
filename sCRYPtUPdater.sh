@@ -1,8 +1,6 @@
 #!/bin/bash
 # syntax check and update to /urs/local/bin, /var/www/testphp, /usr/lib/cgi-bin
-
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-
 # TODO:
 #	invalid byte sequence with "tr -cd '\11\12\15\40-\176'"
 #	implement bash-completion, for TAB'ing
@@ -19,7 +17,7 @@ syntaxCHkr="bash perl python php" ;
 # the Work Directory
 userHome="/home/${SUDO_USER}" ;
 # User Host Control
-echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: WORK -\n" >>"$HOME/wH0rUNSon" ;
+echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: WORK -\n" >>"$userHome/wH0rUNSon" ;
 # wholeC0unt4: to start by zero after first 
 wholeC0unt4="1" ;
 # listONmest4tus: to print how many bytes you've changed the last file you've edited
@@ -38,7 +36,7 @@ fi
 
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
-toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install.sh|.installed|master|HEAD|COMMIT_EDITMSG|config|description|sample|index|exclude|refs|wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
+toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '.vlt|crap|.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install.sh|.installed|master|HEAD|COMMIT_EDITMSG|.config|.twmrc|untitled|twmrc|config|description|sample|index|exclude|refs|wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
 
 			if [[ "$toDayChanged" != '' ]] ;
 	then
@@ -161,7 +159,7 @@ fi
 
 exiter(){
 		#sudo rm -f "$tmpfolder"/convert-T0-utf-8.tmp 2>/dev/null;
-		echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: exit --\n" >>"$HOME/wH0rUNSon" &&
+		echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $userHome :: exit --\n" >>"$userHome/wH0rUNSon" &&
 		echo -e "\n\ngood bye, have a nice Day.\n" && exit 0 ;
 }
 
@@ -254,7 +252,7 @@ fi
 
 }
 
-echo -e "\n hello $SUDO_USER\n\n BASH/PYTHON to: /urs/local/bin\n PHP to: /var/www/testphp\n PERL to: /usr/lib/cgi-bin\n" ;
+echo -e "\n hello $SUDO_USER\n\n BASH/PYTHON to: /usr/local/bin\n PHP to: /var/www/html/testphp\n PERL to: /usr/lib/cgi-bin\n" ;
 
 printf " Set the workflow interval in minutes: " ; read -r minut3S ;
 
