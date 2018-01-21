@@ -47,6 +47,7 @@ done
 
 	echo -e "\n ... create /home/$SUDO_USER Directories" ;
 	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton} 2>/dev/null ;
+	chown -R ivo:ivo /home/$USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton}
 
 	echo -e "\n ... set background Pictures" ;
 	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures/ && wait ;
