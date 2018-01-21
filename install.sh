@@ -8,6 +8,10 @@ LANG="C" ;
 myPrograms="snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
 environinstall="serv-if-up.sh sCRYPtUPdater.sh shi3lD.sh stop_shield.sh start_shield.sh feh-bg.sh hi.sh hi_geany.sh hi_transmission-gtk.sh hi_firefox-esr.sh hi_playonlinux.sh hi_vlc.sh hi_wicd-client.sh " ;
 
+		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
+	then
+		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
+fi
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
@@ -94,7 +98,7 @@ done
 	echo "set -o noclobber" >> /home/$SUDO_USER/.bashrc ;	
 	echo "alias ls='ls --color=auto -s'" >> /home/$SUDO_USER/.bashrc ;
 	echo "alias check='ps aux | grep -v grep | grep clamd && ps aux | grep -v grep | grep snort'" >> /home/$SUDO_USER/.bashrc ;
-	echo "alias snortup='sudo -u root setsid snort -i wlp3s0b1 >/dev/null 2>&1 < /dev/null &'" >> /home/$SUDO_USER/.bashrc ;
+	echo "alias snortup='sudo -u root setsid snort -i "$interface" >/dev/null 2>&1 < /dev/null &'" >> /home/$SUDO_USER/.bashrc ;
 	echo "alias down='sudo init 0'" >> /home/$SUDO_USER/.bashrc ;
 	echo "alias reboot='sudo init 6'" >> /home/$SUDO_USER/.bashrc ;
 
