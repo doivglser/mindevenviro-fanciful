@@ -71,7 +71,7 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
 # USAGE:
 
-* Login just to X.
+* Login just to X. Click with the mouse.
 
 # On vtwm:
 
