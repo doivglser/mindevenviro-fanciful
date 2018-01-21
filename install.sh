@@ -55,6 +55,7 @@ done
 	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
 	cp -f sources.list /etc/apt/sources.list
 	apt-get update && wait ;
+	apt -f -y -m autoremove && wait ;
 
 		while [[ "$nNuM2" != "0" ]] ;
 	do
@@ -94,6 +95,8 @@ done
 	echo "alias ls='ls --color=auto -s'" >> /home/$SUDO_USER/.bashrc ;
 	echo "alias check='ps aux | grep -v grep | grep clamd && ps aux | grep -v grep | grep snort'" >> /home/$SUDO_USER/.bashrc ;
 	echo "alias snortup='sudo -u root setsid snort -i wlp3s0b1 >/dev/null 2>&1 < /dev/null &'" >> /home/$SUDO_USER/.bashrc ;
+	echo "alias down='sudo init 0'" >> /home/$SUDO_USER/.bashrc ;
+	echo "alias reboot='sudo init 6'" >> /home/$SUDO_USER/.bashrc ;
 
 	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
 	mkdir -p /home/$SUDO_USER/.config/mc 2>/dev/null ;
@@ -142,8 +145,8 @@ fi
 		echo -e "\n ... restart server" ;
 		systemctl restart apache2.service && wait ;
 
-		echo -e "\n ... put $HOME/Downloads in a Jail" ;
-		echo "/dev/shm /home/$(cat /etc/passwd | grep 1000 | cut -f1 -d:)/Downloads auto bind 0 0" | tee -a /etc/fstab ;
+		echo -e "\n ... put $SUDO_USER/Downloads in a Jail" ;
+		echo "/dev/shm /home/$SUDO_USER/Downloads auto bind 0 0" | tee -a /etc/fstab ;
 
 		echo -e "\n ... set the rights for installed (to remove it later)" ;
 		chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/.installed" ;
