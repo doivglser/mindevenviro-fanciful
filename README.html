@@ -1,0 +1,151 @@
+<html><body><pre>
+	
+# M1N-D3V-3NV1R0
+
+:::  Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
+
+° For Debian GNU/Linux.
+
+° Antivirus engine ClamAV and NIDS solution Snort.
+
+° Checks syntax with "python -m pgb", "perl -wc", "bash -xvn" and "php -l".
+
+° Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC.
+
+° Web surfing with Firefox-ESR and local/web media experience with VLC.
+
+° PlayOnLinux, I use Ableton Suite.
+
+° Restarts apache2, mysqld, sendmail, snort, clamd.
+
+° For programmers and administrators.
+
+# PROBLEMS:
+
+* shi3lD.sh may not work, if your network is down.
+
+* install.sh:
+
+  while installing snort: debconf asks for interface eth0 no workaround for "eno[0-9]" interfaces
+  
+  Take a look in to "ip route show" and "sudo dpkg --configure -a" with the name of your interface.
+
+# TODO:
+
+* shi3lD.sh is not working
+  
+  Workaround to change the user-agent while changing the MAC - addresses.
+
+* sCRYPtUPdater.sh
+
+  To search for brackets and braces, to split the content of the source code into short code snippets.
+  If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
+  Scan in ~/ for file suffixes or the header with dd, to determine the working directory.
+  Implement Programmable Completion, to auto-complete the command sequence with the [Tab] key.
+
+* mindevenviro.rules
+
+  iptables drop rules for /etc/snort/rules/
+
+# Requirements:
+
+- A fresh base-install of Debian GNU/Linux 9 Stretch.
+- Choose netinst CD image, and burn it on a blank CD-R.
+- Debian 9 GNU/Linux Stretch: https://www.debian.org/releases/stretch/debian-installer/
+- While installing: 
+
+  Choose a root and an user password,
+  Guided - use entire disk and set up envrypted LVM,
+  Separate /home, /var, and /tmp partitions,
+  Don't choose any desktop or servers, 
+  but standard system utilities.
+  
+- Root access, to make an entry for $USER in the /etc/sudoers file
+- An Internet connection
+
+# Install
+
+* ~/min-dev-enviro$ sudo ./install.sh
+
+  Installs the deployment environment and the minimal desktop with antivirus and NIDS:
+
+snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon 
+
+# USAGE:
+
+* Login just to X. Click with the mouse.
+
+# On vtwm:
+
+* Firefox-ESR
+
+  type: localhost/dwww for dwww. ( dwww collects information from /usr/share/{man,doc} )
+
+  type: localhost/testphp for your php stuff.
+
+* VLC 
+
+  Listen to your music and/or videos.
+  
+* transmission
+
+  lightweight BitTorrent client
+  
+* geany
+
+  fast and lightweight IDE
+
+* PlayOnLinux (manage's wine win32/win64)
+
+  Install: MS-Office, Ableton Suite, Games, etc.
+
+* terminator
+
+  Multiple GNOME terminals in one window.
+
+# Files:
+
+* in ~/
+
+  wH0rUNSon  Depends on sCRYPtUPdater.sh; $USER workflow control.
+
+* in ~/
+
+  Oct2017.mac_recieves_dhcp_lease  Depends on shi3lD.sh, a list of working MAC's addresses.
+
+  Oct2017.mac_no_dhcp_lease  Depends on shi3lD.sh, a list of NOT working MAC's addresses.
+
+  .installed  The list of the installed components.
+  
+  .vendorsmac  The list of the MAC-Adresses.
+
+  .twmrc  vtwm layout
+
+  .config/mc/ini  coloring mc
+  
+* in /usr/local/bin
+
+  shi3lD.sh  network-manager
+
+  start_shield.sh  Depends on shi3lD.sh.
+
+  stop_shield.sh  Depends on shi3lD.sh.
+
+  serv-if-up.sh  Depends on shi3lD.sh, background process, restarts servers.
+
+  sCRYPtUPdater.sh  Syntax check and update to the path.
+
+  feh-bg.sh  changes the background on vtwm.
+  
+  hi.sh  startup
+
+# Coming soon:
+
+  An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, 
+  C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
+
+* https://github.com/doivglser/min-dev-enviro/projects
+
+# Thank's
+
+</pre></body></html>

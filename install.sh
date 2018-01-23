@@ -126,7 +126,11 @@ done
 	chmod 755 /usr/share/vlc/skins2/STRYPER-VLC.vlt ;
 
 	echo -e "\n ... set the upload path for PHP scripts" ;
+	rm -f /var/www/html/index*
 	mkdir -p /var/www/html/testphp/ 2>/dev/null ;
+	cp README.html /var/www/html/README.html ;
+	chown www-data:www-data /var/www/html/README.html ;
+	
 	echo "Alias /testphp/ /var/www/html/testphp/" >> /etc/apache2/sites-available/000-default.conf ;
 	
 	echo -e "\n ... check for cgi-bin on drive" ;

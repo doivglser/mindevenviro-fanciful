@@ -1,5 +1,7 @@
 #!/bin/bash
+
 # syntax check and update to /urs/local/bin, /var/www/testphp, /usr/lib/cgi-bin
+
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # TODO:
 #	invalid byte sequence with "tr -cd '\11\12\15\40-\176'"
@@ -36,7 +38,7 @@ fi
 
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
-toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '.md|.vlt|crap|.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install.sh|.installed|master|HEAD|COMMIT_EDITMSG|.config|.twmrc|untitled|twmrc|config|description|sample|index|exclude|refs|wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
+toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE 'README|.md|.vlt|crap|.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install.sh|.installed|master|HEAD|COMMIT_EDITMSG|.config|.twmrc|untitled|twmrc|config|description|sample|index|exclude|refs|wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
 
 			if [[ "$toDayChanged" != '' ]] ;
 	then
@@ -107,12 +109,22 @@ copyToPath(){
 
 			if [[ "$REPLY" != "n" ]] ;
 		then
-			if [[ "$listONmeIS" =~ 'PHP ' ]] ;
+			if [[ "$listONmeIS" =~ 'HTML ' ]] ;
 		then
 			echo -e "\n" ;
-			sudo cp -f "$listONme" "/var/www/testphp/$toC0pyIS" ;
-			sudo chown www:www "/var/www/testphp/$toC0pyIS" ;
-			sudo chmod 0755 "/var/www/testphp/$toC0pyIS" ;
+			sudo cp -f "$listONme" "/var/www/html/testphp/$toC0pyIS" ;
+			sudo chown www-data:www-data "/var/www/html/testphp/$toC0pyIS" ;
+			sudo chmod 0755 "/var/www/html/testphp/$toC0pyIS" ;
+			echo "$toC0pyIS"
+			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			maincall ;
+					
+			elif [[ "$listONmeIS" =~ 'PHP ' ]] ;
+		then
+			echo -e "\n" ;
+			sudo cp -f "$listONme" "/var/www/html/testphp/$toC0pyIS" ;
+			sudo chown www-data:www-data "/var/www/html/testphp/$toC0pyIS" ;
+			sudo chmod 0755 "/var/www/html/testphp/$toC0pyIS" ;
 			echo "$toC0pyIS"
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall ;
@@ -148,7 +160,7 @@ copyToPath(){
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall ;
 		else
-			echo -e "\nYour scripts should have a SheBang entry on the first line. \r #!/usr/bin/env perl OR #!/bin/bash OR #!/usr/bin/env python OR <¿php OR <¿PHP \r On Windows additionally a file suffix correspondent to the SheBang. \n" ;
+			echo -e "\nYour scripts should have a SheBang entry on the first line. \n#!/usr/bin/env perl OR #!/bin/bash OR #!/usr/bin/env python OR <¿php OR <¿PHP \n On Windows additionally a file suffix correspondent to the SheBang. \n" ;
 		fi
 		else
 			echo ":: nothing updated" ;
@@ -203,6 +215,12 @@ ch3kingSnx='' ;
 			ch3kingSnx="perl"
 			echo "$listONme" | xargs $ch3kingSnx -wc ;
 			exitc0de=$(echo $?) ;
+			
+			elif [[ "$listONmeIS" =~ 'HTML ' ]] ;
+		then
+			ch3kingSnx="less"
+			echo "$listONme" | xargs $ch3kingSnx ;
+			exitc0de=$(echo $?) ;			
 		fi
 			if [[ "$exitc0de" != 0 ]] ;
 		then
