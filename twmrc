@@ -107,7 +107,7 @@ Function "move-or-lower" { f.move f.deltastop f.lower }
 Function "move-or-raise" { f.move f.deltastop f.raise }
 Function "move-or-iconify" { f.move f.deltastop f.iconify }
 
-RightTitleButton ":xpm:dot" = f.iconify
+LeftTitleButton ":xpm:dot" = f.iconify
 RightTitleButton ":xpm:resize" = f.resize
 
 Button1 = : root : f.menu "main"
