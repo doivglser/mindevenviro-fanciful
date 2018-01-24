@@ -124,7 +124,11 @@ done
 	echo -e "\n ... copy VLC skin" ;
 	cp -f STRYPER-VLC.vlt /usr/share/vlc/skins2/ ;
 	chmod 755 /usr/share/vlc/skins2/STRYPER-VLC.vlt ;
-
+	cp -f 169311-inkyV2.vlt /usr/share/vlc/skins2/ ;
+	chmod 755 /usr/share/vlc/skins2/169311-inkyV2.vlt ;
+	cp -f default.vlt /usr/share/vlc/skins2/ ;
+	chmod 755 /usr/share/vlc/skins2/default.vlt ;
+	
 	echo -e "\n ... set the upload path for PHP scripts" ;
 	rm -f /var/www/html/index*
 	mkdir -p /var/www/html/testphp/ 2>/dev/null ;
