@@ -42,10 +42,9 @@ VirtualDesktop		"3x2-13-31" 27
 TitleFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
 ResizeFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
 MenuFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
-MenuTitleFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+MenuTitleFont	"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
 IconFont		"-adobe-helvetica-bold-r-normal--*-70-*-*-*-*-*-*"
 InfoFont		"-adobe-helvetica-bold-r-normal--*-70-*-*-*-*-*-*"
-IconManagerFont		"-adobe-helvetica-bold-r-normal--*-70-*-*-*-*-*-*"
 
 #
 # Lists
@@ -117,7 +116,6 @@ Button1 = : title : f.function "move-or-raise"
 Button3 = : title : f.lower
 
 Button1 = : frame : f.function "move-or-raise"
-Button2 = : frame : f.resize
 Button3 = : frame : f.iconify
 
 Button1 = : icon : f.function "move-or-iconify"
@@ -134,8 +132,8 @@ Cursors {
 	IconMgr	"top_left_arrow"
 	Move	"fleur"
 	Resize	"fleur"
-	Menu	"sb_left_arrow"
-	Button	"hand2"
+	Menu	"hand2"
+	Button	"sb_left_arrow"
 	Wait	"watch"
 	Select	"dot"
 	Destroy	"pirate"
