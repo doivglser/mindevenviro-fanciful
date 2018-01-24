@@ -8,5 +8,3 @@ if [[ $(ps axu | grep -v grep | grep -v hi_vlc.sh | grep STRYPER-VLC) = '' ]] ;
         else
                 exit 0 ;
 fi	
-	}
-

@@ -166,13 +166,14 @@ MenuBorderColor     "#f81e00"
 menu "main"
 {
 ":: - M1N-D3V-3NV1R0 - ::"  f.title
-":: VLC Media Player"  f.exec "exec /usr/local/bin/hi_vlc.sh &"
 ":: Geany Editor"  f.exec "exec /usr/local/bin/hi_geany.sh &"
 ":: Transmission"  f.exec "exec /usr/local/bin/hi_transmission-gtk.sh &"
 ":: Firefox-ESR"  f.exec "exec /usr/local/bin/hi_firefox-esr.sh &"
 ":: PlayOnLinux"  f.exec "exec /usr/local/bin/hi_playonlinux.sh &"
 ":: Terminator"  f.exec "exec /usr/local/bin/hi.sh &"
 ":: Network"	f.exec "exec /usr/local/bin/hi_wicd-client.sh &"
+":: Music"  f.exec "exec /usr/local/bin/hi_vlc.sh &"
+":: Video"  f.exec "exec /usr/local/bin/hi_vlc_v.sh &"
 "Background"  f.exec "exec /usr/local/bin/feh-bg.sh &"
 "Lock"		f.exec "exec xscreensaver-command -lock &"
 "Kill"		f.destroy
