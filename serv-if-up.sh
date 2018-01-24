@@ -1,24 +1,20 @@
 #!/bin/bash
+
 # REDUNDANZ, depends on sh13lD.sh
 # Restarts $webserver, $datenbank und $mta.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
+LANG="C";
 
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
 else
-	if [[ "$(ps aux | grep -v grep | grep -v nano | grep sh13lD.sh | awk '{print $2}' | wc -l)" -gt "1" ]] ;
-then
 
-LANG="C";
 countwarn="0" ;
-PIDof=$(pgrep sh13lD.sh) ;
-
-		if [[ "$PIDof" != '' ]] ;
-then
 
 # temp folder
-			if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+			if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
 	then
 		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
 	else
@@ -41,7 +37,7 @@ SIZEON=$(df -h | grep -E /$ | awk '{ print $2 }') ;
 USEDON=$(df -h | grep -E /$ | awk '{ print $3 }') ;
 INODES=$(df -i | grep -E /$ | awk '{ print $2 }') ;
 FREEINODES=$(df -i | grep -E /$ | awk '{ print $4 }') ;
->! $tmpfolder/mailapache2status ;
+>| $tmpfolder/mailapache2status ;
 >| $tmpfolder/mailsendmailstatus ;
 >| $tmpfolder/mailmysqlstatus ;
 
@@ -58,14 +54,14 @@ then
 echo -e "\n\n:: $webserver fails, but restartet successfully, you got an email ::\n" > /dev/pts/2 ;
 date > /dev/pts/2 ;
 systemctl status "$webserver".service >|$tmpfolder/mailapache2status ;
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM | sendmail "$SUDO_USER"@localhost
 Subject:"$webserver" restartet
 $(cat $tmpfolder/mailapache2status)
 EOM
 	else
 
 systemctl status "$webserver".service >|$tmpfolder/mailapache2status ;
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM | sendmail "$SUDO_USER"@localhost
 Subject:"$webserver" cannot_restart
 $(cat $tmpfolder/mailapache2status)
 EOM
@@ -87,7 +83,7 @@ then
         systemctl status "$mta".service >>$tmpfolder/mailsendmailstatus ;
 	echo "$?" >>$tmpfolder/mailsendmailstatus ;
 	sleep 1 ;
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM | sendmail "$SUDO_USER"@localhost
 Subject:"$mta" restartet
 $(cat $tmpfolder/mailsendmailstatus)
 EOM
@@ -97,7 +93,7 @@ date > /dev/pts/2 ;
 	else
 
 date "+Start Attempt, Failure Time: %H.%M" >|$tmpfolder/mailsendmailstatus ;
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM | sendmail "$SUDO_USER"@localhost
 Subject:"$mta" cannot_restart
 $(cat $tmpfolder/mailsenmailfail)
 EOM
@@ -119,7 +115,7 @@ then
         /etc/init.d/"$datenbank" status >>$tmpfolder/mailmysqlstatus ;
 	echo "$?" >>$tmpfolder/mailmysqlstatus ;
 sleep 1 ;
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM | sendmail "$SUDO_USER"@localhost
 Subject:"$datenbank" restartet
 $(cat $tmpfolder/mailmysqlstatus)
 EOM
@@ -156,7 +152,7 @@ echo "";
 fi
 
 countwarn=1 ;
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM | sendmail "$SUDO_USER"@localhost
 Subject:running_out_of_disk_space
 _________________________________________________
 /
@@ -184,10 +180,4 @@ rm -f $tmpfolder/mailapache2status ;
 rm -f $tmpfolder/mailsendmailstatus ;
 rm -f $tmpfolder/mailmysqlstatus ;
 
-else
-
-killall serv-if-up.sh ;
-
-fi
-fi
 fi
