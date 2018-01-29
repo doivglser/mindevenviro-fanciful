@@ -34,7 +34,7 @@
 
 # TODO:
 
-* serv-if-up loop or something
+* serv-if-up's loop or something
 
 * shi3lD is not working
   
@@ -215,7 +215,7 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 ![transmission](https://itsfoss.com/wp-content/uploads/2015/08/transmission-logo.png)
 ![google](http://www.fayerwayer.com/up/2008/02/google-07.png)
 ![Snort](https://www.snort.org/assets/SnortTM.png)
-![lpe](https://screenshots.debian.net/screenshots/000/006/877/large.png)
+![geany](https://www.linux.com/var/uploads/Image/articles/139882-2.jpg)
 ![PHP/MySQL](https://disenowebakus.net/imagenes/articulos/aprender-php-mysql-bases-de-datos-paginas-web-dinamicas.jpg)
 ![Python](http://www.coderdojo-helmond.nl/wp-content/uploads/2015/10/python-programming-assignment-help.png)
 ![Perl](https://www.textmagic.com/wp-content/themes/textmagic-genesis/assets/vendor/textmagic/marketing/images/api/prog-lang-logos/perl.png)
