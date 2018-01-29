@@ -5,6 +5,8 @@
 # FUNCTION: SEARCH ::
 # search in a database
 
+# I should read the MySQL Manual
+
 # FUNCTION: DELETE ::
 # workaround to delete false entries in joomla, where id's
 # selected from: [joomla-root]/administrator/index.php?option=com_installer&view=manage

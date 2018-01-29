@@ -1,13 +1,12 @@
 #!/bin/bash
-# search by path, if grep true open file
-#set -x
+# search by path and file suffix, if grep true open file
 LANG=C
 IFS=$(echo -en "\n\b")
-path="/var/www/iglauser/revamp-joomla"
 # stdout to $USER read paht etc
 echo -e "\n hi $USER\n press 'ctrl-C'+'q' to exit\n" ;
 #printf "path: "; read path ;
-echo -e "search in /var/www/iglauser/revamp-joomla\n" ;
+printf "search path: "; read -r path ;
+echo -e "\n" ;
 printf "file suffix: "; read -r i ;
 echo -e "\n" ;
 printf "to grep: "; read -r togrep ;

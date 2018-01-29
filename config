@@ -16,17 +16,17 @@
       parent = ""
       position = 45:13
       size = 1168, 684
-      title = ivo@x0x: ~
+      title = Term
       type = Window
     [[[child1]]]
-      active_page = 1
-      labels = None, None, None, None
-      last_active_term = f5b0962e-1411-4903-bf52-ae81fc1ce5f7, 91efdb0b-e312-406a-b298-c4351ccfe0fa, a0da3da0-500c-4424-97b8-c79bc59d77c2, d874aa22-ab9a-44cf-89f2-18d2a75cc262
+      active_page = 5
+      labels = None, None, None, None, None, None
+      last_active_term = f5b0962e-1411-4903-bf52-ae81fc1ce5f7, 91efdb0b-e312-406a-b298-c4351ccfe0fa, a0da3da0-500c-4424-97b8-c79bc59d77c2, d874aa22-ab9a-44cf-89f2-18d2a75cc262, 580a6491-5899-436c-ac80-388799df7b89, a42f7fd6-0afc-458b-888b-6e8bf7d9927e
       order = 0
       parent = child0
       type = Notebook
     [[[terminal2]]]
-      command = "mc"    
+      command = "fortune"
       order = 0
       parent = child1
       profile = default
@@ -40,19 +40,33 @@
       type = Terminal
       uuid = 91efdb0b-e312-406a-b298-c4351ccfe0fa
     [[[terminal4]]]
-      command = "sudo -u root mutt"    
+      command = "mc"
       order = 2
       parent = child1
       profile = default
       type = Terminal
       uuid = a0da3da0-500c-4424-97b8-c79bc59d77c2
     [[[terminal5]]]
-      command = "sCRYPtUPdater"
+      command = "sudo -u root mutt"
       order = 3
       parent = child1
       profile = default
       type = Terminal
       uuid = d874aa22-ab9a-44cf-89f2-18d2a75cc262
+    [[[terminal6]]]
+      command = "sCRYPtUPdater"    
+      order = 4
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 580a6491-5899-436c-ac80-388799df7b89
+    [[[terminal7]]]
+      command = "alsamixer"
+      order = 5
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = a42f7fd6-0afc-458b-888b-6e8bf7d9927e
 [plugins]
 [profiles]
   [[default]]
