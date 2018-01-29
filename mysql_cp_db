@@ -1,0 +1,268 @@
+#!/bin/bash
+
+# To rename databases, overwrite old dbs with backup_database.tables, dump and restore .sql, on localhost
+
+# FUNCTION: SEARCH ::
+# search in a database
+
+# FUNCTION: DELETE ::
+# workaround to delete false entries in joomla, where id's
+# selected from: [joomla-root]/administrator/index.php?option=com_installer&view=manage
+# choose from search menu: "SuchWerkzeuge" and "Deaktiviert"
+# couldn't be properly de-installed and deleted by joomla backend itself
+# Names appears capitalized , as dead links without .php or .ini or .xml files in your
+# installation, (doesnt work at the moment cause no money, Im hungry)
+
+# FUNCTION: BACKUP ::
+# to rename a database from an other database putting tables from the backup-database in the new one
+
+# FUNCTION: RESTORE ::
+# to restore a database from a .sql file
+
+# FUNCTION: DUMP ::
+# to dump a database to a .sql file
+
+# where is program
+dbserver=$(whereis mysql | cut -f2 -d: | awk '{print $1}');
+
+# connected to localhost delfin-web as root
+mysqlconn="$dbserver -u root -pNnwxx9Kj -h localhost" ;
+# .
+# 			WARNING DONT EDIT ANITHING BELOW ::
+#set -x
+
+LANG=C ;
+		if [ $EUID != 0 ]
+	then
+
+echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.UserWorkFlow" ;
+
+# search in database
+search(){
+# ask
+ls_dbs ;
+echo -e "SEARCH IN DATABASE\n" ;
+printf "from db: "; read db002
+echo -e "\n TO GREP\n" ;
+printf "word: "; read to_grep01
+# .
+# fullfillment filter, if true you can loss all your data, please, do a dump bevor.
+
+	if [[ $db002 != '' ]] && [[ $to_grep01 != '' ]] ;
+then
+	$mysqlconn -e "use $db002; show TABLES;" | cut -f1 -d\| | grep $to_grep01 ;
+else
+	meldig=" Insert 'from db' field and 'to grep' field please" ;
+	read -p "$meldig" ;
+fi
+# 		fulfillment filter END
+}
+# 		search in database END
+
+# delete from tables (doesnt work at all, with delete by ID=1 then no admin rights more)
+delete(){
+# ask
+ls_dbs ;
+echo -e "DELETE FROM TABLE\n" ;
+printf "from db: "; read db001
+echo -e "\n type in ID's with a blank space as a separator\n" ;
+printf "where id's: "; read idS0
+
+# fullfillment filter, if true you can loss all your data, please, do a dump bevor.
+	if [[ $db001 != '' ]] && [[ $idS0 != '' ]]
+then
+	for in_tables in $($mysqlconn -e "use $db001; show TABLES;" | cut -f1 -d\|;) ; # db + tables listing
+do
+	listnumb=$(echo "$in_tables" | wc -l) ; # number of tables for loop - control
+	let nnumber=$listnumb+1 ; # add + one to decrease the $nnumber var
+
+		if [[ $nnumber != 0 ]] ;
+	then
+		while read line
+	do
+		((nnumber--)) ; # decrease $nnumber
+		table=$line; # save var $line in $table
+
+		for idS0s in $(echo "$idS0" | wc -w) ; # number of ID's to delete
+	do
+		let idNNUMBERs=$idS0s+1 ; # add + one to decrease the $idNNUMBERs var
+			while read line
+		do
+			((idNNUMBERs--)) ; # decrease $idNNUMBERs
+			iD1=$(echo "$idS0" | awk '{print $'"$idNNUMBERs"'}' | tr -d '\ ') ;
+#			$mysqlconn -e "use $db001; delete from $table where id $iD1" && wait ;
+			$mysqlconn -e "use $db001; delete from $table where id in ($iD1)" && wait ;
+			done<<<$idNNUMBERs
+# .
+		done
+
+	done<<<$in_tables
+	else
+		exit 0;
+	fi
+	done
+else
+	meldig=" Insert 'from db' field and 'where ids' field please" ;
+	read -p "$meldig" ;
+fi
+# 		fulfillment filter END
+}
+# 		delete from tables END
+
+# backup (doesnt work properly)
+# Rename Table comand in mysql 5.x above doesnt exist any more.
+# To rename a whole db, have must to copy all tables, from an other db that doesnt exist.
+# Error, table in wrong trigger, sometimes index error's
+backup(){
+# ask
+ls_dbs ;
+echo -e "RENAME DATABASE\n" ;
+printf "back_up_db: "; read olddb
+echo -e "\n" ;
+printf "new_db: "; read newdb
+
+# fullfillment filter, if true you can loss all your data, please, do a dump bevor.
+
+	if [[ $olddb != '' ]] && [[ $newdb != '' ]] ;
+then
+	$mysqlconn -e "DROP DATABASE $newdb" ;
+	sleep 0.5 ;
+	$mysqlconn -e "CREATE DATABASE $newdb" ;
+	params=$($mysqlconn -N -e \
+"SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE table_schema='$olddb'") ;
+
+	for name in $params;
+do
+		$mysqlconn -e "RENAME TABLE $olddb.$name to $newdb.$name" ;
+	done;
+
+else
+	meldig=" Insert 'backup_up_db' field and 'new_db' field please" ;
+	read -p "$meldig" ;
+fi
+# 		fulfillment filter END
+}
+# 		backup END
+
+# restore
+restore(){
+# ask
+ls_dbs ;
+echo -e "RESTORE FROM .SQL FILE\n" ;
+echo -e " type in with [dot]sql suffix\n" ;
+printf "origin_data: "; read origin_data ;
+echo -e "\n" ;
+printf "target_data: "; read target_data ;
+echo -e "\n ... just few seconds, while copying db's" ;
+
+# fullfillment filter, if true you can loss all your data, please, do a dump bevor.
+	if [[ $origin_data != '' ]] && [[ $target_data != '' ]] ;
+then
+	$mysqlconn $target_data < "$HOME/$origin_data" ;
+else
+	meldig=" Insert 'origin_data' field and 'target_data' field please" ;
+	read -p "$meldig" ;
+fi
+# 		fulfillment filter END
+
+}
+# 		restore END
+
+# dump from
+dump(){
+# ask
+ls_dbs ;
+echo -e "DUMP FROM DATABASE TO .SQL FILE\n" ;
+printf "origin_data: "; read origin_data ;
+echo -e "\n type in with [dot]sql suffix\n" ;
+printf "target_data: "; read target_data ;
+echo -e "\n ... just few seconds, while copying db's" ;
+
+# fullfillment filter, if true you can loss all your data, please, do a dump bevor.
+	if [[ $origin_data != '' ]] && [[ $target_data != '' ]] ;
+then
+	mysqldump -uroot -pNnwxx9Kj -h localhost $origin_data >| "$HOME/$target_data" ;
+else
+	meldig=" Insert 'origin_data' field and 'target_data' field please"
+	read -p "$meldig" ;
+fi
+# 		fulfillment filter END
+}
+# 		dump from END
+
+# to call functions
+ccaller(){
+	if [[ $REPLY = "dump" ]] ;
+then
+	echo -e "\n ... just few seconds, while dumpping db's\n" ;
+	dump ;
+
+	elif [[ $REPLY = "restore" ]] ;
+then
+	echo -e "\n ... just few seconds, while restoring db's\n" ;
+	restore ;
+
+	elif [[ $REPLY = "backup" ]] ;
+then
+	echo -e "\n ... just few seconds, while backup db's\n" ;
+	backup ;
+	elif [[ $REPLY = "search" ]] ;
+then
+	echo -e "\n ... just few seconds, while searching db's\ndepending ${USER}s salary...\n" ;
+	search ;
+
+	elif [[ $REPLY = "delete" ]] ;
+then
+	echo -e "\n ... just few seconds, while deleting db's\n" ;
+	delete ;
+else
+	echo -e "\n type correctly\n" ;
+	sleep 0.5 ;
+fi
+}
+# 		to call functions END
+
+# eexiter
+eexiter(){
+	printf " Are you sure? "; read
+
+	if [[ $REPLY = "no" ]] ;
+then
+	echo -e "\n ... lets try again" ;
+	caller ;
+
+	elif [[ $REPLY = "ok" ]] ;
+then
+	echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $HOME :: EXIT - (HATO)>>\n" >>"$HOME/.UserWorkFlow" ;
+	echo -e "\n ... GOOD BYE $USER" ;
+	exit 0 ;
+
+	else
+	echo -e "\n ... type correctly" ;
+	sleep 0.5 ;
+	eexiter ;
+fi
+}
+
+# .
+# list databases
+ls_dbs(){
+	$mysqlconn -e "SHOW DATABASES;" ;
+}
+
+# ASK
+		while trap 'eexiter' SIGINT
+	do
+		meldig=" do you want to continue? "
+		read -p "$meldig" ;
+		clear ;
+		echo -e "\n hi $USER\n" ; # greeting
+		"$(whereis mysql | cut -f2 -d: | awk '{print $1}')" --version ;
+		echo -e "\n ctrl+C to EXIT \n" ;
+		printf "type: dump||restore||backup||delete||search: "; read # ask
+		ccaller ;
+done
+# 		greeting END
+	else
+		echo -e " Please dont sudo this :) \n" ;
+fi

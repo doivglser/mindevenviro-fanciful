@@ -1,0 +1,63 @@
+#!/bin/bash
+# search by path, if grep true open file
+#set -x
+LANG=C
+IFS=$(echo -en "\n\b")
+path="/var/www/iglauser/revamp-joomla"
+# stdout to $USER read paht etc
+echo -e "\n hi $USER\n press 'ctrl-C'+'q' to exit\n" ;
+#printf "path: "; read path ;
+echo -e "search in /var/www/iglauser/revamp-joomla\n" ;
+printf "file suffix: "; read -r i ;
+echo -e "\n" ;
+printf "to grep: "; read -r togrep ;
+# 		stdout to $USER END
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
+	then
+		#shm volatile
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# 		temp folder END
+# temp file
+# the whole list just with file suffix, ready to grep the content, if true, file in an editor.
+touch "$tmpfolder"/"$(date | awk '{print $2,$4,$6}' | sed 's/\ //g')" ;
+tmpfile="$tmpfolder"/"$(date | awk '{print $2,$4,$6}' | sed 's/\ //g')" ;
+# 		temp file END
+exithandler(){
+		nnumber=0 ;
+		clear ;
+		echo -e "\n $(echo "$tmpfile" | xargs grep "$togrep" | wc -l | tr -d ' ') files found...\n"
+		echo -e " ...done?" ;
+		sleep 2 && reset && exit 0 ;
+}
+trap 'exithandler' SIGINT  ;
+# search and display
+for lines in $(find "$path" -name "*$i*" -type f 2>/dev/null | sed 's/\ /\\ /g' | tee -a "$tmpfile");
+	do
+		nnumber=$(echo "$tmpfile" | wc -l | tr -d ' ') ;
+	if [[ "$nnumber" != "0" ]] ;
+then
+		while read -r line && [[ "$nnumber" != "0" ]] ;
+	do
+		if [[ $(file "$line") =~ PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
+	then
+			if [[ $(echo "$line" | xargs grep "$togrep") != '' ]] ;
+		then
+			((nnumber--)) ;
+			less "$line" && break ;
+		else
+			((nnumber--)) && break ;
+		fi
+	else
+			((nnumber--)) ;
+			file "$line" | less && break ;
+	fi
+	done <<<"$lines"
+	else
+		exithandler ;
+fi
+done
+#		search and display END
