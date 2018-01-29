@@ -168,7 +168,7 @@ menu "main"
 ":: Transmission"  f.exec "exec /usr/local/bin/hi_transmission-gtk &"
 ":: Firefox-ESR"  f.exec "exec /usr/local/bin/hi_firefox-esr &"
 ":: PlayOnLinux"  f.exec "exec /usr/local/bin/hi_playonlinux &"
-":: Terminator"  f.exec "exec /usr/local/bin/hi.sh &"
+":: Terminator"  f.exec "exec /usr/local/bin/hi &"
 ":: Network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
 ":: Music"  f.exec "exec /usr/local/bin/hi_vlc &"
 ":: __________________ ::"  f.title

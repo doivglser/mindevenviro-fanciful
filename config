@@ -47,7 +47,7 @@
       type = Terminal
       uuid = a0da3da0-500c-4424-97b8-c79bc59d77c2
     [[[terminal5]]]
-      command = "sCRYPtUPdater.sh"
+      command = "sCRYPtUPdater"
       order = 3
       parent = child1
       profile = default
