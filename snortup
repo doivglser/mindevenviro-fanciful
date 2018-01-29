@@ -5,8 +5,13 @@
 	then
 		echo -e "\n please sudo this" ;
 	else
-		/etc/init.d/snort start -i wlp3s0b1 &
-		setsid snort -i wlp3s0b1 >/dev/null 2>&1 < /dev/null &
+	
+		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
+	then
+		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
+fi	
+		/etc/init.d/snort start -i $interface &
+		setsid snort -i $interface >/dev/null 2>&1 < /dev/null &
 		sleep 3 ;
 		exit 0 ;
 fi
