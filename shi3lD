@@ -25,9 +25,9 @@ fi
 # temp folder END
 
 # daemon to restart servers
-	if [[ ! "$(ps aux | grep -v grep | grep -v nano | grep serv-if-up.sh | awk '{print $2}' | wc -l)" -gt "1" ]] ;
+	if [[ ! "$(ps aux | grep -v grep | grep -v nano | grep serv-if-up | awk '{print $2}' | wc -l)" -gt "1" ]] ;
 then
-	setsid serv-if-up.sh >/dev/null 2>&1 < /dev/null &
+	setsid serv-if-up >/dev/null 2>&1 < /dev/null &
 fi
 
 # vendors mac-address
@@ -57,11 +57,11 @@ fi
 puffeRR(){
 		if [[ "$(cat /home/"$SUDO_USER"/.vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] || [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | wc -l | tr -d ' ')" != "2" ]] ;
 	then
-		echo -e "\n :: shi3lD.sh ::\n :: shut down interfaces : ??? :" ;
+		echo -e "\n :: shi3lD ::\n :: shut down interfaces : ??? :" ;
 		read -p " enter to continue" ;
-		. /usr/local/bin/stop_shield.sh ;		
+		. /usr/local/bin/stop_shield ;		
 		echo -e "\n :: changing macaddress :: \n" && 
-		. /usr/local/bin/start_shield.sh ;	
+		. /usr/local/bin/start_shield ;	
 fi
 }
 

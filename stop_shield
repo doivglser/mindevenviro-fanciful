@@ -1,5 +1,5 @@
 #!/bin/bash
-# depends on shi3lD.sh
+# depends on shi3lD
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
@@ -9,7 +9,7 @@ IFS=$(echo -e "\n\b") ;
 	then
 		sudo "$0" ;
 else
-	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD.sh | awk '{print $2}' | wc -l) " -gt "1" ]] ;
+	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD | awk '{print $2}' | wc -l) " -gt "1" ]] ;
 then
 
 cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1 >| "$tmpfolder"/interface ;
@@ -40,7 +40,7 @@ main_(){
 	stop_network ;
 	take_a_look ;
 }
-		if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD.sh | awk '{print $2}' | wc -l) " -gt "1" ]] ;
+		if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD | awk '{print $2}' | wc -l) " -gt "1" ]] ;
 	then
 		main_ ;
 	fi

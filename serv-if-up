@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# REDUNDANZ, depends on sh13lD.sh
+# REDUNDANZ, depends on sh13lD
 # Restarts $webserver, $datenbank und $mta.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 

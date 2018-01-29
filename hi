@@ -9,7 +9,7 @@ xload -g 50x50-3+80 -fg "yellow" -bg "black" -bw 0 &
 setsid xscreensaver -display :0 -no-splash >/dev/null 2>&1 < /dev/null &
 terminator &
 sleep 4 ;
-feh-bg.sh &
+feh-bg &
 	}
 
 		if [[ $(ps axu | grep -v grep | grep terminator) = '' ]] && \
