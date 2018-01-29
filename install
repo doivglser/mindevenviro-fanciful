@@ -32,6 +32,11 @@ fi
 	echo -e "\n ... BEGIN INSTALLATION ::" ;
 	sleep 5 ;
 
+	sed '/alias/d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc ;
+	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc ;
+	sed '/Alias/d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf ;
+	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf ;
+
 		while [[ "$nNuM1" != "0" ]] ;
 	do
 		clear ;
