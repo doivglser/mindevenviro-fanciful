@@ -2,6 +2,7 @@
 # search by path and file suffix, if grep true open file
 LANG=C
 IFS=$(echo -en "\n\b")
+echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.wH0rUNSon" ;
 # stdout to $USER read paht etc
 echo -e "\n hi $USER\n press 'ctrl-C'+'q' to exit\n" ;
 #printf "path: "; read path ;
@@ -26,6 +27,7 @@ touch "$tmpfolder"/"$(date | awk '{print $2,$4,$6}' | sed 's/\ //g')" ;
 tmpfile="$tmpfolder"/"$(date | awk '{print $2,$4,$6}' | sed 's/\ //g')" ;
 # 		temp file END
 exithandler(){
+		echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
 		nnumber=0 ;
 		clear ;
 		echo -e "\n $(echo "$tmpfile" | xargs grep "$togrep" | wc -l | tr -d ' ') files found...\n"

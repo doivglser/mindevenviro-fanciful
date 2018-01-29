@@ -3,9 +3,7 @@
 # To rename databases, overwrite old dbs with backup_database.tables, dump and restore .sql, on localhost
 
 # FUNCTION: SEARCH ::
-# search in a database
-
-# I should read the MySQL Manual
+# search in a database, I write something to search in tables..
 
 # FUNCTION: DELETE ::
 # workaround to delete false entries in joomla, where id's
@@ -37,7 +35,7 @@ LANG=C ;
 		if [ $EUID != 0 ]
 	then
 
-echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.UserWorkFlow" ;
+echo -e "\nmysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.wH0rUNSon" ;
 
 # search in database
 search(){
@@ -130,8 +128,7 @@ then
 	$mysqlconn -e "DROP DATABASE $newdb" ;
 	sleep 0.5 ;
 	$mysqlconn -e "CREATE DATABASE $newdb" ;
-	params=$($mysqlconn -N -e \
-"SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE table_schema='$olddb'") ;
+	params=$($mysqlconn -N -e "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE table_schema='$olddb'") ;
 
 	for name in $params;
 do
@@ -235,7 +232,7 @@ then
 
 	elif [[ $REPLY = "ok" ]] ;
 then
-	echo -e "\n$(date) :: as $USER :: in $(uname -n) :: in $HOME :: EXIT - (HATO)>>\n" >>"$HOME/.UserWorkFlow" ;
+	echo -e "\nmysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $userHome :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
 	echo -e "\n ... GOOD BYE $USER" ;
 	exit 0 ;
 
