@@ -62,12 +62,12 @@ writeM4C_Connected(){
 		if [[ -e "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" ]]
 	then
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
-		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}$(date | awk '{print $2,$6}' | \
+		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}.$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_recieves_dhcp_lease" ;
 	else
 		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" && permissions ;
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
-		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}$(date | awk '{print $2,$6}' | \
+		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}.$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_recieves_dhcp_lease" ;
 fi
 }
@@ -76,12 +76,12 @@ writeM4C_SelfAssigned(){
 		if [[ -e "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease" ]]
 	then
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
-		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "$homeordner$(date | awk '{print $2,$6}' | \
+		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "$homeordner.$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_no_dhcp_lease" ;
 	else
 		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease" && permissions ;
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
-		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "$homeordner$(date | awk '{print $2,$6}' | \
+		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "$homeordner.$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_no_dhcp_lease" ;
 fi
 }
