@@ -6,23 +6,27 @@
 
 ° Antivirus engine ClamAV and NIDS solution Snort.
 
-° Checks syntax with "python -m pgb", "perl -wc", "bash -xvn" and "php -l".
+° Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e" and "php -l".
 
 ° Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC.
 
 ° Web surfing with Firefox-ESR and local/web media experience with VLC.
 
-° PlayOnLinux, I use Ableton Suite.
+° PlayOnLinux, to install win32 and win64 MS-Windows applications.
 
 ° Restarts apache2, mysqld, sendmail, snort, clamd.
+
+° Search script and MySQL(MariaDB) maintainers script.
 
 ° For programmers and administrators.
 
 # PROBLEMS:
 
-* shi3lD.sh may not work, if your network is down.
+* serv-if-up too hevy load
 
-* install.sh:
+* shi3lD may not work, if your network is down. $(interface) overwrites it selft
+
+* install:
 
   while installing snort: debconf asks for interface eth0 no workaround for "eno[0-9]" interfaces
   
@@ -30,11 +34,13 @@
 
 # TODO:
 
-* shi3lD.sh is not working
+* serv-if-up loop or something
+
+* shi3lD is not working
   
   Workaround to change the user-agent while changing the MAC - addresses.
 
-* sCRYPtUPdater.sh
+* sCRYPtUPdater
 
   To search for brackets and braces, to split the content of the source code into short code snippets.
   If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
@@ -63,7 +69,7 @@
 
 # Install
 
-* ~/min-dev-enviro$ sudo ./install.sh
+* ~/min-dev-enviro$ ./install
 
   Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
@@ -95,7 +101,7 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
 * PlayOnLinux (manage's wine win32/win64)
 
-  Install: MS-Office, Ableton Suite, Games, etc.
+  Install: win32 and win64 MS-Office applications and Games
 
 * terminator
 
@@ -105,37 +111,83 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
 * in ~/
 
-  wH0rUNSon # Depends on sCRYPtUPdater.sh; $USER workflow control.
+  .wH0rUNSon # Depends on sCRYPtUPdater; $USER workflow control.
+  
+  .[MonthYear].mac_recieves_dhcp_lease # Depends on shi3lD, a list of working MAC's addresses.
 
-* in ~/
-
-  Oct2017.mac_recieves_dhcp_lease # Depends on shi3lD.sh, a list of working MAC's addresses.
-
-  Oct2017.mac_no_dhcp_lease # Depends on shi3lD.sh, a list of NOT working MAC's addresses.
+  .[MonthYear].mac_no_dhcp_lease # Depends on shi3lD, a list of NOT working MAC's addresses.
 
   .installed # The list of the installed components.
   
-  .vendorsmac # The list of the MAC-Adresses.
+  .vendorsmac # The list of the vendors MAC-Adresses.
 
-  .twmrc # vtwm layout
+  .twmrc # VTWM's Layout
 
-  .config/mc/ini # coloring mc
+  .config/mc/ini # Midnight Commander's Layout
+  
+  .config/terminator/config # Terminator's Layout
+  
+  .Xresources # Login Mask
+
+  .xscreensaver # Screen Saver's config
+  
+* ~/Music
+
+  76256__ganscaile__startup.mp3 # startup sound
+  
+* ~/Pictures
+
+  wallpapers.zip # unpacked Pictures for feh-bg
   
 * in /usr/local/bin
 
-  shi3lD.sh # network-manager
+  shi3lD # network-manager
 
-  start_shield.sh # Depends on shi3lD.sh.
+  start_shield # Depends on shi3lD.
 
-  stop_shield.sh # Depends on shi3lD.sh.
+  stop_shield # Depends on shi3lD.
 
-  serv-if-up.sh # Depends on shi3lD.sh, background process, restarts servers.
+  serv-if-up # Depends on shi3lD, background process, restarts servers.
 
-  sCRYPtUPdater.sh # Syntax check and update to the path.
+  sCRYPtUPdater # Syntax check and update to the path.
 
-  feh-bg.sh # changes the background on vtwm.
+  feh-bg # changes the background on vtwm.
   
-  hi.sh # startup
+  hi # startup
+  
+  hi_firefox-esr
+  
+  hi_geany
+  
+  hi_playonlinux
+  
+  hi_transmission-gtk
+  
+  hi_vlc
+  
+  hi_wicd-client
+  
+  mysql_cp_db # MySQL and administration
+  
+  search # Search and display if to grep true with less.
+
+* in ~/min-dev-enviro
+
+  sources.list # HTTP Web source of debian Stretch
+  
+  install # install script of min-dev-enviro
+  
+* in /usr/share/vlc/skins2/
+
+  default.vlt
+
+  169311-inkyV2.vlt
+
+  STRYPER-VLC.vlt
+
+* in /var/www/html/
+
+  README.html
 
 # Coming soon:
 
