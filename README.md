@@ -34,7 +34,7 @@
 
 # TODO:
 
-* serv-if-up loop or something
+* serv-if-up's loop or something
 
 * shi3lD is not working
   
