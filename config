@@ -1,10 +1,7 @@
 [global_config]
-  extra_styling = False
-  homogeneous_tabbar = False
-  scroll_tabbar = True
+  enabled_plugins = InactivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  inactive_color_offset = 0.6
   tab_position = hidden
-  title_hide_sizetext = True
-  title_use_system_font = False
 [keybindings]
 [layouts]
   [[default]]
@@ -14,63 +11,82 @@
       maximised = False
       order = 0
       parent = ""
-      position = 45:13
-      size = 1168, 684
-      title = Term
+      position = 17:7
+      size = 1198, 748
       type = Window
     [[[child1]]]
-      active_page = 5
-      labels = None, None, None, None, None, None
-      last_active_term = f5b0962e-1411-4903-bf52-ae81fc1ce5f7, 91efdb0b-e312-406a-b298-c4351ccfe0fa, a0da3da0-500c-4424-97b8-c79bc59d77c2, d874aa22-ab9a-44cf-89f2-18d2a75cc262, 580a6491-5899-436c-ac80-388799df7b89, a42f7fd6-0afc-458b-888b-6e8bf7d9927e
       order = 0
       parent = child0
       type = Notebook
-    [[[terminal2]]]
-      command = "fortune"
+    [[[child2]]]
       order = 0
       parent = child1
-      profile = default
-      type = Terminal
-      uuid = f5b0962e-1411-4903-bf52-ae81fc1ce5f7
-    [[[terminal3]]]
-      command = "nmon"
+      ratio = 0.5
+      type = VPaned
+    [[[child4]]]
+      order = 1
+      parent = child2
+      ratio = 0.5
+      type = VPaned
+    [[[child7]]]
       order = 1
       parent = child1
-      profile = default
-      type = Terminal
-      uuid = 91efdb0b-e312-406a-b298-c4351ccfe0fa
-    [[[terminal4]]]
-      command = "mc"
+      ratio = 0.5
+      type = VPaned
+    [[[terminal10]]]
       order = 2
       parent = child1
       profile = default
       type = Terminal
-      uuid = a0da3da0-500c-4424-97b8-c79bc59d77c2
-    [[[terminal5]]]
-      command = "sudo -u root mutt"
+      command = "mc"
+    [[[terminal11]]]
       order = 3
       parent = child1
       profile = default
       type = Terminal
-      uuid = d874aa22-ab9a-44cf-89f2-18d2a75cc262
-    [[[terminal6]]]
-      command = "sCRYPtUPdater"    
+      command = "nmon"
+    [[[terminal12]]]
       order = 4
       parent = child1
       profile = default
       type = Terminal
-      uuid = 580a6491-5899-436c-ac80-388799df7b89
-    [[[terminal7]]]
-      command = "alsamixer"
+      command = "sudo -u root mutt"
+    [[[terminal13]]]
       order = 5
       parent = child1
       profile = default
       type = Terminal
-      uuid = a42f7fd6-0afc-458b-888b-6e8bf7d9927e
+      command = "sCRYPtUPdater"
+    [[[terminal14]]]
+      order = 6
+      parent = child1
+      profile = default
+      type = Terminal
+      command = "mysql_cp_db"
+    [[[terminal3]]]
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      command = "search"
+    [[[terminal5]]]
+      order = 0
+      parent = child2
+      profile = default
+      type = Terminal
+      command = "sudo tail -f /var/log/messages /var/log/syslog /var/log/mysql/mysql.error"
+    [[[terminal6]]]
+      order = 1
+      parent = child2
+      profile = default
+      type = Terminal
+      command = "sudo tail -f /var/log/apache2/access.log /var/log/apache2/error.log"
 [plugins]
 [profiles]
   [[default]]
+    background_darkness = 0.7
+    background_type = transparent
     cursor_color = "#aaaaaa"
-    scroll_on_output = True
+    scroll_background = False
     scrollback_infinite = True
     scrollbar_position = hidden
