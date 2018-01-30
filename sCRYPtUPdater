@@ -188,11 +188,11 @@ ch3kingSnx='' ;
 			diff -i "$listONme" "/usr/local/bin/$toC0pyIS" 2>/dev/null ;
 			exitc0de=$(echo $?) ;
 			
-			if [[ "$exitc0de" != 1 ]] ;
-		then
-			ch3kingSnx='' ;
-			listONmeIS='' ;
-	fi
+			#if [[ "$exitc0de" != 1 ]] ;
+		#then
+		#	ch3kingSnx='' ;
+		#	listONmeIS='' ;
+	#fi
 			read -p "check.syntax?" ;
 	
 			if [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
@@ -224,32 +224,38 @@ ch3kingSnx='' ;
 			ch3kingSnx="less"
 			echo "$listONme" | xargs $ch3kingSnx ;
 			exitc0de=$(echo $?) ;
-			
+
 			if [[ "$exitc0de" != 0 ]] ;
 		then
+			# to handle hgetcontents errors referring UTF-8
 			tr -cd '\11\12\15\40-\176' < $listONme > $tmpfolder/sCRYPtUPdater.tmp
+			# copy the clean file if new old file is bigger
 			
-			if $tmpfolder/sCRYPtUPdater.tmp < $listONme
-		then
-			cp -f $tmpfolder/sCRYPtUPdater.tmp $listONme ;
+				if [[ $tmpfolder/sCRYPtUPdater.tmp < $listONme ]]
+			then
+				cp -f $tmpfolder/sCRYPtUPdater.tmp $listONme ;
 		fi
+	
+			# by error edit?
 			printf "Do you want to re-edit? "; read -r
 			
-			if [[ "$REPLY" = "ok" ]] ;
-		then
-			nano "$listONme" && diffANDchecksyntax ;
-		else
-			echo -e "\n :: REMEMBER ::  $listONme\n" ;
-		fi
+					if [[ "$REPLY" = "ok" ]] ;
+				then	
+					nano "$listONme" && diffANDchecksyntax ;
+			else
+					echo -e "\n :: REMEMBER ::  $listONme\n" ;
+				fi
+
 	fi
-	fi
-				if [[ $ch3kingSnx = '' ]] ;
+			# copy if no error else nothing to update
+					if [[ $ch3kingSnx = '' ]] ;
 		then
-			echo -e "\nnothing to check.\n" ;
+			echo -e "\nnothing to update.\n" ;
 		else
 			echo -e "\n$listONme appears to be ok.\n" ;
             copyToPath ;
 		fi
+fi
 	else
 		touchtoC0pyinbin ;
 fi

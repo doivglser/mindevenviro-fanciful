@@ -1,0 +1,18 @@
+#!/bin/bash
+# check ClamAV and Snort while surfing over wifi
+	while trap 'exit 0' SIGINT ;
+do
+		if [[ $EUID != 0 ]] ;
+	then
+		sudo $0
+	else
+		ps aux | grep -v grep | grep clamd && ps aux | grep -v grep | grep snort;
+		sleep 7 ;
+		echo -e "\n :: \n" ;
+		/usr/games/fortune ;
+		echo -e "\n :: \n" ;
+		sleep 2 ;		
+		snortup ;
+		echo -e "\n :: \n" ;
+fi
+done

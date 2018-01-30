@@ -10,9 +10,6 @@
 NoGrabServer
 NoDefaults
 RestartPreviousState
-ShowIconManager
-SortIconManager
-IconifyByUnmapping
 RightHandSidePulldownMenus
 
 ButtonColorIsFrame
@@ -54,24 +51,16 @@ WarpCursor
 
 NailedDown
 {
-	"VTWM Icon Manager"
 	"VTWM Desktop"
 }
 
 NoTitle
 {
-	"VTWM Icon Manager"
-}
-
-DontShowInDisplay
-{
-	"VTWM Icon Manager"
-	"VTWM Desktop"
+	"VTWM Desktop"	
 }
 
 IconManagerDontShow
 {
-	"VTWM Icon Manager"
 	"VTWM Desktop"
 }
 
