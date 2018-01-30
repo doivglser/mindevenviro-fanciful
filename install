@@ -106,8 +106,6 @@ done
 	echo -e "\n ... update .bashrc" ;
 	echo "set -o noclobber" >> /home/$SUDO_USER/.bashrc ;	
 	echo "alias ls='ls --color=auto -s'" >> /home/$SUDO_USER/.bashrc ;
-	echo "alias check='ps aux | grep -v grep | grep clamd && ps aux | grep -v grep | grep snort'" >> /home/$SUDO_USER/.bashrc ;
-	echo "alias snortup='systemctl start snort.service -i $interface'" >> /home/$SUDO_USER/.bashrc ;
 	echo "alias down='sudo init 0'" >> /home/$SUDO_USER/.bashrc ;
 	echo "alias reboot='sudo init 6'" >> /home/$SUDO_USER/.bashrc ;
 
