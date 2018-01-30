@@ -9,9 +9,15 @@
 		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
 	then
 		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
-fi	
+fi
+		if [[ $(ps axu | grep -v grep | grep -v snortup | grep snort) = '' ]] ;
+	then
 		/etc/init.d/snort start -i $interface &
 		setsid snort -i $interface >/dev/null 2>&1 < /dev/null &
 		sleep 3 ;
+		journalctl | grep -v grep | grep promiscuous | grep $interface ;
+	else
+		journalctl | grep -v grep | grep promiscuous | grep $interface ;
 		exit 0 ;
+	fi
 fi
