@@ -36,8 +36,6 @@ MoveDelta		3
 ResizeRegion		"NorthEast"
 VirtualDesktop		"3x2-13-31" 27
 
-"Tab" = m :all : f.warpring "next" # alt + tab
-
 TitleFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
 ResizeFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
 MenuFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
