@@ -3,6 +3,24 @@
 LANG=C
 IFS=$(echo -en "\n\b")
 echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.wH0rUNSon" ;
+
+# temp folder
+                if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
+        then
+                #shm volatile
+                tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+        else
+                tmpfolder="/tmp" ;
+fi
+#               temp folder END
+# temp file
+
+# the whole list just with file suffix, ready to grep the content, if true, file in an editor.
+touch "$tmpfolder"/"$(date | awk '{print $2,$4,$6}' | sed 's/\ //g')" ;
+tmpfile="$tmpfolder"/"$(date | awk '{print $2,$4,$6}' | sed 's/\ //g')" ;
+#               temp file END
+
+eingabe(){
 # stdout to $USER read paht etc
 echo -e "\n hi $USER\n press 'ctrl-C'+'q' to exit\n" ;
 #printf "path: "; read path ;
@@ -11,30 +29,39 @@ echo -e "\n" ;
 printf "file suffix: "; read -r i ;
 echo -e "\n" ;
 printf "to grep: "; read -r togrep ;
-# 		stdout to $USER END
-# temp folder
-		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
-	then
-		#shm volatile
-		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
-	else
-		tmpfolder="/tmp" ;
-fi
-# 		temp folder END
-# temp file
-# the whole list just with file suffix, ready to grep the content, if true, file in an editor.
-touch "$tmpfolder"/"$(date | awk '{print $2,$4,$6}' | sed 's/\ //g')" ;
-tmpfile="$tmpfolder"/"$(date | awk '{print $2,$4,$6}' | sed 's/\ //g')" ;
-# 		temp file END
-exithandler(){
-		echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
-		nnumber=0 ;
-		clear ;
-		echo -e "\n $(echo "$tmpfile" | xargs grep "$togrep" | wc -l | tr -d ' ') files found...\n"
-		echo -e " ...done?" ;
-		sleep 2 && reset && exit 0 ;
+#               stdout to $USER END
 }
+
+exithandler(){
+		read
+
+                if [ $REPLY = q ] ;
+        then
+		read -p -r "waiting... ";
+
+                printf "ok to exit: " ; read
+
+                if [ $REPLY = ok ] ;
+        then
+		echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
+                nnumber=0 ;
+                clear ;
+                echo -e "\n $(echo "$tmpfile" | xargs grep "$togrep" | wc -l | tr -d ' ') files found...\n"
+                echo -e " ...done?" ;
+                sleep 2 && reset && exit 0 ;
+        else
+                echo -e "\n type correctly... " ;
+                sleep 0.5 ;
+                eingabe ;
+fi
+fi
+}
+
+# trap $USER's input ctrl+C and call the exithandler
 trap 'exithandler' SIGINT  ;
+# ASK
+eingabe ;
+
 # search and display
 for lines in $(find "$path" -name "*$i*" -type f 2>/dev/null | sed 's/\ /\\ /g' | tee -a "$tmpfile");
 	do

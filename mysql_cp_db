@@ -25,15 +25,19 @@
 # where is program
 dbserver=$(whereis mysql | cut -f2 -d: | awk '{print $1}');
 
-# connected to localhost delfin-web as root
-mysqlconn="$dbserver -u root -pNnwxx9Kj -h localhost" ;
-# .
 # 			WARNING DONT EDIT ANITHING BELOW ::
 #set -x
 
 LANG=C ;
 		if [ $EUID != 0 ]
 	then
+
+# ASK password
+echo -e "\n hello MySQL password for root:\n" ;
+printf "root password: "; read p4SSWORD ;
+# var for connect
+mysqlconn="$dbserver -u root -p"$p4SSWORD" -h localhost" ;
+# .
 
 echo -e "\nmysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.wH0rUNSon" ;
 
