@@ -3,6 +3,7 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW
 # TODO:
 # implement bash-completion, for TABing
+# exitcode handling is difficult
 
 		if [ ! $EUID = 0 ] ;
 	then
