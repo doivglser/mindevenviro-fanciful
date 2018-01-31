@@ -12,11 +12,13 @@
 
 		if [[ $(ps axu | grep -v grep | grep -v snortup | grep snort) = '' ]] ;
 	then
+		sleep 3 ;
 		/etc/init.d/snort start -i $interface &
 		setsid snort -i $interface >/dev/null 2>&1 < /dev/null &
 		sleep 3 ;
 		journalctl | grep -v grep | grep promiscuous | grep $interface ;
 	else
+		sleep 0.5 ;
 		journalctl | grep -v grep | grep promiscuous | grep $interface ;
 		exit 0 ;
 	fi

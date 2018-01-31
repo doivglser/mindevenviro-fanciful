@@ -6,13 +6,12 @@ do
 	then
 		sudo $0
 	else
-		ps aux | grep -v grep | grep clamd && ps aux | grep -v grep | grep snort;
-		sleep 7 ;
+		clear ;
+		ps aux | grep -v grep | grep clamd && ps aux | grep -v grep | grep snort ;
 		echo -e "\n :: \n" ;
 		/usr/games/fortune ;
 		echo -e "\n :: \n" ;
-		sleep 2 ;		
 		snortup ;
-		echo -e "\n :: \n" ;
-fi
+		sleep 9 ;		
+	fi
 done

@@ -34,16 +34,17 @@ fi
 
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
-toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE 'README|.md|.vlt|crap|.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install|.installed|master|HEAD|COMMIT_EDITMSG|.config|.twmrc|untitled|twmrc|config|description|sample|index|exclude|refs|.wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
+daytum=$(date | awk '{print $2,$4,$6}' | sed 's/\ //g') ;
+toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '$daytum|README|.md|.vlt|crap|.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install|.installed|master|HEAD|COMMIT_EDITMSG|.config|.twmrc|untitled|twmrc|config|description|sample|index|exclude|refs|.wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
 
 			if [[ "$toDayChanged" != '' ]] ;
 	then
 			if [[ "$wholeC0unt4" = "0" ]] ;
 	then
 			wholeC0unt4=$(echo "$toDayChanged" | wc -l | tr -d ' ') ;
-			prepare_
+			prepare_ "$@"
 	else
-			prepare_
+			prepare_ "$@"
 fi
 fi
 }
@@ -67,17 +68,17 @@ then
 	if [[ "$(du -b "$listONme" 2>/dev/null | cut -f1)" -gt "$(du -b "/usr/local/bin/$toC0pyIS" 2>/dev/null | cut -f1)" ]] ;
 then
 	let listONmest4tus=$(du -b "$listONme" 2>/dev/null | cut -f1)-$(du -b "/usr/local/bin/$toC0pyIS" 2>/dev/null | cut -f1)	
-	diffANDchecksyntax ;
+	diffANDchecksyntax "$@" ;
 
 	elif [[ "$(du -b "$listONme" | cut -f1 2>/dev/null)" -lt "$(du -b "/usr/local/bin/$toC0pyIS" | cut -f1 2>/dev/null)" ]] ;
 then
 	let listONmest4tus=$(du -b "/usr/local/bin/$toC0pyIS" 2>/dev/null | cut -f1)-$(du -b "$listONme" 2>/dev/null | cut -f1)
-	diffANDchecksyntax ;
+	diffANDchecksyntax "$@" ;
 else
-		maincall ;
+		maincall "$@"
 fi
 	else
-		touchtoC0pyinbin ;
+		touchtoC0pyinbin "$@" ;
 fi
 }
 
@@ -90,7 +91,7 @@ touchtoC0pyinbin(){
 		then
 			sudo touch "/usr/local/bin/$toC0pyIS" ;
 
-			diffANDchecksyntax ;
+			diffANDchecksyntax "$@" ;
 		else
 			echo -e "\ntype correctly" ;
 		fi
@@ -112,7 +113,7 @@ copyToPath(){
 			sudo chmod 0755 "/var/www/html/testphp/$toC0pyIS" ;
 			figlet $toC0pyIS ;
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
-			maincall ;
+			maincall "$@"
 					
 			elif [[ "$listONmeIS" =~ 'PHP ' ]] ;
 		then
@@ -122,7 +123,7 @@ copyToPath(){
 			sudo chmod 0755 "/var/www/html/testphp/$toC0pyIS" ;
 			figlet $toC0pyIS ;
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
-			maincall ;
+			maincall "$@"
 			
 			elif [[ "$listONmeIS" =~ 'Perl ' ]] ;
 		then
@@ -132,7 +133,7 @@ copyToPath(){
 			sudo chmod 0755 "/usr/lib/cgi-bin/$toC0pyIS" ;
 			figlet $toC0pyIS ;
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
-			maincall ;
+			maincall "$@"
 			
 			elif [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
 		then
@@ -143,7 +144,7 @@ copyToPath(){
 			sudo chmod u+s "/usr/local/bin/$toC0pyIS" ;
 			figlet $toC0pyIS ;
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
-			maincall ;
+			maincall "$@"
 			
 			elif [[ "$listONmeIS" =~ 'Python ' ]] ;
 		then
@@ -153,13 +154,13 @@ copyToPath(){
 			sudo chmod 0755 "/usr/local/bin/$toC0pyIS" ;
 			figlet $toC0pyIS ;
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
-			maincall ;
+			maincall "$@"
 		else
-			echo -e "\nYour scripts should have a SheBang entry on the first line. \n#!/usr/bin/env perl OR #!/bin/bash OR #!/usr/bin/env python OR <¿php OR <¿PHP \n On Windows additionally a file suffix correspondent to the SheBang. \n" ;
+			echo -e "\nYour scripts should have a SheBang entry on the first line. \n#!/usr/bin/env perl OR #!/bin/bash OR #!/usr/bin/env python OR <php OR <PHP \n On Windows additionally a file suffix correspondent to the SheBang. \n" ;
 		fi
 		else
 			echo ":: nothing updated" ;
-			maincall ;
+			maincall "$@"
 	fi
 fi
 }
@@ -188,11 +189,11 @@ ch3kingSnx='' ;
 			diff -i "$listONme" "/usr/local/bin/$toC0pyIS" 2>/dev/null ;
 			exitc0de=$(echo $?) ;
 			
-			#if [[ "$exitc0de" != 1 ]] ;
-		#then
-		#	ch3kingSnx='' ;
-		#	listONmeIS='' ;
-	#fi
+			if [[ "$exitc0de" != 1 ]] ;
+		then
+			ch3kingSnx='' ;
+			listONmeIS='' ;
+	fi
 			read -p "check.syntax?" ;
 	
 			if [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
@@ -224,7 +225,7 @@ ch3kingSnx='' ;
 			ch3kingSnx="less"
 			echo "$listONme" | xargs $ch3kingSnx ;
 			exitc0de=$(echo $?) ;
-
+fi
 			if [[ "$exitc0de" != 0 ]] ;
 		then
 			# to handle hgetcontents errors referring UTF-8
@@ -241,7 +242,7 @@ ch3kingSnx='' ;
 			
 					if [[ "$REPLY" = "ok" ]] ;
 				then	
-					nano "$listONme" && diffANDchecksyntax ;
+					nano "$listONme" && diffANDchecksyntax "$@" ;
 			else
 					echo -e "\n :: REMEMBER ::  $listONme\n" ;
 				fi
@@ -253,11 +254,10 @@ ch3kingSnx='' ;
 			echo -e "\nnothing to update.\n" ;
 		else
 			echo -e "\n$listONme appears to be ok.\n" ;
-            copyToPath ;
+            copyToPath "$@" ;
 		fi
-fi
 	else
-		touchtoC0pyinbin ;
+		touchtoC0pyinbin "$@" ;
 fi
 }
 
@@ -275,14 +275,14 @@ maincall(){
 		bYT3S="bytes" ;
 fi
 		echo -e "\nYou changed $listONmest4tus $bYT3S" && read -p "waiting..." ;
-		sC4n ;
+		sC4n "$@" ;
 	else
 		listONmest4tus="0" ;
 		echo -e "\nno.changes" && read -p "waiting..." ;
-		sC4n ;
+		sC4n "$@" ;
 fi
 	else
-		echo -e "\n download min-dev-enviro from https://github.com/doivglser \n or remove /.installed in line 209." && exit 2 ;
+		echo -e "\n download min-dev-enviro from https://github.com/doivglser \n or touch $HOME/.installed" && exit 2 ;
 fi
 
 }
@@ -297,7 +297,7 @@ then
 else
 		while true && trap 'exiter' SIGINT && trap 'cont1NU3' SIGQUIT ;
 	do
-		maincall ;
+		maincall "$@"
 	done
 fi
 fi
