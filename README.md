@@ -188,6 +188,8 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
   169311-inkyV2.vlt
 
   STRYPER-VLC.vlt
+  
+  Slick Iphone Skin.vlt
 
 * in /var/www/html/
 
