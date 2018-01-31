@@ -15,8 +15,22 @@
 				<vlc:option>network-caching=1000</vlc:option>
 			</extension>
 		</track>
+		<track>
+			<location>https://r5---sn-5hne6nlk.googlevideo.com/videoplayback?sparams=dur%2Cei%2Cid%2Cinitcwndbps%2Cip%2Cipbits%2Citag%2Clmt%2Cmime%2Cmm%2Cmn%2Cms%2Cmv%2Cpl%2Cratebypass%2Crequiressl%2Csource%2Cexpire&amp;id=o-ABcFYzXhipKUQZyR10G8Lbgf8d16Ik2B9DZBXWCij2Y8&amp;key=yt6&amp;mn=sn-5hne6nlk&amp;mm=31&amp;source=youtube&amp;mt=1517421773&amp;ip=213.202.233.219&amp;ms=au&amp;requiressl=yes&amp;ei=UgVyWsaREcj71gKtt7mYAg&amp;pl=21&amp;mv=m&amp;initcwndbps=362500&amp;expire=1517443506&amp;dur=267.888&amp;signature=CB48DDF54E21873C7D25F78BEAE3D8E87D885279.51299509CC9515812F8F63971270E11625266E12&amp;lmt=1512880611767017&amp;ratebypass=yes&amp;mime=video%2Fmp4&amp;ipbits=0&amp;itag=22</location>
+			<title>Corey Taylor - Rainbow in the Dark (DIO cover HQ)</title>
+			<creator>RedSking700</creator>
+			<annotation>Corey Taylor - Rainbow in the Dark - This Is Your Life ( Dio cover by Slipknot &#39;s singer Corey Taylor ) 2014 &lt;br /&gt;&lt;br /&gt;Official HIGH QUALITY song</annotation>
+			<info>https://www.youtube.com/watch?v=Az0oBjRnV5c</info>
+			<image>file:///home/ivo/.cache/vlc/art/arturl/79c1c766819d4d75a14effce7c49be54/art.jpg</image>
+			<duration>267842</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>1</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
 	</trackList>
 	<extension application="http://www.videolan.org/vlc/playlist/0">
 			<vlc:item tid="0"/>
+			<vlc:item tid="1"/>
 	</extension>
 </playlist>
