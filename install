@@ -44,20 +44,19 @@ fi
 	sed -e '/Downloads auto bind/d' /etc/fstab >| $tmpfolder/fstab ;
 	cp -f $tmpfolder/fstab /etc/fstab ;
 	
-
+		spin='.oOo' ; i=0 ;
+		spin2='-\|/' ;
+		
 		while [[ "$nNuM1" != "0" ]] ;
 	do
 		clear ;
-		spin='-\|/' ;
-		i=0 ;
-		i=$(( (i+1) %4 )) ;
-		echo -e "\n ... BEGINing INSTALLATION ::" ;		
-		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;
+		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;		
 		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$toCopyPath" ;
 		sudo chown root:root "/usr/local/bin/$toCopyPath" ;
 		sudo chmod 4755 "/usr/local/bin/$toCopyPath" ;
-		sudo chmod u+s "/usr/local/bin/$toCopyPath" ;
-		printf "\r$toCopyPath in path ${spin:$i:1}" ; sleep 0.5 ;
+		sudo chmod u+s "/usr/local/bin/$toCopyPath" &&
+		echo -e "\n ... BEGINing INSTALLATION ::\n" ;		
+		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1} $toCopyPath in path: $nnumberr${spin:$i:1} " ; sleep .1 ;
 		((nNuM1--)) ;
 done
 
