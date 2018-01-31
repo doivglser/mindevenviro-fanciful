@@ -24,6 +24,8 @@
 
 # PROBLEMS:
 
+* no workaround to install wifi firmware
+
 * serv-if-up too hevy load
 
 * shi3lD may not work, if your network is down. $(interface) overwrites it selft
@@ -38,7 +40,7 @@
 
 * serv-if-up's loop or something
 
-* shi3lD is not working
+* shi3lD is overwriting var $interface
   
   Workaround to change the user-agent while changing the MAC - addresses.
 
