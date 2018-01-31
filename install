@@ -129,7 +129,7 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/mc/ini ;
 
 	echo -e "\n ... copy the config file to /home/$SUDO_USER/.config/terminator/config" ;
-	mkdir -p /home/$SUDO_USER/.config/terminator/config 2>/dev/null ;
+	mkdir -p /home/$SUDO_USER/.config/terminator 2>/dev/null ;
 	cp -f config /home/$SUDO_USER/.config/terminator/config ;
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/terminator/config ;
 	

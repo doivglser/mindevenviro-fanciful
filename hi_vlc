@@ -4,7 +4,7 @@ IFS=$(echo -en "\b\n") ;
 
 		if [[ $(ps axu | grep -v grep | grep -v hi_vlc | grep Iphone) = '' ]] ;
         then
-                vlc -I skins2 --skins2-last=/usr/share/vlc/skins2/Slick\ Iphone\ Skin.vlt file:///home/$USER/Music/ & hi ;
+                vlc -I skins2 --skins2-last=/usr/share/vlc/skins2/Slick\ Iphone\ Skin.vlt file:///$HOME/playlist.xspf & hi ;
         else
                 exit 0 ;
 fi
