@@ -1,5 +1,5 @@
 #!/bin/bash
-# start port scanner
+# start port scanner display to stdout
 
 		if [[ $EUID != 0 ]] ;
 	then

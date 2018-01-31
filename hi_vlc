@@ -1,6 +1,5 @@
 #!/bin/bash
 # startup file on /usr/local/bin
-# I want to search a new skinn for vlc, but my mom
   
 		if [[ $(ps axu | grep -v grep | grep -v hi_vlc | grep 169311-inkyV2) = '' ]] ;
         then

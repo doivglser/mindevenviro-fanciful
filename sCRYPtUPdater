@@ -34,8 +34,8 @@ fi
 
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
-daytum=$(date | awk '{print $2,$4,$6}' | sed 's/\ //g') ;
-toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '$daytum|README|.md|.vlt|crap|.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install|.installed|master|HEAD|COMMIT_EDITMSG|.config|.twmrc|untitled|twmrc|config|description|sample|index|exclude|refs|.wH0rUNSon' | grep -vE '[a-z0-9]{38}') ;
+excludES=$(find /home/$SUDO_USER/Downloads/ -type f) ;
+toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '"$excludES"|.tmp|README|.md|.vlt|crap|.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install|.installed|master|HEAD|COMMIT_EDITMSG|.config|.twmrc|untitled|twmrc|config|description|sample|index|exclude|refs|.wH0rUNSon' 2>/dev/null | grep -vE '[a-z0-9]{38}' 2>/dev/null) ;
 
 			if [[ "$toDayChanged" != '' ]] ;
 	then

@@ -1,5 +1,6 @@
 #!/bin/bash
 # startup file on /usr/local/bin
+#
 
 to_star_up(){
 xsetroot -solid yellow &

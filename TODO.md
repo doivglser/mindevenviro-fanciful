@@ -1,16 +1,14 @@
 #TODO:
 
-#
-/etc/clamav/clamd.conf --> ScanOnAccess
+# /etc/clamav/clamd.conf --> ScanOnAccess
 
 ScanOnAccess True
 
 OnAccessMountPath /home/$USER/Downloads
 
-#
+# .
 
-#
-/etc/snort/snort.debian.conf --> INTERFACES
+# /etc/snort/snort.debian.conf --> INTERFACES
 
 DEBIAN_SNORT_STARTUP="boot"
 DEBIAN_SNORT_HOME_NET="192.168.0.0/16"
@@ -20,8 +18,7 @@ DEBIAN_SNORT_SEND_STATS="true"
 DEBIAN_SNORT_STATS_RCPT="root"
 DEBIAN_SNORT_STATS_THRESHOLD="1"
 
-#
-/etc/wicd/manager-settings.conf --> GLOBAL SETTINGS
+# /etc/wicd/manager-settings.conf --> GLOBAL SETTINGS
 
 [Settings]
 backend = external
@@ -47,24 +44,14 @@ sudo_app = 0
 prefer_wired = False
 show_never_connect = True
 
-#
+# .
 
-#
-ALT+TAB
-#
+# ALT+TAB
 
-#
-Schach
-#
+# Schach
 
-#
-Uhr
-#
+# Uhr
 
-#
-GUI's
-#
+# GUI's
 
-#
-ncurses
-#
+# ncurses
