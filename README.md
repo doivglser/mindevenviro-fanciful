@@ -1,3 +1,5 @@
+# first working "sudo ./install"
+
 # M1N-D3V-3NV1R0
 
 :::  Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
