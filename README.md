@@ -24,7 +24,7 @@
 
 # PROBLEMS:
 
-* no workaround to install wifi firmware
+* no workaround to install wifi firmware (I have)
 
 * serv-if-up too hevy load
 
