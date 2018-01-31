@@ -5,7 +5,7 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
-myPrograms="snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
+myPrograms="scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
 environinstall="serv-if-up sCRYPtUPdater shi3lD stop_shield start_shield feh-bg hi hi_geany hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db snortup check " ;
 
 		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
@@ -28,22 +28,7 @@ else
 		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
 	else
 		tmpfolder="/tmp" ;
-fi
-
-	echo -e " . clearing files" ;
-
-	# by an update clear from double entries
-	sed '/alias/d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc ;
-	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc ;
-
-	# by an update clear from double entries
-	sed '/Alias/d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf ;
-	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf ;
-	
-	# by an update clear from double entries	
-	sed -e '/Downloads auto bind/d' /etc/fstab >| $tmpfolder/fstab ;
-	cp -f $tmpfolder/fstab /etc/fstab ;
-	
+fi	
 		spin='.oOo' ; i=0 ;
 		spin2='-\|/' ;
 		
@@ -60,13 +45,29 @@ fi
 		((nNuM1--)) ;
 done
 
+	echo -e " ... clearing files" ;
+
+	# by an update clear from double entries
+	sed '/alias /d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc ;
+	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc ;
+	sed '/noclobber /d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc ;
+	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc ;
+
+	# by an update clear from double entries
+	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf ;
+	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf ;
+	
+	# by an update clear from double entries	
+	sed -e '/Downloads auto bind/d' /etc/fstab >| $tmpfolder/fstab ;
+	cp -f $tmpfolder/fstab /etc/fstab ;
+
 	echo -e "\n ... save vendors MAC-Address" ;
 	ip link show | grep ether | awk '{print $2}' | tee -a "/home/$SUDO_USER/.vendorsmac" ;
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/.vendorsmac" ;
 
 	echo -e "\n ... create /home/$SUDO_USER Directories" ;
 	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton} 2>/dev/null ;
-	chown -R ivo:ivo /home/$USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton}
+	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton}
 
 	echo -e "\n ... set background Pictures" ;
 	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures/ && wait ;
@@ -78,7 +79,9 @@ done
 
 	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
 	cp -f sources.list /etc/apt/sources.list
+	echo -e "\n ... I do an update" ;	
 	apt-get update && wait ;
+	echo -e "\n ... Autoremove if upgrade" ;	
 	apt -f -y -m autoremove && wait ;
 
 		while [[ "$nNuM2" != "0" ]] ;
@@ -183,7 +186,11 @@ fi
 
 		echo -e "\n ... set the rights for .wH0rUNSon " ;
 		touch $HOME/.wH0rUNSon && chown $SUDO_USER:$SUDO_USER $HOME/.wH0rUNSon ;
-
+		
+		# workaround for debconf's snort
+		apt-get -f -m -y install snort | tee -a "/home/$SUDO_USER/.installed" ; wait ;
+		dpkg --configure -a ; wait ;
+		
 		echo -e "\n\n ... Congratulations we have min-dev-enviro successfully installed!\r" ;
 else
 		echo -e "\n Allready installed, for a new install, remove /home/$SUDO_USER/.installed\r" ;
