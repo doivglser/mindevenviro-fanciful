@@ -2,23 +2,23 @@
 
 :::  Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
 
-° For Debian GNU/Linux.
+- For Debian GNU/Linux.
 
-° Antivirus engine ClamAV and NIDS solution Snort.
+- Antivirus engine ClamAV and NIDS solution Snort.
 
-° Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e" and "php -l".
+- Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e" and "php -l".
 
-° Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC.
+- Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC.
 
-° Web surfing with Firefox-ESR and local/web media experience with VLC.
+- Web surfing with Firefox-ESR and local/web media experience with VLC.
 
-° PlayOnLinux, to install win32 and win64 MS-Windows applications.
+- PlayOnLinux, to install win32 and win64 MS-Windows applications.
 
-° Restarts apache2, mysqld, sendmail, snort, clamd.
+- Restarts apache2, mysqld, sendmail, snort, clamd.
 
-° Search script and MySQL(MariaDB) maintainers script.
+- Search script and MySQL(MariaDB) maintainers script.
 
-° For programmers and administrators.
+- For programmers and administrators.
 
 # PROBLEMS:
 
@@ -111,49 +111,49 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
 * in ~/
 
-  .wH0rUNSon # Depends on sCRYPtUPdater; $USER workflow control.
+  .wH0rUNSon    # Depends on sCRYPtUPdater; $USER workflow control.
   
-  .[MonthYear].mac_recieves_dhcp_lease # Depends on shi3lD, a list of working MAC's addresses.
+  .[MonthYear].mac_recieves_dhcp_lease      # Depends on shi3lD, a list of working MAC's addresses.
 
-  .[MonthYear].mac_no_dhcp_lease # Depends on shi3lD, a list of NOT working MAC's addresses.
+  .[MonthYear].mac_no_dhcp_lease      # Depends on shi3lD, a list of NOT working MAC's addresses.
 
-  .installed # The list of the installed components.
+  .installed      # The list of the installed components.
   
-  .vendorsmac # The list of the vendors MAC-Adresses.
+  .vendorsmac     # The list of the vendors MAC-Adresses.
 
   .twmrc # VTWM's Layout
 
-  .config/mc/ini # Midnight Commander's Layout
+  .config/mc/ini  # Midnight Commander's Layout
   
-  .config/terminator/config # Terminator's Layout
+  .config/terminator/config   # Terminator's Layout
   
-  .Xresources # Login Mask
+  .Xresources     # Login Mask
 
-  .xscreensaver # Screen Saver's config
+  .xscreensaver   # Screen Saver's config
   
 * ~/Music
 
-  76256__ganscaile__startup.mp3 # startup sound
+  76256__ganscaile__startup.mp3     # startup sound
   
 * ~/Pictures
 
-  wallpapers.zip # unpacked Pictures for feh-bg
+  wallpapers.zip  # unpacked Pictures for feh-bg
   
 * in /usr/local/bin
 
-  shi3lD # network-manager
+  shi3lD          # network-manager
 
-  start_shield # Depends on shi3lD.
+  start_shield    # Depends on shi3lD.
 
-  stop_shield # Depends on shi3lD.
+  stop_shield     # Depends on shi3lD.
 
-  serv-if-up # Depends on shi3lD, background process, restarts servers.
+  serv-if-up      # Depends on shi3lD, background process, restarts servers.
 
-  sCRYPtUPdater # Syntax check and update to the path.
+  sCRYPtUPdater   # Syntax check and update to the path.
 
-  feh-bg # changes the background on vtwm.
+  feh-bg          # changes the background on vtwm.
   
-  hi # startup
+  hi              # startup
   
   hi_firefox-esr
   
@@ -167,15 +167,19 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
   
   hi_wicd-client
   
-  mysql_cp_db # MySQL and administration
+  mysql_cp_db     # MySQL and administration
   
-  search # Search and display if to grep true with less.
+  search          # Search and display if to grep true with less.
+  
+  snortup         # restart's snort if wifi accessed.
+  
+  check           # display's status of snortup and clamd
 
 * in ~/min-dev-enviro
 
-  sources.list # HTTP Web source of debian Stretch
+  sources.list    # HTTP Web source of debian Stretch
   
-  install # install script of min-dev-enviro
+  install         # install script of min-dev-enviro
   
 * in /usr/share/vlc/skins2/
 
