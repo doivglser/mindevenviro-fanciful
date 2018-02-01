@@ -136,8 +136,8 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.twmrc ;
 	
 	echo -e "\n ... copy the playlist to /home/$SUDO_USER" ;
-	cp -f playlist.xspf /home/$SUDO_USER/playlist.xspf ;
-	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/playlist.xspf ;
+	cp -f playlist.m3u /home/$SUDO_USER/playlist.m3u ;
+	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/playlist.m3u ;
 	
 	echo -e "\n ... copy the .xscreensaver file to /home/$SUDO_USER" ;
 	cp -f xscreensaver /home/$SUDO_USER/.xscreensaver ;
