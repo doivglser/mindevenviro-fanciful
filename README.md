@@ -1,5 +1,3 @@
-# first working "sudo ./install"
-
 # M1N-D3V-3NV1R0
 
 :::  Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
@@ -30,19 +28,13 @@
 
 * shi3lD may not work, if your network is down. $(interface) overwrites it selft
 
-* install:
-
-  while installing snort: debconf asks for interface eth0 no workaround for "eno[0-9]" interfaces
-  
-  Take a look in to "ip route show" and "sudo dpkg --configure -a" with the name of your interface.
+* while installing: while installing snort: debconf asks for interface eth0 no workaround for "eno[0-9]" interfaces. Take a look in to "ip route show" and "sudo dpkg --configure -a" with the name of your interface.
 
 # TODO:
 
 * serv-if-up's loop or something
 
-* shi3lD is overwriting var $interface
-  
-  Workaround to change the user-agent while changing the MAC - addresses.
+* shi3lD is overwriting var $interface, Workaround to change the user-agent while changing the MAC - addresses.
 
 * sCRYPtUPdater
 
@@ -60,8 +52,6 @@
 ScanOnAccess True
 
 OnAccessMountPath /home/$USER/Downloads
-
-# .
 
 * /etc/snort/snort.debian.conf --> INTERFACES
 
@@ -99,8 +89,6 @@ sudo_app = 0
 prefer_wired = False
 show_never_connect = True
 
-# .
-
 * ALT+TAB
 
 * Schach
@@ -110,8 +98,6 @@ show_never_connect = True
 * GUI's
 
 * ncurses
-
-# .
 
 # Requirements:
 
