@@ -206,6 +206,6 @@ fi
 		sleep 6 ;
 		init 6 ;
 else
-		echo -e "\n M1N-D3V-3NV1R0 allready installed!\n do: rm /home/$SUDO_USER/.installed\n after installation, system will restart." ;
+		echo -e "\n M1N-D3V-3NV1R0 allready installed!\n run this script from within the folder min-dev-enviro\n do: rm /home/$SUDO_USER/.installed\n after installation, system will restart." ;
 fi
 fi
