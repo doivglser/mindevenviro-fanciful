@@ -60,6 +60,14 @@ done
 	# by an update clear from double entries	
 	sed -e '/Downloads auto bind/d' /etc/fstab >| $tmpfolder/fstab ;
 	cp -f $tmpfolder/fstab /etc/fstab ;
+	
+	# by an update clear from double entries	
+	sed -e '/ScanOnAccess /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf  ;
+	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf  ;
+	
+	# by an update clear from double entries	
+	sed -e '/OnAccessMountPath /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf  ;
+	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf  ;	
 
 	echo -e "\n ... save vendors MAC-Address" ;
 	ip link show | grep ether | awk '{print $2}' | tee -a "/home/$SUDO_USER/.vendorsmac" ;
@@ -163,6 +171,8 @@ done
 	chown www-data:www-data /var/www/html/README.html ;
 	
 	echo "Alias /testphp/ /var/www/html/testphp/" >> /etc/apache2/sites-available/000-default.conf ;
+	
+	echo -e "ScanOnAccess True\nOnAccessMountPath /home/$SUDO_USER/Downloads" >> /etc/clamav/clamd.conf ;
 	
 	echo -e "\n ... check for cgi-bin on drive" ;
 	
