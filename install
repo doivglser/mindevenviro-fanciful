@@ -5,19 +5,19 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
-myPrograms="wicd scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
+myPrograms="wicd scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
 environinstall="serv-if-up sCRYPtUPdater shi3lD stop_shield start_shield feh-bg hi hi_geany hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db snortup check " ;
 
-		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
-	then
-		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
-fi
 		if [ ! $EUID = 0 ] ;
 	then
 		echo -e "please sudo" ;
 		exit 0 ;
 else
-		if [ ! -e "/home/$SUDO_USER/.installed" ] && [[ $PWD =~ 'min-dev-enviro' ]] ;
+		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
+	then
+		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
+fi
+		if [[ $PWD =~ 'min-dev-enviro' ]] && [[ $(ps axu | grep -v grep | grep install) != '' ]] ;
 	then
 
 	nNuM1=$(echo "$environinstall" | wc -w) ;
@@ -41,7 +41,7 @@ fi
 		sudo chmod 4755 "/usr/local/bin/$toCopyPath" ;
 		sudo chmod u+s "/usr/local/bin/$toCopyPath" &&
 		echo -e "\n ... BEGINing INSTALLATION ::\n" ;		
-		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1} $toCopyPath in path: $nnumberr${spin:$i:1} " ; sleep .1 ;
+		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1} $toCopyPath in path: $nnumberr${spin:$i:1} " | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
 		((nNuM1--)) ;
 done
 
@@ -70,7 +70,7 @@ done
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER ;
 
 	echo -e "\n ... set background Pictures" ;
-	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures/ && wait ;
+	unzip wallpapers.zip -df /home/$SUDO_USER/Pictures/ && wait ;
 	chown -R "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/Pictures/* ;
 
 	echo -e "\n ... copy the startup sound to /home/$SUDO_USER/Music/" ;
@@ -81,8 +81,6 @@ done
 	cp -f sources.list /etc/apt/sources.list
 	echo -e "\n ... I do an update" ;	
 	apt-get update && wait ;
-	echo -e "\n ... Autoremove if upgrade" ;	
-	apt -f -y -m autoremove && wait ;
 
 		while [[ "$nNuM2" != "0" ]] ;
 	do
@@ -92,16 +90,16 @@ done
 
 		if [[ "${#wH3RE}" != "0" ]] ;
 	then
-		apPR="$toInst, allready installed" ;
-		echo -e "\n$apPR" | tee -a "/home/$SUDO_USER/.installed";
+		apPR="$toInst, allready installed" | tee -a "/home/$SUDO_USER/.installed" ;
+		echo -e "\n$apPR" ;
 		((nNuM2--)) ;
 	else
 		echo -e "\ninstalling ${toInst}..." ;
-		nohup apt-get -f -m -y install "$toInst" | tee -a "/home/$SUDO_USER/.installed" &
+		apt-get -f -m -y install "$toInst" | tee -a "/home/$SUDO_USER/.installed" && wait ;
 		wait ;
 		sleep 1 ;
-		apPR="$toInst, INSTALLED! " ;
-		echo -e "\n$apPR" | tee -a "/home/$SUDO_USER/.installed";		
+		apPR="$toInst, INSTALLED!" ;
+		echo -e "\n$apPR" | tee -a "/home/$SUDO_USER/.installed" ;
 		sleep 0.5 ;
 		((nNuM2--)) ;
 fi
@@ -126,12 +124,12 @@ done
 	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
 	mkdir -p /home/$SUDO_USER/.config/mc 2>/dev/null ;
 	cp -f ini /home/$SUDO_USER/.config/mc/ini ;
-	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/mc/ini ;
+	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config ;
 
 	echo -e "\n ... copy the config file to /home/$SUDO_USER/.config/terminator/config" ;
 	mkdir -p /home/$SUDO_USER/.config/terminator 2>/dev/null ;
 	cp -f config /home/$SUDO_USER/.config/terminator/config ;
-	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config/terminator/config ;
+	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config ;
 	
 	echo -e "\n ... copy the .twmrc file to /home/$SUDO_USER" ;
 	cp -f twmrc /home/$SUDO_USER/.twmrc ;
@@ -194,11 +192,15 @@ fi
 		touch $HOME/.wH0rUNSon && chown $SUDO_USER:$SUDO_USER $HOME/.wH0rUNSon ;
 		
 		# workaround for debconf's snort
-		apt-get -f -m -y install snort | tee -a "/home/$SUDO_USER/.installed" ; wait ;
-		dpkg --configure -a ; wait ;
+		apt-get -f -m -y install snort && wait ;
+		# reconfigure all
+		dpkg --configure -a && wait ;
+		# clean and autoremove
+		apt-get clean ;
+		apt -f -y -m autoremove ;
 		
 		echo -e "\n\n ... Congratulations we have min-dev-enviro successfully installed!\r" ;
 else
-		echo -e "\n Allready installed, for a new install, remove /home/$SUDO_USER/.installed\r" ;
+		echo -e "\n run this script from min-dev-enviro folder\r" ;
 fi
 fi

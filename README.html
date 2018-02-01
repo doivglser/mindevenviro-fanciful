@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
  <head>
-  <title> * * * * * * *</title>
+  <title>M1N-D3V-3NV1R0</title>
  </head>
  <body>
 <h1>M1N-D3V-3NV1R0</h1>
@@ -12,47 +12,43 @@
 
 <pre>
 
-# M1N-D3V-3NV1R0
+M1N-D3V-3NV1R0
 
 :::  Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
 
-° For Debian GNU/Linux.
+- For Debian GNU/Linux.
 
-° Antivirus engine ClamAV and NIDS solution Snort.
+- Antivirus engine ClamAV and NIDS solution Snort.
 
-° Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e" and "php -l".
+- Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e" and "php -l".
 
-° Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC.
+- Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC.
 
-° Web surfing with Firefox-ESR and local/web media experience with VLC.
+- Web surfing with Firefox-ESR and local/web media experience with VLC.
 
-° PlayOnLinux, to install win32 and win64 MS-Windows applications.
+- PlayOnLinux, to install win32 and win64 MS-Windows applications.
 
-° Restarts apache2, mysqld, sendmail, snort, clamd.
+- Restarts apache2, mysqld, sendmail, snort, clamd.
 
-° Search script and MySQL(MariaDB) maintainers script.
+- Search script and MySQL(MariaDB) maintainers script.
 
-° For programmers and administrators.
+- For programmers and administrators.
 
 # PROBLEMS:
+
+* no workaround to install wifi firmware (I have)
 
 * serv-if-up too hevy load
 
 * shi3lD may not work, if your network is down. $(interface) overwrites it selft
 
-* install:
-
-  while installing snort: debconf asks for interface eth0 no workaround for "eno[0-9]" interfaces
-  
-  Take a look in to "ip route show" and "sudo dpkg --configure -a" with the name of your interface.
+* while installing: while installing snort: debconf asks for interface eth0 no workaround for "eno[0-9]" interfaces. Take a look in to "ip route show" and "sudo dpkg --configure -a" with the name of your interface.
 
 # TODO:
 
 * serv-if-up's loop or something
 
-* shi3lD is not working
-  
-  Workaround to change the user-agent while changing the MAC - addresses.
+* shi3lD is overwriting var $interface, Workaround to change the user-agent while changing the MAC - addresses.
 
 * sCRYPtUPdater
 
@@ -64,6 +60,58 @@
 * mindevenviro.rules
 
   iptables drop rules for /etc/snort/rules/
+
+* /etc/clamav/clamd.conf --> ScanOnAccess
+
+ScanOnAccess True
+
+OnAccessMountPath /home/$USER/Downloads
+
+* /etc/snort/snort.debian.conf --> INTERFACES
+
+DEBIAN_SNORT_STARTUP="boot"
+DEBIAN_SNORT_HOME_NET="192.168.0.0/16"
+DEBIAN_SNORT_OPTIONS=""
+DEBIAN_SNORT_INTERFACE="eno1"
+DEBIAN_SNORT_SEND_STATS="true"
+DEBIAN_SNORT_STATS_RCPT="root"
+DEBIAN_SNORT_STATS_THRESHOLD="1"
+
+* /etc/wicd/manager-settings.conf --> GLOBAL SETTINGS
+
+[Settings]
+backend = external
+wireless_interface = wlp3s0b1
+wired_interface = eno1
+wpa_driver = wext
+always_show_wired_interface = False
+use_global_dns = False
+global_dns_1 = None
+global_dns_2 = None
+global_dns_3 = None
+global_dns_dom = None
+global_search_dom = None
+auto_reconnect = True
+debug_mode = False
+wired_connect_mode = 1
+signal_display_type = 0
+should_verify_ap = 1
+dhcp_client = 0
+link_detect_tool = 0
+flush_tool = 0
+sudo_app = 0
+prefer_wired = False
+show_never_connect = True
+
+* ALT+TAB
+
+* Schach
+
+* Uhr
+
+* GUI's
+
+* ncurses
 
 # Requirements:
 
@@ -83,7 +131,7 @@
 
 # Install
 
-* ~/min-dev-enviro$ sudo ./install
+* ivo@x0x:~/min-dev-enviro$ sudo ./install 
 
   Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
@@ -125,49 +173,49 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 
 * in ~/
 
-  .wH0rUNSon # Depends on sCRYPtUPdater; $USER workflow control.
+  .wH0rUNSon    # Depends on sCRYPtUPdater; $USER workflow control.
   
-  .[MonthYear].mac_recieves_dhcp_lease # Depends on shi3lD, a list of working MAC's addresses.
+  .[MonthYear].mac_recieves_dhcp_lease      # Depends on shi3lD, a list of working MAC's addresses.
 
-  .[MonthYear].mac_no_dhcp_lease # Depends on shi3lD, a list of NOT working MAC's addresses.
+  .[MonthYear].mac_no_dhcp_lease      # Depends on shi3lD, a list of NOT working MAC's addresses.
 
-  .installed # The list of the installed components.
+  .installed      # The list of the installed components.
   
-  .vendorsmac # The list of the vendors MAC-Adresses.
+  .vendorsmac     # The list of the vendors MAC-Adresses.
 
   .twmrc # VTWM's Layout
 
-  .config/mc/ini # Midnight Commander's Layout
+  .config/mc/ini  # Midnight Commander's Layout
   
-  .config/terminator/config # Terminator's Layout
+  .config/terminator/config   # Terminator's Layout
   
-  .Xresources # Login Mask
+  .Xresources     # Login Mask
 
-  .xscreensaver # Screen Saver's config
+  .xscreensaver   # Screen Saver's config
   
 * ~/Music
 
-  76256__ganscaile__startup.mp3 # startup sound
+  76256__ganscaile__startup.mp3     # startup sound
   
 * ~/Pictures
 
-  wallpapers.zip # unpacked Pictures for feh-bg
+  wallpapers.zip  # unpacked Pictures for feh-bg
   
 * in /usr/local/bin
 
-  shi3lD # network-manager
+  shi3lD          # network-manager
 
-  start_shield # Depends on shi3lD.
+  start_shield    # Depends on shi3lD.
 
-  stop_shield # Depends on shi3lD.
+  stop_shield     # Depends on shi3lD.
 
-  serv-if-up # Depends on shi3lD, background process, restarts servers.
+  serv-if-up      # Depends on shi3lD, background process, restarts servers.
 
-  sCRYPtUPdater # Syntax check and update to the path.
+  sCRYPtUPdater   # Syntax check and update to the path.
 
-  feh-bg # changes the background on vtwm.
+  feh-bg          # changes the background on vtwm.
   
-  hi # startup
+  hi              # startup
   
   hi_firefox-esr
   
@@ -181,15 +229,19 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
   
   hi_wicd-client
   
-  mysql_cp_db # MySQL and administration
+  mysql_cp_db     # MySQL and administration
   
-  search # Search and display if to grep true with less.
+  search          # Search and display if to grep true with less.
+  
+  snortup         # restart's snort if wifi accessed.
+  
+  check           # display's status of snortup and clamd
 
 * in ~/min-dev-enviro
 
-  sources.list # HTTP Web source of debian Stretch
+  sources.list    # HTTP Web source of debian Stretch
   
-  install # install script of min-dev-enviro
+  install         # install script of min-dev-enviro
   
 * in /usr/share/vlc/skins2/
 
@@ -198,6 +250,8 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
   169311-inkyV2.vlt
 
   STRYPER-VLC.vlt
+  
+  Slick Iphone Skin.vlt
 
 * in /var/www/html/
 
