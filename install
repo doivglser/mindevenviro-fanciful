@@ -5,8 +5,8 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
-myPrograms="wicd scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
-environinstall="serv-if-up sCRYPtUPdater shi3lD stop_shield start_shield feh-bg hi hi_geany hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db snortup check " ;
+myPrograms="wicd scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
+environinstall="serv-if-up sCRYPtUPdater shi3lD stop_shield start_shield feh-bg hi hi_geany hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db snortup check install " ;
 
 		if [ ! $EUID = 0 ] ;
 	then
@@ -40,17 +40,17 @@ fi
 		sudo chown root:root "/usr/local/bin/$toCopyPath" ;
 		sudo chmod 4755 "/usr/local/bin/$toCopyPath" ;
 		sudo chmod u+s "/usr/local/bin/$toCopyPath" &&
-		echo -e "\n ... BEGINing INSTALLATION ::\n" ;		
-		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1} $toCopyPath in path: $nnumberr${spin:$i:1} " | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
+		echo -e "\n ... copying files ::\n" ;
+		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1} $toCopyPath ${spin:$i:1}" | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
 		((nNuM1--)) ;
 done
 
-	echo -e " ... clearing files" ;
+	echo -e "\r\n ... clearing files" ;
 
 	# by an update clear from double entries
 	sed '/alias /d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc ;
 	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc ;
-	sed '/noclobber /d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc ;
+	sed '/set -o noclobber/d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc ;
 	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc ;
 
 	# by an update clear from double entries
@@ -66,11 +66,11 @@ done
 	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/.vendorsmac" ;
 
 	echo -e "\n ... create /home/$SUDO_USER Directories" ;
-	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton} 2>/dev/null ;
+	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton} ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER ;
 
 	echo -e "\n ... set background Pictures" ;
-	unzip wallpapers.zip -df /home/$SUDO_USER/Pictures/ && wait ;
+	unzip -o wallpapers.zip -d /home/$SUDO_USER/Pictures/ && wait ;
 	chown -R "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/Pictures/* ;
 
 	echo -e "\n ... copy the startup sound to /home/$SUDO_USER/Music/" ;
@@ -90,7 +90,7 @@ done
 
 		if [[ "${#wH3RE}" != "0" ]] ;
 	then
-		apPR="$toInst, allready installed" | tee -a "/home/$SUDO_USER/.installed" ;
+		apPR="$toInst, allready installed" ;
 		echo -e "\n$apPR" ;
 		((nNuM2--)) ;
 	else
@@ -117,9 +117,12 @@ done
 
 	echo -e "\n ... update .bashrc" ;
 	echo "set -o noclobber" >> /home/$SUDO_USER/.bashrc ;	
-	echo "alias ls='ls --color=auto -s'" >> /home/$SUDO_USER/.bashrc ;
+	echo "alias ls='ls --color=auto -sh'" >> /home/$SUDO_USER/.bashrc ;
 	echo "alias down='sudo init 0'" >> /home/$SUDO_USER/.bashrc ;
-	echo "alias reboot='sudo init 6'" >> /home/$SUDO_USER/.bashrc ;
+	echo "alias vol='alsamixer'" >> /home/$SUDO_USER/.bashrc ;
+	echo "alias works='tail -f .wH0rUNSon'" >> /home/$SUDO_USER/.bashrc ;
+	echo "alias post='sudo -u root mutt'" >> /home/$SUDO_USER/.bashrc ; 
+	echo "alias | sed -n 's/alias //p ;'" >> /home/$SUDO_USER/.bashrc ;
 
 	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
 	mkdir -p /home/$SUDO_USER/.config/mc 2>/dev/null ;
@@ -179,7 +182,7 @@ fi
 		echo -e "\n ... update apache2 configuration" ;
 		a2enmod cgid && wait ;
 		
-		echo -e "\n ... restart server" ;
+		echo -e "\n ... restarting apache2 server" ;
 		systemctl restart apache2.service && wait ;
 
 		echo -e "\n ... put $SUDO_USER/Downloads in a Jail" ;
@@ -199,7 +202,9 @@ fi
 		apt-get clean ;
 		apt -f -y -m autoremove ;
 		
-		echo -e "\n\n ... Congratulations we have min-dev-enviro successfully installed!\r" ;
+		echo -e "\n\n ... Congratulations we have min-dev-enviro successfully installed!\nRESTART IN 6 SECONDS...\r" ;
+		sleep 6 ;
+		init 6 ;
 else
 		echo -e "\n run this script from min-dev-enviro folder\r" ;
 fi
