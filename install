@@ -17,7 +17,7 @@ else
 	then
 		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
 fi
-		if [[ $PWD =~ 'min-dev-enviro' ]] && [[ $(ps axu | grep -v grep | grep install) != '' ]] ;
+		if [ ! -e /home/$SUDO_USER/.installed ] && [[ $PWD =~ 'min-dev-enviro' ]] ;
 	then
 
 	nNuM1=$(echo "$environinstall" | wc -w) ;
@@ -206,6 +206,6 @@ fi
 		sleep 6 ;
 		init 6 ;
 else
-		echo -e "\n run this script from min-dev-enviro folder\r" ;
+		echo -e "\n M1N-D3V-3NV1R0 allready installed!\n do: rm /home/$SUDO_USER/.installed\n after installation, system will restart." ;
 fi
 fi
