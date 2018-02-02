@@ -71,7 +71,7 @@ done
 
 	echo -e "\n ... save vendors MAC-Address" ;
 	ip link show | grep ether | awk '{print $2}' | tee -a "/home/$SUDO_USER/.vendorsmac" ;
-	chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/.vendorsmac" ;
+	chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.vendorsmac" ;
 
 	echo -e "\n ... create /home/$SUDO_USER Directories" ;
 	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton} ;
@@ -79,11 +79,11 @@ done
 
 	echo -e "\n ... set background Pictures" ;
 	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures/ && wait ;
-	chown -R "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/Pictures/* ;
+	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
 	echo -e "\n ... copy the startup sound to /home/$SUDO_USER/Music/" ;
 	cp -f 76256__ganscaile__startup.mp3 /home/$SUDO_USER/Music/ && wait ;
-	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/Music/* ;
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Music/* ;
 
 	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
 	cp -f sources.list /etc/apt/sources.list
@@ -136,24 +136,24 @@ done
 	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
 	mkdir -p /home/$SUDO_USER/.config/mc 2>/dev/null ;
 	cp -f ini /home/$SUDO_USER/.config/mc/ini ;
-	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config ;
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config ;
 
 	echo -e "\n ... copy the config file to /home/$SUDO_USER/.config/terminator/config" ;
 	mkdir -p /home/$SUDO_USER/.config/terminator 2>/dev/null ;
 	cp -f config /home/$SUDO_USER/.config/terminator/config ;
-	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.config ;
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config ;
 	
 	echo -e "\n ... copy the .twmrc file to /home/$SUDO_USER" ;
 	cp -f twmrc /home/$SUDO_USER/.twmrc ;
-	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.twmrc ;
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.twmrc ;
 	
 	echo -e "\n ... copy the playlist to /home/$SUDO_USER" ;
 	cp -f playlist.m3u /home/$SUDO_USER/playlist.m3u ;
-	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/playlist.m3u ;
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/playlist.m3u ;
 	
 	echo -e "\n ... copy the .xscreensaver file to /home/$SUDO_USER" ;
 	cp -f xscreensaver /home/$SUDO_USER/.xscreensaver ;
-	chown "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/.xscreensaver ;
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.xscreensaver ;
 
 	echo -e "\n ... copy VLC skin" ;
 	cp -f STRYPER-VLC.vlt /usr/share/vlc/skins2/ ;
@@ -200,7 +200,7 @@ fi
 		echo "/dev/shm /home/$SUDO_USER/Downloads auto bind 0 0" | tee -a /etc/fstab ;
 
 		echo -e "\n ... set the rights for installed (to remove it later)" ;
-		chown "$SUDO_USER":"$SUDO_USER" "/home/$SUDO_USER/.installed" ;
+		chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.installed" ;
 
 		echo -e "\n ... set the rights for .wH0rUNSon " ;
 		touch $HOME/.wH0rUNSon && chown $SUDO_USER:$SUDO_USER $HOME/.wH0rUNSon ;
