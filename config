@@ -1,7 +1,6 @@
 [global_config]
   enabled_plugins = InactivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   inactive_color_offset = 0.6
-  tab_position = hidden
 [keybindings]
 [layouts]
   [[default]]

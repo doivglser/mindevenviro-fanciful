@@ -45,25 +45,27 @@ done
 
 	echo -e "\r\n ... clearing files" ;
 
-	# by an update clear from double entries
+	# by an update clear from double entries in .bashrc
 	sed '/alias /d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc 2>/dev/null ;
 	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc 2>/dev/null ;
 	sed '/set -o noclobber/d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc 2>/dev/null ;
 	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc 2>/dev/null ;
+	sed '/cd && pwd/d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc 2>/dev/null ;
+	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc 2>/dev/null ;	
 
-	# by an update clear from double entries
+	# by an update clear from double entries in 000-default.conf
 	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
 	
-	# by an update clear from double entries	
+	# by an update clear from double entries in fstab
 	sed -e '/Downloads auto bind/d' /etc/fstab >| $tmpfolder/fstab 2>/dev/null ;
 	cp -f $tmpfolder/fstab /etc/fstab 2>/dev/null ;
 	
-	# by an update clear from double entries	
+	# by an update clear from double entries in clamd.conf
 	sed -e '/ScanOnAccess /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;
 	
-	# by an update clear from double entries	
+	# by an update clear from double entries in clamd.conf
 	sed -e '/OnAccessMountPath /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;	
 
@@ -104,7 +106,7 @@ done
 		((nNuM2--)) ;
 	else
 		echo -e "\ninstalling ${toInst}..." ;
-		apt-get -f -m -y install "$toInst" | tee -a "/home/$SUDO_USER/.installed" && wait ;
+		apt-get -f -m -y --allow-change-held-packages install "$toInst" | tee -a "/home/$SUDO_USER/.installed" && wait ;
 		wait ;
 		sleep 1 ;
 		apPR="$toInst, INSTALLED!" ;
@@ -208,13 +210,15 @@ fi
 		touch $HOME/.wH0rUNSon && chown $SUDO_USER:$SUDO_USER $HOME/.wH0rUNSon ;
 		
 		# workaround for debconf's snort
-		apt-get -f -m -y install snort && wait ;
+		apt-get -f -m -y --allow-change-held-packages install snort && wait ;
 		# reconfigure all
 		dpkg --configure -a && wait ;
-		# clean and autoremove
+		# add win32 arch in 64bit system, to install wine32
+		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 && wait ;
+		# update upgrade clean and autoremove
+		apt-get update && apt-get -f -y -m --allow-change-held-packages upgrade && wait ;
 		apt-get clean ;
 		apt -f -y -m autoremove ;
-		apt-get update && apt-get -f -y -m upgrade && wait ;
 		
 		echo -e "\n\n ... Congratulations we have min-dev-enviro successfully installed!\nRESTART IN 6 SECONDS...\r" ;
 		sleep 6 ;
