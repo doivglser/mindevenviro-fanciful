@@ -1,10 +1,10 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <html>
  <head>
-  <title>M1N-D3V-3NV1R0</title>
+  <title>M1ND3V3NV1R0</title>
  </head>
  <body>
-<h1>M1N-D3V-3NV1R0</h1>
+<h1>M1ND3V3NV1R0</h1>
   <table>
    <tr><th colspan="5"><hr></th></tr>
 <tr>
@@ -12,7 +12,7 @@
 
 <pre>
 
-M1N-D3V-3NV1R0
+# M1ND3V3NV1R0
 
 :::  Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
 
@@ -42,72 +42,27 @@ M1N-D3V-3NV1R0
 
 * shi3lD may not work, if your network is down. $(interface) overwrites it selft
 
-* while installing: while installing snort: debconf asks for interface eth0 no workaround for "eno[0-9]" interfaces. Take a look in to "ip route show" and "sudo dpkg --configure -a" with the name of your interface.
+* while installing: while installing snort: debconf asks for interface eth0 no 
+  workaround for "eno[0-9]" interfaces. Take a look in to "ip route show" and 
+  "sudo dpkg --configure -a" with the name of your interface.
 
 # TODO:
 
 * serv-if-up's loop or something
 
-* shi3lD is overwriting var $interface, Workaround to change the user-agent while changing the MAC - addresses.
+* shi3lD is overwriting var $interface. To change the "user-agent" while changing the MAC - addresses.
 
 * sCRYPtUPdater
 
-  To search for brackets and braces, to split the content of the source code into short code snippets.
-  If the workflow interval in minutes is over, refer to the exit handler, if false, reset workflow interval, if true exit.
-  Scan in ~/ for file suffixes or the header with dd, to determine the working directory.
-  Implement Programmable Completion, to auto-complete the command sequence with the [Tab] key.
+  To search for brackets and braces, to split the content of the source code into short code 
+  snippets. If the workflow interval in minutes is over, refer to the exit handler, if false, 
+  reset workflow interval, if true exit. Scan in ~/ for file suffixes or the header with dd, 
+  to determine the working directory. Implement Programmable Completion, to auto-complete the 
+  command sequence with the [Tab] key.
 
-* mindevenviro.rules
-
-  iptables drop rules for /etc/snort/rules/
-
-* /etc/clamav/clamd.conf --> ScanOnAccess
-
-ScanOnAccess True
-
-OnAccessMountPath /home/$USER/Downloads
-
-* /etc/snort/snort.debian.conf --> INTERFACES
-
-DEBIAN_SNORT_STARTUP="boot"
-DEBIAN_SNORT_HOME_NET="192.168.0.0/16"
-DEBIAN_SNORT_OPTIONS=""
-DEBIAN_SNORT_INTERFACE="eno1"
-DEBIAN_SNORT_SEND_STATS="true"
-DEBIAN_SNORT_STATS_RCPT="root"
-DEBIAN_SNORT_STATS_THRESHOLD="1"
-
-* /etc/wicd/manager-settings.conf --> GLOBAL SETTINGS
-
-[Settings]
-backend = external
-wireless_interface = wlp3s0b1
-wired_interface = eno1
-wpa_driver = wext
-always_show_wired_interface = False
-use_global_dns = False
-global_dns_1 = None
-global_dns_2 = None
-global_dns_3 = None
-global_dns_dom = None
-global_search_dom = None
-auto_reconnect = True
-debug_mode = False
-wired_connect_mode = 1
-signal_display_type = 0
-should_verify_ap = 1
-dhcp_client = 0
-link_detect_tool = 0
-flush_tool = 0
-sudo_app = 0
-prefer_wired = False
-show_never_connect = True
-
+* mindevenviro.rules, "iptables" drop rules for /etc/snort/rules/
+  
 * ALT+TAB
-
-* Schach
-
-* Uhr
 
 * GUI's
 
@@ -131,11 +86,20 @@ show_never_connect = True
 
 # Install
 
+*   Login / su - / apt-get update / apt-get -f -y -m install sudo git / nano /etc/sudoers /
+    search for "root	ALL=(ALL:ALL) ALL", copy the line and do a new entry with
+    your username, like "my_username	ALL=(ALL:ALL) ALL" / save ctrl+X / ctrl+D / 
+    cd / git clone https://github.com/doivglser/min-dev-enviro.git / ctrl+D / 
+    login again ... / cd min-dev-enviro /
+
 * ivo@x0x:~/min-dev-enviro$ sudo ./install 
 
   Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
-snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon 
+  snort wicd scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin 
+  firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip 
+  rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server 
+  php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon  
 
 # USAGE:
 
@@ -168,6 +132,10 @@ snort scrot playonlinux mupdf terminator xul-ext-ublock-origin firefox-esr vlc f
 * terminator
 
   Multiple GNOME terminals in one window.
+  
+* sCRYPtUPdater (syntax check and copy to path) (shell script)
+
+* check (ensures snort and clamd are running properly) (shell script)
 
 # Files:
 
