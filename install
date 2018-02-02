@@ -5,7 +5,7 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
-myPrograms="wicd scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
+myPrograms="wicd scrot mupdf terminator playonlinux wineasio wine-rt libjack0:i386 wine-rt-i386:i386 wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
 environinstall="serv-if-up sCRYPtUPdater shi3lD stop_shield start_shield feh-bg hi hi_geany hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db snortup check install " ;
 
 		if [ ! $EUID = 0 ] ;
@@ -48,29 +48,29 @@ done
 	echo -e "\r\n ... clearing files" ;
 
 	# by an update clear from double entries
-	sed '/alias /d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc ;
-	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc ;
-	sed '/set -o noclobber/d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc ;
-	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc ;
+	sed '/alias /d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc 2>/dev/null ;
+	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc 2>/dev/null ;
+	sed '/set -o noclobber/d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc 2>/dev/null ;
+	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc 2>/dev/null ;
 
 	# by an update clear from double entries
-	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf ;
-	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf ;
+	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
+	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
 	
 	# by an update clear from double entries	
-	sed -e '/Downloads auto bind/d' /etc/fstab >| $tmpfolder/fstab ;
-	cp -f $tmpfolder/fstab /etc/fstab ;
+	sed -e '/Downloads auto bind/d' /etc/fstab >| $tmpfolder/fstab 2>/dev/null ;
+	cp -f $tmpfolder/fstab /etc/fstab 2>/dev/null ;
 	
 	# by an update clear from double entries	
-	sed -e '/ScanOnAccess /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf  ;
-	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf  ;
+	sed -e '/ScanOnAccess /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
+	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;
 	
 	# by an update clear from double entries	
-	sed -e '/OnAccessMountPath /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf  ;
-	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf  ;	
+	sed -e '/OnAccessMountPath /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
+	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;	
 
 	echo -e "\n ... save vendors MAC-Address" ;
-	ip link show | grep ether | awk '{print $2}' | tee -a "/home/$SUDO_USER/.vendorsmac" ;
+	ip link show | grep ether | awk '{print $2}' | tee "/home/$SUDO_USER/.vendorsmac" ;
 	chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.vendorsmac" ;
 
 	echo -e "\n ... create /home/$SUDO_USER Directories" ;
@@ -78,6 +78,7 @@ done
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER ;
 
 	echo -e "\n ... set background Pictures" ;
+	rm -R /home/$SUDO_USER/Pictures/* 2>/dev/null ;
 	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures && wait ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
@@ -86,7 +87,9 @@ done
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Music/* ;
 
 	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
-	cp -f sources.list /etc/apt/sources.list
+	cp -f sources.list /etc/apt/sources.list ;
+	wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add - ;
+	wget "http://deb.playonlinux.com/playonlinux_jessie.list" -O /etc/apt/sources.list.d/playonlinux.list ;
 	echo -e "\n ... I do an update" ;	
 	apt-get update && wait ;
 
@@ -132,6 +135,7 @@ done
 	echo "alias post='sudo -u root mutt'" >> /home/$SUDO_USER/.bashrc ; 
 	echo "alias reboot='sudo init 6'" >> /home/$SUDO_USER/.bashrc ;	
 	echo "alias | sed -n 's/alias //p ;'" >> /home/$SUDO_USER/.bashrc ;
+	echo "cd && pwd" >> /home/$SUDO_USER/.bashrc ;	
 
 	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
 	mkdir -p /home/$SUDO_USER/.config/mc 2>/dev/null ;
@@ -212,6 +216,7 @@ fi
 		# clean and autoremove
 		apt-get clean ;
 		apt -f -y -m autoremove ;
+		apt-get update && apt-get -f -y -m upgrade && wait ;
 		
 		echo -e "\n\n ... Congratulations we have min-dev-enviro successfully installed!\nRESTART IN 6 SECONDS...\r" ;
 		sleep 6 ;
