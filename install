@@ -77,11 +77,6 @@ done
 	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton} ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER ;
 
-	echo -e "\n ... set background Pictures" ;
-	rm -R /home/$SUDO_USER/Pictures/* 2>/dev/null ;
-	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures && wait ;
-	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
-
 	echo -e "\n ... copy the startup sound to /home/$SUDO_USER/Music/" ;
 	cp -f 76256__ganscaile__startup.mp3 /home/$SUDO_USER/Music/ && wait ;
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Music/* ;
@@ -121,6 +116,11 @@ fi
 fi
 		printf "\r ... testing for apps, $nNuM2 remaining, $apPRn" ; sleep 0.5 ;
 done
+
+	echo -e "\n ... set background Pictures" ;
+	rm -R /home/$SUDO_USER/Pictures/* 2>/dev/null ;
+	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures && wait ;
+	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
 	echo -e "\n ... copy Xresources" ;
 	cp -f Xresources /etc/X11/xdm/ ;
@@ -210,17 +210,23 @@ fi
 		touch $HOME/.wH0rUNSon && chown $SUDO_USER:$SUDO_USER $HOME/.wH0rUNSon ;
 		
 		# workaround for debconf's snort
+		echo -e "\n ... installing snort " ;
 		apt-get -f -m -y --allow-change-held-packages install snort && wait ;
 		# reconfigure all
+		echo -e "\n ... reconfiguring installed packages " ;
 		dpkg --configure -a && wait ;
 		# add win32 arch in 64bit system, to install wine32
+		echo -e "\n ... add win32 arch in 64bit system, to install wine32" ;
 		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 && wait ;
 		# update upgrade clean and autoremove
+		echo -e "\n ... update upgrade clean and autoremove" ;
 		apt-get update && apt-get -f -y -m --allow-change-held-packages upgrade && wait ;
-		apt-get clean ;
-		apt -f -y -m autoremove ;
+		apt-get clean &&
+		apt -f -y -m autoremove &&
 		
-		echo -e "\n\n ... Congratulations we have min-dev-enviro successfully installed!\nRESTART IN 6 SECONDS...\r" ;
+		echo -e "\n\n ... Congratulations we have min-dev-enviro successfully installed!\r"
+		read -p " ... continue?" ;
+		echo -e "\n ... RESTART IN 6 SECONDS...\r" ;
 		sleep 6 ;
 		init 6 ;
 else
