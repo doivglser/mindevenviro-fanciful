@@ -78,7 +78,7 @@ done
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER ;
 
 	echo -e "\n ... set background Pictures" ;
-	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures/ && wait ;
+	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures && wait ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
 	echo -e "\n ... copy the startup sound to /home/$SUDO_USER/Music/" ;
