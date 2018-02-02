@@ -1,4 +1,4 @@
-# M1N-D3V-3NV1R0
+# M1ND3V3NV1R0
 
 :::  Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
 
@@ -49,10 +49,6 @@
 * mindevenviro.rules, "iptables" drop rules for /etc/snort/rules/
   
 * ALT+TAB
-
-* Schach
-
-* Uhr
 
 * GUI's
 
