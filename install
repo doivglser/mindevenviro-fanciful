@@ -79,7 +79,7 @@ done
 
 	echo -e "\n ... set background Pictures" ;
 	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures/ && wait ;
-	chown -R "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/Pictures ;
+	chown -R "$SUDO_USER":"$SUDO_USER" /home/$SUDO_USER/Pictures/* ;
 
 	echo -e "\n ... copy the startup sound to /home/$SUDO_USER/Music/" ;
 	cp -f 76256__ganscaile__startup.mp3 /home/$SUDO_USER/Music/ && wait ;
@@ -130,6 +130,7 @@ done
 	echo "alias vol='alsamixer'" >> /home/$SUDO_USER/.bashrc ;
 	echo "alias works='tail -f .wH0rUNSon'" >> /home/$SUDO_USER/.bashrc ;
 	echo "alias post='sudo -u root mutt'" >> /home/$SUDO_USER/.bashrc ; 
+	echo "alias reboot='sudo init 6'" >> /home/$SUDO_USER/.bashrc ;	
 	echo "alias | sed -n 's/alias //p ;'" >> /home/$SUDO_USER/.bashrc ;
 
 	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
