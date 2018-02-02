@@ -6,7 +6,7 @@ xlogin*login.translations: #override\
         Return: set-session-argument() finish-field()
 xlogin*borderWidth: 0
 xlogin*geometry: 460x620+1+1
-xlogin*greeting: min-dev-enviro
+xlogin*greeting: M1ND3V3NV1R0
 xlogin*namePrompt: dear:
 xlogin*fail: #@!
 #ifdef COLOR
