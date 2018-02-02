@@ -152,18 +152,20 @@ MenuBorderColor     "#f81e00"
 #
 menu "main"
 {
-":: - M1N-D3V-3NV1R0 - ::"  f.title
-":: Geany Editor"  f.exec "exec /usr/local/bin/hi_geany &"
-":: Transmission"  f.exec "exec /usr/local/bin/hi_transmission-gtk &"
-":: Firefox-ESR"  f.exec "exec /usr/local/bin/hi_firefox-esr &"
-":: PlayOnLinux"  f.exec "exec /usr/local/bin/hi_playonlinux &"
-":: Terminator"  f.exec "exec /usr/local/bin/hi &"
-":: Network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
-":: Music"  f.exec "exec /usr/local/bin/hi_vlc &"
+":: - M1ND3V3NV1R0 - ::"  f.title
+":: geany editor"  f.exec "exec /usr/local/bin/hi_geany &"
+":: transmission"  f.exec "exec /usr/local/bin/hi_transmission-gtk &"
+":: firefox-ESR"  f.exec "exec /usr/local/bin/hi_firefox-esr &"
+":: playOnLinux"  f.exec "exec /usr/local/bin/hi_playonlinux &"
+":: brutalchess"  f.exec "exec /usr/local/bin/hi_brutalchess &"
+":: libreoffice"  f.exec "exec /usr/local/bin/hi_libreoffice &"
+":: terminator"  f.exec "exec /usr/local/bin/hi &"
+":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
+":: music"  f.exec "exec /usr/local/bin/hi_vlc &"
 ":: __________________ ::"  f.title
-"Background"  f.exec "exec /usr/local/bin/feh-bg &"
-"Lock"		f.exec "exec xscreensaver-command -lock &"
-"Kill"		f.destroy
-"Restart"	f.restart
-"Exit"		f.quit
+"background"  f.exec "exec /usr/local/bin/feh-bg &"
+"lock"		f.exec "exec xscreensaver-command -lock &"
+"kill"		f.destroy
+"restart"	f.restart
+"exit"		f.quit
 }
