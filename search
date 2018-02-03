@@ -1,8 +1,17 @@
 #!/bin/bash
 # search by path and file suffix, if grep true open file
-LANG=C
-IFS=$(echo -en "\n\b")
+# TODO:
+# Requested fill size "/var/log/syslog" is invalid while trying to open with nano -r -v
+# Received SIGHUP or SIGTERM while trying to open with nano
+# no workaround the signal-handler from less, if SIGINT trapped from script, less still catches the signal SIGINT.
+
+LANG=C;
+IFS=$(echo -en "\n\b");
+nnumber=0;
 echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.wH0rUNSon" ;
+
+# trap $USER's input ctrl+C and call the exithandler
+trap 'exithandler' SIGINT  ;
 
 # temp folder
                 if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
@@ -16,9 +25,51 @@ fi
 # temp file
 
 # the whole list just with file suffix, ready to grep the content, if true, file in an editor.
-touch "$tmpfolder"/"$(date | awk '{print $2,$4,$6}' | sed 's/\ //g')" ;
-tmpfile="$tmpfolder"/"$(date | awk '{print $2,$4,$6}' | sed 's/\ //g')" ;
+touch "$tmpfolder/$(date | awk '{print $2,$3,$6}' | sed 's/\ //g').tmp" ;
+tmpfile="$tmpfolder/$(date | awk '{print $2,$3,$6}' | sed 's/\ //g').tmp" ;
 #               temp file END
+
+exithandler(){
+# exithandler
+			nnumber="0" ;
+			printf "ok to exit: " ; read
+			echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
+			echo "$tmpfile" | xargs grep "$togrep">"$(date | awk '{print $2,$3,$6}' | sed 's/\ //g').tmp" ;
+			echo -e "\n $(echo "$tmpfile" | xargs grep "$togrep" | wc -l | tr -d ' ') files found...\n"
+
+		if [ $REPLY = ok ] ;
+	then
+		echo -e " ...done?" ;
+		sleep 2 && exit 0 ;
+	else
+		eingabe ;
+fi
+#		exithandler END
+}
+
+display(){
+# display
+		nnumber=$(echo "$tmpfile" | wc -l | tr -d ' ') ;
+				
+		while read -r line ;
+	do
+		if [[ $(file "$line") =~ PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
+	then
+			if [[ $(echo "$line" | xargs grep "$togrep") != '' ]] ;
+		then
+			((nnumber--)) ;
+			echo "$line" | xargs less && read -p " -continue? " ;
+		else
+			((nnumber--)) ;
+			fileis=$(echo "$line" | xargs file) ;
+			echo -e " ... $fileis :: - nothing to show\r" ;
+fi
+		else
+			echo -e " ... no PHP|script|ASCII|text|TEXT|HTML|XML \r" ;
+fi
+	done <<<"$lines"
+# 					display END
+}
 
 eingabe(){
 # stdout to $USER read paht etc
@@ -30,62 +81,13 @@ printf "file suffix: "; read -r i ;
 echo -e "\n" ;
 printf "to grep: "; read -r togrep ;
 #               stdout to $USER END
-}
-
-exithandler(){
-		read
-
-                if [ $REPLY = q ] ;
-        then
-		read -p -r "waiting... ";
-
-                printf "ok to exit: " ; read
-
-                if [ $REPLY = ok ] ;
-        then
-		echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
-                nnumber=0 ;
-                clear ;
-                echo -e "\n $(echo "$tmpfile" | xargs grep "$togrep" | wc -l | tr -d ' ') files found...\n"
-                echo -e " ...done?" ;
-                sleep 2 && reset && exit 0 ;
-        else
-                echo -e "\n type correctly... " ;
-                sleep 0.5 ;
-                eingabe ;
-fi
-fi
-}
-
-# trap $USER's input ctrl+C and call the exithandler
-trap 'exithandler' SIGINT  ;
-# ASK
-eingabe ;
-
 # search and display
-for lines in $(find "$path" -name "*$i*" -type f 2>/dev/null | sed 's/\ /\\ /g' | tee -a "$tmpfile");
+for lines in $(find "$path" -name "*$i*" -type f 2>/dev/null | sed 's/\ /\\ /g' | tee -a "$tmpfile") ;
 	do
-		nnumber=$(echo "$tmpfile" | wc -l | tr -d ' ') ;
-	if [[ "$nnumber" != "0" ]] ;
-then
-		while read -r line && [[ "$nnumber" != "0" ]] ;
-	do
-		if [[ $(file "$line") =~ PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
-	then
-			if [[ $(echo "$line" | xargs grep "$togrep") != '' ]] ;
-		then
-			((nnumber--)) ;
-			less "$line" && break ;
-		else
-			((nnumber--)) && break ;
-		fi
-	else
-			((nnumber--)) ;
-			file "$line" | less && break ;
-	fi
-	done <<<"$lines"
-	else
-		exithandler ;
-fi
+		display ;
 done
 #		search and display END
+}
+
+# ASK
+eingabe ;

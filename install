@@ -33,13 +33,13 @@ fi
 		while [[ "$nNuM1" != "0" ]] ;
 	do
 		clear ;
-		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;		
+		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;
 		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$toCopyPath" ;
 		sudo chown root:root "/usr/local/bin/$toCopyPath" ;
 		sudo chmod 4755 "/usr/local/bin/$toCopyPath" ;
 		sudo chmod u+s "/usr/local/bin/$toCopyPath" &&
 		echo -e "\n ... copying files ::\n" ;
-		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1} $toCopyPath ${spin:$i:1}" | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
+		i=$(( (i+1) %4 )) ; printf "\r ... ${spin:$i:1}.${spin2:$i:1} $toCopyPath ." | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
 		((nNuM1--)) ;
 done
 
@@ -215,8 +215,8 @@ fi
 		# reconfigure all
 		echo -e "\n ... reconfiguring installed packages " ;
 		dpkg --configure -a && wait ;
-		# add win32 arch in 64bit system, to install wine32
-		echo -e "\n ... add win32 arch in 64bit system, to install wine32" ;
+		# add i386 arch in 64bit system, to install wine32
+		echo -e "\n ... add i386 arch in 64bit system, to install wine32" ;
 		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 && wait ;
 		# update upgrade clean and autoremove
 		echo -e "\n ... update upgrade clean and autoremove" ;

@@ -198,7 +198,8 @@ ch3kingSnx='' ;
 			if [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
 		then
 			ch3kingSnx="shellcheck" ;
-			echo "$listONme" | xargs $ch3kingSnx -e "$excULEC0D3s" ;
+			echo "$listONme" | xargs $ch3kingSnx ;
+			# -e "$excULEC0D3s" 
 			exitc0de=$(echo $?) ;
 			
 			elif [[ "$listONmeIS" =~ 'Python ' ]] ;
