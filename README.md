@@ -22,6 +22,8 @@
 
 # PROBLEMS:
 
+* search: while read -r from line at the end from done <<<$i, no possibel to do a loop-control with the wc -l $results.
+
 * no workaround to install wifi firmware (I have)
 
 * serv-if-up too hevy load
@@ -33,6 +35,11 @@
   "sudo dpkg --configure -a" with the name of your interface.
 
 # TODO:
+
+* search: do a better loop control.
+
+* mysql_cp_db: catch the password from /etc/mysql/debian.cnf (but no password here...) 
+  I search for the right MySQL syntax to delete id's.
 
 * serv-if-up's loop or something
 
@@ -126,6 +133,8 @@
 # Files:
 
 * in ~/
+
+   playlist.m3u # music
 
   .wH0rUNSon    # Depends on sCRYPtUPdater; $USER workflow control.
   
