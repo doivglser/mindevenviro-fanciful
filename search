@@ -6,12 +6,12 @@
 # no workaround the signal-handler from less, if SIGINT trapped from script, less still catches the signal SIGINT.
 
 LANG=C;
-IFS=$(echo -en "\n\b");
-nnumber=0;
+FILE="search" ;
+declare -a array01 ;
+array01='' ;
+declare -a togrep ;
+togrep='' ;
 echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.wH0rUNSon" ;
-
-# trap $USER's input ctrl+C and call the exithandler
-trap 'exithandler' SIGINT  ;
 
 # temp folder
                 if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
@@ -25,68 +25,71 @@ fi
 # temp file
 
 # the whole list just with file suffix, ready to grep the content, if true, file in an editor.
-touch "$tmpfolder/$(date | awk '{print $2,$3,$6}' | sed 's/\ //g').tmp" ;
-tmpfile="$tmpfolder/$(date | awk '{print $2,$3,$6}' | sed 's/\ //g').tmp" ;
+touch "$tmpfolder/$(date | awk '{print $2,$6}' | sed 's/\ //g').tmp" ;
+tmpfile="$tmpfolder/$(date | awk '{print $2,$6}' | sed 's/\ //g').tmp" ;
 #               temp file END
 
 display(){
 # display
-		nnumber=$(echo "$tmpfile" | wc -l | tr -d ' ') ;
-				
 		while read -r line ;
 	do
 		if [[ $(file "$line") =~ PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
 	then
-			if [[ $(echo "$line" | xargs grep "$togrep") != '' ]] ;
+			if [[ $(echo "$line" | xargs grep "$togrep3" 2>/dev/null) = '' ]] || \
+			[[ $(echo "$line" | xargs grep "$togrep2" 2>/dev/null) = '' ]] && \
+			[[ $(echo "$line" | xargs grep "$togrep1" 2>/dev/null) = '' ]] ;
 		then
-			((nnumber--)) ;
-			echo "$line" | xargs less && read -p " -continue? " ;
+			echo -e " ... $(echo "$line" | xargs file) :: - nothing to show\r" ;
+			pause=0 ;
 		else
-			((nnumber--)) ;
-			fileis=$(echo "$line" | xargs file) ;
-			echo -e " ... $fileis :: - nothing to show\r" ;
+			echo "$line" | xargs less ;
+			pause=1 ;
 fi
 		else
 			echo -e " ... no PHP|script|ASCII|text|TEXT|HTML|XML \r" ;
+			pause=0 ;
 fi
 	done <<<"$lines"
-# 					display END
-
-# summary
-		echo "$tmpfile" | xargs grep "$togrep">"$(date | awk '{print $2,$3,$6}' | sed 's/\ //g').tmp" ;
-		echo -e "\n $(echo "$tmpfile" | xargs grep "$togrep" | wc -l | tr -d ' ') files found...\n"
-# 					summary END
-
-# exit?
-			printf "ok to exit: " ; read
-			
-		if [ $REPLY = ok ] ;
-	then
-		echo -e " ...done?" ;
-		echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
-		sleep 1 && exit 0 ;
-	else
-		eingabe ;
-fi
-#					exit END
+# 					display END 
 }
 
+eexitt(){
+			printf "ok to search again: " ; read -r
+
+		if [[ "$REPLY" =~ ok|OK|Ja|JA|ja|j|J|yes|YES|y|Y|si|Si|SI|s|S ]] ;
+	then
+		$FILE && $(pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9) ;
+	else
+		echo -e " ...done?" ;
+		# user workflow control
+		echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
+		exit 0 ;	
+fi
+	}
+
 eingabe(){
-# stdout to $USER read paht etc
-echo -e "\n hi $USER\n press 'ctrl-C'+'q' to exit\n" ;
+trap 'eexitt' SIGINT ;
+read -r -p "continue? " ;
+clear ;
 #printf "path: "; read path ;
-printf "search path: "; read -r path ;
-echo -e "\n" ;
-printf "file suffix: "; read -r i ;
-echo -e "\n" ;
-printf "to grep: "; read -r togrep ;
-#               stdout to $USER END
-# search and display
-for lines in $(find "$path" -name "*$i*" -type f 2>/dev/null | sed 's/\ /\\ /g' | tee -a "$tmpfile") ;
+echo -e "ussage: path suffix search-pattern"
+read -r array01 ;
+path=$(awk '{print $1}'<<<"$array01" | tr -d '\ ')
+i=$(awk '{print $2}'<<<"$array01" | tr -d '\ ')
+togrep1=$(awk '{print $3}'<<<"$array01" | tr -d '\ ')
+togrep2=$(awk '{print $4}'<<<"$array01" | tr -d '\ ')
+togrep3=$(awk '{print $5}'<<<"$array01" | tr -d '\ ')
+
+for lines in $(find "$path" -name "*$i*" -type f 2>/dev/null | tee "$tmpfile") ;
 	do
-		display ;
+		if [[ $pause = 1 ]] ;
+	then
+		read -r -p "continue? " && display && wait ;
+	else
+		display && wait ;
+	fi ;
 done
-#		search and display END
+$FILE && $(pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9) ;
 }
 
 # ASK
