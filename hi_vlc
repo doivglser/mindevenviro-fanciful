@@ -3,7 +3,7 @@
 
 IFS=$(echo -en "\b\n") ;
 
-		if [[ $(ps axu | grep -v grep | grep -v hi_vlc | grep Iphone) = '' ]] ;
+		if [[ $(ps axu | grep -v grep | grep -v hi_vlc | grep MyVLCtheme) = '' ]] ;
         then
                 vlc -I skins2 --skins2-last=/usr/share/vlc/skins2/MyVLCtheme.vlt file:///$HOME/playlist.m3u & hi ;
         else
