@@ -22,8 +22,6 @@
 
 # PROBLEMS:
 
-* search: while read -r from line at the end from done <<<$i, no possibel to do a loop-control with the wc -l $results.
-
 * no workaround to install wifi firmware (I have)
 
 * serv-if-up too hevy load
@@ -35,8 +33,6 @@
   "sudo dpkg --configure -a" with the name of your interface.
 
 # TODO:
-
-* search: do a better loop control.
 
 * mysql_cp_db: catch the password from /etc/mysql/debian.cnf (but no password here...) 
   I search for the right MySQL syntax to delete id's.
@@ -55,8 +51,6 @@
 
 * mindevenviro.rules, "iptables" drop rules for /etc/snort/rules/
   
-* ALT+TAB
-
 * GUI's
 
 * ncurses
@@ -89,14 +83,23 @@
 
   Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
-  snort wicd scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin 
-  firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils x11-apps xdm xorg zip 
-  rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server 
-  php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon  
+  snort wicd brutalchess libreoffice-writer scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader
+  xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils xcompmgr
+  x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client
+  mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt 
+  eject nano nmon 
 
 # USAGE:
 
-* Login just to X. Click with the mouse.
+* Login to X
+
+  Right Click Version
+  
+  Left click Menu
+  
+  F1 cycle window back
+  
+  F2 cycle window forward
 
 # On vtwm:
 
@@ -126,9 +129,27 @@
 
   Multiple GNOME terminals in one window.
   
-* sCRYPtUPdater (syntax check and copy to path) (shell script)
+  ctrl+PageUP cycle TAB right
+  
+  ctrl+PageDOWN cycle TAB left
+  
+  ctrl+TAB cycle between Panned TAB's
+  
+* sCRYPtUPdater
 
-* check (ensures snort and clamd are running properly) (shell script)
+  syntax check and copy to path (shell script)
+
+* check
+
+  ensures snort and clamd are running properly (shell script)
+
+* search 
+
+  search by path and file suffix, if grep true open file (shell script)
+
+* mysql_cp_db
+
+  To rename databases, overwrite old dbs with backup_database.tables, dump and restore .sql, on localhost (shell script)
 
 # Files:
 
@@ -180,17 +201,17 @@
   
   hi              # startup
   
-  hi_firefox-esr
+  hi_firefox-esr  # startup
   
-  hi_geany
+  hi_geany # startup
   
-  hi_playonlinux
+  hi_playonlinux # startup
   
-  hi_transmission-gtk
+  hi_transmission-gtk # startup
   
-  hi_vlc
+  hi_vlc # startup
   
-  hi_wicd-client
+  hi_wicd-client # startup
   
   mysql_cp_db     # MySQL and administration
   
@@ -208,13 +229,7 @@
   
 * in /usr/share/vlc/skins2/
 
-  default.vlt
-
-  169311-inkyV2.vlt
-
-  STRYPER-VLC.vlt
-  
-  Slick Iphone Skin.vlt
+  MyVLCtheme.vlt
 
 * in /var/www/html/
 
