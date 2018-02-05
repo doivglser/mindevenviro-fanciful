@@ -29,24 +29,6 @@ touch "$tmpfolder/$(date | awk '{print $2,$3,$6}' | sed 's/\ //g').tmp" ;
 tmpfile="$tmpfolder/$(date | awk '{print $2,$3,$6}' | sed 's/\ //g').tmp" ;
 #               temp file END
 
-exithandler(){
-# exithandler
-			nnumber="0" ;
-			printf "ok to exit: " ; read
-			echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
-			echo "$tmpfile" | xargs grep "$togrep">"$(date | awk '{print $2,$3,$6}' | sed 's/\ //g').tmp" ;
-			echo -e "\n $(echo "$tmpfile" | xargs grep "$togrep" | wc -l | tr -d ' ') files found...\n"
-
-		if [ $REPLY = ok ] ;
-	then
-		echo -e " ...done?" ;
-		sleep 2 && exit 0 ;
-	else
-		eingabe ;
-fi
-#		exithandler END
-}
-
 display(){
 # display
 		nnumber=$(echo "$tmpfile" | wc -l | tr -d ' ') ;
@@ -69,6 +51,24 @@ fi
 fi
 	done <<<"$lines"
 # 					display END
+
+# summary
+		echo "$tmpfile" | xargs grep "$togrep">"$(date | awk '{print $2,$3,$6}' | sed 's/\ //g').tmp" ;
+		echo -e "\n $(echo "$tmpfile" | xargs grep "$togrep" | wc -l | tr -d ' ') files found...\n"
+# 					summary END
+
+# exit?
+			printf "ok to exit: " ; read
+			
+		if [ $REPLY = ok ] ;
+	then
+		echo -e " ...done?" ;
+		echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
+		sleep 1 && exit 0 ;
+	else
+		eingabe ;
+fi
+#					exit END
 }
 
 eingabe(){
