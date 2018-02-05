@@ -1,71 +1,182 @@
-[global_config]
-  enabled_plugins = InactivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
-  inactive_color_offset = 0.6
-  tab_position = bottom
-  title_hide_sizetext = True
-  title_use_system_font = False
-[keybindings]
-[layouts]
-  [[default]]
-    [[[child0]]]
-      fullscreen = False
-      last_active_window = True
-      maximised = False
-      order = 0
-      parent = ""
-      position = 17:7
-      size = 1198, 748
-      title = ivo@x0x: ~
-      type = Window
-    [[[child1]]]
-      active_page = 0
-      order = 0
-      parent = child0
-      type = Notebook
-    [[[child2]]]
-      order = 0
-      parent = child1
-      position = 2
-      ratio = 0.00282087447109
-      type = VPaned      
-    [[[child4]]]
-      order = 1
-      parent = child2
-      position = 353
-      ratio = 0.5
-      type = VPaned
-    [[[terminal3]]]
-      order = 0
-      parent = child4
-      profile = default
-      type = Terminal  
-      [[[terminal5]]]
-      order = 1
-      parent = terminal3
-      profile = default
-      type = VPaned
-    [[[terminal6]]]
-      order = 1
-      parent = terminal3
-      profile = default
-      type = VPaned     
-    [[[terminal7]]]
-      order = 1
-      parent = child1
-      profile = default
-      type = Terminal
-      command = "mc"
-    [[[terminal8]]]
-      order = 2
-      parent = child1
-      profile = default
-      type = Terminal
-      command = "nmon"
-[plugins]
-[profiles]
-  [[default]]
-    background_darkness = 0.7
-    cursor_color = "#aaaaaa"
-    scroll_background = False
-    scrollback_infinite = True
-    scrollbar_position = hidden
+# $Id: system.vtwmrc-menu 62 2005-11-06 00:12:18Z branden $
+
+# Based on:
+# $XConsortium: system.twmrc,v 1.8 91/04/23 21:10:58 gildea Exp $
+
+#
+# Variables
+#
+
+NoGrabServer
+NoDefaults
+RestartPreviousState
+RightHandSidePulldownMenus
+
+ButtonColorIsFrame
+ShallowReliefWindowButton
+
+FixManagedVirtualGeometries
+FixTransientVirtualGeometries
+
+BorderWidth		1
+
+BorderBevelWidth	1
+ButtonBevelWidth	0
+IconBevelWidth		1
+IconManagerBevelWidth	0
+InfoBevelWidth		1
+MenuBevelWidth		1
+TitleBevelWidth		0
+
+ClearBevelContrast	40
+DarkBevelContrast	40
+
+MoveDelta		3
+
+ResizeRegion		"NorthEast"
+VirtualDesktop		"3x2-13-31" 27
+
+TitleFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+ResizeFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+MenuFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+MenuTitleFont	"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+IconFont		"-adobe-helvetica-bold-r-normal--*-70-*-*-*-*-*-*"
+InfoFont		"-adobe-helvetica-bold-r-normal--*-70-*-*-*-*-*-*"
+
+#
+# Lists
+#
+
+WarpCursor
+
+NailedDown
+{
+	"VTWM Desktop"
+}
+
+NoTitle
+{
+	"VTWM Desktop"	
+}
+
+IconManagerDontShow
+{
+	"VTWM Desktop"
+}
+
+Color
+{
+	BorderColor			"grey70"
+	BorderTileBackground		"gray60"
+	BorderTileForeground		"gray60"
+	DefaultBackground		"black"
+	DefaultForeground		"gray85"
+	TitleBackground			"black"
+	TitleForeground			"gray85"
+	MenuBackground			"black"
+	MenuForeground			"gray85"
+	MenuTitleBackground		"gray70"
+	MenuTitleForeground		"black"
+	IconBackground			"black"
+	IconForeground			"gray85"
+	IconBorderColor			"gray85"
+	IconManagerBackground		"black"
+	IconManagerForeground		"gray85"
+	VirtualBackground		"black"
+	VirtualForeground		"black"
+	DesktopDisplayBackground	"grey60"
+}
+
+NoTitle {
+  "oclock"
+  "xload"
+}
+
+#
+# Functions and Bindings
+#
+
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+
+LeftTitleButton ":xpm:dot" = f.iconify
+RightTitleButton ":xpm:resize" = f.resize
+
+Button1 = : root : f.menu "main"
+Button3 = : root : f.version
+
+Button1 = : title : f.function "move-or-raise"
+Button3 = : title : f.lower
+
+Button1 = : frame : f.function "move-or-raise"
+Button3 = : frame : f.iconify
+
+Button1 = : icon : f.function "move-or-iconify"
+
+Button1 = : iconmgr : f.iconify
+Button3 = : iconmgr : f.warp
+
+Button1 = : virtual | desktop : f.movescreen
+
+"F1" =		: window	: f.circledown
+"F2" =		: window	: f.circleup
+
+Cursors {
+	Frame	"top_left_arrow"
+	Title	"top_left_arrow"
+	Icon	"top_left_arrow"
+	IconMgr	"top_left_arrow"
+	Move	"fleur"
+	Resize	"fleur"
+	Menu	"hand2"
+	Button	"sb_left_arrow"
+	Wait	"watch"
+	Select	"dot"
+	Destroy	"pirate"
+}
+
+Color
+{
+BorderColor         "#1ef600"
+DefaultBackground   "#D6D6D6"
+DefaultForeground   "#000000"
+
+TitleBackground     "#a06e32"
+TitleForeground     "White"
+
+MenuTitleBackground "#4E4E4E"
+MenuTitleForeground "White"
+
+MenuBackground      "#1a1a1a"
+MenuForeground      "#4E4E4E"
+
+MenuShadowColor     "#1ef81e"
+MenuBorderColor     "#f81e00"
+}
+
+#
+# And a menus with the usual things
+#
+menu "main"
+{
+":: - M1ND3V3NV1R0 - ::"  f.title
+":: geany editor"  f.exec "exec /usr/local/bin/hi_geany &"
+":: transmission"  f.exec "exec /usr/local/bin/hi_transmission-gtk &"
+":: firefox-ESR"  f.exec "exec /usr/local/bin/hi_firefox-esr &"
+":: playOnLinux"  f.exec "exec /usr/local/bin/hi_playonlinux &"
+":: brutalchess"  f.exec "exec /usr/local/bin/hi_brutalchess &"
+":: libreoffice"  f.exec "exec /usr/local/bin/hi_libreoffice &"
+":: terminator"  f.exec "exec /usr/local/bin/hi &"
+":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
+":: music"  f.exec "exec /usr/local/bin/hi_vlc &"
+":: __________________ ::"  f.title
+"transparent"	f.exec "exec transset 0.60 &"
+"solid-color"	f.exec "exec transset 1 &"
+"background"  f.exec "exec /usr/local/bin/feh-bg &"
+"lock"		f.exec "exec xscreensaver-command -lock &"
+"kill"		f.destroy
+"restart"	f.restart
+"exit"		f.quit
+}
+exec /usr/local/bin/hi &

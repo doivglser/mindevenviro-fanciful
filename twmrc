@@ -87,6 +87,11 @@ Color
 	DesktopDisplayBackground	"grey60"
 }
 
+NoTitle {
+  "oclock"
+  "xload"
+}
+
 #
 # Functions and Bindings
 #
@@ -113,6 +118,9 @@ Button1 = : iconmgr : f.iconify
 Button3 = : iconmgr : f.warp
 
 Button1 = : virtual | desktop : f.movescreen
+
+"F1" =		: window	: f.circledown
+"F2" =		: window	: f.circleup
 
 Cursors {
 	Frame	"top_left_arrow"
@@ -163,6 +171,8 @@ menu "main"
 ":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
 ":: music"  f.exec "exec /usr/local/bin/hi_vlc &"
 ":: __________________ ::"  f.title
+"transparent"	f.exec "exec transset 0.60 &"
+"solid-color"	f.exec "exec transset 1 &"
 "background"  f.exec "exec /usr/local/bin/feh-bg &"
 "lock"		f.exec "exec xscreensaver-command -lock &"
 "kill"		f.destroy

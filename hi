@@ -1,17 +1,17 @@
 #!/bin/bash
 # startup file on /usr/local/bin
-
 to_star_up(){
 xsetroot -solid yellow &
 cvlc $HOME/Music/76256__ganscaile__startup.mp3 &
-oclock -hour red -minute white -bd white -fg yellow -bg black -jewel green -shape -geometry 50x55-3+3 &
+oclock -hour red -minute white -bd white -fg yellow -bg black -jewel green -shape -geometry 60x65-3+3 &
 xload -g 50x50-3+84 -fg "yellow" -bg "black" -bw 1 &
 setsid xscreensaver -display :0 -no-splash >/dev/null 2>&1 < /dev/null &
+xcompmgr -c &
+sleep 2 ;
 terminator &
-sleep 4 ;
+sleep 2 ;
 feh-bg &
 	}
-
 		if [[ $(ps axu | grep -v grep | grep terminator) = '' ]] && \
 		[[ $(ps axu | grep -v grep | grep xload) != '' ]] && \
 		[[ $(ps axu | grep -v grep | grep xscreensaver) != '' ]] ;
