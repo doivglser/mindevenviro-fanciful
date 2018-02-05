@@ -97,9 +97,9 @@
   
   Left click Menu
   
-  F1 cycle window back
+  F2 cycle window back
   
-  F2 cycle window forward
+  F3 cycle window forward
 
 # On vtwm:
 
