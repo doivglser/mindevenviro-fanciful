@@ -1,6 +1,9 @@
 [global_config]
   enabled_plugins = InactivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   inactive_color_offset = 0.6
+  tab_position = bottom
+  title_hide_sizetext = True
+  title_use_system_font = False
 [keybindings]
 [layouts]
   [[default]]
@@ -12,79 +15,56 @@
       parent = ""
       position = 17:7
       size = 1198, 748
+      title = ivo@x0x: ~
       type = Window
     [[[child1]]]
+      active_page = 0
       order = 0
       parent = child0
       type = Notebook
     [[[child2]]]
       order = 0
       parent = child1
-      ratio = 0.5
-      type = VPaned
+      position = 2
+      ratio = 0.00282087447109
+      type = VPaned      
     [[[child4]]]
       order = 1
       parent = child2
+      position = 353
       ratio = 0.5
       type = VPaned
-    [[[child7]]]
+    [[[terminal3]]]
+      order = 0
+      parent = child4
+      profile = default
+      type = Terminal  
+      [[[terminal5]]]
       order = 1
-      parent = child1
-      ratio = 0.5
+      parent = terminal3
+      profile = default
       type = VPaned
-    [[[terminal10]]]
-      order = 2
+    [[[terminal6]]]
+      order = 1
+      parent = terminal3
+      profile = default
+      type = VPaned     
+    [[[terminal7]]]
+      order = 1
       parent = child1
       profile = default
       type = Terminal
       command = "mc"
-    [[[terminal11]]]
-      order = 3
+    [[[terminal8]]]
+      order = 2
       parent = child1
       profile = default
       type = Terminal
       command = "nmon"
-    [[[terminal12]]]
-      order = 4
-      parent = child1
-      profile = default
-      type = Terminal
-      command = "sudo -u root mutt"
-    [[[terminal13]]]
-      order = 5
-      parent = child1
-      profile = default
-      type = Terminal
-      command = "sCRYPtUPdater"
-    [[[terminal14]]]
-      order = 6
-      parent = child1
-      profile = default
-      type = Terminal
-      command = "mysql_cp_db"
-    [[[terminal3]]]
-      order = 0
-      parent = child1
-      profile = default
-      type = Terminal
-      command = "search"
-    [[[terminal5]]]
-      order = 0
-      parent = child2
-      profile = default
-      type = Terminal
-      command = "sudo tail -f /var/log/messages /var/log/syslog /var/log/mysql/mysql.error"
-    [[[terminal6]]]
-      order = 1
-      parent = child2
-      profile = default
-      type = Terminal
-      command = "sudo tail -f /var/log/apache2/access.log /var/log/apache2/error.log"
 [plugins]
 [profiles]
   [[default]]
     background_darkness = 0.7
-    background_type = transparent
     cursor_color = "#aaaaaa"
     scroll_background = False
     scrollback_infinite = True

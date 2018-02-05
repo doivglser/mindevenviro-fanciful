@@ -207,7 +207,7 @@ fi
 		chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.installed" ;
 
 		echo -e "\n ... set the rights for .wH0rUNSon " ;
-		touch $HOME/.wH0rUNSon && chown $SUDO_USER:$SUDO_USER $HOME/.wH0rUNSon ;
+		touch $HOME/.wH0rUNSon && chown $SUDO_USER:$SUDO_USER $HOME/.wH0rUNSon && chmod 0660 $HOME/.wH0rUNSon ;
 		
 		# workaround for debconf's snort
 		echo -e "\n ... installing snort " ;
