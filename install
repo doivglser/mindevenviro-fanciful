@@ -168,6 +168,8 @@ done
 	chmod 755 /usr/share/vlc/skins2/default.vlt ;
 	cp -f Slick\ Iphone\ Skin.vlt /usr/share/vlc/skins2/ ;
 	chmod 755 /usr/share/vlc/skins2/Slick\ Iphone\ Skin.vlt ;
+	cp -f Alienware\ Darkstar.vlt /usr/share/vlc/skins2/ ;
+	chmod 755 /usr/share/vlc/skins2/Alienware\ Darkstar.vlt  ;
 	
 	echo -e "\n ... set the upload path for PHP scripts" ;
 	rm -f /var/www/html/index*
