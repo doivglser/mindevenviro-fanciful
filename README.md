@@ -1,3 +1,6 @@
+![bild01](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus.jpg)
+![bild02](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus01.jpg)
+
 # M1ND3V3NV1R0
 
 :::  Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
