@@ -5,7 +5,7 @@
 # FUNCTION: SEARCH ::
 # search in a database, I write something to search in tables..
 
-# FUNCTION: DELETE ::
+# FUNCTION: ERASE ::
 # workaround to delete false entries in joomla, where id's
 # selected from: [joomla-root]/administrator/index.php?option=com_installer&view=manage
 # choose from search menu: "SuchWerkzeuge" and "Deaktiviert"
@@ -33,10 +33,10 @@ LANG=C ;
 	then
 
 # ASK password
-echo -e "\n hello MySQL password for root:\n" ;
-printf "root password: "; read p4SSWORD ;
+#echo -e "\n hello MySQL password for root:\n" ;
+#printf "root password: "; read p4SSWORD ;
 # var for connect
-mysqlconn="$dbserver -u root -p"$p4SSWORD" -h localhost" ;
+mysqlconn="$dbserver -u root -pa4SSWORD -h localhost" ;
 # .
 
 echo -e "\nmysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.wH0rUNSon" ;
@@ -63,8 +63,8 @@ fi
 }
 # 		search in database END
 
-# delete from tables (doesnt work at all, with delete by ID=1 then no admin rights more)
-delete(){
+# erase from tables (doesnt work at all, with delete by ID=1 then no admin rights more)
+erase(){
 # ask
 ls_dbs ;
 echo -e "DELETE FROM TABLE\n" ;
@@ -193,38 +193,6 @@ fi
 }
 # 		dump from END
 
-# to call functions
-ccaller(){
-	if [[ $REPLY = "dump" ]] ;
-then
-	echo -e "\n ... just few seconds, while dumpping db's\n" ;
-	dump ;
-
-	elif [[ $REPLY = "restore" ]] ;
-then
-	echo -e "\n ... just few seconds, while restoring db's\n" ;
-	restore ;
-
-	elif [[ $REPLY = "backup" ]] ;
-then
-	echo -e "\n ... just few seconds, while backup db's\n" ;
-	backup ;
-	elif [[ $REPLY = "search" ]] ;
-then
-	echo -e "\n ... just few seconds, while searching db's\ndepending ${USER}s salary...\n" ;
-	search ;
-
-	elif [[ $REPLY = "delete" ]] ;
-then
-	echo -e "\n ... just few seconds, while deleting db's\n" ;
-	delete ;
-else
-	echo -e "\n type correctly\n" ;
-	sleep 0.5 ;
-fi
-}
-# 		to call functions END
-
 # eexiter
 eexiter(){
 	printf " Are you sure? "; read
@@ -253,18 +221,98 @@ ls_dbs(){
 	$mysqlconn -e "SHOW DATABASES;" ;
 }
 
+# HELP
+help(){
+	      echo "Usage: $0 [-d|--dump] [-r|--restore] [-b|--backup] [-e|--erase] [-s|--search] [-h|--help]" ;
+	
+	echo -e "\n\n mysql_cp_db: To rename databases, overwrite old dbs with backup_database.tables,\r dump and restore .sql, on localhost\n
+ FUNCTION: SEARCH ::\n
+ search in a database, I write something to search in tables..\n
+ FUNCTION: ERASE ::\n
+ workaround to delete false entries in joomla, where id's\r
+ selected from: [joomla-root]/administrator/index.php?option=com_installer&view=manage\r
+ choose from search menu: "SuchWerkzeuge" and "Deaktiviert"\r
+ couldn't be properly de-installed and deleted by joomla backend itself\r
+ Names appears capitalized , as dead links without .php or .ini or .xml files in your\r
+ installation, (doesnt work at the moment cause no money, Im hungry)\n
+ FUNCTION: BACKUP ::\n
+ to rename a database from an other database putting tables from the backup-database in the new one\n
+ FUNCTION: RESTORE ::\n
+ to restore a database from a .sql file\n
+ FUNCTION: DUMP ::\n
+ to dump a database to a .sql file\n
+ MariaDB command-line tool: $(whereis mysql | cut -f2 -d: | awk '{print $1}');\r" ;
+	}
+
 # ASK
-		while trap 'eexiter' SIGINT
-	do
-		meldig=" do you want to continue? "
-		read -p "$meldig" ;
-		clear ;
-		echo -e "\n hi $USER\n" ; # greeting
-		"$(whereis mysql | cut -f2 -d: | awk '{print $1}')" --version ;
-		echo -e "\n ctrl+C to EXIT \n" ;
-		printf "type: dump||restore||backup||delete||search: "; read # ask
-		ccaller ;
+while test -n "$1"; do
+  case "$1" in
+   "") 
+      echo "Usage: $0 [-d|--dump] [-r|--restore] [-b|--backup] [-e|--erase] [-s|--search] [-h|--help]"
+      exit 1
+      ;;
+   -d|--dump)
+      REPLY="dump"
+      shift
+      ;;
+   -r|--restore)
+      REPLY="restore"
+      shift
+      ;;      
+   -b|--backup)
+      REPLY="backup"
+      shift
+      ;;
+   -e|--erase)
+      REPLY="erase"
+      shift
+      ;;
+   -s|--search)
+      REPLY="search"
+      shift
+      ;;
+   -h|--help)
+      REPLY="help"
+      shift
+      ;;            
+  esac
 done
+
+trap 'eexiter' SIGINT
+	
+	if [[ $REPLY = "dump" ]] ;
+then
+	echo -e "\n ... just few seconds, while dumpping db's\n" ;
+	dump ;
+
+	elif [[ $REPLY = "restore" ]] ;
+then
+	echo -e "\n ... just few seconds, while restoring db's\n" ;
+	restore ;
+
+	elif [[ $REPLY = "backup" ]] ;
+then
+	echo -e "\n ... just few seconds, while backup db's\n" ;
+	backup ;
+	elif [[ $REPLY = "search" ]] ;
+then
+	echo -e "\n ... just few seconds, while searching db's\ndepending ${USER}s salary...\n" ;
+	search ;
+
+	elif [[ $REPLY = "erase" ]] ;
+then
+	echo -e "\n ... just few seconds, while deleting db's\n" ;
+	erase ;
+	
+	elif [[ $REPLY = "help" ]] ;
+then
+	echo -e "HELP: $0\n" ;
+	help ;	
+else
+	echo "Usage: $0 [-d|--dump] [-r|--restore] [-b|--backup] [-e|--erase] [-s|--search] [-h|--help]"
+	echo "Try '$0 --help' for more information."
+fi
+
 # 		greeting END
 	else
 		echo -e " Please dont sudo this :) \n" ;
