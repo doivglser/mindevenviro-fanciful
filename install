@@ -69,6 +69,11 @@ done
 	sed -e '/OnAccessMountPath /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;	
 
+	# by an update clear from double entries in /etc/profile
+	sed -e '/eval $(ssh-agent/d' /etc/profile  >| $tmpfolder/profile 2>/dev/null ;
+	sed -e 'ssh-add ~/.ssh/id_rsa' /etc/profile  >| $tmpfolder/profile 2>/dev/null ;
+	cp -f $tmpfolder/profile etc/profile 2>/dev/null ;
+
 	echo -e "\n ... save vendors MAC-Address" ;
 	ip link show | grep ether | awk '{print $2}' | tee "/home/$SUDO_USER/.vendorsmac" ;
 	chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.vendorsmac" ;
@@ -88,6 +93,25 @@ done
 	echo -e "\n ... I do an update" ;	
 	apt-get update && wait ;
 
+	printf "your email-address on github.com: "; read eM4il
+	
+		if	[[ "$eM4il" != '' ]] ;
+	then
+		ssh-keygen -t rsa -b 4096 -C "do.iv.gl.ser@gmx.es"
+		eX1tC0de=$(echo $?) ;
+		wait ;
+		
+		if [[ "$eX1tC0de" != 0 ]] ;
+	then
+		echo -e "\n REMEMBER ssh-keygen -t rsa -b 4096 -C your-email@server.tld \nto add a github.com account" | tee -a /home/$SUDO_USER/.installed ;
+	else
+		echo "eval $(ssh-agent -s)" >> /etc/profile ;	
+		echo "ssh-add ~/.ssh/id_rsa" >> /etc/profile ;
+	fi
+	else
+		echo " no github.com email."
+	fi
+		
 		while [[ "$nNuM2" != "0" ]] ;
 	do
 		toInst=$(awk '{print $'"$nNuM2"'}'<<<"$myPrograms") ;
