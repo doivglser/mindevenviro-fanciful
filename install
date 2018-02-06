@@ -248,7 +248,7 @@ fi
 		apt-get clean &&
 		apt -f -y -m autoremove &&
 		
-		echo -e "\n\n ... Congratulations we have min-dev-enviro successfully installed!\r"
+		echo -e "\n\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
 		read -p " ... continue?" ;
 		echo -e "\n ... RESTART IN 6 SECONDS...\r" ;
 		sleep 6 ;
