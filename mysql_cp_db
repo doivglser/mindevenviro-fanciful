@@ -224,23 +224,23 @@ ls_dbs(){
 help(){
 	      echo "Usage: $0 [-d|--dump] [-r|--restore] [-b|--backup] [-e|--erase] [-s|--search] [-h|--help]" ;
 	
-	echo -e "\r\rmysql_cp_db: To rename databases, overwrite old dbs with backup_database.tables,\rdump and restore .sql, on localhost\r
- FUNCTION: SEARCH ::\r
+	echo -e "\n mysql_cp_db: To rename databases, overwrite old dbs with backup_database.tables,\rdump and restore .sql, on localhost\n
+FUNCTION: SEARCH ::\r
  search in a database, I write something to search in tables..\r
- FUNCTION: ERASE ::\r
+FUNCTION: ERASE ::\r
  workaround to delete false entries in joomla, where id's\r
  selected from: [joomla-root]/administrator/index.php?option=com_installer&view=manage\r
  choose from search menu: "SuchWerkzeuge" and "Deaktiviert"\r
  couldn't be properly de-installed and deleted by joomla backend itself\r
  Names appears capitalized , as dead links without .php or .ini or .xml files in your\r
  installation, (doesnt work at the moment cause no money, Im hungry)\r
- FUNCTION: BACKUP ::\r
+FUNCTION: BACKUP ::\r
  to rename a database from an other database putting tables from the backup-database in the new one\r
- FUNCTION: RESTORE ::\r
+FUNCTION: RESTORE ::\r
  to restore a database from a .sql file\r
- FUNCTION: DUMP ::\r
+FUNCTION: DUMP ::\r
  to dump a database to a .sql file\r
- MariaDB command-line tool: $(whereis mysql | cut -f2 -d: | awk '{print $1}');\r" ;
+MariaDB command-line tool: $(whereis mysql | cut -f2 -d: | awk '{print $1}');\n" ;
 	}
 
 # ASK
