@@ -5,13 +5,17 @@
 # Received SIGHUP or SIGTERM while trying to open with nano
 # no workaround the signal-handler from less, if SIGINT trapped from script, less still catches the signal SIGINT.
 
+set -x
+
 LANG=C;
 FILE="search" ;
-declare -a array01 ;
-array01='' ;
-declare -a togrep ;
-togrep='' ;
-echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.wH0rUNSon" ;
+
+				if [ "$EUID" != 0 ] ;
+			then
+				sudo "$0" ;
+		else
+		
+echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -" >>"/home/$SUDO_USER/.wH0rUNSon" ;
 
 # temp folder
                 if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
@@ -54,33 +58,38 @@ fi
 }
 
 eexitt(){
-			printf "ok to search again: " ; read -r
+			printf " exit[y/n]" ; read -r
 
-		if [[ "$REPLY" =~ ok|OK|Ja|JA|ja|j|J|yes|YES|y|Y|si|Si|SI|s|S ]] ;
+		if [[ "$REPLY" = "n" ]] ;
 	then
 		$FILE && $(pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9) ;
 	else
 		echo -e " ...done?" ;
-		# user workflow control
-		echo -e "\nsearch $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
+		# user workflow control 
+		echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -" >>"/home/$SUDO_USER/.wH0rUNSon" ;
 		exit 0 ;	
 fi
 	}
 
+help(){
+echo "Usage: $0 [-s|--search] [-h|--help] PATH SEARCH-PATTERN TOGREP TOGREP TOGREP" ;
+echo -e "\n sudo this script:\n
+SEARCH THE DRIVE\n
+ This script searches your drive\r
+ for everything in it, and displays\r
+ only text in the less viewer.\r
+ Finds: log files, example code, etc.\r" ;
+	}
+
 eingabe(){
 trap 'eexitt' SIGINT ;
-read -r -p "continue? " ;
-clear ;
-#printf "path: "; read path ;
-echo -e "ussage: path suffix search-pattern"
-read -r array01 ;
-path=$(awk '{print $1}'<<<"$array01" | tr -d '\ ')
-i=$(awk '{print $2}'<<<"$array01" | tr -d '\ ')
-togrep1=$(awk '{print $3}'<<<"$array01" | tr -d '\ ')
-togrep2=$(awk '{print $4}'<<<"$array01" | tr -d '\ ')
-togrep3=$(awk '{print $5}'<<<"$array01" | tr -d '\ ')
 
-for lines in $(find "$path" -name "*$i*" -type f 2>/dev/null | tee "$tmpfile") ;
+	if [[ "$path" = '' ]] || [[ "$tosearch" = '' ]] || [[ "$togrep1" = '' ]];
+then
+	help ;
+else
+
+for lines in $(find "$path" -name "*$tosearch*" -type f 2>/dev/null | tee "$tmpfile") ;
 	do
 		if [[ $pause = 1 ]] ;
 	then
@@ -90,7 +99,26 @@ for lines in $(find "$path" -name "*$i*" -type f 2>/dev/null | tee "$tmpfile") ;
 	fi ;
 done
 $FILE && $(pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9) ;
+fi
 }
 
 # ASK
-eingabe ;
+while test -n "$1"; do
+  case "$1" in
+   -s|--search)
+      path=$1
+      tosearch=$2
+      togrep1=$3
+      togrep2=$4
+      togrep3=$5
+      shift "$@" ;
+      eingabe ;
+      ;;
+   -h|--help)
+      REPLY="help"
+      shift
+      ;;            
+  esac
+done
+
+fi
