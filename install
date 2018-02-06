@@ -107,6 +107,7 @@ done
 	else
 		echo "eval $(ssh-agent -s)" >> /etc/profile ;	
 		echo "ssh-add ~/.ssh/id_rsa" >> /etc/profile ;
+		ssh-keygen -p ;
 	fi
 	else
 		echo " no github.com email."
