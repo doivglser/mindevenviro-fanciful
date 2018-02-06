@@ -155,7 +155,7 @@ echo -e " type in with [dot]sql suffix\r" ;
 printf "origin_data: "; read origin_data ;
 echo -e "\r" ;
 printf "target_data: "; read target_data ;
-echo -e "\r... just few seconds, while copying db's" ;
+echo -e "\r... just few seconds, while copying tables's" ;
 
 # fullfillment filter, if true you can loss all your data, please, do a dump bevor.
 	if [[ $origin_data != '' ]] && [[ $target_data != '' ]] ;
