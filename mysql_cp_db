@@ -34,9 +34,9 @@ LANG=C ;
 
 # ASK password
 #echo -e "\n hello MySQL password for root:\n" ;
-#printf "root password: "; read p4SSWORD ;
+printf "MySQL root password: "; read p4SSWORD ;
 # var for connect
-mysqlconn="$dbserver -u root -pa4SSWORD -h localhost" ;
+mysqlconn="$dbserver -u root -p$p4SSWORD -h localhost" ;
 # .
 
 echo -e "\nmysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.wH0rUNSon" ;
