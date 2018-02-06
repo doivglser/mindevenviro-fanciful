@@ -222,9 +222,8 @@ ls_dbs(){
 
 # HELP
 help(){
-	      echo "Usage: $0 [-d|--dump] [-r|--restore] [-b|--backup] [-e|--erase] [-s|--search] [-h|--help]" ;
-	
-	echo -e "\n mysql_cp_db: To rename databases, overwrite old dbs with backup_database.tables,\rdump and restore .sql, on localhost\n
+echo "Usage: $0 [-d|--dump] [-r|--restore] [-b|--backup] [-e|--erase] [-s|--search] [-h|--help]" ;
+echo -e "\n mysql_cp_db: To rename databases, overwrite old dbs with backup_database.tables,\rdump and restore .sql, on localhost\n
 FUNCTION: SEARCH ::\r
  search in a database, I write something to search in tables..\r
 FUNCTION: ERASE ::\r
