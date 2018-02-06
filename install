@@ -70,9 +70,9 @@ done
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;	
 
 	# by an update clear from double entries in /etc/profile
-	sed -e '/eval $(ssh-agent/d' /etc/profile  >| $tmpfolder/profile 2>/dev/null ;
-	sed -e 'ssh-add ~/.ssh/id_rsa' /etc/profile  >| $tmpfolder/profile 2>/dev/null ;
-	cp -f $tmpfolder/profile etc/profile 2>/dev/null ;
+	sed -e '/eval /d' /etc/profile > $tmpfolder/profile 2>/dev/null ;
+	sed -e '/ssh-add /d' $tmpfolder/profile > $tmpfolder/profile2 2>/dev/null ;
+	cp -f $tmpfolder/profile2 /etc/profile 2>/dev/null ;
 
 	echo -e "\n ... save vendors MAC-Address" ;
 	ip link show | grep ether | awk '{print $2}' | tee "/home/$SUDO_USER/.vendorsmac" ;
