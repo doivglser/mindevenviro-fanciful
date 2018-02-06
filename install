@@ -221,12 +221,18 @@ fi
 		echo -e "\n ... put $SUDO_USER/Downloads in a Jail" ;
 		echo "/dev/shm /home/$SUDO_USER/Downloads auto bind 0 0" | tee -a /etc/fstab ;
 
-		echo -e "\n ... set the rights for installed (to remove it later)" ;
+		echo -e "\n ... set the rights for installed (to remove it later)" ;		
 		chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.installed" ;
+		chmod 0660 "/home/$SUDO_USER/.installed"
 
 		echo -e "\n ... set the rights for .wH0rUNSon " ;
-		touch $HOME/.wH0rUNSon && chown $SUDO_USER:$SUDO_USER $HOME/.wH0rUNSon && chmod 0660 $HOME/.wH0rUNSon ;
 		
+		if [ -e /home/$SUDO_USER/.wH0rUNSon ] ;
+	then
+		echo " . allready installed" | tee -a "/home/$SUDO_USER/.installed"
+	else
+		touch "/home/$SUDO_USER/.wH0rUNSon" && chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.wH0rUNSon" && chmod 0660 "/home/$SUDO_USER/.wH0rUNSon" ;
+	fi
 		# workaround for debconf's snort
 		echo -e "\n ... installing snort " ;
 		apt-get -f -m -y --allow-change-held-packages install snort && wait ;
