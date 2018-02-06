@@ -33,21 +33,20 @@ LANG=C ;
 	then
 
 # ASK password
-#echo -e "\n hello MySQL password for root:\n" ;
 printf "MySQL root password: "; read p4SSWORD ;
 # var for connect
 mysqlconn="$dbserver -u root -p$p4SSWORD -h localhost" ;
 # .
 
-echo -e "\nmysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -\n" >>"$HOME/.wH0rUNSon" ;
+echo -e "mysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -" >>"$HOME/.wH0rUNSon" ;
 
 # search in database
 search(){
 # ask
 ls_dbs ;
-echo -e "SEARCH IN DATABASE\n" ;
+echo -e "SEARCH IN DATABASE\r" ;
 printf "from db: "; read db002
-echo -e "\n TO GREP\n" ;
+echo -e " TO GREP\r" ;
 printf "word: "; read to_grep01
 # .
 # fullfillment filter, if true you can loss all your data, please, do a dump bevor.
@@ -67,9 +66,9 @@ fi
 erase(){
 # ask
 ls_dbs ;
-echo -e "DELETE FROM TABLE\n" ;
+echo -e "DELETE FROM TABLE\r" ;
 printf "from db: "; read db001
-echo -e "\n type in ID's with a blank space as a separator\n" ;
+echo -e "\rtype in ID's with a blank space as a separator\r" ;
 printf "where id's: "; read idS0
 
 # fullfillment filter, if true you can loss all your data, please, do a dump bevor.
@@ -120,9 +119,9 @@ fi
 backup(){
 # ask
 ls_dbs ;
-echo -e "RENAME DATABASE\n" ;
+echo -e "RENAME DATABASE\r" ;
 printf "back_up_db: "; read olddb
-echo -e "\n" ;
+echo -e "\r" ;
 printf "new_db: "; read newdb
 
 # fullfillment filter, if true you can loss all your data, please, do a dump bevor.
@@ -151,12 +150,12 @@ fi
 restore(){
 # ask
 ls_dbs ;
-echo -e "RESTORE FROM .SQL FILE\n" ;
-echo -e " type in with [dot]sql suffix\n" ;
+echo -e "RESTORE FROM .SQL FILE\r" ;
+echo -e " type in with [dot]sql suffix\r" ;
 printf "origin_data: "; read origin_data ;
-echo -e "\n" ;
+echo -e "\r" ;
 printf "target_data: "; read target_data ;
-echo -e "\n ... just few seconds, while copying db's" ;
+echo -e "\r... just few seconds, while copying db's" ;
 
 # fullfillment filter, if true you can loss all your data, please, do a dump bevor.
 	if [[ $origin_data != '' ]] && [[ $target_data != '' ]] ;
@@ -175,11 +174,11 @@ fi
 dump(){
 # ask
 ls_dbs ;
-echo -e "DUMP FROM DATABASE TO .SQL FILE\n" ;
+echo -e "DUMP FROM DATABASE TO .SQL FILE\r" ;
 printf "origin_data: "; read origin_data ;
-echo -e "\n type in with [dot]sql suffix\n" ;
+echo -e "\rtype in with [dot]sql suffix\r" ;
 printf "target_data: "; read target_data ;
-echo -e "\n ... just few seconds, while copying db's" ;
+echo -e "\r... just few seconds, while copying db's" ;
 
 # fullfillment filter, if true you can loss all your data, please, do a dump bevor.
 	if [[ $origin_data != '' ]] && [[ $target_data != '' ]] ;
@@ -195,21 +194,21 @@ fi
 
 # eexiter
 eexiter(){
-	printf " Are you sure? "; read
+	printf " exit [y|n]? "; read
 
-	if [[ $REPLY = "no" ]] ;
+	if [[ $REPLY = "n" ]] ;
 then
-	echo -e "\n ... lets try again" ;
+	echo -e "... lets try again" ;
 	caller ;
 
-	elif [[ $REPLY = "ok" ]] ;
+	elif [[ $REPLY = "y" ]] ;
 then
-	echo -e "\nmysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $userHome :: (HATO) -\n" >>"$HOME/.wH0rUNSon" ;
-	echo -e "\n ... GOOD BYE $USER" ;
+	echo -e "mysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $userHome :: (HATO) -" >>"$HOME/.wH0rUNSon" ;
+	echo -e "... GOOD BYE $USER" ;
 	exit 0 ;
 
 	else
-	echo -e "\n ... type correctly" ;
+	echo -e "... type correctly" ;
 	sleep 0.5 ;
 	eexiter ;
 fi
@@ -225,32 +224,28 @@ ls_dbs(){
 help(){
 	      echo "Usage: $0 [-d|--dump] [-r|--restore] [-b|--backup] [-e|--erase] [-s|--search] [-h|--help]" ;
 	
-	echo -e "\n\n mysql_cp_db: To rename databases, overwrite old dbs with backup_database.tables,\r dump and restore .sql, on localhost\n
- FUNCTION: SEARCH ::\n
- search in a database, I write something to search in tables..\n
- FUNCTION: ERASE ::\n
+	echo -e "\r\rmysql_cp_db: To rename databases, overwrite old dbs with backup_database.tables,\rdump and restore .sql, on localhost\r
+ FUNCTION: SEARCH ::\r
+ search in a database, I write something to search in tables..\r
+ FUNCTION: ERASE ::\r
  workaround to delete false entries in joomla, where id's\r
  selected from: [joomla-root]/administrator/index.php?option=com_installer&view=manage\r
  choose from search menu: "SuchWerkzeuge" and "Deaktiviert"\r
  couldn't be properly de-installed and deleted by joomla backend itself\r
  Names appears capitalized , as dead links without .php or .ini or .xml files in your\r
- installation, (doesnt work at the moment cause no money, Im hungry)\n
- FUNCTION: BACKUP ::\n
- to rename a database from an other database putting tables from the backup-database in the new one\n
- FUNCTION: RESTORE ::\n
- to restore a database from a .sql file\n
- FUNCTION: DUMP ::\n
- to dump a database to a .sql file\n
+ installation, (doesnt work at the moment cause no money, Im hungry)\r
+ FUNCTION: BACKUP ::\r
+ to rename a database from an other database putting tables from the backup-database in the new one\r
+ FUNCTION: RESTORE ::\r
+ to restore a database from a .sql file\r
+ FUNCTION: DUMP ::\r
+ to dump a database to a .sql file\r
  MariaDB command-line tool: $(whereis mysql | cut -f2 -d: | awk '{print $1}');\r" ;
 	}
 
 # ASK
 while test -n "$1"; do
   case "$1" in
-   "") 
-      echo "Usage: $0 [-d|--dump] [-r|--restore] [-b|--backup] [-e|--erase] [-s|--search] [-h|--help]"
-      exit 1
-      ;;
    -d|--dump)
       REPLY="dump"
       shift
@@ -282,31 +277,31 @@ trap 'eexiter' SIGINT
 	
 	if [[ $REPLY = "dump" ]] ;
 then
-	echo -e "\n ... just few seconds, while dumpping db's\n" ;
+	echo -e "\r... just few seconds, while dumpping db's\r" ;
 	dump ;
 
 	elif [[ $REPLY = "restore" ]] ;
 then
-	echo -e "\n ... just few seconds, while restoring db's\n" ;
+	echo -e "\r... just few seconds, while restoring db's\r" ;
 	restore ;
 
 	elif [[ $REPLY = "backup" ]] ;
 then
-	echo -e "\n ... just few seconds, while backup db's\n" ;
+	echo -e "\r... just few seconds, while backup db's\r" ;
 	backup ;
 	elif [[ $REPLY = "search" ]] ;
 then
-	echo -e "\n ... just few seconds, while searching db's\ndepending ${USER}s salary...\n" ;
+	echo -e "\r... just few seconds, while searching db's\rdepending ${USER}s salary...\r" ;
 	search ;
 
 	elif [[ $REPLY = "erase" ]] ;
 then
-	echo -e "\n ... just few seconds, while deleting db's\n" ;
+	echo -e "\r... just few seconds, while deleting db's\r" ;
 	erase ;
 	
 	elif [[ $REPLY = "help" ]] ;
 then
-	echo -e "HELP: $0\n" ;
+	echo -e "HELP: $0\r" ;
 	help ;	
 else
 	echo "Usage: $0 [-d|--dump] [-r|--restore] [-b|--backup] [-e|--erase] [-s|--search] [-h|--help]"
@@ -315,5 +310,5 @@ fi
 
 # 		greeting END
 	else
-		echo -e " Please dont sudo this :) \n" ;
+		echo -e " Please dont sudo this :) \r" ;
 fi
