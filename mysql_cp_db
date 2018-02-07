@@ -243,7 +243,6 @@ MariaDB command-line tool: $(whereis mysql | cut -f2 -d: | awk '{print $1}');\n"
 	}
 
 # ASK
-while test -n "$1"; do
   case "$1" in
    -d|--dump)
       REPLY="dump"
@@ -270,7 +269,6 @@ while test -n "$1"; do
       shift
       ;;            
   esac
-done
 
 trap 'eexiter' SIGINT
 	

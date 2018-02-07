@@ -3,7 +3,7 @@
 # TODO:
 # Requested fill size "/var/log/syslog" is invalid while trying to open with nano -r -v
 # Received SIGHUP or SIGTERM while trying to open with nano
-# no workaround the signal-handler from less, if SIGINT trapped from script, less still catches the signal SIGINT.
+# no workaround the signal-handler from less, if SIGINT trapped from script, less still catches the signal SIGINT
 LANG=C;
 FILE="search" ;
 				if [ "$EUID" != 0 ] ;
@@ -40,7 +40,8 @@ echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $path :: WORK -" >>"
 			echo -e " ... $(echo "$line" | xargs file) :: - nothing to show\r" ;
 			pause=0 ;
 		else
-			echo "$line" | xargs less ;
+			usER=$(ls -sl "$line" | awk '{print $4}') ;
+			sudo -u "$usER" less "$line";
 			pause=1 ;
 fi
 		else
@@ -64,13 +65,9 @@ exit 0 ;
 	}
 
 eingabe(){
+shift 0 ;
+pause=0 ;
 trap "$FILE && pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9 ;" SIGINT ;
-
-	if [[ "$toshiffta" =~ 0|1 ]] ;
-then
-	exit 0 ;
-else
-
 for lines in $(find "$path" -name "*$suffixx*" -type f 2>/dev/null | tee "$tmpfile") ;
 	do
 		if [[ $pause = 1 ]] ;
@@ -80,11 +77,9 @@ for lines in $(find "$path" -name "*$suffixx*" -type f 2>/dev/null | tee "$tmpfi
 		display && wait ;
 	fi ;
 done
-fi
 }
 
 # ASK
-while test -n "$1"; do
   case "$1" in
         -s|--search|$2|$3|$4|$5|$6)
       path=$2
@@ -96,11 +91,16 @@ while test -n "$1"; do
       shift "$toshiffta" ;
       eingabe ;
       ;;
-   -h|--help|*)
+   -h|--help)
       toshiffta=0 ;
       shift "$toshiffta" ;
-      eingabe ;
+      help ;
       ;;
   esac
-done
+		if [[ "$toshiffta" = 0 ]] || [[ $1 = '' ]] ;
+	then
+		help ;
+	else
+		eingabe ;
+	fi
 fi
