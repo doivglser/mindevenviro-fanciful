@@ -1,25 +1,25 @@
 #!/bin/bash
+# serv-if-up: restarts servers
 
-# version 0.01
-#REDUNDANZ
+set -x
 
-		if [ ! $EUID = 0 ] ;
+		if [ $EUID != 0 ] ;
 	then
-		echo "USAGE: sudo shi3lD" ;
-		exit 0 ;
+		sudo "$0"
 else
 
-	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD | awk '{print $2}' | wc -l) " -gt "1" ]] ;
-then
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# temp folder END
 
 LANG="C";
 
 countwarn="0" ;
-
-PIDof=$(pgrep shi3lD) ;
-
-		if [[ "$PIDof" != '' ]] ;
-then
 
 nids="snort" ;
 
@@ -55,58 +55,50 @@ INODES=$(df -i | grep -E /$ | awk '{ print $2 }') ;
 
 FREEINODES=$(df -i | grep -E /$ | awk '{ print $4 }') ;
 
-> /tmp/mailapache2status ;
+> $tmpfolder/mailapache2status ;
 
-> /tmp/mailsendmailstatus ;
+> $tmpfolder/mailsendmailstatus ;
 
-> /tmp/mailmysqlstatus ;
+> $tmpfolder/mailmysqlstatus ;
+
 
 while true
 
 do
+		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
+	then
+		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
+	else
+
+echo -e "\n\n:: We got no Internet ::\n" > /dev/pts/3 ;
+
+date > /dev/pts/3 ;
+
+cat << EOM |sendmail root@localhost
+
+Subject:down
+
+We got no Internet.
+
+EOM
+
+fi
 
 checknids=$(ps aux | grep -v grep | grep snort) ;
 
 sleep 0.5 ;
 
-        if [[ "$checknids" = '' ]];
-then
-	systemctl stop "$nids".service ;
-
-	sleep 1 ;
-
-	if systemctl start "$nids".service ;
+	if [[ "$checknids" = '' ]];
 then
 
-echo -e "\n\n:: $nids fails, but restartet successfully, you got an email ::\n" > /dev/pts/3 ;
-
-date > /dev/pts/3 ;
-
-systemctl status "$nids".service > /tmp/mailapache2status ;
-
-cat << EOM | mail "$SUDO_USER"@localhost
-
-Subject:"$webserver" restartet
-
-$(cat /tmp/mailapache2status)
-
-EOM
+		if [[ $(ps axu | grep -v grep | grep -v snortup | grep "$nids") = '' ]] ;
+	then
+		sleep 2 ;
+		/etc/init.d/snort start -i $interface &
+		setsid snort -i $interface >/dev/null 2>&1 < /dev/null &
+		sleep 1 ;
 	else
-
-systemctl status "$nids".service > /tmp/mailapache2status ;
-
-cat << EOM | mail "$SUDO_USER"@localhost
-
-Subject:"$webserver" cannot_restart
-
-$(cat /tmp/mailapache2status)
-
-EOM
-
-echo -e "\n\n:: you got email, $nids fails, cannot restart ::\n" > /dev/pts/3 ;
-
-date > /dev/pts/3 ;
-
+		sleep 0.5 ;
 	fi
 fi
 
@@ -129,7 +121,7 @@ date > /dev/pts/3 ;
 
 systemctl status "$antivirus".service > /tmp/mailapache2status ;
 
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM |sendmail root@localhost
 
 Subject:"$webserver" restartet
 
@@ -140,7 +132,7 @@ EOM
 
 systemctl status "$antivirus".service > /tmp/mailapache2status ;
 
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM |sendmail root@localhost
 
 Subject:"$webserver" cannot_restart
 
@@ -174,7 +166,7 @@ date > /dev/pts/3 ;
 
 systemctl status "$webserver".service > /tmp/mailapache2status ;
 
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM |sendmail root@localhost
 
 Subject:"$webserver" restartet
 
@@ -185,7 +177,7 @@ EOM
 
 systemctl status "$webserver".service > /tmp/mailapache2status ;
 
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM |sendmail root@localhost
 
 Subject:"$webserver" cannot_restart
 
@@ -223,7 +215,7 @@ sleep 1 ;
 
 sleep 1 ;
 
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM |sendmail root@localhost
 
 Subject:"$mta" restartet
 
@@ -239,7 +231,7 @@ date > /dev/pts/3 ;
 
 	date "+Start Attempt, Failure Time: %H.%M" > /tmp/mailsendmailstatus ;
 
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM |sendmail root@localhost
 
 Subject:"$mta" cannot_restart
 
@@ -276,7 +268,7 @@ sleep 1 ;
 
 sleep 1 ;
 
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM |sendmail root@localhost
 
 Subject:"$datenbank" restartet
 
@@ -292,7 +284,7 @@ date > /dev/pts/3 ;
 
 	date "+Start Attempt, Failure Time: %H.%M" > /tmp/mailmysqlstatus ;
 
-cat << EOM | "$datenbank" "$SUDO_USER"@localhost
+cat << EOM | "$datenbank" root@localhost
 
 Subject:$datenbank failure.
 
@@ -326,7 +318,7 @@ fi
 
 countwarn=1 ;
 
-cat << EOM | mail "$SUDO_USER"@localhost
+cat << EOM |sendmail root@localhost
 
 Subject:running_out_of_disk_space
 
@@ -362,7 +354,7 @@ Size on /home: $SIZEONHOME GB
 
 EOM
 
-echo -e "\n\n::WARNING:: your over $WARN01 % or $WARN02 %, you got mail::\n" > /dev/pts/3 ;
+echo -e "\n\n::WARNING:: your over $WARN01 % or $WARN02 %, you email::\n" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
@@ -370,18 +362,10 @@ fi
 
 done
 
-rm -f /tmp/mailapache2status ;
+rm -f $tmpfolder/mailapache2status ;
 
-rm -f /tmp/mailsendmailstatus ;
+rm -f $tmpfolder/mailsendmailstatus ;
 
-rm -f /tmp/mailmysqlstatus ;
-
-else
-
-killall serv-if-up.sh ;
-
-fi
-
-fi
+rm -f $tmpfolder/mailmysqlstatus ;
 
 fi
