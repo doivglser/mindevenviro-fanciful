@@ -6,6 +6,10 @@
 # no workaround the signal-handler from less, if SIGINT trapped from script, less still catches the signal SIGINT
 LANG=C;
 FILE="search" ;
+line='' ;
+#exithandler
+trap "$FILE && pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9;" SIGINT ;
+
 				if [ "$EUID" != 0 ] ;
 			then
 				echo "sudo search -h :: please"
@@ -67,7 +71,6 @@ exit 0 ;
 eingabe(){
 shift 0 ;
 pause=0 ;
-trap "$FILE && pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9 ;" SIGINT ;
 for lines in $(find "$path" -name "*$suffixx*" -type f 2>/dev/null | tee "$tmpfile") ;
 	do
 		if [[ $pause = 1 ]] ;
@@ -97,9 +100,10 @@ done
       help ;
       ;;
   esac
-		if [[ "$toshiffta" = 0 ]] || [[ $1 = '' ]] ;
+		if [[ $1 = '' ]] && [[ "$line" = '' ]];
 	then
-		help ;
+		echo "Usage: $0 [-s|--search] [-h|--help] PATH FILE-SUFFIX TOGREP && || TOGREP && || TOGREP" ;
+		echo "Try '$0 --help' for more information."
 	else
 		eingabe ;
 	fi
