@@ -312,7 +312,7 @@ exit 0 ;
 		if [[ $1 = '' ]] && [[ "$minut3S" = '' ]] || [[ "$userHome" = '' ]] ;
 	then
 		echo "please sudo this script."
-		echo "Try '$0 --help' for more information."
+		echo "Try 'sudo $0 --help' for more information."
 		exit 0 ;
 	else
 		maincall ;
