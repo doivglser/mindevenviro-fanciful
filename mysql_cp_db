@@ -192,28 +192,6 @@ fi
 }
 # 		dump from END
 
-# eexiter
-eexiter(){
-	printf " exit [y|n]? "; read
-
-	if [[ $REPLY = "n" ]] ;
-then
-	echo -e "... lets try again" ;
-	caller ;
-
-	elif [[ $REPLY = "y" ]] ;
-then
-	echo -e "mysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $userHome :: (HATO) -" >>"$HOME/.wH0rUNSon" ;
-	echo -e "... GOOD BYE $USER" ;
-	exit 0 ;
-
-	else
-	echo -e "... type correctly" ;
-	sleep 0.5 ;
-	eexiter ;
-fi
-}
-
 # .
 # list databases
 ls_dbs(){

@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # serv-if-up: restarts servers
 
 		if [ $EUID != 0 ] ;
@@ -21,7 +22,7 @@ countwarn="0" ;
 
 nids="snort" ;
 
-antivirus="clamd" ;
+antivirus="clamav-daemon" ;
 
 webserver="apache2" ;
 
@@ -72,7 +73,7 @@ echo -e "\n\n:: We got no Internet ::\n" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
-cat << EOM | sendmail root
+cat << EOM | sendmail root@localhost
 
 Subject:down
 
@@ -119,7 +120,7 @@ date > /dev/pts/3 ;
 
 systemctl status "$antivirus".service > /tmp/mailapache2status ;
 
-cat << EOM | sendmail root
+cat << EOM | sendmail root@localhost
 
 Subject:"$webserver" restartet
 
@@ -130,7 +131,7 @@ EOM
 
 systemctl status "$antivirus".service > /tmp/mailapache2status ;
 
-cat << EOM | sendmail root
+cat << EOM | sendmail root@localhost
 
 Subject:"$webserver" cannot_restart
 
@@ -164,7 +165,7 @@ date > /dev/pts/3 ;
 
 systemctl status "$webserver".service > /tmp/mailapache2status ;
 
-cat << EOM | sendmail root
+cat << EOM | sendmail root@localhost
 
 Subject:"$webserver" restartet
 
@@ -175,7 +176,7 @@ EOM
 
 systemctl status "$webserver".service > /tmp/mailapache2status ;
 
-cat << EOM | sendmail root
+cat << EOM | sendmail root@localhost
 
 Subject:"$webserver" cannot_restart
 
@@ -213,7 +214,7 @@ sleep 1 ;
 
 sleep 1 ;
 
-cat << EOM | sendmail root
+cat << EOM | sendmail root@localhost
 
 Subject:"$mta" restartet
 
@@ -229,7 +230,7 @@ date > /dev/pts/3 ;
 
 	date "+Start Attempt, Failure Time: %H.%M" > /tmp/mailsendmailstatus ;
 
-cat << EOM | sendmail root
+cat << EOM | sendmail root@localhost
 
 Subject:"$mta" cannot_restart
 
@@ -266,7 +267,7 @@ sleep 1 ;
 
 sleep 1 ;
 
-cat << EOM | sendmail root
+cat << EOM | sendmail root@localhost
 
 Subject:"$datenbank" restartet
 
@@ -282,7 +283,7 @@ date > /dev/pts/3 ;
 
 	date "+Start Attempt, Failure Time: %H.%M" > /tmp/mailmysqlstatus ;
 
-cat << EOM | sendmail root
+cat << EOM | sendmail root@localhost
 
 Subject:$datenbank failure.
 
@@ -316,7 +317,7 @@ fi
 
 countwarn=1 ;
 
-cat << EOM | sendmail root
+cat << EOM | sendmail root@localhost
 
 Subject:running_out_of_disk_space
 
@@ -328,7 +329,7 @@ redundanz: On host $(uname -n) :: ;
 
 Warn percentage on /: $WARN01 %
 
-Used percentage on the root /: $PERCENTUSED01
+Used percentage on the root@localhost /: $PERCENTUSED01
 
 Inodes on host $(uname -n): $INODES
 

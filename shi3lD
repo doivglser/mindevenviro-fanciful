@@ -24,12 +24,6 @@ else
 fi
 # temp folder END
 
-# daemon to restart servers
-	if [[ ! "$(ps aux | grep -v grep | grep -v nano | grep serv-if-up | awk '{print $2}' | wc -l)" -gt "1" ]] ;
-then
-	setsid serv-if-up >/dev/null 2>&1 < /dev/null &
-fi
-
 # vendors mac-address
 		if [ -e "/home/$SUDO_USER/.vendorsmac" ] && [[ "$(wc -l /home/"$SUDO_USER"/.vendorsmac)" -ge "1" ]] ;
 	then
@@ -42,8 +36,7 @@ fi
 
 clear && echo -e "\n" ;
 nnumberr="0" ;
-cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1 >| "$tmpfolder"/interface ;
-interface="$(cat "$tmpfolder"/interface)" ;
+		
 
 		if [[ "$interface" =~ 'eno|eth' ]] ;
 	then

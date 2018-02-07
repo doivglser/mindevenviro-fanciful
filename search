@@ -32,7 +32,7 @@ tmpfile="$tmpfolder/$(date | awk '{print $2,$6}' | sed 's/\ //g').tmp" ;
 
 display(){
 # display
-echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $path :: WORK -" >>"/home/$SUDO_USER/.wH0rUNSon" ;
+echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $path ::" >>"/home/$SUDO_USER/.wH0rUNSon" ;
 		while read -r line ;
 	do
 		if [[ $(file "$line") =~ PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
