@@ -1,8 +1,6 @@
 #!/bin/bash
 # serv-if-up: restarts servers
 
-set -x
-
 		if [ $EUID != 0 ] ;
 	then
 		sudo "$0"
@@ -74,7 +72,7 @@ echo -e "\n\n:: We got no Internet ::\n" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
-cat << EOM |sendmail root@localhost
+cat << EOM | sendmail root
 
 Subject:down
 
@@ -121,7 +119,7 @@ date > /dev/pts/3 ;
 
 systemctl status "$antivirus".service > /tmp/mailapache2status ;
 
-cat << EOM |sendmail root@localhost
+cat << EOM | sendmail root
 
 Subject:"$webserver" restartet
 
@@ -132,7 +130,7 @@ EOM
 
 systemctl status "$antivirus".service > /tmp/mailapache2status ;
 
-cat << EOM |sendmail root@localhost
+cat << EOM | sendmail root
 
 Subject:"$webserver" cannot_restart
 
@@ -166,7 +164,7 @@ date > /dev/pts/3 ;
 
 systemctl status "$webserver".service > /tmp/mailapache2status ;
 
-cat << EOM |sendmail root@localhost
+cat << EOM | sendmail root
 
 Subject:"$webserver" restartet
 
@@ -177,7 +175,7 @@ EOM
 
 systemctl status "$webserver".service > /tmp/mailapache2status ;
 
-cat << EOM |sendmail root@localhost
+cat << EOM | sendmail root
 
 Subject:"$webserver" cannot_restart
 
@@ -215,7 +213,7 @@ sleep 1 ;
 
 sleep 1 ;
 
-cat << EOM |sendmail root@localhost
+cat << EOM | sendmail root
 
 Subject:"$mta" restartet
 
@@ -231,7 +229,7 @@ date > /dev/pts/3 ;
 
 	date "+Start Attempt, Failure Time: %H.%M" > /tmp/mailsendmailstatus ;
 
-cat << EOM |sendmail root@localhost
+cat << EOM | sendmail root
 
 Subject:"$mta" cannot_restart
 
@@ -268,7 +266,7 @@ sleep 1 ;
 
 sleep 1 ;
 
-cat << EOM |sendmail root@localhost
+cat << EOM | sendmail root
 
 Subject:"$datenbank" restartet
 
@@ -284,7 +282,7 @@ date > /dev/pts/3 ;
 
 	date "+Start Attempt, Failure Time: %H.%M" > /tmp/mailmysqlstatus ;
 
-cat << EOM | "$datenbank" root@localhost
+cat << EOM | sendmail root
 
 Subject:$datenbank failure.
 
@@ -318,7 +316,7 @@ fi
 
 countwarn=1 ;
 
-cat << EOM |sendmail root@localhost
+cat << EOM | sendmail root
 
 Subject:running_out_of_disk_space
 
