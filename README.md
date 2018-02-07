@@ -26,7 +26,7 @@
 
 # PROBLEMS:
 
-* no workaround to install wifi firmware (I have
+* no workaround to install wifi firmware
 
 * shi3lD may not work, if your network is down. $(interface) overwrites it selft
 
