@@ -252,10 +252,15 @@ fi
 fi
 }
 
+exxiterr(){
+	echo "good by $SUDO_USER."
+	exit 0 ;
+	}
+
 maincall(){
 shift 0 ;
 
-		while trap 'cont1NU3' SIGQUIT && trap 'killall $FILE' SIGINT ;
+		while trap 'cont1NU3' SIGQUIT && trap 'exxiterr' SIGINT ;
 	do
         if [ -e "/home/$SUDO_USER/.installed" ] ;
     then
@@ -313,4 +318,3 @@ exit 0 ;
 		maincall ;
 	fi
 fi
-
