@@ -21,7 +21,7 @@ wholeC0unt4="1" ;
 # listONmest4tus: to print how many bytes you've changed the last file you've edited
 listONmest4tus="0" ;
 # excULEC0D3s
-excULEC0D3s="SC2009,SC2172,SC2162,SC2010,SC2126,SC2016,SC2034,SC2005,SC2013,SC2059,SC2086,SC2027,SC1091,SC2076,SC2116" ; 
+excULEC0D3s="SC2002,SC2009,SC2172,SC2162,SC2010,SC2126,SC2016,SC2034,SC2005,SC2013,SC2059,SC2086,SC2027,SC1091,SC2076,SC2116" ; 
 
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
@@ -184,7 +184,7 @@ ch3kingSnx='' ;
             if [ -e "/usr/local/bin/$toC0pyIS" ] ;
 	then
 			echo -e "\n DIFF OF: $toC0pyIS\n\n" ;
-			read -p "waiting..." ;
+			read -r -p "waiting..." ;
 			diff -i "$listONme" "/usr/local/bin/$toC0pyIS" 2>/dev/null ;
 			exitc0de=$(echo $?) ;
 			
@@ -193,13 +193,12 @@ ch3kingSnx='' ;
 			ch3kingSnx='' ;
 			listONmeIS='' ;
 	fi
-			read -p "check.syntax?" ;
+			read -r -p "check.syntax?" ;
 	
 			if [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
 		then
 			ch3kingSnx="shellcheck" ;
-			echo "$listONme" | xargs $ch3kingSnx ;
-			# -e "$excULEC0D3s" 
+			echo "$listONme" | xargs $ch3kingSnx -e "$excULEC0D3s" ;
 			exitc0de=$(echo $?) ;
 			
 			elif [[ "$listONmeIS" =~ 'Python ' ]] ;
@@ -274,11 +273,11 @@ maincall(){
 	else
 		bYT3S="bytes" ;
 fi
-		echo -e "\nYou changed $listONmest4tus $bYT3S" && read -p "waiting..." ;
+		echo -e "\nYou changed $listONmest4tus $bYT3S" && read -r -p "waiting..." ;
 		sC4n "$@" ;
 	else
 		listONmest4tus="0" ;
-		echo -e "\nno.changes" && read -p "waiting..." ;
+		echo -e "\nno.changes" && read -r -p "waiting..." ;
 		sC4n "$@" ;
 fi
 	else
