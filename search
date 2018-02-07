@@ -8,11 +8,8 @@ LANG=C;
 FILE="search" ;
 				if [ "$EUID" != 0 ] ;
 			then
-				sudo "$0" ;
+				echo "sudo search -h :: please"
 		else
-		
-echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -" >>"/home/$SUDO_USER/.wH0rUNSon" ;
-
 # temp folder
                 if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
         then
@@ -31,6 +28,7 @@ tmpfile="$tmpfolder/$(date | awk '{print $2,$6}' | sed 's/\ //g').tmp" ;
 
 display(){
 # display
+echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $path :: WORK -" >>"/home/$SUDO_USER/.wH0rUNSon" ;
 		while read -r line ;
 	do
 		if [[ $(file "$line") =~ PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
@@ -50,22 +48,8 @@ fi
 			pause=0 ;
 fi
 	done <<<"$lines"
-# 					display END 
+# 					display END
 }
-
-eexitt(){
-			printf " exit[y/n]" ; read -r
-
-		if [[ "$REPLY" = "n" ]] ;
-	then
-		$FILE && pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9 ;
-	else
-		echo -e " ...done?" ;
-		# user workflow control 
-		echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -" >>"/home/$SUDO_USER/.wH0rUNSon" ;
-		exit 0 ;	
-fi
-	}
 
 help(){
 echo "Usage: $0 [-s|--search] [-h|--help] PATH FILE-SUFFIX TOGREP && || TOGREP && || TOGREP" ;
@@ -76,16 +60,15 @@ SEARCH THE DRIVE\n
  only text in the less viewer.\r
  Finds: log files, example code, etc.\r" ;
  # user workflow control 
-echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $HOME :: (HATO) -" >>"/home/$SUDO_USER/.wH0rUNSon" ;
 exit 0 ;
 	}
 
 eingabe(){
-trap 'eexitt' SIGINT ;
+trap "$FILE && pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9 ;" SIGINT ;
 
 	if [[ "$toshiffta" =~ 0|1 ]] ;
 then
-	help ;
+	exit 0 ;
 else
 
 for lines in $(find "$path" -name "*$suffixx*" -type f 2>/dev/null | tee "$tmpfile") ;
@@ -97,11 +80,10 @@ for lines in $(find "$path" -name "*$suffixx*" -type f 2>/dev/null | tee "$tmpfi
 		display && wait ;
 	fi ;
 done
-$FILE && pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9 ;
 fi
 }
 
-# ASK 
+# ASK
 while test -n "$1"; do
   case "$1" in
         -s|--search|$2|$3|$4|$5|$6)
@@ -114,7 +96,7 @@ while test -n "$1"; do
       shift "$toshiffta" ;
       eingabe ;
       ;;
-   -h|--help|"")
+   -h|--help|*)
       toshiffta=0 ;
       shift "$toshiffta" ;
       eingabe ;
