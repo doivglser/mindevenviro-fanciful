@@ -1,8 +1,6 @@
 #!/bin/bash
 # syntax check and update to /urs/local/bin, /var/www/testphp, /usr/lib/cgi-bin
 ###     WARNING:    DON'T EDIT ANYTHING BELOW
-# TODO:
-# implement bash-completion, for TABing
 
 		if [ ! $EUID = 0 ] ;
 	then
@@ -11,11 +9,10 @@ else
 
 LANG="C" ;
 IFS=$(echo -en "\n\b") ;
+FILE="sCRYPtUPdater"
 syntaxCHkr="shellcheck perl python php" ;
-# the Work Directory
-userHome="/home/${SUDO_USER}" ;
 # User Host Control
-echo -e "\nsCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: in $HOME :: WORK - \n" >> "$userHome/.wH0rUNSon" ;
+echo -e "sCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: in $userHome ::" >> "/home/$SUDO_USER/.wH0rUNSon" ;
 # wholeC0unt4: to start by zero after first 
 wholeC0unt4="1" ;
 # listONmest4tus: to print how many bytes you've changed the last file you've edited
@@ -165,11 +162,6 @@ copyToPath(){
 fi
 }
 
-exiter(){
-		echo -e "\nsCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: in $HOME :: HATO -\n" >> "$userHome/.wH0rUNSon" ;
-		echo -e "\n\ngood bye, have a nice Day.\n" && exit 0 ;
-}
-
 cont1NU3(){
 		if [[ $ch3kingSnx =~ $syntaxCHkr ]] ;
 	then
@@ -261,7 +253,11 @@ fi
 }
 
 maincall(){
-        if [ -e "$userHome/.installed" ] ;
+shift 0 ;
+
+		while trap 'cont1NU3' SIGQUIT && trap 'killall $FILE' SIGINT ;
+	do
+        if [ -e "/home/$SUDO_USER/.installed" ] ;
     then
 		((wholeC0unt4--)) ;
 
@@ -281,22 +277,40 @@ fi
 		sC4n "$@" ;
 fi
 	else
-		echo -e "\n download min-dev-enviro from https://github.com/doivglser \n or touch $HOME/.installed" && exit 2 ;
+		echo -e "\n download M1ND3V3NV1R0 from https://github.com/doivglser \n or touch /home/$SUDO_USER/.installed" && exit 2 ;
 fi
-
+	done
 }
 
-echo -e "\n hello $SUDO_USER\n\n BASH/PYTHON to: /usr/local/bin\n PHP to: /var/www/html/testphp\n PERL to: /usr/lib/cgi-bin\n" ;
+help(){
+shift 0 ;
+echo -e "hello $SUDO_USER\n\n BASH/PYTHON to: /usr/local/bin\n PHP to: /var/www/html/testphp\n PERL to: /usr/lib/cgi-bin\n" ;
+echo -e "Usage: $0 [-w|--workflow-interval] [WORKFLOW-INTERVAL in minutes] [work-directorie] [-h|--help]\r" ;
+exit 0 ;
+}
 
-printf " Set the workflow interval in minutes: " ; read -r minut3S ;
+# ASK
+  case "$1" in
+        -w|--workflow-interval)
+      minut3S=$2
+      userHome=$3
+      toshiffta=$(echo "$minut3S $userHome" | wc -w) ;
+      shift "$toshiffta" ;
+      maincall ;
+      ;;
+   -h|--help)
+      toshiffta=0 ;
+      shift "$toshiffta" ;
+      help ;
+      ;;
+  esac
+		if [[ $1 = '' ]] && [[ "$minut3S" = '' ]] || [[ "$userHome" = '' ]] ;
+	then
+		echo "please sudo this script."
+		echo "Try '$0 --help' for more information."
+		exit 0 ;
+	else
+		maincall ;
+	fi
+fi
 
-	if [[ "$minut3S" = '' ]] ;
-then
-	exiter ;
-else
-		while true && trap 'exiter' SIGINT && trap 'cont1NU3' SIGQUIT ;
-	do
-		maincall "$@"
-	done
-fi
-fi

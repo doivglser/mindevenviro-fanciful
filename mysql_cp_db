@@ -279,7 +279,6 @@ then
 	echo -e "HELP: $0\r" ;
 	help ;	
 else
-	echo "Usage: $0 [-d|--dump] [-r|--restore] [-b|--backup] [-e|--erase] [-s|--search] [-h|--help]"
 	echo "Try '$0 --help' for more information."
 fi
 

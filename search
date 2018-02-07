@@ -8,7 +8,7 @@ LANG=C;
 FILE="search" ;
 line='' ;
 #exithandler
-trap "$FILE && pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9;" SIGINT ;
+trap "pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9;" SIGINT ;
 
 				if [ "$EUID" != 0 ] ;
 			then
@@ -57,6 +57,7 @@ fi
 }
 
 help(){
+shift 0 ;
 echo "Usage: $0 [-s|--search] [-h|--help] PATH FILE-SUFFIX TOGREP && || TOGREP && || TOGREP" ;
 echo -e "\n sudo this script:\n
 SEARCH THE DRIVE\n
@@ -84,7 +85,7 @@ done
 
 # ASK
   case "$1" in
-        -s|--search|$2|$3|$4|$5|$6)
+        -s|--search)
       path=$2
       suffixx=$3
       togrep1=$4
@@ -102,7 +103,6 @@ done
   esac
 		if [[ $1 = '' ]] && [[ "$line" = '' ]];
 	then
-		echo "Usage: $0 [-s|--search] [-h|--help] PATH FILE-SUFFIX TOGREP && || TOGREP && || TOGREP" ;
 		echo "Try '$0 --help' for more information."
 	else
 		eingabe ;
