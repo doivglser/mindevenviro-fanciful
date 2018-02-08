@@ -1,10 +1,10 @@
 #!/bin/bash
-set -x
 # serv-if-up: restarts servers
 
 		if [ $EUID != 0 ] ;
 	then
-		echo "sudo $0" ;
+		echo "Hi $USER, this script restart servers and notify if error and or success"
+		echo "USAGE: sudo serv-if-up &" ;
 else
 
 # temp folder
@@ -54,12 +54,7 @@ INODES=$(df -i | grep -E /$ | awk '{ print $2 }') ;
 
 FREEINODES=$(df -i | grep -E /$ | awk '{ print $4 }') ;
 
-> $tmpfolder/mailapache2status ;
-
-> $tmpfolder/mailsendmailstatus ;
-
-> $tmpfolder/mailmysqlstatus ;
-
+> $tmpfolder/root_mail_status ;
 
 while true
 
@@ -69,7 +64,7 @@ do
 		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
 	else
 
-echo -e "\n\n:: We got no Internet ::\n" > /dev/pts/3 ;
+echo ":: We got no Internet ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
@@ -92,10 +87,19 @@ then
 
 		if [[ $(ps axu | grep -v grep | grep -v snortup | grep "$nids") = '' ]] ;
 	then
-		sleep 2 ;
-		/etc/init.d/snort start -i $interface &
-		setsid snort -i $interface >/dev/null 2>&1 < /dev/null &
-		sleep 1 ;
+		sleep 0.5 ;
+		/etc/init.d/$nids start -i $interface &
+		setsid $nids -i $interface >/dev/null 2>&1 < /dev/null &
+		wait ;
+		sleep 0.5 ;
+cat << EOM | sendmail root@localhost
+
+Subject:"$nids" restartet
+
+$(cat $tmpfolder/root_mail_status)
+
+EOM
+wait ;
 	else
 		sleep 0.5 ;
 	fi
@@ -103,43 +107,45 @@ fi
 
 checkantivirus=$(ps aux | grep -v grep | grep clamd) ;
 
-sleep 2 ;
+sleep 0.5 ;
 
         if [[ "$checkantivirus" = '' ]];
 then
 	systemctl stop "$antivirus".service ;
 
-	sleep 1 ;
+	sleep 0.5 ;
 
 	if systemctl start "$antivirus".service ;
 then
 
-echo -e "\n\n:: $antivirus fails, but restartet successfully, you got an email ::\n" > /dev/pts/3 ;
+echo ":: $antivirus fails, but restartet successfully, you got an email ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
-systemctl status "$antivirus".service > /tmp/mailapache2status ;
+systemctl status "$antivirus".service > $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
 
-Subject:"$webserver" restartet
+Subject:"$antivirus" restartet
 
-$(cat /tmp/mailapache2status)
+$(cat $tmpfolder/root_mail_status)
 
 EOM
+wait ;
 	else
 
-systemctl status "$antivirus".service > /tmp/mailapache2status ;
+systemctl status "$antivirus".service > $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
 
-Subject:"$webserver" cannot_restart
+Subject:"$antivirus" cannot_restart
 
-$(cat /tmp/mailapache2status)
+$(cat $tmpfolder/root_mail_status)
 
 EOM
+wait ;
 
-echo -e "\n\n:: you got email, $antivirus fails, cannot restart ::\n" > /dev/pts/3 ;
+echo ":: you got email, $antivirus fails, cannot restart ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
@@ -148,43 +154,45 @@ fi
 
 checkport80=$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1) ;
 
-sleep 2 ;
+sleep 0.5 ;
 
         if [[ "$checkport80" = '' ]];
 then
 	systemctl stop "$webserver".service ;
 
-	sleep 1 ;
+	sleep 0.5 ;
 
 	if systemctl start "$webserver".service ;
 then
 
-echo -e "\n\n:: $webserver fails, but restartet successfully, you got an email ::\n" > /dev/pts/3 ;
+echo ":: $webserver fails, but restartet successfully, you got an email ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
-systemctl status "$webserver".service > /tmp/mailapache2status ;
+systemctl status "$webserver".service > $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
 
 Subject:"$webserver" restartet
 
-$(cat /tmp/mailapache2status)
+$(cat $tmpfolder/root_mail_status)
 
 EOM
+wait ;
 	else
 
-systemctl status "$webserver".service > /tmp/mailapache2status ;
+systemctl status "$webserver".service > $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
 
 Subject:"$webserver" cannot_restart
 
-$(cat /tmp/mailapache2status)
+$(cat $tmpfolder/root_mail_status)
 
 EOM
+wait ;
 
-echo -e "\n\n:: you got email, $webserver fails, cannot restart ::\n" > /dev/pts/3 ;
+echo ":: you got email, $webserver fails, cannot restart ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
@@ -193,7 +201,7 @@ fi
 
 checkport25=$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1) ;
 
-sleep 2 ;
+sleep 0.5 ;
 
         if [[ "$checkport25" = '' ]];
 then
@@ -204,41 +212,43 @@ checkprog2=$(whereis "$mta" | awk '{print $2}') ;
 then
 	systemctl stop "$mta".service
 
-sleep 1 ;
+sleep 0.5 ;
 
-        systemctl start "$mta".service > /tmp/mailsendmailstatus ;
+        systemctl start "$mta".service > $tmpfolder/root_mail_status ;
 
-        systemctl status "$mta".service >> /tmp/mailsendmailstatus ;
+        systemctl status "$mta".service >> $tmpfolder/root_mail_status ;
 
-	echo "$?" >> /tmp/mailsendmailstatus ;
+	echo "$?" >> $tmpfolder/root_mail_status ;
 
-sleep 1 ;
+sleep 0.5 ;
 
 cat << EOM | sendmail root@localhost
 
 Subject:"$mta" restartet
 
-$(cat /tmp/mailsendmailstatus)
+$(cat $tmpfolder/root_mail_status)
 
 EOM
+wait ;
 
-echo -e "\n\n:: $mta is accepting connections again, you got an email ::\n" > /dev/pts/3 ;
+echo ":: $mta is accepting connections again, you got an email ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
 	else
 
-	date "+Start Attempt, Failure Time: %H.%M" > /tmp/mailsendmailstatus ;
+	date "+Start Attempt, Failure Time: %H.%M" > $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
 
 Subject:"$mta" cannot_restart
 
-$(cat /tmp/mailsenmailfail)
+$(cat $tmpfolder/root_mail_status)
 
 EOM
+wait ;
 
-echo -e "\n\n:: you got email, $mta cannot restart ::\n" > /dev/pts/3 ;
+echo ":: you got email, $mta cannot restart ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
@@ -247,7 +257,7 @@ fi
 
 checkport3306=$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1) ;
 
-sleep 2 ;
+sleep 0.5 ;
 
         if [[ "$checkport3306" = '' ]];
 then
@@ -258,40 +268,42 @@ checkprog3=$(whereis "$datenbank" | awk '{print $2}') ;
 then
 	/etc/init.d/"$datenbank" stop ;
 
-sleep 1 ;
-        /etc/init.d/"$datenbank" start > /tmp/mailmysqlstatus ;
+sleep 0.5 ;
+        /etc/init.d/"$datenbank" start > $tmpfolder/root_mail_status ;
 
-        /etc/init.d/"$datenbank" status >> /tmp/mailmysqlstatus ;
+        /etc/init.d/"$datenbank" status >> $tmpfolder/root_mail_status ;
 
-	echo "$?" >> /tmp/mailmysqlstatus ;
+	echo "$?" >> $tmpfolder/root_mail_status ;
 
-sleep 1 ;
+sleep 0.5 ;
 
 cat << EOM | sendmail root@localhost
 
 Subject:"$datenbank" restartet
 
-$(cat /tmp/mailmysqlstatus)
+$(cat $tmpfolder/root_mail_status)
 
 EOM
+wait ;
 
-echo -e "\n\n:: $datenbank is accepting connections again, you got an email ::\n" > /dev/pts/3 ;
+echo ":: $datenbank is accepting connections again, you got an email ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
 	else
 
-	date "+Start Attempt, Failure Time: %H.%M" > /tmp/mailmysqlstatus ;
+	date "+Start Attempt, Failure Time: %H.%M" > $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
 
 Subject:$datenbank failure.
 
-$(cat /tmp/mailmysqlstatus )
+$(cat $tmpfolder/root_mail_status)
 
 EOM
+wait ;
 
-echo -e "\n\n:: you got email, $datenbank cannot restart ::\n" > /dev/pts/3 ;
+echo ":: you got email, $datenbank cannot restart ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
@@ -311,7 +323,7 @@ PERCENTUSED02="$nohomePartition" ;
 
 else
 
-echo "";
+echo "."> /dev/pts/3 ;
 
 fi
 
@@ -352,8 +364,9 @@ Used percentage on /home: $PERCENTUSED02
 Size on /home: $SIZEONHOME GB
 
 EOM
+wait ;
 
-echo -e "\n\n::WARNING:: your over $WARN01 % or $WARN02 %, you email::\n" > /dev/pts/3 ;
+echo "::WARNING:: your over $WARN01 % or $WARN02 %, you got email::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
@@ -361,10 +374,6 @@ fi
 
 done
 
-rm -f $tmpfolder/mailapache2status ;
-
-rm -f $tmpfolder/mailsendmailstatus ;
-
-rm -f $tmpfolder/mailmysqlstatus ;
+rm -f $tmpfolder/root_mail_status
 
 fi

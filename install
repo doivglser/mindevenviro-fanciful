@@ -15,7 +15,7 @@ else
 	then
 		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
 fi
-		if [ ! -e /home/$SUDO_USER/.installed ] && [[ $PWD =~ 'min-dev-enviro' ]] ;
+		if [ ! -e /home/$SUDO_USER/.installed ] && [[ $PWD =~ 'M1ND3V3NV1R0' ]] ;
 	then
 
 	nNuM1=$(echo "$environinstall" | wc -w) ;
@@ -97,7 +97,7 @@ done
 	
 		if	[[ "$eM4il" != '' ]] ;
 	then
-		ssh-keygen -t rsa -b 4096 -C "do.iv.gl.ser@gmx.es"
+		sudo -u $SUDO_USER ssh-keygen -t rsa -b 4096 -C "$eM4il"
 		eX1tC0de=$(echo $?) ;
 		wait ;
 		
@@ -105,9 +105,9 @@ done
 	then
 		echo -e "\n REMEMBER ssh-keygen -t rsa -b 4096 -C your-email@server.tld \nto add a github.com account" | tee -a /home/$SUDO_USER/.installed ;
 	else
-		echo "eval $(ssh-agent -s)" >> /etc/profile ;	
+		echo "eval $(ssh-agent -s)" >> /etc/profile ;
 		echo "ssh-add ~/.ssh/id_rsa" >> /etc/profile ;
-		ssh-keygen -p ;
+		sudo -u $SUDO_USER ssh-keygen -p ;
 	fi
 	else
 		echo " no github.com email."

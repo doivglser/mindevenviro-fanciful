@@ -18,7 +18,7 @@ ShallowReliefWindowButton
 FixManagedVirtualGeometries
 FixTransientVirtualGeometries
 
-BorderWidth		1
+BorderWidth		2
 
 BorderBevelWidth	1
 ButtonBevelWidth	0
