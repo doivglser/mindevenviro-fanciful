@@ -135,6 +135,10 @@ done
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
 	echo -e "\n ... copy Xresources" ;
+	cp -f bashrc /home/$SUDO_USER/.bashrc ;
+	chmod 644 /home/$SUDO_USER/.bashrc ;
+
+	echo -e "\n ... copy Xresources" ;
 	cp -f Xresources /etc/X11/xdm/ ;
 	chmod 755 /etc/X11/xdm/Xresources ;
 
