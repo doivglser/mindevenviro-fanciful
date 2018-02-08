@@ -89,17 +89,19 @@ then
 	then
 		sleep 0.5 ;
 		/etc/init.d/$nids start -i $interface &
-		setsid $nids -i $interface >/dev/null 2>&1 < /dev/null &
-		wait ;
-		sleep 0.5 ;
+		
+		if setsid $nids -i $interface >/dev/null 2>&1 < /dev/null &
+	then
 cat << EOM | sendmail root@localhost
-
 Subject:"$nids" restartet
-
 $(cat $tmpfolder/root_mail_status)
-
 EOM
-wait ;
+else
+cat << EOM | sendmail root@localhost
+Subject:"$nids" cannot restart
+$(cat $tmpfolder/root_mail_status)
+EOM
+fi
 	else
 		sleep 0.5 ;
 	fi
@@ -131,7 +133,7 @@ Subject:"$antivirus" restartet
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-wait ;
+
 	else
 
 systemctl status "$antivirus".service > $tmpfolder/root_mail_status ;
@@ -143,7 +145,7 @@ Subject:"$antivirus" cannot_restart
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-wait ;
+
 
 echo ":: you got email, $antivirus fails, cannot restart ::" > /dev/pts/3 ;
 
@@ -178,7 +180,7 @@ Subject:"$webserver" restartet
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-wait ;
+
 	else
 
 systemctl status "$webserver".service > $tmpfolder/root_mail_status ;
@@ -190,7 +192,7 @@ Subject:"$webserver" cannot_restart
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-wait ;
+
 
 echo ":: you got email, $webserver fails, cannot restart ::" > /dev/pts/3 ;
 
@@ -229,7 +231,7 @@ Subject:"$mta" restartet
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-wait ;
+
 
 echo ":: $mta is accepting connections again, you got an email ::" > /dev/pts/3 ;
 
@@ -246,7 +248,7 @@ Subject:"$mta" cannot_restart
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-wait ;
+
 
 echo ":: you got email, $mta cannot restart ::" > /dev/pts/3 ;
 
@@ -284,7 +286,7 @@ Subject:"$datenbank" restartet
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-wait ;
+
 
 echo ":: $datenbank is accepting connections again, you got an email ::" > /dev/pts/3 ;
 
@@ -301,7 +303,7 @@ Subject:$datenbank failure.
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-wait ;
+
 
 echo ":: you got email, $datenbank cannot restart ::" > /dev/pts/3 ;
 
@@ -364,7 +366,7 @@ Used percentage on /home: $PERCENTUSED02
 Size on /home: $SIZEONHOME GB
 
 EOM
-wait ;
+
 
 echo "::WARNING:: your over $WARN01 % or $WARN02 %, you got email::" > /dev/pts/3 ;
 

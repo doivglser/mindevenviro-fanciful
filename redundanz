@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# monitors the servers and applications, defined in server-monitor
+# starts the daemon serv-if-up and monitors some piDS
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
+LANG="C" ;
+
+		if [ ! $EUID = 0 ] ;
+	then
+		sudo "$0" ;
+else
+
+trap 'ex1Th4ndler' SIGINT ;
+
+ex1Th4ndler(){
+		ps aux | grep -v grep | grep serv-if-up | awk '{print $2}' | xargs kill -15 2>/dev/null ;
+		wait ;
+		exit 0 ;
+}
+		if [ -e "/home/$SUDO_USER/.installed" ] ;
+	then
+		setsid serv-if-up >/dev/null 2>&1 < /dev/null &
+		watch -n3 -t --color server-monitor ;
+	fi
+fi

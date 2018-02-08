@@ -18,18 +18,18 @@ ShallowReliefWindowButton
 FixManagedVirtualGeometries
 FixTransientVirtualGeometries
 
-BorderWidth		2
+BorderWidth		1
 
-BorderBevelWidth	1
-ButtonBevelWidth	0
-IconBevelWidth		1
-IconManagerBevelWidth	0
-InfoBevelWidth		1
-MenuBevelWidth		1
-TitleBevelWidth		0
+BorderBevelWidth	2
+ButtonBevelWidth	1
+IconBevelWidth		2
+IconManagerBevelWidth	1
+InfoBevelWidth		2
+MenuBevelWidth		2
+TitleBevelWidth		1
 
-ClearBevelContrast	40
-DarkBevelContrast	40
+ClearBevelContrast	80
+DarkBevelContrast	20
 
 MoveDelta		3
 
@@ -66,25 +66,25 @@ IconManagerDontShow
 
 Color
 {
-	BorderColor			"grey70"
-	BorderTileBackground		"gray60"
+	BorderColor			"white"
+	BorderTileBackground		"gray30"
 	BorderTileForeground		"gray60"
 	DefaultBackground		"black"
 	DefaultForeground		"gray85"
 	TitleBackground			"black"
 	TitleForeground			"gray85"
 	MenuBackground			"black"
-	MenuForeground			"gray85"
-	MenuTitleBackground		"gray70"
-	MenuTitleForeground		"black"
+	MenuForeground			"gray40"
+	MenuTitleBackground		"black"
+	MenuTitleForeground		"white"
 	IconBackground			"black"
 	IconForeground			"gray85"
-	IconBorderColor			"gray85"
+	IconBorderColor			"white"
 	IconManagerBackground		"black"
-	IconManagerForeground		"gray85"
+	IconManagerForeground		"gray10"
 	VirtualBackground		"black"
 	VirtualForeground		"black"
-	DesktopDisplayBackground	"grey60"
+	DesktopDisplayBackground	"grey30"
 }
 
 NoTitle {
@@ -139,20 +139,20 @@ Cursors {
 Color
 {
 BorderColor         "#1ef600"
-DefaultBackground   "#D6D6D6"
-DefaultForeground   "#000000"
+DefaultBackground   "#a203b0"
+DefaultForeground   "#ffD6D6"
 
-TitleBackground     "#a06e32"
-TitleForeground     "White"
+TitleBackground     "#1fd61d"
+TitleForeground     "Black"
 
-MenuTitleBackground "#4E4E4E"
+MenuTitleBackground "Black"
 MenuTitleForeground "White"
 
-MenuBackground      "#1a1a1a"
-MenuForeground      "#4E4E4E"
+MenuBackground      "Yellow"
+MenuForeground      "#2E2a2E"
 
-MenuShadowColor     "#1ef81e"
-MenuBorderColor     "#f81e00"
+MenuShadowColor     "#1ef600"
+MenuBorderColor     "#f800f0"
 }
 
 #
@@ -170,7 +170,7 @@ menu "main"
 ":: terminator"  f.exec "exec /usr/local/bin/hi &"
 ":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
 ":: music"  f.exec "exec /usr/local/bin/hi_vlc &"
-":: __________________ ::"  f.title
+":: ····························· ::"  f.title
 "transparent"	f.exec "exec transset 0.70 &"
 "solid-color"	f.exec "exec transset 1 &"
 "background"  f.exec "exec /usr/local/bin/feh-bg &"
