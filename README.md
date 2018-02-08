@@ -139,21 +139,18 @@
 
   syntax check and copy to path (shell script)
 
-* check
-
-  ensures snort and clamd are running properly (shell script)
-
 * search 
 
   search by path and file suffix, if grep true open file (shell script)
 
 * mysql_cp_db
 
-  To rename databases, overwrite old dbs with backup_database.tables, dump and restore .sql, on localhost (shell script)
+  To rename tables in database, to delete and to dump and restore from .sql file. (shell script)
   
-* serv-if-up
+* redundanz
 
-  stdout to terminal, cause set -x .
+  Puts serv-if-up daemon up and monitors servers reliability.
+  Depends on: server-monitor, serv-if-up
 
 # Files:
 
@@ -192,12 +189,11 @@
 * in /usr/local/bin
 
   shi3lD          # network-manager (doesnt work anymore)
+  Depends on: start_shield, stop_shield
 
-  start_shield    # Depends on shi3lD.
+  start_shield    # starts shi3lD
 
-  stop_shield     # Depends on shi3lD.
-
-  serv-if-up      # Depends on shi3lD, background process, restarts servers.
+  stop_shield     # stops shi3lD
 
   sCRYPtUPdater   # Syntax check and update to the path.
 
@@ -221,9 +217,9 @@
   
   search          # Search and display if to grep true with less.
   
-  snortup         # restart's snort if wifi accessed.
+  server-monitor # does check PID's
   
-  check           # display's status of snortup and clamd
+  serv-if-up # does restart servers and notify per email
 
 * in ~/min-dev-enviro
 
