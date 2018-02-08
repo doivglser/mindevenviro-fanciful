@@ -178,6 +178,8 @@
 
   .xscreensaver   # Screen Saver's config
   
+  .bashrc   # $USER's interactive and non-login shell config file.
+  
 * ~/Music
 
   76256__ganscaile__startup.mp3     # startup sound
