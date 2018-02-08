@@ -44,17 +44,6 @@ fi
 done
 
 	echo -e "\r\n ... clearing files" ;
-
-	# by an update clear from double entries in .bashrc
-	sed '/alias /d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc 2>/dev/null ;
-	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc 2>/dev/null ;
-	sed '/set -o noclobber/d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc 2>/dev/null ;
-	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc 2>/dev/null ;
-	sed '/cd && pwd/d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc 2>/dev/null ;
-	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc 2>/dev/null ;	
-	sed -e '/eval /d' /home/$SUDO_USER/.bashrc > $tmpfolder/bashrc 2>/dev/null ;
-	sed -e '/ssh-add /d' $tmpfolder/bashrc > $tmpfolder/bashrc2 2>/dev/null ;
-	cp -f $tmpfolder/bashrc2 /home/$SUDO_USER/.bashrc 2>/dev/null ;
 	
 	# by an update clear from double entries in 000-default.conf
 	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
@@ -148,17 +137,6 @@ done
 	echo -e "\n ... copy Xresources" ;
 	cp -f Xresources /etc/X11/xdm/ ;
 	chmod 755 /etc/X11/xdm/Xresources ;
-
-	echo -e "\n ... update .bashrc" ;
-	echo "set -o noclobber" >> /home/$SUDO_USER/.bashrc ;	
-	echo "alias ls='ls --color=auto -sh'" >> /home/$SUDO_USER/.bashrc ;
-	echo "alias down='sudo init 0'" >> /home/$SUDO_USER/.bashrc ;
-	echo "alias vol='alsamixer'" >> /home/$SUDO_USER/.bashrc ;
-	echo "alias works='tail -f .wH0rUNSon'" >> /home/$SUDO_USER/.bashrc ;
-	echo "alias post='sudo -u root mutt'" >> /home/$SUDO_USER/.bashrc ; 
-	echo "alias reboot='sudo init 6'" >> /home/$SUDO_USER/.bashrc ;	
-	echo "alias | sed -n 's/alias //p ;'" >> /home/$SUDO_USER/.bashrc ;
-	echo "cd && pwd" >> /home/$SUDO_USER/.bashrc ;
 
 	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
 	mkdir -p /home/$SUDO_USER/.config/mc 2>/dev/null ;
