@@ -222,6 +222,8 @@
   server-monitor # does check PID's
   
   serv-if-up # does restart servers and notify per email
+  
+  redundanz # monitors, depends on: server-monitor,serv-if-up
 
 * in ~/min-dev-enviro
 
