@@ -160,7 +160,7 @@ MenuBorderColor     "#00FF00"
 #
 menu "main"
 {
-":: - M1ND3V3NV1R0 - ::"  f.title
+":: M1ND3V3NV1R0 ::"  f.title
 ":: geany editor"  f.exec "exec /usr/local/bin/hi_geany &"
 ":: transmission"  f.exec "exec /usr/local/bin/hi_transmission-gtk &"
 ":: firefox-ESR"  f.exec "exec /usr/local/bin/hi_firefox-esr &"
@@ -170,7 +170,7 @@ menu "main"
 ":: terminator"  f.exec "exec /usr/local/bin/hi &"
 ":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
 ":: music"  f.exec "exec /usr/local/bin/hi_vlc &"
-":: ····························· ::"  f.title
+":: 0.001%% __/\\/ ° ::"  f.title
 "transparent"	f.exec "exec transset 0.70 &"
 "solid-color"	f.exec "exec transset 1 &"
 "background"  f.exec "exec /usr/local/bin/feh-bg &"
