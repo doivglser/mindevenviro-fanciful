@@ -1,6 +1,6 @@
 #!/bin/bash
 # monitors the servers and applications, defined in server-monitor
-# starts the daemon serv-if-up and monitors some piDS
+# starts the daemon serv-if-up and monitors some piDS are up.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 		if [ ! $EUID = 0 ] ;
@@ -13,7 +13,7 @@ FILE2="server-monitor" ;
 
 help(){
 shift 0 ;
-echo -e "hello $SUDO_USER redundanz puts up serv-if-up daemon and monitors servers reliability\n" ;
+echo -e "hello $SUDO_USER redundanz puts serv-if-up daemon up and monitors servers reliability\n" ;
 echo -e "Usage: $0 [-m|--monitor] [-h|--help]\r" ;
 exit 0 ;
 }
