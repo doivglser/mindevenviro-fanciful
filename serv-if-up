@@ -4,8 +4,11 @@
 		if [ $EUID != 0 ] ;
 	then
 		echo "Hi $USER, this script restart servers and notify if error and or success"
-		echo "USAGE: sudo serv-if-up &" ;
+		echo "USAGE: sudo redundanz -m" ;
 else
+
+	if [[ "$(ps aux | grep -v grep | grep -v nano | grep redundanz | awk '{print $2}' | wc -l) " -gt "1" ]] ;
+then
 
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
@@ -378,4 +381,5 @@ done
 
 rm -f $tmpfolder/root_mail_status
 
+fi
 fi

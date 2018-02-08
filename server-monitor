@@ -80,7 +80,7 @@ fi
 
 users1="$(ps aux | grep "$prgtotestb" | grep -v grep | awk '{print $1}' | uniq)" ;
 
-usersPID1=$(ps aux | grep "$prgtotesta" | grep -v grep | awk '{print $1}' | wc -l) ;
+usersPID1=$(ps aux | grep "$prgtotestb" | grep -v grep | awk '{print $1}' | wc -l) ;
 
 echo -e "\n :: $usersPID1 PID from $file01b by: "$users1"\n" ;
 
@@ -88,7 +88,7 @@ ps aux | grep "$prgtotestb" | grep -v grep | tail -n1 ;
 
 ###
 #
-# clamd pids users and number of processes
+# clamd pids users and number of processes 
 #
 ###
 

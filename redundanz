@@ -1,26 +1,54 @@
 #!/bin/bash
-
 # monitors the servers and applications, defined in server-monitor
 # starts the daemon serv-if-up and monitors some piDS
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-
 LANG="C" ;
-
 		if [ ! $EUID = 0 ] ;
 	then
-		sudo "$0" ;
+		echo "USAGE: sudo redundanz -h" ;
 else
 
-trap 'ex1Th4ndler' SIGINT ;
+FILE1="serv-if-up" ;
+FILE2="server-monitor" ;
+
+help(){
+shift 0 ;
+echo -e "hello $SUDO_USER redundanz puts up serv-if-up daemon and monitors servers reliability\n" ;
+echo -e "Usage: $0 [-m|--monitor] [-h|--help]\r" ;
+exit 0 ;
+}
 
 ex1Th4ndler(){
 		ps aux | grep -v grep | grep serv-if-up | awk '{print $2}' | xargs kill -15 2>/dev/null ;
 		wait ;
 		exit 0 ;
 }
-		if [ -e "/home/$SUDO_USER/.installed" ] ;
+
+mmonitor(){
+			if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
 	then
-		setsid serv-if-up >/dev/null 2>&1 < /dev/null &
-		watch -n3 -t --color server-monitor ;
+		trap 'ex1Th4ndler' SIGINT ;
+
+		if [[ $(ps aux | grep -v grep | grep "$FILE1") = '' ]]
+	then
+		setsid "$FILE1" >/dev/null 2>&1 < /dev/null &
+		watch -n3 -t --color "$FILE2" ;
+	else
+		watch -n3 -t --color "$FILE2" ;
+		fi
 	fi
+	}
+
+# ASK
+  case "$1" in
+        -m|--monitor)
+      shift 1;
+      mmonitor "$@";
+      ;;
+   -h|--help)
+      shift 1 ;
+      help ;
+      ;;
+  esac
+help ;
 fi
