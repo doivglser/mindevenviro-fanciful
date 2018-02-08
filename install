@@ -52,7 +52,10 @@ done
 	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc 2>/dev/null ;
 	sed '/cd && pwd/d' /home/$SUDO_USER/.bashrc > $tmpfolder/.bashrc 2>/dev/null ;
 	cp -f $tmpfolder/.bashrc /home/$SUDO_USER/.bashrc 2>/dev/null ;	
-
+	sed -e '/eval /d' /home/$SUDO_USER/.bashrc > $tmpfolder/bashrc 2>/dev/null ;
+	sed -e '/ssh-add /d' $tmpfolder/bashrc > $tmpfolder/bashrc2 2>/dev/null ;
+	cp -f $tmpfolder/bashrc2 /home/$SUDO_USER/.bashrc 2>/dev/null ;
+	
 	# by an update clear from double entries in 000-default.conf
 	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
@@ -68,11 +71,6 @@ done
 	# by an update clear from double entries in clamd.conf
 	sed -e '/OnAccessMountPath /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;	
-
-	# by an update clear from double entries in /etc/profile
-	sed -e '/eval /d' /etc/profile > $tmpfolder/profile 2>/dev/null ;
-	sed -e '/ssh-add /d' $tmpfolder/profile > $tmpfolder/profile2 2>/dev/null ;
-	cp -f $tmpfolder/profile2 /etc/profile 2>/dev/null ;
 
 	echo -e "\n ... save vendors MAC-Address" ;
 	ip link show | grep ether | awk '{print $2}' | tee "/home/$SUDO_USER/.vendorsmac" ;
@@ -105,8 +103,8 @@ done
 	then
 		echo -e "\n REMEMBER ssh-keygen -t rsa -b 4096 -C your-email@server.tld \nto add a github.com account" | tee -a /home/$SUDO_USER/.installed ;
 	else
-		echo "eval $(ssh-agent -s)" >> /etc/profile ;
-		echo "ssh-add ~/.ssh/id_rsa" >> /etc/profile ;
+		echo "eval $(ssh-agent -s)" >> /home/$SUDO_USER/.bashrc ;
+		echo "ssh-add ~/.ssh/id_rsa" >> /home/$SUDO_USER/.bashrc ;
 		sudo -u $SUDO_USER ssh-keygen -p ;
 	fi
 	else

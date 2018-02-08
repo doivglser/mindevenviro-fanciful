@@ -1,5 +1,5 @@
 #!/bin/bash
-# serv-if-up: restarts servers
+# serv-if-up: restarts servers and notify
 
 		if [ $EUID != 0 ] ;
 	then
