@@ -178,6 +178,8 @@
 
   .xscreensaver   # Screen Saver's config
   
+  .bashrc   # $USER's interactive and non-login shell config file.
+  
 * ~/Music
 
   76256__ganscaile__startup.mp3     # startup sound
@@ -220,6 +222,8 @@
   server-monitor # does check PID's
   
   serv-if-up # does restart servers and notify per email
+  
+  redundanz # monitors, depends on: server-monitor,serv-if-up
 
 * in ~/min-dev-enviro
 
