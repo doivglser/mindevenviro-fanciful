@@ -148,11 +148,11 @@ TitleForeground     "Black"
 MenuTitleBackground "Black"
 MenuTitleForeground "White"
 
-MenuBackground      "#f84479"
+MenuBackground      "#FFCC00"
 MenuForeground      "#1a002E"
 
 MenuShadowColor     "#FF0000"
-MenuBorderColor     "#00FF00"
+MenuBorderColor     "#00FFC0"
 }
 
 #
