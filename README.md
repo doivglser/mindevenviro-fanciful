@@ -4,7 +4,7 @@
 
 # M1ND3V3NV1R0
 
-:::  Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
+::: Deployment environment for Debian 9 GNU/Linux Stretch, in a minimal desktop with antivirus and NIDS. 
 
 - For Debian GNU/Linux.
 
@@ -26,15 +26,22 @@
 
 # PROBLEMS:
 
-* no workaround to install wifi firmware
+* no workaround to install wifi firmware.
 
-* shi3lD may not work, if your network is down. $(interface) overwrites it selft
+* shi3lD may not work.
 
 * while installing: while installing snort: debconf asks for interface eth0 no 
   workaround for "eno[0-9]" interfaces. Take a look in to "ip route show" and 
   "sudo dpkg --configure -a" with the name of your interface.
 
 # TODO:
+
+* 	wget install script from github.com dogitable(){Login / 
+	su - / apt-get update / apt-get -f -y -m install sudo git
+	/ nano /etc/sudoers / search for "root	ALL=(ALL:ALL) ALL", copy the line and do a new entry with
+	your username, like "my_username	ALL=(ALL:ALL) ALL" / save ctrl+X / ctrl+D / 
+	cd / git clone https://github.com/doivglser/min-dev-enviro.git / ctrl+D / 
+	login again ... / cd min-dev-enviro /}
 
 * mysql_cp_db: catch the password from /etc/mysql/debian.cnf (but no password here...) 
   I search for the right MySQL syntax to delete id's.
@@ -73,40 +80,32 @@
 
 # Install
 
-*   Login / su - / apt-get update / apt-get -f -y -m install sudo git / nano /etc/sudoers /
-    search for "root	ALL=(ALL:ALL) ALL", copy the line and do a new entry with
-    your username, like "my_username	ALL=(ALL:ALL) ALL" / save ctrl+X / ctrl+D / 
-    cd / git clone https://github.com/doivglser/min-dev-enviro.git / ctrl+D / 
-    login again ... / cd min-dev-enviro /
-
 * ivo@x0x:~/min-dev-enviro$ sudo ./install 
 
   Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
-  snort wicd brutalchess libreoffice-writer scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader
-  xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils xcompmgr
-  x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client
-  mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt 
-  eject nano nmon 
+  snort wicd brutalchess libreoffice-writer scrot mupdf terminator playonlinux 
+  wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc 
+  feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils xcompmgr 
+  x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan 
+  clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 dwww apache2 
+  git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes 
+  figlet mc mutt eject nano nmon 
 
 # USAGE:
 
 * Login to X
 
-  "Right click" Version
-  
+  "Right click" Version 
   "Left click" Menu
-  
-  "F3" cycles windows back
-  
-  "F4" cycles windows forward
+  "F12" cycles windows down
+  "F10" cycles windows up
 
 # On vtwm:
 
 * Firefox-ESR
 
   type: localhost/dwww for dwww. ( dwww collects information from /usr/share/{man,doc} )
-
   type: localhost/testphp for your php stuff.
 
 * VLC 
@@ -125,111 +124,88 @@
 
   Install: win32 and win64 MS-Office applications and Games
 
-* terminator
+* terminator (Multiple GNOME terminals in one window.)
 
-  Multiple GNOME terminals in one window.
-  
   "ctrl+PageUP" cycles TAB to right
-  
   "ctrl+PageDOWN" cycles TAB to left
-  
   "ctrl+TAB" swap's between Panned TAB's
   
-* sCRYPtUPdater
+* sCRYPtUPdater (shell script)
 
-  syntax check and copy to path (shell script)
+  syntax check and copy to path 
 
-* search 
+* search (shell script)
 
-  search by path and file suffix, if grep true open file (shell script)
+  search by path and file suffix, if grep true open file
 
-* mysql_cp_db
+* mysql_cp_db (shell script)
 
-  To rename tables in database, to delete and to dump and restore from .sql file. (shell script)
+  To rename tables in database, to delete and to dump and restore from .sql file.
   
-* redundanz
+* redundanz (shell script)
 
   Puts serv-if-up daemon up and monitors servers reliability.
   Depends on: server-monitor, serv-if-up
 
-# Files:
+# SHELL SCRIPTS DOT FILES MEDIA FILES AND CONTENT
 
 * in ~/
 
-   playlist.m3u # music
-
-  .wH0rUNSon    # Depends on sCRYPtUPdater; $USER workflow control.
+   playlist.m3u
+  .wH0rUNSon
+  .[MonthYear].mac_recieves_dhcp_lease
+  .[MonthYear].mac_no_dhcp_lease
+  .installed
+  .vendorsmac
+  .twmrc
+  .config/mc/ini
+  .config/terminator/config
+  .Xresources
+  .xscreensaver
+  .bashrc
   
-  .[MonthYear].mac_recieves_dhcp_lease      # Depends on shi3lD, a list of working MAC's addresses.
+* in ~/Music
 
-  .[MonthYear].mac_no_dhcp_lease      # Depends on shi3lD, a list of NOT working MAC's addresses.
-
-  .installed      # The list of the installed components.
+  76256__ganscaile__startup.mp3
   
-  .vendorsmac     # The list of the vendors MAC-Adresses.
+* in ~/Pictures
 
-  .twmrc # VTWM's Layout
-
-  .config/mc/ini  # Midnight Commander's Layout
-  
-  .config/terminator/config   # Terminator's Layout
-  
-  .Xresources     # Login Mask
-
-  .xscreensaver   # Screen Saver's config
-  
-  .bashrc   # $USER's interactive and non-login shell config file.
-  
-* ~/Music
-
-  76256__ganscaile__startup.mp3     # startup sound
-  
-* ~/Pictures
-
-  wallpapers.zip  # unpacked Pictures for feh-bg
+  wallpapers.zip
   
 * in /usr/local/bin
 
-  shi3lD          # network-manager (doesnt work anymore)
-  Depends on: start_shield, stop_shield
+- network
 
-  start_shield    # starts shi3lD
+	shi3lD
+	start_shield
+	stop_shield
+	
+- syntax|search|edit
 
-  stop_shield     # stops shi3lD
+	sCRYPtUPdater
+	search
+	mysql_cp_db
+	
+- backgroud|startup
+		
+	feh-bg
+	hi
+	hi_firefox-esr
+	hi_geany
+	hi_playonlinux
+	hi_transmission-gtk
+	hi_vlc
+	hi_wicd-client
 
-  sCRYPtUPdater   # Syntax check and update to the path.
+- monitoring|reliability
 
-  feh-bg          # changes the background on vtwm.
-  
-  hi              # startup
-  
-  hi_firefox-esr  # startup
-  
-  hi_geany # startup
-  
-  hi_playonlinux # startup
-  
-  hi_transmission-gtk # startup
-  
-  hi_vlc # startup
-  
-  hi_wicd-client # startup
-  
-  mysql_cp_db     # MySQL and administration
-  
-  search          # Search and display if to grep true with less.
-  
-  server-monitor # does check PID's
-  
-  serv-if-up # does restart servers and notify per email
-  
-  redundanz # monitors, depends on: server-monitor,serv-if-up
+	server-monitor
+	serv-if-up
+	redundanz
+	
+- new-install|update
 
-* in ~/min-dev-enviro
-
-  sources.list    # HTTP Web source of debian Stretch
-  
-  install         # install script of min-dev-enviro
+	install
   
 * in /usr/share/vlc/skins2/
 
