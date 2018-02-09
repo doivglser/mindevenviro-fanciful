@@ -1,11 +1,12 @@
 ! $XConsortium: Xresources /main/8 1996/11/11 09:24:46 swick $
 xlogin*login.translations: #override\
-        CtrlR: abort-display()\n\
-        F1: set-session-argument(failsafe) finish-field()\n\
-        CtrlReturn: set-session-argument(failsafe) finish-field()\n\
-        Return: set-session-argument() finish-field()
-xlogin*borderWidth: 0
-xlogin*geometry: 460x620+1+1
+CtrlR: abort-display()\n\
+F1: set-session-argument(failsafe) finish-field()\n\
+CtrlReturn: set-session-argument(failsafe) finish-field()\n\
+Return: set-session-argument() finish-field()
+xlogin*logoFileName: /usr/share/X11/xdm/pixmaps/debianbw.xpm
+xlogin*borderWidth: 1
+xlogin*geometry: 760x620+1+1
 xlogin*greeting: M1ND3V3NV1R0
 xlogin*namePrompt: dear:
 xlogin*fail: #@!
@@ -18,12 +19,11 @@ xlogin*failColor: #ff0000
 xlogin*Foreground: #1e1e1e
 xlogin*Background: black
 #endif
-XConsole.text.geometry: 620x790
+XConsole.text.geometry: 620x590
 XConsole.verbose:       true
 XConsole*iconic:        true
 XConsole*font:          fixed
-
-Chooser*geometry:               512x620+300+300
+Chooser*geometry:               620x520
 Chooser*allowShellResize:       false
 Chooser*viewport.forceBars:     true
 Chooser*label.label:            M1N-D3V-3NV1R0
