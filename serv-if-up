@@ -377,6 +377,8 @@ date > /dev/pts/3 ;
 
 fi
 
+wait ;
+
 done
 
 rm -f $tmpfolder/root_mail_status
