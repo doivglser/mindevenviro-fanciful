@@ -134,9 +134,13 @@ done
 	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures && wait ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
-	echo -e "\n ... copy Xresources" ;
+	echo -e "\n ... copy .bashrc" ;
 	cp -f bashrc /home/$SUDO_USER/.bashrc ;
 	chmod 644 /home/$SUDO_USER/.bashrc ;
+
+	echo -e "\n ... copy mindevenviro.xpm" ;
+	cp -f mindevenviro.xpm /usr/share/X11/xdm/pixmaps/mindevenviro.xpm ;
+	chmod 644 /usr/share/X11/xdm/pixmaps/mindevenviro.xpm ;
 
 	echo -e "\n ... copy Xresources" ;
 	cp -f Xresources /etc/X11/xdm/ ;
