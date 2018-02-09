@@ -168,6 +168,7 @@ menu "main"
 ":: brutalchess"  f.exec "exec /usr/local/bin/hi_brutalchess &"
 ":: libreoffice"  f.exec "exec /usr/local/bin/hi_libreoffice &"
 ":: terminator"  f.exec "exec /usr/local/bin/hi &"
+":: the gimp"  f.exec "exec /usr/local/bin/hi_gimp &"
 ":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
 ":: music"  f.exec "exec /usr/local/bin/hi_vlc &"
 ":: 0.001%% __/\\/ ° ::"  f.title
