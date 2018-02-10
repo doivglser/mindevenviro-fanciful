@@ -19,6 +19,8 @@ then
 fi
 # temp folder END
 
+interface='' ;
+
 LANG="C";
 
 countwarn="0" ;
@@ -62,13 +64,19 @@ FREEINODES=$(df -i | grep -E /$ | awk '{ print $4 }') ;
 while true
 
 do
-		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
+sleep 1 ;
+
+		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'Iface' ]] ;
+	then
+		if [[ "$interface" = '' ]]
 	then
 		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
+		echo ":: We run this Iface: $interface ::" > /dev/pts/3 ;
+		date > /dev/pts/3 ;
+	fi
 	else
 
 echo ":: We got no Internet ::" > /dev/pts/3 ;
-
 date > /dev/pts/3 ;
 
 cat << EOM | sendmail root@localhost
@@ -81,20 +89,23 @@ EOM
 
 fi
 
-checknids=$(ps aux | grep -v grep | grep snort) ;
-
 sleep 0.5 ;
+
+checknids=$(ps aux | grep -v grep | grep snort) ;
 
 	if [[ "$checknids" = '' ]];
 then
 
 		if [[ $(ps axu | grep -v grep | grep -v snortup | grep "$nids") = '' ]] ;
 	then
-		sleep 0.5 ;
+		sleep 1 ;
 		/etc/init.d/$nids start -i $interface &
 		
 		if setsid $nids -i $interface >/dev/null 2>&1 < /dev/null &
 	then
+
+ps axu | grep -v grep | grep -v snortup | grep "$nids" > $tmpfolder/root_mail_status ;
+	
 cat << EOM | sendmail root@localhost
 Subject:"$nids" restartet
 $(cat $tmpfolder/root_mail_status)
@@ -110,24 +121,25 @@ fi
 	fi
 fi
 
-checkantivirus=$(ps aux | grep -v grep | grep clamd) ;
-
 sleep 0.5 ;
+
+checkantivirus=$(ps aux | grep -v grep | grep clamd) ;
 
         if [[ "$checkantivirus" = '' ]];
 then
 	systemctl stop "$antivirus".service ;
-
 	sleep 0.5 ;
 
 	if systemctl start "$antivirus".service ;
 then
 
-echo ":: $antivirus fails, but restartet successfully, you got an email ::" > /dev/pts/3 ;
+echo ":: $antivirus fails, but restartet successfully, you got an email ::" > /dev/pts/3 &
 
-date > /dev/pts/3 ;
+date > /dev/pts/3 &
 
-systemctl status "$antivirus".service > $tmpfolder/root_mail_status ;
+systemctl status "$antivirus".service > $tmpfolder/root_mail_status &&
+
+wait ;
 
 cat << EOM | sendmail root@localhost
 
@@ -157,24 +169,24 @@ date > /dev/pts/3 ;
 	fi
 fi
 
-checkport80=$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1) ;
-
 sleep 0.5 ;
+
+checkport80=$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1) ;
 
         if [[ "$checkport80" = '' ]];
 then
 	systemctl stop "$webserver".service ;
-
 	sleep 0.5 ;
-
 	if systemctl start "$webserver".service ;
 then
 
-echo ":: $webserver fails, but restartet successfully, you got an email ::" > /dev/pts/3 ;
+echo ":: $webserver fails, but restartet successfully, you got an email ::" > /dev/pts/3 &&
 
-date > /dev/pts/3 ;
+date > /dev/pts/3 &&
 
-systemctl status "$webserver".service > $tmpfolder/root_mail_status ;
+systemctl status "$webserver".service > $tmpfolder/root_mail_status &&
+
+wait ;
 
 cat << EOM | sendmail root@localhost
 
@@ -204,9 +216,9 @@ date > /dev/pts/3 ;
 	fi
 fi
 
-checkport25=$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1) ;
-
 sleep 0.5 ;
+
+checkport25=$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1) ;
 
         if [[ "$checkport25" = '' ]];
 then
@@ -215,17 +227,15 @@ checkprog2=$(whereis "$mta" | awk '{print $2}') ;
 
 	if [[ -e $checkprog2 ]] ;
 then
-	systemctl stop "$mta".service
-
+	systemctl stop "$mta".service ;
 sleep 0.5 ;
+	systemctl start "$mta".service > $tmpfolder/root_mail_status &&
 
-        systemctl start "$mta".service > $tmpfolder/root_mail_status ;
+	systemctl status "$mta".service >> $tmpfolder/root_mail_status &&
 
-        systemctl status "$mta".service >> $tmpfolder/root_mail_status ;
+	echo "$?" >> $tmpfolder/root_mail_status &&
 
-	echo "$?" >> $tmpfolder/root_mail_status ;
-
-sleep 0.5 ;
+wait ;
 
 cat << EOM | sendmail root@localhost
 
@@ -260,9 +270,9 @@ date > /dev/pts/3 ;
 	fi
 fi
 
-checkport3306=$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1) ;
-
 sleep 0.5 ;
+
+checkport3306=$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1) ;
 
         if [[ "$checkport3306" = '' ]];
 then
@@ -272,15 +282,14 @@ checkprog3=$(whereis "$datenbank" | awk '{print $2}') ;
 	if [[ -e $checkprog3 ]] ;
 then
 	/etc/init.d/"$datenbank" stop ;
-
 sleep 0.5 ;
-        /etc/init.d/"$datenbank" start > $tmpfolder/root_mail_status ;
+	/etc/init.d/"$datenbank" start > $tmpfolder/root_mail_status &&
 
-        /etc/init.d/"$datenbank" status >> $tmpfolder/root_mail_status ;
+	/etc/init.d/"$datenbank" status >> $tmpfolder/root_mail_status &&
 
-	echo "$?" >> $tmpfolder/root_mail_status ;
+	echo "$?" >> $tmpfolder/root_mail_status &&
 
-sleep 0.5 ;
+wait ;
 
 cat << EOM | sendmail root@localhost
 
@@ -315,6 +324,7 @@ date > /dev/pts/3 ;
 	fi
 fi
 
+sleep 0.5 ;
 
 if [[ "$WARN01" -lt "$PERCENTUSED01" ]] || [[ "$WARN02" -lt "$PERCENTUSED02" ]] && [[ "$countwarn" = '0' ]] ;
 
@@ -376,9 +386,6 @@ echo "::WARNING:: your over $WARN01 % or $WARN02 %, you got email::" > /dev/pts/
 date > /dev/pts/3 ;
 
 fi
-
-wait ;
-
 done
 
 rm -f $tmpfolder/root_mail_status
