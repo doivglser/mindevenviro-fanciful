@@ -2,6 +2,7 @@
 ![bild02](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus01.jpg)
 ![bild03](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus02.jpg)
 ![bild04](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus03.jpg)
+![bild05](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus04.jpg)
 
 # M1ND3V3NV1R0
 
@@ -210,11 +211,15 @@
 - backgroud|startup
 		
 	feh-bg
-	hi
-	hi_firefox-esr
+	hi 
+	hi_cheese
+	hi_brutalchess
+	hi_libreoffice
 	hi_geany
-	hi_playonlinux
+	hi_gimp
 	hi_transmission-gtk
+	hi_firefox-esr
+	hi_playonlinux
 	hi_vlc
 	hi_wicd-client
 
