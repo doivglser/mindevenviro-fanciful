@@ -170,6 +170,7 @@ menu "main"
 ":: terminator"  f.exec "exec /usr/local/bin/hi &"
 ":: the gimp"  f.exec "exec /usr/local/bin/hi_gimp &"
 ":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
+":: camera"	f.exec "exec /usr/local/bin/hi_cheese &"
 ":: music"  f.exec "exec /usr/local/bin/hi_vlc &"
 ":: 0.001%% __/\\/ ° ::"  f.title
 "transparent"	f.exec "exec transset 0.70 &"
