@@ -3,7 +3,7 @@
 
 		if [ $EUID != 0 ] ;
 	then
-		echo "Hi $USER, this script restart servers and notify if error and or success"
+		echo "Hi $USER, this script restart servers and notify if error and or success" ;
 		echo "USAGE: sudo redundanz -m" ;
 else
 
@@ -22,8 +22,6 @@ fi
 interface='' ;
 
 LANG="C";
-
-countwarn="0" ;
 
 nids="snort" ;
 
@@ -45,20 +43,6 @@ WARN01="80" ;
 
 WARN02="85" ;
 
-PERCENTUSED01=$(df -h | grep -E /$ | awk '{ print $5 }' | sed -n 's/%//p') ;
-
-PERCENTUSED02=$(df -h | grep -E /home$ | awk '{ print $5 }' | sed -n 's/%//p') ;
-
-IFHOMEEXIST=$(df -h | grep -E /home$) && SIZEONHOME=$(df -h | grep -E /home$ | awk '{print $2}') ;
-
-SIZEON=$(df -h | grep -E /$ | awk '{ print $2 }') ;
-
-USEDON=$(df -h | grep -E /$ | awk '{ print $3 }') ;
-
-INODES=$(df -i | grep -E /$ | awk '{ print $2 }') ;
-
-FREEINODES=$(df -i | grep -E /$ | awk '{ print $4 }') ;
-
 > $tmpfolder/root_mail_status ;
 
 while true
@@ -76,6 +60,7 @@ sleep 1 ;
 	fi
 	else
 
+interface='' ;
 echo ":: We got no Internet ::" > /dev/pts/3 ;
 date > /dev/pts/3 ;
 
@@ -89,19 +74,17 @@ EOM
 
 fi
 
-sleep 0.5 ;
-
 checknids=$(ps aux | grep -v grep | grep snort) ;
 
 	if [[ "$checknids" = '' ]];
 then
-
+		sleep 0.5 ;
+		
 		if [[ $(ps axu | grep -v grep | grep -v snortup | grep "$nids") = '' ]] ;
 	then
-		sleep 1 ;
-		/etc/init.d/$nids start -i $interface &
+		/etc/init.d/$nids start -i $interface
 		
-		if setsid $nids -i $interface >/dev/null 2>&1 < /dev/null &
+		if setsid $nids -i $interface >/dev/null 2>&1 < /dev/null
 	then
 
 ps axu | grep -v grep | grep -v snortup | grep "$nids" > $tmpfolder/root_mail_status ;
@@ -121,9 +104,7 @@ fi
 	fi
 fi
 
-sleep 0.5 ;
-
-checkantivirus=$(ps aux | grep -v grep | grep clamd) ;
+checkantivirus=$(ps aux | grep -v grep | grep "$antivirus") ;
 
         if [[ "$checkantivirus" = '' ]];
 then
@@ -133,13 +114,11 @@ then
 	if systemctl start "$antivirus".service ;
 then
 
-echo ":: $antivirus fails, but restartet successfully, you got an email ::" > /dev/pts/3 &
+echo ":: $antivirus fails, but restartet successfully, you got an email ::" > /dev/pts/3
 
-date > /dev/pts/3 &
+date > /dev/pts/3
 
-systemctl status "$antivirus".service > $tmpfolder/root_mail_status &&
-
-wait ;
+systemctl status "$antivirus".service > $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
 
@@ -169,8 +148,6 @@ date > /dev/pts/3 ;
 	fi
 fi
 
-sleep 0.5 ;
-
 checkport80=$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1) ;
 
         if [[ "$checkport80" = '' ]];
@@ -180,13 +157,13 @@ then
 	if systemctl start "$webserver".service ;
 then
 
-echo ":: $webserver fails, but restartet successfully, you got an email ::" > /dev/pts/3 &&
+echo ":: $webserver fails, but restartet successfully, you got an email ::" > /dev/pts/3
 
-date > /dev/pts/3 &&
+date > /dev/pts/3
 
-systemctl status "$webserver".service > $tmpfolder/root_mail_status &&
+systemctl status "$webserver".service > $tmpfolder/root_mail_status ;
 
-wait ;
+
 
 cat << EOM | sendmail root@localhost
 
@@ -216,8 +193,6 @@ date > /dev/pts/3 ;
 	fi
 fi
 
-sleep 0.5 ;
-
 checkport25=$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1) ;
 
         if [[ "$checkport25" = '' ]];
@@ -229,13 +204,11 @@ checkprog2=$(whereis "$mta" | awk '{print $2}') ;
 then
 	systemctl stop "$mta".service ;
 sleep 0.5 ;
-	systemctl start "$mta".service > $tmpfolder/root_mail_status &&
+	systemctl start "$mta".service > $tmpfolder/root_mail_status ;
 
-	systemctl status "$mta".service >> $tmpfolder/root_mail_status &&
+	systemctl status "$mta".service >> $tmpfolder/root_mail_status ;
 
-	echo "$?" >> $tmpfolder/root_mail_status &&
-
-wait ;
+	echo "$?" >> $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
 
@@ -244,7 +217,6 @@ Subject:"$mta" restartet
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-
 
 echo ":: $mta is accepting connections again, you got an email ::" > /dev/pts/3 ;
 
@@ -262,15 +234,12 @@ $(cat $tmpfolder/root_mail_status)
 
 EOM
 
-
 echo ":: you got email, $mta cannot restart ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
 
 	fi
 fi
-
-sleep 0.5 ;
 
 checkport3306=$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1) ;
 
@@ -283,13 +252,11 @@ checkprog3=$(whereis "$datenbank" | awk '{print $2}') ;
 then
 	/etc/init.d/"$datenbank" stop ;
 sleep 0.5 ;
-	/etc/init.d/"$datenbank" start > $tmpfolder/root_mail_status &&
+	/etc/init.d/"$datenbank" start > $tmpfolder/root_mail_status ;
 
-	/etc/init.d/"$datenbank" status >> $tmpfolder/root_mail_status &&
+	/etc/init.d/"$datenbank" status >> $tmpfolder/root_mail_status ;
 
-	echo "$?" >> $tmpfolder/root_mail_status &&
-
-wait ;
+	echo "$?" >> $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
 
@@ -298,7 +265,6 @@ Subject:"$datenbank" restartet
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-
 
 echo ":: $datenbank is accepting connections again, you got an email ::" > /dev/pts/3 ;
 
@@ -316,7 +282,6 @@ $(cat $tmpfolder/root_mail_status)
 
 EOM
 
-
 echo ":: you got email, $datenbank cannot restart ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
@@ -324,9 +289,26 @@ date > /dev/pts/3 ;
 	fi
 fi
 
-sleep 0.5 ;
+sleep 1 ;
+# check for drive space and notify if over limit
+PERCENTUSED01=$(df -h | grep -E /$ | awk '{ print $5 }' | sed -n 's/%//p') ;
 
-if [[ "$WARN01" -lt "$PERCENTUSED01" ]] || [[ "$WARN02" -lt "$PERCENTUSED02" ]] && [[ "$countwarn" = '0' ]] ;
+PERCENTUSED02=$(df -h | grep -E /home$ | awk '{ print $5 }' | sed -n 's/%//p') ;
+
+IFHOMEEXIST=$(df -h | grep -E /home$) ;
+
+SIZEONHOME=$(df -h | grep -E /home$ | awk '{print $2}') ;
+
+SIZEON=$(df -h | grep -E /$ | awk '{ print $2 }') ;
+
+USEDON=$(df -h | grep -E /$ | awk '{ print $3 }') ;
+
+INODES=$(df -i | grep -E /$ | awk '{ print $2 }') ;
+
+FREEINODES=$(df -i | grep -E /$ | awk '{ print $4 }') ;
+# END checking free space
+
+if [[ "$WARN01" -lt "$PERCENTUSED01" ]] || [[ "$WARN02" -lt "$PERCENTUSED02" ]] ;
 
 then
 
@@ -336,13 +318,7 @@ then
 
 PERCENTUSED02="$nohomePartition" ;
 
-else
-
-echo "."> /dev/pts/3 ;
-
 fi
-
-countwarn=1 ;
 
 cat << EOM | sendmail root@localhost
 
@@ -380,15 +356,11 @@ Size on /home: $SIZEONHOME GB
 
 EOM
 
-
 echo "::WARNING:: your over $WARN01 % or $WARN02 %, you got email::" > /dev/pts/3 ;
-
 date > /dev/pts/3 ;
 
 fi
 done
-
 rm -f $tmpfolder/root_mail_status
-
 fi
 fi
