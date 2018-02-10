@@ -90,14 +90,19 @@ then
 ps axu | grep -v grep | grep -v snortup | grep "$nids" > $tmpfolder/root_mail_status ;
 	
 cat << EOM | sendmail root@localhost
-Subject:"$nids" restartet
+
 $(cat $tmpfolder/root_mail_status)
+
 EOM
+
 else
+
 cat << EOM | sendmail root@localhost
-Subject:"$nids" cannot restart
+
 $(cat $tmpfolder/root_mail_status)
+
 EOM
+
 fi
 	else
 		sleep 0.1 ;
@@ -111,18 +116,18 @@ then
 	systemctl stop "$antivirus".service ;
 	sleep 0.1 ;
 
-	if systemctl start "$antivirus".service ;
+	if systemctl start "$antivirus".service > $tmpfolder/root_mail_status ;
 then
+
+systemctl status "$antivirus".service >> $tmpfolder/root_mail_status ;
+
+echo "$?" >> $tmpfolder/root_mail_status ;
 
 echo ":: $antivirus fails, but restartet successfully, you got an email ::" > /dev/pts/3
 
 date > /dev/pts/3
 
-systemctl status "$antivirus".service > $tmpfolder/root_mail_status ;
-
 cat << EOM | sendmail root@localhost
-
-Subject:"$antivirus" restartet
 
 $(cat $tmpfolder/root_mail_status)
 
@@ -131,15 +136,13 @@ EOM
 	else
 
 systemctl status "$antivirus".service > $tmpfolder/root_mail_status ;
+date "+Start Attempt $antivirus, Failure Time: %H.%M" >> $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
-
-Subject:"$antivirus" cannot_restart
 
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-
 
 echo ":: you got email, $antivirus fails, cannot restart ::" > /dev/pts/3 ;
 
@@ -153,21 +156,19 @@ checkport80=$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1
         if [[ "$checkport80" = '' ]];
 then
 	systemctl stop "$webserver".service ;
-	sleep 0.1 ;
-	if systemctl start "$webserver".service ;
+	sleep 0.2 ;
+	if systemctl start "$webserver".service > $tmpfolder/root_mail_status ;
 then
+
+systemctl status "$webserver".service >> $tmpfolder/root_mail_status ;
+
+echo "$?" >> $tmpfolder/root_mail_status ;
 
 echo ":: $webserver fails, but restartet successfully, you got an email ::" > /dev/pts/3
 
 date > /dev/pts/3
 
-systemctl status "$webserver".service > $tmpfolder/root_mail_status ;
-
-
-
 cat << EOM | sendmail root@localhost
-
-Subject:"$webserver" restartet
 
 $(cat $tmpfolder/root_mail_status)
 
@@ -176,15 +177,13 @@ EOM
 	else
 
 systemctl status "$webserver".service > $tmpfolder/root_mail_status ;
+date "+Start Attempt $webserver, Failure Time: %H.%M" >> $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
-
-Subject:"$webserver" cannot_restart
 
 $(cat $tmpfolder/root_mail_status)
 
 EOM
-
 
 echo ":: you got email, $webserver fails, cannot restart ::" > /dev/pts/3 ;
 
@@ -199,20 +198,16 @@ checkport25=$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1
 then
 
 checkprog2=$(whereis "$mta" | awk '{print $2}') ;
+systemctl stop "$mta".service ;
+sleep 0.2 ;
 
-	if [[ -e $checkprog2 ]] ;
+	if [[ -e $checkprog2 ]] && systemctl start "$mta".service > $tmpfolder/root_mail_status ;
 then
-	systemctl stop "$mta".service ;
-sleep 0.1 ;
-	systemctl start "$mta".service > $tmpfolder/root_mail_status ;
-
 	systemctl status "$mta".service >> $tmpfolder/root_mail_status ;
 
 	echo "$?" >> $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
-
-Subject:"$mta" restartet
 
 $(cat $tmpfolder/root_mail_status)
 
@@ -224,11 +219,10 @@ date > /dev/pts/3 ;
 
 	else
 
-	date "+Start Attempt, Failure Time: %H.%M" > $tmpfolder/root_mail_status ;
+	systemctl status "$mta".service > $tmpfolder/root_mail_status ;
+	date "+Start Attempt $mta, Failure Time: %H.%M" >> $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
-
-Subject:"$mta" cannot_restart
 
 $(cat $tmpfolder/root_mail_status)
 
@@ -246,21 +240,16 @@ checkport3306=$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail
         if [[ "$checkport3306" = '' ]];
 then
 
-checkprog3=$(whereis "$datenbank" | awk '{print $2}') ;
+/etc/init.d/"$datenbank" stop ;
+sleep 0.2 ;
 
-	if [[ -e $checkprog3 ]] ;
+	if /etc/init.d/"$datenbank" start > $tmpfolder/root_mail_status ;
 then
-	/etc/init.d/"$datenbank" stop ;
-sleep 0.1 ;
-	/etc/init.d/"$datenbank" start > $tmpfolder/root_mail_status ;
-
 	/etc/init.d/"$datenbank" status >> $tmpfolder/root_mail_status ;
 
 	echo "$?" >> $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
-
-Subject:"$datenbank" restartet
 
 $(cat $tmpfolder/root_mail_status)
 
@@ -272,11 +261,10 @@ date > /dev/pts/3 ;
 
 	else
 
-	date "+Start Attempt, Failure Time: %H.%M" > $tmpfolder/root_mail_status ;
+	/etc/init.d/"$datenbank" status > $tmpfolder/root_mail_status ;
+	date "+Start Attempt $datenbank, Failure Time: %H.%M" >> $tmpfolder/root_mail_status ;
 
 cat << EOM | sendmail root@localhost
-
-Subject:$datenbank failure.
 
 $(cat $tmpfolder/root_mail_status)
 
@@ -289,7 +277,7 @@ date > /dev/pts/3 ;
 	fi
 fi
 
-sleep 1 ;
+sleep 0.5 ;
 # check for drive space and notify if over limit
 PERCENTUSED01=$(df -h | grep -E /$ | awk '{ print $5 }' | sed -n 's/%//p') ;
 
