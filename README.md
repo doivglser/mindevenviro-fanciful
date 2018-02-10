@@ -153,23 +153,35 @@
 * redundanz (shell script)
 
   Puts serv-if-up daemon up and monitors servers reliability.
+  
   Depends on: server-monitor, serv-if-up
 
 # SHELL SCRIPTS DOT FILES MEDIA FILES AND CONTENT
 
 # in ~/
 
-   playlist.m3u\r
-  .wH0rUNSon\r
-  .[MonthYear].mac_recieves_dhcp_lease\r
-  .[MonthYear].mac_no_dhcp_lease\r
-  .installed\r
+   playlist.m3u
+   
+  .wH0rUNSon
+  
+  .[MonthYear].mac_recieves_dhcp_lease
+  
+  .[MonthYear].mac_no_dhcp_lease
+  
+  .installed
+  
   .vendorsmac
+  
   .twmrc
+  
   .config/mc/ini
+  
   .config/terminator/config
+  
   .Xresources
+  
   .xscreensaver
+  
   .bashrc
   
 # in ~/Music
