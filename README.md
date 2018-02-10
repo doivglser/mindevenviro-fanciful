@@ -96,16 +96,22 @@
 
 * Login to X
 
-  "Right click" Version 
-  "Left click" Menu
-  "F12" cycles windows down
-  "F10" cycles windows up
+  "Right click"	 : Change Background
+  
+  "Middle Click" : VTWM Version
+  
+  "Left click"	 : Application Menu
+ 
+  "F12"		 : cycles windows down
+  
+  "F10"		 : cycles windows up
 
 # On vtwm:
 
 * Firefox-ESR
 
   type: localhost/dwww for dwww. ( dwww collects information from /usr/share/{man,doc} )
+  
   type: localhost/testphp for your php stuff.
 
 * VLC 
@@ -127,7 +133,9 @@
 * terminator (Multiple GNOME terminals in one window.)
 
   "ctrl+PageUP" cycles TAB to right
+  
   "ctrl+PageDOWN" cycles TAB to left
+  
   "ctrl+TAB" swap's between Panned TAB's
   
 * sCRYPtUPdater (shell script)
@@ -145,6 +153,7 @@
 * redundanz (shell script)
 
   Puts serv-if-up daemon up and monitors servers reliability.
+  
   Depends on: server-monitor, serv-if-up
 
 # SHELL SCRIPTS DOT FILES MEDIA FILES AND CONTENT
@@ -152,16 +161,27 @@
 # in ~/
 
    playlist.m3u
+   
   .wH0rUNSon
+  
   .[MonthYear].mac_recieves_dhcp_lease
+  
   .[MonthYear].mac_no_dhcp_lease
+  
   .installed
+  
   .vendorsmac
+  
   .twmrc
+  
   .config/mc/ini
+  
   .config/terminator/config
+  
   .Xresources
+  
   .xscreensaver
+  
   .bashrc
   
 # in ~/Music
