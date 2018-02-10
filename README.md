@@ -149,7 +149,7 @@
 
 # SHELL SCRIPTS DOT FILES MEDIA FILES AND CONTENT
 
-* in ~/
+# in ~/
 
    playlist.m3u
   .wH0rUNSon
@@ -164,15 +164,15 @@
   .xscreensaver
   .bashrc
   
-* in ~/Music
+# in ~/Music
 
   76256__ganscaile__startup.mp3
   
-* in ~/Pictures
+# in ~/Pictures
 
   wallpapers.zip
   
-* in /usr/local/bin
+# in /usr/local/bin
 
 - network
 
@@ -207,11 +207,11 @@
 
 	install
   
-* in /usr/share/vlc/skins2/
+# in /usr/share/vlc/skins2/
 
   MyVLCtheme.vlt
 
-* in /var/www/html/
+# in /var/www/html/
 
   README.html
 
