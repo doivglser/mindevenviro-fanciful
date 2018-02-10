@@ -210,11 +210,15 @@
 - backgroud|startup
 		
 	feh-bg
-	hi
-	hi_firefox-esr
+	hi 
+	hi_cheese
+	hi_brutalchess
+	hi_libreoffice
 	hi_geany
-	hi_playonlinux
+	hi_gimp
 	hi_transmission-gtk
+	hi_firefox-esr
+	hi_playonlinux
 	hi_vlc
 	hi_wicd-client
 
