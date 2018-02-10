@@ -31,7 +31,7 @@ mmonitor(){
 
 		if [[ $(ps aux | grep -v grep | grep "$FILE1") = '' ]]
 	then
-		setsid "$FILE1" >/dev/null 2>&1 < /dev/null &
+		nice -15 setsid "$FILE1" >/dev/null 2>&1 < /dev/null &
 		watch -n3 -t --color "$FILE2" ;
 	else
 		watch -n3 -t --color "$FILE2" ;

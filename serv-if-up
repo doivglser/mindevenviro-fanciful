@@ -48,7 +48,7 @@ WARN02="85" ;
 while true
 
 do
-sleep 1 ;
+sleep 0.1 ;
 
 		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'Iface' ]] ;
 	then
@@ -78,7 +78,7 @@ checknids=$(ps aux | grep -v grep | grep snort) ;
 
 	if [[ "$checknids" = '' ]];
 then
-		sleep 0.5 ;
+		sleep 0.1 ;
 		
 		if [[ $(ps axu | grep -v grep | grep -v snortup | grep "$nids") = '' ]] ;
 	then
@@ -100,7 +100,7 @@ $(cat $tmpfolder/root_mail_status)
 EOM
 fi
 	else
-		sleep 0.5 ;
+		sleep 0.1 ;
 	fi
 fi
 
@@ -109,7 +109,7 @@ checkantivirus=$(ps aux | grep -v grep | grep "$antivirus") ;
         if [[ "$checkantivirus" = '' ]];
 then
 	systemctl stop "$antivirus".service ;
-	sleep 0.5 ;
+	sleep 0.1 ;
 
 	if systemctl start "$antivirus".service ;
 then
@@ -153,7 +153,7 @@ checkport80=$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1
         if [[ "$checkport80" = '' ]];
 then
 	systemctl stop "$webserver".service ;
-	sleep 0.5 ;
+	sleep 0.1 ;
 	if systemctl start "$webserver".service ;
 then
 
@@ -203,7 +203,7 @@ checkprog2=$(whereis "$mta" | awk '{print $2}') ;
 	if [[ -e $checkprog2 ]] ;
 then
 	systemctl stop "$mta".service ;
-sleep 0.5 ;
+sleep 0.1 ;
 	systemctl start "$mta".service > $tmpfolder/root_mail_status ;
 
 	systemctl status "$mta".service >> $tmpfolder/root_mail_status ;
@@ -251,7 +251,7 @@ checkprog3=$(whereis "$datenbank" | awk '{print $2}') ;
 	if [[ -e $checkprog3 ]] ;
 then
 	/etc/init.d/"$datenbank" stop ;
-sleep 0.5 ;
+sleep 0.1 ;
 	/etc/init.d/"$datenbank" start > $tmpfolder/root_mail_status ;
 
 	/etc/init.d/"$datenbank" status >> $tmpfolder/root_mail_status ;
