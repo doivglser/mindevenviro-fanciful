@@ -4,7 +4,7 @@
 
 LANG="C" ;
 myPrograms="wicd brutalchess libreoffice-writer cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
-environinstall="serv-if-up sCRYPtUPdater shi3lD stop_shield start_shield feh-bg hi hi_brutalchess hi_libreoffice hi_geany hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db server-monitor redundanz install " ;
+environinstall="serv-if-up sCRYPtUPdater shi3lD stop_shield start_shield feh-bg hi hi_chess hi_brutalchess hi_libreoffice hi_geany hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db server-monitor redundanz takeshot install " ;
 
 		if [ ! $EUID = 0 ] ;
 	then
