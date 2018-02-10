@@ -104,7 +104,8 @@ LeftTitleButton ":xpm:dot" = f.iconify
 RightTitleButton ":xpm:resize" = f.resize
 
 Button1 = : root : f.menu "main"
-Button3 = : root : f.version
+Button2 = : root : f.version
+Button3 = : root : f.exec "exec /usr/local/bin/feh-bg &"
 
 Button1 = : title : f.function "move-or-raise"
 Button3 = : title : f.lower
@@ -176,7 +177,6 @@ menu "main"
 "transparent"	f.exec "exec transset 0.70 &"
 "solid-color"	f.exec "exec transset 1 &"
 "take shot"		f.exec "exec /usr/local/bin/takeshot &"
-"background"  f.exec "exec /usr/local/bin/feh-bg &"
 "lock"		f.exec "exec xscreensaver-command -lock &"
 "kill"		f.destroy
 "restart"	f.restart
