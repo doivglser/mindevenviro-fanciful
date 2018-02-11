@@ -7,7 +7,7 @@ CtrlReturn: set-session-argument(failsafe) finish-field()\n\
 Return: set-session-argument() finish-field()
 xlogin*borderWidth: 0
 xlogin*greeting: CLIENTHOST
-xlogin*geometry: 470x785+7+7
+xlogin*geometry: 470x785+400+5
 xlogin*namePrompt: Enter:
 xlogin*fail: #@!
 #ifdef COLOR
