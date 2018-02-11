@@ -1,30 +1,28 @@
 ! $XConsortium: Xresources /main/8 1996/11/11 09:24:46 swick $
+xlogin*logoFileName: /usr/share/X11/xdm/pixmaps/mindevenviro.xpm
 xlogin*login.translations: #override\
 CtrlR: abort-display()\n\
 F1: set-session-argument(failsafe) finish-field()\n\
 CtrlReturn: set-session-argument(failsafe) finish-field()\n\
 Return: set-session-argument() finish-field()
-xlogin*borderWidth: 1
-xlogin*greeting: M1ND3V3NV1R0 on CLIENTHOST
-xlogin*geometry: 960x420+100+100
+xlogin*borderWidth: 0
+xlogin*greeting: CLIENTHOST
+xlogin*geometry: 470x785+7+7
 xlogin*namePrompt: Enter:
 xlogin*fail: #@!
 #ifdef COLOR
-xlogin*greetColor: #3a6f3e
+xlogin*greetColor: #3d3d3d
 xlogin*failColor: #ff0000
-*Foreground: #1e1e1e
+*Foreground: #6f6f6f
 *Background: #000000
 #else
 xlogin*Foreground: #1e1e1e
 xlogin*Background: black
 #endif
-XConsole.text.geometry: 820x418
 XConsole.verbose:       true
 XConsole*iconic:        true
 XConsole*font:          fixed
-Chooser*geometry:               820x418
 Chooser*allowShellResize:       false
-Chooser*viewport.forceBars:     true
+Chooser*viewport.forceBars:     false
 Chooser*list.font:               -*-*-medium-r-normal-*-*-230-*-*-c-*-iso8859-1
 Chooser*Command.font:            *-new century schoolbook-bold-r-normal-*-70-*
-xlogin*logoFileName: /usr/share/X11/xdm/pixmaps/mindevenviro.xpm
