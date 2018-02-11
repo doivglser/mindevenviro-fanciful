@@ -1,14 +1,10 @@
 #!/bin/bash
 # search by path and file suffix, if grep true open file
-# TODO:
-# Requested fill size "/var/log/syslog" is invalid while trying to open with nano -r -v
-# Received SIGHUP or SIGTERM while trying to open with nano
-# no workaround the signal-handler from less, if SIGINT trapped from script, less still catches the signal SIGINT
 LANG=C;
 FILE="search" ;
 line='' ;
 #exithandler
-trap "pgrep $FILE | awk '{print $1}' | xargs kill -9 && pgrep less | awk '{print $1}' | xargs kill -9;" SIGINT ;
+trap 'pgrep $FILE | awk "{print $1}" | xargs kill -9 && pgrep less | awk "{print $1}" | xargs kill -9;' SIGINT ;
 
 				if [ "$EUID" != 0 ] ;
 			then
@@ -35,11 +31,12 @@ display(){
 echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $path ::" >>"/home/$SUDO_USER/.wH0rUNSon" ;
 		while read -r line ;
 	do
+		wait ;
+	
 		if [[ $(file "$line") =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
 	then
 			if [[ ! $(echo "$line" | xargs grep "$togrep3" 2>/dev/null) = '' ]] || \
-			[[ ! $(echo "$line" | xargs grep "$togrep2" 2>/dev/null) = '' ]] && \
-			[[ ! $(echo "$line" | xargs grep "$togrep1" 2>/dev/null) = '' ]] ;
+			[[ ! $(echo "$line" | xargs grep "$togrep2" 2>/dev/null) = '' ]] ;
 		then
 			usER=$(ls -sl "$line" | awk '{print $4}') ;
 			
@@ -65,7 +62,7 @@ fi
 
 help(){
 shift 0 ;
-echo "Usage: $0 [-s|--search] [-h|--help] PATH FILE-SUFFIX TOGREP && || TOGREP && || TOGREP" ;
+echo "Usage: $0 [-s|--search] [-h|--help] [PATH] [FILE-SUFFIX] [TOGREP] [TOGREP]" ;
 echo -e "\n sudo this script:\n
 SEARCH THE DRIVE\n
  This script searches your drive\r
@@ -79,7 +76,7 @@ exit 0 ;
 eingabe(){
 shift 0 ;
 pause=0 ;
-for lines in $(find "$path" -name "*$suffixx*" -type f 2>/dev/null | tee "$tmpfile") ;
+for lines in $(find $path -regex '[a-zA-Z0-9\ \/\._]*' -type f 2>/dev/null | grep -E ".$suffixx" 2>/dev/null | tee "$tmpfile") ;
 	do
 		if [[ $pause = 1 ]] ;
 	then
@@ -95,10 +92,9 @@ done
         -s|--search)
       path=$2
       suffixx=$3
-      togrep1=$4
-      togrep2=$5
-      togrep3=$6
-      toshiffta=$(echo "$path $suffixx $togrep1 $togrep2 $togrep3" | wc -w) ;
+      togrep2=$4
+      togrep3=$5
+      toshiffta=$(echo "$path $suffixx $togrep2 $togrep3" | wc -w) ;
       shift "$toshiffta" ;
       eingabe ;
       ;;
@@ -108,7 +104,7 @@ done
       help ;
       ;;
   esac
-		if [[ $1 = '' ]] && [[ "$line" = '' ]];
+		if [[ $1 = '' ]] ;
 	then
 		echo "Try '$0 --help' for more information."
 	else
