@@ -10,7 +10,7 @@ else
 LANG="C" ;
 IFS=$(echo -en "\n\b") ;
 FILE="sCRYPtUPdater"
-syntaxCHkr="shellcheck perl python php" ;
+syntaxCHkr="shellcheck perl python php tidy" ;
 # User Host Control
 echo -e "sCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: in $userHome ::" >> "/home/$SUDO_USER/.wH0rUNSon" ;
 # wholeC0unt4: to start by zero after first 
@@ -80,14 +80,24 @@ fi
 }
 
 touchtoC0pyinbin(){
+	
 			echo "new" ; printf "..%s.." "$toC0pyIS" ;
 			echo -e "\n" ;
 			printf "type 'touch' here: " ; read -r ;
 	
-			if [[ "$REPLY" = "touch" ]] ;
+			if [[ "$REPLY" = "touch" ]] && [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
+		then	
+			touch "/usr/local/bin/$toC0pyIS" ;
+			diffANDchecksyntax "$@" ;
+			
+			elif [[ "$REPLY" = "touch" ]] && [[ "$listONmeIS" =~ 'PHP |HTML |XML ' ]] ;
 		then
-			sudo touch "/usr/local/bin/$toC0pyIS" ;
-
+			touch "/var/www/html/testphp/$toC0pyIS" ;
+			diffANDchecksyntax "$@" ;
+			
+			elif [[ "$REPLY" = "touch" ]] && [[ "$listONmeIS" =~ 'Perl ' ]] ;
+		then
+			touch "/usr/lib/cgi-bin/$toC0pyIS" ;
 			diffANDchecksyntax "$@" ;
 		else
 			echo -e "\ntype correctly" ;
@@ -95,7 +105,7 @@ touchtoC0pyinbin(){
 }
 
 copyToPath(){
-			if [[ "$listONmest4tus" -ge "0" ]] && [ -e "/usr/local/bin/$toC0pyIS" ] ;
+			if [[ "$listONmest4tus" -ge "0" ]] ;
         then
 			echo -e "\n" ;
 			printf " :: update? | 'n' " ; read -r
@@ -173,7 +183,7 @@ fi
 
 diffANDchecksyntax(){
 ch3kingSnx='' ;
-            if [ -e "/usr/local/bin/$toC0pyIS" ] ;
+            if [ -e "/usr/local/bin/$toC0pyIS" ] || [ -e "/var/www/html/testphp/$toC0pyIS" ] || [ -e "/usr/lib/cgi-bin/$toC0pyIS" ] ;
 	then
 			echo -e "\n DIFF OF: $toC0pyIS\n\n" ;
 			read -r -p "waiting..." ;
@@ -213,8 +223,8 @@ ch3kingSnx='' ;
 			
 			elif [[ "$listONmeIS" =~ 'HTML |MD | XML' ]] ;
 		then
-			ch3kingSnx="less"
-			echo "$listONme" | xargs $ch3kingSnx ;
+			ch3kingSnx="tidy"
+			echo "$listONme" | xargs $ch3kingSnx -eq;
 			exitc0de=$(echo $?) ;
 fi
 			if [[ "$exitc0de" != 0 ]] ;
@@ -236,6 +246,7 @@ fi
 					nano "$listONme" && diffANDchecksyntax "$@" ;
 			else
 					echo -e "\n :: REMEMBER ::  $listONme\n" ;
+					ch3kingSnx='' ;
 				fi
 
 	fi
