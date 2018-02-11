@@ -35,21 +35,28 @@ display(){
 echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $path ::" >>"/home/$SUDO_USER/.wH0rUNSon" ;
 		while read -r line ;
 	do
-		if [[ $(file "$line") =~ PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
+		if [[ $(file "$line") =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
 	then
-			if [[ $(echo "$line" | xargs grep "$togrep3" 2>/dev/null) = '' ]] || \
-			[[ $(echo "$line" | xargs grep "$togrep2" 2>/dev/null) = '' ]] && \
-			[[ $(echo "$line" | xargs grep "$togrep1" 2>/dev/null) = '' ]] ;
+			if [[ ! $(echo "$line" | xargs grep "$togrep3" 2>/dev/null) = '' ]] || \
+			[[ ! $(echo "$line" | xargs grep "$togrep2" 2>/dev/null) = '' ]] && \
+			[[ ! $(echo "$line" | xargs grep "$togrep1" 2>/dev/null) = '' ]] ;
 		then
-			echo -e " ... $(echo "$line" | xargs file) :: - nothing to show\r" ;
-			pause=0 ;
-		else
 			usER=$(ls -sl "$line" | awk '{print $4}') ;
+			
+			if [[ ! $(file "$line") =~ PDF ]] ;
+		then
 			sudo -u "$usER" less "$line";
 			pause=1 ;
+		else
+			sudo -u "$SUDO_USER" mupdf "$line";
+			pause=1 ;
+		fi
+		else
+			echo -e " ... $(echo "$line" | xargs file) :: - nothing to show\r" ;
+			pause=0 ;
 fi
 		else
-			echo -e " ... no PHP|script|ASCII|text|TEXT|HTML|XML \r" ;
+			echo -e " ... no PDF|PHP|script|ASCII|text|TEXT|HTML|XML \r" ;
 			pause=0 ;
 fi
 	done <<<"$lines"
