@@ -6,9 +6,9 @@
 
 # M1ND3V3NV1R0
 
-::: Deployment Environment for Web Applications and System Administration 
-::: for Debian 9 GNU/Linux Stretch in a Minimal Desktop with Antivirus, 
-::: NIDS and Great Multimedia Experience. 
+::: 	Deployment Environment for Web Applications and System Administration 
+	for Debian 9 GNU/Linux Stretch in a Minimal Desktop with Antivirus,
+	NIDS and Great Multimedia Experience. 
 
 - For Debian GNU/Linux.
 
