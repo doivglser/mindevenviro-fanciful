@@ -53,7 +53,7 @@ then
 fi
 
 # now source it, either the original or the filtered variant
-source "$configfile_secured" ;
+source "$configfile" ;
 
 # where is program
 dbserver=$(whereis mysql | cut -f2 -d: | awk '{print $1}');
