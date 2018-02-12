@@ -248,6 +248,7 @@ fi
 		if	[[ "$mysqlnewpass" != '' ]] && [[ "$mysql_native_pass" != '' ]] ;
 	then
 		mysqld_safe --skip-grant-tables &
+		fg ; wait ;
 		mysql -u root "use mysql; update user set password=PASSWORD($mysqlnewpass) where User='root'; update user set plugin=$mysql_native_pass; quit;" ;
 		/etc/init.d/mysql stop ; wait ;
 		sudo kill -9 $(pgrep mysql) 2>/dev/null
