@@ -25,7 +25,7 @@ LANG="C";
 
 nids="snort" ;
 
-antivirus="clamav-daemon" ;
+antivirus="clamd" ;
 
 webserver="apache2" ;
 
@@ -109,7 +109,7 @@ fi
 	fi
 fi
 
-checkantivirus=$(ps aux | grep -v grep | grep "$antivirus") ;
+checkantivirus=$(ps aux | grep -v grep | grep clamd) ;
 
         if [[ "$checkantivirus" = '' ]];
 then
