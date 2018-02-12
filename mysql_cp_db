@@ -25,6 +25,7 @@
 # 			WARNING DONT EDIT ANITHING BELOW ::
 
 LANG=C ;
+p4SSWORD='' ;
 		if [ $EUID != 0 ]
 	then
 
@@ -52,7 +53,7 @@ then
 fi
 
 # now source it, either the original or the filtered variant
-source "$configfile" ;
+source "$configfile_secured" ;
 
 # where is program
 dbserver=$(whereis mysql | cut -f2 -d: | awk '{print $1}');
@@ -232,7 +233,6 @@ FUNCTION: ERASE ::\r
  choose from search menu: "SuchWerkzeuge" and "Deaktiviert"\r
  couldn't be properly de-installed and deleted by joomla backend itself\r
  Names appears capitalized , as dead links without .php or .ini or .xml files in your\r
- installation, (doesnt work at the moment cause no money, Im hungry)\r
 FUNCTION: BACKUP ::\r
  to rename a database from an other database putting tables from the backup-database in the new one\r
 FUNCTION: RESTORE ::\r
