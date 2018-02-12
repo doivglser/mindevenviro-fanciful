@@ -3,7 +3,7 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
-myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
+myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
 environinstall="serv-if-up sCRYPtUPdater shi3lD stop_shield start_shield feh-bg hi hi_cheese hi_brutalchess hi_libreoffice hi_geany hi_gimp hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db server-monitor redundanz takeshot install " ;
 apPRn='' ;
 		if [ ! $EUID = 0 ] ;
@@ -247,16 +247,17 @@ fi
 	
 		if	[[ "$mysqlnewpass" != '' ]] && [[ "$mysql_native_pass" != '' ]] ;
 	then
+		mysqlconn="mysql -u root" ;
 		mysqld_safe --skip-grant-tables &
-		fg ; wait ;
-		mysql -u root "use mysql; update user set password=PASSWORD($mysqlnewpass) where User='root'; update user set plugin=$mysql_native_pass; quit;" ;
-		/etc/init.d/mysql stop ; wait ;
-		sudo kill -9 $(pgrep mysql) 2>/dev/null
-		/etc/init.d/mysql start ; wait ;
-	fi
+		$mysqlconn -e "use mysql; update user set password=PASSWORD("$mysqlnewpass") where User='root';"
+		$mysqlconn -e "use mysql; update user set plugin="$mysql_native_pass";"
+		mysqld_safe --skip-grant-tables &
+		/etc/init.d/mysql stop ;
+		sudo kill -9 $(pgrep mysql) 2>/dev/null && sleep 2 ;
+		/etc/init.d/mysql start && wait ;
 		echo -e "\n ... update mysql root passwords" ;
-		sed -c -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf ;
-		
+		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf ;
+	fi		
 		echo -e "\n\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
 		read -p " ... continue?" ;
 		echo -e "\n ... RESTART IN 6 SECONDS...\r" ;
