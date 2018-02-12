@@ -1,4 +1,5 @@
 #!/bin/bash
+# mindevenviro  
 # search by path and file suffix, if grep true open file
 LANG=C;
 FILE="search" ;
@@ -61,7 +62,7 @@ fi
 
 help(){
 shift 0 ;
-echo "Usage: $0 [-s|--search] [-h|--help] [PATH] [FILE-SUFFIX] [TOGREP] [TOGREP]" ;
+echo "Usage: $0 [-s|--search] [PATH] [FILE-SUFFIX] [TOGREP] || [-h|--help] " ;
 echo -e "\n sudo this script:\n
 SEARCH THE DRIVE\n
  This script searches your drive\r

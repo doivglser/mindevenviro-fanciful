@@ -1,6 +1,8 @@
 #!/bin/bash
+# mindevenviro
 # syntax check and update to /urs/local/bin, /var/www/testphp, /usr/lib/cgi-bin
 ###     WARNING:    DON'T EDIT ANYTHING BELOW
+
 
 		if [ ! $EUID = 0 ] ;
 	then
@@ -10,7 +12,7 @@ else
 LANG="C" ;
 IFS=$(echo -en "\n\b") ;
 FILE="sCRYPtUPdater"
-syntaxCHkr="shellcheck perl python php tidy" ;
+syntaxCHkr="shellcheck python perl php tidy" ;
 # User Host Control
 echo -e "sCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: in $userHome ::" >> "/home/$SUDO_USER/.wH0rUNSon" ;
 # wholeC0unt4: to start by zero after first 
@@ -18,7 +20,11 @@ wholeC0unt4="1" ;
 # listONmest4tus: to print how many bytes you've changed the last file you've edited
 listONmest4tus="0" ;
 # excULEC0D3s
-excULEC0D3s="SC2012,SC2002,SC2009,SC2172,SC2162,SC2010,SC2126,SC2016,SC2034,SC2005,SC2013,SC2059,SC2086,SC2027,SC1091,SC2076,SC2116" ; 
+excULEC0D3s="SC2140,SC2012,SC2002,SC2009,SC2172,SC2162,SC2010,SC2126,SC2016,SC2034,SC2005,SC2013,SC2059,SC2086,SC2027,SC1091,SC2076,SC2116" ; 
+
+bashupdate_path="/usr/local/bin" ;
+perlupdate_path="/usr/lib/cgi-bin" ;
+phpupdate_path="/var/www/html/testphp" ;
 
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
@@ -32,7 +38,7 @@ fi
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
 excludES=$(find /home/$SUDO_USER/Downloads/ -type f) ;
-toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '"$excludES"|.tmp|README|.md|.vlt|crap|.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|install|.installed|master|HEAD|COMMIT_EDITMSG|.config|.twmrc|untitled|twmrc|config|description|sample|index|exclude|refs|.wH0rUNSon' 2>/dev/null | grep -vE '[a-z0-9]{38}' 2>/dev/null) ;
+toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '"$excludES"|.tmp|.md|.vlt|crap|.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|master|HEAD|COMMIT_EDITMSG|untitled|twmrc|config|description|sample|index|exclude|refs' 2>/dev/null | grep -vE '[a-z0-9]{38}' 2>/dev/null | grep -vE '.[a-z0-9A-Z]>{3}' 2>/dev/null) ;
 
 			if [[ "$toDayChanged" != '' ]] ;
 	then
@@ -60,14 +66,27 @@ toC0pyIS=$(echo "$listONme" | sed 's/\//\ /g' | awk '{print $'"$takeLASTword1"'}
 # fF1l3suffix: determine the file suffix
 #fF1l3suffix=$(echo "$listONme" | sed 's/\//\ /g'| sed 's/\./\ /g' | awk '{print $'"$takeLASTword2"'}') ;
 
-	if [ -e /usr/local/bin/$toC0pyIS ]
+			if [[ "$listONmeIS" =~ Python|Bourne-Again ]] ;
+	then
+			path_to_update=$bashupdate_path ;
+fi
+			if [[ "$listONmeIS" =~ PHP|HTML ]] ;
+	then
+			path_to_update=$phpupdate_path ;
+fi
+			if [[ "$listONmeIS" =~ Perl ]] ;
+	then
+			path_to_update=$perlupdate_path ;
+fi
+
+	if [ -e "$path_to_update/$toC0pyIS" ] ;
 then
-	if [[ "$(du -b "$listONme" 2>/dev/null | cut -f1)" -gt "$(du -b "/usr/local/bin/$toC0pyIS" 2>/dev/null | cut -f1)" ]] ;
+	if [[ "$(du -b "$listONme" 2>/dev/null | cut -f1)" -gt "$(du -b "$path_to_update/$toC0pyIS" 2>/dev/null | cut -f1)" ]] ;
 then
 	let listONmest4tus=$(du -b "$listONme" 2>/dev/null | cut -f1)-$(du -b "/usr/local/bin/$toC0pyIS" 2>/dev/null | cut -f1)	
 	diffANDchecksyntax "$@" ;
 
-	elif [[ "$(du -b "$listONme" | cut -f1 2>/dev/null)" -lt "$(du -b "/usr/local/bin/$toC0pyIS" | cut -f1 2>/dev/null)" ]] ;
+	elif [[ "$(du -b "$listONme" | cut -f1 2>/dev/null)" -lt "$(du -b "$path_to_update/$toC0pyIS" | cut -f1 2>/dev/null)" ]] ;
 then
 	let listONmest4tus=$(du -b "/usr/local/bin/$toC0pyIS" 2>/dev/null | cut -f1)-$(du -b "$listONme" 2>/dev/null | cut -f1)
 	diffANDchecksyntax "$@" ;
@@ -80,85 +99,75 @@ fi
 }
 
 touchtoC0pyinbin(){
-	
+
 			echo "new" ; printf "..%s.." "$toC0pyIS" ;
 			echo -e "\n" ;
 			printf "type 'touch' here: " ; read -r ;
-	
-			if [[ "$REPLY" = "touch" ]] && [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
-		then	
-			touch "/usr/local/bin/$toC0pyIS" ;
-			diffANDchecksyntax "$@" ;
 			
-			elif [[ "$REPLY" = "touch" ]] && [[ "$listONmeIS" =~ 'PHP |HTML |XML ' ]] ;
+			if [[ "$REPLY" = "touch" ]] ;
 		then
-			touch "/var/www/html/testphp/$toC0pyIS" ;
-			diffANDchecksyntax "$@" ;
-			
-			elif [[ "$REPLY" = "touch" ]] && [[ "$listONmeIS" =~ 'Perl ' ]] ;
-		then
-			touch "/usr/lib/cgi-bin/$toC0pyIS" ;
+			touch "$path_to_update/$toC0pyIS" ;
 			diffANDchecksyntax "$@" ;
 		else
 			echo -e "\ntype correctly" ;
-		fi
+		fi		
 }
 
 copyToPath(){
-			if [[ "$listONmest4tus" -ge "0" ]] ;
+			if [[ "$listONmest4tus" -ge "0" ]] || [[ "$listONmest4tus" -lt "0" ]] ;
         then
 			echo -e "\n" ;
 			printf " :: update? | 'n' " ; read -r
 
 			if [[ "$REPLY" != "n" ]] ;
 		then
-			if [[ "$listONmeIS" =~ 'HTML  |MD | XML' ]] ;
+			if [[ "$listONmeIS" =~ HTML|XML ]] ;
 		then
 			echo -e "\n" ;
-			sudo cp -f "$listONme" "/var/www/html/testphp/$toC0pyIS" ;
-			sudo chown www-data:www-data "/var/www/html/testphp/$toC0pyIS" ;
-			sudo chmod 0755 "/var/www/html/testphp/$toC0pyIS" ;
+			sudo cp -f "$listONme" "$path_to_update/$toC0pyIS" ;
+			sudo chown www-data:www-data "$path_to_update/$toC0pyIS" ;
+			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall "$@"
 					
-			elif [[ "$listONmeIS" =~ 'PHP ' ]] ;
+			elif [[ "$listONmeIS" =~ PHP ]] ;
 		then
 			echo -e "\n" ;
-			sudo cp -f "$listONme" "/var/www/html/testphp/$toC0pyIS" ;
-			sudo chown www-data:www-data "/var/www/html/testphp/$toC0pyIS" ;
-			sudo chmod 0755 "/var/www/html/testphp/$toC0pyIS" ;
+			sudo cp -f "$listONme" "$path_to_update/$toC0pyIS" ;
+			sudo chown www-data:www-data "$path_to_update/$toC0pyIS" ;
+			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall "$@"
 			
-			elif [[ "$listONmeIS" =~ 'Perl ' ]] ;
+			elif [[ "$listONmeIS" =~ Perl ]] ;
 		then
 			echo -e "\n" ;
-			sudo cp -f "$listONme" "/usr/lib/cgi-bin/$toC0pyIS" ;
-			sudo chown www:www "/usr/lib/cgi-bin/$toC0pyIS" ;
-			sudo chmod 0755 "/usr/lib/cgi-bin/$toC0pyIS" ;
+			sudo cp -f "$listONme" "$path_to_update/$toC0pyIS" ;
+			sudo chown www-data:www-data "$path_to_update/$toC0pyIS" ;
+			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall "$@"
 			
-			elif [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
+			elif [[ "$listONmeIS" =~ Bourne-Again ]] ;
 		then
 			echo -e "\n" ;
-			sudo cp -f "$listONme" "/usr/local/bin/$toC0pyIS" ;
-			sudo chown root:root "/usr/local/bin/$toC0pyIS" ;
-			sudo chmod 4755 "/usr/local/bin/$toC0pyIS" ;
-			sudo chmod u+s "/usr/local/bin/$toC0pyIS" ;
+			sudo cp -f "$listONme" "$path_to_update/$toC0pyIS" ;
+			sudo chown root:root "$path_to_update/$toC0pyIS" ;
+			sudo chmod 4755 "$path_to_update/$toC0pyIS" ;
+			sudo chmod u+s "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall "$@"
 			
-			elif [[ "$listONmeIS" =~ 'Python ' ]] ;
+			elif [[ "$listONmeIS" =~ Python ]] ;
 		then
 			echo -e "\n" ;
-			sudo cp -f "$listONme" "/usr/local/bin/$toC0pyIS" ;
-			sudo chown root:root "/usr/local/bin/$toC0pyIS" ;
-			sudo chmod 0755 "/usr/local/bin/$toC0pyIS" ;
+			sudo cp -f "$listONme" "$path_to_update/$toC0pyIS" ;
+			sudo chown root:root "$path_to_update/$toC0pyIS" ;
+			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
 			echo -e "updated: $(date | awk '{print $4}')\n" ;
 			maincall "$@"
@@ -183,13 +192,12 @@ fi
 
 diffANDchecksyntax(){
 ch3kingSnx='' ;
-            if [ -e "/usr/local/bin/$toC0pyIS" ] || [ -e "/var/www/html/testphp/$toC0pyIS" ] || [ -e "/usr/lib/cgi-bin/$toC0pyIS" ] ;
-	then
+
 			echo -e "\n DIFF OF: $toC0pyIS\n\n" ;
 			read -r -p "waiting..." ;
-			diff -i "$listONme" "/usr/local/bin/$toC0pyIS" 2>/dev/null ;
+			diff -i "$listONme" "$path_to_update/$toC0pyIS" 2>/dev/null ;
 			exitc0de=$(echo $?) ;
-			
+
 			if [[ "$exitc0de" != 1 ]] ;
 		then
 			ch3kingSnx='' ;
@@ -197,35 +205,37 @@ ch3kingSnx='' ;
 	fi
 			read -r -p "check.syntax?" ;
 	
-			if [[ "$listONmeIS" =~ 'Bourne-Again ' ]] ;
+			if [[ "$listONmeIS" =~ Bourne-Again ]] ;
 		then
 			ch3kingSnx="shellcheck" ;
 			echo "$listONme" | xargs $ch3kingSnx -e "$excULEC0D3s" ;
 			exitc0de=$(echo $?) ;
 			
-			elif [[ "$listONmeIS" =~ 'Python ' ]] ;
+			elif [[ "$listONmeIS" =~ Python ]] ;
 		then
 			ch3kingSnx="python" ;
 			echo "$listONme" | xargs $ch3kingSnx -m pdb ;
 			exitc0de=$(echo $?) ;
 
-			elif [[ "$listONmeIS" =~ 'PHP ' ]] ;
+			elif [[ "$listONmeIS" =~ PHP ]] ;
 		then
 			ch3kingSnx="php" ;
 			echo "$listONme" | xargs $ch3kingSnx -l ;
 			exitc0de=$(echo $?) ;
 
-			elif [[ "$listONmeIS" =~ 'Perl ' ]] ;
+			elif [[ "$listONmeIS" =~ Perl ]] ;
 		then
 			ch3kingSnx="perl"
 			echo "$listONme" | xargs $ch3kingSnx -wc ;
 			exitc0de=$(echo $?) ;
-			
-			elif [[ "$listONmeIS" =~ 'HTML |MD | XML' ]] ;
+
+			elif [[ "$listONmeIS" =~ HTML ]] ;
 		then
 			ch3kingSnx="tidy"
-			echo "$listONme" | xargs $ch3kingSnx -eq;
-			exitc0de=$(echo $?) ;
+			echo "$listONme" | xargs $ch3kingSnx -e -q ;
+			exitc0de=$(echo $?) ;			
+	else
+			echo -e "\nYour scripts should have a SheBang entry on the first line. \n#!/usr/bin/env perl OR #!/bin/bash OR #!/usr/bin/env python OR <php OR <PHP \n On Windows additionally a file suffix correspondent to the SheBang. \n" ;
 fi
 			if [[ "$exitc0de" != 0 ]] ;
 		then
@@ -237,7 +247,6 @@ fi
 			then
 				cp -f $tmpfolder/sCRYPtUPdater.tmp $listONme ;
 		fi
-	
 			# by error edit?
 			printf "Do you want to re-edit? "; read -r
 			
@@ -248,7 +257,6 @@ fi
 					echo -e "\n :: REMEMBER ::  $listONme\n" ;
 					ch3kingSnx='' ;
 				fi
-
 	fi
 			# copy if no error else nothing to update
 					if [[ $ch3kingSnx = '' ]] ;
@@ -258,9 +266,6 @@ fi
 			echo -e "\n$listONme appears to be ok.\n" ;
             copyToPath "$@" ;
 		fi
-	else
-		touchtoC0pyinbin "$@" ;
-fi
 }
 
 exxiterr(){
@@ -269,8 +274,7 @@ exxiterr(){
 	}
 
 maincall(){
-shift 0 ;
-
+	
 		while trap 'cont1NU3' SIGQUIT && trap 'exxiterr' SIGINT ;
 	do
         if [ -e "/home/$SUDO_USER/.installed" ] ;
