@@ -22,21 +22,43 @@
 # FUNCTION: DUMP ::
 # to dump a database to a .sql file
 
-# where is program
-dbserver=$(whereis mysql | cut -f2 -d: | awk '{print $1}');
-
 # 			WARNING DONT EDIT ANITHING BELOW ::
-#set -x
 
 LANG=C ;
 		if [ $EUID != 0 ]
 	then
 
-# ASK password
-printf "MySQL root password: "; read p4SSWORD ;
+FILE="mysql_cp_db" ;
+
+# temp folder
+                if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
+        then
+                #shm volatile
+                tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+        else
+                tmpfolder="/tmp" ;
+fi
+#               temp folder END
+
+configfile="/etc/mysql_cp_db_password.conf" ;
+configfile_secured="$tmpfolder/mysql_cp_db_password.conf" ;
+# check if the file contains something we don't want
+	if egrep -q -v '^#|^[^ ]*=[^;]*' "$configfile" ;
+then
+	echo "clening config file..." >&2
+	# filter the original to a new file
+	egrep '^#|^[^ ]*=[^;&]*'  "$configfile" >| "$configfile_secured"
+	configfile="$configfile_secured"
+fi
+
+# now source it, either the original or the filtered variant
+source "$configfile" ;
+
+# where is program
+dbserver=$(whereis mysql | cut -f2 -d: | awk '{print $1}');
 # var for connect
 mysqlconn="$dbserver -u root -p$p4SSWORD -h localhost" ;
-# .
+#
 
 echo -e "mysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -" >>"$HOME/.wH0rUNSon" ;
 
@@ -229,7 +251,7 @@ MariaDB command-line tool: $(whereis mysql | cut -f2 -d: | awk '{print $1}');\n"
    -r|--restore)
       REPLY="restore"
       shift
-      ;;      
+      ;;
    -b|--backup)
       REPLY="backup"
       shift
@@ -245,11 +267,11 @@ MariaDB command-line tool: $(whereis mysql | cut -f2 -d: | awk '{print $1}');\n"
    -h|--help)
       REPLY="help"
       shift
-      ;;            
+      ;;
   esac
 
-trap 'eexiter' SIGINT
-	
+trap 'pgrep $FILE | awk "{print $1}" | xargs kill -9 && pgrep less | awk "{print $1}" | xargs kill -9;' SIGINT ;
+
 	if [[ $REPLY = "dump" ]] ;
 then
 	echo -e "\r... just few seconds, while dumpping db's\r" ;
@@ -273,11 +295,11 @@ then
 then
 	echo -e "\r... just few seconds, while deleting db's\r" ;
 	erase ;
-	
+
 	elif [[ $REPLY = "help" ]] ;
 then
 	echo -e "HELP: $0\r" ;
-	help ;	
+	help ;
 else
 	echo "Try '$0 --help' for more information."
 fi
