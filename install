@@ -182,7 +182,8 @@ done
 	echo -e "\n ... set the upload path for PHP scripts" ;
 	rm -f /var/www/html/index*
 	mkdir -p /var/www/html/testphp/ 2>/dev/null ;
-	cp -f M1ND3V3NV1R0/mindevenviro.png /var/www/html/ ;
+	cp -f mindevenviro.png /var/www/html/ ;
+	cp -f bottom.png /var/www/html/ ;
 	chown www-data:www-data /var/www/html/mindevenviro.png ;
 	cp -f README.html /var/www/html/ ;
 	chown www-data:www-data /var/www/html/README.html ;
