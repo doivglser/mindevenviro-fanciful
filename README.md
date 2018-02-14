@@ -49,6 +49,8 @@
 
 # TODO:
 
+*	install joomla CMS
+
 *	I search for the right MySQL syntax to delete id's.
 
 * 	wget install script from github.com dogitable(){Login / 
