@@ -253,8 +253,7 @@ fi
 		if [[ $exitcode = 1 ]] ;
 	then
 		echo "socket = ">>/etc/mysql/my.cnf ;
-		mysock3T=$(find / -type s | grep mysql) ;
-		sed -i 's/\(socket *= *\).*/\1"$mysock3T"/g' /etc/mysql/my.cnf ;
+		sed -i 's/\(socket *= *\).*/\1''/g' /etc/mysql/my.cnf ;
 	fi
 fi
 		mysqlconn="mysql -u root" ;
@@ -274,5 +273,6 @@ fi
 		init 6 ;
 else
 		echo -e "\n M1ND3V3NV1R0 allready installed!\n run this script from within the folder M1ND3V3NV1R0\n do: rm /home/$SUDO_USER/.installed\n after installation, system will restart." ;
+		echo -e "\n you should be in the M1ND3V3NV1R0 folder."
 fi
 fi

@@ -1,5 +1,5 @@
 #!/bin/bash
-# installs min-dev-enviro
+# sets the root password for mariadb
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
@@ -13,8 +13,7 @@
 		if [[ $exitcode = 1 ]] ;
 	then
 		echo "socket = ">>/etc/mysql/my.cnf ;
-		mysock3T=$(find / -type s | grep mysql) ;
-		sed -i 's/\(socket *= *\).*/\1${mysock3T}/g' /etc/mysql/my.cnf ;
+		sed -i 's/\(socket *= *\).*/\1''/g' /etc/mysql/my.cnf ;
 	fi
 fi
 		mysqlconn="mysql -u root" ;
@@ -25,5 +24,6 @@ fi
 		echo -e "\n ... update mysql root passwords" ;
 		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf ;
 		echo -e "\n ... restarting mysql-server" ;
+		/etc/init.d/mysql reload ;
 		/etc/init.d/mysql restart ;
 	fi		
