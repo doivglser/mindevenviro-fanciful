@@ -96,13 +96,13 @@
 
   Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
-  snort wicd brutalchess libreoffice-writer scrot mupdf terminator playonlinux 
-  wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc 
-  feh xclip geany transmission xscreensaver vtwm oss-compat alsa-utils xcompmgr 
-  x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan 
-  clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 dwww apache2 
-  git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes 
-  figlet mc mutt eject nano nmon 
+  snort wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools 
+  wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm 
+  oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan 
+  clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl 
+  php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache 
+  php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl 
+  fortunes figlet mc mutt eject nano nmon  
 
 # USAGE:
 
