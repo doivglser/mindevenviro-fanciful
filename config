@@ -13,8 +13,8 @@
       maximised = False
       order = 0
       parent = ""
-      position = 17:7
-      size = 1190, 730
+      position = 20:20
+      size = 1100, 700
       title = ivo@x0x: ~
       type = Window
     [[[child1]]]
