@@ -4,9 +4,9 @@
 
 # M1ND3V3NV1R0
 
-::: 	Deployment Environment for Web Applications and System Administration 
-	for Debian 9 GNU/Linux Stretch in a Minimal Desktop with Antivirus,
-	NIDS and Great Multimedia Experience. 
+	Deployment Environment for Web Applications and System Administration 
+	for Debian 9 GNU/Linux Stretch in a Minimal Desktop with Antivirus, 
+	NIDS and Great Multimedia Experience.
 
 - For Debian GNU/Linux.
 
@@ -32,11 +32,24 @@
 
 * shi3lD may not work.
 
-* while installing: while installing snort: debconf asks for interface eth0 no 
-  workaround for "eno[0-9]" interfaces. Take a look in to "ip route show" and 
-  "sudo dpkg --configure -a" with the name of your interface.
+* while installing:
+
+	while installing snort: debconf asks for interface eth0 no 
+	workaround for "eno[0-9]" interfaces. Take a look in to "ip route show" and 
+	"sudo dpkg --configure -a" with the name of your interface.
+	
+	While installing mysql-server, there has no password for root.
+	
+	./install :		workaround no password in /etc/mysql/debian.cnf
+				wont work properly.
+				
+	set_mysql_passwd	the same workaround as in ./install
+				don't work properly, I have no 
+				sed syntax to handle var's
 
 # TODO:
+
+*	I search for the right MySQL syntax to delete id's.
 
 * 	wget install script from github.com dogitable(){Login / 
 	su - / apt-get update / apt-get -f -y -m install sudo git
@@ -44,9 +57,6 @@
 	your username, like "my_username	ALL=(ALL:ALL) ALL" / save ctrl+X / ctrl+D / 
 	cd / git clone https://github.com/doivglser/min-dev-enviro.git / ctrl+D / 
 	login again ... / cd min-dev-enviro /}
-
-* mysql_cp_db: catch the password from /etc/mysql/debian.cnf (but no password here...) 
-  I search for the right MySQL syntax to delete id's.
   
 * shi3lD is overwriting var $interface. To change the "user-agent" while changing the MAC - addresses.
 
