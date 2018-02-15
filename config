@@ -14,7 +14,7 @@
       order = 0
       parent = ""
       position = 20:20
-      size = 1100, 700
+      size = 1100, 740
       title = ivo@x0x: ~
       type = Window
     [[[child1]]]
@@ -45,26 +45,37 @@
       profile = default
       type = VPaned
     [[[terminal6]]]
-      order = 1
+      order = 2
       parent = terminal3
       profile = default
       type = VPaned     
     [[[terminal7]]]
-      order = 1
+      order = 3
       parent = child1
       profile = default
       type = Terminal
       command = "mc"
     [[[terminal8]]]
-      order = 2
+      order = 4
       parent = child1
       profile = default
       type = Terminal
       command = "nmon"
+    [[[terminal9]]]
+      order = 5
+      parent = child1
+      profile = default
+      type = Terminal
+      command = "alsamixer"
+	[[[terminal10]]]
+      order = 6
+      parent = child1
+      profile = default
+      type = Terminal
+      command = "sudo -u root mutt"
 [plugins]
 [profiles]
   [[default]]
-    background_darkness = 0.7
     cursor_color = "#aaaaaa"
     scroll_background = False
     scrollback_infinite = True
