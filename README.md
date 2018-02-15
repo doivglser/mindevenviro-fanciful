@@ -24,6 +24,8 @@
 
 - Search script and MySQL(MariaDB) maintainers script.
 
+- Volatile ~/Downloads folder on /dev/shm and ScanOnAccess from ClamAV to ~/Downloads
+
 - For programmers and administrators.
 
 # PROBLEMS:
