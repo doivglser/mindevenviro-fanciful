@@ -45,38 +45,26 @@
       profile = default
       type = VPaned
     [[[terminal6]]]
-      order = 2
+      order = 1
       parent = terminal3
       profile = default
       type = VPaned     
     [[[terminal7]]]
-      order = 3
+      order = 1
       parent = child1
       profile = default
       type = Terminal
       command = "mc"
     [[[terminal8]]]
-      order = 4
+      order = 2
       parent = child1
       profile = default
       type = Terminal
       command = "nmon"
-    [[[terminal9]]]
-      order = 5
-      parent = child1
-      profile = default
-      type = Terminal
-      command = "alsamixer"
-	[[[terminal10]]]
-      order = 6
-      parent = child1
-      profile = default
-      type = Terminal
-      command = "sudo -u root mutt"
 [plugins]
 [profiles]
   [[default]]
-    cursor_color = "#aaaaaa"
+    cursor_color = "#afaaa6"
     scroll_background = False
     scrollback_infinite = True
     scrollbar_position = hidden
