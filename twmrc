@@ -34,7 +34,7 @@ DarkBevelContrast	20
 MoveDelta		3
 
 ResizeRegion		"NorthEast"
-VirtualDesktop		"3x2-13-31" 27
+VirtualDesktop		"3x2-9-9" 27
 
 TitleFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
 ResizeFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"

@@ -3,27 +3,64 @@
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
-		printf "enter your mysql root password: "; read mysqlnewpass ;
-		printf "enter a password for mysql plugin: "; read mysql_native_pass ;
-	
+		if [ $EUID != 0 ] ;
+	then
+		sudo "$0" ;
+	else
+		mysqlconn="mysql -u root" ;
+		
+help(){
+shift 0 ;
+echo -e "hello $SUDO_USER\nset new mariadb root password\n" ;
+echo -e "Usage: $0 [-p] [-h]\r" ;
+exit 0 ;
+}		
+
+changepass(){	
 		if	[[ "$mysqlnewpass" != '' ]] && [[ "$mysql_native_pass" != '' ]] ;
 	then
-		if grep socket /etc/mysql/my.cnf && exitcode=$(echo $?)
+		if grep socket /etc/mysql/my.cnf
 	then
+		exitcode=$(echo $?) ;
+	
 		if [[ $exitcode = 1 ]] ;
 	then
 		echo "socket = ">>/etc/mysql/my.cnf ;
 		sed -i 's/\(socket *= *\).*/\1''/g' /etc/mysql/my.cnf ;
 	fi
 fi
-		mysqlconn="mysql -u root" ;
 		mysqld_safe --skip-grant-tables &
-		$mysqlconn -e "use mysql; update user set password=PASSWORD("$mysqlnewpass") where User='root';"
-		$mysqlconn -e "use mysql; update user set plugin="$mysql_native_pass";"
-		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;"
+		$mysqlconn -e "USE mysql; UPDATE user SET password=PASSWORD($mysqlnewpass) WHERE User='root';"
+		$mysqlconn -e "USE mysql; UPDATE user SET plugin=$mysql_native_pass;"
+		$mysqlconn -e "FLUSH PRIVILEGES;"
+		/etc/init.d/mysql stop ;
 		echo -e "\n ... update mysql root passwords" ;
 		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf ;
 		echo -e "\n ... restarting mysql-server" ;
 		/etc/init.d/mysql reload ;
 		/etc/init.d/mysql restart ;
 	fi		
+}
+
+# ASK
+  case "$1" in
+   -p)
+      shift
+      ;;
+   -h)
+      shift
+      help ;
+      ;; 
+  esac
+
+		if [[ "$1" != '' ]] ;
+	then
+		printf "enter your mysql root password: "; read mysqlnewpass ;
+		printf "enter a password for mysql plugin: "; read mysql_native_pass ;
+		changepass ;
+	else
+		echo "please sudo this script."
+		echo "Try 'sudo $0 --help' for more information."
+		exit 0 ;
+	fi
+fi
