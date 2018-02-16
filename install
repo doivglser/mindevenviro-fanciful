@@ -243,6 +243,9 @@ fi
 		apt-get clean &&
 		apt -f -y -m autoremove &&
 		
+		# update mysql root password
+		sudo mknod /run/mysqld/mysqld.sock p ;
+		mysqlconn="mysql -u root" ;
 		printf "enter your NEW mysql root password: "; read mysqlnewpass ;
 		
 		if	[[ "$mysqlnewpass" != '' ]] ;
@@ -266,7 +269,9 @@ fi
 		echo -e "\n ... update mysql root passwords" ;
 		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf ;
 		sed -i "s/\(plugin_password *= *\).*/\1/" /etc/mysql_cp_db_password.conf ;
-	fi		
+	fi
+	# update mysql root password END
+	
 		echo -e "\n\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
 		read -p " ... continue?" ;
 		echo -e "\n ... RESTART IN 6 SECONDS...\r" ;
