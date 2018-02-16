@@ -29,6 +29,7 @@ tmpfile="$tmpfolder/$(date | awk '{print $2,$6}' | sed 's/\ //g').tmp" ;
 
 display(){
 # display
+echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $path ::" >>"/home/$SUDO_USER/.wH0rUNSon" ;
 		while read -r line ;
 	do
 		wait ;
@@ -61,7 +62,7 @@ fi
 
 help(){
 shift 0 ;
-echo "Usage: $0 [-s|--search] [PATH] [TOSEARCH] [FILE-SUFFIX] [TOGREP] || [-h|--help] " ;
+echo "Usage: $0 [-s|--search] [PATH] [FILE-SUFFIX] [TOGREP] || [-h|--help] " ;
 echo -e "\n sudo this script:\n
 SEARCH THE DRIVE\n
  This script searches your drive\r
@@ -74,7 +75,7 @@ exit 0 ;
 
 eingabe(){
 pause=0 ;
-for lines in $(find $s -regex '[a-zA-Z0-9\ \/\._]*' -type f 2>/dev/null | sed -n '/'${patrn}'/p' | sed -e 's/'^*.$'/'*.${suffixx}$'/p' 2>/dev/null | tee "$tmpfile") ;
+for lines in $(find $path -regex '[a-zA-Z0-9\ \/\._]*' -type f 2>/dev/null | grep -E ".$suffixx" 2>/dev/null | tee "$tmpfile") ;
 	do
 		if [[ $pause = 1 ]] ;
 	then
@@ -83,16 +84,14 @@ for lines in $(find $s -regex '[a-zA-Z0-9\ \/\._]*' -type f 2>/dev/null | sed -n
 		display && wait ;
 	fi ;
 done
-
 }
 
-# ASK 
+# ASK
   case "$1" in
         -s|--search)
       path=$2
-      patrn=$3
-      suffixx=$4
-      togrep=$5
+      suffixx=$3
+      togrep=$4
       toshiffta=$(echo "$path $suffixx $togrep" | wc -w) ;
       shift "$toshiffta" ;
       eingabe ;
@@ -103,11 +102,10 @@ done
       help ;
       ;;
   esac
-		if [[ ! $1 = '-s|--search|-h|--help' ]] && [[ $2 = '' ]] ;
+		if [[ ! $1 = '-s|--search|-h|--help' ]] ;
 	then
 		echo "Try '$0 --help' for more information."
 	else
-		echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $path ::" >>"/home/$SUDO_USER/.wH0rUNSon" ;	
 		eingabe ;
 	fi
 fi

@@ -243,28 +243,29 @@ fi
 		apt-get clean &&
 		apt -f -y -m autoremove &&
 		
-		printf "enter your mysql root password: "; read mysqlnewpass ;
-		printf "enter a password for mysql plugin: "; read mysql_native_pass ;
-	
-		if	[[ "$mysqlnewpass" != '' ]] && [[ "$mysql_native_pass" != '' ]] ;
+		printf "enter your NEW mysql root password: "; read mysqlnewpass ;
+		
+		if	[[ "$mysqlnewpass" != '' ]] ;
 	then
-		if grep socket /etc/mysql/my.cnf && exitcode=$(echo $?)
+		if grep socket /etc/mysql/my.cnf && exitcode=$(echo $?) ;
 	then
 		if [[ $exitcode = 1 ]] ;
 	then
 		echo "socket = ">>/etc/mysql/my.cnf ;
-		sed -i 's/\(socket *= *\).*/\1''/g' /etc/mysql/my.cnf ;
+		sed -i 's/\(socket *= *\).*/\1/run/mysqld/mysqld.sock/g' /etc/mysql/my.cnf ;
 	fi
 fi
-		mysqlconn="mysql -u root" ;
+		/etc/init.d/mysql stop && wait ;
+		ps aux | grep -v grep | grep mysql | head -n1 | awk '{print $2}' | xargs kill -9 2>/dev/null;
+		ps aux | grep -v grep | grep mysqld_safe | head -n1 | awk '{print $2}' | xargs kill -9 2>/dev/null;
 		mysqld_safe --skip-grant-tables &
-		$mysqlconn -e "use mysql; update user set password=PASSWORD("$mysqlnewpass") where User='root';"
-		$mysqlconn -e "use mysql; update user set plugin="$mysql_native_pass";"
-		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;"
+		$mysqlconn -e "use mysql; update mysql.user set password=password('$mysqlnewpass') where user='root';" && wait ;
+		$mysqlconn -e "use mysql; update mysql.user set plugin='' where user='root';" && wait ;
+		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;" && wait ;
+		ps aux | grep -v grep | grep mysqld_safe | head -n1 | awk '{print $2}' | xargs kill -9 2>/dev/null;
 		echo -e "\n ... update mysql root passwords" ;
 		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf ;
-		echo -e "\n ... restarting mysql-server" ;
-		/etc/init.d/mysql restart ;
+		sed -i "s/\(plugin_password *= *\).*/\1/" /etc/mysql_cp_db_password.conf ;
 	fi		
 		echo -e "\n\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
 		read -p " ... continue?" ;
