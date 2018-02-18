@@ -34,7 +34,9 @@
 
 * wget install from github to install directly from console by one hit.
   
-* shi3lD is overwriting var $interface. To change the "user-agent" while changing the MAC - addresses.
+* Repair shi3lD depends on:(start_shield  and  stop_shield).
+
+* shi3lD: To change the "user-agent" while changing the MAC - addresses.
 
 * sCRYPtUPdater
 
@@ -67,10 +69,10 @@
 	./install :		workaround no password in /etc/mysql/debian.cnf
 				wont work properly.
 				
-	set_mysql_passwd	the same workaround as in ./install
-				don't work properly, I have no 
-				sed syntax to handle var's
-
+	set_mysql_passwd :	I worte this script to set a root password for mysql-server (mariadb) 
+				"/run/mysqld/mysqld.sock" refuses connection to "mysqld_safe --skip-grant-tables &"
+				but sometimes worked. Issues with mysql reffering jommla install
+	
 # Requirements:
 
 - A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS and Fedora)
