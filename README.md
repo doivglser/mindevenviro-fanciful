@@ -4,12 +4,8 @@
 
 # M1ND3V3NV1R0
 
-	Deployment Environment for Web Applications and System Administration 
-	for Debian 9 GNU/Linux Stretch in a Minimal Desktop with Antivirus, 
-	NIDS and Great Multimedia Experience.
-
-- For Debian GNU/Linux.
-
+- Deployment Environment for Web Applications and System Administration, in a Minimal Desktop with Antivirus, NIDS and Great Multimedia Experience.
+  
 - Antivirus engine ClamAV and NIDS solution Snort.
 
 - Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e" and "php -l".
@@ -28,6 +24,34 @@
 
 - For programmers and administrators.
 
+# TODO:
+
+* To adapt install script and all shell code to be portable with the FHS in CentOS and Fedora. (in all scripts)
+
+* install joomla CMS
+
+* I search for the right MySQL syntax to delete id's.
+
+* wget install from github to install directly from console by one hit.
+  
+* Repair shi3lD depends on:(start_shield  and  stop_shield).
+
+* shi3lD: To change the "user-agent" while changing the MAC - addresses.
+
+* sCRYPtUPdater
+
+  To search for brackets and braces, to split the content of the source code into short code 
+  snippets. If the workflow interval in minutes is over, refer to the exit handler, if false, 
+  reset workflow interval, if true exit. Scan in ~/ for file suffixes or the header with dd, 
+  to determine the working directory. Implement Programmable Completion, to auto-complete the 
+  command sequence with the [Tab] key.
+
+* mindevenviro.rules, "iptables" drop rules for /etc/snort/rules/
+  
+* GUI's
+
+* ncurses
+
 # PROBLEMS:
 
 * no workaround to install wifi firmware.
@@ -45,42 +69,13 @@
 	./install :		workaround no password in /etc/mysql/debian.cnf
 				wont work properly.
 				
-	set_mysql_passwd	the same workaround as in ./install
-				don't work properly, I have no 
-				sed syntax to handle var's
-
-# TODO:
-
-*	install joomla CMS
-
-*	I search for the right MySQL syntax to delete id's.
-
-* 	wget install script from github.com dogitable(){Login / 
-	su - / apt-get update / apt-get -f -y -m install sudo git
-	/ nano /etc/sudoers / search for "root	ALL=(ALL:ALL) ALL", copy the line and do a new entry with
-	your username, like "my_username	ALL=(ALL:ALL) ALL" / save ctrl+X / ctrl+D / 
-	cd / git clone https://github.com/doivglser/min-dev-enviro.git / ctrl+D / 
-	login again ... / cd min-dev-enviro /}
-  
-* shi3lD is overwriting var $interface. To change the "user-agent" while changing the MAC - addresses.
-
-* sCRYPtUPdater
-
-  To search for brackets and braces, to split the content of the source code into short code 
-  snippets. If the workflow interval in minutes is over, refer to the exit handler, if false, 
-  reset workflow interval, if true exit. Scan in ~/ for file suffixes or the header with dd, 
-  to determine the working directory. Implement Programmable Completion, to auto-complete the 
-  command sequence with the [Tab] key.
-
-* mindevenviro.rules, "iptables" drop rules for /etc/snort/rules/
-  
-* GUI's
-
-* ncurses
-
+	set_mysql_passwd :	I worte this script to set a root password for mysql-server (mariadb) 
+				"/run/mysqld/mysqld.sock" refuses connection to "mysqld_safe --skip-grant-tables &"
+				but sometimes worked. Issues with mysql reffering jommla install
+	
 # Requirements:
 
-- A fresh base-install of Debian GNU/Linux 9 Stretch.
+- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS and Fedora)
 - Choose netinst CD image, and burn it on a blank CD-R.
 - Debian 9 GNU/Linux Stretch: https://www.debian.org/releases/stretch/debian-installer/
 - While installing: 
