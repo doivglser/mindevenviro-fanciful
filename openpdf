@@ -1,11 +1,12 @@
 #!/bin/bash
 # opens PDF from ~/Documents folder
+
 LANG="C" ;
 IFS=$(echo -en "\b\n") ;
 
-		if [ -e $1 ] && [[ $(file $1) =~ directory ]] ;
+		if [ -e $1 ] && [[ $(file $1 2>/dev/null) =~ directory ]] ;
 	then
-		for open in $(find ~/"${1}"*.pdf -type f | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g'); 
+		for open in $(find "${1}"*.pdf -type f | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g'); 
 	do 
 		while read line
 	do
