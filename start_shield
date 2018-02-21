@@ -95,7 +95,6 @@ m41N__(){
         and $m4c has now this MAC-Address: $(ip link show "$m4c" | grep ether | awk '{print $2}')\n" ;
         writeM4C_Connected ;
 		stopLoop="1" ;
-		sudo -u "$SUDO_USER" firefox-esr 2>&1 < /dev/null &
     else
         echo -e "no connection with this $(ip link show "$m4c" | grep ether | awk '{print $2}'), I try again ..."
         . /usr/local/bin/stop_shield ;
