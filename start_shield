@@ -40,7 +40,7 @@ puff_MACs(){
 		ip link set dev "$m4c" address "$newM4CnewM4C" && sleep 3 &&
 		ip link set dev "$m4c" up &&
 		((nnumberOFinterface--)) &&
-		sleep 9 ;
+		sleep 2 ;
 done
 fi
 }
