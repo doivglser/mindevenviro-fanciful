@@ -26,6 +26,10 @@
 
 # TODO:
 
+* shi3lD wont work with wicd, wicd doesn't apply command line arguments, to set up wireless networking.
+
+* search an alternative for wicd to interact with shi3lD shell script.
+
 * To adapt install script and all shell code to be portable with the FHS in CentOS and Fedora. (in all scripts)
 
 * install joomla CMS
@@ -55,8 +59,6 @@
 # PROBLEMS:
 
 * no workaround to install wifi firmware.
-
-* shi3lD may not work.
 
 * while installing:
 
@@ -166,6 +168,14 @@
   Puts serv-if-up daemon up and monitors servers reliability.
   
   Depends on: server-monitor, serv-if-up
+  
+* shi3lD (shell script)
+
+  USAGE: "sudo shi3lD"
+  
+  If "sudo redundanz -m" is running, then shi3lD will puff your MAC-Address, so you become a new IP.
+  
+  Depends on: start_shield
 
 # SHELL SCRIPTS DOT FILES MEDIA FILES AND CONTENT
 
