@@ -180,8 +180,6 @@
 # SHELL SCRIPTS DOT FILES MEDIA FILES AND CONTENT
 
 # in ~/
-
-   playlist.m3u
    
   .wH0rUNSon
   
@@ -205,57 +203,48 @@
   
   .bashrc
   
-# in ~/Music
-
-  76256__ganscaile__startup.mp3
-  
 # in ~/Pictures
 
-  wallpapers.zip
+  unziped wallpapers.zip
   
 # in /usr/local/bin
 
-- network
+° network
 
-	shi3lD
-	start_shield
-	stop_shield
+	- shi3lD
+	- start_shield
 	
-- syntax|search|edit
+° syntax|search|edit
 
-	sCRYPtUPdater
-	search
-	mysql_cp_db
+	- sCRYPtUPdater
+	- search
+	- mysql_cp_db
 	
-- backgroud|startup
+° backgroud|startup
 		
-	feh-bg
-	hi 
-	hi_cheese
-	hi_brutalchess
-	hi_libreoffice
-	hi_geany
-	hi_gimp
-	hi_transmission-gtk
-	hi_firefox-esr
-	hi_playonlinux
-	hi_vlc
-	hi_wicd-client
+	- feh-bg
+	- hi 
+	- hi_cheese
+	- hi_brutalchess
+	- hi_libreoffice
+	- hi_geany
+	- hi_gimp
+	- hi_transmission-gtk
+	- hi_firefox-esr
+	- hi_playonlinux
+	- hi_vlc
+	- hi_wicd-client
 
-- monitoring|reliability
+° monitoring|reliability
 
-	server-monitor
-	serv-if-up
-	redundanz
+	- server-monitor
+	- serv-if-up
+	- redundanz
 	
-- new-install|update
+° new-install|update
 
-	install
-  
-# in /usr/share/vlc/skins2/
-
-  MyVLCtheme.vlt
-
+	- install
+	
 # in /var/www/html/
 
   README.html
