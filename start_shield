@@ -45,6 +45,13 @@ done
 fi
 }
 
+permissions(){
+	chown $SUDO_USER:$SUDO_USER "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease"
+	chmod 0660 "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease"
+	chown $SUDO_USER:$SUDO_USER "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease"
+	chmod 0660 "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease"
+	}
+
 writeM4C_Connected(){
 		if [[ -e "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" ]]
 	then
