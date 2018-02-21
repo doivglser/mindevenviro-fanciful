@@ -73,24 +73,10 @@ writeM4C_SelfAssigned(){
 fi
 }
 
-ifUPAntiVirusFireWall(){
-		until [[ $(ps aux | grep -v grep | grep -E -i -w 'snort|clamd' | awk '{print $11}' | wc -l | tr -d ' ') = "2" ]] ;
-	do
-		if [[ "$(ps aux | grep -vE "grep" | grep -v nano | grep clamd | awk '{print $11}')" != "$binarie0" ]] ;
-	then
-		echo -e "restarting ClamAV ...\n" && sleep 2 ;
-	fi
-	    if [[ "$(ps aux | grep -vE "grep" | grep -v nano | grep snort | awk '{print $11}')" != "$binarie1" ]] ;
-	then
-		echo -e "restarting Snort ...\n" && sleep 2 ;
-	fi
-done
-}
-
 m41N__(){
 		while [[ $stopLoop != "1" ]]
 	do
-		puff_MACs && ifUPAntiVirusFireWall ;
+		puff_MACs ;
 
 		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
     then
