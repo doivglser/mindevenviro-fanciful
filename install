@@ -1,11 +1,13 @@
 #!/bin/bash
 # installs min-dev-enviro
+
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
 myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
 environinstall="server-monitor redundanz serv-if-up sCRYPtUPdater shi3lD stop_shield start_shield feh-bg hi hi_cheese hi_brutalchess hi_libreoffice hi_geany hi_gimp hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db set_mysql_passwd openpdf takeshot install " ;
 apPRn='' ;
+
 		if [ ! $EUID = 0 ] ;
 	then
 		echo -e "please sudo" ;
@@ -15,18 +17,16 @@ else
 	then
 		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
 fi
-		if [ ! -e /home/$SUDO_USER/.installed ] && [[ $PWD =~ 'M1ND3V3NV1R0' ]] ;
-	then
-
-	nNuM1=$(echo "$environinstall" | wc -w) ;
-	nNuM2=$(echo "$myPrograms" | wc -w) ;
-
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
 	then
 		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
 	else
 		tmpfolder="/tmp" ;
 fi	
+		if [ ! -e /home/$SUDO_USER/.installed ] && [[ $PWD =~ 'M1ND3V3NV1R0' ]] ;
+	then
+		nNuM1=$(echo "$environinstall" | wc -w) ;
+		nNuM2=$(echo "$myPrograms" | wc -w) ;
 		spin='.oOo' ; i=0 ;
 		spin2='-\|/' ;
 		
@@ -68,10 +68,6 @@ done
 	echo -e "\n ... create /home/$SUDO_USER Directories" ;
 	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton} ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER ;
-
-	echo -e "\n ... copy the startup sound to /home/$SUDO_USER/Music/" ;
-	cp -f 76256__ganscaile__startup.mp3 /home/$SUDO_USER/Music/ && wait ;
-	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Music/* ;
 
 	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
 	cp -f sources.list /etc/apt/sources.list ;
@@ -129,6 +125,9 @@ fi
 		printf "\r ... testing for apps, $nNuM2 remaining, $apPRn" ; sleep 0.5 ;
 done
 
+	mknod -F native /dev/clamauth c 3 2 ;
+	chmod o+r /dev/bpf* ;
+
 	echo -e "\n ... set background Pictures" ;
 	rm -R /home/$SUDO_USER/Pictures/* 2>/dev/null ;
 	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures && wait ;
@@ -173,11 +172,7 @@ done
 	
 	echo -e "\n ... copy the .xscreensaver file to /home/$SUDO_USER" ;
 	cp -f xscreensaver /home/$SUDO_USER/.xscreensaver ;
-	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.xscreensaver ;
-
-	echo -e "\n ... copy VLC skin" ;
-	cp -f MyVLCtheme.vlt /usr/share/vlc/skins2/ ;
-	chmod 755 /usr/share/vlc/skins2/MyVLCtheme.vlt  ;	
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.xscreensaver ;	
 	
 	echo -e "\n ... set the upload path for PHP scripts" ;
 	rm -f /var/www/html/index*

@@ -1,13 +1,13 @@
 #!/bin/bash
-# serv-if-up: restarts servers and notify
-#
+# mindevenviro
+# serv-if-up (daemon) : restarts servers and notify
+LANG="C";
 
 		if [ $EUID != 0 ] ;
 	then
 		echo "Hi $USER, this script restart servers and notify if error and or success" ;
 		echo "USAGE: sudo redundanz -m" ;
 else
-
 	if [[ "$(ps aux | grep -v grep | grep -v nano | grep redundanz | awk '{print $2}' | wc -l) " -gt "1" ]] ;
 then
 
@@ -20,45 +20,31 @@ then
 fi
 # temp folder END
 
+# name vars
 interface='' ;
-
-LANG="C";
-
 nids="snort" ;
-
 antivirus="clamd" ;
-
 webserver="apache2" ;
-
 datenbank="mysql" ;
-
 mta="sendmail" ;
-
 mailer="sendmail" ;
-
 empty02='' ;
-
-nohomePartition="No Home Partition on this computer" ;
-
+noHome="No Home Partition on this computer" ;
 WARN01="80" ;
-
 WARN02="85" ;
+# name vars END
 
+# temp file in volatile ~/Download
 > $tmpfolder/root_mail_status ;
+# temp file END
 
-while true
-
-do
-sleep 0.1 ;
-
-		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'Iface' ]] ;
-	then
+# finds connected Iface and saves in var
+findIface(){
 		if [[ "$interface" = '' ]]
 	then
 		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
 		echo ":: We run this Iface: $interface ::" > /dev/pts/3 ;
 		date > /dev/pts/3 ;
-	fi
 	else
 
 interface='' ;
@@ -72,15 +58,12 @@ Subject:down
 We got no Internet.
 
 EOM
-
 fi
+}
+# findIface END
 
-checknids=$(ps aux | grep -v grep | grep snort) ;
-
-	if [[ "$checknids" = '' ]];
-then
-		sleep 0.1 ;
-		
+# snortUP
+snortUP(){
 		if [[ $(ps axu | grep -v grep | grep -v snortup | grep "$nids") = '' ]] ;
 	then
 		/etc/init.d/$nids start -i $interface
@@ -107,16 +90,13 @@ EOM
 fi
 	else
 		sleep 0.1 ;
-	fi
 fi
+}
+# snortUP END
 
-checkantivirus=$(ps aux | grep -v grep | grep clamd) ;
-
-        if [[ "$checkantivirus" = '' ]];
-then
+# checks if clamd is up, if false restarts
+clamdUP(){
 	systemctl stop "$antivirus".service ;
-	sleep 0.1 ;
-
 	if systemctl start "$antivirus".service > $tmpfolder/root_mail_status ;
 then
 
@@ -148,16 +128,13 @@ EOM
 echo ":: you got email, $antivirus fails, cannot restart ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
-
-	fi
 fi
+}
+# clamdUP END
 
-checkport80=$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1) ;
-
-        if [[ "$checkport80" = '' ]];
-then
+# checks if apache2 is up, if false restarts
+apacheUP(){
 	systemctl stop "$webserver".service ;
-	sleep 0.2 ;
 	if systemctl start "$webserver".service > $tmpfolder/root_mail_status ;
 then
 
@@ -189,19 +166,14 @@ EOM
 echo ":: you got email, $webserver fails, cannot restart ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
-
-	fi
 fi
+}
+# apacheUP END
 
-checkport25=$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1) ;
-
-        if [[ "$checkport25" = '' ]];
-then
-
+# sendmailUP checks if sendmail is up, if false restarts
+sendmailUP(){
 checkprog2=$(whereis "$mta" | awk '{print $2}') ;
 systemctl stop "$mta".service ;
-sleep 0.2 ;
-
 	if [[ -e $checkprog2 ]] && systemctl start "$mta".service > $tmpfolder/root_mail_status ;
 then
 	systemctl status "$mta".service >> $tmpfolder/root_mail_status ;
@@ -232,18 +204,13 @@ EOM
 echo ":: you got email, $mta cannot restart ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
-
-	fi
 fi
+}
+# sendmailUP END
 
-checkport3306=$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1) ;
-
-        if [[ "$checkport3306" = '' ]];
-then
-
+# mysqlUP checks if mysql is up, if false restarts
+mysqlUP(){
 /etc/init.d/"$datenbank" stop ;
-sleep 0.2 ;
-
 	if /etc/init.d/"$datenbank" start > $tmpfolder/root_mail_status ;
 then
 	/etc/init.d/"$datenbank" status >> $tmpfolder/root_mail_status ;
@@ -274,39 +241,22 @@ EOM
 echo ":: you got email, $datenbank cannot restart ::" > /dev/pts/3 ;
 
 date > /dev/pts/3 ;
-
-	fi
 fi
+}
+# mysqlUP END
 
-sleep 0.5 ;
-# check for drive space and notify if over limit
-PERCENTUSED01=$(df -h | grep -E /$ | awk '{ print $5 }' | sed -n 's/%//p') ;
-
-PERCENTUSED02=$(df -h | grep -E /home$ | awk '{ print $5 }' | sed -n 's/%//p') ;
-
+# checkfreeSpace check for drive space and notify if over limit
+checkfreeSpace(){
 IFHOMEEXIST=$(df -h | grep -E /home$) ;
-
 SIZEONHOME=$(df -h | grep -E /home$ | awk '{print $2}') ;
-
 SIZEON=$(df -h | grep -E /$ | awk '{ print $2 }') ;
-
 USEDON=$(df -h | grep -E /$ | awk '{ print $3 }') ;
-
 INODES=$(df -i | grep -E /$ | awk '{ print $2 }') ;
-
 FREEINODES=$(df -i | grep -E /$ | awk '{ print $4 }') ;
-# END checking free space
 
-if [[ "$WARN01" -lt "$PERCENTUSED01" ]] || [[ "$WARN02" -lt "$PERCENTUSED02" ]] ;
-
+	if [[ "$IFHOMEEXIST" = '' ]] ;
 then
-
-if [[ "$IFHOMEEXIST" = '' ]] ;
-
-then
-
-PERCENTUSED02="$nohomePartition" ;
-
+	PERCENTUSED01=$noHome ;
 fi
 
 cat << EOM | sendmail root@localhost
@@ -339,7 +289,7 @@ _________________________________________________
 
 Warn percentage on /home: $WARN02 %
 
-Used percentage on /home: $PERCENTUSED02
+Used percentage on /home: $PERCENTUSED01
 
 Size on /home: $SIZEONHOME GB
 
@@ -347,9 +297,55 @@ EOM
 
 echo "::WARNING:: your over $WARN01 % or $WARN02 %, you got email::" > /dev/pts/3 ;
 date > /dev/pts/3 ;
+}
+# END checking free space
 
-fi
+# loop
+		while true
+	do
+		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ "Iface|\ " ]] ;
+	then
+		findIface && wait ;
+	fi
+		sleep 2 ;
+	
+		if [[ "$(ps aux | grep -v grep | grep snort)" = '' ]] ;
+	then
+		snortUP && wait ;
+	fi
+		sleep 2 ;
+		
+			if [[ "$(ps aux | grep -v grep | grep clamd)" = '' ]] ;
+	then
+		clamdUP && wait ;
+	fi
+		sleep 2 ;
+		
+        if [[ "$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1)" = '' ]] ;
+	then
+		apacheUP && wait ;
+	fi
+		sleep 2 ;
+		
+        if [[ "$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1)" = '' ]] ;
+	then
+		sendmailUP && wait ;
+	fi
+		sleep 2 ;
+		
+        if [[ "$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1)" = '' ]] ;
+	then
+		mysqlUP && wait ;
+	fi
+		sleep 2 ;
+		
+		if [[ "$WARN01" -lt "$(df -h | grep -E /$ | awk '{ print $5 }' | sed -n 's/%//p')" ]] || [[ "$WARN02" -lt "$(df -h | grep -E /home$ | awk '{ print $5 }' | sed -n 's/%//p')" ]] ;
+	then
+		checkfreeSpace && wait ;
+	fi
+		sleep 2 ;
 done
-rm -f $tmpfolder/root_mail_status
+# loop end
 fi
 fi
+# END

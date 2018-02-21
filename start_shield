@@ -9,14 +9,23 @@ IFS=$(echo -en "\n\b") ;
 	then
 		sudo "$0" ;
 else
-	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD | awk '{print $2}' | wc -l) " -gt "1" ]] ;
+
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# temp folder END
+
+	if [[ "$(ps aux | grep -v grep | grep -E -i -w 'shi3lD|serv-if-up' | awk '{print $11}' | wc -l | tr -d ' ') " -ge "2" ]] ;
 then
 
 stopLoop="0" ;
 binarie0="/usr/sbin/clamd" ;
 binarie1="/usr/sbin/snort" ;
 homeordner="/home/${SUDO_USER}/" ;
-cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1 >| "$tmpfolder"/interface ;
 interface="$(cat "$tmpfolder"/interface)" ;
 nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 
@@ -33,28 +42,6 @@ puff_MACs(){
 		((nnumberOFinterface--)) &&
 		sleep 9 ;
 done
-fi
-}
-
-start_s(){
-		if [[ $(ps aux | grep snort | grep -v grep | grep -v nano | awk '{print $11}') = "$binarie0" ]]
-	then
-		echo -e "snort is allready running ...\n" ;
-	else
-		#chmod o+r /dev/bpf*;
-		systemctl restart snort.service && echo -e "snort is running ...\n" ;
-		sleep 2 ;
-fi
-}
-
-start_c(){
-		if [[ $(ps aux | grep clamd | grep -v grep | grep -v nano | awk '{print $11}') = "$binarie1" ]]
-	then
-		echo -e "clamd is allready running ...\n" ;
-	else
-		#mknod -F native /dev/clamauth c 3 2 ;
-		systemctl restart clamav-daemon.service && echo -e "clamd is running ...\n" ;
-		sleep 2 ;
 fi
 }
 
@@ -87,20 +74,15 @@ fi
 }
 
 ifUPAntiVirusFireWall(){
-		until [[ $(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | wc -l | tr -d ' ') = "2" ]] ;
+		until [[ $(ps aux | grep -v grep | grep -E -i -w 'snort|clamd' | awk '{print $11}' | wc -l | tr -d ' ') = "2" ]] ;
 	do
-		ifDown0=$(ps aux | grep -vE "grep" | grep -v nano | grep clamd | awk '{print $11}') ;
-		ifDown1=$(ps aux | grep -vE "grep" | grep -v nano | grep snort | awk '{print $11}') ;
-
-		if [[ "$ifDown0" != "$binarie0" ]]
+		if [[ "$(ps aux | grep -vE "grep" | grep -v nano | grep clamd | awk '{print $11}')" != "$binarie0" ]] ;
 	then
-		echo -e "restarting ClamAV ...\n" ;
-		start_c && return ;
+		echo -e "restarting ClamAV ...\n" && sleep 2 ;
 	fi
-	    if [[ "$ifDown1" != "$binarie1" ]]
+	    if [[ "$(ps aux | grep -vE "grep" | grep -v nano | grep snort | awk '{print $11}')" != "$binarie1" ]] ;
 	then
-		echo -e "restarting Snort ...\n" ;
-		start_s && return ;
+		echo -e "restarting Snort ...\n" && sleep 2 ;
 	fi
 done
 }
@@ -119,12 +101,12 @@ m41N__(){
         $(ip route | grep -vE "grep" | grep src) \n\n \
         and $m4c has now this MAC-Address: $(ip link show "$m4c" | grep ether | awk '{print $2}')\n" ;
         writeM4C_Connected ;
-	stopLoop="1" ;
-	sudo -u "$SUDO_USER" firefox-esr 2>&1 < /dev/null &
+		stopLoop="1" ;
+		sudo -u "$SUDO_USER" firefox-esr 2>&1 < /dev/null &
     else
         echo -e "no connection with this $(ip link show "$m4c" | grep ether | awk '{print $2}'), I try again ..."
         . /usr/local/bin/stop_shield ;
-	writeM4C_SelfAssigned ;
+		writeM4C_SelfAssigned ;
 	fi
 done
 }

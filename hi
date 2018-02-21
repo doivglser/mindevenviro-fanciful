@@ -1,10 +1,9 @@
 #!/bin/bash
 # mindevenviro
 # startup file on /usr/local/bin
-
+LANG="C" ;
 to_star_up(){
 xsetroot -solid yellow &
-cvlc $HOME/Music/76256__ganscaile__startup.mp3 &
 oclock -hour red -minute white -bd white -fg yellow -bg black -jewel green -shape -geometry 70x75-3+3 &
 xload -g 50x50-3+94 -fg "yellow" -bg "black" -bw 1 &
 setsid xscreensaver -display :0 -no-splash >/dev/null 2>&1 < /dev/null &

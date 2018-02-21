@@ -1,6 +1,6 @@
 #!/bin/bash
-# version 0.01
-#MONITOR
+# mindevenviro
+# MONITOR
 
 LANG="C" ;
 IFS="$(echo -en "\n\b")" ;
@@ -30,8 +30,9 @@ file01g="serv-if-up"
 # loadav
 #
 ###
-
+echo " -" ;
 echo "$loadav" ;
+echo " -" ;
 
 ###
 #
@@ -54,9 +55,11 @@ users="$(ps aux | grep "$prgtotesta" | grep -v grep | awk '{print $1}' | uniq)" 
 
 usersPID=$(ps aux | grep "$prgtotesta" | grep -v grep | awk '{print $1}' | wc -l) ;
 
-echo -e "\n- $usersPID PID from $file01a by: "$users"" ;
+echo "$usersPID PID from $file01a by: "$users"" ;
 
 ps aux | grep "$prgtotesta" | grep -v nano | grep -v geany | grep -v grep | tail -n1 ;
+
+echo " -" ;
 
 ###
 #
@@ -79,9 +82,11 @@ users1="$(ps aux | grep "$prgtotestb" | grep -v grep | awk '{print $1}' | uniq)"
 
 usersPID1=$(ps aux | grep "$prgtotestb" | grep -v grep | awk '{print $1}' | wc -l) ;
 
-echo -e "\n- $usersPID1 PID from $file01b by: "$users1"" ;
+echo "$usersPID1 PID from $file01b by: "$users1"" ;
 
 ps aux | grep "$prgtotestb" | grep -v nano | grep -v geany | grep -v grep | tail -n1 ;
+
+echo " -" ;
 
 ###
 #
@@ -104,9 +109,11 @@ users2="$(ps aux | grep "$prgtotestc" | grep -v grep | awk '{print $1}' | uniq)"
 
 usersPID2=$(ps aux | grep "$prgtotestc" | grep -v grep | awk '{print $1}' | wc -l) ;
 
-echo -e "\n- $usersPID2 PID from $file01c by: "$users2"" ;
+echo "$usersPID2 PID from $file01c by: "$users2"" ;
 
 ps aux | grep "$prgtotestc" | grep -v nano | grep -v geany | grep -v grep | tail -n1 ;
+
+echo " -" ;
 
 ###
 #
@@ -129,10 +136,11 @@ users7=$(ps aux | grep "$prgtotestg" | grep -v grep | awk '{print $1}' | uniq) ;
 
 usersPID7=$(ps aux | grep "$prgtotestg" | grep -v grep | awk '{print $1}' | wc -l) ;
 
-echo -e "\n- $usersPID7 PID from $file01g by: "$users7"" ;
+echo "$usersPID7 PID from $file01g by: "$users7"" ;
 
 ps aux | grep "$prgtotestg" | grep -v nano | grep -v geany | grep -v grep | tail -n1 ;
 
+echo " -" ;
 
 fi
 fi

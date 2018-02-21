@@ -1,12 +1,25 @@
 #!/bin/bash
+# mindevenviro ..
 # monitors the servers and applications, defined in server-monitor
 # starts the daemon serv-if-up and monitors some piDS are up.
+
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
 LANG="C" ;
+
 		if [ ! $EUID = 0 ] ;
 	then
 		echo "USAGE: sudo redundanz -h" ;
 else
+
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# temp folder END
 
 FILE1="serv-if-up" ;
 FILE2="server-monitor" ;
@@ -19,8 +32,9 @@ exit 0 ;
 }
 
 ex1Th4ndler(){
-		ps aux | grep -v grep | grep serv-if-up | awk '{print $2}' | xargs kill -15 2>/dev/null ;
-		wait ;
+		ps aux | grep -v grep | grep serv-if-up | awk '{print $2}' | xargs kill -15 2>/dev/null &&
+		rm -f $tmpfolder/root_mail_status &&
+		wait &&
 		exit 0 ;
 }
 
@@ -31,10 +45,10 @@ mmonitor(){
 
 		if [[ $(ps aux | grep -v grep | grep "$FILE1") = '' ]]
 	then
-		nice -15 setsid "$FILE1" >/dev/null 2>&1 < /dev/null &
-		watch -n3 -t --color "$FILE2" ;
+		nice -7 setsid "$FILE1" >/dev/null 2>&1 < /dev/null &
+		watch -n2 -t --color "$FILE2" ;
 	else
-		watch -n3 -t --color "$FILE2" ;
+		watch -n2 -t --color "$FILE2" ;
 		fi
 	fi
 	}
@@ -50,5 +64,4 @@ mmonitor(){
       help ;
       ;;
   esac
-help ;
 fi

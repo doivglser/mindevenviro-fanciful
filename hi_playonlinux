@@ -1,6 +1,6 @@
 #!/bin/bash
 # startup file on /usr/local/bin
-
+LANG="C" ;
                 if [[ $(ps axu | grep -v grep | grep -v hi_playonlinux | grep playonlinux) = '' ]] ;
         then
                 playonlinux & hi ;

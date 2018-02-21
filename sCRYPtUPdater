@@ -1,28 +1,32 @@
 #!/bin/bash
 # mindevenviro
 # syntax check and update to /urs/local/bin, /var/www/testphp, /usr/lib/cgi-bin
+
 ###     WARNING:    DON'T EDIT ANYTHING BELOW
+LANG="C" ;
+
 		if [ ! $EUID = 0 ] ;
 	then
 		sudo "$0" ;
 else
 
-LANG="C" ;
 IFS=$(echo -en "\n\b") ;
 FILE="sCRYPtUPdater"
-syntaxCHkr="bash python perl php tidy" ;
-# User Host Control
-echo -e "sCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: in $userHome ::" >> "/home/$SUDO_USER/.wH0rUNSon" ;
+syntaxCHkr="shellcheck python perl php tidy" ;
+
 # wholeC0unt4: to start by zero after first
 wholeC0unt4="1" ;
 # listONmest4tus: to print how many bytes you've changed the last file you've edited
 listONmest4tus="0" ;
 # excULEC0D3s
-excULEC0D3s="SC1090,SC2140,SC2012,SC2002,SC2009,SC2172,SC2162,SC2010,SC2126,SC2016,SC2034,SC2005,SC2013,SC2059,SC2086,SC2027,SC1091,SC2076,SC2116" ; 
+excULEC0D3s="SC1090,SC2140,SC2012,SC2002,SC2009,SC2172,SC2162,SC2010,SC2126,SC2016,SC2034,SC2005,SC2013,SC2059,SC2086,SC2027,SC1091,SC2076,SC2116" ;
 
+# update path
 bashupdate_path="/usr/local/bin" ;
 perlupdate_path="/usr/lib/cgi-bin" ;
 phpupdate_path="/var/www/html/testphp" ;
+conffiles_path="/etc" ;
+# update path END
 
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
@@ -66,7 +70,7 @@ fF1l3suffix=$(echo "$listONme" | sed 's/\//\ /g'| sed 's/\./\ /g' | awk '{print 
 
 			if [[ "$fF1l3suffix" = conf ]] ;
 	then
-			path_to_update="/etc" ;
+			path_to_update=$conffiles_path ;
 fi
 			if [[ "$listONmeIS" =~ Python|Bourne-Again ]] ;
 	then
@@ -219,9 +223,9 @@ ch3kingSnx='' ;
 
 			if [[ "$listONmeIS" =~ Bourne-Again ]] ;
 		then
-			ch3kingSnx="bash" ;
-			echo "$listONme" | xargs $ch3kingSnx -n ;
-			# -e "$excULEC0D3s" ;
+			ch3kingSnx="shellcheck" ;
+			echo "$listONme" | xargs $ch3kingSnx -e "$excULEC0D3s" ;
+			# 
 			exitc0de=$(echo $?) ;
 
 			elif [[ "$listONmeIS" =~ Python ]] ;
@@ -288,10 +292,14 @@ fi
 }
 
 exxiterr(){
+	# User Host Control
+	echo -e "sCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: in $userHome ::" >> "/home/$SUDO_USER/.wH0rUNSon" ;
+	# User Host Control END
 	echo "good by $SUDO_USER."
 	exit 0 ;
 	}
 
+# loop
 maincall(){
 
 		while trap 'cont1NU3' SIGQUIT && trap 'exxiterr' SIGINT ;
@@ -320,13 +328,16 @@ fi
 fi
 	done
 }
+# loop END
 
+# HELP
 help(){
 shift 0 ;
 echo -e "hello $SUDO_USER\n\n BASH/PYTHON to: /usr/local/bin\n PHP to: /var/www/html/testphp\n PERL to: /usr/lib/cgi-bin\n" ;
 echo -e "Usage: $0 [-w|--workflow-interval] [WORKFLOW-INTERVAL in minutes] [work-directorie] [-h|--help]\r" ;
 exit 0 ;
 }
+# help END
 
 # ASK
   case "$1" in
@@ -343,6 +354,9 @@ exit 0 ;
       help ;
       ;;
   esac
+# ASK END
+
+# execute
 		if [[ $1 = '' ]] && [[ "$minut3S" = '' ]] || [[ "$userHome" = '' ]] ;
 	then
 		echo "please sudo this script."
@@ -352,3 +366,4 @@ exit 0 ;
 		maincall ;
 	fi
 fi
+# execute END

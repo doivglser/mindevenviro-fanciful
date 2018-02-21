@@ -1,6 +1,6 @@
 #!/bin/bash
 # startup file on /usr/local/bin
-
+LANG="C" ;
 IFS=$(echo -en "\b\n") ;
 
 		if [[ $(ps axu | grep -v grep | grep -v hi_gimp | grep gimp) = '' ]] ;

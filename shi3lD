@@ -2,9 +2,10 @@
 # runs on systems with systemd, WITHOUT network-managers,
 # you must have a running version of both: ClamAV and Snort.
 # Changes your MAC-ADDRESS and does a list of usable and not 
-# usable MAC-ADDRESSES in $HOME. Restarts clamd and snort if 
-# DOWN and changes the MAC again. ctrl+C cut's Ethernet Interface 
+# usable MAC-ADDRESSES in $HOME. Puts interface down if clamd 
+# or snort fails and changes the MAC again. ctrl+C cut's Ethernet Interface 
 # connection and revert to your vendors MAC-ADDRESS.
+
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG="C" ;
@@ -16,7 +17,7 @@ IFS=$(echo -en "\n\b") ;
 else
 
 # temp folder
-		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
 	then
 		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
 	else
@@ -25,47 +26,57 @@ fi
 # temp folder END
 
 # vendors mac-address
-		if [ -e "/home/$SUDO_USER/.vendorsmac" ] && [[ "$(wc -l /home/"$SUDO_USER"/.vendorsmac)" -ge "1" ]] ;
+		if [ ! -e "/home/$SUDO_USER/.vendorsmac" ] && [[ ! "$(wc -l /home/"$SUDO_USER"/.vendorsmac)" -ge "1" ]] ;
 	then
-		echo " . -installed";
-	else
-		> /home/"$SUDO_USER"/.vendorsmac ;
-
-		ip link show | grep ether | awk '{print $2}' | tee -a /home/"$SUDO_USER"/.vendorsmac ;
+		touch /home/"$SUDO_USER"/.vendorsmac ;
+		chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.vendorsmac ;
+		chmod 0660 /home/"$SUDO_USER"/.vendorsmac ;
+		
+		if ip link show | grep ether | awk '{print $2}' | tee -a /home/"$SUDO_USER"/.vendorsmac ;
+	then
+		echo "installed" ;
+	fi
 fi
+# vendors mac-address END
 
 clear && echo -e "\n" ;
 nnumberr="0" ;
-		
+cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1 >| "$tmpfolder"/interface && wait ;
+interface="$(cat "$tmpfolder"/interface)" ;
 
-		if [[ "$interface" =~ 'eno|eth' ]] ;
+		if [[ "$interface" =~ eno|eth ]] ;
 	then
 		whoUP="1" ;
 
-		elif [[ "$interface" =~ 'wl|wi' ]] ;
+		elif [[ "$interface" =~ wl|wi ]] ;
 	then
 		whoUP="2" ;
+	else
+		whoUP="none" ;
 fi
 
+stop_network(){
+	#
+	ip link set dev "$interface" down ; sleep 2 ;
+}
+
 puffeRR(){
-		if [[ "$(cat /home/"$SUDO_USER"/.vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] || [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | wc -l | tr -d ' ')" != "2" ]] ;
+		if [[ "$(cat /home/"$SUDO_USER"/.vendorsmac)" =~ "$(ip link show | grep ether | awk '{print $2}')" ]] || [[ "$(ps aux | grep -v grep | grep -E -i -w 'snort|clamd' | awk '{print $11}' | wc -l | tr -d ' ')" != "2" ]] ;
 	then
-		echo -e "\n :: shi3lD ::\n :: shut down interfaces : ??? :" ;
+		echo -e "\n -shi3lD: shut down interfaces?\n " ;
 		read -p " enter to continue" ;
-		. /usr/local/bin/stop_shield ;		
-		echo -e "\n :: changing macaddress :: \n" && 
-		. /usr/local/bin/start_shield ;	
+		stop_network ;		
+		echo -e "\n :: changing macaddress :: \n"  
+		source /usr/local/bin/start_shield ;	
 fi
 }
 
 exitHandler(){
-
-echo -e "-"
-printf " quit? (y/n) " ; read
-echo -e "-"
+echo " -"
+printf " quit? (y/n) " ; read -r
+echo " -"
 		if [[ $REPLY =~ y|Y|j|J ]] ;
 	then
-		killall firefox-esr ;
 		ip link set dev "$interface" down && sleep 2 &&
 		ip link set dev "$interface" address "$(cat /home/"${SUDO_USER}"/.vendorsmac | head -n$whoUP)" &&
 		ip link set dev "$interface" up && sleep 2 ;
@@ -73,7 +84,6 @@ echo -e "-"
 		echo -e "\n .You where surfing with this MAC:\n\n
 		$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
 		awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n" ;
-		sudo -u "$SUDO_USER" firefox-esr 2>&1 < /dev/null &
 		exit 0 ;
 
 		elif [[ $REPLY =~ n|N ]] ;
@@ -81,18 +91,19 @@ echo -e "-"
 		return ;
 fi
 }
-		while trap 'exitHandler' SIGINT ;
-	do
-		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /home/${SUDO_USER}/.vendorsmac)" ]] ;
-	then
 		spin='.oOo' ; i=0 ;
 		spin2='-\|/' ;
 
-		while [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /home/${SUDO_USER}/.vendorsmac)" ]] ;
+		while trap 'exitHandler' SIGINT ;
 	do
-		((nnumberr++));
+		if [[ "$(ps aux | grep -v grep | grep -E -i -w 'snort|clamd' | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ ! "$(ip link show "$interface" | grep ether | awk '{print $2}')" =~ "$(cat /home/${SUDO_USER}/.vendorsmac)" ]] ;
+	then		
+		while true
+	do
+		((nnumberr++)) ;
 		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1} UPTIME:$nnumberr${spin:$i:1} " ; sleep .1 ;
 	done
+		
 	else
 		puffeRR ;
 	fi
