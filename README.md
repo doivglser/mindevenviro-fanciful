@@ -171,7 +171,7 @@
   
 * shi3lD (shell script)
 
-  USAGE: "sudo shi3lD"
+  USAGE: "shi3lD"
   
   If "sudo redundanz -m" is running, then shi3lD will puff your MAC-Address, so you become a new IP.
   
