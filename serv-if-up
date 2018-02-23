@@ -307,43 +307,43 @@ date > /dev/pts/3 ;
 	then
 		findIface && wait ;
 	fi
-		sleep 2 ;
+		sleep .5 ;
 	
 		if [[ "$(ps aux | grep -v grep | grep snort)" = '' ]] ;
 	then
 		snortUP && wait ;
 	fi
-		sleep 2 ;
+		sleep .5 ;
 		
 			if [[ "$(ps aux | grep -v grep | grep clamd)" = '' ]] ;
 	then
 		clamdUP && wait ;
 	fi
-		sleep 2 ;
+		sleep .5 ;
 		
         if [[ "$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1)" = '' ]] ;
 	then
 		apacheUP && wait ;
 	fi
-		sleep 2 ;
+		sleep .5 ;
 		
         if [[ "$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1)" = '' ]] ;
 	then
 		sendmailUP && wait ;
 	fi
-		sleep 2 ;
+		sleep .5 ;
 		
         if [[ "$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1)" = '' ]] ;
 	then
 		mysqlUP && wait ;
 	fi
-		sleep 2 ;
+		sleep .5 ;
 		
 		if [[ "$WARN01" -lt "$(df -h | grep -E /$ | awk '{ print $5 }' | sed -n 's/%//p')" ]] || [[ "$WARN02" -lt "$(df -h | grep -E /home$ | awk '{ print $5 }' | sed -n 's/%//p')" ]] ;
 	then
 		checkfreeSpace && wait ;
 	fi
-		sleep 2 ;
+		sleep .5 ;
 done
 # loop end
 fi
