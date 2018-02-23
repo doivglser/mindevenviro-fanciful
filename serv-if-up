@@ -21,7 +21,6 @@ fi
 # temp folder END
 
 # name vars
-interface='' ;
 nids="snort" ;
 antivirus="clamd" ;
 webserver="apache2" ;
@@ -40,16 +39,15 @@ WARN02="85" ;
 
 # finds connected Iface and saves in var
 findIface(){
-		if [[ "$interface" = '' ]]
+	
+		if [[ "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" != "Iface" ]]
 	then
 		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
 		echo ":: We run this Iface: $interface ::" > /dev/pts/3 ;
 		date > /dev/pts/3 ;
 	else
 
-interface='' ;
-echo ":: We got no Internet ::" > /dev/pts/3 ;
-date > /dev/pts/3 ;
+echo ":: We got no Internet $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
 
 cat << EOM | sendmail root@localhost
 
@@ -104,9 +102,7 @@ systemctl status "$antivirus".service >> $tmpfolder/root_mail_status ;
 
 echo "$?" >> $tmpfolder/root_mail_status ;
 
-echo ":: $antivirus fails, but restartet successfully, you got an email ::" > /dev/pts/3
-
-date > /dev/pts/3
+echo ":: $antivirus fails, but restartet successfully, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3
 
 cat << EOM | sendmail root@localhost
 
@@ -125,9 +121,8 @@ $(cat $tmpfolder/root_mail_status)
 
 EOM
 
-echo ":: you got email, $antivirus fails, cannot restart ::" > /dev/pts/3 ;
+echo ":: you got email, $antivirus fails, cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
 
-date > /dev/pts/3 ;
 fi
 }
 # clamdUP END
@@ -142,9 +137,7 @@ systemctl status "$webserver".service >> $tmpfolder/root_mail_status ;
 
 echo "$?" >> $tmpfolder/root_mail_status ;
 
-echo ":: $webserver fails, but restartet successfully, you got an email ::" > /dev/pts/3
-
-date > /dev/pts/3
+echo ":: $webserver fails, but restartet successfully, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3
 
 cat << EOM | sendmail root@localhost
 
@@ -163,9 +156,8 @@ $(cat $tmpfolder/root_mail_status)
 
 EOM
 
-echo ":: you got email, $webserver fails, cannot restart ::" > /dev/pts/3 ;
+echo ":: you got email, $webserver fails, cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
 
-date > /dev/pts/3 ;
 fi
 }
 # apacheUP END
@@ -186,9 +178,7 @@ $(cat $tmpfolder/root_mail_status)
 
 EOM
 
-echo ":: $mta is accepting connections again, you got an email ::" > /dev/pts/3 ;
-
-date > /dev/pts/3 ;
+echo ":: $mta is accepting connections again, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
 
 	else
 
@@ -201,9 +191,8 @@ $(cat $tmpfolder/root_mail_status)
 
 EOM
 
-echo ":: you got email, $mta cannot restart ::" > /dev/pts/3 ;
+echo ":: you got email, $mta cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
 
-date > /dev/pts/3 ;
 fi
 }
 # sendmailUP END
@@ -223,9 +212,7 @@ $(cat $tmpfolder/root_mail_status)
 
 EOM
 
-echo ":: $datenbank is accepting connections again, you got an email ::" > /dev/pts/3 ;
-
-date > /dev/pts/3 ;
+echo ":: $datenbank is accepting connections again, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
 
 	else
 
@@ -238,9 +225,8 @@ $(cat $tmpfolder/root_mail_status)
 
 EOM
 
-echo ":: you got email, $datenbank cannot restart ::" > /dev/pts/3 ;
+echo ":: you got email, $datenbank cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
 
-date > /dev/pts/3 ;
 fi
 }
 # mysqlUP END
@@ -295,55 +281,42 @@ Size on /home: $SIZEONHOME GB
 
 EOM
 
-echo "::WARNING:: your over $WARN01 % or $WARN02 %, you got email::" > /dev/pts/3 ;
-date > /dev/pts/3 ;
+echo "::WARNING:: your over $WARN01 % or $WARN02 %, you got email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
+
 }
 # END checking free space
 
 # loop
 		while true
 	do
-		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ "Iface|\ " ]] ;
+		if [[ $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) != '' ]] ;
 	then
-		findIface && wait ;
+		findIface && wait && sleep .5 ;
 	fi
-		sleep .5 ;
-	
 		if [[ "$(ps aux | grep -v grep | grep snort)" = '' ]] ;
 	then
-		snortUP && wait ;
+		snortUP && wait && sleep .5 ;
 	fi
-		sleep .5 ;
-		
 			if [[ "$(ps aux | grep -v grep | grep clamd)" = '' ]] ;
 	then
-		clamdUP && wait ;
+		clamdUP && wait && sleep .5 ;
 	fi
-		sleep .5 ;
-		
         if [[ "$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1)" = '' ]] ;
 	then
-		apacheUP && wait ;
+		apacheUP && wait && sleep .5 ;
 	fi
-		sleep .5 ;
-		
         if [[ "$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1)" = '' ]] ;
 	then
-		sendmailUP && wait ;
+		sendmailUP && wait && sleep .5 ;
 	fi
-		sleep .5 ;
-		
         if [[ "$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1)" = '' ]] ;
 	then
-		mysqlUP && wait ;
+		mysqlUP && wait && sleep .5 ;
 	fi
-		sleep .5 ;
-		
 		if [[ "$WARN01" -lt "$(df -h | grep -E /$ | awk '{ print $5 }' | sed -n 's/%//p')" ]] || [[ "$WARN02" -lt "$(df -h | grep -E /home$ | awk '{ print $5 }' | sed -n 's/%//p')" ]] ;
 	then
-		checkfreeSpace && wait ;
+		checkfreeSpace && wait && sleep .5 ;
 	fi
-		sleep .5 ;
 done
 # loop end
 fi
