@@ -1,81 +1,69 @@
 #!/bin/bash
 # mindevenviro  
+#TODO: 
+# problems with spaces IFS var setting???
 # search by path and file suffix, if grep true open file
-LANG=C;
-FILE="search" ;
-line='' ;
-#exithandler
-trap 'pgrep $FILE | awk "{print $1}" | xargs kill -9 && pgrep less | awk "{print $1}" | xargs kill -9;' SIGINT ;
 
 				if [ "$EUID" != 0 ] ;
 			then
 				echo "sudo search -h :: please"
 		else
-# temp folder
-                if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
-        then
-                #shm volatile
-                tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
-        else
-                tmpfolder="/tmp" ;
-fi
-#               temp folder END
-# temp file
 
-# the whole list just with file suffix, ready to grep the content, if true, file in an editor.
-touch "$tmpfolder/$(date | awk '{print $2,$6}' | sed 's/\ //g').tmp" ;
-tmpfile="$tmpfolder/$(date | awk '{print $2,$6}' | sed 's/\ //g').tmp" ;
-#               temp file END
+LANG="C" ;
+FILE="search" ;
+line='' ;
+#exithandler
+trap 'pgrep $FILE | awk "{print $1}" | xargs kill -9 && pgrep less | awk "{print $1}" | xargs kill -9;' SIGINT ;
 
 display(){
 # display
-echo -e "search $(date) :: as $USER :: in $(uname -n) :: in $path ::" >>"/home/$SUDO_USER/.wH0rUNSon" ;
-		while read -r line ;
+echo -e "search $(date) :: as $SUDO_USER :: in $(uname -n) :: in $path ::" >>"/home/$SUDO_USER/.wH0rUNSon" ;
+		while read line ;
 	do
 		wait ;
 	
-		if [[ $(file "$line") =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
+		if [[ $(echo "$line" | xargs file) =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
 	then
-			if [[ ! $(echo "$line" | xargs grep "$togrep" 2>/dev/null) = '' ]] ;
+			if [[ ! $(echo $line | xargs grep "$togrep" 2>/dev/null) = '' ]] ;
 		then
-			usER=$(ls -sl "$line" | awk '{print $4}') ;
+			uS3F=$(ls -sl "$line" | awk '{print $4}' | tr -d '\ ');
 			
-			if [[ ! $(file "$line") =~ PDF ]] ;
+			if [[ ! $(echo "$line" | xargs file) =~ PDF ]] ;
 		then
-			sudo -u "$usER" less "$line";
+			sudo -u "$uS3F" less $line;
 			pause=1 ;
 		else
-			sudo -u "$SUDO_USER" mupdf "$line";
+			sudo -u "$uS3F" mupdf $line 2>/dev/null ;
 			pause=1 ;
 		fi
 		else
-			echo -e " ... $(echo "$line" | xargs file) :: - nothing to show\r" ;
+			echo -e " ... $(echo $line | xargs file) :: - nothing to show\r" ;
 			pause=0 ;
 fi
 		else
 			echo -e " ... no PDF|PHP|script|ASCII|text|TEXT|HTML|XML \r" ;
 			pause=0 ;
 fi
-	done <<<"$lines"
+	done <<<"$lines" ;
 # 					display END
 }
 
 help(){
 shift 0 ;
-echo "Usage: $0 [-s|--search] [PATH] [FILE-SUFFIX] [TOGREP] || [-h|--help] " ;
+echo "Usage: $0 [-s|--search] [PATH] [FILE-SUFFIX] [TOGREP] [TOEXCLUDE] || [-h|--help] " ;
 echo -e "\n sudo this script:\n
 SEARCH THE DRIVE\n
  This script searches your drive\r
  for everything in it, and displays\r
  only text in the less viewer.\r
  Finds: log files, example code, etc.\r" ;
- # user workflow control 
+ # SUDO_USER workflow control
 exit 0 ;
 	}
 
 eingabe(){
 pause=0 ;
-for lines in $(find $path -regex '[a-zA-Z0-9\ \/\._]*' -type f 2>/dev/null | grep -E ".$suffixx" 2>/dev/null | tee "$tmpfile") ;
+for lines in $(find $path -regex '[a-zA-Z0-9\ \/\._]*' -type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g' | grep -E "$suffixx"$ 2>/dev/null | grep -vE "$exclud3" 2>/dev/null) ;
 	do
 		if [[ $pause = 1 ]] ;
 	then
@@ -92,7 +80,8 @@ done
       path=$2
       suffixx=$3
       togrep=$4
-      toshiffta=$(echo "$path $suffixx $togrep" | wc -w) ;
+      exclud3=$5
+      toshiffta=$(echo "$path $suffixx $togrep $exclud3" | wc -w) ;
       shift "$toshiffta" ;
       eingabe ;
       ;;
