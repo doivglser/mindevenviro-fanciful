@@ -58,7 +58,7 @@ source "$configfile" ;
 # where is program
 dbserver=$(whereis mysql | cut -f2 -d: | awk '{print $1}');
 # var for connect
-mysqlconn="$dbserver -u root -p$p4SSWORD -h localhost" ;
+mysqlconn="$dbserver -u root -p$p4SSWORD" ;
 #
 
 echo -e "mysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -" >>"$HOME/.wH0rUNSon" ;
@@ -206,7 +206,7 @@ echo -e "\r... just few seconds, while copying db's" ;
 # fullfillment filter, if true you can loss all your data, please, do a dump bevor.
 	if [[ $origin_data != '' ]] && [[ $target_data != '' ]] ;
 then
-	mysqldump -uroot -pNnwxx9Kj -h localhost $origin_data >| "$HOME/$target_data" ;
+	mysqldump -uroot -p$p4SSWORD $origin_data >| "$HOME/$target_data" ;
 else
 	meldig=" Insert 'origin_data' field and 'target_data' field please"
 	read -p "$meldig" ;
@@ -230,7 +230,7 @@ FUNCTION: SEARCH ::\r
 FUNCTION: ERASE ::\r
  workaround to delete false entries in joomla, where id's\r
  selected from: [joomla-root]/administrator/index.php?option=com_installer&view=manage\r
- choose from search menu: "SuchWerkzeuge" and "Deaktiviert"\r
+ choose from search menu: SuchWerkzeuge and Deaktiviert\r
  couldn't be properly de-installed and deleted by joomla backend itself\r
  Names appears capitalized , as dead links without .php or .ini or .xml files in your\r
 FUNCTION: BACKUP ::\r
