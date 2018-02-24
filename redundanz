@@ -45,10 +45,10 @@ mmonitor(){
 
 		if [[ $(ps aux | grep -v grep | grep "$FILE1") = '' ]]
 	then
-		nice -7 setsid "$FILE1" >/dev/null 2>&1 < /dev/null &
-		watch -n2 -t --color "$FILE2" ;
+		nice -17 setsid "$FILE1" >/dev/null 2>&1 < /dev/null &
+		watch -n1 -t --color "$FILE2" ;
 	else
-		watch -n2 -t --color "$FILE2" ;
+		watch -n1 -t --color "$FILE2" ;
 		fi
 	fi
 	}

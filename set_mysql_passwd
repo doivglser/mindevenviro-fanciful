@@ -9,7 +9,7 @@ set -x
 	then
 		sudo "$0" ;
 	else
-		mysqlconn="mysql -u root --no-defaults" ;
+		mysqlconn="sudo -u root mysql -u root" ;
 help(){
 shift 0 ;
 echo -e "hello $SUDO_USER\nset new mariadb root password\n" ;
@@ -24,6 +24,7 @@ changepass(){
 		ps aux | grep -v grep | grep mysqld_safe | head -n1 | awk '{print $2}' | xargs kill -9 2>/dev/null;
 		sudo mknod /run/mysqld/mysqld.sock p ;
 		mysqld_safe --skip-grant-tables &
+		sleep 3 &&
 		$mysqlconn -e "use mysql; update mysql.user set password=password('$mysqlnewpass') where user='root';" && wait ;
 		$mysqlconn -e "use mysql; update mysql.user set plugin='' where user='root';" && wait ;
 		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;" && wait ;

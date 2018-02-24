@@ -239,24 +239,16 @@ fi
 		apt -f -y -m autoremove &&
 		
 		# update mysql root password
-		sudo mknod /run/mysqld/mysqld.sock p ;
-		mysqlconn="mysql -u root" ;
-		printf "enter your NEW mysql root password: "; read mysqlnewpass ;
-		
+		mysqlconn="sudo -u root mysql -u root" ;
+		printf "enter your mysql root password: "; read mysqlnewpass ;
+
 		if	[[ "$mysqlnewpass" != '' ]] ;
 	then
-		if grep socket /etc/mysql/my.cnf && exitcode=$(echo $?) ;
-	then
-		if [[ $exitcode = 1 ]] ;
-	then
-		echo "socket = ">>/etc/mysql/my.cnf ;
-		sed -i 's/\(socket *= *\).*/\1/run/mysqld/mysqld.sock/g' /etc/mysql/my.cnf ;
-	fi
-fi
-		/etc/init.d/mysql stop && wait ;
 		ps aux | grep -v grep | grep mysql | head -n1 | awk '{print $2}' | xargs kill -9 2>/dev/null;
 		ps aux | grep -v grep | grep mysqld_safe | head -n1 | awk '{print $2}' | xargs kill -9 2>/dev/null;
+		sudo mknod /run/mysqld/mysqld.sock p ;
 		mysqld_safe --skip-grant-tables &
+		sleep 3 &&
 		$mysqlconn -e "use mysql; update mysql.user set password=password('$mysqlnewpass') where user='root';" && wait ;
 		$mysqlconn -e "use mysql; update mysql.user set plugin='' where user='root';" && wait ;
 		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;" && wait ;
@@ -264,7 +256,10 @@ fi
 		echo -e "\n ... update mysql root passwords" ;
 		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf ;
 		sed -i "s/\(plugin_password *= *\).*/\1/" /etc/mysql_cp_db_password.conf ;
-	fi
+		echo -e "\n ... hit enter" ;
+		/etc/init.d/mysql start && wait ;
+		echo -e "\n ... hit enter" ;
+	fi		
 	# update mysql root password END
 	
 		echo -e "\n\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
