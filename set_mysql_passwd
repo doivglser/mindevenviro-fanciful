@@ -4,7 +4,6 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
 LANG=C ;
-set -x
 		if [ $EUID != 0 ] ;
 	then
 		sudo "$0" ;
