@@ -8,7 +8,7 @@ LANG=C ;
 	then
 		sudo "$0" ;
 	else
-		mysqlconn="sudo -u root mysql -u root" ;
+		mysqlconn="mysql -u root" ;
 help(){
 shift 0 ;
 echo -e "hello $SUDO_USER\nset new mariadb root password\n" ;
