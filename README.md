@@ -4,7 +4,7 @@
 
 # M1ND3V3NV1R0
 
-- Deployment Environment for Web Applications and System Administration, in a Minimal Desktop with Antivirus, NIDS and Great Multimedia Experience.
+- Deployment Environment for Web Applications and System Administration, in a Minimal Desktop with Antivirus, NIDS and Great Multimedia Experience. ( without systemd ) .
   
 - Antivirus engine ClamAV and NIDS solution Snort.
 
@@ -26,21 +26,13 @@
 
 # TODO:
 
-* shi3lD wont work with wicd, wicd doesn't apply command line arguments, to set up wireless networking.
-
-* search an alternative for wicd to interact with shi3lD shell script.
-
-* To adapt install script and all shell code to be portable with the FHS in CentOS and Fedora. (in all scripts)
+* Re-Write all scripts to be portable to: Debian, Fedora, CentOS and MacOSX
 
 * install joomla CMS
 
 * I search for the right MySQL syntax to delete id's.
-
-* wget install from github to install directly from console by one hit.
   
-* Repair shi3lD depends on:(start_shield  and  stop_shield).
-
-* shi3lD: To change the "user-agent" while changing the MAC - addresses.
+* Repair shi3lD depends on: start_shield.
 
 * sCRYPtUPdater
 
@@ -58,22 +50,13 @@
 
 # PROBLEMS:
 
-* no workaround to install wifi firmware.
+* no workaround to install wifi firmware. (I recommend a dd-wrt router as client over ethernet)
 
 * while installing:
 
 	while installing snort: debconf asks for interface eth0 no 
 	workaround for "eno[0-9]" interfaces. Take a look in to "ip route show" and 
 	"sudo dpkg --configure -a" with the name of your interface.
-	
-	While installing mysql-server, there has no password for root.
-	
-	./install :		workaround no password in /etc/mysql/debian.cnf
-				wont work properly.
-				
-	set_mysql_passwd :	I worte this script to set a root password for mysql-server (mariadb) 
-				"/run/mysqld/mysqld.sock" refuses connection to "mysqld_safe --skip-grant-tables &"
-				but sometimes worked. Issues with mysql reffering jommla install
 	
 # Requirements:
 
