@@ -37,10 +37,10 @@
 * sCRYPtUPdater
 
   To search for brackets and braces, to split the content of the source code into short code 
-  snippets. If the workflow interval in minutes is over, refer to the exit handler, if false, 
-  reset workflow interval, if true exit. Scan in ~/ for file suffixes or the header with dd, 
-  to determine the working directory. Implement Programmable Completion, to auto-complete the 
-  command sequence with the [Tab] key.
+  snippets.
+  
+  If the workflow interval in minutes is over, refer to the exit handler, if false, 
+  reset workflow interval, if true exit.
 
 * mindevenviro.rules, "iptables" drop rules for /etc/snort/rules/
   
@@ -80,13 +80,20 @@
 
   Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
-  snort wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools 
-  wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm 
-  oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan 
-  clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl 
-  php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache 
-  php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl 
-  fortunes figlet mc mutt eject nano nmon  
+		wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64
+		wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission
+		openvpn xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl 
+		clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client 
+		mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd 
+		php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww 
+		apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl 
+		perl fortunes figlet mc mutt eject nano nmon 
+
+* while installing
+ 
+   You can aprove to sign up in to your github.com account, or just hit enter.
+   
+   To set up the MariaDB root password, please don't enter more then 13 chars.
 
 # USAGE:
 
