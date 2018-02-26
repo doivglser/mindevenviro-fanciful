@@ -248,9 +248,10 @@
 	- serv-if-up
 	- redundanz
 	
-° new-install|update
+° install|update|maintenance
 
 	- install
+	- set_mysql_passwd
 	
 # in /var/www/html/
 
