@@ -4,7 +4,7 @@
 
 # M1ND3V3NV1R0
 
-- Deployment Environment for Web Applications and System Administration, in a Minimal Desktop with Antivirus, NIDS and Great Multimedia Experience. ( without systemd ) .
+- Deployment Environment for Web Applications and System Administration, in a Minimal Desktop with Antivirus, NIDS and a Great Multimedia Experience. ( without systemd ) . 
   
 - Antivirus engine ClamAV and NIDS solution Snort.
 
@@ -60,7 +60,7 @@
 	
 # Requirements:
 
-- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS and Fedora)
+- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS, Fedora and MacOSX)
 - Choose netinst CD image, and burn it on a blank CD-R.
 - Debian 9 GNU/Linux Stretch: https://www.debian.org/releases/stretch/debian-installer/
 - While installing: 
