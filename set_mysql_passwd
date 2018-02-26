@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # sets the root password for mariadb
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
@@ -34,6 +35,7 @@ changepass(){
 		echo -e "\n ... hit enter" ;
 		/etc/init.d/mysql start && wait ;
 		echo -e "\n ... hit enter" ;
+		echo -e "set_mysql_passwd $(date) :: as ${SUDO_USER} :: in $(uname -n) :: changed mysql root password ::" >> "/home/$SUDO_USER/.wH0rUNSon" ;
 	fi		
 }
 
