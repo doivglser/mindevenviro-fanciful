@@ -184,7 +184,7 @@
   
   Depends on: start_shield
 
-# SHELL SCRIPTS DOT FILES MEDIA FILES AND CONTENT
+# SHELL SCRIPTS DOT FILES AND CONTENT
 
 # in ~/
    
