@@ -61,8 +61,9 @@ done
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;	
 
 	echo -e "\n ... save vendors MAC-Address" ;
-	ip link show | grep ether | awk '{print $2}' | tee "/home/$SUDO_USER/.vendorsmac" ;
-	chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.vendorsmac" ;
+	touch "/root/.vendorsmac" ;
+	ip link show | grep ether | awk '{print $2}' | tee "/root/.vendorsmac" ;
+	chmod 0664 "/root/.vendorsmac" ;
 
 	echo -e "\n ... create /home/$SUDO_USER Directories" ;
 	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton} ;

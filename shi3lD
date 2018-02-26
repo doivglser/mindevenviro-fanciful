@@ -14,7 +14,8 @@ IFS=$(echo -en "\n\b") ;
 
 		if [ ! $EUID = 0 ] ;
 	then
-		sudo "$0" ;
+		echo "USAGE: sudo $0" ;
+		exit 0 ;
 else
 		if [[ $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) = Iface ]] ;
 	then
@@ -30,19 +31,6 @@ fi
 		tmpfolder="/tmp" ;
 fi
 # temp folder END
-
-# vendors mac-address
-		if [ ! -e "/home/root/.vendorsmac" ] ;
-	then
-		touch /home/root/.vendorsmac ;
-		chmod 0660 /home/root/.vendorsmac ;
-		
-		if ip link show | grep ether | awk '{print $2}' | tee -a /home/root/.vendorsmac ;
-	then
-		echo "installed" ;
-	fi
-fi
-# vendors mac-address END
 
 clear && echo -e "\n" ;
 nnumberr="0" ;
@@ -66,7 +54,7 @@ stop_network(){
 }
 
 puffeRR(){
-		if [[ "$(cat /home/root/.vendorsmac | head -n"${whoUP}" | tail -n1)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
+		if [[ "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
 	then
 		echo -e "\n -shi3lD: shut down interfaces?\n " ;
 		read -p " enter to continue" ;
@@ -83,7 +71,7 @@ echo " -"
 		if [[ $REPLY =~ y|Y|j|J ]] ;
 	then
 		ip link set dev "$interface" down && sleep 2 &&
-		ip link set dev "$interface" address "$(cat /home/root/.vendorsmac | head -n"${whoUP}" | tail -n1)" &&
+		ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" &&
 		ip link set dev "$interface" up && sleep 2 ;
 		echo -e "\n .You where surfing with this MAC:\n\n
 		$(find /home/root/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
