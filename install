@@ -1,17 +1,15 @@
 #!/bin/bash
 # installs min-dev-enviro
-
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-
+# 
 LANG="C" ;
 myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl fortunes figlet mc mutt eject nano nmon " ;
 environinstall="server-monitor redundanz serv-if-up sCRYPtUPdater shi3lD start_shield feh-bg hi hi_cheese hi_brutalchess hi_libreoffice hi_geany hi_gimp hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db set_mysql_passwd openpdf takeshot install " ;
-mysqlconn="mysql -u root" ;
 apPRn='' ;
 
 		if [ ! $EUID = 0 ] ;
 	then
-		echo -e "please sudo" ;
+		echo "please sudo"
 		exit 0 ;
 else
 		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
@@ -236,27 +234,7 @@ fi
 		echo -e "\n ... add i386 arch in 64bit system, to install wine32" ;
 		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 && wait ;
 		# update mysql root password
-		printf "enter your mysql root password: "; read mysqlnewpass ;
-
-		if	[[ "$mysqlnewpass" != '' ]] ;
-	then
-		ps aux | grep -v grep | grep mysql | head -n1 | awk '{print $2}' | xargs kill -9 2>/dev/null;
-		ps aux | grep -v grep | grep mysqld_safe | head -n1 | awk '{print $2}' | xargs kill -9 2>/dev/null;
-		sudo mknod /run/mysqld/mysqld.sock p ;
-		mysqld_safe --skip-grant-tables &
-		sleep 3 &&
-		$mysqlconn -e "use mysql; update mysql.user set password=password('$mysqlnewpass') where user='root';" && wait ;
-		$mysqlconn -e "use mysql; update mysql.user set plugin='' where user='root';" && wait ;
-		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;" && wait ;
-		ps aux | grep -v grep | grep mysqld_safe | head -n1 | awk '{print $2}' | xargs kill -9 2>/dev/null;
-		echo -e "\n ... update mysql root passwords" ;
-		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf ;
-		sed -i "s/\(plugin_password *= *\).*/\1/" /etc/mysql_cp_db_password.conf ;
-		echo -e "\n ... hit enter" ;
-		/etc/init.d/mysql start && wait ;
-		echo -e "\n ... hit enter" ;
-	fi		
-	# update mysql root password END
+		source ./set_mysql_passwd ;
 	
 		# change the physiology to original
 		apt-get -f -m -y install sysvinit-core && wait ;
@@ -264,8 +242,8 @@ fi
 		
 		if grep successfully_installed /home/$SUDO_USER/.installed
 	then
-		# remove odd characters
-		apt-get -f -m -y remove --purge --auto-remove systemd && wait ;
+		# remove odd characters 
+		apt-get -f -m -y remove --purge --auto-remove systemd* && wait ;
 		# issuing responsiblity
 		echo -e 'Package: *systemd*\nPin: release *\nPin-Priority: -1\n' > /etc/apt/preferences.d/systemd ;
 fi

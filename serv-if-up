@@ -3,7 +3,6 @@
 # serv-if-up (daemon) : restarts servers and notify
 LANG="C";
 up="0"
-
 		if [ $EUID != 0 ] ;
 	then
 		echo "Hi $USER, this script restart servers and notify if error and or success" ;
