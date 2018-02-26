@@ -9,7 +9,7 @@ apPRn='' ;
 
 		if [ ! $EUID = 0 ] ;
 	then
-		echo "please sudo"
+		echo "USAGE: sudo $0"
 		exit 0 ;
 else
 		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
