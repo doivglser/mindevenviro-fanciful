@@ -32,7 +32,7 @@
 
 * I search for the right MySQL syntax to delete id's.
   
-* Repair shi3lD depends on: start_shield.
+* To repair shi3lD
 
 * sCRYPtUPdater
 
@@ -104,28 +104,32 @@
 
 # On vtwm:
 
+* geany
+
+  fast and lightweight IDE
+
+* transmission
+
+  lightweight BitTorrent client
+
 * Firefox-ESR
 
   type: localhost/dwww for dwww. ( dwww collects information from /usr/share/{man,doc} )
   
   type: localhost/testphp for your php stuff.
-
-* VLC 
-
-  Listen to your music and/or videos.
   
-* transmission
-
-  lightweight BitTorrent client
-  
-* geany
-
-  fast and lightweight IDE
-
 * PlayOnLinux (manage's wine win32/win64)
 
   Install: win32 and win64 MS-Office applications and Games
 
+* brutalchess
+
+  3D chess game with reflection of the chessmen
+  
+* Libreoffice
+
+  Writer
+  
 * terminator (Multiple GNOME terminals in one window.)
 
   "ctrl+PageUP" cycles TAB to right
@@ -133,6 +137,26 @@
   "ctrl+PageDOWN" cycles TAB to left
   
   "ctrl+TAB" swap's between Panned TAB's
+
+* gimp
+
+  Das GNU-Bildbearbeitungsprogramm
+  
+* wicd
+
+  wired and wireless network manager
+
+* cheese
+
+  Tool to take pictures and videos from your webcam
+
+* VLC 
+
+  Listen to your music and/or videos.
+  
+* openpdf (shell script)
+
+  Open PDF files with pdf suffix
   
 * sCRYPtUPdater (shell script)
 
