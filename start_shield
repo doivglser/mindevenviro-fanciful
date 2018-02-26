@@ -29,8 +29,19 @@ homeordner="/home/${SUDO_USER}/" ;
 interface="$(cat "$tmpfolder"/interface)" ;
 nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 
+		if [[ "$interface" =~ eno|eth ]] ;
+	then
+		whoUP="1" ;
+
+		elif [[ "$interface" =~ wl|wi ]] ;
+	then
+		whoUP="2" ;
+	else
+		whoUP="none" ;
+fi
+
 puff_MACs(){
-		if [[ "$(cat /home/"$SUDO_USER"/.vendorsmac)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
+		if [[ "$(cat /home/"${USER}"/.vendorsmac | head -n"${whoUP}" | tail -n1)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
 	then
 		until [[ "$nnumberOFinterface" = "0" ]] ;
 	do

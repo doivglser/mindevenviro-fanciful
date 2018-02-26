@@ -67,13 +67,13 @@ stop_network(){
 }
 
 puffeRR(){
-		if [[ "$(cat /home/"$SUDO_USER"/.vendorsmac)" =~ "$(ip link show | grep ether | awk '{print $2}')" ]] ;
+		if [[ "$(cat /home/"${USER}"/.vendorsmac | head -n"${whoUP}" | tail -n1)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
 	then
 		echo -e "\n -shi3lD: shut down interfaces?\n " ;
 		read -p " enter to continue" ;
 		stop_network ;		
 		echo -e "\n :: changing macaddress :: \n"  
-		source /usr/local/bin/start_shield ;	
+		source start_shield ;	
 fi
 }
 
@@ -84,7 +84,7 @@ echo " -"
 		if [[ $REPLY =~ y|Y|j|J ]] ;
 	then
 		ip link set dev "$interface" down && sleep 2 &&
-		ip link set dev "$interface" address "$(cat /home/"${SUDO_USER}"/.vendorsmac | head -n"${whoUP}")" &&
+		ip link set dev "$interface" address "$(cat /home/"${USER}"/.vendorsmac | head -n"${whoUP}" | tail -n1)" &&
 		ip link set dev "$interface" up && sleep 2 ;
 		echo -e "\n .You where surfing with this MAC:\n\n
 		$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
