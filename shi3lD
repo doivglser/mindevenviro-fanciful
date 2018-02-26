@@ -32,7 +32,7 @@ fi
 # temp folder END
 
 # vendors mac-address
-		if [ ! -e "/home/$SUDO_USER/.vendorsmac" ] && [[ ! "$(wc -l /home/"$SUDO_USER"/.vendorsmac)" -ge "1" ]] ;
+		if [ ! -e "/home/$SUDO_USER/.vendorsmac" ] ;
 	then
 		touch /home/"$SUDO_USER"/.vendorsmac ;
 		chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.vendorsmac ;
@@ -84,7 +84,7 @@ echo " -"
 		if [[ $REPLY =~ y|Y|j|J ]] ;
 	then
 		ip link set dev "$interface" down && sleep 2 &&
-		ip link set dev "$interface" address "$(cat /home/"${SUDO_USER}"/.vendorsmac | head -n$whoUP)" &&
+		ip link set dev "$interface" address "$(cat /home/"${SUDO_USER}"/.vendorsmac | head -n"${whoUP}")" &&
 		ip link set dev "$interface" up && sleep 2 ;
 		echo -e "\n .You where surfing with this MAC:\n\n
 		$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
