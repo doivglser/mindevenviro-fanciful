@@ -73,7 +73,7 @@ done
 	wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add - ;
 	wget "http://deb.playonlinux.com/playonlinux_jessie.list" -O /etc/apt/sources.list.d/playonlinux.list ;
 	echo -e "\n ... I do an update" ;	
-	apt-get update && wait ;
+	apt-get update ;
 
 	printf "your email-address on github.com: "; read eM4il
 	
@@ -96,8 +96,19 @@ done
 	fi
 		# update upgrade
 		echo -e "\n ... update upgrade clean and autoremove" ;
-		apt-get update && apt-get -f -y -m --allow-change-held-packages upgrade && wait ;
+		apt-get update && apt-get -f -y -m --allow-change-held-packages upgrade ;
+
+		# change the physiology to original
+		apt-get -f -m -y install sysvinit-core ;
+		cp -f /usr/share/sysvinit/inittab /etc/inittab ;
+		# issuing responsiblity
+		echo -e 'Package: *systemd*\nPin: release *\nPin-Priority: -1\n' > /etc/apt/preferences.d/systemd ;
 		
+		if grep successfully_installed /home/$SUDO_USER/.installed
+	then
+		# remove odd characters 
+		apt-get -f -m -y remove --purge --auto-remove systemd ;
+fi	
 		#install
 		while [[ "$nNuM2" != "0" ]] ;
 	do
@@ -112,7 +123,7 @@ done
 		((nNuM2--)) ;
 	else
 		echo -e "\ninstalling ${toInst}..." ;
-		apt-get -f -m -y --allow-change-held-packages install "$toInst" | tee -a "/home/$SUDO_USER/.installed" && wait ;
+		apt-get -f -m -y --allow-change-held-packages install "$toInst" | tee -a "/home/$SUDO_USER/.installed" ;
 		wait ;
 		sleep 1 ;
 		apPR="$toInst, INSTALLED!" ;
@@ -136,7 +147,7 @@ done
 
 	echo -e "\n ... set background Pictures" ;
 	rm -R /home/$SUDO_USER/Pictures/* 2>/dev/null ;
-	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures && wait ;
+	unzip wallpapers.zip -d /home/$SUDO_USER/Pictures ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
 	echo -e "\n ... installing flash player for linux" ;
@@ -209,10 +220,10 @@ done
 		echo -e "\n ... cgi-bin dir exists" ;
 fi
 		echo -e "\n ... update apache2 configuration" ;
-		a2enmod cgid && wait ;
+		a2enmod cgid ;
 		
 		echo -e "\n ... restarting apache2 server" ;
-		/etc/init.d/apache2 restart && wait ;
+		/etc/init.d/apache2 restart ;
 
 		echo -e "\n ... put $SUDO_USER/Downloads in a Jail" ;
 		echo "/dev/shm /home/$SUDO_USER/Downloads auto bind 0 0" | tee -a /etc/fstab ;
@@ -226,27 +237,17 @@ fi
 		touch "/home/$SUDO_USER/.wH0rUNSon" && chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.wH0rUNSon" && chmod 0660 "/home/$SUDO_USER/.wH0rUNSon" ;
 	fi
 		echo -e "\n ... installing snort " ;
-		apt-get -f -m -y --allow-change-held-packages install snort && wait ;
+		apt-get -f -m -y --allow-change-held-packages install snort ;
 		# reconfigure all
 		echo -e "\n ... reconfiguring installed packages " ;
-		dpkg --configure -a && wait ;
+		dpkg --configure -a ;
 		# add i386 arch in 64bit system, to install wine32
 		echo -e "\n ... add i386 arch in 64bit system, to install wine32" ;
-		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 && wait ;
-		# update mysql root password
-		source ./set_mysql_passwd ;
-	
-		# change the physiology to original
-		apt-get -f -m -y install sysvinit-core && wait ;
-		cp -f /usr/share/sysvinit/inittab /etc/inittab ;
+		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 ;
 		
-		if grep successfully_installed /home/$SUDO_USER/.installed
-	then
-		# remove odd characters 
-		apt-get -f -m -y remove --purge --auto-remove systemd* && wait ;
-		# issuing responsiblity
-		echo -e 'Package: *systemd*\nPin: release *\nPin-Priority: -1\n' > /etc/apt/preferences.d/systemd ;
-fi
+		# update mysql root password
+		source /home/$SUDO_USER/M1ND3V3NV1R0/set_mysql_passwd --password ;
+	
 		# cleaning the environment
 		apt-get clean &&
 		apt -f -y -m autoremove &&
