@@ -25,7 +25,7 @@ then
 stopLoop="0" ;
 binarie0="/usr/sbin/clamd" ;
 binarie1="/usr/sbin/snort" ;
-homeordner="/home/${SUDO_USER}/" ;
+homeordner="/home/root/" ;
 interface="$(cat "$tmpfolder"/interface)" ;
 nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 
@@ -41,7 +41,7 @@ nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 fi
 
 puff_MACs(){
-		if [[ "$(cat /home/"${USER}"/.vendorsmac | head -n"${whoUP}" | tail -n1)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
+		if [[ "$(cat /home/root/.vendorsmac | head -n"${whoUP}" | tail -n1)" = "$(ip link show | grep ether | awk '{print $2}')" ]] ;
 	then
 		until [[ "$nnumberOFinterface" = "0" ]] ;
 	do
@@ -56,13 +56,6 @@ done
 fi
 }
 
-permissions(){
-	chown $SUDO_USER:$SUDO_USER "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease"
-	chmod 0660 "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease"
-	chown $SUDO_USER:$SUDO_USER "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease"
-	chmod 0660 "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease"
-	}
-
 writeM4C_Connected(){
 		if [[ -e "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" ]]
 	then
@@ -70,7 +63,7 @@ writeM4C_Connected(){
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}.$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_recieves_dhcp_lease" ;
 	else
-		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" && permissions ;
+		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" ;
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}.$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_recieves_dhcp_lease" ;
@@ -84,11 +77,16 @@ writeM4C_SelfAssigned(){
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "$homeordner.$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_no_dhcp_lease" ;
 	else
-		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease" && permissions ;
+		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease" ;
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "$homeordner.$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_no_dhcp_lease" ;
 fi
+}
+
+stop_network(){
+	#
+	ip link set dev "$interface" down ; sleep 2 ;
 }
 
 m41N__(){
@@ -108,7 +106,7 @@ m41N__(){
 		stopLoop="1" ;
     else
         echo -e "no connection with this $(ip link show "$m4c" | grep ether | awk '{print $2}'), I try again ..."
-        . /usr/local/bin/stop_shield ;
+        stop_network ;
 		writeM4C_SelfAssigned ;
 	fi
 done
