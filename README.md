@@ -32,7 +32,7 @@
 
 * I search for the right MySQL syntax to delete id's.
   
-* Repair of shi3lD depends on: start_shield.
+* To repair shi3lD
 
 * sCRYPtUPdater
 
