@@ -1,6 +1,7 @@
 #!/bin/bash
-# mindevenviro
+# mindevenviro serv-if-up
 # serv-if-up (daemon) : restarts servers and notify
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
 LANG="C";
 up="0"
 		if [ $EUID != 0 ] ;
@@ -42,6 +43,7 @@ findIface(){
 		if [[ $up = "0" ]] ;
 	then 
 		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
+		echo "$interface" > "$tmpfolder"/interface ;
 		echo ":: We run this Iface: $interface $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
 	fi
 }
@@ -49,7 +51,7 @@ findIface(){
 
 # snortUP
 snortUP(){
-		if [[ $(ps axu | grep -v grep | grep -v snortup | grep "$nids") = '' ]] ;
+		if [[ $(ps axu | grep -v grep | grep "$nids") = '' ]] ;
 	then
 		/etc/init.d/"$nids" start -i "$interface"
 		

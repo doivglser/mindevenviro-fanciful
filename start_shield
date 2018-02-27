@@ -1,15 +1,15 @@
 #!/bin/bash
 # mindevenviro start_shield
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ### 
-
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###   
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 
 		if [ ! $EUID = 0 ] ;
 	then
-		sudo "$0" ;
+		echo -e " USAGE: sudo shi3lD \r depends on redundanz" ;
+		exit 0 ;
 else
-	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD | awk '{print $2}' | wc -l) " -gt "1" ]] ;
+	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
 then
 stopLoop="0" ;
 binarie0="/usr/sbin/clamd" ;
@@ -93,11 +93,11 @@ ifUPAntiVirusFireWall(){
 
 		if [[ "$ifDown0" != "$binarie0" ]]
 	then
-		echo -e "restarting ClamAV ...\n" ;
+		printf "\r restarting ClamAV..." && sleep .1 ;
 	fi	
 	    if [[ "$ifDown1" != "$binarie1" ]]
 	then
-		echo -e "restarting Snort ...\n" ;
+		printf "\r restarting Snort..." && sleep .1 ;
 fi
 done
 }

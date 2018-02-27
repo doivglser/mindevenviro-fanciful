@@ -3,17 +3,17 @@
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
 # restart clamd and snort if failure, cut the Ethernet Interface connection, while starting up
 # ctrl+C cut's Ethernet Interface connection and revert to your vendors MAC-ADDRESS
-
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-
-#	TODO:
-#
-#	workaround when clamd fails, snort fails too.
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
+LANG="C" ;
+FILE_m="serv-if-up" ;
 
 		if [ ! $EUID = 0 ] ;
 	then
-		sudo "$0" ;
+		echo -e " USAGE: sudo $0 \n depends on redundanz" ;
+		exit 0 ;
 else
+		if [[ "$(ps aux | grep "$FILE_m" | grep -v nano | grep -v geany | grep -v grep | tail -n1) " != "1" ]] ;
+	then
 
 clear && echo -e "\n" ;
 nnumberr="0" ;
@@ -90,4 +90,15 @@ exitHandler(){
 		puffeRR ;
 	fi
 done
+else
+	clear ;
+	printf "warning your system could heat up, do you want to reboot? ok|no " ; read -r ;
+	
+		if [[ "$REPLY" = "ok" ]] ;
+	then
+		stop_shield && init 6 ;
+	else
+		echo "do you know?"
+fi
+fi
 fi
