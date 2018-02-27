@@ -31,8 +31,6 @@
 * install joomla CMS
 
 * I search for the right MySQL syntax to delete id's.
-  
-* To repair shi3lD
 
 * sCRYPtUPdater
 
