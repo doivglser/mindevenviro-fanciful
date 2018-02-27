@@ -74,7 +74,7 @@
 
 # Install
 
-* ivo@x0x:~/min-dev-enviro$ sudo ./install 
+* ivo@x0x:~/mindevenviro$ sudo ./install 
 
   Installs the deployment environment and the minimal desktop with antivirus and NIDS:
 
