@@ -60,7 +60,7 @@
       parent = child1
       profile = default
       type = Terminal
-      command = "nmon"
+      command = "htop"
 [plugins]
 [profiles]
   [[default]]
