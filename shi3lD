@@ -64,9 +64,8 @@ exitHandler(){
 			sudo ip link set dev "$interface" down && sleep 5 && 
 			sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" && 
 			sudo ip link set dev "$interface" up && sleep 2 ;
-			sudo systemctl restart snort.service && clear && 
 			echo -e "\n .You where surfing with this MAC:\n\n
-			$(find /home/dob/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
+			$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
 			awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n" ;
 			exit 0 ;
 
