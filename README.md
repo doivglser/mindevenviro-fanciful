@@ -187,7 +187,7 @@
   
   If "sudo redundanz -m" is running, then shi3lD will puff your MAC-Address, so you become a new IP.
   
-  Depends on: start_shield
+  Depends on: start_shield, stop_shield
 
 # SHELL SCRIPTS DOT FILES AND CONTENT
 
