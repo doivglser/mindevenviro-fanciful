@@ -247,6 +247,8 @@
 
 	- shi3lD
 	- start_shield
+	- stop_shield
+	- nids-antivirus-up
 	
 ° syntax|search|edit
 
