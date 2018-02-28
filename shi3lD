@@ -69,10 +69,9 @@ exitHandler(){
 		then
 			sudo ip link set dev "$interface" down && sleep 1 && 
 			sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" && 
-			sudo ip link set dev "$interface" up && sleep 1 ;
 			echo -e "\n .You where surfing with this MAC:\n\n
 			$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
-			awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n" ;
+			awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n your network down." ;
 			exit 0 ;
 
 			elif [[ $REPLY =~ n|N ]] ;
