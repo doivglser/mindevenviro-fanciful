@@ -225,8 +225,6 @@
   
   .installed
   
-  .vendorsmac
-  
   .twmrc
   
   .config/mc/ini
