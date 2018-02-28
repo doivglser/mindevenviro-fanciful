@@ -90,8 +90,6 @@
 * while installing
  
    You can aprove to sign up in to your github.com account, or just hit enter.
-   
-   To set up the MariaDB root password, please don't enter more then 13 chars.
 
 # USAGE:
 
@@ -188,6 +186,14 @@
   If "sudo redundanz -m" is running, then shi3lD will puff your MAC-Address, so you become a new IP.
   
   Depends on: start_shield, stop_shield
+ 
+* set_mysql_passwd (shell script)
+
+  To set up the MariaDB root password, please don't enter more then 13 chars.
+
+* install (shell script)
+
+  To install and update mindevenviro.
 
 # SHELL SCRIPTS DOT FILES AND CONTENT
 
