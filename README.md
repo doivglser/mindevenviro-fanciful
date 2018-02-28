@@ -181,11 +181,25 @@
   
 * shi3lD (shell script)
 
-  USAGE: "shi3lD"
+  USAGE: "sudo shi3lD"
   
-  If "sudo redundanz -m" is running, then shi3lD will puff your MAC-Address, so you become a new IP.
+  If "sudo redundanz -m" is running AND you are connected with the Internet,
   
-  Depends on: start_shield, stop_shield
+  then shi3lD will puff your MAC-Address, so you become a new IP.
+  
+  Try to connect to your Network using wicd-client or the option "network" from Menu,
+  
+  until shi3lD says "WE HAVE shi3lD".
+  
+  You will have two files on ~/ : 
+  
+  		° "[MonthYear].mac_recieves_dhcp_lease"
+			A list with MAC-ADDRESSES that works with your hardware
+		
+		° "[MonthYear].mac_no_dhcp_lease"
+			A list with MAC-ADDRESSES that doesn't work with your hardware
+			
+  Depends on: start_shield, stop_shield, nids-antivirus-up
  
 * set_mysql_passwd (shell script)
 
