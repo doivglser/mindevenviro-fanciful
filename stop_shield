@@ -22,12 +22,8 @@ fi
 stop_network(){
 	sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ;
 }
-
-main_(){
-	stop_network ;
-}
 		if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
 	then
-		main_ ;
+		stop_network "$@" ;
 fi
 fi

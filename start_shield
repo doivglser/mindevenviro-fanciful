@@ -109,9 +109,14 @@ ifUPAntiVirusFireWall(){
 	fi	
 	    if [[ "$(ps aux | grep -v grep | grep snort | grep -v nano | awk '{print $11}')" != "$nids" ]]
 	then
+		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
+    then
 		printf "\r restarting Snort..." ;
 		nohup nids-antivirus-up --nIDs &
 		sleep 1 ;
+	else
+		printf "\rplease connect to the internet" ; sleep 1 ;
+	fi
 fi
 done
 }  

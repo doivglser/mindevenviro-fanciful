@@ -16,6 +16,8 @@ fi
 interface="$(cat "$tmpfolder"/interface)" ;
 # snortUP   
 snortUP(){
+		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
+    then
 		if [[ $(ps axu | grep -v grep | grep "$nids") = '' ]] ;
 	then
 		/etc/init.d/"$nids" start -i "$interface" 2>/dev/null 2>&1 < /dev/null &
@@ -44,6 +46,9 @@ EOM
 fi
 	else
 		echo "" ;
+fi
+else
+	printf "\rplease connect to the internet" ; sleep 1 ;
 fi
 }
 # snortUP END
