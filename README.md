@@ -195,9 +195,9 @@
    
   .wH0rUNSon
   
-  .[MonthYear].mac_recieves_dhcp_lease
+  [MonthYear].mac_recieves_dhcp_lease
   
-  .[MonthYear].mac_no_dhcp_lease
+  [MonthYear].mac_no_dhcp_lease
   
   .installed
   
