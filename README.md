@@ -211,6 +211,10 @@
 
 # SHELL SCRIPTS DOT FILES AND CONTENT
 
+# in /root
+
+  /root/.vendorsmac
+
 # in ~/
    
   .wH0rUNSon
