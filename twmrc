@@ -20,13 +20,13 @@ FixTransientVirtualGeometries
 
 BorderWidth		1
 
-BorderBevelWidth	2
-ButtonBevelWidth	1
-IconBevelWidth		2
-IconManagerBevelWidth	1
+BorderBevelWidth	0
+ButtonBevelWidth	0
+IconBevelWidth		0
+IconManagerBevelWidth	0
 InfoBevelWidth		2
 MenuBevelWidth		2
-TitleBevelWidth		1
+TitleBevelWidth		2
 
 ClearBevelContrast	80
 DarkBevelContrast	20
