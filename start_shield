@@ -59,8 +59,8 @@ done
 }
 
 permissions(){
-		sudo chown ./*mac_* 2>/dev/null ;
-		sudo chmod 0750 ./*mac_* 2>/dev/null ;
+		sudo chown $SUDO_USER:$SUDO_USER "$(date | awk '{print $2,$6}' | sed 's/\ //g')" 2>/dev/null ;
+		sudo chmod 0750 "$(date | awk '{print $2,$6}' | sed 's/\ //g')" 2>/dev/null ;
 }
 
 writeM4C_Connected(){
