@@ -1,4 +1,5 @@
 #!/bin/bash
+# mindevenviro set_mysql_passwd
 # sets the root password for mariadb
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 # 

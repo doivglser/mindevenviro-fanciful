@@ -7,9 +7,9 @@
 LANG="C" ;
 network="check" ;
 		
-		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] ;
+		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] || [[ ! $(netstat -ar) =~ 'default' ]] ;
 	then
-		echo -e " USAGE: sudo $0 \n depends on redundanz" ;
+		echo -e " USAGE: sudo $0 \n depends on redundanz \n you must have internet." ;
 		exit 0 ;
 else
 

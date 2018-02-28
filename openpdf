@@ -1,19 +1,22 @@
 #!/bin/bash
-# opens PDF from ~/Documents folder
-#
-
+# mindevenviro openpdf
+# opens PDFs
+###     WARNING:    DON'T EDIT ANYTHING BELOW  
 LANG="C" ;
 IFS=$(echo -en "\b\n") ;
 
 		if [ -e $1 ] && [[ $(file $1 2>/dev/null) =~ directory ]] ;
 	then
-		for open in $(find "${1}"*.pdf -type f | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g'); 
+		for suffixes in *.pdf *.PDF ;
+	do
+		for open in $(find $1 -name "$suffixes" -type f | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g'); 
 	do 
 		while read line
 	do
 						mupdf $line 2>/dev/null && wait ;
 		done <<<$open;
 	done;
+	done;
 	else
-		echo -e "\n ... type correctly, opens only in folders" ;
+		echo -e " USAGE: "$0" [directory]|[.] \n [directory] : opens in [directory] all files with *.pdf suffix \n [.] : \"openpdf .\" will open all in your home \n just pull kill from Menu to open a new one \n ctrl+C quits." ;
 fi

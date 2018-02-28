@@ -1,7 +1,6 @@
 #!/bin/bash
 # mindevenviro
 # syntax check and update to /urs/local/bin, /var/www/testphp, /usr/lib/cgi-bin
-
 ###     WARNING:    DON'T EDIT ANYTHING BELOW
 LANG="C" ;
 

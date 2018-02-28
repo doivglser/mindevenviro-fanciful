@@ -1,8 +1,8 @@
 #!/bin/bash
-# mindevenviro  
+# mindevenviro search
 #TODO: 
-# problems with spaces IFS var setting???
-# search by path and file suffix, if grep true open file
+# problems with spaces IFS var
+###     WARNING:    DON'T EDIT ANYTHING BELOW
 
 				if [ "$EUID" != 0 ] ;
 			then
@@ -24,7 +24,7 @@ echo -e "search $(date) :: as $SUDO_USER :: in $(uname -n) :: in $path ::" >>"/h
 	
 		if [[ $(echo "$line" | xargs file) =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
 	then
-			if [[ ! $(echo $line | xargs grep "$togrep" 2>/dev/null) = '' ]] ;
+			if echo $line | xargs grep "$togrep" 2>/dev/null && echo $line | xargs | grep -v "$exclud3" 2>/dev/null ;
 		then
 			uS3F=$(ls -sl "$line" | awk '{print $4}' | tr -d '\ ');
 			
@@ -63,7 +63,7 @@ exit 0 ;
 
 eingabe(){
 pause=0 ;
-for lines in $(find $path -regex '[a-zA-Z0-9\ \/\._]*' -type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g' | grep -E "$suffixx"$ 2>/dev/null | grep -vE "$exclud3" 2>/dev/null) ;
+for lines in $(find $path -regex '[a-zA-Z0-9\ \/\._].*' -type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g' | grep -E "$suffixx"$ 2>/dev/null) ;
 	do
 		if [[ $pause = 1 ]] ;
 	then
