@@ -89,5 +89,6 @@ alias vol='alsamixer'
 alias works='tail -f .wH0rUNSon'
 alias post='sudo -u root mutt'
 alias reboot='sudo init 6'
-alias | sed -n 's/alias //p ;'
-fortune && cd && pwd
+alias vga='xrandr --output VGA-1 --mode 1024x768 --scale 1x1 --output eDP-1 --mode 1280x800 --scale 1x1 --left-of VGA-1'
+alias | sed -n 's/alias //p ;' ;
+fortune && cd && pwd && date ;
