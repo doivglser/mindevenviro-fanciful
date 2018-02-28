@@ -68,6 +68,15 @@ esac
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# temp folder END
+
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -84,11 +93,11 @@ if ! shopt -oq posix; then
 fi
 set -o noclobber
 alias ls='ls --color=auto -sh'
-alias down='sudo init 0'
+alias down='xrandr --output VGA-1 --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 0'
 alias vol='alsamixer'
 alias works='tail -f .wH0rUNSon'
 alias post='sudo -u root mutt'
-alias reboot='sudo init 6'
+alias reboot='xrandr --output VGA-1 --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 6'
 alias vga='xrandr --output VGA-1 --mode 1024x768 --scale 1x1 --output eDP-1 --mode 1280x800 --scale 1x1 --left-of VGA-1'
 alias | sed -n 's/alias //p ;' ;
 fortune && cd && pwd && date ;
