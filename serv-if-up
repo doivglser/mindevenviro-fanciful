@@ -1,15 +1,14 @@
 #!/bin/bash
 # mindevenviro serv-if-up
 # serv-if-up (daemon) : restarts servers and notify
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C";
-up="0"
 		if [ $EUID != 0 ] ;
 	then
 		echo "Hi $USER, this script restart servers and notify if error and or success" ;
 		echo "USAGE: sudo redundanz -m" ;
 else
-	if [[ "$(ps aux | grep -v grep | grep -v nano | grep redundanz | awk '{print $2}' | wc -l) " -gt "1" ]] ;
+	if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep redundanz | awk '{print $2}' | wc -l) " -gt "1" ]] ;
 then
 
 # temp folder
@@ -20,10 +19,8 @@ then
 		tmpfolder="/tmp" ;
 fi
 # temp folder END
-
+touch "$tmpfolder/root_mail_status"
 # name vars
-nids="snort" ;
-antivirus="clamd" ;
 webserver="apache2" ;
 datenbank="mysql" ;
 mta="sendmail" ;
@@ -33,88 +30,6 @@ noHome="No Home Partition on this computer" ;
 WARN01="80" ;
 WARN02="85" ;
 # name vars END
-
-# temp file in volatile ~/Download
-> "$tmpfolder/root_mail_status" ;
-# temp file END
-
-# finds connected Iface and saves in vars
-findIface(){
-		if [[ $up = "0" ]] ;
-	then 
-		interface="$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)";
-		echo "$interface" > "$tmpfolder"/interface ;
-		echo ":: We run this Iface: $interface $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
-	fi
-}
-# findIface END
-
-# snortUP
-snortUP(){
-		if [[ $(ps axu | grep -v grep | grep "$nids") = '' ]] ;
-	then
-		/etc/init.d/"$nids" start -i "$interface"
-		
-		if setsid "$nids" -i "$interface" >/dev/null 2>&1 < /dev/null
-	then
-
-ps axu | grep -v grep | grep -v snortup | grep "$nids" > "$tmpfolder/root_mail_status" ;
-	
-cat << EOM | sendmail root@localhost
-
-$(cat "$tmpfolder/root_mail_status")
-
-EOM
-
-else
-
-cat << EOM | sendmail root@localhost
-
-$(cat "$tmpfolder/root_mail_status")
-
-EOM
-
-fi
-	else
-		sleep 0.1 ;
-fi
-}
-# snortUP END
-
-# checks if clamd is up, if false restarts
-clamdUP(){
-	 /etc/init.d/"$antivirus" stop ;
-	if /etc/init.d/"$antivirus" start > "$tmpfolder/root_mail_status" ;
-then
-
-/etc/init.d/"$antivirus" status >> "$tmpfolder/root_mail_status" ;
-
-echo "$?" >> "$tmpfolder/root_mail_status" ;
-
-echo ":: $antivirus fails, but restartet successfully, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3
-
-cat << EOM | sendmail root@localhost
-
-$(cat "$tmpfolder/root_mail_status")
-
-EOM
-
-	else
-
-/etc/init.d/"$antivirus" status > "$tmpfolder/root_mail_status" ;
-date "+Start Attempt $antivirus, Failure Time: %H.%M" >> "$tmpfolder/root_mail_status" ;
-
-cat << EOM | sendmail root@localhost
-
-$(cat "$tmpfolder/root_mail_status")
-
-EOM
-
-echo ":: you got email, $antivirus fails, cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
-
-fi
-}
-# clamdUP END
 
 # checks if apache2 is up, if false restarts
 apacheUP(){
@@ -278,48 +193,23 @@ echo "::WARNING:: your over $WARN01 % or $WARN02 %, you got email $(date | awk '
 # loop
 		while true
 	do
-		if [[ $(netstat -ar) =~ 'default' ]] ;
-	then 
-		findIface && wait && sleep .5 ;
-		up="1" ;
-	else
-
-echo ":: We got no Internet $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
-
-		up="0" ;
-
-cat << EOM | sendmail root@localhost
-
-Subject:down
-
-We got no Internet.
-
-EOM
-	fi
-		if [[ "$(ps aux | grep -v grep | grep snort)" = '' ]] ;
-	then
-		snortUP && wait && sleep .5 ;
-	fi
-		if [[ "$(ps aux | grep -v grep | grep clamd)" = '' ]] ;
-	then
-		clamdUP && wait && sleep .5 ;
-	fi
         if [[ "$(netstat -an | grep LISTEN | grep :80 | awk '{print $4}' | tail -n1)" = '' ]] ;
 	then
-		apacheUP && wait && sleep .5 ;
+		apacheUP && wait && sleep 1 ;
 	fi
         if [[ "$(netstat -an | grep LISTEN | grep :25 | awk '{print $4}' | tail -n1)" = '' ]] ;
 	then
-		sendmailUP && wait && sleep .5 ;
+		sendmailUP && wait && sleep 1 ;
 	fi
         if [[ "$(netstat -an | grep LISTEN | grep :3306 | awk '{print $4}' | tail -n1)" = '' ]] ;
 	then
-		mysqlUP && wait && sleep .5 ;
+		mysqlUP && wait && sleep 1 ;
 	fi
 		if [[ "$WARN01" -lt "$(df -h | grep -E /$ | awk '{ print $5 }' | sed -n 's/%//p')" ]] || [[ "$WARN02" -lt "$(df -h | grep -E /home$ | awk '{ print $5 }' | sed -n 's/%//p')" ]] ;
 	then
-		checkfreeSpace && wait && sleep .5 ;
+		checkfreeSpace && wait && sleep 1 ;
 	fi
+	sleep 3 ;
 done
 # loop end
 fi

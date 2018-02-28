@@ -14,7 +14,7 @@
       order = 0
       parent = ""
       position = 20:20
-      size = 1100, 740
+      size = 1170, 720
       title = ivo@x0x: ~
       type = Window
     [[[child1]]]
@@ -60,7 +60,7 @@
       parent = child1
       profile = default
       type = Terminal
-      command = "htop"
+      command = "nmon"
 [plugins]
 [profiles]
   [[default]]

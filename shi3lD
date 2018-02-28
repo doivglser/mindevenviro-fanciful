@@ -3,20 +3,21 @@
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
 # restart clamd and snort if failure, cut the Ethernet Interface connection, while starting up
 # ctrl+C cut's Ethernet Interface connection and revert to your vendors MAC-ADDRESS
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
-FILE_m="serv-if-up" ;
-
+network="check" ;
+		
 		if [ ! $EUID = 0 ] ;
 	then
 		echo -e " USAGE: sudo $0 \n depends on redundanz" ;
 		exit 0 ;
 else
-		if [[ "$(ps aux | grep "$FILE_m" | grep -v nano | grep -v geany | grep -v grep | tail -n1) " != "1" ]] ;
+		if [[ "$(ps aux | grep -v grep | grep -v nano | grep redundanz | awk '{print $2}' | wc -l) " != '' ]] ;
 	then
 
 clear && echo -e "\n" ;
 nnumberr="0" ;
+
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
 	then
@@ -25,9 +26,22 @@ nnumberr="0" ;
 		tmpfolder="/tmp" ;
 fi
 # temp folder END
-interface="$(cat "$tmpfolder"/interface)" ;
-#
 
+findIface(){
+		
+		if [[ "$network" = "check" ]] ;
+	then
+		if [[ $(netstat -ar) =~ 'default' ]] ;
+	then
+		echo "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" > "$tmpfolder"/interface ;
+		interface="$(cat "$tmpfolder"/interface)" ;
+		echo ":: We run this Iface: $interface $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
+		network="up" ;
+	else
+		echo ":: We got no Internet $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
+		network="down" ;
+	fi
+fi
 		if [[ "$interface" =~ eno|eth ]] ;
 	then
 		whoUP="1" ;
@@ -38,17 +52,13 @@ interface="$(cat "$tmpfolder"/interface)" ;
 	else
 		whoUP="none" ;
 fi
+}
 
 puffeRR(){
-		if [[ "$(netstat -ar)" =~ 'default' ]] ;
-	then
 		source stop_shield ;
-	else
-		clear;
 		echo -e "\n ::    D A N G E R      ::" ;
 		echo -e "\n :: changing macaddress :: \n" &&
 		source start_shield ;
-	fi
 }
 
 exitHandler(){
@@ -59,9 +69,9 @@ exitHandler(){
 
 			if [[ $REPLY =~ y|Y|j|J ]] ;
 		then
-			sudo ip link set dev "$interface" down && sleep 5 && 
+			sudo ip link set dev "$interface" down && sleep 1 && 
 			sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" && 
-			sudo ip link set dev "$interface" up && sleep 2 ;
+			sudo ip link set dev "$interface" up && sleep 1 ;
 			echo -e "\n .You where surfing with this MAC:\n\n
 			$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
 			awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n" ;
@@ -72,33 +82,33 @@ exitHandler(){
 			return ;
 	fi
 }
-		while trap 'exitHandler' SIGINT ;
-	do
-		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | \
-		wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
-	then
+
+messag4(){
 		spin='.oOo' ; i=0 ;
 		spin2='-\|/' ;
 
-		while [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | \
-		wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
+		while [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	do
 		((nnumberr++));
 		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1} UPTIME:$nnumberr${spin:$i:1} " ; sleep .1 ;
-	done
+done
+}
+		while trap 'exitHandler' SIGINT ;
+	do
+		if [[ "$network" != "check" ]] && [[ ! $(netstat -ar) =~ 'default' ]] ;
+	then
+		printf "\rplease connect to the internet" ; sleep 4 ;
 	else
+		findIface ;
+fi
+		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
+	then
+		messag4 ;
+	else
+		network="check" ;
+		findIface ;
 		puffeRR ;
 	fi
 done
-else
-	clear ;
-	printf "warning your system could heat up, do you want to reboot? ok|no " ; read -r ;
-	
-		if [[ "$REPLY" = "ok" ]] ;
-	then
-		stop_shield && init 6 ;
-	else
-		echo "do you know?"
-fi
 fi
 fi

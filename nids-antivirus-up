@@ -1,0 +1,97 @@
+#!/bin/bash
+# mindevenviro nids-antivirus-up
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
+LANG="C" ;
+IFS=$(echo -e "\n\b") ;
+antivirus="/usr/sbin/clamd" ;
+nids="/usr/sbin/snort" ;
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# temp folder END
+interface="$(cat "$tmpfolder"/interface)" ;
+# snortUP   
+snortUP(){
+		if [[ $(ps axu | grep -v grep | grep "$nids") = '' ]] ;
+	then
+		/etc/init.d/"$nids" start -i "$interface" 2>/dev/null 2>&1 < /dev/null &
+		
+		if setsid "$nids" -i "$interface" 2>/dev/null 2>&1 < /dev/null &
+	then
+
+ps axu | grep -v grep | grep "$nids" > "$tmpfolder/root_mail_status" ;
+	
+cat << EOM | sendmail root@localhost
+
+$(cat "$tmpfolder/root_mail_status")
+
+EOM
+
+
+else
+
+cat << EOM | sendmail root@localhost
+
+$(cat "$tmpfolder/root_mail_status")
+
+EOM
+
+
+fi
+	else
+		echo "" ;
+fi
+}
+# snortUP END
+
+# checks if clamd is up, if false restarts
+clamdUP(){
+	 /etc/init.d/"$antivirus" stop ;
+	if /etc/init.d/"$antivirus" start > "$tmpfolder/root_mail_status" ;
+then
+
+/etc/init.d/"$antivirus" status >> "$tmpfolder/root_mail_status" ;
+
+echo "$?" >> "$tmpfolder/root_mail_status" ;
+
+echo ":: $antivirus fails, but restartet successfully, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3
+
+cat << EOM | sendmail root@localhost
+
+$(cat "$tmpfolder/root_mail_status")
+
+EOM
+
+	else
+
+/etc/init.d/"$antivirus" status > "$tmpfolder/root_mail_status" ;
+date "+Start Attempt $antivirus, Failure Time: %H.%M" >> "$tmpfolder/root_mail_status" ;
+
+cat << EOM | sendmail root@localhost
+
+$(cat "$tmpfolder/root_mail_status")
+
+EOM
+
+echo ":: you got email, $antivirus fails, cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
+
+
+fi
+}
+# clamdUP END
+
+# ASK
+  case "$1" in
+        --anTiVirus)
+      shift 1;
+      clamdUP "$@" && sleep 2 ;
+      ;;
+	    --nIDs)
+      shift 1 ;
+      snortUP "$@" && sleep 2 ;
+      ;;
+  esac

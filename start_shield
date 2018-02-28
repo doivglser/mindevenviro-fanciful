@@ -1,6 +1,6 @@
 #!/bin/bash
 # mindevenviro start_shield
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###   
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 
@@ -11,10 +11,12 @@ IFS=$(echo -e "\n\b") ;
 else
 	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
 then
+
 stopLoop="0" ;
-binarie0="/usr/sbin/clamd" ;
-binarie1="/usr/sbin/snort" ;
+antivirus="/usr/sbin/clamd" ;
+nids="/usr/sbin/snort" ;
 homeordner="/home/${SUDO_USER}/" ;
+
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
 	then
@@ -23,7 +25,19 @@ homeordner="/home/${SUDO_USER}/" ;
 		tmpfolder="/tmp" ;
 fi
 # temp folder END
+
 interface="$(cat "$tmpfolder"/interface)" ;
+
+		if [[ "$interface" =~ eno|eth ]] ;
+	then
+		whoUP="1" ;
+
+		elif [[ "$interface" =~ wl|wi ]] ;
+	then
+		whoUP="2" ;
+	else
+		whoUP="none" ;
+fi
 
 puff_MACs(){
 
@@ -34,20 +48,19 @@ nnumberOFinterface="$(echo "$interface" | wc -w | tr -d ' ')" ;
 		echo -e "puffing MACs ...\n" ;
 		m4c=$(echo "$interface" | awk '{print $'"$nnumberOFinterface"'}') &&
 		newM4CnewM4C=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//') &&
-		sudo ip link set dev "$m4c" address "$newM4CnewM4C" && sleep 1 &&
-		((nnumberOFinterface--)) &&
-		sudo ip link set dev "$m4c" up && 
-		sleep 5 ;
+		sudo ip link set dev "$m4c" address "$newM4CnewM4C" &&
+		sudo ip link set dev "$m4c" up ;
+		until ps aux | grep -v grep | grep -v nano | grep /sbin/dhclient
+	do
+		printf "\rplease connect with network" && sleep 2 ;
+	done
+			((nnumberOFinterface--)) ;
 done
 }
 
 permissions(){
-
-		sudo chown "$SUDO_USER":"$SUDO_USER" "${homeordner}$(date | awk '{print $2,$6}' | \
-		sed 's/\ //g').mac_recieves_dhcp_lease" 2>/dev/null && stopLoop="1" ;
-
-		sudo chmod 0750 "${homeordner}$(date | awk '{print $2,$6}' | \
-		sed 's/\ //g').mac_recieves_dhcp_lease" 2>/dev/null && stopLoop="1" ;
+		sudo chown ./*mac_* 2>/dev/null ;
+		sudo chmod 0750 ./*mac_* 2>/dev/null ;
 }
 
 writeM4C_Connected(){
@@ -59,7 +72,7 @@ writeM4C_Connected(){
 		sed 's/\ //g').mac_recieves_dhcp_lease" && permissions ;
 	else
 
-		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" && permissions ;
+		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" ;
 
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}$(date | awk '{print $2,$6}' | \
@@ -76,7 +89,7 @@ writeM4C_SelfAssigned(){
 		sed 's/\ //g').mac_no_dhcp_lease" && permissions ;
 	else
 
-		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease" && permissions ;
+		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease" ;
 
 		echo -e "$(ip link show "$m4c" | grep ether | awk '{print $2}') :: surf started at: $(date | \
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "$homeordner$(date | awk '{print $2,$6}' | \
@@ -88,19 +101,20 @@ ifUPAntiVirusFireWall(){
 
 		until [[ $(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | wc -l | tr -d ' ') = "2" ]] ;
 	do
-	    ifDown0=$(ps aux | grep -v grep | grep clamd | grep -v nano | awk '{print $11}') ;
-		ifDown1=$(ps aux | grep -v grep | grep snort | grep -v nano | awk '{print $11}') ;	
-
-		if [[ "$ifDown0" != "$binarie0" ]]
+		if [[ "$(ps aux | grep -v grep | grep clamd | grep -v nano | awk '{print $11}')" != "$antivirus" ]]
 	then
-		printf "\r restarting ClamAV..." && sleep .1 ;
+		printf "\r restarting ClamAV..." ;
+		nohup nids-antivirus-up --anTiVirus &
+		sleep 1 ;
 	fi	
-	    if [[ "$ifDown1" != "$binarie1" ]]
+	    if [[ "$(ps aux | grep -v grep | grep snort | grep -v nano | awk '{print $11}')" != "$nids" ]]
 	then
-		printf "\r restarting Snort..." && sleep .1 ;
+		printf "\r restarting Snort..." ;
+		nohup nids-antivirus-up --nIDs &
+		sleep 1 ;
 fi
 done
-}
+}  
 
 m41N__(){
 
@@ -117,6 +131,7 @@ m41N__(){
         $(ip route | grep -v grep | grep src) \n\n \
         and $m4c has now this MAC-Address: $(ip link show "$m4c" | grep ether | awk '{print $2}')\n" ;
         writeM4C_Connected ;
+        stopLoop="1" ;
     else
         echo -e "no connection with this $(ip link show "$m4c" | grep ether | awk '{print $2}'), I try again ..."
         source stop_shield ;
