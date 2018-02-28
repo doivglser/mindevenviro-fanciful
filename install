@@ -22,7 +22,7 @@ fi
 	else
 		tmpfolder="/tmp" ;
 fi	
-		if [ -e /home/$SUDO_USER/.installed ] && [[ $PWD =~ 'M1ND3V3NV1R0' ]] ;
+		if [[ $PWD =~ 'M1ND3V3NV1R0' ]] ;
 	then
 		nNuM1=$(echo "$environinstall" | wc -w) ;
 		nNuM2=$(echo "$myPrograms" | wc -w) ;
