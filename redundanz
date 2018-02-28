@@ -31,8 +31,6 @@ exit 0 ;
 
 ex1Th4ndler(){
 		ps aux | grep -v grep | grep serv-if-up | awk '{print $2}' | xargs kill -15 2>/dev/null &&
-		ps aux | grep -v grep | grep nids-antivirus-up | awk '{print $2}' | xargs kill -15 2>/dev/null &&
-		ps aux | grep -v grep | grep shi3lD | awk '{print $2}' | xargs kill -15 2>/dev/null &&
 		rm -f $tmpfolder/root_mail_status &&
 		wait &&
 		exit 0 ;

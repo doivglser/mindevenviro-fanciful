@@ -245,9 +245,6 @@ fi
 		# add i386 arch in 64bit system, to install wine32
 		echo -e "\n ... add i386 arch in 64bit system, to install wine32" ;
 		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 ;
-		
-		# update mysql root password
-		source /home/$SUDO_USER/M1ND3V3NV1R0/set_mysql_passwd --password ;
 	
 		# cleaning the environment
 		apt-get clean &&
