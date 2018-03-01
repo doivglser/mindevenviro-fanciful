@@ -127,7 +127,7 @@ done
     then
         clear ;
         echo -e "\n - WE HAVE shi3lD ::\n" ;
-        echo -e " done ! we go throught $(netstat -ar | grep -v grep | grep default | awk '{print $2}') \n $(ip route | grep -v grep | grep src) \n and $interface has now this MAC-Address: $(ip link show "$interface" | grep ether | awk '{print $2}')\n\n" ;
+        echo -e " done ! we go throught $(netstat -ar | grep -v grep | grep default | awk '{print $2}') \n $(ip route | grep -v grep | grep src) \n and $interface has now this MAC-Address: $(ip link show "$interface" | grep ether | awk '{print $2}')\n" ;
         writem4c_Connected ;
         stopLoop="1" ;
     else

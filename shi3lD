@@ -42,17 +42,17 @@ fi
 		if [[ "$interface" =~ eno|eth ]] ;
 	then
 		whoUP="1" ;
-		echo "We run this Iface: $interface $(date | awk '{print $1,$3,$4}')" ;
+		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
 
 		elif [[ "$interface" =~ wl|wi ]] ;
 	then
 		whoUP="2" ;
-		echo "We run this Iface: $interface $(date | awk '{print $1,$3,$4}')" ;
+		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
 	else
 		# is a wifi interface is not connected, cause snort should allways be configured for a wired-iface
 		echo "$(ip link | cut -f2 -d: | grep -E '\ ' | grep -v lo | tr -d '\ ' | tail -n1)" > "$tmpfolder"/interface ;
 		interface="$(cat "$tmpfolder"/interface)" && whoUP="2" ;
-		echo -e "We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
+		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
 fi
 }
 
@@ -72,7 +72,7 @@ exitHandler(){
 		then
 			sudo ip link set dev "$interface" down && sleep 1 && 
 			sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" && 
-			echo -e "\n You where surfing with this MAC:\n $(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n your network down." ;
+			echo -e "\n You where surfing with this MAC: \n $(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n\n your network down." ;
 			exit 0 ;
 
 			elif [[ $REPLY =~ n|N ]] ;
@@ -88,7 +88,7 @@ messag4(){
 		while [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	do
 		((nnumberr++));
-		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1} UPTIME:$nnumberr${spin:$i:1} " ; sleep 1 ; 
+		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1}${spin:$i:1} UPTIME: $nnumberr" ; sleep 1 ; 
 done
 }
 		while trap 'exitHandler' SIGINT ;
