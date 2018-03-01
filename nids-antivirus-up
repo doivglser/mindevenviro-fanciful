@@ -1,10 +1,13 @@
 #!/bin/bash
-# mindevenviro nids-antivirus-up
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
+# mindevenviro nids-antivirus-up  
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ### 
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 antivirus="/usr/sbin/clamd" ;
 nids="/usr/sbin/snort" ;
+
+	if [ $EUID = 0 ] ;
+then
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
 	then
@@ -89,14 +92,25 @@ fi
 }
 # clamdUP END
 
+help(){
+	echo "USAGE: sudo nids-antivirus-up --anTiVirus | nids-antivirus-up --nIDs" ;
+	}
+
 # ASK
   case "$1" in
         --anTiVirus)
       shift 1;
-      clamdUP "$@" && sleep 2 ;
+      clamdUP "$@" && sleep 3 ;
       ;;
 	    --nIDs)
       shift 1 ;
-      snortUP "$@" && sleep 2 ;
+      snortUP "$@" && sleep 3 ;
       ;;
+	    --help)
+      shift 1 ;
+      snortUP "$@" && sleep 3 ;
+      ;;      
   esac
+	else
+		echo "USAGE: sudo $0 --help" ;
+fi

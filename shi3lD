@@ -7,7 +7,7 @@
 LANG="C" ;
 network="check" ;
 		
-		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] || [[ ! $(netstat -ar) =~ 'default' ]] ;
+		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] ;
 	then
 		echo -e " USAGE: sudo $0 \n depends on redundanz \n you must have internet." ;
 		exit 0 ;
@@ -33,27 +33,30 @@ findIface(){
 	then
 		echo "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" > "$tmpfolder"/interface ;
 		interface="$(cat "$tmpfolder"/interface)" ;
-		echo ":: We run this Iface: $interface $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
 		network="up" ;
 	else
-		echo ":: We got no Internet $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
-		network="down" ;
+		network="no" ;
+		echo "We got no Internet $(date | awk '{print $1,$3,$4}')"
 	fi
 fi
 		if [[ "$interface" =~ eno|eth ]] ;
 	then
 		whoUP="1" ;
+		echo "We run this Iface: $interface $(date | awk '{print $1,$3,$4}')" ;
 
 		elif [[ "$interface" =~ wl|wi ]] ;
 	then
 		whoUP="2" ;
+		echo "We run this Iface: $interface $(date | awk '{print $1,$3,$4}')" ;
 	else
-		whoUP="none" ;
+		# is a wifi interface is not connected, cause snort should allways be configured for a wired-iface
+		echo "$(ip link | cut -f2 -d: | grep -E '\ ' | grep -v lo | tr -d '\ ' | tail -n1)" > "$tmpfolder"/interface ;
+		interface="$(cat "$tmpfolder"/interface)" && whoUP="2" ;
+		echo -e "We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
 fi
 }
 
 puffeRR(){
-		source stop_shield ;
 		echo -e "\n :: D A N G E R nO shi3lD ::" ;
 		echo -e " :: .changing macaddress. :: \n" &&
 		source start_shield ;
@@ -69,9 +72,7 @@ exitHandler(){
 		then
 			sudo ip link set dev "$interface" down && sleep 1 && 
 			sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" && 
-			echo -e "\n .You where surfing with this MAC:\n\n
-			$(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | \
-			awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n your network down." ;
+			echo -e "\n You where surfing with this MAC:\n $(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n your network down." ;
 			exit 0 ;
 
 			elif [[ $REPLY =~ n|N ]] ;
@@ -94,7 +95,7 @@ done
 	do
 		if [[ "$network" != "check" ]] && [[ ! $(netstat -ar) =~ 'default' ]] ;
 	then
-		printf "\rplease connect to the internet" ; sleep 1 ;
+		printf "\rplease connect to the internet - " ; sleep 3 ;
 	else
 		findIface ;
 fi

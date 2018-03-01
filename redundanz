@@ -30,9 +30,10 @@ exit 0 ;
 }
 
 ex1Th4ndler(){
-		ps aux | grep -v grep | grep serv-if-up | awk '{print $2}' | xargs kill -15 2>/dev/null &&
+		killall -15 dhclient 2>/dev/null &&
+		killall -15 serv-if-up 2>/dev/null &&		
+		killall -15 shi3lD 2>/dev/null &&
 		rm -f $tmpfolder/root_mail_status &&
-		wait &&
 		exit 0 ;
 }
 
@@ -49,7 +50,7 @@ mmonitor(){
 		watch -n1 -t --color "$FILE2" ;
 		fi
 	fi
-	}
+}
 
 # ASK
   case "$1" in
