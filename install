@@ -46,10 +46,6 @@ done
 	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
 	
-	# by an update clear from double entries in fstab
-	sed -e '/Downloads auto bind/d' /etc/fstab >| $tmpfolder/fstab 2>/dev/null ;
-	cp -f $tmpfolder/fstab /etc/fstab 2>/dev/null ;
-	
 	# by an update clear from double entries in clamd.conf
 	sed -e '/ScanOnAccess /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;
@@ -223,9 +219,6 @@ fi
 		
 		echo -e "\n ... restarting apache2 server" ;
 		/etc/init.d/apache2 restart ;
-
-		echo -e "\n ... put $SUDO_USER/Downloads in a Jail" ;
-		echo "/dev/shm /home/$SUDO_USER/Downloads auto bind 0 0" | tee -a /etc/fstab ;
 
 		echo -e "\n ... set the rights for .wH0rUNSon " ;
 		
