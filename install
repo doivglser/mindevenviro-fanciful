@@ -8,7 +8,7 @@ apPRn='' ;
 
 		if [ ! $EUID = 0 ] ;
 	then
-		echo "USAGE: sudo $0"
+		echo "USAGE: sudo install"
 		exit 0 ;
 else
 		if [[ ! $(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1) =~ 'eno|eth' ]] ;
@@ -21,11 +21,10 @@ fi
 	else
 		tmpfolder="/tmp" ;
 fi	
-		if [[ $PWD =~ 'M1ND3V3NV1R0' ]] ;
+		if [[ $PWD =~ 'mindevenviro' ]] ;
 	then
 		nNuM1=$(echo "$environinstall" | wc -w) ;
 		nNuM2=$(echo "$myPrograms" | wc -w) ;
-		spin='.oOo' ; i=0 ;
 		spin2='-\|/' ;
 		
 		while [[ "$nNuM1" != "0" ]] ;
@@ -37,7 +36,7 @@ fi
 		sudo chmod 4755 "/usr/local/bin/$toCopyPath" ;
 		sudo chmod u+s "/usr/local/bin/$toCopyPath" &&
 		echo -e "\n ... copying files ::\n" ;
-		i=$(( (i+1) %4 )) ; printf "\r ... ${spin:$i:1}.${spin2:$i:1} $toCopyPath ." | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
+		i=$(( (i+1) %4 )) ; printf "\r ... ${spin2:$i:1} $toCopyPath ." | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
 		((nNuM1--)) ;
 done
 
@@ -232,9 +231,9 @@ fi
 		
 		if [ -e /home/$SUDO_USER/.wH0rUNSon ] ;
 	then
-		echo " . .wH0rUNSon allready installed" | tee -a "/home/$SUDO_USER/.installed"
+		echo " ... .wH0rUNSon allready installed" | tee -a "/home/$SUDO_USER/.installed" ;
 	else
-		touch "/home/$SUDO_USER/.wH0rUNSon" && chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.wH0rUNSon" && chmod 0660 "/home/$SUDO_USER/.wH0rUNSon" ;
+		touch "/home/$SUDO_USER/.wH0rUNSon" && chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.wH0rUNSon" && chmod 0660 "/home/$SUDO_USER/.wH0rUNSon"  | tee -a "/home/$SUDO_USER/.installed" ;
 	fi
 		echo -e "\n ... installing snort " ;
 		apt-get -f -m -y --allow-change-held-packages install snort ;
