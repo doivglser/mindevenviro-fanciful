@@ -1,12 +1,12 @@
 #!/bin/bash
-# mindevenviro shi3lD 
+# mindevenviro shi3lD
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
 # restart clamd and snort if failure, cut the Ethernet Interface connection, while starting up
 # ctrl+C cut's Ethernet Interface connection and revert to your vendors MAC-ADDRESS
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 		
-		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] ;
+		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] || [[ ! $(netstat -ar) =~ 'default' ]] ;
 	then
 		echo -e " USAGE: sudo $0 \n depends on redundanz \n you must have internet." ;
 		exit 0 ;
@@ -103,6 +103,8 @@ fi
 	then
 		messag4 ;
 	else
+		stop_shield --stop &
+		wait ;
 		findIface ;
 		puffeRR ;
 	fi

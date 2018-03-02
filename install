@@ -23,7 +23,7 @@ fi
 fi
 		if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
 	then
-		killall -15 redundanz && wait ;
+		killall -15 shi3lD && wait ;
 fi
 		if [[ $PWD =~ 'mindevenviro' ]] ;
 	then
@@ -89,7 +89,7 @@ fi
 		# issuing responsiblity
 		echo -e 'Package: *systemd*\nPin: release *\nPin-Priority: -1\n' > /etc/apt/preferences.d/systemd ;
 		
-		if [[ $(dpkg -l | awk '{print $2}' | sed -n '/\<systemd\>/p') =~ "systemd:"|"systemd-shim:" ]] ;
+		if [[ $(dpkg -l | awk '{print $2}' | sed -n '/systemd/p') =~ "systemd:"|"systemd-shim:"|"libsystemd0:" ]] ;
 	then
 		# remove odd characters 
 		apt-get -f -m -y remove --purge --auto-remove systemd:* systemd-shim:* ;

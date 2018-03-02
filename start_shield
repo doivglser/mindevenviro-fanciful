@@ -100,8 +100,6 @@ fi
 
 puff_MACs(){
 
-stop_shield --stop & 
-
 sotstoppe="1" ;
 
 		until [[ "$sotstoppe" = "0" ]] ;
