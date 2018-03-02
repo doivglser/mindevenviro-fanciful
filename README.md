@@ -2,7 +2,7 @@
 ![bild022](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_two.jpg)
 ![bild033](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_three.jpg)
 
-# M1ND3V3NV1R0
+# M1ND3V3NV1R0 (testing)
 
 - Deployment Environment for Web Applications and System Administration, in a Minimal Desktop with Antivirus, NIDS and a Great Multimedia Experience. ( without systemd ) . 
   
@@ -26,7 +26,7 @@
 
 # TODO:
 
-* Re-Write all scripts to be portable to: Debian, Fedora, CentOS and MacOSX
+* Rewrite all scripts to be portable to: Debian, Fedora, CentOS and MacOSX
 
 * install joomla CMS
 
@@ -143,7 +143,7 @@
 
 * gimp
 
-  Das GNU-Bildbearbeitungsprogramm
+  GNU Image Manipulation Program
   
 * wicd
 
