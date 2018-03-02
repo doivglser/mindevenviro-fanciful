@@ -1,9 +1,9 @@
 #!/bin/bash
-# mindevenviro shi3lD
+# mindevenviro shi3lD 
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
 # restart clamd and snort if failure, cut the Ethernet Interface connection, while starting up
 # ctrl+C cut's Ethernet Interface connection and revert to your vendors MAC-ADDRESS
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ### 
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 network="check" ;
 		
@@ -27,11 +27,12 @@ fi
 
 findIface(){
 		
+		echo "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" > "$tmpfolder"/interface ;
+		
 		if [[ "$network" = "check" ]] ;
 	then
 		if [[ $(netstat -ar) =~ 'default' ]] ;
 	then
-		echo "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" > "$tmpfolder"/interface ;
 		interface="$(cat "$tmpfolder"/interface)" ;
 		network="up" ;
 	else
