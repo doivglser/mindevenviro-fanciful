@@ -6,10 +6,12 @@
 
 	Deployment Environment for Web Applications and System Administration, in a Minimal 
 	Desktop with Antivirus, NIDS and a Great Multimedia Experience. ( without systemd ) . 
-  
+
+- VTWM minimal tweak, Xorg session with xdm.
+
 - Antivirus engine ClamAV and NIDS solution Snort.
 
-- Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e" and "php -l".
+- Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e", "php -l" and "tidy -e -q".
 
 - Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC.
 
@@ -17,11 +19,15 @@
 
 - PlayOnLinux, to install win32 and win64 MS-Windows applications.
 
+- Libreoffice, Geany, Terminator, Transmission, Cheese, Brutalchess, Gimp, WiCD
+
 - Restarts apache2, mysqld, sendmail, snort, clamd.
 
 - Search script and MySQL(MariaDB) maintainers script.
 
-- Volatile ~/Downloads folder on /dev/shm and ScanOnAccess from ClamAV to ~/Downloads
+- Volatile $tmpfolder on /dev/shm 
+
+- ScanOnAccess from ClamAV to ~/Downloads
 
 - For programmers and administrators.
 
@@ -77,7 +83,7 @@
 
 * ivo@x0x:~/mindevenviro$ sudo ./install 
 
-  Installs the deployment environment and the minimal desktop with antivirus and NIDS:
+  Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS" :
 
 		wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64
 		wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission
@@ -184,13 +190,11 @@
 
   USAGE: "sudo shi3lD"
   
-  If "sudo redundanz -m" is running AND you are connected with the Internet,
+  If "sudo redundanz -m" is running, then shi3lD will puff your MAC-Address, so you become a new IP.
   
-  then shi3lD will puff your MAC-Address, so you become a new IP.
+  Try to connect to your Network, pulling dowm "network" from "Menu", refresh in the wicd GUI and connect.
   
-  Try to connect to your Network using wicd-client or the option "network" from Menu,
-  
-  until shi3lD says "WE HAVE shi3lD".
+  Keep trying, until shi3lD says "WE HAVE shi3lD".
   
   You will have two files on ~/ : 
   
