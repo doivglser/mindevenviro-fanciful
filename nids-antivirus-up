@@ -94,6 +94,7 @@ fi
 
 help(){
 	echo "USAGE: sudo nids-antivirus-up --anTiVirus | nids-antivirus-up --nIDs" ;
+	exit 0 ;
 	}
 
 # ASK
@@ -108,7 +109,7 @@ help(){
       ;;
 	    --help)
       shift 1 ;
-      snortUP "$@" && sleep 3 ;
+      help "$@" && sleep 3 ;
       ;;      
   esac
 	else
