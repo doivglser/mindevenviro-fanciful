@@ -58,7 +58,7 @@
 	
 # Requirements:
 
-- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS, Fedora and MacOSX)
+- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for Fedora, CentOS and MacOSX)
 - Choose netinst CD image, and burn it on a blank CD-R.
 - Debian 9 GNU/Linux Stretch: https://www.debian.org/releases/stretch/debian-installer/
 - While installing: 
