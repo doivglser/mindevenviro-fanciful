@@ -1,6 +1,6 @@
 #!/bin/bash
 # mindevenviro install
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
+###		WARNING:	DON'T EDIT ANYTHING BELOW	###
 LANG="C" ;
 myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl nmon fortunes figlet mc mutt eject nano " ;
 environinstall="server-monitor redundanz serv-if-up sCRYPtUPdater shi3lD start_shield stop_shield nids-antivirus-up feh-bg hi hi_cheese hi_brutalchess hi_libreoffice hi_geany hi_gimp hi_transmission-gtk hi_firefox-esr hi_playonlinux hi_vlc hi_wicd-client search mysql_cp_db set_mysql_passwd openpdf takeshot install " ;
@@ -92,7 +92,7 @@ fi
 		if [[ $(dpkg -l | awk '{print $2}' | sed -n '/\<systemd\>/p') =~ "systemd:"|"systemd-shim:" ]] ;
 	then
 		# remove odd characters 
-		apt-get -f -m -y remove --purge --auto-remove systemd ;
+		apt-get -f -m -y remove --purge --auto-remove systemd:* systemd-shim:* ;
 	else
 		echo -e "\n ... systemd allready removed" ;
 fi
