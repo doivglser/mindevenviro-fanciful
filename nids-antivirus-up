@@ -101,15 +101,15 @@ help(){
   case "$1" in
         --anTiVirus)
       shift 1;
-      clamdUP "$@" && sleep 3 ;
+      clamdUP "$@" ;
       ;;
 	    --nIDs)
       shift 1 ;
-      snortUP "$@" && sleep 3 ;
+      snortUP "$@" ;
       ;;
 	    --help)
       shift 1 ;
-      help "$@" && sleep 3 ;
+      help "$@" ;
       ;;      
   esac
 	else

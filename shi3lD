@@ -5,7 +5,6 @@
 # ctrl+C cut's Ethernet Interface connection and revert to your vendors MAC-ADDRESS
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
-network="check" ;
 		
 		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] ;
 	then
@@ -26,17 +25,14 @@ fi
 # temp folder END
 
 findIface(){
-		if [[ "$network" = "check" ]] ;
-	then
 		if [[ $(netstat -ar) =~ 'default' ]] ;
 	then
 		echo "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" > "$tmpfolder"/interface ;
 		interface="$(cat "$tmpfolder"/interface)" ;
 		network="up" ;
 	else
-		network="no" ;
+		interface="d0Wn" ;
 		echo "We got no Internet $(date | awk '{print $1,$3,$4}')"
-	fi
 fi
 		if [[ "$interface" =~ eno|eth ]] ;
 	then
@@ -47,9 +43,14 @@ fi
 	then
 		whoUP="2" ;
 		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
-	else
-		# is a wifi interface is not connected, cause snort should allways be configured for a wired-iface
-		echo "$(ip link | cut -f2 -d: | grep -E '\ ' | grep -v lo | tr -d '\ ' | tail -n1)" > "$tmpfolder"/interface ;
+		
+		elif [[ "$interface" =  "d0Wn" ]] ;
+	then
+		# if an interface is not connected, take the wifi Iface, cause snort allways should be configured for the wired-iface.
+		until ip link | cut -f2 -d: | grep -E '\ ' | grep -v lo | tr -d '\ ' | tail -n1 > "$tmpfolder"/interface ;
+	do
+		printf "\rplease connect to the internet - " ; sleep 1 ;
+done
 		interface="$(cat "$tmpfolder"/interface)" && whoUP="2" ;
 		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
 fi
@@ -95,14 +96,13 @@ done
 	do
 		if [[ ! $(netstat -ar) =~ 'default' ]] ;
 	then
-		printf "\rplease connect to the internet - " ; sleep 3 ;
+		printf "\rplease connect to the internet - " ; sleep 1 ;
 		findIface ;
 fi
 		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then
 		messag4 ;
 	else
-		network="check" ;
 		findIface ;
 		puffeRR ;
 	fi

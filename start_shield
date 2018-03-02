@@ -111,7 +111,7 @@ sotstoppe="1" ;
 		sudo ip link set dev "$interface" up &&
 		until [[ "$(ps aux | grep -v grep | grep -v nano | grep /sbin/dhclient)" != '' ]] ;
 	do
-		printf "\rplease connect with network (wicd) - " && sleep 9 ;
+		printf "\rplease connect with network (wicd) - " ; sleep 1 ;
 		
 		if [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then	
