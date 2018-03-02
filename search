@@ -2,7 +2,7 @@
 # mindevenviro search
 #TODO: 
 # problems with spaces IFS var
-###     WARNING:    DON'T EDIT ANYTHING BELOW
+###     WARNING:    DON'T EDIT ANYTHING BELOW	###
 
 				if [ "$EUID" != 0 ] ;
 			then

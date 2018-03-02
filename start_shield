@@ -1,6 +1,6 @@
 #!/bin/bash
 # mindevenviro start_shield
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 
@@ -9,7 +9,7 @@ IFS=$(echo -e "\n\b") ;
 		echo -e " USAGE: sudo shi3lD \r depends on redundanz" ;
 		exit 0 ;
 else
-	if [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
+	if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
 then
 
 stopLoop="0" ;
@@ -100,7 +100,8 @@ fi
 
 puff_MACs(){
 
-stop_shield --stop &
+stop_shield --stop & 
+
 sotstoppe="1" ;
 
 		until [[ "$sotstoppe" = "0" ]] ;
@@ -109,7 +110,7 @@ sotstoppe="1" ;
 		neWMacAdr=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//') &&
 		sudo ip link set dev "$interface" address "$neWMacAdr" &&
 		sudo ip link set dev "$interface" up &&
-		until [[ "$(ps aux | grep -v grep | grep -v nano | grep /sbin/dhclient)" != '' ]] ;
+		until [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep /sbin/dhclient)" != '' ]] ;
 	do
 		printf "\rplease connect with network (wicd) - " ; sleep 1 ;
 		

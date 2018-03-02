@@ -1,6 +1,6 @@
 #!/bin/bash
 # mindevenviro nids-antivirus-up  
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ### 
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###   
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 antivirus="/usr/sbin/clamd" ;

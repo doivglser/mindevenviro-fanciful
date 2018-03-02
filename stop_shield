@@ -1,11 +1,11 @@
 #!/bin/bash
 # mindevenviro stop_shield 
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+###     WARNING:    DON'T EDIT ANYTHING BELOW	###   
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 nnumberOFinterface="0" ;
 
-		if [ ! $EUID = 0 ] && [[ "$(ps aux | grep -v grep | grep -v nano | grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
+		if [ ! $EUID = 0 ] && [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
 	then
 		echo -e " USAGE: sudo shi3lD \r depends on redundanz" ;
 		exit 0 ;
