@@ -24,7 +24,15 @@ echo -e "search $(date) :: as $SUDO_USER :: in $(uname -n) :: in $path ::" >>"/h
 	
 		if [[ $(echo "$line" | xargs file) =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
 	then
-			if echo $line | xargs grep "$togrep" 2>/dev/null && echo $line | xargs | grep -v "$exclud3" 2>/dev/null ;
+			if [[ "$exclud3" != '' ]] ;
+		then
+			patternANDexclude="$(echo $line | xargs grep $togrep && echo $line | xargs | grep -v $exclud3)" ;
+			tosearCH=$patternANDexclude ;
+		else
+			patternOnly="$(echo $line | xargs grep $togrep)" ;
+			tosearCH=$patternOnly ;
+	fi
+			if [[ "$tosearCH" != '' ]] ;
 		then
 			uS3F=$(ls -sl "$line" | awk '{print $4}' | tr -d '\ ');
 			
