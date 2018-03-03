@@ -118,44 +118,43 @@
 
 * Login to X
 
-  "Right click"	 : Change Background
+  "F10 on active window" * cycles windows down
   
-  "Middle Click" : VTWM Version
-  
-  "Left click"	 : Application Menu
- 
-  "F12"		 : cycles windows down
-  
-  "F10"		 : cycles windows up
+  "F12 on active window" * cycles windows up
 
+  "Right click on the Desktop" * Change Background
+  
+  "Right click on a Window-Title-Bar" * Puts Active-window as "last" in the list of open windows. 
+  
+  "Middle Click on the Desktop" * VTWM Version
+  
+  "Left click on the Desktop" * Application Menu
+ 
+ 		"transparent" * Click with cross on a window or an icon to set transparency.
+		"solid color" * Click with cross on a window or an icon to set solid color back.
+		"take shot" * Click with Mouse pointer on Desktop or Window to save picture to ~/
+		"refresh" * Restarts VTWM on opened $USER session.
+		"lock" * Locks the screen. Propt for $USER password.
+		"kill" * Click with cross on a window to end process.
+		"exit" * Quits VTWM. XDM login screen, returns.
 # On vtwm:
 
-* geany
+* music 
 
-  fast and lightweight IDE
+  VLC, Listen to your music and/or videos.
 
-* transmission
+* camera
 
-  lightweight BitTorrent client
+  cheese, Tool to take pictures and videos from your webcam
 
-* Firefox-ESR
+* network
 
-  type: localhost/dwww for dwww. ( dwww collects information from /usr/share/{man,doc} )
-  
-  type: localhost/testphp for your php stuff.
-  
-* PlayOnLinux (manage's wine win32/win64)
+  wicd, wired and wireless network manager
 
-  Install: win32 and win64 MS-Office applications and Games
+* the gimp
 
-* brutalchess
+  GIMP, GNU Image Manipulation Program
 
-  3D chess game with reflection of the chessmen
-  
-* Libreoffice
-
-  Writer
-  
 * terminator (Multiple GNOME terminals in one window.)
 
   "ctrl+PageUP" cycles TAB to right
@@ -164,29 +163,43 @@
   
   "ctrl+TAB" swap's between Panned TAB's
 
-* GIMP
+* libreoffice
 
-  GNU Image Manipulation Program
+  Libreoffice Writer
+
+* brutalchess
+
+  3D chess game with reflection of the chessmen
+
+* playOnLinux
+
+  PlayOnLinux manage's: win32 and win64 applications, (like Reason 5)
+
+* firefox-ESR
+
+  type: localhost/dwww for dwww. ( dwww collects information from /usr/share/{man,doc} )
   
-* wicd
+  type: localhost/testphp for your php stuff.
 
-  wired and wireless network manager
+* transmission
 
-* cheese
-
-  Tool to take pictures and videos from your webcam
-
-* VLC 
-
-  Listen to your music and/or videos.
+  lightweight BitTorrent client
   
+* geany
+
+  fast and lightweight IDE
+  
+# .
+
+° open the following shell scripts in the terminator window.
+
 * openpdf (shell script)
 
   Open PDF files with pdf suffix
   
 * sCRYPtUPdater (shell script)
 
-  syntax check and copy to path 
+  syntax check and copy to path: like /usr/local/bin, /var/www/html, /etc ...
 
 * search (shell script)
 
