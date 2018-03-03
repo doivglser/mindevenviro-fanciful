@@ -15,7 +15,7 @@
 * A Picture, shuted with "take shot" from the "Menu", opened with "mc" in the "Terminator" window and edited in few seconds with "ImageMagic". "ImageMagic" is an awesome vintage toy, fast and simple.
 ![bild044](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_four.jpg)
 
-* The same Picture as bevor, edited in few seconds with "ImageMagic", and put some things in minutes with gimp.
+* The same Picture as bevor, edited in few seconds with "ImageMagic", and put some things in minutes with "GIMP".
 ![bild055](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_five.jpg)
 
 # M1ND3V3NV1R0 (testing)
@@ -35,7 +35,7 @@
 
 - PlayOnLinux, to install win32 and win64 MS-Windows applications.
 
-- Libreoffice, Geany, Terminator, Transmission, Cheese, Brutalchess, Gimp, WiCD
+- Libreoffice, Geany, Terminator, Transmission, Cheese, Brutalchess, GIMP, WiCD
 
 - Restarts apache2, mysqld, sendmail, snort, clamd.
 
@@ -164,7 +164,7 @@
   
   "ctrl+TAB" swap's between Panned TAB's
 
-* gimp
+* GIMP
 
   GNU Image Manipulation Program
   
