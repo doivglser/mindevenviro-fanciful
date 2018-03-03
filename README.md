@@ -1,3 +1,8 @@
+* I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
+
+* Reason 5 Demo on PlayOnLinux window.
+![bild000](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_zero.jpg)
+
 * All Apps open, second monitor extended at the right of desktop, with Youtube.
 ![bild011](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_one.jpg)
 
