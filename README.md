@@ -15,6 +15,9 @@
 * A Picture, shuted with "take shot" from the "Menu", opened with "mc" in the "Terminator" window and edited in few seconds with "ImageMagic". "ImageMagic" is an awesome vintage joy, fast and simple.
 ![bild044](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_four.jpg)
 
+* The same Picture as bevor, edited in few seconds with "ImageMagic", and put some things in minutes with gimp.
+![bild055](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_five.jpg)
+
 # M1ND3V3NV1R0 (testing)
 
 	Deployment Environment for Web Applications and System Administration, in a Minimal Desktop 
