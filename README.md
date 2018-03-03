@@ -7,7 +7,7 @@
 * mindevenviro projects
 ![bild033](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_three.jpg)
 
-* A Picture, shuted with take a shot from "Menu", opened with "mc" in "Terminator" and edited with ImageMagic.
+* A Picture, shuted with "take shot" from the "Menu", opened with "mc" in the "Terminator" window and edited in few seconds with "ImageMagic". "ImageMagic" is an awesome vintage joy, fast and simple.
 ![bild044](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_four.jpg)
 
 # M1ND3V3NV1R0 (testing)
