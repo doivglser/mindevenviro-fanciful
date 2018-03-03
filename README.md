@@ -1,6 +1,14 @@
+* All Apps open, second monitor extended at the right of desktop, with Youtube.
 ![bild011](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_one.jpg)
+
+* shi3lD is running, second monitor extended at the right of desktop, with Youtube.
 ![bild022](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_two.jpg)
+
+* mindevenviro projects
 ![bild033](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_three.jpg)
+
+* A Picture, shuted with take a shot from "Menu", opened with "mc" in "Terminator" and edited with ImageMagic.
+![bild044](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_four.jpg)
 
 # M1ND3V3NV1R0 (testing)
 
