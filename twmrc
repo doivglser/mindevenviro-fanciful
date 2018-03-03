@@ -162,23 +162,23 @@ MenuBorderColor     "#00FFC0"
 menu "main"
 {
 ":: M1ND3V3NV1R0 ::"  f.title
-":: geany editor"  f.exec "exec /usr/local/bin/hi_geany &"
-":: transmission"  f.exec "exec /usr/local/bin/hi_transmission-gtk &"
-":: firefox-ESR"  f.exec "exec /usr/local/bin/hi_firefox-esr &"
-":: playOnLinux"  f.exec "exec /usr/local/bin/hi_playonlinux &"
-":: brutalchess"  f.exec "exec /usr/local/bin/hi_brutalchess &"
-":: libreoffice"  f.exec "exec /usr/local/bin/hi_libreoffice &"
-":: terminator"  f.exec "exec /usr/local/bin/hi &"
-":: the gimp"  f.exec "exec /usr/local/bin/hi_gimp &"
-":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
-":: camera"	f.exec "exec /usr/local/bin/hi_cheese &"
 ":: music"  f.exec "exec /usr/local/bin/hi_vlc &"
+":: camera"	f.exec "exec /usr/local/bin/hi_cheese &"
+":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
+":: the gimp"  f.exec "exec /usr/local/bin/hi_gimp &"
+":: terminator"  f.exec "exec /usr/local/bin/hi &"
+":: libreoffice"  f.exec "exec /usr/local/bin/hi_libreoffice &"
+":: brutalchess"  f.exec "exec /usr/local/bin/hi_brutalchess &"
+":: playOnLinux"  f.exec "exec /usr/local/bin/hi_playonlinux &"
+":: firefox-ESR"  f.exec "exec /usr/local/bin/hi_firefox-esr &"
+":: transmission"  f.exec "exec /usr/local/bin/hi_transmission-gtk &"
+":: geany editor"  f.exec "exec /usr/local/bin/hi_geany &"
 ":: 0.001%% __/\\/ ° ::"  f.title
-"transparent"	f.exec "exec transset 0.70 &"
-"solid-color"	f.exec "exec transset 1 &"
-"take shot"		f.exec "exec /usr/local/bin/takeshot &"
-"lock"		f.exec "exec xscreensaver-command -lock &"
-"kill"		f.destroy
-"restart"	f.restart
-"exit"		f.quit
+"   transparent"	f.exec "exec transset 0.70 &"
+"   solid color"	f.exec "exec transset 1 &"
+"   take shot"		f.exec "exec /usr/local/bin/takeshot &"
+"   refresh"	f.restart
+"   lock"		f.exec "exec xscreensaver-command -lock &"
+"   kill"		f.destroy
+"   exit"		f.quit
 }
