@@ -118,9 +118,9 @@
 
 * Login to X
 
-  "F10 on active window" * cycles windows down
+  "F10 on active window" * circles windows up
   
-  "F12 on active window" * cycles windows up
+  "F12 on active window" * circles windows down
   
   "grenn button left corner on title-bar" * iconize window
   
