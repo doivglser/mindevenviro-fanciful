@@ -49,27 +49,39 @@
 
 # TODO:
 
-* Rewrite all scripts to be portable to: Debian, Fedora, CentOS and MacOSX
+* Portability to: Debian, Fedora, CentOS, and MacOS
 
-* install joomla CMS
+* Joomla CMS
 
-* I search for the right MySQL syntax to delete id's.
+* set_mysql_passwd:
+
+		To stop "mysqld" and "serv-if-up" while setting up new password.
+		
+		Issue: 	
+			no access for user root with no password, 
+			because "mysqld_safe --skip-grant-tables &"
+			was never started OR mysqld was never stopped
+			correctly.
+
+* I search for the right MySQL syntax to delete id's. (mysql_cp_db)
 
 * sCRYPtUPdater
   
-  Make sure you change more than 1 byte, so if you only change one character, then please add a space.
+  - Make sure you change more than 1 byte, so if you only change one character, then please add a space.
 
-  To search for brackets and braces, to split the content of the source code into short code 
+  - To search for brackets and braces, to split the content of the source code into short code 
   snippets.
   
-  If the workflow interval in minutes is over, refer to the exit handler, if false, 
+  - If the workflow interval in minutes is over, refer to the exit handler, if false, 
   reset workflow interval, if true exit.
 
-* mindevenviro.rules, "iptables" drop rules for /etc/snort/rules/
-  
-* GUI's
+* "mindevenviro.rules": "alert/drop rules" for /etc/snort/rules/ 
+
+* "iptables psad fwsnort": tcp-wrapper
 
 * ncurses
+
+* GUI's
 
 # PROBLEMS:
 
@@ -101,7 +113,7 @@
 
 * ivo@x0x:~/mindevenviro$ sudo ./install 
 
-  Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS" :
+  Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
 
 		wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64
 		wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission
@@ -213,13 +225,20 @@
 
 * mysql_cp_db (shell script)
 
-  To rename tables in database, to delete and to dump and restore from .sql file.
+  	  ° To rename tables in database
+	  ° To delete zombie ID's because "lost *.php, *.xml, from CMS template" in mysql database.
+	  ° To dump database to *.sql file to ~/
+	  ° To restore database from .sql file.
   
 * redundanz (shell script)
 
   Puts serv-if-up daemon up and monitors servers reliability.
   
   Depends on: server-monitor, serv-if-up
+  
+* nids-antivirus-up (shell script)
+
+  USAGE: "sudo nids-antivirus-up --nIDs" puts snort up for active interface.
   
 * shi3lD (shell script)
 
@@ -290,7 +309,7 @@
 	- stop_shield
 	- nids-antivirus-up
 	
-° syntax|search|edit
+° syntax|search|dump|restore|rename
 
 	- sCRYPtUPdater
 	- search
