@@ -1,27 +1,26 @@
 #!/bin/bash
-
-# To rename databases, overwrite old dbs with backup_database.tables, dump and restore .sql, on localhost
-
 # FUNCTION: SEARCH ::
-# search in a database, I write something to search in tables..
+# to search tables related with short preffixes in a database. I write something to search in tables.
 
 # FUNCTION: ERASE ::
-# workaround to delete false entries in joomla, where id's
-# selected from: [joomla-root]/administrator/index.php?option=com_installer&view=manage
-# choose from search menu: "SuchWerkzeuge" and "Deaktiviert"
-# couldn't be properly de-installed and deleted by joomla backend itself
-# Names appears capitalized , as dead links without .php or .ini or .xml files in your
-# installation, (doesnt work at the moment cause no money, Im hungry)
+# shell function to delete  id's that points for a template that is not present, in joomla. link:
+# [joomla-root]/administrator/index.php?option=com_installer&view=manage
+# choose from search menu: "SuchWerkzeuge" and "Deaktiviert" and look for "upper-case
+# Those capitalized links," that are related to "menue entries" that doesnt work any more, 
+# because the joomla backend couldn't properly remove all mysql entries or 
+# where deletet bevor deinstallation of the template.
+### (doesnt work at all, with delete by ID=1, then no admin rights more)
 
 # FUNCTION: BACKUP ::
 # to rename a database from an other database putting tables from the backup-database in the new one
+# replacement for the "rename database" command from mariadb
+# A database can be renamed with all tables from an other database, but with mysql errors.
 
 # FUNCTION: RESTORE ::
 # to restore a database from a .sql file
 
 # FUNCTION: DUMP ::
 # to dump a database to a .sql file
-
 # 			WARNING DONT EDIT ANITHING BELOW ::
 
 LANG=C ;
@@ -85,7 +84,7 @@ fi
 }
 # 		search in database END
 
-# erase from tables (doesnt work at all, with delete by ID=1 then no admin rights more)
+# erase from tables
 erase(){
 # ask
 ls_dbs ;
