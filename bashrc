@@ -93,12 +93,13 @@ if ! shopt -oq posix; then
 fi
 set -o noclobber
 alias ls='ls --color=auto -sh'
+alias help='man'
 alias down='xrandr --output VGA-1 --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 0'
 alias vol='alsamixer'
 alias works='tail -f .wH0rUNSon'
 alias post='sudo -u root mutt'
 alias reboot='xrandr --output VGA-1 --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 6'
 alias vga='xrandr --output VGA-1 --mode 1024x768 --scale 1x1 --output eDP-1 --mode 1280x800 --scale 1x1 --left-of VGA-1'
-alias vgaOFF='xrandr --output VGA-1 --off && xrandr --output eDP-1 --mode 1280x800' ;
+alias vgaOFF='xrandr --output VGA-1 --off && xrandr --output eDP-1 --mode 1280x800'
 alias | sed -n 's/alias //p ;' ;
 fortune && cd && pwd && date ;
