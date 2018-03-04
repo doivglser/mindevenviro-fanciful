@@ -226,7 +226,7 @@
 * mysql_cp_db (shell script)
 
   	  ° To rename tables in database
-	  ° To delete ID's in lost *.php, *.xml, from CMS template, in database
+	  ° To delete zombie ID's because "lost *.php, *.xml, from CMS template" in mysql database.
 	  ° To dump database to *.sql file to ~/
 	  ° To restore database from .sql file.
   
