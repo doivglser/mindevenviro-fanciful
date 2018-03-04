@@ -57,7 +57,8 @@
 
 		To stop "mysqld" and "serv-if-up" while setting up new password.
 		
-		Issue: 	no access for user root with no password, 
+		Issue: 	
+			no access for user root with no password, 
 			because "mysqld_safe --skip-grant-tables &"
 			was never started OR mysqld was never stopped
 			correctly.
