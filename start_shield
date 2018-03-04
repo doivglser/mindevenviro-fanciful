@@ -1,6 +1,6 @@
 #!/bin/bash
 # mindevenviro start_shield
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 
@@ -110,7 +110,7 @@ sotstoppe="1" ;
 		sudo ip link set dev "$interface" up &&
 		until [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep /sbin/dhclient)" != '' ]] ;
 	do
-		printf "\rplease connect with network (wicd) - " ; sleep 1 ;
+		echo "please connect with \"network\" (wicd) - " ; sleep 1 ;
 		
 		if [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then	
@@ -130,7 +130,7 @@ done
         writem4c_Connected ;
         stopLoop="1" ;
     else
-        echo -e "no connection with this $(ip link show "$interface" | grep ether | awk '{print $2}'), I try again ..."
+        echo "no connection with this $(ip link show "$interface" | grep ether | awk '{print $2}'), I try again ..."
         puff_MACs && writem4c_SelfAssigned ;
 	fi
 done

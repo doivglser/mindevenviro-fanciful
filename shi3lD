@@ -3,10 +3,10 @@
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
 # restart clamd and snort if failure, cut the Ethernet Interface connection, while starting up
 # ctrl+C cut's Ethernet Interface connection and revert to your vendors MAC-ADDRESS
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###   
 LANG="C" ;
 		
-		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] || [[ ! $(netstat -ar) =~ 'default' ]] ;
+		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] ;
 	then
 		echo -e " USAGE: sudo $0 \n depends on redundanz \n you must have internet." ;
 		exit 0 ;
@@ -33,23 +33,13 @@ findIface(){
 	else
 		interface="d0Wn" ;
 		echo "We got no Internet $(date | awk '{print $1,$3,$4}')"
-fi
-		if [[ "$interface" =~ eno|eth ]] ;
-	then
-		whoUP="1" ;
-		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
-
-		elif [[ "$interface" =~ wl|wi ]] ;
-	then
-		whoUP="2" ;
-		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
-		
-		elif [[ "$interface" =  "d0Wn" ]] ;
+fi	
+		if [[ "$interface" =  "d0Wn" ]] ;
 	then
 		# if an interface is not connected, take the wifi Iface, cause snort allways should be configured for the wired-iface.
 		until ip link | cut -f2 -d: | grep -E '\ ' | grep -v lo | tr -d '\ ' | tail -n1 > "$tmpfolder"/interface ;
 	do
-		printf "\rplease connect to the internet - " ; sleep 1 ;
+		echo "please connect to the internet - " ;
 done
 		interface="$(cat "$tmpfolder"/interface)" && whoUP="2" ;
 		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
@@ -57,7 +47,6 @@ fi
 }
 
 puffeRR(){
-		clear ;
 		echo -e "\n :: D A N G E R nO shi3lD ::" ;
 		echo -e " :: .changing macaddress. :: \n" &&
 		source start_shield ;
@@ -90,7 +79,8 @@ messag4(){
 	do
 		((nnumberr++));
 		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1}${spin:$i:1} UPTIME: $nnumberr" ; sleep 1 ; 
-done
+done ;
+return ;
 }
 		while trap 'exitHandler' SIGINT ;
 	do

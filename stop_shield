@@ -1,6 +1,6 @@
 #!/bin/bash
 # mindevenviro stop_shield 
-###     WARNING:    DON'T EDIT ANYTHING BELOW	###   
+###     WARNING:    DON'T EDIT ANYTHING BELOW	###
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 nnumberOFinterface="0" ;
