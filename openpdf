@@ -1,11 +1,11 @@
 #!/bin/bash
 # mindevenviro openpdf
 # opens PDFs
-###     WARNING:    DON'T EDIT ANYTHING BELOW  
+###     WARNING:    DON'T EDIT ANYTHING BELOW
 LANG="C" ;
 IFS=$(echo -en "\b\n") ;
 
-		if [ -e $1 ] && [[ "$1" != '' ]] ;
+		if [[ "$1" != '' ]] && [ -e $1 ] ;
 	then
 		for suffixes in *.pdf *.PDF ;
 	do
