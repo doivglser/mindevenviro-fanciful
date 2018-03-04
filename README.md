@@ -65,9 +65,9 @@
   - If the workflow interval in minutes is over, refer to the exit handler, if false, 
   reset workflow interval, if true exit.
 
-* mindevenviro.rules, "iptables" alert/drop rules for /etc/snort/rules/ 
+* "mindevenviro.rules": "alert/drop rules" for /etc/snort/rules/ 
 
-* "psad"-"fwsnort" - tcp-wrapper
+* "iptables psad fwsnort": tcp-wrapper
 
 * ncurses
 
