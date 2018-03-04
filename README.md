@@ -189,8 +189,8 @@
 
   fast and lightweight IDE
 
-° open the following shell scripts in the terminator window.
-# .
+		° OPEN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW °
+
 * openpdf (shell script)
 
   Open PDF files with pdf suffix
