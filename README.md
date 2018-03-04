@@ -20,8 +20,8 @@
 
 # M1ND3V3NV1R0 (testing)
 
-	Deployment Environment for Web Applications and System Administration, in a Minimal Desktop 
-	with Antivirus, NIDS and a Great Multimedia Experience, without systemd. ( for one $USER ) .
+	Deployment Environment for Web Applications and System Administration, in a minimal Desktop
+	with Antivirus, NIDS and a great Multimedia Experience, without systemd. ( for one $USER ) .
 
 - VTWM minimal tweak, Xorg session with xdm.
 
@@ -56,6 +56,8 @@
 * I search for the right MySQL syntax to delete id's.
 
 * sCRYPtUPdater
+  
+  Make sure you change more than 1 byte, so if you only change one character, then please add a space.
 
   To search for brackets and braces, to split the content of the source code into short code 
   snippets.
