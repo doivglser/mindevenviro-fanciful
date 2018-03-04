@@ -57,12 +57,12 @@
 
 * sCRYPtUPdater
   
-  Make sure you change more than 1 byte, so if you only change one character, then please add a space.
+  - Make sure you change more than 1 byte, so if you only change one character, then please add a space.
 
-  To search for brackets and braces, to split the content of the source code into short code 
+  - To search for brackets and braces, to split the content of the source code into short code 
   snippets.
   
-  If the workflow interval in minutes is over, refer to the exit handler, if false, 
+  - If the workflow interval in minutes is over, refer to the exit handler, if false, 
   reset workflow interval, if true exit.
 
 * mindevenviro.rules, "iptables" alert/drop rules for /etc/snort/rules/ 
