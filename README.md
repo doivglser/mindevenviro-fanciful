@@ -53,7 +53,16 @@
 
 * Joomla CMS
 
-* I search for the right MySQL syntax to delete id's.
+* set_mysql_passwd:
+
+		To stop "mysqld" and "serv-if-up" while setting up new password.
+		
+		Issue: 	no access for user root with no password, 
+			because "mysqld_safe --skip-grant-tables &"
+			was never started OR mysqld was never stopped
+			correctly.
+
+* I search for the right MySQL syntax to delete id's. (mysql_cp_db)
 
 * sCRYPtUPdater
   
@@ -215,13 +224,20 @@
 
 * mysql_cp_db (shell script)
 
-  To rename tables in database, to delete and to dump and restore from .sql file.
+  	  ° To rename tables in database
+	  ° To delete ID's in lost *.php, *.xml, from CMS template, in database
+	  ° To dump database to *.sql file to ~/
+	  ° To restore database from .sql file.
   
 * redundanz (shell script)
 
   Puts serv-if-up daemon up and monitors servers reliability.
   
   Depends on: server-monitor, serv-if-up
+  
+* nids-antivirus-up (shell script)
+
+  USAGE: "sudo nids-antivirus-up --nIDs" puts snort up for active interface.
   
 * shi3lD (shell script)
 
