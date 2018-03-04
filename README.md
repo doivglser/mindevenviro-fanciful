@@ -49,9 +49,9 @@
 
 # TODO:
 
-* Rewrite all scripts to be portable to: Debian, Fedora, CentOS and MacOSX
+* Portability to: Debian, Fedora, CentOS, and MacOS
 
-* install joomla CMS
+* Joomla CMS
 
 * I search for the right MySQL syntax to delete id's.
 
@@ -65,11 +65,13 @@
   If the workflow interval in minutes is over, refer to the exit handler, if false, 
   reset workflow interval, if true exit.
 
-* mindevenviro.rules, "iptables" drop rules for /etc/snort/rules/
-  
-* GUI's
+* mindevenviro.rules, "iptables" alert/drop rules for /etc/snort/rules/ 
+
+* "psad"-"fwsnort" - tcp-wrapper
 
 * ncurses
+
+* GUI's
 
 # PROBLEMS:
 
@@ -101,7 +103,7 @@
 
 * ivo@x0x:~/mindevenviro$ sudo ./install 
 
-  Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS" :
+  Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
 
 		wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64
 		wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission
@@ -290,7 +292,7 @@
 	- stop_shield
 	- nids-antivirus-up
 	
-° syntax|search|edit
+° syntax|search|dump|restore|rename
 
 	- sCRYPtUPdater
 	- search
