@@ -114,13 +114,17 @@
  
    You can aprove to sign up in to your github.com account, or just hit enter.
 
-# USAGE:
+# USAGE On VTWM:
 
 * Login to X
 
   "F10 on active window" * cycles windows down
   
   "F12 on active window" * cycles windows up
+  
+  "grenn button left corner on title-bar" * iconize window
+  
+  "grenn button right corner on title-bar" * resize window
 
   "Right click on the Desktop" * Change Background
   
@@ -137,7 +141,7 @@
 		"lock" * Locks the screen. xscreensaver prompt for $USER password.
 		"kill" * Click with cross on a window to end process.
 		"exit" * Quits VTWM. XDM login screen, returns.
-# On vtwm:
+# VTWM Menu:
 
 * music 
 
@@ -188,6 +192,8 @@
 * geany
 
   fast and lightweight IDE
+  
+# USAGE in Terminator:
 
 		° OPEN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW °
 
