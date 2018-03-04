@@ -134,7 +134,7 @@
 		"solid color" * Click with cross on a window or an icon to set solid color back.
 		"take shot" * Click with Mouse pointer on Desktop or Window to save picture to ~/
 		"refresh" * Restarts VTWM on opened $USER session.
-		"lock" * Locks the screen. xscreensaver promt for $USER password.
+		"lock" * Locks the screen. xscreensaver prompt for $USER password.
 		"kill" * Click with cross on a window to end process.
 		"exit" * Quits VTWM. XDM login screen, returns.
 # On vtwm:
