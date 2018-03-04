@@ -5,7 +5,7 @@
 LANG="C" ;
 IFS=$(echo -en "\b\n") ;
 
-		if [ -e $1 ] && [[ $(file $1 2>/dev/null) =~ directory ]] ;
+		if [ -e $1 ] ;
 	then
 		for suffixes in *.pdf *.PDF ;
 	do
