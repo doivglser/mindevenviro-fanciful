@@ -58,6 +58,8 @@ changepass(){
 
 		if [[ "$REPLY" = "set" ]] ;
 	then
+		killall -15 redundanz 2>/dev/null ;
+		echo -e "\n - redundanz is down, you should start again.\n"
 		printf "enter your mysql root password: "; read mysqlnewpass ;
 		changepass "$@" ;
 		
