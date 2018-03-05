@@ -4,8 +4,8 @@
 LANG="C" ;
 to_star_up(){
 xsetroot -solid yellow &
-oclock -hour red -minute white -bd white -fg yellow -bg black -jewel green -shape -geometry 70x75-6+3 &
-xload -g 60x58-10+91 -fg "yellow" -bg "black" -bw 1 &
+oclock -hour red -minute white -bd white -bg black -jewel green -shape -geometry 70x75-6+3 &
+xload -g 60x58-10+91 -fg "grey" -bg "black" -bw 1 &
 setsid xscreensaver -display :0 -no-splash >/dev/null 2>&1 < /dev/null &
 xcompmgr -c &
 sleep 2 ;

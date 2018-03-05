@@ -143,16 +143,16 @@ BorderColor         "#1ef600"
 DefaultBackground   "#a203b0"
 DefaultForeground   "#ffD6D6"
 
-TitleBackground     "#FFCC00"
-TitleForeground     "Black"
+TitleBackground     "#000000"
+TitleForeground     "White"
 
 MenuTitleBackground "Black"
 MenuTitleForeground "White"
 
-MenuBackground      "#FFCC00"
-MenuForeground      "#1a002E"
+MenuBackground      "#FFFFFF"
+MenuForeground      "#1E1E1E"
 
-MenuShadowColor     "#FF0000"
+MenuShadowColor     "#3A1B33"
 MenuBorderColor     "#00FFC0"
 }
 
