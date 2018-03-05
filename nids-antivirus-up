@@ -3,8 +3,8 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###   
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
-antivirus="/usr/sbin/clamd" ;
-nids="/usr/sbin/snort" ;
+antivirus="clamav-daemon" ;
+nids="snort" ;
 
 	if [ $EUID = 0 ] ;
 then
@@ -58,7 +58,7 @@ fi
 
 # checks if clamd is up, if false restarts
 clamdUP(){
-	 /etc/init.d/"$antivirus" stop ;
+
 	if /etc/init.d/"$antivirus" start > "$tmpfolder/root_mail_status" ;
 then
 
