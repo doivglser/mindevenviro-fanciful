@@ -79,8 +79,7 @@ messag4(){
 	do
 		((nnumberr++));
 		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1}${spin:$i:1} UPTIME: $nnumberr" ; sleep 1 ; 
-done ;
-return ;
+done && clear ;
 }
 		while trap 'exitHandler' SIGINT ;
 	do
@@ -91,8 +90,10 @@ return ;
 fi
 		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then
-		messag4 ;
-	else
+		messag4 && break ;
+		
+		elif [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" != "2" ]] || [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" = "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
+	then
 		stop_shield --stop &
 		wait ;
 		findIface ;
