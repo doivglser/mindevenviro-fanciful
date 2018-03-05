@@ -1,22 +1,16 @@
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
-* Reason 5 Demo on PlayOnLinux window.
-![bild000](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_zero.jpg)
+* All Apps open, second monitor extended at the right of desktop, with Reason 5 Demo on PlayOnLinux window.
+![bild000](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_one.jpg)
 
-* All Apps open, second monitor extended at the right of desktop, with Youtube.
-![bild011](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_one.jpg)
-
-* shi3lD is running, second monitor extended at the right of desktop, with Youtube.
-![bild022](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_two.jpg)
+* shi3lD is running, second monitor extended at the right of desktop, with wicd.
+![bild011](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_two.jpg)
 
 * mindevenviro projects
-![bild033](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_three.jpg)
+![bild022](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_three.jpg)
 
-* A Picture, shuted with "take shot" from the "Menu", opened with "mc" in the "Terminator" window and edited in few seconds with "ImageMagic". "ImageMagic" is an awesome vintage toy, fast and simple.
-![bild044](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_four.jpg)
-
-* The same Picture as bevor, edited in few seconds with "ImageMagic", and put some things in minutes with "GIMP".
-![bild055](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_five.jpg)
+* A Picture, shuted with "take shot" from the "Menu", opened with "mc" in the "Terminator" window and, edited in few seconds with "ImageMagic", and put some things in minutes with "GIMP".
+![bild033](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/addjus_four.jpg)
 
 # M1ND3V3NV1R0 (testing)
 
