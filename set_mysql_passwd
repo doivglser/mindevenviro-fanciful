@@ -13,7 +13,7 @@ LANG=C ;
 help(){
 shift 0 ;
 echo -e "hello $SUDO_USER\nset new mariadb root password\n" ;
-echo -e "Usage: $0 [--password] [--help]\r" ;
+echo -e "Usage: $0 [--password] [password_value]\r" ;
 exit 0 ;
 }		
 
@@ -27,6 +27,8 @@ stop_mysql(){
 changepass(){
 		if	[[ "$mysqlnewpass" != '' ]] ;
 	then
+		echo -e "\n - stopping serv-if-up\n"
+		killall -15 serv-if-up ;
 		stop_mysql ;
 		echo "starting mysql to maintenance" ;
 		mysqld_safe --skip-grant-tables &
@@ -38,16 +40,25 @@ changepass(){
 		echo -e "\n ... update mysql root passwords" ;
 		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf ;
 		sed -i "s/\(plugin_password *= *\).*/\1/" /etc/mysql_cp_db_password.conf ;
-		mysqld_safe &
+		/etc/init.d/mysql start ;
+		echo -e "\n - stopping serv-if-up\n"
+		nice -14 setsid serv-if-up >/dev/null 2> /dev/null &
 		echo " done !" ;
-	fi	
+		exit 0 ;
+	else
+		echo "you must enter a password" ;
+		echo "USAGE: $0 --help" ;
+		exit 0
+fi
 }
 
 # ASK 
   case "$1" in
    --password)
 		REPLY="set"
-		shift
+		mysqlnewpass=$2
+        toshiffta=$(echo "$1 $mysqlnewpass" | wc -w) ;
+        shift "$toshiffta" ;
       ;;
    --help)
 		REPLY="help"
@@ -58,9 +69,6 @@ changepass(){
 
 		if [[ "$REPLY" = "set" ]] ;
 	then
-		killall -15 redundanz 2>/dev/null ;
-		echo -e "\n - redundanz is down, you should start again.\n"
-		printf "enter your mysql root password: "; read mysqlnewpass ;
 		changepass "$@" ;
 		
 		elif [[ "$REPLY" = "help" ]] ;
