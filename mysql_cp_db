@@ -287,7 +287,7 @@ then
 	backup ;
 	elif [[ $REPLY = "search" ]] ;
 then
-	echo -e "\r... just few seconds, while searching db's\rdepending ${USER}s salary...\r" ;
+	echo -e "\r... just few seconds, while searching db's" ;
 	search ;
 
 	elif [[ $REPLY = "erase" ]] ;
