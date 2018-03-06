@@ -2,7 +2,7 @@
 # mindevenviro ..
 # monitors the servers and applications, defined in server-monitor
 # starts the daemon serv-if-up and monitors some piDS are up.
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 
 		if [ ! $EUID = 0 ] ;
