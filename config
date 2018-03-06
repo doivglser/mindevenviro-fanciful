@@ -28,7 +28,7 @@
       profile = default
       type = Terminal
     [[[terminal2]]]
-      command = top
+      command = nmon
       order = 2
       parent = child1
       profile = default
