@@ -1,7 +1,7 @@
 #!/bin/bash
 # startup file on /usr/local/bin
 LANG="C" ;
-                if [[ $(ps axu | grep -v grep | grep -v hi_libreoffice | grep libreoffice) = '' ]] ;
+                if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_libreoffice | grep libreoffice) = '' ]] ;
         then
                 libreoffice & hi ;
         else

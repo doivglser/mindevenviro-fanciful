@@ -3,7 +3,7 @@
 LANG="C" ;
 IFS=$(echo -en "\b\n") ;
 
-		if [[ $(ps axu | grep -v grep | grep -v hi_vlc | grep vlc) = '' ]] ;
+		if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_vlc | grep vlc) = '' ]] ;
 	then
 		vlc --no-fullscreen --no-video-title-show --no-autoscale --global-key-zoom-quarter 1:4 & hi ;
 	else
