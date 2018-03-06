@@ -39,12 +39,6 @@
       parent = child1
       profile = default
       type = Terminal
-    [[[terminal4]]]
-      command = mutt
-      order = 4
-      parent = child1
-      profile = default
-      type = Terminal   
     [[[terminal7]]]
       order = 5
       parent = child1
