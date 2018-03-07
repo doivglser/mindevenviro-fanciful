@@ -23,12 +23,8 @@ else
 		ip link show | grep ether | awk '{print $2}' | tee "/root/.vendorsmac" ;
 		chmod 0664 "/root/.vendorsmac" ;
 fi
-		echo -e "\n ... if you not have a WiFi device on your Board, then install one please !\n you must have only one WiFi Interface up,\n I will search for a solution to install them for you." ;
+		echo -e "\n ... if you not have a WiFi device on your Board, then install one please !\n you must have only one WiFi Interface up,\n I dont have a solution at this moment" ;
 
-		until [[ $(ip link | cut -f2 -d: | grep -E '\ ' | tr -d '\ ' | grep -v lo | head -n2) = "2" ]] ;
-	do
-		printf "\rplug in, or turn on your WiFi Device please " ; sleep 1 ;
-done
 		if [ -e /root/.interfaces ] ;
 	then
 		echo -e ".interfaces allready saved" ;
