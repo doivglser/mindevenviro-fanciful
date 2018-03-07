@@ -1,7 +1,7 @@
 #!/bin/bash
 # mindevenviro serv-if-up
 # serv-if-up (daemon) : restarts servers and notify
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###   
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C";
 		if [ $EUID != 0 ] ;
 	then
@@ -41,7 +41,7 @@ then
 
 echo "$?" >> "$tmpfolder/root_mail_status" ;
 
-echo ":: $webserver fails, but restartet successfully, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3
+echo ":: $webserver fails, but restartet successfully, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/4
 
 cat << EOM | sendmail root@localhost
 
@@ -60,7 +60,7 @@ $(cat "$tmpfolder/root_mail_status")
 
 EOM
 
-echo ":: you got email, $webserver fails, cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
+echo ":: you got email, $webserver fails, cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/4 ;
 
 fi
 }
@@ -82,7 +82,7 @@ $(cat "$tmpfolder/root_mail_status")
 
 EOM
 
-echo ":: $mta is accepting connections again, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
+echo ":: $mta is accepting connections again, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/4 ;
 
 	else
 
@@ -95,7 +95,7 @@ $(cat "$tmpfolder/root_mail_status")
 
 EOM
 
-echo ":: you got email, $mta cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
+echo ":: you got email, $mta cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/4 ;
 
 fi
 }
@@ -116,7 +116,7 @@ $(cat "$tmpfolder/root_mail_status")
 
 EOM
 
-echo ":: $datenbank is accepting connections again, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
+echo ":: $datenbank is accepting connections again, you got an email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/4 ;
 
 	else
 
@@ -129,7 +129,7 @@ $(cat "$tmpfolder/root_mail_status")
 
 EOM
 
-echo ":: you got email, $datenbank cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
+echo ":: you got email, $datenbank cannot restart $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/4 ;
 
 fi
 }
@@ -185,7 +185,7 @@ Size on /home: $SIZEONHOME GB
 
 EOM
 
-echo "::WARNING:: your over $WARN01 % or $WARN02 %, you got email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/3 ;
+echo "::WARNING:: your over $WARN01 % or $WARN02 %, you got email $(date | awk '{print $1,$3,$4}') ::" > /dev/pts/4 ;
 
 }
 # END checking free space
