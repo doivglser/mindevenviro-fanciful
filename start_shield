@@ -1,6 +1,6 @@
 #!/bin/bash
-# mindevenviro start_shield
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+# mindevenviro start_shield 
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ### 
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 
@@ -25,6 +25,19 @@ homeordner="/home/${SUDO_USER}/" ;
 		tmpfolder="/tmp" ;
 fi
 # temp folder END
+
+		interface="$(cat "$tmpfolder"/interface)" ;
+		
+		if [[ "$interface" =~ eno|eth ]] ;
+	then
+		whoUP="1" ;
+
+		elif [[ "$interface" =~ wl|wi ]] ;
+	then
+		whoUP="2" ;
+	else
+		whoUP="none" ;
+fi
 
 permissions(){
 		sudo chown $SUDO_USER:$SUDO_USER "$(date | awk '{print $2,$6}' | sed 's/\ //g')" 2>/dev/null ;
@@ -78,34 +91,15 @@ ifUPAntiVirusFireWall(){
 		printf "\r restarting Snort..." ;
 		nohup nids-antivirus-up --nIDs &
 		sleep 1 ;
-	else
-		printf "\rno connection to set Iface up - " ; sleep 1 ;
 	fi
 fi
 done
 }
 
-interface="$(cat "$tmpfolder"/interface)" ;
-
-		if [[ "$interface" =~ eno|eth ]] ;
-	then
-		whoUP="1" ;
-
-		elif [[ "$interface" =~ wl|wi ]] ;
-	then
-		whoUP="2" ;
-	else
-		whoUP="none" ;
-fi
-
 puff_MACs(){
-
+stop_shield --stop &
 sotstoppe="1" ;
-
-		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
-	then
-		echo -e "\nsoon shi3lD - \r" ;
-	else
+		
 		until [[ "$sotstoppe" = "0" ]] ;
 	do
 		echo -e "puffing MACs ...\n" ;
@@ -114,7 +108,7 @@ sotstoppe="1" ;
 		sudo ip link set dev "$interface" up &&
 		until [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep /sbin/dhclient)" != '' ]] ;
 	do
-		echo "please connect with \"network\" (wicd) - " ; sleep 1 ;
+		printf "\rplease RECONECT with network (wicd)" && sleep .1 ;
 		
 		if [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then	
@@ -123,11 +117,10 @@ sotstoppe="1" ;
 fi
 done
 done
-fi
 }
 		while [[ $stopLoop != "1" ]]
 	do
-		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
+		if [[ $(netstat -ar) =~ 'default' ]] && [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
     then
         clear ;
         echo -e "\n - WE HAVE shi3lD ::\n" ;

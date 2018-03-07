@@ -25,28 +25,42 @@ fi
 # temp folder END
 
 findIface(){
+	
+	interface="";
+			until [[ $interface != '' ]] && [[ $interface != 'Iface' ]] ;
+	do
 		if [[ $(netstat -ar) =~ 'default' ]] ;
 	then
 		echo "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" > "$tmpfolder"/interface ;
 		interface="$(cat "$tmpfolder"/interface)" ;
 		network="up" ;
 	else
-		interface="d0Wn" ;
-		echo "We got no Internet $(date | awk '{print $1,$3,$4}')"
-fi	
-		if [[ "$interface" =  "d0Wn" ]] ;
-	then
-		# if an interface is not connected, take the wifi Iface, cause snort allways should be configured for the wired-iface.
-		until ip link | cut -f2 -d: | grep -E '\ ' | grep -v lo | tr -d '\ ' | tail -n1 > "$tmpfolder"/interface ;
+		until [[ "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" != 'Iface' ]] ;
 	do
-		echo "please connect to the internet - " ;
+		printf "\rplease connect with network (wicd)" && sleep .1 ;
 done
-		interface="$(cat "$tmpfolder"/interface)" && whoUP="2" ;
+		echo "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" > "$tmpfolder"/interface ;
+		interface="$(cat "$tmpfolder"/interface)" ;
 		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
+		network="up" ;
 fi
-}
+done
+		
 
-puffeRR(){
+# which interface is trought the default route to the internet connected
+# works only if you have two interfaces, like: eno[0-9] | eth[0-9] | wi[a-z-0-9] | wl[a-z-0-9]
+
+		if [[ "$interface" =~ eno|eth ]] ;
+	then
+		whoUP="1" ;
+
+		elif [[ "$interface" =~ wl|wi ]] ;
+	then
+		whoUP="2" ;
+	else
+		whoUP="none" ;
+fi
+	
 		echo -e "\n :: D A N G E R nO shi3lD ::" ;
 		echo -e " :: .changing macaddress. :: \n" &&
 		source start_shield ;
@@ -85,19 +99,16 @@ done && clear ;
 	do
 		if [[ ! $(netstat -ar) =~ 'default' ]] ;
 	then
-		printf "\rplease connect to the internet - " ; sleep 1 ;
-		findIface ;
+		echo " no internet - " ;
 fi
 		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then
-		messag4 && break ;
+		messag4 ;
 		
 		elif [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" != "2" ]] || [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" = "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then
 		stop_shield --stop &
-		wait ;
-		findIface ;
-		puffeRR ;
+		wait &&	findIface ;
 	fi
 done
 fi
