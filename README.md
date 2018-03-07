@@ -47,16 +47,6 @@
 
 * Joomla CMS
 
-* set_mysql_passwd:
-
-		To stop "mysqld" and "serv-if-up" while setting up new password.
-		
-		Issue: 	
-			no access for user root with no password, 
-			because "mysqld_safe --skip-grant-tables &"
-			was never started OR mysqld was never stopped
-			correctly.
-
 * I search for the right MySQL syntax to delete id's. (mysql_cp_db)
 
 * sCRYPtUPdater
@@ -166,6 +156,10 @@
 * the gimp
 
   GIMP, GNU Image Manipulation Program
+  
+* calculator
+
+  xcalc, a scientific calculator desktop accessory;
 
 * terminator (Multiple GNOME terminals in one window.)
 
@@ -248,7 +242,7 @@
   
   		° "[MonthYear].mac_recieves_dhcp_lease"
 			A list with MAC-ADDRESSES that works with your hardware
-		
+
 		° "[MonthYear].mac_no_dhcp_lease"
 			A list with MAC-ADDRESSES that doesn't work with your hardware
 			
@@ -256,7 +250,7 @@
  
 * set_mysql_passwd (shell script)
 
-  To set up the MariaDB root password, please don't enter more then 13 chars.
+  To set up the MariaDB root password, enter a friendly password, only: numbers,lower-case,upper-case, 10 digits.
 
 * install (shell script)
 
