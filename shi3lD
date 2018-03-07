@@ -3,7 +3,7 @@
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
 # restart clamd and snort if failure, cut the Ethernet Interface connection, while starting up
 # ctrl+C cut's Ethernet Interface connection and revert to your vendors MAC-ADDRESS
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
 LANG="C" ;
 		
 		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] ;
@@ -14,7 +14,7 @@ else
 
 clear && echo -e "\n" ;
 nnumberr="0" ;
-
+echo -e "\n .: shi3lD :. \n" ;
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
 	then
@@ -86,6 +86,9 @@ exitHandler(){
 }
 
 messag4(){
+        clear ;
+        echo -e "\n - WE HAVE shi3lD ::\n" ;
+        echo -e " done ! we go throught $(netstat -ar | grep -v grep | grep default | awk '{print $2}') \n $(ip route | grep -v grep | grep src) \n and $interface has now this MAC-Address: $(ip link show "$interface" | grep ether | awk '{print $2}')\n" ;
 		spin='.oOo' ; i=0 ;
 		spin2='-\|/' ;
 
@@ -93,7 +96,7 @@ messag4(){
 	do
 		((nnumberr++));
 		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1}${spin:$i:1} UPTIME: $nnumberr" ; sleep 1 ; 
-done && clear ;
+done
 }
 		while trap 'exitHandler' SIGINT ;
 	do
@@ -107,8 +110,8 @@ fi
 		
 		elif [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" != "2" ]] || [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" = "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then
-		stop_shield --stop &
-		wait &&	findIface ;
+		findIface ;
+		wait ;
 	fi
 done
 fi

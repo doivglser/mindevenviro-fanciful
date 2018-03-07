@@ -80,17 +80,17 @@ ifUPAntiVirusFireWall(){
 	do
 		if [[ "$(ps aux | grep -v grep | grep clamd | grep -v nano | awk '{print $11}')" != "$antivirus" ]]
 	then
-		printf "\r restarting ClamAV..." ;
 		nohup nids-antivirus-up --anTiVirus &
-		sleep 1 ;
+		printf "\r restarting ClamAV..." ;
+		sleep 2 ;
 	fi	
 	    if [[ "$(ps aux | grep -v grep | grep snort | grep -v nano | awk '{print $11}')" != "$nids" ]]
 	then
 		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
     then
-		printf "\r restarting Snort..." ;
 		nohup nids-antivirus-up --nIDs &
-		sleep 1 ;
+		printf "\r restarting Snort..." ;
+		sleep 2 ;
 	fi
 fi
 done
@@ -98,21 +98,19 @@ done
 
 puff_MACs(){
 stop_shield --stop &
-sotstoppe="1" ;
 		
-		until [[ "$sotstoppe" = "0" ]] ;
+		until [[ $(netstat -ar) =~ 'default' ]] ;
 	do
 		echo -e "puffing MACs ...\n" ;
 		neWMacAdr=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//') &&
 		sudo ip link set dev "$interface" address "$neWMacAdr" &&
-		sudo ip link set dev "$interface" up &&
+		sudo ip link set dev "$interface" up && sleep 3 ;
 		until [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep /sbin/dhclient)" != '' ]] ;
 	do
-		printf "\rplease RECONECT with network (wicd)" && sleep .1 ;
+		printf "\rplease RECONECT with network (wicd)" ; sleep 1 ;
 		
-		if [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
+		if [[ $(netstat -ar) =~ 'default' ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then	
-		((sotstoppe--)) ;
 		ifUPAntiVirusFireWall ;
 fi
 done
@@ -122,11 +120,9 @@ done
 	do
 		if [[ $(netstat -ar) =~ 'default' ]] && [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
     then
-        clear ;
-        echo -e "\n - WE HAVE shi3lD ::\n" ;
-        echo -e " done ! we go throught $(netstat -ar | grep -v grep | grep default | awk '{print $2}') \n $(ip route | grep -v grep | grep src) \n and $interface has now this MAC-Address: $(ip link show "$interface" | grep ether | awk '{print $2}')\n" ;
         writem4c_Connected ;
         stopLoop="1" ;
+        echo " ... done!" ;
     else
         echo "no connection with this $(ip link show "$interface" | grep ether | awk '{print $2}'), I try again ..."
         puff_MACs && writem4c_SelfAssigned ;
