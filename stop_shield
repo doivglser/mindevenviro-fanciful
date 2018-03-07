@@ -21,9 +21,9 @@ fi
 # temp folder END
 
 stop_Ppp(){
-		echo -e "\nstopping connections ...\n"
+		echo -e "\nstopping connections ...\n" ;
 		killall -15 dhclient ;
-		sudo ip link set dev "$(cat "$tmpfolder"/interface)" down && sleep 2 ;
+		sudo ip link set dev "$(cat "$tmpfolder"/interface)" down && wait && sleep 1 ;
 }
 
 # ASK
