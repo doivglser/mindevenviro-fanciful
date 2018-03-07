@@ -5,7 +5,6 @@
 # ctrl+C cut's Ethernet Interface connection and revert to your vendors MAC-ADDRESS
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
 LANG="C" ;
-		
 		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] ;
 	then
 		echo -e " USAGE: sudo $0 \n depends on redundanz \n you must have internet." ;
@@ -85,19 +84,16 @@ exitHandler(){
 	fi
 }
 
-messag4(){
-        clear ;
-        echo -e "\n - WE HAVE shi3lD ::\n" ;
-        echo -e " done ! we go throught $(netstat -ar | grep -v grep | grep default | awk '{print $2}') \n $(ip route | grep -v grep | grep src) \n and $interface has now this MAC-Address: $(ip link show "$interface" | grep ether | awk '{print $2}')\n" ;
-		spin='.oOo' ; i=0 ;
-		spin2='-\|/' ;
-
+mess4ge(){
 		while [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	do
+		spin='.oOo' ; i=0 ;
+		spin2='-\|/' ;
 		((nnumberr++));
-		i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1}${spin:$i:1} UPTIME: $nnumberr" ; sleep 1 ; 
+		sleep .5 ; i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1}${spin:$i:1} UPTIME: $nnumberr" ; sleep .5 ; printf "\r" ;
 done
 }
+
 		while trap 'exitHandler' SIGINT ;
 	do
 		if [[ ! $(netstat -ar) =~ 'default' ]] ;
@@ -106,12 +102,11 @@ done
 fi
 		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then
-		messag4 ;
-		
+		mess4ge ;
+
 		elif [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" != "2" ]] || [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" = "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	then
 		findIface ;
-		wait ;
 	fi
 done
 fi

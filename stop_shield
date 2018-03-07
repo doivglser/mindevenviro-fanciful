@@ -12,7 +12,7 @@ nnumberOFinterface="0" ;
 else
 
 # temp folder
-		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
 	then
 		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
 	else
@@ -21,16 +21,16 @@ fi
 # temp folder END
 
 stop_Ppp(){
-		echo -e "\nstopping connections ...\n" ;
+		echo -e " ... stopping connections\n" ;
 		killall -15 dhclient ;
-		sudo ip link set dev "$(cat "$tmpfolder"/interface)" down && wait && sleep 1 ;
+		sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ;
 }
 
 # ASK
   case "$1" in
         --stop)
       shift 1;
-      stop_Ppp "$@" ;
+      stop_Ppp "$@" && exit 0 ;
       ;;
   esac
 fi
