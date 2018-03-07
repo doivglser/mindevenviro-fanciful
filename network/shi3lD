@@ -1,0 +1,112 @@
+#!/bin/bash
+# mindevenviro shi3lD
+# Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
+# restart clamd and snort if failure, cut the Ethernet Interface connection, while starting up
+# ctrl+C cut's Ethernet Interface connection and revert to your vendors MAC-ADDRESS
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###  
+LANG="C" ;
+		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] || [[ ! $(netstat -ar) =~ 'default' ]] ;
+	then
+		echo -e " USAGE: sudo $0 \n depends on redundanz \n you must have internet." ;
+		exit 0 ;
+else
+
+clear && echo -e "\n" ;
+nnumberr="0" ;
+echo -e "\n .: shi3lD :. \n" ;
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# temp folder END
+
+findIface(){
+	
+	interface="";
+			until [[ $interface != '' ]] && [[ $interface != 'Iface' ]] ;
+	do
+		if [[ $(netstat -ar) =~ 'default' ]] ;
+	then
+		echo "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" > "$tmpfolder"/interface ;
+		interface="$(cat "$tmpfolder"/interface)" ;
+		network="up" ;
+	else
+		until [[ "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" != 'Iface' ]] ;
+	do
+		printf "\rplease connect with network (wicd)" && sleep .1 ;
+done
+		echo "$(cat /proc/net/route | head -n2 | awk '{print $1}' | tail -n1)" > "$tmpfolder"/interface ;
+		interface="$(cat "$tmpfolder"/interface)" ;
+		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
+		network="up" ;
+fi
+done
+		
+
+# which interface is trought the default route to the internet connected
+# works only if you have two interfaces, like: eno[0-9] | eth[0-9] | wi[a-z-0-9] | wl[a-z-0-9]
+
+		if [[ "$interface" =~ eno|eth ]] ;
+	then
+		whoUP="1" ;
+
+		elif [[ "$interface" =~ wl|wi ]] ;
+	then
+		whoUP="2" ;
+	else
+		whoUP="none" ;
+fi
+	
+		echo -e "\n :: D A N G E R nO shi3lD ::" ;
+		echo -e " :: .changing macaddress. :: \n" &&
+		source start_shield ;
+}
+
+exitHandler(){
+
+		echo -e "-"
+		printf " quit? (y/n) " ; read
+		echo -e "-"
+
+			if [[ $REPLY =~ y|Y|j|J ]] ;
+		then
+			sudo ip link set dev "$interface" down && sleep 1 && 
+			sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" && 
+			echo -e "\n You where surfing with this MAC: \n $(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n\n your network down." ;
+			exit 0 ;
+
+			elif [[ $REPLY =~ n|N ]] ;
+		then
+			return ;
+	fi
+}
+
+mess4ge(){
+		while [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
+	do
+		spin='.oOo' ; i=0 ;
+		spin2='-\|/' ;
+		((nnumberr++));
+		sleep .5 ; i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1}${spin:$i:1} UPTIME: $nnumberr" ; sleep .5 ; printf "\r" ;
+done
+}
+
+		while trap 'exitHandler' SIGINT ;
+	do
+		if [[ ! $(netstat -ar) =~ 'default' ]] ;
+	then
+		echo " no internet - " ;
+fi
+		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
+	then
+		mess4ge ;
+
+		elif [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" != "2" ]] || [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" = "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
+	then
+		findIface ;
+	fi
+done
+fi
