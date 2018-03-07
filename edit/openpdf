@@ -1,0 +1,23 @@
+#!/bin/bash
+# mindevenviro openpdf
+# opens PDFs
+###     WARNING:    DON'T EDIT ANYTHING BELOW
+LANG="C" ;
+IFS=$(echo -en "\b\n") ;
+
+		if [[ "$1" != '' ]] && [ -e $1 ] ;
+	then
+		for suffixes in *.pdf *.PDF ;
+	do
+		for open in $(find $1 -name "$suffixes" -type f | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g'); 
+	do 
+		while read line
+	do
+						mupdf $line 2>/dev/null && wait ;
+		done <<<$open;
+	done;
+	done;
+	else
+		echo -e " USAGE: "$0" [file] OR [directory] OR [.] \n\n [file] : opens pdf file. \n [directory] : opens in [directory] all files with *.pdf suffix \n [.] : \"openpdf .\" will open all in your home \n just pull \"kill\" from the \"VTWM Menu\" to open a new one \n\n ctrl+C quits." ;
+		exit 0 ;
+fi

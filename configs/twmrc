@@ -1,0 +1,185 @@
+# $Id: system.vtwmrc-menu 62 2005-11-06 00:12:18Z branden $
+
+# Based on:
+# $XConsortium: system.twmrc,v 1.8 91/04/23 21:10:58 gildea Exp $
+
+#
+# Variables
+#
+
+NoGrabServer
+NoDefaults
+RestartPreviousState
+RightHandSidePulldownMenus
+
+ButtonColorIsFrame
+ShallowReliefWindowButton
+
+FixManagedVirtualGeometries
+FixTransientVirtualGeometries
+
+BorderWidth		1
+
+BorderBevelWidth	0
+ButtonBevelWidth	0
+IconBevelWidth		0
+IconManagerBevelWidth	0
+InfoBevelWidth		2
+MenuBevelWidth		2
+TitleBevelWidth		2
+
+ClearBevelContrast	80
+DarkBevelContrast	20
+
+MoveDelta		3
+
+ResizeRegion		"NorthEast"
+VirtualDesktop		"3x2-9-9" 27
+
+TitleFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+ResizeFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+MenuFont		"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+MenuTitleFont	"-adobe-helvetica-bold-r-normal--*-90-*-*-*-*-*-*"
+IconFont		"-adobe-helvetica-bold-r-normal--*-70-*-*-*-*-*-*"
+InfoFont		"-adobe-helvetica-bold-r-normal--*-70-*-*-*-*-*-*"
+
+#
+# Lists
+#
+
+WarpCursor
+
+NailedDown
+{
+	"VTWM Desktop"
+}
+
+NoTitle
+{
+	"VTWM Desktop"	
+}
+
+IconManagerDontShow
+{
+	"VTWM Desktop"
+}
+
+Color
+{
+	BorderColor			"white"
+	BorderTileBackground		"gray30"
+	BorderTileForeground		"gray60"
+	DefaultBackground		"black"
+	DefaultForeground		"gray85"
+	TitleBackground			"black"
+	TitleForeground			"gray85"
+	MenuBackground			"black"
+	MenuForeground			"gray40"
+	MenuTitleBackground		"black"
+	MenuTitleForeground		"white"
+	IconBackground			"black"
+	IconForeground			"gray85"
+	IconBorderColor			"white"
+	IconManagerBackground		"black"
+	IconManagerForeground		"gray10"
+	VirtualBackground		"black"
+	VirtualForeground		"black"
+	DesktopDisplayBackground	"grey30"
+}
+
+NoTitle {
+  "oclock"
+  "xload"
+}
+
+#
+# Functions and Bindings
+#
+
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+
+LeftTitleButton ":xpm:dot" = f.iconify
+RightTitleButton ":xpm:resize" = f.resize
+
+Button1 = : root : f.menu "main"
+Button2 = : root : f.version
+Button3 = : root : f.exec "exec /usr/local/bin/feh-bg &"
+
+Button1 = : title : f.function "move-or-raise"
+Button3 = : title : f.lower
+
+Button1 = : frame : f.function "move-or-raise"
+Button3 = : frame : f.iconify
+
+Button1 = : icon : f.function "move-or-iconify"
+
+Button1 = : iconmgr : f.iconify
+Button3 = : iconmgr : f.warp
+
+Button1 = : virtual | desktop : f.movescreen
+
+"F12" =	: window	: f.circledown
+"F10" =	: window	: f.circleup
+
+Cursors {
+	Frame	"top_left_arrow"
+	Title	"top_left_arrow"
+	Icon	"top_left_arrow"
+	IconMgr	"top_left_arrow"
+	Move	"fleur"
+	Resize	"fleur"
+	Menu	"hand2"
+	Button	"sb_left_arrow"
+	Wait	"watch"
+	Select	"dot"
+	Destroy	"pirate"
+}
+
+Color
+{
+BorderColor         "#1ef600"
+DefaultBackground   "#a203b0"
+DefaultForeground   "#ffD6D6"
+
+TitleBackground     "#000000"
+TitleForeground     "White"
+
+MenuTitleBackground "Black"
+MenuTitleForeground "White"
+
+MenuBackground      "#FFFFFF"
+MenuForeground      "#1E1E1E"
+
+MenuShadowColor     "#3A1B33"
+MenuBorderColor     "#00FFC0"
+}
+
+#
+# And a menus with the usual things
+#
+menu "main"
+{
+":: M1ND3V3NV1R0 ::"  f.title
+":: music"  f.exec "exec /usr/local/bin/hi_vlc &"
+":: camera"	f.exec "exec /usr/local/bin/hi_cheese &"
+":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
+":: the gimp"  f.exec "exec /usr/local/bin/hi_gimp &"
+":: calculator" f.exec "exec /usr/local/bin/hi_xcalc &"
+":: terminator"  f.exec "exec /usr/local/bin/hi &"
+":: libreoffice"  f.exec "exec /usr/local/bin/hi_libreoffice &"
+":: brutalchess"  f.exec "exec /usr/local/bin/hi_brutalchess &"
+":: playOnLinux"  f.exec "exec /usr/local/bin/hi_playonlinux &"
+":: firefox-ESR"  f.exec "exec /usr/local/bin/hi_firefox-esr &"
+":: transmission"  f.exec "exec /usr/local/bin/hi_transmission-gtk &"
+":: geany editor"  f.exec "exec /usr/local/bin/hi_geany &"
+":: 0.001%% __/\\/ ° ::"  f.title
+"   transparent"	f.exec "exec transset 0.70 &"
+"   solid color"	f.exec "exec transset 1 &"
+"   take shot"		f.exec "exec /usr/local/bin/takeshot &"
+"   refresh"	f.restart
+"   lock"		f.exec "exec xscreensaver-command -lock &"
+"   kill"		f.destroy
+"   exit"		f.quit
+}

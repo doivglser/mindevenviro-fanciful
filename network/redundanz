@@ -1,0 +1,66 @@
+#!/bin/bash
+# mindevenviro ..
+# monitors the servers and applications, defined in server-monitor
+# starts the daemon serv-if-up and monitors some piDS are up.
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+LANG="C" ;
+
+		if [ ! $EUID = 0 ] ;
+	then
+		echo "USAGE: sudo redundanz -h" ;
+else
+
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# temp folder END
+
+FILE1="serv-if-up" ;
+FILE2="server-monitor" ;
+
+help(){
+shift 0 ;
+echo -e "hello $SUDO_USER redundanz puts serv-if-up daemon up and monitors servers reliability\n" ;
+echo -e "Usage: $0 [-m|--monitor] [-h|--help]\r" ;
+exit 0 ;
+}
+
+ex1Th4ndler(){
+		killall -15 dhclient 2>/dev/null &&
+		killall -15 serv-if-up 2>/dev/null &&		
+		killall -15 shi3lD 2>/dev/null &&
+		rm -f $tmpfolder/root_mail_status &&
+		exit 0 ;
+}
+
+mmonitor(){
+			if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
+	then
+		trap 'ex1Th4ndler' SIGINT ;
+
+		if [[ $(ps aux | grep -v grep | grep -v nano | grep -v geany | grep "$FILE1") = '' ]]
+	then
+		nice -14 setsid "$FILE1" >/dev/null 2> /dev/null &
+		watch -n2 -t --color "$FILE2" ;
+	else
+		watch -n2 -t --color "$FILE2" ;
+		fi
+	fi
+}
+
+# ASK
+  case "$1" in
+        -m|--monitor)
+      shift 1;
+      mmonitor "$@";
+      ;;
+   -h|--help)
+      shift 1 ;
+      help ;
+      ;;
+  esac
+fi
