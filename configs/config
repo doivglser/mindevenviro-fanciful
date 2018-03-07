@@ -21,9 +21,7 @@
       order = 0
       parent = child0
       type = Notebook
-    [[[terminal7]]]
-      command = alsamixer
-      command = alsamixer          
+    [[[terminal7]]]       
       order = 1
       parent = child1
       profile = default

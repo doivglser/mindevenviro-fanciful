@@ -1,6 +1,6 @@
 #!/bin/bash
-# mindevenviro nids-antivirus-up  
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###   
+# mindevenviro nids-antivirus-up
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 antivirus="clamav-daemon" ;
@@ -23,9 +23,9 @@ snortUP(){
     then
 		if [[ $(ps axu | grep -v grep | grep "$nids") = '' ]] ;
 	then
-		/etc/init.d/"$nids" start -i "$interface" 2>/dev/null 2>&1 < /dev/null &
+		/etc/init.d/"$nids" start -i "$interface" -A None -D 2>/dev/null 2>&1 < /dev/null &
 		
-		if setsid "$nids" -i "$interface" 2>/dev/null 2>&1 < /dev/null &
+		if setsid "$nids" -i "$interface" -A None -D 2>/dev/null 2>&1 < /dev/null &
 	then
 
 ps axu | grep -v grep | grep "$nids" > "$tmpfolder/root_mail_status" ;

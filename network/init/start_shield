@@ -1,6 +1,6 @@
 #!/bin/bash
-# mindevenviro start_shield 
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ### 
+# mindevenviro start_shield
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
 
