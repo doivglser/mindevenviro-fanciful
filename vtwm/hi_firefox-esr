@@ -4,6 +4,7 @@ LANG="C" ;
                 if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_firefox-esr | grep firefox-esr) = '' ]] ;
         then
                 firefox-esr & hi ;
+                exit 0 ;
         else
                 exit 0 ;
 fi

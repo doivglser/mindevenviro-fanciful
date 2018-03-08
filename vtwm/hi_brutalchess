@@ -5,6 +5,7 @@ LANG="C" ;
                 if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_brutalchess | grep brutalchess) = '' ]] ;
         then
                 brutalchess & hi ;
+                exit 0 ;
         else
                 exit 0 ;
 fi

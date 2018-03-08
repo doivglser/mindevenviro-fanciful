@@ -4,3 +4,4 @@
 LANG="C" ;
 IFS=$(echo -en "\b\n") ;
 find $HOME/Pictures/. -type f | grep -E 'jpg|png|gif|xpm|tiff|JPG|PNG|jpeg|JPEG' | sed 's/\ /\\ /g' | sort -R | head -n1 | xargs feh --bg-scale ;
+exit 0 ;

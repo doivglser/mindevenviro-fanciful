@@ -1,7 +1,9 @@
 #!/bin/bash
 # mindevenviro hi
 # startup file on /usr/local/bin
+
 LANG="C" ;
+
 to_star_up(){
 xsetroot -solid yellow &
 sleep 0.6 ;
@@ -13,7 +15,7 @@ sleep 1 ;
 terminator &
 sleep 2 ;
 feh-bg &
-	}
+}
 		if [[ $(ps axu | grep -v grep | grep terminator) = '' ]] && \
 		[[ $(ps axu | grep -v grep | grep xload) != '' ]] && \
 		[[ $(ps axu | grep -v grep | grep xscreensaver) != '' ]] ;

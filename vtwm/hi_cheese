@@ -4,6 +4,7 @@ LANG="C" ;
                 if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_cheese | grep cheese) = '' ]] ;
         then
                 cheese & hi ;
+                exit 0 ;
         else
                 exit 0 ;
 fi
