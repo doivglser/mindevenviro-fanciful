@@ -63,8 +63,9 @@ findIface(){
 }
 
 exitHandler(){
+
 		echo -e "-"
-		printf " quit? (y/n) " ; read
+		printf " quit? (y/n) " ; read -r
 
 		if [[ $REPLY =~ y|Y|j|J ]] ;
 	then
@@ -72,8 +73,7 @@ exitHandler(){
 		sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" && 
 		echo -e "\n You where surfing with this MAC: \n $(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n\n your network down." &&
 		killall -15 dhclient 2>/dev/null &&
-		killall -15 serv-if-up 2>/dev/null &&		
-		killall -15 shi3lD 2>/dev/null &&
+		killall -15 serv-if-up 2>/dev/null &&
 		rm -f $tmpfolder/root_mail_status &&
 		exit 0 ;
 		
@@ -84,7 +84,6 @@ fi
 }
 
 mess4ge(){
-
 		spin='.oOo' ; i=0 ;
 		spin2='-\|/' ;
 		

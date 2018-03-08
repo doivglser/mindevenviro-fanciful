@@ -1,0 +1,6 @@
+# mindevenviro
+# logout
+xrandr --output VGA-1 --off && xrandr --output eDP-1 --mode 1280x800
+stop_shield --stop &
+killall -15 shi3lD ;
+killall -15 terminator ;

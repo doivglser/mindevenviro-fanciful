@@ -1,7 +1,7 @@
 #!/bin/bash
 # mindevenviro install
 # testing
-###		WARNING:	DON'T EDIT ANYTHING BELOW	### gksudo
+###		WARNING:	DON'T EDIT ANYTHING BELOW	###
 LANG="C" ;
 myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver  vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl nmon fortunes figlet mc mutt eject nano pm-utils fancontrol thermald laptop-mode-tools cpufrequtils sysvinit-core " ;
 environinstall="network/server-monitor network/redundanz network/shi3lD network/init/start_shield network/init/stop_shield network/init/nids-antivirus-up network/init/serv-if-up edit/search edit/openpdf edit/sCRYPtUPdater vtwm/feh-bg vtwm/hi vtwm/hi_cheese vtwm/hi_brutalchess vtwm/hi_libreoffice vtwm/hi_geany vtwm/hi_gimp vtwm/hi_transmission-gtk vtwm/hi_firefox-esr vtwm/hi_playonlinux vtwm/hi_vlc vtwm/hi_wicd-client vtwm/takeshot maintenance/mysql_cp_db maintenance/set_mysql_passwd install " ;
@@ -191,13 +191,17 @@ fi
 
 	echo -e "\n ... update pm-utils script to interact with laptop-mode-tools" ; 
 	cp -f thirdparty/10-laptop-mode-tools /etc/pm/sleep.d/ ;
-	sudo chmod a+x /etc/pm/sleep.d/10-laptop-mode-tools ;
+	chmod a+x /etc/pm/sleep.d/10-laptop-mode-tools ;
 
 	echo -e "\n ... installing flash player for linux" ;
 	tar -xf /home/$SUDO_USER/mindevenviro/thirdparty/flash_player_npapi_linux.x86_64.tar.gz ;
-	sudo cp -f libflashplayer.so /usr/lib/mozilla/plugins/ ;
-	sudo cp -rf usr/* /usr/ ;
+	cp -f libflashplayer.so /usr/lib/mozilla/plugins/ ;
+	cp -rf usr/* /usr/ ;
 	rm -dRf LGPL/ usr/ libflashplayer.so license.pdf readme.txt ;
+
+	echo -e "\n ... copy logout" ;
+	cp -f configs/logout /etc/X11/Xreset.d/logout ;
+	chmod a+x /etc/X11/Xreset.d/logout ;
 
 	echo -e "\n ... copy .bashrc" ;
 	cp -f configs/bashrc /home/$SUDO_USER/.bashrc ;
