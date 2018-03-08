@@ -120,8 +120,7 @@ Button3 = : iconmgr : f.warp
 
 Button1 = : virtual | desktop : f.movescreen
 
-"F12" =	: window	: f.circledown
-"F10" =	: window	: f.circleup
+"F12" =	: window	: f.circleup
 
 Cursors {
 	Frame	"top_left_arrow"
