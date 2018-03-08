@@ -2,9 +2,11 @@
 # mindevenviro shi3lD
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME.
 # restart clamd and snort if failure, cuts the Ethernet Interface connection while starting up, (use wicd to reconnect)
-# ctrl+C cuts Ethernet Interface connection and revert to your vendors MAC-ADDRESS.
+# ctrl+C cuts Ethernet Interface connection and revert to your vendors MAC-ADDRESS
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
 LANG="C" ;
+
 		if [ ! $EUID = 0 ] || [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep redundanz | awk '{print $2}' | wc -l) " =~ 1|2 ]] || [[ $(netstat -ar) =~ 'default' ]] ;
 	then
 		echo -e " USAGE: sudo $0 \n depends on redundanz \n your Internet connection must be down." ;
@@ -89,7 +91,7 @@ mess4ge(){
 		while [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
 	do
 		((nnumberr++));
-		sleep .4 ; i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1}${spin:$i:1} UPTIME: $nnumberr" ; sleep .4 ; printf "\r" ;
+		sleep .5 ; i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1}${spin:$i:1} UPTIME: $nnumberr" ; sleep .4 ; printf "\r" ;
 done
 }
 
