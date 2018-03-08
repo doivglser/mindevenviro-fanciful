@@ -3,8 +3,9 @@
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME
 # restart clamd and snort if failure, cuts the Ethernet Interface connection while starting up, (use wicd to reconnect)
 # ctrl+C cuts Ethernet Interface connection and revert to your vendors MAC-ADDRESS
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ### 
 LANG="C" ;
+
 		if [ ! $EUID = 0 ] && [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " = '' ]] ;
 	then
 		exit 0 ;
@@ -65,13 +66,11 @@ findIface(){
 exitHandler(){
 
 		echo -e "-"
-		printf " quit? (y/n) " ; read -r
+		printf " quit? (y/n) " ; read
 
 		if [[ $REPLY =~ y|Y|j|J ]] ;
 	then
 		stop_shield --stop &
-		sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" && 
-		echo -e "\n You where surfing with this MAC: \n $(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n\n your network down." &&
 		killall -15 dhclient 2>/dev/null &&
 		killall -15 serv-if-up 2>/dev/null &&
 		rm -f $tmpfolder/root_mail_status &&

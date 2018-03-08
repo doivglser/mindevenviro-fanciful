@@ -3,7 +3,6 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###    
 LANG="C" ;
 IFS=$(echo -e "\n\b") ;
-
 		if [ ! $EUID = 0 ] ;
 	then
 		echo -e " USAGE: sudo shi3lD \r depends on redundanz" ;
@@ -125,7 +124,7 @@ done
         stopLoop="1" ;
     else
         echo "no connection with this $(ip link show "$interface" | grep ether | awk '{print $2}'), I try again ..."
-        puff_MACs && writem4c_SelfAssigned ;
+        writem4c_SelfAssigned && puff_MACs ;
 	fi
 done
 fi

@@ -1,9 +1,6 @@
 [global_config]
   enabled_plugins = InactivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   inactive_color_offset = 0.6
-  tab_position = bottom
-  title_hide_sizetext = True
-  title_use_system_font = False
 [keybindings]
 [layouts]
   [[default]]
@@ -40,7 +37,7 @@
       profile = default
       type = Terminal
     [[[terminal4]]]
-      command = "sudo -u root mutt"
+      command = sudo -u root mutt
       order = 5
       parent = child1
       profile = default
@@ -50,13 +47,17 @@
       order = 6
       parent = child1
       profile = default
-      type = Terminal      
+      type = Terminal
 [plugins]
 [profiles]
   [[default]]
+    borderless = False
     cursor_color = "#4e9a06"
     cursor_color_fg = False
     scroll_background = False
     scrollback_infinite = True
     scrollbar_position = hidden
     visible_bell = True
+	tab_position = bottom
+	title_hide_sizetext = False
+	title_use_system_font = False
