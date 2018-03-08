@@ -4,7 +4,7 @@
 # starts the daemon serv-if-up and monitors some piDS are up.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
-
+  
 		if [ ! $EUID = 0 ] ;
 	then
 		echo "USAGE: sudo redundanz -h" ;

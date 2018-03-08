@@ -163,6 +163,7 @@ menu "main"
 {
 ":: M1ND3V3NV1R0 ::"  f.title
 ":: music"  f.exec "exec /usr/local/bin/hi_vlc &"
+":: shi3lD" f.exec "exec gksudo /usr/local/bin/hi_shi3lD &"
 ":: camera"	f.exec "exec /usr/local/bin/hi_cheese &"
 ":: network"	f.exec "exec /usr/local/bin/hi_wicd-client &"
 ":: the gimp"  f.exec "exec /usr/local/bin/hi_gimp &"

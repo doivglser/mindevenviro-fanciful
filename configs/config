@@ -23,28 +23,34 @@
       type = Notebook
     [[[terminal1]]]
       command = mc
-      order = 2
+      order = 1
       parent = child1
       profile = default
       type = Terminal
     [[[terminal2]]]
-      command = nmon
-      order = 3
+      command = htop
+      order = 2
       parent = child1
       profile = default
       type = Terminal
     [[[terminal3]]]
       command = alsamixer
-      order = 4
+      order = 3
       parent = child1
       profile = default
       type = Terminal
-    [[[terminal7]]]
-      order = 1
+    [[[terminal4]]]
+      command = "sudo -u root mutt"
+      order = 5
       parent = child1
       profile = default
-      ratio = 0.000000004391
-      type = VPaned
+      type = Terminal
+    [[[terminal6]]]
+      command = ""
+      order = 6
+      parent = child1
+      profile = default
+      type = Terminal      
 [plugins]
 [profiles]
   [[default]]
