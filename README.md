@@ -115,10 +115,8 @@
 # USAGE On VTWM:
 
 * Login to X
-
-  "F10 on active window" * circles windows up
   
-  "F12 on active window" * circles windows down
+  "F12 on active window" * circles windows up
   
   "grenn button left corner on title-bar" * iconize window
   
