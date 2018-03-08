@@ -115,8 +115,6 @@
 # USAGE On VTWM:
 
 * Login to X
-
-  "F10 on active window" * circles windows up
   
   "F12 on active window" * circles windows down
   
