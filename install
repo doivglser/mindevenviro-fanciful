@@ -185,7 +185,6 @@ fi
 # install END
 
 	echo -e "\n ... set background Pictures" ;
-	rm -R /home/$SUDO_USER/Pictures/* 2>/dev/null ;
 	unzip pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
