@@ -85,7 +85,7 @@ $(cat "$tmpfolder/root_mail_status")
 
 EOM
 
-echo ":: you got email, $antivirus fails, cannot restart $(date | awk '{print $1,$3,$4}') ::" ; ;
+echo ":: you got email, $antivirus fails, cannot restart $(date | awk '{print $1,$3,$4}') ::" ;
 
 
 fi
