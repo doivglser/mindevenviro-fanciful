@@ -1,9 +1,9 @@
 #!/bin/bash
 # startup file on /usr/local/bin
-LANG="C" ;
+LANG="C" && hi ;
                 if [[ $(ps axu | grep -v grep | grep -v nano | grep -v hi_geany | grep geany) = '' ]] ;
         then
-                geany & hi ;
+                geany &
                 exit 0 ;
         else
                 exit 0 ;

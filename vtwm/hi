@@ -15,12 +15,15 @@ sleep 1 ;
 terminator &
 sleep 2 ;
 feh-bg &
+transset --name "mind eve n viro" .7 ;
 }
 		if [[ $(ps axu | grep -v grep | grep terminator) = '' ]] && \
 		[[ $(ps axu | grep -v grep | grep xload) != '' ]] && \
 		[[ $(ps axu | grep -v grep | grep xscreensaver) != '' ]] ;
 	then
 		terminator &
+		sleep 1 ;
+		transset --name "mind eve n viro" .7
 
 		elif [[ $(ps axu | grep -v grep | grep oclock) = '' ]] || \
 		[[ $(ps axu | grep -v grep | grep xload) = '' ]] || \
