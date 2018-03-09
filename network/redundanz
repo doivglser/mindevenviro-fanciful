@@ -30,9 +30,7 @@ exit 0 ;
 }
 
 ex1Th4ndler(){
-		killall -15 dhclient 2>/dev/null &&
 		killall -15 serv-if-up 2>/dev/null &&		
-		killall -15 shi3lD 2>/dev/null &&
 		rm -f $tmpfolder/root_mail_status &&
 		exit 0 ;
 }

@@ -1,7 +1,10 @@
 [global_config]
   enabled_plugins = InactivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  homogeneous_tabbar = False
   inactive_color_offset = 0.6
-  tab_position = bottom
+  scroll_tabbar = True
+  tab_position = hidden
+  title_use_system_font = False
 [keybindings]
 [layouts]
   [[default]]
@@ -12,7 +15,7 @@
       order = 0
       parent = ""
       position = 20:20
-      size = 1170, 720
+      size = 1150, 510
       type = Window
     [[[child1]]]
       active_page = 0
@@ -53,7 +56,6 @@
 [profiles]
   [[default]]
     cursor_color = "#4e9a06"
-    cursor_color_fg = True
     scroll_background = False
     scrollback_infinite = True
     scrollbar_position = hidden

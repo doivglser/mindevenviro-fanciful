@@ -9,7 +9,6 @@ LANG="C" ;
 	then
 		exit 0 ;
 else
-
 clear && echo -e "\n" ;
 nnumberr="0" ;
 FILE="serv-if-up" ;
