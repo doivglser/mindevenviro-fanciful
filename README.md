@@ -225,6 +225,7 @@
 * nids-antivirus-up (shell script)
 
   USAGE: "sudo nids-antivirus-up --nIDs" puts snort up for active interface.
+  	 "sudo nids-antivirus-up --anTiVirus" restarts clamav-daemon.
   
 * shi3lD (shell script)
 
