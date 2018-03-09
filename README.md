@@ -3,7 +3,7 @@
 * All Apps open, second monitor extended at the right of desktop, with Reason 5 Demo on PlayOnLinux window.
 ![bild000](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/pictures/addjus_one.jpg)
 
-* shi3lD is running, second monitor extended at the right of desktop, with wicd.
+* shi3lD is running, second monitor extended at the right of desktop, with wicd and youtube.
 ![bild011](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/pictures/addjus_two.jpg)
 
 * mindevenviro projects
@@ -166,6 +166,8 @@
   "ctrl+PageDOWN" cycles TAB to left
   
   "ctrl+TAB" swap's between Panned TAB's
+  
+  "ctrl+shift+T" does a new TAB.
 
 * libreoffice
 
