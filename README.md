@@ -99,14 +99,15 @@
 
   Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
 
-		wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64
-		wine64-tools wine64-preloader xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission
-		openvpn xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl 
-		clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client 
-		mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd 
-		php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww 
-		apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl 
-		perl fortunes figlet mc mutt eject nano nmon 
+		wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 
+		wine64-tools wine64-preloader mercurial libpurple-dev libpurple0 libjson-glib-dev pidgin-skype 
+		pidgin-skype-common pidgin xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission 
+		openvpn xscreensaver  vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl 
+		clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server 
+		php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml 
+		php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 git sendmail 
+		python-gtk2-dbg shellcheck libcgi-pm-perl perl nmon fortunes figlet mc mutt eject nano pm-utils 
+		fancontrol thermald laptop-mode-tools cpufrequtils sysvinit-core  
 
 * while installing
  
@@ -130,12 +131,12 @@
   
   "Left click on the Desktop" * Application Menu
  
- 		"transparent" * Click with cross on a window or an icon to set transparency.
-		"solid color" * Click with cross on a window or an icon to set solid color back.
-		"take shot" * Click with Mouse pointer on Desktop or Window to save picture to ~/
+ 		"transparent" * Click with the cross pointer on a window or an icon to set transparency.
+		"solid color" * Click with the cross pointer on a window or an icon to set solid color back.
+		"take shot" * Click with the mouse pointer on Desktop or Window to save picture to ~/
 		"refresh" * Restarts VTWM on opened $USER session.
 		"lock" * Locks the screen. xscreensaver prompt for $USER password.
-		"kill" * Click with cross on a window to end process.
+		"kill" * Click with the cross pointer on a window to end process.
 		"exit" * Quits VTWM. XDM login screen, returns.
 # VTWM Menu:
 
@@ -159,6 +160,10 @@
 
   xcalc, a scientific calculator desktop accessory;
 
+* libreoffice
+
+  Libreoffice Writer
+  
 * terminator (Multiple GNOME terminals in one window.)
 
   "ctrl+PageUP" cycles TAB to right
@@ -169,10 +174,11 @@
   
   "ctrl+shift+T" does a new TAB.
 
-* libreoffice
+* messenger
 
-  Libreoffice Writer
-
+  pidgin, graphical multi-protocol instant messaging client.
+  
+  		° facebook plugin from dequis/purple-facebook.git
 * brutalchess
 
   3D chess game with reflection of the chessmen
