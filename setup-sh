@@ -293,7 +293,7 @@ fi
 		# apply facebook video/audio/text pidgin plugin purple-facebook, skype
 		echo -e " ... apply facebook video/audio/text pidgin plugin purple-facebook, skype" ;
 		cd "$(/home/$SUDO_USER/mindevenviro/thirdparty "$0")" || exit 2 ;
-		git clone https://github.com/jgeboski/purple-facebook.git ;
+		git clone https://github.com/dequis/purple-facebook.git ;
 		cd "$(/home/$SUDO_USER/mindevenviro/thirdparty/purple-facebook "$0")" || exit 2 ;
 		sudo ./autogen.sh ;
 		echo -e " ... compiling the code" ;
