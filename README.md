@@ -61,6 +61,10 @@
   - If the workflow interval in minutes is over, refer to the exit handler, if false, 
   reset workflow interval, if true exit.
 
+* shi3lD
+
+  	° to change the user-agent, if netstat -ar | grep default is true.
+
 * "mindevenviro.rules": "alert/drop rules" for /etc/snort/rules/ 
 
 * "iptables psad fwsnort": tcp-wrapper
