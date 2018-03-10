@@ -303,7 +303,7 @@ fi
 		echo -e " ... copying the plugin to /home/$SUDO_USER" ;
 		cp -f pidgin/libpurple/protocols/facebook/.libs/libfacebook.so /home/$SUDO_USER/.purple/plugins ;
 		cd "$(/home/$SUDO_USER/mindevenviro "$0")" || exit 2 ;
-		rm -dRf purple-facebook/ ;
+		rm -dRf thirdparty/purple-facebook ;
 
 		# good bye
 		echo -e "\n successfully_installed" >> /home/$SUDO_USER/.installed ;
