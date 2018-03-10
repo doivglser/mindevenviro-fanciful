@@ -1,5 +1,5 @@
 #!/bin/bash
-# mindevenviro
+# mindevenviro sCRYPtUPdater
 # syntax check and update to /urs/local/bin, /var/www/testphp, /usr/lib/cgi-bin
 ###     WARNING:    DON'T EDIT ANYTHING BELOW	###
 LANG="C" ;
@@ -39,7 +39,7 @@ fi
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
 excludES=$(find /home/$SUDO_USER/Downloads/ -type f) ;
-toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '"$excludES"|.tmp|.md|.vlt|crap|.wav|.jpg|.jpeg|.gif|.mp3|.ogg|.aif|.png|.avi|.mp4|master|HEAD|COMMIT_EDITMSG|untitled|twmrc|config|description|sample|index|exclude|refs' 2>/dev/null | grep -vE '[a-z0-9]{38}' 2>/dev/null | grep -vE '.[a-z0-9A-Z]>{3}' 2>/dev/null) ;
+toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '"$excludES"|master|HEAD|COMMIT_EDITMSG|untitled|twmrc|config|description|sample|index|exclude|refs' 2>/dev/null | grep -vE '[a-z0-9]{38}' 2>/dev/null | grep -vE '.[a-z0-9A-Z]>{3}' 2>/dev/null) ;
 
 			if [[ "$toDayChanged" != '' ]] ;
 	then

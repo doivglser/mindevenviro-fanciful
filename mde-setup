@@ -189,7 +189,8 @@ fi
 	
 	echo -e "\n ... copy VLC skin" ;
 	cp -f thirdparty/MyVLCtheme.vlt /usr/share/vlc/skins2/ ;
-	chmod 755 /usr/share/vlc/skins2/MyVLCtheme.vlt ;		
+	chmod 755 /usr/share/vlc/skins2/MyVLCtheme.vlt ;
+	chown -R $SUDO_USER:$SUDO_USER /usr/share/vlc/skins2/MyVLCtheme.vlt ;
 
 	echo -e "\n ... installing flash player for linux" ;
 	tar -xf /home/$SUDO_USER/mindevenviro/thirdparty/flash_player_npapi_linux.x86_64.tar.gz ;
