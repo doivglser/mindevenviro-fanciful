@@ -57,13 +57,13 @@ usersPID=$(ps aux | grep "$prgtotesta" | grep -v grep | awk '{print $1}' | wc -l
 
 echo "$usersPID PID from $file01a by: "$users"" ;
 
-ps aux | grep "$prgtotesta" | grep -v nano | grep -v geany | grep -v grep | tail -n1 ;
+ps aux | grep "$prgtotesta" | grep -v nano | grep -v geany | grep -v grep | grep -v xterm | grep -v hi_shi3lD | tail -n1 ;
 
 echo " -" ;
 
 ###
 #
-# snort pids users and number of processes
+# snort pids users and number of processes  
 #
 ###
 
