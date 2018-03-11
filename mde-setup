@@ -294,26 +294,26 @@ fi
 fi
 		if [ -e /home/$SUDO_USER/.purple/plugins/libfacebook.so ] ;
 	then
-		echo -e " ... If you want to update the facebook plugin, then please,\n do: rm /home/$SUDO_USER/.purple/plugins/libfacebook.so" ;
+		echo -e "\n ... If you want to update the facebook plugin, then please,\n do: rm /home/$SUDO_USER/.purple/plugins/libfacebook.so" ;
 	else
 		# apply facebook video/audio/text pidgin plugin purple-facebook, skype
-		echo -e " ... apply facebook video/audio/text pidgin plugin purple-facebook, skype" ;
+		echo -e "\n ... apply facebook video/audio/text pidgin plugin purple-facebook, skype" ;
 		cd thirdparty || exit 2 ;
 		git clone https://github.com/dequis/purple-facebook.git ;
 		cd purple-facebook || exit 2 ;
 		./autogen.sh ;
-		echo -e " ... compiling the code" ;
+		echo -e "\n ... compiling the code" ;
 		make && wait ;
 		make install && wait ;
 		mkdir -p /home/$SUDO_USER/.purple/plugins ;
-		echo -e " ... copying the plugin to /home/$SUDO_USER" ;
+		echo -e "\n ... copying the plugin to /home/$SUDO_USER" ;
 		cp -f pidgin/libpurple/protocols/facebook/.libs/libfacebook.so /home/$SUDO_USER/.purple/plugins ;
 		cd ../../ || exit 2 ;
 		rm -dRf thirdparty/purple-facebook ;
 fi
 		# good bye
-		echo -e "\n successfully_installed" >> /home/$SUDO_USER/.installed ;
-		echo -e "\n\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
+		echo -e "\n successfully_installed $(date), by $USER" >> /home/$SUDO_USER/.installed ;
+		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
 		exit 0 ;
 else
 		echo -e "\n M1ND3V3NV1R0 allready installed!\n run this script from within the folder M1ND3V3NV1R0, after installation, system will restart." ;
