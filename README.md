@@ -45,6 +45,8 @@
 
 # TODO:
 
+* Add Cont-Sec to mindevenviro
+
 * Portability to: Debian, Fedora, CentOS, and MacOS
 
 * Joomla CMS
@@ -53,13 +55,13 @@
 
 * sCRYPtUPdater
   
-  - Make sure you change more than 1 byte, so if you only change one character, then please add a space.
+  	° Make sure you change more than 1 byte, so if you only change one character, then please add a space.
 
-  - To search for brackets and braces, to split the content of the source code into short code 
-  snippets.
+  	° To search for brackets and braces, to split the content of the source code into short code snippets.
   
-  - If the workflow interval in minutes is over, refer to the exit handler, if false, 
-  reset workflow interval, if true exit.
+  	° If the workflow interval in minutes is over, refer to the "exit handler", 
+	  if $REPLY from "exit handler" is = "n", reset workflow interval, 
+	  if $REPLY from "exit handler" is = "y" exit.
 
 * shi3lD
 
