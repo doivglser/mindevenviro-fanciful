@@ -249,7 +249,13 @@ ch3kingSnx='' ;
 		then
 			ch3kingSnx="tidy"
 			echo "$listONme" | xargs $ch3kingSnx -e -q ;
-			exitc0de=$(echo $?) ;
+			exitc0de=$(echo $?) ; 
+
+			elif [[ "$listONmeIS" =~ ASCII ]] ;
+		then
+			echo -e "\n ... your text file changed" ;
+			exitc0de="0" ;
+			ch3kingSnx="" ;
 
 			elif [[ "$fF1l3suffix" = conf ]] ;
 		then

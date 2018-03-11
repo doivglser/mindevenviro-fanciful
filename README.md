@@ -1,6 +1,6 @@
-# M1ND3V3NV1R0 (testing)
+# M1ND3V3NV1R0 (...testing: works well, looks awesome, lightweight, fast, robust)
 
-* I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
+* I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU. (does for many old computers)
 
 * All Apps open, second monitor extended at the right of desktop, with Reason 5 Demo on PlayOnLinux window.
 ![bild000](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/pictures/addjus_one.jpg)
@@ -55,17 +55,17 @@
 
 * sCRYPtUPdater
   
-  		° Make sure you change more than 1 byte, so if you only change one character, then please add a space.
+  		 Make sure you change more than 1 byte, so if you only change one character, then please add a space.
 
-  		° To search for brackets and braces, to split the content of the source code into short code snippets.
+  		 To search for brackets and braces, to split the content of the source code into short code snippets.
   
-  		° If the workflow interval in minutes is over, refer to the "exit handler", 
+  		 If the workflow interval in minutes is over, refer to the "exit handler", 
 		  if $REPLY from "exit handler" is = "n", reset workflow interval, 
 		  if $REPLY from "exit handler" is = "y" exit.
 
 * shi3lD
 
-  		° to change the user-agent, if netstat -ar | grep default is true.
+  		 to change the user-agent, if netstat -ar | grep default is true.
 
 * "mindevenviro.rules": "alert/drop rules" for /etc/snort/rules/ 
 
@@ -193,7 +193,7 @@
 
   pidgin, graphical multi-protocol instant messaging client.
   
-  		° facebook plugin from dequis/purple-facebook.git
+  		 facebook plugin from dequis/purple-facebook.git
 * brutalchess
 
   3D chess game with reflection of the chessmen
@@ -218,7 +218,7 @@
   
 # USAGE in Terminator:
 
-		° OPEN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW °
+		 OPEN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW 
 
 * openpdf (shell script)
 
@@ -234,10 +234,10 @@
 
 * mysql_cp_db (shell script)
 
-  	  ° To rename tables in database
-	  ° To delete zombie ID's because "lost *.php, *.xml, from CMS template" in mysql database.
-	  ° To dump database to *.sql file to ~/
-	  ° To restore database from .sql file.
+  	   To rename tables in database
+	   To delete zombie ID's because "lost *.php, *.xml, from CMS template" in mysql database.
+	   To dump database to *.sql file to ~/
+	   To restore database from .sql file.
   
 * redundanz (shell script)
 
@@ -262,10 +262,10 @@
   
   You will have two files on ~/ : 
   
-  		° "[MonthYear].mac_recieves_dhcp_lease"
+  		 "[MonthYear].mac_recieves_dhcp_lease"
 			A list with MAC-ADDRESSES that works with your hardware
 
-		° "[MonthYear].mac_no_dhcp_lease"
+		 "[MonthYear].mac_no_dhcp_lease"
 			A list with MAC-ADDRESSES that doesn't work with your hardware
 			
   Depends on: start_shield, stop_shield, nids-antivirus-up
@@ -312,20 +312,20 @@
   
 # in /usr/local/bin
 
-° network
+ network
 
 	- shi3lD
 	- start_shield
 	- stop_shield
 	- nids-antivirus-up
 	
-° syntax|search|dump|restore|rename
+ syntax|search|dump|restore|rename
 
 	- sCRYPtUPdater
 	- search
 	- mysql_cp_db
 	
-° backgroud|startup
+ backgroud|startup
 		
 	- feh-bg
 	- hi 
@@ -340,13 +340,13 @@
 	- hi_vlc
 	- hi_wicd-client
 
-° monitoring|reliability
+ monitoring|reliability
 
 	- server-monitor
 	- serv-if-up
 	- redundanz
 	
-° install|update|maintenance
+ install|update|maintenance
 
 	- install
 	- set_mysql_passwd
@@ -362,7 +362,7 @@
 
 * https://github.com/doivglser/min-dev-enviro/projects
 
-# Thank's
+# Thank's google
 
 ![LPIC-1](https://www.theurbanpenguin.com/wp-content/uploads/2016/08/LPIC-1-Medium.png)
 ![Bash](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Gnu-bash-logo.svg/245px-Gnu-bash-logo.svg.png)
