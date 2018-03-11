@@ -1,7 +1,14 @@
+#!/bin/bash
 # mindevenviro
 # logout
 xrandr --output VGA-1 --off && xrandr --output eDP-1 --mode 1280x800
 stop_shield --stop &
+
+	for killwines in $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep playonlinux | awk '{print $2}' | sort -r);
+do
+	echo $killwines | xargs kill -15 && wait ;
+done
+sleep 1 ;
 killall -15 shi3lD && wait ;
 sleep 1 ;
 killall -15 xterm && wait ;

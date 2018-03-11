@@ -38,7 +38,7 @@
       profile = default
       type = Terminal
     [[[terminal4]]]
-      command = "tail -f .wH0rUNSon"
+      command = "tail -n6 -f .wH0rUNSon *mac_recieves_dhcp_lease *mac_no_dhcp_lease"
       order = 4
       parent = child1
       profile = default
