@@ -3,5 +3,10 @@
 # . I will update some pictures
 LANG="C" ;
 IFS=$(echo -en "\b\n") ;
-find $HOME/Pictures/. -type f | grep -E 'jpg|png|gif|xpm|tiff|JPG|PNG|jpeg|JPEG' | sed 's/\ /\\ /g' | sort -R | head -n1 | xargs feh --bg-scale ;
-exit 0 ;
+		if [ $EUID != 0 ] ;
+	then
+		for back in $(find $HOME/Pictures/. -type f | grep -E 'jpg|png|gif|xpm|tiff|JPG|PNG|jpeg|JPEG' | sed 's/\ /\\ /g' | sort -R | head -n1) ;
+	do
+		echo "$back" | xargs feh --bg-scale && exit 0 ;
+done
+fi
