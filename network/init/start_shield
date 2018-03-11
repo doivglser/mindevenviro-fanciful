@@ -64,12 +64,12 @@ writem4c_SelfAssigned(){
 
 		if [[ -e "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease" ]]
 	then
-		echo -e "$(ip link show "$interface" | grep ether | awk '{print $2}') :: surf started at: $(date | \
+		echo -e "$(ip link show "$interface" | grep ether | awk '{print $2}') :: no mac at: $(date | \
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_no_dhcp_lease" && permissions ;
 	else
 		touch "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_no_dhcp_lease" ;
-		echo -e "$(ip link show "$interface" | grep ether | awk '{print $2}') :: surf started at: $(date | \
+		echo -e "$(ip link show "$interface" | grep ether | awk '{print $2}') :: no mac at: $(date | \
 		awk '{print $1, $2, $3, $4, $6}' | sed 's/\ /::/g') -" >> "${homeordner}$(date | awk '{print $2,$6}' | \
 		sed 's/\ //g').mac_no_dhcp_lease" && permissions ;
 fi
