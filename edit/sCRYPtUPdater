@@ -126,7 +126,7 @@ copyToPath(){
 
 			if [[ "$REPLY" != "n" ]] ;
 		then
-			if [[ "$listONmeIS" =~ HTML|XML ]] ;
+			if [[ "$listONmeIS" =~ HTML|XML ]] || [[ "$fF1l3suffix" = md ]] ;
 		then
 			echo -e "\n" ;
 			sudo cp -f "$listONme" "$path_to_update/$toC0pyIS" ;
@@ -251,11 +251,10 @@ ch3kingSnx='' ;
 			echo "$listONme" | xargs $ch3kingSnx -e -q ;
 			exitc0de=$(echo $?) ; 
 
-			elif [[ "$listONmeIS" =~ ASCII ]] ;
+			elif [[ "$fF1l3suffix" = md ]] ;
 		then
 			echo -e "\n ... your text file changed" ;
-			exitc0de="0" ;
-			ch3kingSnx="" ;
+			exitc0de=$(echo $?) ; 
 
 			elif [[ "$fF1l3suffix" = conf ]] ;
 		then
