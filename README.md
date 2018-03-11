@@ -342,7 +342,7 @@
 	
  install|update|maintenance
 
-	- install
+	- mde-setup
 	- set_mysql_passwd
 	
 # in /var/www/html/
