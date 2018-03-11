@@ -15,7 +15,7 @@ environinstall="network/server-monitor network/redundanz network/shi3lD network/
 apPRn='' ;
 		if [ ! $EUID = 0 ] ;
 	then
-		echo "USAGE: sudo mindevenviro"
+		echo "USAGE: sudo mde-setup"
 		exit 0 ;
 else
 		if [ -e /root/.vendorsmac ] ;
