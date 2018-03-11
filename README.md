@@ -60,12 +60,12 @@
   		° To search for brackets and braces, to split the content of the source code into short code snippets.
   
   		° If the workflow interval in minutes is over, refer to the "exit handler", 
-	  	  if $REPLY from "exit handler" is = "n", reset workflow interval, 
-	  	  if $REPLY from "exit handler" is = "y" exit.
+		if $REPLY from "exit handler" is = "n", reset workflow interval, 
+		if $REPLY from "exit handler" is = "y" exit.
 
 * shi3lD
 
-  	° to change the user-agent, if netstat -ar | grep default is true.
+  		° to change the user-agent, if netstat -ar | grep default is true.
 
 * "mindevenviro.rules": "alert/drop rules" for /etc/snort/rules/ 
 
