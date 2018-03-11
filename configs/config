@@ -38,7 +38,7 @@
       profile = default
       type = Terminal
     [[[terminal4]]]
-      command = ""
+      command = "tail -f .wH0rUNSon"
       order = 4
       parent = child1
       profile = default
