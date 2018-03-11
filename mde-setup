@@ -288,10 +288,6 @@ fi
 		apt-get clean &&
 		apt -f -y -m autoremove ;
 
-		if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep serv-if-up | awk '{print $2}' | wc -l) " = '' ]] ;
-	then
-		nice -14 setsid serv-if-up >/dev/null 2> /dev/null &
-fi
 		if [ -e /home/$SUDO_USER/.purple/plugins/libfacebook.so ] ;
 	then
 		echo -e "\n ... If you want to update the facebook plugin, then please,\n do: rm /home/$SUDO_USER/.purple/plugins/libfacebook.so" ;
@@ -310,6 +306,13 @@ fi
 		cp -f pidgin/libpurple/protocols/facebook/.libs/libfacebook.so /home/$SUDO_USER/.purple/plugins ;
 		cd ../../ || exit 2 ;
 		rm -dRf thirdparty/purple-facebook ;
+fi
+		if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep serv-if-up | awk '{print $2}' | wc -l) " = "0" ]] ;
+	then
+		echo -e "\n ... restarting \"serv-if-up\" daemon to redundanz"
+		sleep 2 ;
+		nice -14 setsid serv-if-up 2>/dev/null 2>&1 < /dev/null &
+		sleep 1 ;
 fi
 		# good bye
 		echo -e "\n successfully_installed $(date), by $USER" >> /home/$SUDO_USER/.installed ;

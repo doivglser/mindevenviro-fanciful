@@ -4,14 +4,15 @@
 # starts the daemon serv-if-up and monitors some piDS are up.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
-  
+readonly empty="" ;
+
 		if [ ! $EUID = 0 ] ;
 	then
 		echo "USAGE: sudo redundanz -h" ;
 else
 
 # temp folder
-		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
 	then
 		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
 	else
@@ -29,20 +30,14 @@ echo -e "Usage: $0 [-m|--monitor] [-h|--help]\r" ;
 exit 0 ;
 }
 
-ex1Th4ndler(){
-		killall -15 serv-if-up 2>/dev/null &&		
-		rm -f $tmpfolder/root_mail_status &&
-		exit 0 ;
-}
-
 mmonitor(){
+			trap 'echo -e \\07' SIGINT ;
+
 			if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
 	then
-		trap 'ex1Th4ndler' SIGINT ;
-
-		if [[ $(ps aux | grep -v grep | grep -v nano | grep -v geany | grep "$FILE1") = '' ]]
+		if [[ $(ps aux | grep -v grep | grep -v nano | grep -v geany | grep "$FILE1") = "$empty" ]]
 	then
-		nice -14 setsid "$FILE1" >/dev/null 2> /dev/null &
+		nice -14 setsid "$FILE1" 2>/dev/null 2>&1 < /dev/null &
 		watch -n2 -t --color "$FILE2" ;
 	else
 		watch -n2 -t --color "$FILE2" ;
