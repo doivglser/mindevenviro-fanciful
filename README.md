@@ -60,8 +60,8 @@
   		° To search for brackets and braces, to split the content of the source code into short code snippets.
   
   		° If the workflow interval in minutes is over, refer to the "exit handler", 
-		if $REPLY from "exit handler" is = "n", reset workflow interval, 
-		if $REPLY from "exit handler" is = "y" exit.
+		  if $REPLY from "exit handler" is = "n", reset workflow interval, 
+		  if $REPLY from "exit handler" is = "y" exit.
 
 * shi3lD
 
@@ -107,14 +107,22 @@
 
   Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
 
-		wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools
-		wine64-preloader mercurial libpurple-dev libpurple0 libjson-glib-dev pidgin-skype pidgin-skype-common pidgin
-		xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm oss-compat
-		alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon
-		clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql 
-		php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json 
-		php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl nmon fortunes 
-		figlet mc mutt eject nano pm-utils fancontrol thermald laptop-mode-tools cpufrequtils sysvinit-core  
+		wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator 
+		playonlinux wine64 wine64-tools	wine64-preloader mercurial libpurple-dev 
+		libpurple0 libjson-glib-dev pidgin-skype pidgin-skype-common pidgin
+		xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission 
+		openvpn xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps 
+		xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan 
+		clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 
+		php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl 
+		php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline 
+		php7.0-opcache php7.0-json php7.0-gd dwww apache2 git 
+		sendmail python-gtk2-dbg shellcheck libcgi-pm-perl 
+		perl nmon fortunes figlet mc mutt eject nano 
+		pm-utils fancontrol thermald 
+		laptop-mode-tools 
+		cpufrequtils 
+		sysvinit-core  
 
 * while installing
  
