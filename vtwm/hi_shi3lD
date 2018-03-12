@@ -9,13 +9,13 @@ LANG="C" && hi ;
 		then
 				gksudo -g "$0" ;
 		else
-                xterm -title shi3lD -bw 0 -geometry 80x15+20-20 -e shi3lD &
+                xterm -title shi3lD -fg green -geometry 80x15+20-20 -e shi3lD &
                 sleep 1 ;
                 transset --name shi3lD .7 ;
 
 	                if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_shi3lD | grep redundanz) = '' ]] ;
         then
-				xterm -title redundanz -bw 0 -geometry 110x15+507-20 -e redundanz --monitor &
+				xterm -title redundanz -fg green -geometry 110x15+507-20 -e redundanz --monitor &
 				sleep 1 ;
 				transset --name redundanz .7
 				hi_wicd-client ;
