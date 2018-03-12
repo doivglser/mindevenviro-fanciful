@@ -326,13 +326,7 @@ fi
 		cd ../../ || exit 2 ;
 		rm -dRf thirdparty/purple-facebook ;
 fi
-		if [[ "$(pgrep serv-if-up) " = '' ]] ;
-	then
-		echo -e "\n ... restarting \"serv-if-up\" daemon to redundanz"
-		sleep 2 ;
-		nice -14 setsid serv-if-up 2>/dev/null 2>&1 < /dev/null &
-		sleep 1 ;
-fi
+		redundanz --redundanz &
 		# good bye
 		echo -e "\n successfully_installed $(date), by $USER" >> /home/$SUDO_USER/.installed ;
 		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"

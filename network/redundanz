@@ -30,19 +30,20 @@ echo -e "Usage: $0 [-m|--monitor] [-h|--help]\r" ;
 exit 0 ;
 }
 
+rredundanzz(){
+		if [[ $(ps aux | grep -v grep | grep -v nano | grep -v geany | grep "$FILE1") = "$empty" ]]
+	then
+		setsid "$FILE1" 2>/dev/null 2>&1 < /dev/null &
+fi
+}
+
 mmonitor(){
 			trap 'echo -e \\07' SIGINT ;
 
-			if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
+		if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
 	then
-		if [[ $(ps aux | grep -v grep | grep -v nano | grep -v geany | grep "$FILE1") = "$empty" ]]
-	then
-		nice -14 setsid "$FILE1" 2>/dev/null 2>&1 < /dev/null &
 		watch -n2 -t --color "$FILE2" ;
-	else
-		watch -n2 -t --color "$FILE2" ;
-		fi
-	fi
+fi
 }
 
 # ASK
@@ -51,6 +52,10 @@ mmonitor(){
       shift 1;
       mmonitor "$@";
       ;;
+        -r|--redundanz)
+      shift 1;
+      rredundanzz ;
+      ;;      
    -h|--help)
       shift 1 ;
       help ;
