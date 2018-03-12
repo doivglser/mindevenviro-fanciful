@@ -30,19 +30,35 @@ echo -e "Usage: $0 [-m|--monitor] [-h|--help]\r" ;
 exit 0 ;
 }
 
-rredundanzz(){
+start_up(){
 		if [[ $(ps aux | grep -v grep | grep -v nano | grep -v geany | grep "$FILE1") = "$empty" ]]
 	then
 		setsid "$FILE1" 2>/dev/null 2>&1 < /dev/null &
 fi
 }
 
-mmonitor(){
-			trap 'echo -e \\07' SIGINT ;
+exitH4ndl3r(){
 
+		echo -e "-"
+		printf " quit? (y/n) " ; read -r
+
+		if [[ $REPLY =~ y|Y|j|J ]] ;
+	then
+		killall -15 serv-if-up 2>/dev/null &&
+		rm -f $tmpfolder/root_mail_status &&
+		exit 0 ;
+		
+		elif [[ $REPLY =~ n|N|\  ]] ;
+	then
+		return ;
+fi
+}
+
+mmonitor(){
 		if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
 	then
-		watch -n2 -t --color "$FILE2" ;
+		start_up ;
+		watch -n4 -t --color "$FILE2" ;
 fi
 }
 
@@ -54,7 +70,7 @@ fi
       ;;
         -r|--redundanz)
       shift 1;
-      rredundanzz ;
+      start_up "$@" ;
       ;;      
    -h|--help)
       shift 1 ;
