@@ -2,13 +2,16 @@
 # mindevenviro mde-setup
 # working version: Maerz 2018 ZH
 # STORY:
-# sCRYPtUPdater:
-#				Locatons: 	HZ Peru, Kamin, Suppe, Brot, Tabak, BS Schweiz, Aff ZH.
-#				Readings: 	LPI Linux certification in a nutshell LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute
-# BS Schweiz:
-#				I thought about and now it is, "mind eve n viro"
+# sCRYPtUPdater && mindevenviro = minimal deployment environment
+# Locatons:
+#HZ Peru
+#						Kamin, Suppe, Brot, Tabak, BS Schweiz, Aff ZH.
+#			Readings:
+#						LPI Linux certification in a nutshell 
+#						LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute
+#BS Schweiz:
+#			I thought about and now it is, "mind eve n viro"
 #
-
 ###		WARNING:	DON'T EDIT ANYTHING BELOW	###
 
 LANG="C" ;
@@ -309,7 +312,7 @@ fi
 
 		if [ -e /home/$SUDO_USER/.purple/plugins/libfacebook.so ] ;
 	then
-		echo -e "\n ... If you want to update the facebook plugin, then please,\n do: rm /home/$SUDO_USER/.purple/plugins/libfacebook.so" ;
+		echo -e "\n ... If you want to update the facebook plugin, then please,\n do: rm /home/$SUDO_USER/.purple/plugins/libfacebook.so\n" ;
 	else
 		# apply facebook video/audio/text pidgin plugin purple-facebook
 		echo -e "\n ... apply facebook video/audio/text pidgin plugin purple-facebook" ;
@@ -325,6 +328,16 @@ fi
 		cp -f pidgin/libpurple/protocols/facebook/.libs/libfacebook.so /home/$SUDO_USER/.purple/plugins ;
 		cd ../../ || exit 2 ;
 		rm -dRf thirdparty/purple-facebook ;
+fi
+		if [[ $(ls -sh /usr/share/nano | grep -E 'Readme.rst') = '' ]] ;
+	then
+		mkdir -p /usr/share/nano-syntax-highlighting ;
+		git clone https://github.com/scopatz/nanorc.git /usr/share/nano-syntax-highlighting/
+		cp -f /usr/share/nano-syntax-highlighting/* /usr/share/nano ;
+		rm -dRf /usr/share/nano-syntax-highlighting ;
+		rm -f /usr/share/nano/install.sh ;
+	else
+		echo -e "\n Improved Nano Syntax Highlighting Files allready installed."
 fi
 		redundanz --redundanz &
 		# good bye
