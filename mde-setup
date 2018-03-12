@@ -188,7 +188,7 @@ fi
 
 # install END
 
-		if [[ "$(grep root: aliases)" != '' ]] ;
+		if [[ "$(grep -E "root: ivo" /etc/aliases)" != '' ]] ;
 	then
 		echo -e "\n ... Alias Database newaliases allready build.\n if you want to do an other alias please edit /etc/aliases" ;
 	else
@@ -326,7 +326,7 @@ fi
 		cd ../../ || exit 2 ;
 		rm -dRf thirdparty/purple-facebook ;
 fi
-		if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep serv-if-up | awk '{print $2}' | wc -l) " = "0" ]] ;
+		if [[ "$(pgrep serv-if-up) " = '' ]] ;
 	then
 		echo -e "\n ... restarting \"serv-if-up\" daemon to redundanz"
 		sleep 2 ;
