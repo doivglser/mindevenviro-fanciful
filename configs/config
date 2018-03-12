@@ -1,4 +1,5 @@
 [global_config]
+  borderless = True
   enabled_plugins = InactivityWatch, TerminalShot, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   tab_position = hidden
 [keybindings]
@@ -10,8 +11,8 @@
       maximised = False
       order = 0
       parent = ""
-      position = 20:20
-      size = 1152, 512
+      position = 27:27
+      size = 1100, 550
       title = mind eve n viro
       type = Window
     [[[child1]]]
@@ -38,7 +39,7 @@
       profile = default
       type = Terminal
     [[[terminal4]]]
-      command = "tail -n6 -f .wH0rUNSon *mac_recieves_dhcp_lease *mac_no_dhcp_lease"
+      command = tail -n6 -f .wH0rUNSon *mac_recieves_dhcp_lease *mac_no_dhcp_lease
       order = 4
       parent = child1
       profile = default
@@ -50,4 +51,5 @@
     scroll_background = False
     scrollback_infinite = True
     scrollbar_position = hidden
+    show_titlebar = False
     visible_bell = True
