@@ -5,11 +5,12 @@
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 readonly empty="" ;
-
 		if [ ! $EUID = 0 ] ;
 	then
 		echo "USAGE: sudo redundanz -h" ;
 else
+
+trap 'exitH4ndl3r' SIGINT ;
 
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
@@ -44,7 +45,7 @@ exitH4ndl3r(){
 
 		if [[ $REPLY =~ y|Y|j|J ]] ;
 	then
-		killall -15 serv-if-up 2>/dev/null &&
+		killall -15 xterm 2>/dev/null &&
 		rm -f $tmpfolder/root_mail_status &&
 		exit 0 ;
 		
@@ -55,11 +56,16 @@ fi
 }
 
 mmonitor(){
+		while trap 'exitH4ndl3r' SIGINT ;
+	do
 		if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
 	then
 		start_up ;
+		sleep 1;
 		watch -n4 -t --color "$FILE2" ;
+		sleep 1;
 fi
+done
 }
 
 # ASK
