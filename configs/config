@@ -1,6 +1,6 @@
 [global_config]
   broadcast_default = off
-  dbus = False
+  dbus = True
   enabled_plugins = ,
   extra_styling = False
   focus = mouse
