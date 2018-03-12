@@ -32,7 +32,7 @@
       profile = default
       type = Terminal
     [[[terminal3]]]
-      command = sudo -u root mutt
+      command = mutt
       order = 3
       parent = child1
       profile = default

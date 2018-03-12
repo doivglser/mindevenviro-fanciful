@@ -68,7 +68,7 @@ fi
 done
 
 	echo -e "\r\n ... clearing files" ;
-	
+		
 	# by an update clear from double entries in 000-default.conf
 	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
@@ -186,6 +186,16 @@ fi
 
 # install END
 
+		if [[ "$(grep root: aliases)" != '' ]] ;
+	then
+		echo -e "\n ... Alias Database newaliases allready build.\n if you want to do an other alias please edit /etc/aliases" ;
+	else
+		echo -e "\n ... updating /etc/aliases, this may take a while" ;
+		echo "root: $SUDO_USER" >> /etc/aliases ;
+		newaliases ;
+		sleep 2 ;
+		echo -e "\n ... /etc/aliases updated, you are able to read root mails." ;
+fi
 	echo -e "\n ... set background Pictures" ;
 	unzip pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
