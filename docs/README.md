@@ -339,7 +339,7 @@
 
 # in /usr/local/bin
 
- network
+ network|startup
 
 	- shi3lD
 	- start_shield
