@@ -267,11 +267,11 @@
  
 * log ~/.wH0rUNSon:
 
-		search:		workflow, user/host control
-		mysql_cp_db:	workflow, user/host control
-		sCRYPtUPdater: 	workflow, user/host control
-		redundanZ:	startups, failures
-		shielD:		macs
+		search: workflow, user/host control
+		mysql_cp_db: workflow, user/host control
+		sCRYPtUPdater: workflow, user/host control
+		redundanZ: startups, failures
+		shielD: macs
 
 * set_mysql_passwd (shell script)
 
