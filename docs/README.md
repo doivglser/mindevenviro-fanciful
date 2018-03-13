@@ -16,8 +16,10 @@
 
 # M1ND3V3NV1R0 (testing)
 
-	Deployment Environment for Web Applications and System Administration, in a minimal Desktop
-	with Antivirus, NIDS and a great Multimedia Experience, without systemd. ( for one $USER ) .
+	Deployment Environment for Web Applications and 
+	System Administration, in a minimal Desktopwith 
+	Antivirus, NIDS and a great Multimedia Experience, 
+	without systemd. ( for one $USER ) .
 
 - VTWM minimal tweak, Xorg session with xdm.
 
@@ -47,31 +49,34 @@
 
 * mindevenviro
 
-	to implement "logger" and "pipestatus" in all scripts for better debugging
+	to implement "logger" and "pipestatus" 
 	to implement "Cont-Sec" to mindevenviro
 	better entries for log ~/.wH0rUNSon
 	to write without exclude codes from shellcheck
 	portability to: Debian, Fedora, CentOS, and MacOS
 	to add a "Joomla CMS" to localhost
-	to search for the right MySQL syntax to delete id's. (mysql_cp_db)
-	"mindevenviro.rules": "alert/drop rules" for /etc/snort/rules/ 
+	to search for the right MySQL syntax 
+	"mindevenviro.rules": "alert/drop rules"
 	"iptables psad fwsnort": tcp-wrapper
 	ncurses
 	GUI's
 
 * sCRYPtUPdater
-  
-  	Make sure you change more than 1 byte, so if you only change one character, then please add a space.
 
-  	To search for brackets and braces, to split the content of the source code into short code snippets.
+  	To search for brackets and braces, to split the 
+	  content of the source code into short code snippets.
+	    Make sure you change more than 1 byte, so if you 
+	      only change one character, then please add a space.
   
-  	If the workflow interval in minutes is over, refer to the "exit handler", 
-	if $REPLY from "exit handler" is = "n", reset workflow interval, 
-	if $REPLY from "exit handler" is = "y" exit.
+  	If the workflow interval in minutes is over, refer to the 
+	  "exit handler", if $REPLY from "exit handler" is = "n", 
+	    reset workflow interval, if $REPLY 
+	      from "exit handler" is = "y" exit.
 
 * shi3lD
 
-  	to change the user-agent, if netstat -ar | grep default is true.
+  	to change the user-agent, 
+	  if netstat -ar | grep default, is true.
 
 # PROBLEMS:
 
@@ -79,9 +84,10 @@
 
 * while installing:
 
-	while installing snort: debconf asks for interface eth0 no 
-	workaround for "eno[0-9]" interfaces. Take a look in to "ip route show" and 
-	"sudo dpkg --configure -a" with the name of your interface.
+	  while installing snort: debconf asks for 
+	    interface eth0 no workaround for "eno[0-9]" 
+	      interfaces. Take a look in to "ip route show" and 
+	       "sudo dpkg --configure -a" with the name of your interface.
 	
 # Requirements:
 
@@ -106,17 +112,23 @@
 
   Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
 
-	wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator 
-	playonlinux wine64 wine64-tools	wine64-preloader mercurial libpurple-dev libpurple0 
-	libjson-glib-dev pidgin-skype pidgin-skype-common pidgin xul-ext-ublock-origin 
-	firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm oss-compat 
-	alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter 
-	clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli 
-	php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip 
-	php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg 
-	shellcheck libcgi-pm-perl perl nmon fortunes figlet mc mutt eject nano pm-utils fancontrol 
-	thermald laptop-mode-tools cpufrequtils sysvinit-core
-
+	  wicd brutalchess libreoffice-writer tidy cheese gimp 
+	  scrot mupdf terminator playonlinux wine64 wine64-tools 
+	  wine64-preloader mercurial libpurple-dev libpurple0 
+	  libjson-glib-dev pidgin-skype pidgin-skype-common pidgin 
+	  xul-ext-ublock-origin firefox-esr vlc feh xclip geany 
+	  transmission openvpn xscreensaver vtwm oss-compat 
+	  alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl 
+	  clamav-freshclam clamav-milter clamdscan clamav-daemon 
+	  clamav-base clamav mysql-client mysql-server php7.0 
+	  php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl 
+	  php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline 
+	  php7.0-opcache php7.0-json php7.0-gd dwww apache2 git 
+	  sendmail python-gtk2-dbg shellcheck libcgi-pm-perl 
+	  perl nmon fortunes figlet mc mutt eject nano pm-utils 
+	  fancontrol thermald laptop-mode-tools 
+	  cpufrequtils sysvinit-core
+	
 * while installing
  
    You can aprove to sign up in to your github.com account, or just hit enter.
@@ -139,13 +151,13 @@
   
   "Left click on the Desktop" * Application Menu
  
- 	"transparent" * Click with the cross pointer on a window or an icon to set transparency.
-	"solid color" * Click with the cross pointer on a window or an icon to set solid color back.
-	"take shot" * Click with the mouse pointer on Desktop or Window to save picture to ~/
-	"refresh" * Restarts VTWM on opened $USER session.
-	"lock" * Locks the screen. xscreensaver prompt for $USER password.
-	"kill" * Click with the cross pointer on a window to end process.
-	"exit" * Quits VTWM. XDM login screen, returns.
+"transparent" * Click with the cross pointer to set transparency.
+"solid color" * Click with the cross pointer set solid color back.
+"take shot" * Click with the mouse pointer on Desktop or Window to save picture to ~/
+"refresh" * Restarts VTWM on opened $USER session.
+"lock" * Locks the screen. xscreensaver prompt for $USER password.
+"kill" * Click with the cross pointer on a window to end process.
+"exit" * Quits VTWM. XDM login screen, returns.
 
 # VTWM Menu:
 
@@ -229,11 +241,10 @@
 
 * mysql_cp_db (shell script)
 
-	To rename tables in database
-	To dump database to ~/[databasename].sql
-	To restore database from ~/[databasename].sql
-	To delete zombie ID's because "lost *.php, *.xml,
-	  from CMS template" in mysql database.
+	  To rename tables in database
+	   To dump database to ~/[databasename].sql
+	    To restore database from ~/[databasename].sql
+	     To delete zombie ID's because "lost php, xml"
   
 * redundanz (shell script)
 
@@ -246,6 +257,7 @@
   USAGE:
 
   "sudo nids-antivirus-up --nIDs" puts snort up for active interface.
+  
   "sudo nids-antivirus-up --anTiVirus" restarts clamav-daemon.
   
 * shi3lD (shell script)
@@ -261,10 +273,10 @@
   You will have two logs on ~/ : 
   
   	"[MonthYear].mac_recieves_dhcp_lease"
-	- A list with MAC-ADDRESSES that works with your hardware
+	  - A list with MAC-ADDRESSES that works with your hardware
 
-	"[MonthYear].mac_no_dhcp_lease"
-	- A list with MAC-ADDRESSES that doesn't work with your hardware
+	  "[MonthYear].mac_no_dhcp_lease"
+	    - A list with MAC-ADDRESSES that doesn't work with your hardware
 		
   Depends on: start_shield, stop_shield, nids-antivirus-up
  
