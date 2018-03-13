@@ -17,7 +17,7 @@
 # M1ND3V3NV1R0 (testing)
 
 	Deployment Environment for Web Applications and 
-	System Administration, in a minimal Desktopwith 
+	System Administration, in a minimal Desktop with 
 	Antivirus, NIDS and a great Multimedia Experience, 
 	without systemd. ( for one $USER ) .
 
