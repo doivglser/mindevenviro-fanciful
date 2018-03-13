@@ -3,16 +3,16 @@
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU. (does for many old computers)
 
 * All Apps open, second monitor extended at the right of desktop, with Reason 5 Demo on PlayOnLinux window.
-![bild000](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/docs/addjus_one.jpg)
+![bild000](https://doivglser.github.io/mindevenviro/addjus_one.jpg)
 
 * shi3lD is running, second monitor extended at the right of desktop, with wicd and youtube.
-![bild011](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/docs/addjus_two.jpg)
+![bild011](https://doivglser.github.io/mindevenviro/addjus_two.jpg)
 
 * mindevenviro projects
-![bild022](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/docs/addjus_three.jpg)
+![bild022](https://doivglser.github.io/mindevenviro/addjus_three.jpg)
 
 * A Picture, shuted with "take shot" from the "Menu", opened with "mc" in the "Terminator" window and, edited in few seconds with "ImageMagic", and put some things in minutes with "GIMP".
-![bild033](https://github.com/doivglser/M1ND3V3NV1R0/blob/master/docs/addjus_four.jpg)
+![bild033](https://doivglser.github.io/mindevenviro/addjus_four.jpg)
 
 # M1ND3V3NV1R0 (testing)
 
