@@ -45,9 +45,6 @@
 
 - For programmers and administrators.
 
-
-
-
 # TODO:
 
 * mindevenviro
@@ -111,9 +108,17 @@
 
 # Install
 
-* ivo@x0x:~/mindevenviro$ sudo ./install 
+* "user@host:~/mindevenviro$ sudo mde-setup"
 
   Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
+  
+  Improved Nano Syntax Highlighting Files: ![scopatz nanorc](https://github.com/scopatz/nanorc)
+  
+  Facebook protocol plugin for libpurple (moved from jgeboski/purple-facebook): ![dequis purple-facebook](https://github.com/dequis/purple-facebook)
+  
+  uBlock Origin - An efficient blocker for Chromium and Firefox. Fast and lean: ![gorhill uBlock](https://github.com/gorhill/uBlock)
+
+  debian:
 
 	  wicd brutalchess libreoffice-writer tidy cheese gimp 
 	  scrot mupdf terminator playonlinux wine64 wine64-tools 
@@ -131,10 +136,16 @@
 	  perl nmon fortunes figlet mc mutt eject nano pm-utils 
 	  fancontrol thermald laptop-mode-tools 
 	  cpufrequtils sysvinit-core
-	
+
 * while installing
- 
-   You can aprove to sign up in to your github.com account, or just hit enter.
+   
+   Sometimes debian has updates, you may read if you need a restart, or
+   
+   you can aprove to login in to your github.com account, or just hit enter,
+   
+   for new install, or for an update AND OR an system upgrade.
+   
+   Apt is marked to not install systemd related packages.
 
 # USAGE On VTWM:
 
