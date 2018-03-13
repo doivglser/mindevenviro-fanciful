@@ -1,4 +1,4 @@
-# M1ND3V3NV1R0 (testing) (does for many old computers)
+# M1ND3V3NV1R0 (testing)
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
