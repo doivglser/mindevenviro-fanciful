@@ -1,6 +1,6 @@
-# M1ND3V3NV1R0 (testing)
+# M1ND3V3NV1R0 (testing) (does for many old computers)
 
-* I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU. (does for many old computers)
+* I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
 * All Apps open, second monitor extended at the right of desktop, with Reason 5 Demo on PlayOnLinux window.
 ![bild000](https://github.com/doivglser/mindevenviro/tree/master/docs/addjus_one.jpg)
