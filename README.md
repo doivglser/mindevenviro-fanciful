@@ -47,17 +47,18 @@
 
 * mindevenviro
 
+		to implement "logger" and "pipestatus" in all scripts for better debugging
 		to implement "Cont-Sec" to mindevenviro
 		better entries for log ~/.wH0rUNSon
-		to implement pipestatus in all scripts for better debugging		 
 		to write without exclude codes from shellcheck
-
-* portability to: Debian, Fedora, CentOS, and MacOS
-
-* Joomla CMS
-
-* I search for the right MySQL syntax to delete id's. (mysql_cp_db)
-
+		portability to: Debian, Fedora, CentOS, and MacOS
+		to add a "Joomla CMS" to localhost
+		to search for the right MySQL syntax to delete id's. (mysql_cp_db)
+		"mindevenviro.rules": "alert/drop rules" for /etc/snort/rules/ 
+		"iptables psad fwsnort": tcp-wrapper
+		ncurses
+		GUI's
+		
 * sCRYPtUPdater
   
   		Make sure you change more than 1 byte, so if you only change one character, then please add a space.
@@ -71,14 +72,6 @@
 * shi3lD
 
   		to change the user-agent, if netstat -ar | grep default is true.
-
-* "mindevenviro.rules": "alert/drop rules" for /etc/snort/rules/ 
-
-* "iptables psad fwsnort": tcp-wrapper
-
-* ncurses
-
-* GUI's
 
 # PROBLEMS:
 
@@ -218,7 +211,7 @@
   
 # USAGE in Terminator:
 
-		OPEN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW 
+	******** OPEN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW ********
 
 * openpdf (shell script)
 
