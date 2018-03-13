@@ -14,6 +14,9 @@
 * A Picture, shuted with "take shot" from the "Menu", opened with "mc" in the "Terminator" window and, edited in few seconds with "ImageMagic", and put some things in minutes with "GIMP".
 ![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_four.jpg)
 
+
+
+
 # M1ND3V3NV1R0 (testing)
 
 	Deployment Environment for Web Applications and 
@@ -27,7 +30,7 @@
 
 - Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e", "php -l" and "tidy -e -q".
 
-- Changes your MAC, to obtain a new IP, "ctrl+C" quit's and revert the connected interface, to vendor's MAC.
+- Changes MAC's, to obtain a new IP, "ctrl+C" quit and revert the connected interface, to vendor's MAC.
 
 - Web surfing with Firefox-ESR and local/web media experience with VLC.
 
@@ -45,21 +48,24 @@
 
 - For programmers and administrators.
 
+
+
+
 # TODO:
 
 * mindevenviro
 
-	to implement "logger" and "pipestatus" 
-	to implement "Cont-Sec" to mindevenviro
-	better entries for log ~/.wH0rUNSon
-	to write without exclude codes from shellcheck
-	portability to: Debian, Fedora, CentOS, and MacOS
-	to add a "Joomla CMS" to localhost
-	to search for the right MySQL syntax 
-	"mindevenviro.rules": "alert/drop rules"
-	"iptables psad fwsnort": tcp-wrapper
-	ncurses
-	GUI's
+	  to implement "logger" and "pipestatus"
+	  to implement "Cont-Sec" to mindevenviro
+	  better entries for log ~/.wH0rUNSon
+	  to write without exclude codes from shellcheck
+	  portability to: Debian, Fedora, CentOS, and MacOS
+	  to add a "Joomla CMS" to localhost
+	  to search for the right MySQL syntax 
+	  "mindevenviro.rules": "alert/drop rules"
+	  "iptables psad fwsnort": tcp-wrapper
+	  ncurses
+	  GUI's
 
 * sCRYPtUPdater
 
@@ -78,6 +84,9 @@
   	to change the user-agent, 
 	  if netstat -ar | grep default, is true.
 
+
+
+
 # PROBLEMS:
 
 * no workaround to install wifi firmware. (I recommend a dd-wrt router as client over ethernet)
@@ -88,7 +97,10 @@
 	    interface eth0 no workaround for "eno[0-9]" 
 	      interfaces. Take a look in to "ip route show" and 
 	       "sudo dpkg --configure -a" with the name of your interface.
-	
+
+
+
+
 # Requirements:
 
 - A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for Fedora, CentOS and MacOSX)
@@ -97,14 +109,17 @@
 
 - While installing: 
 
-  Choose a root and an user password, (write both on a paper)
-  Guided - use entire disk and set up envrypted LVM,
-  Separate /home, /var, and /tmp partitions,
-  Don't choose any desktop or servers, 
-  but standard system utilities.
+  	Choose a root and an user password, (write both on a paper)
+        Guided - use entire disk and set up envrypted LVM,
+        Separate /home, /var, and /tmp partitions,
+        Don't choose any desktop or servers, 
+        but standard system utilities.
   
 - Root access, to make an entry for $USER in the /etc/sudoers file
 - An Internet connection
+
+
+
 
 # Install
 
@@ -132,32 +147,44 @@
 * while installing
  
    You can aprove to sign up in to your github.com account, or just hit enter.
+   
+   
+   
 
 # USAGE On VTWM:
 
 * Login to X
   
-  "F12 on active window" * circles windows up
+"F12 on active window" * circles windows up
   
-  "grenn button left corner on title-bar" * iconize window
-  
-  "grenn button right corner on title-bar" * resize window
+"grenn button left corner on title-bar" * iconize window
 
-  "Right click on the Desktop" * Change Background
+"grenn button right corner on title-bar" * resize window
+
+"Right click on the Desktop" * Change Background
   
-  "Right click on a Window-Title-Bar" * Puts Active-window as "last" in the list of open windows. 
+"Right click on a Window-Title-Bar" * Puts Active-window as "last" in the list of open windows. 
   
-  "Middle Click on the Desktop" * VTWM Version
+"Middle Click on the Desktop" * VTWM Version
   
-  "Left click on the Desktop" * Application Menu
+"Left click on the Desktop" * Application Menu
  
 "transparent" * Click with the cross pointer to set transparency.
+
 "solid color" * Click with the cross pointer set solid color back.
+
 "take shot" * Click with the mouse pointer on Desktop or Window to save picture to ~/
+
 "refresh" * Restarts VTWM on opened $USER session.
+
 "lock" * Locks the screen. xscreensaver prompt for $USER password.
+
 "kill" * Click with the cross pointer on a window to end process.
+
 "exit" * Quits VTWM. XDM login screen, returns.
+
+
+
 
 # VTWM Menu:
 
@@ -222,7 +249,10 @@
 * geany
 
   fast and lightweight IDE
-  
+
+
+
+
 # USAGE in Terminator:
 
 	OPEN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW
@@ -296,11 +326,19 @@
 
   To install and update mindevenviro.
 
+
+
+
 # SHELL SCRIPTS DOT FILES AND CONTENT
+
+
 
 # in /root
 
   /root/.vendorsmac
+
+
+
 
 # in ~/
    
@@ -323,11 +361,17 @@
   .xscreensaver
   
   .bashrc
-  
+
+
+
+
 # in ~/Pictures
 
   unziped wallpapers.zip
-  
+
+
+
+
 # in /usr/local/bin
 
  network
@@ -368,10 +412,16 @@
 
 	- mde-setup
 	- set_mysql_passwd
-	
+
+
+
+
 # in /var/www/html/
 
   README.html
+
+
+
 
 # Coming soon:
 
@@ -379,6 +429,9 @@
   C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
 
 * https://github.com/doivglser/min-dev-enviro/projects
+
+
+
 
 # Thank's google
 
