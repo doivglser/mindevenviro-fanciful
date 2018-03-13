@@ -27,7 +27,7 @@
 
 - Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e", "php -l" and "tidy -e -q".
 
-- Changes MAC's, to obtain a new IP, "ctrl+C" quit and revert the connected interface, to vendor's MAC.
+- Changes MAC's, to obtain a new IP, by quit reverts the connected interface, to vendor's MAC.
 
 - Web surfing with Firefox-ESR and local/web media experience with VLC.
 
