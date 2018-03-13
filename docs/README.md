@@ -47,10 +47,19 @@
 
 # TODO:
 
+* "Cont-Sec" Secure-Email-Solution
+
+... After typing the message, "Cont-Sec" applies to md5 encryption for each letter and number corresponding to the "E-Mail-Code-Fragments" that matches the "picture-match-key" with your buddie. ![Cont-Sec](https://github.com/doivglser/mindevenviro/projects)
+
+	  $ escapedSpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<style"
+	  $ a=$(openssl passwd -1 "$escapedSpamCodeSegment")
+	  $ echo $a
+	  $1$fAQx12CW$G.PUvFZpeV7kJWqtimFSP0
+
 * mindevenviro
 
-		to implement "logger" and "pipestatus"
 	  	to implement "Cont-Sec" to mindevenviro
+		to implement "logger" and "pipestatus"
 	  	better entries for log ~/.wH0rUNSon
 	  	to write without exclude codes from shellcheck
 	  	portability to: Debian, Fedora, CentOS, and MacOS
