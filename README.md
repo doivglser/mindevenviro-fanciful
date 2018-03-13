@@ -45,7 +45,7 @@
 
 # TODO:
 
-* Add Cont-Sec to mindevenviro
+* implement "Cont-Sec" to mindevenviro
 
 * Portability to: Debian, Fedora, CentOS, and MacOS
 
