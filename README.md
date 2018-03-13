@@ -45,9 +45,14 @@
 
 # TODO:
 
-* implement "Cont-Sec" to mindevenviro
+* mindevenviro
 
-* Portability to: Debian, Fedora, CentOS, and MacOS
+		to implement "Cont-Sec" to mindevenviro
+		better entries for log ~/.wH0rUNSon
+		to implement pipestatus in all scripts for better debugging		 
+		to write without exclude codes from shellcheck
+
+* portability to: Debian, Fedora, CentOS, and MacOS
 
 * Joomla CMS
 
@@ -55,17 +60,17 @@
 
 * sCRYPtUPdater
   
-  		 Make sure you change more than 1 byte, so if you only change one character, then please add a space.
+  		Make sure you change more than 1 byte, so if you only change one character, then please add a space.
 
-  		 To search for brackets and braces, to split the content of the source code into short code snippets.
+  		To search for brackets and braces, to split the content of the source code into short code snippets.
   
-  		 If the workflow interval in minutes is over, refer to the "exit handler", 
-		  if $REPLY from "exit handler" is = "n", reset workflow interval, 
-		  if $REPLY from "exit handler" is = "y" exit.
+  		If the workflow interval in minutes is over, refer to the "exit handler", 
+		if $REPLY from "exit handler" is = "n", reset workflow interval, 
+		if $REPLY from "exit handler" is = "y" exit.
 
 * shi3lD
 
-  		 to change the user-agent, if netstat -ar | grep default is true.
+  		to change the user-agent, if netstat -ar | grep default is true.
 
 * "mindevenviro.rules": "alert/drop rules" for /etc/snort/rules/ 
 
@@ -90,9 +95,10 @@
 - A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for Fedora, CentOS and MacOSX)
 - Choose netinst CD image, and burn it on a blank CD-R.
 - Debian 9 GNU/Linux Stretch: https://www.debian.org/releases/stretch/debian-installer/
+
 - While installing: 
 
-  Choose a root and an user password,
+  Choose a root and an user password, (write both on a paper)
   Guided - use entire disk and set up envrypted LVM,
   Separate /home, /var, and /tmp partitions,
   Don't choose any desktop or servers, 
@@ -108,8 +114,8 @@
   Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
 
 		wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator 
-		playonlinux wine64 wine64-tools	wine64-preloader mercurial libpurple-dev 
-		libpurple0 libjson-glib-dev pidgin-skype pidgin-skype-common pidgin xul-ext-ublock-origin 
+		playonlinux wine64 wine64-tools	wine64-preloader mercurial libpurple-dev libpurple0 
+		libjson-glib-dev pidgin-skype pidgin-skype-common pidgin xul-ext-ublock-origin 
 		firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm oss-compat 
 		alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter 
 		clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli 
@@ -187,7 +193,7 @@
 
   pidgin, graphical multi-protocol instant messaging client.
   
-  		 facebook plugin from dequis/purple-facebook.git
+  		facebook plugin from dequis/purple-facebook.git
 * brutalchess
 
   3D chess game with reflection of the chessmen
@@ -212,7 +218,7 @@
   
 # USAGE in Terminator:
 
-		 OPEN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW 
+		OPEN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW 
 
 * openpdf (shell script)
 
@@ -228,10 +234,10 @@
 
 * mysql_cp_db (shell script)
 
-  	   To rename tables in database
-	   To delete zombie ID's because "lost *.php, *.xml, from CMS template" in mysql database.
-	   To dump database to *.sql file to ~/
-	   To restore database from .sql file.
+		To rename tables in database
+		To dump database to ~/[databasename].sql
+		To restore database from ~/[databasename].sql
+		To delete zombie ID's because "lost *.php, *.xml, from CMS template" in mysql database.
   
 * redundanz (shell script)
 
@@ -254,16 +260,26 @@
   
   Keep trying, until shi3lD says "WE HAVE shi3lD".
   
-  You will have two files on ~/ : 
+  You will have two logs on ~/ : 
   
-  		 "[MonthYear].mac_recieves_dhcp_lease"
-			A list with MAC-ADDRESSES that works with your hardware
+  		"[MonthYear].mac_recieves_dhcp_lease"
+		
+			- A list with MAC-ADDRESSES that works with your hardware
 
-		 "[MonthYear].mac_no_dhcp_lease"
-			A list with MAC-ADDRESSES that doesn't work with your hardware
+		"[MonthYear].mac_no_dhcp_lease"
+		
+			- A list with MAC-ADDRESSES that doesn't work with your hardware
 			
   Depends on: start_shield, stop_shield, nids-antivirus-up
  
+* log ~/.wH0rUNSon:
+
+		search:		workflow, user/host control
+		mysql_cp_db:	workflow, user/host control
+		sCRYPtUPdater: 	workflow, user/host control
+		redundanZ:	startups, failures
+		shielD:		macs
+
 * set_mysql_passwd (shell script)
 
   To set up the MariaDB root password, enter a friendly password, only: numbers,lower-case,upper-case, 10 digits.
@@ -280,7 +296,7 @@
 
 # in ~/
    
-  .wH0rUNSon
+  .wH0rUNSon 
   
   [MonthYear].mac_recieves_dhcp_lease
   
