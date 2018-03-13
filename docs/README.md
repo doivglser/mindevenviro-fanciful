@@ -14,9 +14,6 @@
 * A Picture, shuted with "take shot" from the "Menu", opened with "mc" in the "Terminator" window and, edited in few seconds with "ImageMagic", and put some things in minutes with "GIMP".
 ![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_four.jpg)
 
-
-
-
 # M1ND3V3NV1R0 (testing)
 
 	Deployment Environment for Web Applications and 
@@ -55,17 +52,17 @@
 
 * mindevenviro
 
-	  to implement "logger" and "pipestatus"
-	  to implement "Cont-Sec" to mindevenviro
-	  better entries for log ~/.wH0rUNSon
-	  to write without exclude codes from shellcheck
-	  portability to: Debian, Fedora, CentOS, and MacOS
-	  to add a "Joomla CMS" to localhost
-	  to search for the right MySQL syntax 
-	  "mindevenviro.rules": "alert/drop rules"
-	  "iptables psad fwsnort": tcp-wrapper
-	  ncurses
-	  GUI's
+		to implement "logger" and "pipestatus"
+	  	to implement "Cont-Sec" to mindevenviro
+	  	better entries for log ~/.wH0rUNSon
+	  	to write without exclude codes from shellcheck
+	  	portability to: Debian, Fedora, CentOS, and MacOS
+	  	to add a "Joomla CMS" to localhost
+	  	to search for the right MySQL syntax 
+	  	"mindevenviro.rules": "alert/drop rules"
+	  	"iptables psad fwsnort": tcp-wrapper
+	  	ncurses
+	  	GUI's	
 
 * sCRYPtUPdater
 
@@ -81,11 +78,8 @@
 
 * shi3lD
 
-  	to change the user-agent, 
-	  if netstat -ar | grep default, is true.
-
-
-
+  		to change the user-agent, 
+	  	if netstat -ar | grep default, is true.
 
 # PROBLEMS:
 
@@ -97,9 +91,6 @@
 	    interface eth0 no workaround for "eno[0-9]" 
 	      interfaces. Take a look in to "ip route show" and 
 	       "sudo dpkg --configure -a" with the name of your interface.
-
-
-
 
 # Requirements:
 
@@ -117,9 +108,6 @@
   
 - Root access, to make an entry for $USER in the /etc/sudoers file
 - An Internet connection
-
-
-
 
 # Install
 
@@ -147,9 +135,6 @@
 * while installing
  
    You can aprove to sign up in to your github.com account, or just hit enter.
-   
-   
-   
 
 # USAGE On VTWM:
 
@@ -182,9 +167,6 @@
 "kill" * Click with the cross pointer on a window to end process.
 
 "exit" * Quits VTWM. XDM login screen, returns.
-
-
-
 
 # VTWM Menu:
 
@@ -249,9 +231,6 @@
 * geany
 
   fast and lightweight IDE
-
-
-
 
 # USAGE in Terminator:
 
@@ -326,19 +305,11 @@
 
   To install and update mindevenviro.
 
-
-
-
 # SHELL SCRIPTS DOT FILES AND CONTENT
-
-
 
 # in /root
 
   /root/.vendorsmac
-
-
-
 
 # in ~/
    
@@ -362,15 +333,9 @@
   
   .bashrc
 
-
-
-
 # in ~/Pictures
 
   unziped wallpapers.zip
-
-
-
 
 # in /usr/local/bin
 
@@ -413,15 +378,9 @@
 	- mde-setup
 	- set_mysql_passwd
 
-
-
-
 # in /var/www/html/
 
   README.html
-
-
-
 
 # Coming soon:
 
@@ -429,9 +388,6 @@
   C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
 
 * https://github.com/doivglser/min-dev-enviro/projects
-
-
-
 
 # Thank's google
 
