@@ -28,7 +28,7 @@ fi
 # temp folder END
 
 		interface="$(cat "$tmpfolder"/interface)" ;
-		
+
 		if [[ "$interface" =~ eno|eth ]] ;
 	then
 		whoUP="1" ;
@@ -83,7 +83,7 @@ ifUPAntiVirusFireWall(){
 	then
 		nids-antivirus-up --anTiVirus &
 		printf "\r restarting ClamAV..." && sleep 1 ;
-	fi	
+	fi
 	    if [[ "$(ps aux | grep -v grep | grep snort | grep -v nano | awk '{print $11}')" != "$nids" ]]
 	then
 		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
@@ -97,7 +97,7 @@ done
 
 puff_MACs(){
 stop_shield --stop &
-		
+
 		until [[ $(netstat -ar) =~ 'default' ]] ;
 	do
 		echo -e "puffing MACs ...\n" ;
@@ -107,9 +107,9 @@ stop_shield --stop &
 		until [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep /sbin/dhclient)" != '' ]] ;
 	do
 		printf "\rplease RECONECT with network (wicd)" ; sleep 1 ;
-		
+
 		if [[ $(netstat -ar) =~ 'default' ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
-	then	
+	then
 		ifUPAntiVirusFireWall ;
 fi
 done
