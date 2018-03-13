@@ -7,6 +7,8 @@ IFS=$(echo -en "\b\n") ;
 		if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_pidgin | grep pidgin) = '' ]] ;
 	then
 		pidgin 2>/dev/null &
+		sleep 1 ;
+		transset --name "Buddy List" .7 ;
 		exit 0 ;
 	else
 		exit 0 ;
