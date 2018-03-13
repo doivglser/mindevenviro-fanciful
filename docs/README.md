@@ -352,7 +352,7 @@
 	- search
 	- mysql_cp_db
 	
- backgroud|startup
+ background|startup
 	
 	- feh-bg
 	- hi 
