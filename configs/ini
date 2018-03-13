@@ -112,7 +112,7 @@ clipboard_store=
 clipboard_paste=
 
 [Colors]
-base_color=lightgray,green:normal=green,default:selected=white,gray:marked=yellow,default:markselect=yellow,gray:directory=blue,default:executable=brightgreen,default:link=cyan,default:device=brightmagenta,default:special=lightgray,default:errors=red,default:reverse=green,default:gauge=green,default:input=white,gray:dnormal=green,gray:dfocus=brightgreen,gray:dhotnormal=cyan,gray:dhotfocus=brightcyan,gray:menu=green,default:menuhot=cyan,default:menusel=green,gray:menuhotsel=cyan,default:helpnormal=cyan,default:editnormal=green,default:editbold=blue,default:editmarked=gray,blue:stalelink=red,default
+base_color=black,green:normal=green,black:selected=blue,yellow:marked=green,black:markselect=blue,black:directory=blue,black:executable=brightgreen,black:link=blue,black:device=brightmagenta,black:special=green,black:errors=red,black:reverse=green,black:gauge=green,black:input=blue,black:dnormal=green,yellow:dfocus=black,yellow:dhotnormal=blue,yellow:dhotfocus=black,yellow:menu=green,black:menuhot=blue,black:menusel=green,yellow:menuhotsel=blue,gray:helpnormal=lightyellow,black:editnormal=green,black:editbold=blue,black:editmarked=black,red:stalelink=red,default
 
 xterm-256color=
 color_terminals=
