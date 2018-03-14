@@ -1,6 +1,7 @@
 #!/bin/bash
 # mindevenviro wecker
 # does beep if you should get up
+
 LANG="C" ;
 readonly empty='' ;
 
@@ -13,33 +14,34 @@ readonly empty='' ;
 beep(){
 		while true
 	do
-		echo -e \\07 && echo -e \\07 ;
-		sleep .3 ;
+		clear ;
+		figlet wakeUp ;
+		echo -e \\07 ;
+		sleep .2 ;
 	done
 }
 		exec 3>&1;
 		result=$(dialog --inputbox minutes 0 0 2>&1 1>&3);
-	
+
 		if [[ "$result" = "$empty" ]] ;
 	then
 		exit 0 ;
 	else
-		let seconds="$result"*30
+		let seconds="$result"*60
 		exitcode=$?;
 		exec 3>&-;
+		clear ;
 
 		while true
 	do
-		for i in $(seq 0 3 99) ;
+		for i in $(seq 0 1 100) ;
 	do
 		if [[ "$seconds" != "0" ]] ;
 	then
 		((seconds--)) ;
 		sleep 1 ;
-		echo $i | dialog --gauge "soon beep..." 10 60 5; 
-		echo $seconds
+		figlet $seconds
 	else
-		clear ;
 		beep ;
 fi
 	done
