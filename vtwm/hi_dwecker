@@ -5,8 +5,8 @@ IFS=$(echo -en "\b\n");
 
 			if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_dwecker | grep dwecker) = '' ]] ;
         then
-				xterm -title "wake up $USER" -fg yellow -geometry 60x10 -e dwecker &
-                transset --name "wake up $USER" .7 ;
+				xterm -title "dWecker" -fg yellow -geometry 60x10 -e dwecker &
+                transset --name "dWecker" .7 ;
                 exit 0 ;
         else
                 exit 0 ;
