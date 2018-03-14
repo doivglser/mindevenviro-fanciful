@@ -106,13 +106,13 @@ fi
 fi
 		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" 2>/dev/null | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" 2>/dev/null | tail -n1 2>/dev/null )" ]] ;
 	then
-		setsid redsocks -c redsocks/redsocks.conf 2>/dev/null 2>&1 < /dev/null &
-		iptables &
+#		setsid redsocks -c redsocks/redsocks.conf 2>/dev/null 2>&1 < /dev/null &
+#		iptables &
 		mess4ge ;
 
 		elif [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" != "2" ]] || [[ "$(ip link show "$interface" 2>/dev/null | grep ether | awk '{print $2}')" = "$(cat /root/.vendorsmac | head -n"${whoUP}" 2>/dev/null | tail -n1 2>/dev/null)" ]] ;
 	then
-		killall -15 redsocks ;
+#		killall -15 redsocks ;
 		stop_shield --stop &
 		findIface ;
 	fi
