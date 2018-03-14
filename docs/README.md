@@ -59,8 +59,8 @@
 * mindevenviro
 
 	  	to implement "Cont-Sec" to mindevenviro
-		to implement "logger" and "pipestatus"
 	  	better entries for log ~/.wH0rUNSon
+		to implement "logger" and "pipestatus"
 	  	to write without exclude codes from shellcheck
 	  	portability to: Debian, Fedora, CentOS, and MacOS
 	  	to add a "Joomla CMS" to localhost
@@ -84,8 +84,8 @@
 
 * shi3lD
 
-  		to change the user-agent, 
-	  	if netstat -ar | grep default, is true.
+  	to change the user-agent, if 
+	  "netstat -ar | grep default", is true.
 
 # PROBLEMS:
 
@@ -301,11 +301,11 @@
   
   You will have two logs on ~/ : 
   
-  	"[MonthYear].mac_recieves_dhcp_lease"
-	  - A list with MAC-ADDRESSES that works with your hardware
+  		"[MonthYear].mac_recieves_dhcp_lease"
+	  	- A list with MAC-ADDRESSES that works with your hardware
 
-	  "[MonthYear].mac_no_dhcp_lease"
-	    - A list with MAC-ADDRESSES that doesn't work with your hardware
+		"[MonthYear].mac_no_dhcp_lease"
+		- A list with MAC-ADDRESSES that doesn't work with your hardware
 		
   Depends on: start_shield, stop_shield, nids-antivirus-up
  
