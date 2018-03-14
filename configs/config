@@ -52,6 +52,12 @@
       parent = child1
       profile = default
       type = Terminal
+    [[[terminal5]]]
+      command = watch -n3 connected ;
+      order = 5
+      parent = child1
+      profile = default
+      type = Terminal
 [plugins]
 [profiles]
   [[default]]
