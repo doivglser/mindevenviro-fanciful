@@ -31,7 +31,7 @@ beep(){
 		exitcode=$?;
 		exec 3>&-;
 		clear ;
-
+		
 		while true
 	do
 		for i in $(seq 0 1 100) ;
