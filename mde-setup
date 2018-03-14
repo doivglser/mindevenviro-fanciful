@@ -94,7 +94,7 @@ done
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;	
 
 	echo -e "\n ... create /home/$SUDO_USER Directories" ;
-	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music,Ableton} ;
+	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music} ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER ;
 
 	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
