@@ -96,14 +96,15 @@ done
 }
 
 puff_MACs(){
-stop_shield --stop &
 
 		until [[ $(netstat -ar) =~ 'default' ]] ;
 	do
+		stop_shield --stop &
+		sleep 1 ;
 		echo -e "puffing MACs ...\n" ;
 		neWMacAdr=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//') &&
 		sudo ip link set dev "$interface" address "$neWMacAdr" &&
-		sudo ip link set dev "$interface" up && sleep 3 ;
+		sudo ip link set dev "$interface" up &&
 		until [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep /sbin/dhclient)" != '' ]] ;
 	do
 		printf "\rplease RECONECT with network (wicd)" ; sleep 1 ;

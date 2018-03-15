@@ -40,9 +40,7 @@ fi
 }
 
 findIface(){
-sleep 3 ;
 		printf "WiFi or Ethernet? [W|E] " ; read -r
-		
 		if [[ $REPLY = w ]] ;
 	then
 		cat /root/.interfaces | head -n2 | tail -n1 > "$tmpfolder"/interface
