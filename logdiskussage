@@ -1,0 +1,17 @@
+#!/bin/bash
+# mindevenviro connected
+# shows big log files in Megabyte
+
+		if [[ "$EUID" != 0 ]] ;
+	then
+		sudo "$0"
+	else
+		while true
+	do
+		clear ;
+		echo -e "\nupdating ..." ;
+		sleep 3 ;
+		du -h /var/log/*log* | grep -E "M" ;
+		read -r ;
+done
+fi

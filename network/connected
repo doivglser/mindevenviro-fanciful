@@ -2,5 +2,16 @@
 # mindevenviro connected
 # lists outgoing TCP and UDP
 
-netstat -an | grep LISTEN | grep -v LISTENING
-netstat -an | grep ESTABLISHED
+		if [[ "$EUID" =~ 1[0-9][0-9][0-9] ]] ;
+	then
+		while true
+	do
+		clear ;
+		echo -e "\nupdating ..." ;
+		sleep 3 ;
+		netstat -an | grep -v LISTENING | grep -E "LISTEN|ESTABLISHED" ;
+		read -r ;
+done
+else
+	exit 0 ;
+fi
