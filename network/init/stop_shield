@@ -22,7 +22,7 @@ fi
 
 stop_Ppp(){
 		echo -e " ... stopping connections\n" ;
-		killall -15 dhclient && wait ;
+		killall -15 dhclient 2>/dev/null && wait ;
 		sudo ip link set dev "$(cat "$tmpfolder"/interface)" down && sleep 1 ;
 }
 

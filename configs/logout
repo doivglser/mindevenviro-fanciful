@@ -1,16 +1,37 @@
 #!/bin/bash
 # mindevenviro
 # logout
-xrandr --output VGA-1 --off && xrandr --output eDP-1 --mode 1280x800
+
+# set to primary monitor
+xrandr --output VGA-1 --off && xrandr --output eDP-1 --mode 1280x800 ;
+
+# stop network
 stop_shield --stop &
 
+whoIfacesUP(){
+# which interface is trought the default route to the internet connected
+# works only if you have two interfaces, like: eno[0-9] | eth[0-9] | wi[a-z-0-9] | wl[a-z-0-9]
+
+		if [[ "$interface" =~ eno|eth ]] ;
+	then
+		whoUP="1" ;
+
+		elif [[ "$interface" =~ wl|wi ]] ;
+	then
+		whoUP="2" ;
+	else
+		whoUP="none" ;
+fi
+}
+		# revert vendors MAC
+		sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ;
+
+	# kill zombie wine processes
 	for killwines in $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep playonlinux | awk '{print $2}' | sort -r);
 do
 	echo $killwines | xargs kill -15 && wait ;
 done
-sleep 1 ;
-killall -15 shi3lD && wait ;
-sleep 1 ;
+
 killall -15 xterm && wait ;
 sleep 1 ;
 killall -15 terminator && wait ;
