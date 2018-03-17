@@ -293,7 +293,7 @@
   
   If "sudo redundanz -m" is running, then shi3lD will puff your MAC-Address, so you become a new IP.
   
-  Try to connect to your Network, pull down: "network" from "Menu", refresh in the wicd GUI and connect.
+  Refresh in the wicd GUI and connect.
   
   Keep trying, until shi3lD says "WE HAVE shi3lD".
   
