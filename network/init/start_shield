@@ -83,14 +83,14 @@ ifUPAntiVirusFireWall(){
 		if [[ "$(ps aux | grep -v grep | grep clamd | grep -v nano | awk '{print $11}')" != "$antivirus" ]]
 	then
 		nids-antivirus-up --anTiVirus &
-		printf "\r restarting ClamAV..." && sleep 1 ;
+		printf "\r restarting ClamAV..." ; sleep 3;
 	fi
 	    if [[ "$(ps aux | grep -v grep | grep snort | grep -v nano | awk '{print $11}')" != "$nids" ]]
 	then
 		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
     then
 		nids-antivirus-up --nIDs &
-		printf "\r restarting Snort..." && sleep 1 ;
+		printf "\r restarting Snort..." ; sleep 3;
 	fi
 fi
 done
@@ -128,6 +128,7 @@ done
 	do
 		if [[ $(netstat -ar) =~ 'default' ]] && [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
     then
+		printf "\r starting up... " ; sleep 3 ;
 		clear ;
         writem4c_Connected ;
         echo -e "\n - WE HAVE shi3lD ::\n" ;
