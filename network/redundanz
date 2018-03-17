@@ -27,7 +27,7 @@ FILE2="server-monitor" ;
 help(){
 shift 0 ;
 echo -e "hello $SUDO_USER redundanz puts serv-if-up daemon up and monitors servers reliability\n" ;
-echo -e "Usage: $0 [-m|--monitor] [-h|--help]\r" ;
+echo -e "Usage: $0 [-m|--monitor] [-r]|[--redundanz] [-h|--help]\r" ;
 exit 0 ;
 }
 
@@ -35,6 +35,7 @@ start_up(){
 		if [[ $(ps aux | grep -v grep | grep -v nano | grep -v geany | grep "$FILE1") = "$empty" ]]
 	then
 		setsid "$FILE1" 2>/dev/null 2>&1 < /dev/null &
+		echo "${FILE1}s PID: $(pgrep $FILE1)" ;
 fi
 }
 
@@ -56,16 +57,13 @@ fi
 }
 
 mmonitor(){
-		while trap 'exitH4ndl3r' SIGINT ;
-	do
 		if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
 	then
 		start_up ;
 		sleep 1;
-		watch -n4 -t --color "$FILE2" ;
-		sleep 1;
+		trap 'exitH4ndl3r' SIGINT ;
+		watch -n3 -t --color "$FILE2" ;
 fi
-done
 }
 
 # ASK
@@ -76,7 +74,7 @@ done
       ;;
         -r|--redundanz)
       shift 1;
-      start_up "$@" ;
+      start_up "$@" && exit 0 ;
       ;;      
    -h|--help)
       shift 1 ;
