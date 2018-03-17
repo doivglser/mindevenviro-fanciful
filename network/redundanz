@@ -63,14 +63,14 @@ mmonitor(){
 	do
 		if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
 	then
-		start_up ;
+		start_up;
 		sleep 1;
-		watch -n3 "$FILE2" ;
+		watch -n5 "$FILE2" ;
 fi
 done
 }
 
-# ASK
+#ASK
   case "$1" in
         -m|--monitor)
       shift 1;
