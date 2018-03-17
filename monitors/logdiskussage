@@ -1,6 +1,8 @@
 #!/bin/bash
-# mindevenviro connected
-# shows big log files in Megabyte
+# mindevenviro logdiskussage
+# shows big log files in Megabytes and monitors by hitting enter
+# Im not nothing
+LANG="C";
 
 		if [[ "$EUID" != 0 ]] ;
 	then

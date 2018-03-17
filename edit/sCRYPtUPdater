@@ -11,7 +11,7 @@ else
 
 IFS=$(echo -en "\n\b") ;
 FILE="sCRYPtUPdater"
-syntaxCHkr="shellcheck python perl php tidy" ;
+syntaxCHkr="shellcheck python perl php tidy " ;
 
 # wholeC0unt4: to start by zero after first
 wholeC0unt4="1" ;
@@ -35,6 +35,8 @@ conffiles_path="/etc" ;
 		tmpfolder="/tmp" ;
 fi
 # temp folder END
+
+> $tmpfolder/modified ;
 
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
@@ -133,7 +135,7 @@ copyToPath(){
 			sudo chown www-data:www-data "$path_to_update/$toC0pyIS" ;
 			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
 			maincall "$@"
 
 			elif [[ "$listONmeIS" =~ PHP ]] ;
@@ -143,7 +145,7 @@ copyToPath(){
 			sudo chown www-data:www-data "$path_to_update/$toC0pyIS" ;
 			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
 			maincall "$@"
 
 			elif [[ "$listONmeIS" =~ Perl ]] ;
@@ -153,7 +155,7 @@ copyToPath(){
 			sudo chown www-data:www-data "$path_to_update/$toC0pyIS" ;
 			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
 			maincall "$@"
 
 			elif [[ "$listONmeIS" =~ Bourne-Again ]] ;
@@ -164,7 +166,7 @@ copyToPath(){
 			sudo chmod 4755 "$path_to_update/$toC0pyIS" ;
 			sudo chmod u+s "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
 			maincall "$@"
 
 			elif [[ "$listONmeIS" =~ Python ]] ;
@@ -174,7 +176,7 @@ copyToPath(){
 			sudo chown root:root "$path_to_update/$toC0pyIS" ;
 			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
 			maincall "$@"
 
 			elif [[ "$fF1l3suffix" = conf ]] ;
@@ -184,7 +186,7 @@ copyToPath(){
 			sudo chown root:root "$path_to_update/$toC0pyIS" ;
 			sudo chmod 0644 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "updated: $(date | awk '{print $4}')\n" ;
+			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified
 			maincall "$@"
 		else
 			echo -e "\nYour scripts should have a SheBang entry on the first line. \n#!/usr/bin/env perl OR #!/bin/bash OR #!/usr/bin/env python OR <php OR <PHP \n On Windows additionally a file suffix correspondent to the SheBang. \n" ;
@@ -201,7 +203,7 @@ cont1NU3(){
 	then
 		ps aux | grep -v grep | grep "$ch3kingSnx" | awk '{print $2}' | xargs sudo kill -15 ;
 	else
-		echo -e "\nnothing checked"
+		echo -e "\n ... aborted"
 fi
 }
 
@@ -258,7 +260,7 @@ ch3kingSnx='' ;
 
 			elif [[ "$fF1l3suffix" = conf ]] ;
 		then
-			ch3kingSnx="less"
+			ch3kingSnx="nano"
 			echo "$listONme" | xargs $ch3kingSnx ;
 			exitc0de=$(echo $?) ;
 	else
@@ -297,7 +299,7 @@ fi
 
 exxiterr(){
 	# User Host Control
-	echo -e "sCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: in $userHome ::" >> "/home/$SUDO_USER/.wH0rUNSon" ;
+	echo -e "sCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: changed: $(cat $tmpfolder/modified)" >> "/home/$SUDO_USER/.wH0rUNSon" ;
 	# User Host Control END
 	echo "good by $SUDO_USER."
 	exit 0 ;
