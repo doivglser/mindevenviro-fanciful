@@ -38,9 +38,11 @@ beep(){
 	do
 		if [[ "$seconds" != "0" ]] ;
 	then
+		echo -e "\n."
+		figlet "$seconds" ;
 		((seconds--)) ;
 		sleep 1 ;
-		figlet $seconds
+		clear ;
 	else
 		beep ;
 fi
