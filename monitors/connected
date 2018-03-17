@@ -1,6 +1,6 @@
 #!/bin/bash
 # mindevenviro connected
-# lists outgoing TCP and UDP
+# lists outgoing TCP and UDP and update to stdout by hitting enter
 
 		if [[ "$EUID" =~ 1[0-9][0-9][0-9] ]] ;
 	then

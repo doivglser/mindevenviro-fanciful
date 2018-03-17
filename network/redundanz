@@ -50,20 +50,24 @@ exitH4ndl3r(){
 		rm -f $tmpfolder/root_mail_status &&
 		exit 0 ;
 		
-		elif [[ $REPLY =~ n|N|\  ]] ;
+		elif [[ $REPLY =~ n|N ]] ;
 	then
+		return ;
+	else
 		return ;
 fi
 }
 
 mmonitor(){
+		while trap 'exitH4ndl3r' SIGINT ;
+	do
 		if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
 	then
 		start_up ;
 		sleep 1;
-		trap 'exitH4ndl3r' SIGINT ;
 		watch -n3 "$FILE2" ;
 fi
+done
 }
 
 # ASK

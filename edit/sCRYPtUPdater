@@ -299,7 +299,7 @@ fi
 
 exxiterr(){
 	# User Host Control
-	echo -e "sCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: changed: $(cat $tmpfolder/modified)" >> "/home/$SUDO_USER/.wH0rUNSon" ;
+	echo -e "sCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: changed:\n $(cat $tmpfolder/modified)" >> "/home/$SUDO_USER/.wH0rUNSon" ;
 	# User Host Control END
 	echo "good by $SUDO_USER."
 	exit 0 ;
