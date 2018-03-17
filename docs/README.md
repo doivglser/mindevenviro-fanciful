@@ -289,9 +289,9 @@
   
 * shi3lD (shell script)
 
-  USAGE: "sudo shi3lD"
+  USAGE: "sudo shi3lD" OR pull down "shi3lD" from VTWM "Menu".
   
-  If "sudo redundanz -m" is running, then shi3lD will puff your MAC-Address, so you become a new IP.
+  shi3lD will puff your MAC-Address, so you become a new IP.
   
   Refresh in the wicd GUI and connect.
   
