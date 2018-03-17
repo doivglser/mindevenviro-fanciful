@@ -30,7 +30,6 @@ file01g="serv-if-up"
 # loadav
 #
 ###
-echo " -" ;
 echo "$loadav" ;
 echo " -" ;
 
@@ -139,8 +138,5 @@ usersPID7=$(ps aux | grep "$prgtotestg" | grep -v grep | awk '{print $1}' | wc -
 echo "$usersPID7 PID from $file01g by: "$users7"" ;
 
 ps aux | grep "$prgtotestg" | grep -v nano | grep -v geany | grep -v grep | tail -n1 ;
-
-echo " -" ;
-
 fi
 fi

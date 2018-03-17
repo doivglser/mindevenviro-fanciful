@@ -62,7 +62,7 @@ mmonitor(){
 		start_up ;
 		sleep 1;
 		trap 'exitH4ndl3r' SIGINT ;
-		watch -n3 -t --color "$FILE2" ;
+		watch -n3 "$FILE2" ;
 fi
 }
 

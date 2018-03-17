@@ -90,6 +90,8 @@ Color
 NoTitle {
   "oclock"
   "xload"
+  "xterm"
+  "terminator"
 }
 
 #
@@ -121,11 +123,12 @@ Button3 = : iconmgr : f.warp
 Button1 = : virtual | desktop : f.movescreen
 
 "F12" =	: window	: f.circleup
+"F1" = : root : f.quit
 
 Cursors {
 	Frame	"top_left_arrow"
 	Title	"top_left_arrow"
-	Icon	"top_left_arrow"
+	Icon	"hand2"
 	IconMgr	"top_left_arrow"
 	Move	"fleur"
 	Resize	"fleur"
