@@ -5,7 +5,7 @@
 * All Apps open, second monitor extended at the right of desktop, with Reason 5 Demo on PlayOnLinux window.
 ![bild000](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_one.jpg)
 
-* shi3lD is running, second monitor extended at the right of desktop, with wicd and youtube.
+* shi3lD is running, second monitor extended at the right of desktop, with wicd, pidgin and youtube.
 ![bild011](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_two.jpg)
 
 * mindevenviro projects
@@ -47,9 +47,9 @@
 
 # TODO:
 
-* "Cont-Sec" Secure-Email-Solution
+* "![Cont-Sec](https://github.com/doivglser/mindevenviro/projects)" Secure-Email-Solution
 
-... After typing the message, "Cont-Sec" applies to md5 encryption for each letter and number corresponding to the "E-Mail-Code-Fragments" that matches the "picture-match-key" with your buddie. ![Cont-Sec](https://github.com/doivglser/mindevenviro/projects)
+... After typing the message, "Cont-Sec" applies to md5 encryption for each letter and number corresponding to the "E-Mail-Code-Fragments" that matches the "picture-match-key" with your buddies....
 
 	  $ escapedSpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<style"
 	  $ a=$(openssl passwd -1 "$escapedSpamCodeSegment")
@@ -59,16 +59,14 @@
 * mindevenviro
 
 	  	to implement "Cont-Sec" to mindevenviro
-	  	better entries for log ~/.wH0rUNSon
-		to implement "logger" and "pipestatus"
+	  	"mindevenviro.rules": "alert/drop rules"
+	  	better entries for log .wH0rUNSon
 	  	to write without exclude codes from shellcheck
 	  	portability to: Debian, Fedora, CentOS, and MacOS
 	  	to add a "Joomla CMS" to localhost
 	  	to search for the right MySQL syntax 
-	  	"mindevenviro.rules": "alert/drop rules"
 	  	"iptables psad fwsnort": tcp-wrapper
-	  	ncurses
-	  	GUI's	
+			to implement "logger" "pipestatus" "ncurses" "GUI's"
 
 * sCRYPtUPdater
 
@@ -106,11 +104,11 @@
 
 - While installing: 
 
-  	Choose a root and an user password, (write both on a paper)
-        Guided - use entire disk and set up envrypted LVM,
-        Separate /home, /var, and /tmp partitions,
-        Don't choose any desktop or servers, 
-        but standard system utilities.
+	  Choose a root and an user password, (write both on a paper)
+          Guided - use entire disk and set up envrypted LVM,
+          Separate /home, /var, and /tmp partitions,
+          Don't choose any desktop or servers, 
+          but standard system utilities.
   
 - Root access, to make an entry for $USER in the /etc/sudoers file
 - An Internet connection
@@ -309,13 +307,13 @@
 		
   Depends on: start_shield, stop_shield, nids-antivirus-up
  
-* log ~/.wH0rUNSon:
+* log ~/.wH0rUNSon on Terminator.
 
-	search: workflow, user/host control
-	mysql_cp_db: workflow, user/host control
-	sCRYPtUPdater: workflow, user/host control
-	redundanZ: startups, failures
-	shielD: macs
+	  search: workflow, user/host control
+	  mysql_cp_db: workflow, user/host control
+	  sCRYPtUPdater: workflow, user/host control
+	  redundanZ: startups, failures
+	  shielD: macs
 
 * set_mysql_passwd (shell script)
 
@@ -402,7 +400,7 @@
 
   README.html
 
-# Coming soon:
+# Coming soon: "Cont-Sec"
 
   An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, 
   C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
