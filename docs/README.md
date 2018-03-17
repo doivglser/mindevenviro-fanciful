@@ -66,7 +66,7 @@
 	  	to add a "Joomla CMS" to localhost
 	  	to search for the right MySQL syntax 
 	  	"iptables psad fwsnort": tcp-wrapper
-			to implement "logger" "pipestatus" "ncurses" "GUI's"
+			  to implement "logger" "pipestatus" "ncurses" "GUI's"
 
 * sCRYPtUPdater
 
@@ -104,7 +104,7 @@
 
 - While installing: 
 
-	  Choose a root and an user password, (write both on a paper)
+	      Choose a root and an user password, (write both on a paper)
           Guided - use entire disk and set up envrypted LVM,
           Separate /home, /var, and /tmp partitions,
           Don't choose any desktop or servers, 
@@ -289,11 +289,11 @@
   
 * shi3lD (shell script)
 
-  USAGE: "sudo shi3lD"
+  USAGE: "sudo shi3lD" OR pull down "shi3lD" from VTWM "Menu".
   
-  If "sudo redundanz -m" is running, then shi3lD will puff your MAC-Address, so you become a new IP.
+  shi3lD will puff your MAC-Address, so you become a new IP.
   
-  Try to connect to your Network, pull down: "network" from "Menu", refresh in the wicd GUI and connect.
+  Refresh in the wicd GUI and connect.
   
   Keep trying, until shi3lD says "WE HAVE shi3lD".
   
