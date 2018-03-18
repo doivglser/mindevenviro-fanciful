@@ -160,8 +160,8 @@
   
 "F12 on active window" * circles windows up
 
-"F12 on the desktop" * quit's VTWM (refers to logout)
-  
+"F1 on the desktop" * quit's VTWM (refers to logout)
+
 "grenn button left corner on title-bar" * iconize window
 
 "grenn button right corner on title-bar" * resize window
