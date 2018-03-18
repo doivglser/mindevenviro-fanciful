@@ -275,17 +275,17 @@ fi
 
 	echo -e "\n ... check for cgi-bin on drive" ;
 
-		if [[ ! "$(cat /etc/apache2/sites-available/000-default.conf | sed '/\/usr\/lib\/cgi-bin\/\>/p')" != '' ]] ;
+		if [[ "$(cat /etc/apache2/sites-available/000-default.conf | sed -n '/\/usr\/lib\/cgi-bin\/\>/p')" = '' ]] ;
 	then
-		mkdir -p /usr/lib/cgi-bin/ 2>/dev/null ;
-		echo -e "\n
-		ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\n
-		<Directory "/usr/lib/cgi-bin">\r
-		AllowOverride None\r
-		Options +ExecCGI +MultiViews +SymLinksIfOwnerMatch\r
-		Order allow,deny\r
-		Allow from all\r
-		</Directory>\n" >> /etc/apache2/sites-available/000-default.conf ;
+		mkdir -p /usr/lib/cgi-bin/ 2>/dev/null;
+echo -e "\n
+ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\n
+<Directory "/usr/lib/cgi-bin">\r
+AllowOverride None\r
+Options +ExecCGI +MultiViews +SymLinksIfOwnerMatch\r
+Order allow,deny\r
+Allow from all\r
+</Directory>\n">>/etc/apache2/sites-available/000-default.conf;
 	else
 		echo -e "\n ... cgi-bin dir exists" ;
 fi
