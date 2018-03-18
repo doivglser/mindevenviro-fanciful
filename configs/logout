@@ -1,14 +1,19 @@
 #!/bin/bash
-# mindevenviro
-# logout
+# mindevenviro logout
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+LANG="C" ;
 
-# set to primary monitor
-xrandr --output VGA-1 --off && xrandr --output eDP-1 --mode 1280x800 ;
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# temp folder END
 
-# stop network
-stop_shield --stop &
+interface="$(cat "$tmpfolder"/interface)" ;
 
-whoIfacesUP(){
 # which interface is trought the default route to the internet connected
 # works only if you have two interfaces, like: eno[0-9] | eth[0-9] | wi[a-z-0-9] | wl[a-z-0-9]
 
@@ -22,18 +27,29 @@ whoIfacesUP(){
 	else
 		whoUP="none" ;
 fi
-}
-		# revert vendors MAC
-		sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ;
 
-	# kill zombie wine processes
+# set to primary monitor
+xrandr --output VGA-1 --off && xrandr --output eDP-1 --mode 1280x800 ;
+
+# stop network
+stop_shield --stop &
+
+# revert vendors MAC
+sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ;
+
+# kill zombie wine processes
 	for killwines in $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep playonlinux | awk '{print $2}' | sort -r);
 do
 	echo $killwines | xargs kill -15 && wait ;
 done
 
+# kill nice
+killall -15 serv-if-up 2>/dev/null && wait ;
+sleep 1 ;
 killall -15 xterm && wait ;
 sleep 1 ;
 killall -15 terminator && wait ;
 sleep 1 ;
+rm -f $tmpfolder/*  ;
+exit 0 ;
 #

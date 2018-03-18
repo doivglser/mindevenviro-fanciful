@@ -40,19 +40,19 @@ fi
 }
 
 findIface(){
-
+		clear ;
 		echo -e "\n :: D A N G E R nO shi3lD ::" ;
 		echo -e " :: .changing macaddress. :: \n" ;
-		printf "WiFi or Ethernet? [W|E] " ; read -r REPLY ;
+		printf "[W]iFi | [E]thernet type in: " ; read -r REPLY ;
 
-		if [[ $REPLY = w ]] ;
+		if [[ $REPLY =~ w|W ]] ;
 	then
 		cat /root/.interfaces | head -n2 | tail -n1 > "$tmpfolder"/interface
 		interface="$(cat "$tmpfolder"/interface)" ;
 		echo -e " We run this Iface: $interface $(date | awk '{print $1,$3,$4}')\n" ;
 		whoIfacesUP ;
 
-		elif [[ $REPLY = e ]] ;
+		elif [[ $REPLY =~ e|E ]] ;
 	then
 		cat /root/.interfaces | head -n1 | tail -n1 > "$tmpfolder"/interface
 		interface="$(cat "$tmpfolder"/interface)" ;
@@ -63,7 +63,7 @@ findIface(){
 
 exitHandler(){
 
-		echo -e "-"
+		echo -e "-" ;
 		printf " quit? (y/n) " ; read -r
 
 		if [[ $REPLY =~ y|Y|j|J ]] ;
@@ -72,8 +72,7 @@ exitHandler(){
 		sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" && 
 		echo -e "\n You where surfing with this MAC: \n $(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n\n your network down." &&
 		killall -15 dhclient 2>/dev/null &&
-		killall -15 serv-if-up 2>/dev/null &&
-		rm -f $tmpfolder/root_mail_status &&
+
 		exit 0 ;
 
 		elif [[ $REPLY =~ n|N|\  ]] ;
@@ -105,6 +104,8 @@ fi
 		elif [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" != "2" ]] || [[ "$(ip link show "$interface" 2>/dev/null | grep ether | awk '{print $2}')" = "$(cat /root/.vendorsmac | head -n"${whoUP}" 2>/dev/null | tail -n1 2>/dev/null)" ]] ;
 	then
 		stop_shield --stop &
+		wait ;
+		sleep 3 ;
 		findIface ;
 	fi
 done
