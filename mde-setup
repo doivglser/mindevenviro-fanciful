@@ -7,7 +7,7 @@
 # HZ Peru
 #						Kamin, Suppe, Brot, Tabak, 3.5 CHF pro Tag Job
 #			Readings:
-#						LPI Linux certification in a nutshell 
+#						LPI Linux certification in a nutshell
 #						LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute
 #			Certs:
 #						LPIC-1 in Lima Peru ISIL Campus PearsonVUE (2016)
@@ -21,7 +21,6 @@
 #			They have Wifi, and now it is, "mind eve n viro"
 #
 ###		WARNING:	DON'T EDIT ANYTHING BELOW	###
-
 LANG="C" ;
 myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader mercurial libpurple-dev libpurple0 libjson-glib-dev pidgin xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl nmon fortunes figlet mc mutt eject nano pm-utils fancontrol thermald laptop-mode-tools cpufrequtils sysvinit-core " ;
 environinstall="monitors/logdiskussage monitors/connected network/server-monitor network/redundanz network/shi3lD network/init/start_shield network/init/stop_shield network/init/nids-antivirus-up network/init/serv-if-up edit/search edit/openpdf edit/sCRYPtUPdater vtwm/feh-bg vtwm/hi vtwm/hi_cheese vtwm/hi_brutalchess vtwm/hi_libreoffice vtwm/hi_geany vtwm/hi_gimp vtwm/hi_transmission-gtk vtwm/hi_firefox-esr vtwm/hi_playonlinux vtwm/hi_vlc vtwm/hi_wicd-client vtwm/hi_xcalc vtwm/hi_shi3lD vtwm/hi_pidgin vtwm/takeshot maintenance/mysql_cp_db maintenance/set_mysql_passwd mde-setup " ;
@@ -65,7 +64,7 @@ fi
 	then
 		nNuM1=$(echo "$environinstall" | wc -w) ;
 		spin2='-\|/' ;
-		
+
 		while [[ "$nNuM1" != "0" ]] ;
 	do
 		clear ;
@@ -81,18 +80,18 @@ fi
 done
 
 	echo -e "\r\n ... clearing files" ;
-		
+
 	# by an update clear from double entries in 000-default.conf
 	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
-	
+
 	# by an update clear from double entries in clamd.conf
 	sed -e '/ScanOnAccess /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;
-	
+
 	# by an update clear from double entries in clamd.conf
 	sed -e '/OnAccessMountPath /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
-	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;	
+	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;
 
 	echo -e "\n ... create /home/$SUDO_USER Directories" ;
 	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music} ;
@@ -108,13 +107,13 @@ done
 	apt-get update && apt-get -f -y -m --allow-change-held-packages upgrade ;
 
 	printf "your email-address on github.com: "; read eM4il
-	
+
 		if	[[ "$eM4il" != '' ]] ;
 	then
 		sudo -u $SUDO_USER ssh-keygen -t rsa -b 4096 -C "$eM4il"
 		eX1tC0de=$(echo $?) ;
 		wait ;
-		
+
 		if [[ "$eX1tC0de" != 0 ]] ;
 	then
 		echo -e "\n REMEMBER ssh-keygen -t rsa -b 4096 -C your-email@server.tld \nto add a github.com account" | tee -a /home/$SUDO_USER/.installed ;
@@ -178,21 +177,21 @@ done
 		if [[ "$(dpkg -l | grep systemd | awk '{print $2}')" =~ systemd:i386 ]] ;
 	then
 		arch="i386" ;
-		# remove odd characters 
+		# remove odd characters
 		apt-get -f -m -y remove --purge --auto-remove systemd:$arch ;
 		# update hwdb --usr
 		sudo systemd-hwdb --usr update
-		
+
 		elif [[ "$(dpkg -l | grep systemd | awk '{print $2}')" =~ systemd:amd64 ]] ;
 	then
 		arch="amd64" ;
-		# remove odd characters 
-		apt-get -f -m -y remove --purge --auto-remove systemd:$arch ;		
+		# remove odd characters
+		apt-get -f -m -y remove --purge --auto-remove systemd:$arch ;
 		# update hwdb --usr
-		sudo systemd-hwdb --usr update		
+		sudo systemd-hwdb --usr update
 	else
 		echo -e "\n ... systemd allready removed" ;
-fi
+	fi
 fi
 
 # install END
@@ -211,10 +210,10 @@ fi
 	unzip -o pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
-	echo -e "\n ... update pm-utils script to interact with laptop-mode-tools" ; 
+	echo -e "\n ... update pm-utils script to interact with laptop-mode-tools" ;
 	cp -f thirdparty/10-laptop-mode-tools /etc/pm/sleep.d/ ;
 	chmod a+x /etc/pm/sleep.d/10-laptop-mode-tools ;
-	
+
 	echo -e "\n ... copy VLC skin" ;
 	cp -f thirdparty/MyVLCtheme.vlt /usr/share/vlc/skins2/ ;
 	chmod 755 /usr/share/vlc/skins2/MyVLCtheme.vlt ;
@@ -244,7 +243,7 @@ fi
 
 	echo -e "\n ... copy the .xscreensaver file to /home/$SUDO_USER" ;
 	cp -f configs/debian/xscreensaver  /home/$SUDO_USER/.xscreensaver ;
-	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.xscreensaver ;	
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.xscreensaver ;
 
 	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
 	mkdir -p /home/$SUDO_USER/.config/mc 2>/dev/null ;
@@ -255,11 +254,12 @@ fi
 	mkdir -p /home/$SUDO_USER/.config/terminator 2>/dev/null ;
 	cp -f configs/config /home/$SUDO_USER/.config/terminator/config ;
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config ;
-	
+
 	echo -e "\n ... copy the .twmrc file to /home/$SUDO_USER" ;
 	cp -f configs/twmrc /home/$SUDO_USER/.twmrc ;
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.twmrc ;
-	
+
+	# Apache2 setup
 	echo -e "\n ... set the upload path for PHP scripts" ;
 	rm -f /var/www/html/index*
 	mkdir -p /var/www/html/testphp/ 2>/dev/null ;
@@ -268,41 +268,42 @@ fi
 	chown www-data:www-data /var/www/html/mindevenviro.png ;
 	cp -f docs/projects/README.html /var/www/html/ ;
 	chown www-data:www-data /var/www/html/README.html ;
-	
+
 	echo "Alias /testphp/ /var/www/html/testphp/" >> /etc/apache2/sites-available/000-default.conf ;
-	
+
 	echo -e "ScanOnAccess True\nOnAccessMountPath /home/$SUDO_USER/Downloads" >> /etc/clamav/clamd.conf ;
-	
+
 	echo -e "\n ... check for cgi-bin on drive" ;
-	
+
 		if [[ ! "$(cat /etc/apache2/sites-available/000-default.conf | sed '/\/usr\/lib\/cgi-bin\/\>/p')" != '' ]] ;
 	then
 		mkdir -p /usr/lib/cgi-bin/ 2>/dev/null ;
-echo -e "\n
-ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\n
-<Directory "/usr/lib/cgi-bin">\r
-AllowOverride None\r
-Options +ExecCGI +MultiViews +SymLinksIfOwnerMatch\r
-Order allow,deny\r
-Allow from all\r
-</Directory>\n" >> /etc/apache2/sites-available/000-default.conf ;
+		echo -e "\n
+		ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\n
+		<Directory "/usr/lib/cgi-bin">\r
+		AllowOverride None\r
+		Options +ExecCGI +MultiViews +SymLinksIfOwnerMatch\r
+		Order allow,deny\r
+		Allow from all\r
+		</Directory>\n" >> /etc/apache2/sites-available/000-default.conf ;
 	else
 		echo -e "\n ... cgi-bin dir exists" ;
 fi
 		echo -e "\n ... update apache2 configuration" ;
 		a2enmod cgid ;
-		
+
 		echo -e "\n ... restarting apache2 server" ;
 		/etc/init.d/apache2 restart ;
+		# Apache2 setup END
 
 		echo -e "\n ... set the rights for .wH0rUNSon " ;
-		
+
 		if [ -e /home/$SUDO_USER/.wH0rUNSon ] ;
 	then
 		echo " ... .wH0rUNSon allready installed" | tee -a "/home/$SUDO_USER/.installed" ;
 	else
 		touch "/home/$SUDO_USER/.wH0rUNSon" && chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.wH0rUNSon" && chmod 0660 "/home/$SUDO_USER/.wH0rUNSon"  | tee -a "/home/$SUDO_USER/.installed" ;
-	fi
+fi
 		echo -e "\n ... installing snort " ;
 		apt-get -f -m -y --allow-change-held-packages install snort ;
 		# reconfigure all
@@ -311,7 +312,7 @@ fi
 		# add i386 arch in 64bit system, to install wine32
 		echo -e "\n ... add i386 arch in 64bit system, to install wine32" ;
 		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 ;
-	
+
 		# cleaning the environment
 		apt-get clean &&
 		apt -f -y -m autoremove ;
@@ -352,8 +353,8 @@ fi
 		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
 		exit 0 ;
 else
-		echo -e "\n M1ND3V3NV1R0 allready installed!\n run this script from within the folder M1ND3V3NV1R0, after installation, system will restart." ;
-		echo -e "\n you should be in the M1ND3V3NV1R0 folder."
-		exit 0 ;
+	echo -e "\n M1ND3V3NV1R0 allready installed!\n run this script from within the folder M1ND3V3NV1R0, after installation, system will restart." ;
+	echo -e "\n you should be in the M1ND3V3NV1R0 folder."
+	exit 0 ;
 fi
 fi

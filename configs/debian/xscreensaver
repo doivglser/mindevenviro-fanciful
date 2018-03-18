@@ -2,10 +2,10 @@
 # Written by xscreensaver-demo 5.36 for ivo on Thu Jan 18 14:57:44 2018.
 # https://www.jwz.org/xscreensaver/
 
-timeout:	1:00:00
-cycle:		0:30:00
+timeout:	2:00:00
+cycle:		2:00:00
 lock:		True
-lockTimeout:	1:00:00
+lockTimeout:	0:02:00
 passwdTimeout:	0:00:10
 visualID:	default
 installColormap:    True
