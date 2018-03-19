@@ -1,0 +1,24 @@
+#!/bin/bash
+# mindevenviro codecounter
+# sets the actual lines, words and chars from all shell scripts in /usr/local/bin
+
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+ 
+LANG="C" ;
+
+	if [[ "$(ps aux | grep -v grep | grep -v geany | grep -v nano | grep sCRYPtUPdater | awk '{print $2}' | wc -l) " -ge "1" ]] && [[ $(cat /home/ivo/mindevenviro/.git/logs/refs/remotes/origin/master | grep push) != '' ]] ;
+then
+	# CodeCounter
+	lines=$(cat /usr/local/bin/* | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -l) ;
+	sed -i "s/\(\# Lines *= *\).*/\1$lines/" ~/mindevenviro/docs/README.md ;
+	words=$(cat /usr/local/bin/* | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -w) ;
+	sed -i "s/\(\# Words *= *\).*/\1$words/" ~/mindevenviro/docs/README.md ;
+	chars=$(cat /usr/local/bin/* | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -c) ;
+	sed -i "s/\(\# Chars *= *\).*/\1$chars/" ~/mindevenviro/docs/README.md ;
+	echo -e "codecounter $(date) :: as $USER :: in $(uname -n) :: changed: $lines Lines, $words Words, $chars Chars, in README.md" >> "/home/$SUDO_USER/.wH0rUNSon" ;
+sleep 1
+exit 0 ;
+else
+echo -e "\n ... you must contribute to mindevenviro\r" ;
+exit 0 ;
+fi

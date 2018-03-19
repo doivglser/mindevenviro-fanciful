@@ -302,6 +302,8 @@ exxiterr(){
 	echo -e "sCRYPtUPdater $(date) :: as ${SUDO_USER} :: in $(uname -n) :: changed:\n $(cat $tmpfolder/modified)" >> "/home/$SUDO_USER/.wH0rUNSon" ;
 	# User Host Control END
 	echo "good by $SUDO_USER."
+	# if contributor, update the README.md with code stats
+	codecounter &
 	exit 0 ;
 	}
 
