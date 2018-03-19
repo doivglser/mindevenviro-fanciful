@@ -20,6 +20,9 @@
 * A Picture, shuted with "take shot" from the "Menu", opened with "mc" in the "Terminator" window and, edited in few seconds with "ImageMagic", and put some things in minutes with "GIMP".
 ![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_four.jpg)
 
+* Testing TOR: It say's after install with mde-setup: "However, it does not appear to be Tor Browser...."
+![bild44](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_five.jpg)
+
 # M1ND3V3NV1R0 (testing)
 
 	Deployment Environment for Web Applications and 
