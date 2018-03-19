@@ -222,9 +222,9 @@ fi
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
 	echo -e "\n ... set prefs.js for firefox-esr" ;
-	cp -f mindevenviro/configs/prefs.js /home/$SUDO_USER/.mozilla/firefox/tv97u0cy.default/prefs.js ;
-	chmod 600 /home/$SUDO_USER/.mozilla/firefox/tv97u0cy.default/prefs.js ;
-	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.mozilla/firefox/tv97u0cy.default/prefs.js ;
+	cp -f configs/prefs.js /home/$SUDO_USER/.mozilla/firefox/*.default/prefs.js ;
+	chmod 600 /home/$SUDO_USER/.mozilla/firefox/*.default/prefs.js ;
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.mozilla/firefox/*.default/prefs.js ;
 
 	echo -e "\n ... update pm-utils script to interact with laptop-mode-tools" ;
 	cp -f thirdparty/10-laptop-mode-tools /etc/pm/sleep.d/ ;
