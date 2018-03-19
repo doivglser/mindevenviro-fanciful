@@ -28,7 +28,7 @@
 	Deployment Environment for Web Applications and 
 	System Administration, in a minimal Desktop with 
 	Antivirus, NIDS and a great Multimedia Experience, 
-	without systemd. ( for one $USER ) .
+	without systemd and with TOR. ( for one $USER ) .
 
 - VTWM minimal tweak, Xorg session with xdm.
 
@@ -51,6 +51,8 @@
 - Volatile $tmpfolder on /dev/shm 
 
 - ScanOnAccess from ClamAV to ~/Downloads
+
+- Transparently anonymizing traffic through TOR for a specific user with iptables.
 
 - For programmers and administrators.
 
