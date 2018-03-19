@@ -1,4 +1,5 @@
 #!/bin/bash
 # takes a shot
+LANG="C" ;
 sleep 0.5 && scrot -s ;
 exit 0 ;

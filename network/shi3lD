@@ -4,13 +4,11 @@
 # restart clamd and snort if failure, cuts the Ethernet Interface connection while starting up, (use wicd to reconnect)
 # ctrl+C cuts Ethernet Interface connection and revert to your vendors MAC-ADDRESS
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-
 LANG="C" ;
 		if [ ! $EUID = 0 ] && [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " = '' ]] ;
 	then
 		exit 0 ;
 else
-clear && echo -e "\n" ;
 nnumberr="0" ;
 FILE="serv-if-up" ;
 
@@ -106,7 +104,7 @@ fi
 		stop_shield --stop &
 		wait ;
 		sleep 1 ;
-		iptables-transp-prox &
+		iptablestranspprox &
 		sleep 1 ;
 		findIface ;
 	fi

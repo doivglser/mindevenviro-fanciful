@@ -41,7 +41,7 @@ fi
 sC4n(){
 # toDayChanged: do a list of changed files in userHome
 excludES=$(find /home/$SUDO_USER/Downloads/ -type f) ;
-toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '"$excludES"|iptables|master|HEAD|COMMIT_EDITMSG|untitled|twmrc|config|description|sample|index|exclude|refs' 2>/dev/null | grep -vE '[a-z0-9]{38}' 2>/dev/null | grep -vE '.[a-z0-9A-Z]>{3}' 2>/dev/null) ;
+toDayChanged=$(find "$userHome" -cmin -"$minut3S" \( ! -regex '.*/\..*' \) -type f | grep -vE '"$excludES"|master|HEAD|COMMIT_EDITMSG|untitled|twmrc|config|description|sample|index|exclude|refs' 2>/dev/null | grep -vE '[a-z0-9]{38}' 2>/dev/null | grep -vE '.[a-z0-9A-Z]>{3}' 2>/dev/null) ;
 
 			if [[ "$toDayChanged" != '' ]] ;
 	then
@@ -305,7 +305,6 @@ exxiterr(){
 	# if contributor, update the README.md with code stats
 	codecounter &
 	wait ;
-	sleep 1 ;
 	exit 0 ;
 	}
 
