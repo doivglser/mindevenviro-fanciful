@@ -2,6 +2,7 @@
 # mindevenviro search
 #TODO: 
 # problems with spaces IFS var
+# openpdf works better
 ###     WARNING:    DON'T EDIT ANYTHING BELOW	###
 
 				if [ "$EUID" != 0 ] ;
@@ -13,11 +14,13 @@ LANG="C" ;
 FILE="search" ;
 line='' ;
 #exithandler
-trap 'pgrep $FILE | awk "{print $1}" | xargs kill -9 && pgrep less | awk "{print $1}" | xargs kill -9;' SIGINT ;
+exitHandl3R(){
+	searchStat ;
+	pgrep $FILE | awk "{print $1}" | xargs kill -9 && pgrep less | awk "{print $1}" | xargs kill -9;
+}
 
 display(){
 # display
-echo -e "search $(date) :: as $SUDO_USER :: in $(uname -n) :: in $path ::" >>"/home/$SUDO_USER/.wH0rUNSon" ;
 		while read line ;
 	do
 		wait ;
@@ -58,9 +61,9 @@ fi
 
 help(){
 shift 0 ;
-echo "Usage: $0 [-s|--search] [PATH] [FILE-SUFFIX] [TOGREP] [TOEXCLUDE] || [-h|--help] " ;
-echo -e "\n sudo this script:\n
-SEARCH THE DRIVE\n
+echo -e "Usage: $0 [-s|--search] [PATH] [FILE-SUFFIX] [TOGREP] [TOEXCLUDE] || [-h|--help]\r
+sudo this script:\r
+SEARCH THE DRIVE\r
  This script searches your drive\r
  for everything in it, and displays\r
  only text in the less viewer.\r
@@ -69,7 +72,12 @@ SEARCH THE DRIVE\n
 exit 0 ;
 	}
 
+searchStat(){
+	echo -e "search $(date) :: as $SUDO_USER :: in $(uname -n) :: $path $suffixx $togrep $exclud3 ::" >>"/home/$SUDO_USER/.wH0rUNSon" && wait ;
+}
+
 eingabe(){
+trap 'exitHandl3R' SIGINT ;
 pause=0 ;
 for lines in $(find $path -regex '[a-zA-Z0-9\ \/\._].*' -type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g' | grep -E "$suffixx"$ 2>/dev/null) ;
 	do
@@ -79,7 +87,7 @@ for lines in $(find $path -regex '[a-zA-Z0-9\ \/\._].*' -type f 2>/dev/null | se
 	else
 		display && wait ;
 	fi ;
-done
+done && searchStat ;
 }
 
 # ASK
