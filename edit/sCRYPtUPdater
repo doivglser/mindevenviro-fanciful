@@ -304,6 +304,8 @@ exxiterr(){
 	echo "good by $SUDO_USER."
 	# if contributor, update the README.md with code stats
 	codecounter &
+	wait ;
+	sleep 1 ;
 	exit 0 ;
 	}
 

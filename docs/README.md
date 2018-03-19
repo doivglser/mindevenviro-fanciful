@@ -1,10 +1,10 @@
 # M1ND3V3NV1R0 (testing)
 
-# Lines =
+# Lines =1809
 
-# Words =
+# Words =9518
 
-# Chars = 
+# Chars = 60225
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
@@ -365,6 +365,13 @@
 
 # in /usr/local/bin
 
+ monitoring|statistic
+ 
+	- codecounter
+	- connected
+	- iptables
+	- logdiskussage
+
  network|startup
 
 	- shi3lD
@@ -377,21 +384,28 @@
 	- sCRYPtUPdater
 	- search
 	- mysql_cp_db
+	- openpdf
 	
  background|startup
 	
+	- dwecker
 	- feh-bg
-	- hi 
-	- hi_cheese
+	- hi
 	- hi_brutalchess
-	- hi_libreoffice
+	- hi_cheese
+	- hi_dwecker
+	- hi_firefox-esr
 	- hi_geany
 	- hi_gimp
-	- hi_transmission-gtk
-	- hi_firefox-esr
+	- hi_libreoffice
+	- hi_pidgin
 	- hi_playonlinux
+	- hi_shi3lD
+	- hi_transmission-gtk
 	- hi_vlc
 	- hi_wicd-client
+	- hi_xcalc
+	- takeshot
 
  monitoring|reliability
 
