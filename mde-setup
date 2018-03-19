@@ -67,6 +67,17 @@ fi
 	# by an update clear from double entries in 000-default.conf
 	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
+	sed '/ScriptAlias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
+	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
+	sed '/Directory /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
+	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;	
+	sed '/Allow/d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
+	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
+	sed '/Options /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
+	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;	
+	sed '/Order /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
+	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
+	rm -f /etc/apache2/sites-enabled/000-default.conf 2>/dev/null ;
 
 	# by an update clear from double entries in clamd.conf
 	sed -e '/ScanOnAccess /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
@@ -379,20 +390,25 @@ fi
 
 		echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
 
+		echo -e "\n successfully_installed $(date), by $USER" | tee -a /home/$SUDO_USER/.installed ;
+		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
 		echo -e "\n ... your System will be rebooted. do you want to proceed?" ;
-		read -r ;
-
+		read  -r ;
+		
+		if [[ $REPLY =~ y|Y|s|S|j|J ]] ;
+	then
 		until [[ $restarting = 0 ]] ;
 	do
 		((restarting--)) ;
 		printf "\r I will restart in $restarting seconds ..." ; sleep 1 ;
 done && init 6 ;
 
+	else
+		echo -e "\n ... OK!" ;
+fi
 		# start serv-if-up again.
 		redundanz --redundanz &
 		# good bye
-		echo -e "\n successfully_installed $(date), by $USER" >> /home/$SUDO_USER/.installed ;
-		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
 		exit 0 ;
 else
 	echo -e "\n M1ND3V3NV1R0 allready installed!\n run this script from within the folder M1ND3V3NV1R0, after installation, system will restart." ;
