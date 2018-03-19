@@ -1,10 +1,10 @@
 # M1ND3V3NV1R0 (testing)
 
-# Lines =1809
+# Lines =1804
 
-# Words =9518
+# Words =9447
 
-# Chars = 60225
+# Chars = 59991
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 

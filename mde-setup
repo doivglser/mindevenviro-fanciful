@@ -99,12 +99,18 @@ done
 
 	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
 	cp -f configs/etc/sources.list /etc/apt/sources.list ;
+	
+	# adding an entry to /etc/apt/sources.list.d/
 	wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add - ;
 	wget "http://deb.playonlinux.com/playonlinux_jessie.list" -O /etc/apt/sources.list.d/playonlinux.list ;
 
 	# update upgrade
 	echo -e "\n ... update upgrade clean and autoremove" ;
 	apt-get update && apt-get -f -y -m --allow-change-held-packages upgrade ;
+	
+	# adding tors gpg key
+	gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89
+	gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add -
 
 	printf "your email-address on github.com: "; read eM4il
 
@@ -206,6 +212,12 @@ fi
 		sleep 2 ;
 		echo -e "\n ... /etc/aliases updated, you are able to read root mails." ;
 fi
+
+	echo -e "\n ... " ;
+	sudo touch /etc/init.d/iptables ;
+	chmod a+x /etc/init.d/iptables ;
+	cp -f configs/iptables /etc/init.d/iptables ;
+
 	echo -e "\n ... set background Pictures" ;
 	unzip -o pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
@@ -346,6 +358,15 @@ fi
 	else
 		echo -e "\n Improved Nano Syntax Highlighting Files allready installed."
 fi
+		# installing tor
+		apt-get -f -y -m install tor deb.torproject.org-keyring && wait ;
+		sleep 1 ;
+
+		echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
+
+		echo -e "\n ... your System will be rebooted. do you want to proceed?" ;
+		read -r && sleep 6 && init 6 ;
+
 		# start serv-if-up again.
 		redundanz --redundanz &
 		# good bye
