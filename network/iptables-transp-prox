@@ -1,6 +1,12 @@
 #!/bin/bash
 # mindevenviro Transparently anonymizing traffic for a specific user with iptables
 
+		if [ ! $EUID = 0 ] && [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
+	then
+		echo -e " USAGE: sudo shi3lD \r depends on redundanz" ;
+		exit 0 ;
+else
+
 iptables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
 iptables -A OUTPUT -m state --state INVALID -j LOG --log-prefix "Transproxy state leak blocked: " --log-uid
 iptables -A OUTPUT -m state --state INVALID -j DROP
@@ -10,8 +16,10 @@ iptables -A OUTPUT ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-fla
 iptables -A OUTPUT ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,FIN ACK,FIN -j DROP
 iptables -A OUTPUT ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,RST ACK,RST -j DROP
 
-iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner ivo -m tcp -j REDIRECT --to-ports 9040
-iptables -t nat -A OUTPUT -p udp -m owner --uid-owner ivo -m udp --dport 53 -j REDIRECT --to-ports 53
-iptables -t filter -A OUTPUT -p tcp -m owner --uid-owner ivo -m tcp --dport 9040 -j ACCEPT
-iptables -t filter -A OUTPUT -p udp -m owner --uid-owner ivo -m udp --dport 53 -j ACCEPT
-iptables -t filter -A OUTPUT -m owner --uid-owner ivo -j DROP
+iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner $SUDO_USER -m tcp -j REDIRECT --to-ports 9040
+iptables -t nat -A OUTPUT -p udp -m owner --uid-owner $SUDO_USER -m udp --dport 53 -j REDIRECT --to-ports 53
+iptables -t filter -A OUTPUT -p tcp -m owner --uid-owner $SUDO_USER -m tcp --dport 9040 -j ACCEPT
+iptables -t filter -A OUTPUT -p udp -m owner --uid-owner $SUDO_USER -m udp --dport 53 -j ACCEPT
+iptables -t filter -A OUTPUT -m owner --uid-owner $SUDO_USER -j DROP
+
+fi

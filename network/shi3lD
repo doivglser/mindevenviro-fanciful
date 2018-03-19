@@ -105,7 +105,9 @@ fi
 	then
 		stop_shield --stop &
 		wait ;
-		sleep 3 ;
+		sleep 1 ;
+		iptables-transp-prox &
+		sleep 1 ;
 		findIface ;
 	fi
 done
