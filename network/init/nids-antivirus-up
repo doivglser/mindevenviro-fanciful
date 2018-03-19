@@ -27,6 +27,8 @@ snortUP(){
 		
 		if setsid "$nids" -i "$interface" -A None -D  -v -c /etc/snort/snort.conf 2>/dev/null 2>&1 < /dev/null &
 	then
+		# restarting TOR after new IP
+		/etc/init.d/tor restart && wait ;
 
 ps axu | grep -v grep | grep "$nids" > "$tmpfolder/root_mail_status" ;
 	
@@ -44,7 +46,6 @@ cat << EOM | sendmail root@localhost
 $(cat "$tmpfolder/root_mail_status")
 
 EOM
-
 
 fi
 	else

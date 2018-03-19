@@ -3,6 +3,7 @@
 # Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME
 # restart clamd and snort if failure, cuts the Ethernet Interface connection while starting up, (use wicd to reconnect)
 # ctrl+C cuts Ethernet Interface connection and revert to your vendors MAC-ADDRESS
+# restarts TOR service to surf anonymous
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 		if [ ! $EUID = 0 ] && [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " = '' ]] ;
@@ -27,11 +28,11 @@ whoIfacesUP(){
 
 		if [[ "$interface" =~ eno|eth ]] ;
 	then
-		whoUP="1" && start_shield ;
+		whoUP="1" && source start_shield ;
 
 		elif [[ "$interface" =~ wl|wi ]] ;
 	then
-		whoUP="2" && start_shield ;
+		whoUP="2" && source start_shield ;
 	else
 		whoUP="none" && findIface ;
 fi
