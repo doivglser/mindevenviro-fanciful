@@ -390,7 +390,7 @@ fi
 
 		echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
 
-		echo -e "\n successfully_installed $(date), by $USER" | tee -a /home/$SUDO_USER/.installed ;
+		echo -e "\n ... successfully_installed $(date), by $USER" | tee -a /home/$SUDO_USER/.installed ;
 		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
 		echo -e "\n ... your System will be rebooted. do you want to proceed?" ;
 		read  -r ;
@@ -409,6 +409,7 @@ fi
 		# start serv-if-up again.
 		redundanz --redundanz &
 		# good bye
+		echo "good bye $SUDO_USER" ;
 		exit 0 ;
 else
 	echo -e "\n M1ND3V3NV1R0 allready installed!\n run this script from within the folder M1ND3V3NV1R0, after installation, system will restart." ;
