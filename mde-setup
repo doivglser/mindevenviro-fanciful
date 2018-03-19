@@ -22,7 +22,7 @@
 #
 ###		WARNING:	DON'T EDIT ANYTHING BELOW	###
 LANG="C" ;
-myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader mercurial libpurple-dev libpurple0 libjson-glib-dev pidgin xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 git sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl nmon fortunes figlet mc mutt eject nano pm-utils fancontrol thermald laptop-mode-tools cpufrequtils sysvinit-core dirmngr" ;
+myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader mercurial libpurple-dev libpurple0 libjson-glib-dev pidgin xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission openvpn xscreensaver vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg zip rar openssl clamav-freshclam clamav-milter clamdscan clamav-daemon clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 sendmail python-gtk2-dbg shellcheck libcgi-pm-perl perl nmon fortunes figlet mc mutt eject nano pm-utils fancontrol thermald laptop-mode-tools cpufrequtils sysvinit-core " ;
 environinstall="monitors/codecounter monitors/logdiskussage monitors/connected network/server-monitor network/redundanz network/shi3lD network/init/start_shield network/init/stop_shield network/init/nids-antivirus-up network/init/serv-if-up edit/search edit/openpdf edit/sCRYPtUPdater vtwm/feh-bg vtwm/hi vtwm/hi_cheese vtwm/hi_brutalchess vtwm/hi_libreoffice vtwm/hi_geany vtwm/hi_gimp vtwm/hi_transmission-gtk vtwm/hi_firefox-esr vtwm/hi_playonlinux vtwm/hi_vlc vtwm/hi_wicd-client vtwm/hi_xcalc vtwm/hi_shi3lD vtwm/hi_pidgin vtwm/takeshot maintenance/mysql_cp_db maintenance/set_mysql_passwd mde-setup " ;
 apPRn='' ;
 restarting="6" ;
@@ -41,7 +41,7 @@ else
 		ip link show | grep ether | awk '{print $2}' | tee "/root/.vendorsmac" ;
 		chmod 0664 "/root/.vendorsmac" ;
 fi
-		echo -e "\n ... if you not have a WiFi device on your Board, then install one please !\n you must have only one WiFi Interface up,\n I dont have a solution at this moment" ;
+		echo -e "\n ... if you not have a WiFi device on your Board, then install one please !\n you must have only one WiFi Interface up OR one Wired.\n" ;
 
 		if [ -e /root/.interfaces ] ;
 	then
@@ -62,25 +62,6 @@ fi
 	then
 		killall -15 serv-if-up && wait ;
 fi
-		if [[ $PWD =~ 'mindevenviro' ]] ;
-	then
-		nNuM1=$(echo "$environinstall" | wc -w) ;
-		spin2='-\|/' ;
-
-		while [[ "$nNuM1" != "0" ]] ;
-	do
-		clear ;
-		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;
-		fFILE=$(basename $toCopyPath) ;
-		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$fFILE" ;
-		sudo chown root:root "/usr/local/bin/$fFILE" ;
-		sudo chmod 4755 "/usr/local/bin/$fFILE" ;
-		sudo chmod u+s "/usr/local/bin/$fFILE" &&
-		echo -e "\n ... copying files ::\n" ;
-		i=$(( (i+1) %4 )) ; printf "\r ... ${spin2:$i:1} $fFILE ." | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
-		((nNuM1--)) ;
-done
-
 	echo -e "\r\n ... clearing files" ;
 
 	# by an update clear from double entries in 000-default.conf
@@ -98,6 +79,8 @@ done
 	echo -e "\n ... create /home/$SUDO_USER Directories" ;
 	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music} ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER ;
+
+	apt-get -f -y -m install dirmngr git ;
 
 	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
 	cp -f configs/etc/sources.list /etc/apt/sources.list ;
@@ -133,6 +116,25 @@ gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add - ;
 	else
 		echo " no github.com email."
 fi
+		# install mindevenviro files to /usr/local/bin
+		if [[ $PWD =~ 'mindevenviro' ]] ;
+	then
+		nNuM1=$(echo "$environinstall" | wc -w) ;
+		spin2='-\|/' ;
+
+		while [[ "$nNuM1" != "0" ]] ;
+	do
+		clear ;
+		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;
+		fFILE=$(basename $toCopyPath) ;
+		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$fFILE" ;
+		sudo chown root:root "/usr/local/bin/$fFILE" ;
+		sudo chmod 4755 "/usr/local/bin/$fFILE" ;
+		sudo chmod u+s "/usr/local/bin/$fFILE" &&
+		echo -e "\n ... copying files ::\n" ;
+		i=$(( (i+1) %4 )) ; printf "\r ... ${spin2:$i:1} $fFILE ." | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
+		((nNuM1--)) ;
+done
 		# install debian apps
 		nNuM2=$(echo "$myPrograms" | wc -w) ;
 
