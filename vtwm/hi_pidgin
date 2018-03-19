@@ -4,6 +4,10 @@
 LANG="C" && hi ;
 IFS=$(echo -en "\b\n") ;
 
+		if [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] && [[ ! $(netstat -ar) =~ 'default' ]] ;
+	then
+		exit 0 ;
+else
 		if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_pidgin | grep pidgin) = '' ]] ;
 	then
 		pidgin 2>/dev/null &
@@ -12,4 +16,5 @@ IFS=$(echo -en "\b\n") ;
 		exit 0 ;
 	else
 		exit 0 ;
+fi
 fi
