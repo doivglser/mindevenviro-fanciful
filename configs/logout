@@ -28,21 +28,23 @@ interface="$(cat "$tmpfolder"/interface)" ;
 		whoUP="none" ;
 fi
 
+# primary monitor
+primM0n=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ connected\ ' | grep primary | awk '{print $1}') ;
+# primarys monitor Aufloesung
+aufloeprim=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ connected\ ' | sed -n 's/primary//p' | awk '{print $3}' | cut -f1 -d+) ; 
+# secondarys monitor
+sec0dM0n=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ connected\ ' | grep -v primary | awk '{print $1}') ;
 # set to primary monitor
-xrandr --output VGA-1 --off && xrandr --output eDP-1 --mode 1280x800 ;
-
+xrandr --output "$sec0dM0n" --off && xrandr --output "$primM0n" --mode "$aufloeprim" ;
 # stop network
 stop_shield --stop &
-
 # revert vendors MAC
 sudo ip link set dev "$interface" address "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ;
-
 # kill zombie wine processes
 	for killwines in $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep playonlinux | awk '{print $2}' | sort -r);
 do
 	echo $killwines | xargs kill -15 && wait ;
 done
-
 # kill nice
 killall -15 serv-if-up 2>/dev/null && wait ;
 sleep 1 ;

@@ -92,13 +92,20 @@ if ! shopt -oq posix; then
   fi
 fi
 set -o noclobber
+# primary monitor
+primM0n=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ connected\ ' | grep primary | awk '{print $1}') ;
+# primarys monitor Aufloesung
+aufloeprim=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ connected\ ' | sed -n 's/primary//p' | awk '{print $3}' | cut -f1 -d+) ; 
+# secondarys monitor
+sec0dM0n=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ connected\ ' | grep -v primary | awk '{print $1}') ;
+# aliass
 alias ls='ls --color=auto -sh'
 alias help='man'
-alias down='xrandr --output VGA-1 --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 0'
+alias down='xrandr --output "$sec0dM0n" --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 0'
 alias upgrade='sudo freshclam && sudo apt-get update && sudo apt-get upgrade && sudo apt-get clean && sudo apt autoremove'
 alias emptmail='truncate -s 0 /var/mail/ivo'
-alias reboot='xrandr --output VGA-1 --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 6'
-alias vga='xrandr --output VGA-1 --mode 1024x768 --scale 1x1 --output eDP-1 --mode 1280x800 --scale 1x1 --left-of VGA-1'
-alias vgaOFF='xrandr --output VGA-1 --off && xrandr --output eDP-1 --mode 1280x800'
+alias reboot='xrandr --output "$sec0dM0n" --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 6'
+alias secmon='xrandr --output "$sec0dM0n" --auto --scale 1x1 --output "$primM0n" --mode "$aufloeprim" --scale 1x1 --left-of "$sec0dM0n" && feh-bg;'
+alias secmonOFF='xrandr --output "$sec0dM0n" --off && xrandr --output "$primM0n" --mode "$aufloeprim"'
 alias | sed -n 's/alias //p ;' ;
 fortune && cd && pwd && date ;
