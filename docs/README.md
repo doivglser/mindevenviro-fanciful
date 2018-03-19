@@ -8,10 +8,10 @@
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
-* All Apps open, second monitor extended at the right of desktop, with Reason 5 Demo on PlayOnLinux window.
+* All Apps open, second monitor extended at the right of desktop, with Reason 5 Demo on PlayOnLinux window. Still running very well.
 ![bild000](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_one.jpg)
 
-* shi3lD is running, second monitor extended at the right of desktop, with wicd, pidgin and youtube.
+* shi3lD is running, pidgin(in facebook) second monitor extended at the right of desktop, with xcalc, wicd and youtube.
 ![bild011](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_two.jpg)
 
 * mindevenviro projects
