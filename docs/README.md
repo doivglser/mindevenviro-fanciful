@@ -1,9 +1,7 @@
-# M1ND3V3NV1R0 (testing)
+# M1ND3V3NV1R0 (testing TOR)
 
 # Lines =1886
-
 # Words =10078
-
 # Chars = 64039
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
@@ -23,7 +21,7 @@
 * Testing TOR: It say's after install with mde-setup: "However, it does not appear to be Tor Browser...."
 ![bild44](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_five.jpg)
 
-# M1ND3V3NV1R0 (testing)
+# M1ND3V3NV1R0 (testing TOR)
 
 	Deployment Environment for Web Applications and 
 	System Administration, in a minimal Desktop with 

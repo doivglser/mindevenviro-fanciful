@@ -1,5 +1,5 @@
 #!/bin/bash
-# takes a shot
+# takes a shot from desktop at whole OR from window, does with the mouse pointer
 LANG="C" ;
 sleep 0.5 && scrot -s ;
 exit 0 ;
