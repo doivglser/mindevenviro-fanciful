@@ -3,7 +3,7 @@
 LANG="C" && hi ;
 IFS=$(echo -en "\b\n") ;
 
-		if [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] && [[ ! $(netstat -ar) =~ 'default' ]] ;
+		if [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep firefox-esr | awk '{print $2}' | wc -l) " -ge "1" ]] && [[ ! $(netstat -ar) =~ 'default' ]] ;
 	then
 		exit 0 ;
 else

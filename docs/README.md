@@ -4,7 +4,7 @@
 
 # Words =9767
 
-# Chars = 61440
+# Chars = 61460
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
