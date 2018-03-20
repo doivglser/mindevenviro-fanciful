@@ -305,12 +305,10 @@ fi
 	# Apache2 setup
 	echo -e "\n ... set the upload path for PHP scripts" ;
 	rm -f /var/www/html/index*
-	mkdir -p /var/www/html/testphp/ 2>/dev/null ;
-	cp -f pictures/mindevenviro.png /var/www/html/ ;
-	cp -f pictures/bottom.png /var/www/html/ ;
-	chown www-data:www-data /var/www/html/mindevenviro.png ;
-	cp -f docs/projects/README.html /var/www/html/ ;
-	chown www-data:www-data /var/www/html/README.html ;
+	mkdir -p /var/www/html/{testphp,pics} ; 2>/dev/null ;
+	cp -f docs/pics/* /var/www/html/pics/ ;
+	cp -f docs/manual/* /var/www/html/testphp/ ;
+	chown -R www-data:www-data /var/www/html/ ;
 
 	echo "Alias /testphp/ /var/www/html/testphp/" >> /etc/apache2/sites-available/000-default.conf ;
 
