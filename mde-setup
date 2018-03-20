@@ -406,11 +406,11 @@ fi
 		echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
 
 		echo -e "\n ... successfully_installed $(date), by $USER" | tee -a /home/$SUDO_USER/.installed ;
-		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!\r"
+		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!" ;
 		echo -e "\n ... your System will be rebooted. do you want to proceed?" ;
-		read  -r ;
+		read -r restartORnot ;
 		
-		if [[ $REPLY =~ y|Y|s|S|j|J ]] ;
+		if [[ $restartORnot =~ y|Y|s|S|j|J ]] ;
 	then
 		until [[ $restarting = 0 ]] ;
 	do
