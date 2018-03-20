@@ -23,10 +23,10 @@
 
 # M1ND3V3NV1R0 (testing TOR)
 
-	Deployment Environment for Web Applications and 
-	System Administration, in a minimal Desktop with 
-	Antivirus, NIDS and a great Multimedia Experience, 
-	without systemd and with TOR. ( for one $USER ) .
+	 Deployment environment for web applications and 
+	 system administration, in a minimal desktop with 
+	 antivirus, NIDS and a great multimedia experience, 
+	 without systemd and with TOR. (for one "$USER").
 
 - VTWM minimal tweak, Xorg session with xdm.
 
