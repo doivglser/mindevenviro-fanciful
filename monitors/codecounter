@@ -15,12 +15,6 @@ then
 	sed -i "s/\(\# Words *= *\).*/\1$words/" /home/$SUDO_USER/mindevenviro/docs/README.md ;
 	chars=$(cat /usr/local/bin/* | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -c) ;
 	sed -i "s/\(\# Chars *= *\).*/\1$chars/" /home/$SUDO_USER/mindevenviro/docs/README.md ;
-	lines=$(cat /usr/local/bin/* | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -l) ;
-	sed -i "s/\(\# Lines *= *\).*/\1$lines/" /home/$SUDO_USER/mindevenviro/docs/html/HELP.html ;
-	words=$(cat /usr/local/bin/* | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -w) ;
-	sed -i "s/\(\# Words *= *\).*/\1$words/" /home/$SUDO_USER/mindevenviro/docs/html/HELP.html ;
-	chars=$(cat /usr/local/bin/* | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -c) ;
-	sed -i "s/\(\# Chars *= *\).*/\1$chars/" /home/$SUDO_USER/mindevenviro/docs/html/HELP.html ;	
 	echo -e "codecounter $(date) :: as $SUDO_USER :: in $(uname -n) :: changed: $lines Lines, $words Words, $chars Chars, in README.md" >> "/home/$SUDO_USER/.wH0rUNSon" ;
 sleep 1
 exit 0 ;
