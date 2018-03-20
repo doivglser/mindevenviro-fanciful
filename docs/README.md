@@ -372,7 +372,6 @@
  
 	- codecounter
 	- connected
-	- iptables
 	- logdiskussage
 
  network|startup
@@ -381,6 +380,7 @@
 	- start_shield
 	- stop_shield
 	- nids-antivirus-up
+	- iptablestranspprox
 	
  syntax|search|dump|restore|rename
 
