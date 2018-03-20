@@ -1,9 +1,9 @@
 #!/bin/bash
-# mindevenviro connected
+# mindevenviro connected 
 # lists outgoing TCP and UDP and update to stdout by hitting enter
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
-		if [[ "$EUID" = 0 ]] ;
+		if [[ "$EUID" != 0 ]] ;
 	then
 		sudo "$0" ;
 	else
