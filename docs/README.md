@@ -7,19 +7,19 @@
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
 * All Apps open, second monitor extended at the right of desktop, with Reason 5 Demo on PlayOnLinux window. Still running very well.
-![bild000](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_one.jpg)
+![bild000](https://raw.githubusercontent.com/doivglser/mindevenviro/master/pics/addjus_one.jpg)
 
 * shi3lD is running, pidgin(in facebook) second monitor extended at the right of desktop, with xcalc, wicd and youtube.
-![bild011](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_two.jpg)
+![bild011](https://raw.githubusercontent.com/doivglser/mindevenviro/master/pics/addjus_two.jpg)
 
 * mindevenviro projects
-![bild022](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_three.jpg)
+![bild022](https://raw.githubusercontent.com/doivglser/mindevenviro/master/pics/addjus_three.jpg)
 
 * A Picture, shuted with "take shot" from the "Menu", opened with "mc" in the "Terminator" window and, edited in few seconds with "ImageMagic", and put some things in minutes with "GIMP".
-![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_four.jpg)
+![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/pics/addjus_four.jpg)
 
 * Testing TOR: It say's after install with mde-setup: "However, it does not appear to be Tor Browser...."
-![bild44](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/addjus_five.jpg)
+![bild44](https://raw.githubusercontent.com/doivglser/mindevenviro/master/pics/addjus_five.jpg)
 
 # M1ND3V3NV1R0 (testing TOR)
 
