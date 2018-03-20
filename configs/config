@@ -53,14 +53,8 @@
       profile = default
       type = Terminal
     [[[terminal5]]]
-      command = connected ;
+      command = 
       order = 5
-      parent = child1
-      profile = default
-      type = Terminal
-    [[[terminal6]]]
-      command = ""
-      order = 6
       parent = child1
       profile = default
       type = Terminal
