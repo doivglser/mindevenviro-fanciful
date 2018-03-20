@@ -5,6 +5,8 @@
 
 		if [[ "$EUID" = 0 ]] ;
 	then
+		sudo "$0" ;
+	else
 		while true
 	do
 		clear ;
@@ -13,7 +15,4 @@
 		netstat -ap4ne | grep -v LISTENING | grep -E "LISTEN|ESTABLISHED" | uniq -cui ;
 		read -r ;
 done
-else
-	echo -e "USAGE: sudo connected" ;
-	exit 0 ;
 fi
