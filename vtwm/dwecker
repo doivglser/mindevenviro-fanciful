@@ -1,10 +1,8 @@
 #!/bin/bash
 # mindevenviro wecker
 # does beep if you should get up
-
 LANG="C" ;
 readonly empty='' ;
-
 		if [[ ! $EUID =~ 1[0-9][0-9][0-9] ]] ;
 	then
 		echo "USAGE: dwecker" ;
@@ -28,8 +26,6 @@ beep(){
 		exit 0 ;
 	else
 		let seconds="$result"*60
-		exitcode=$?;
-		exec 3>&-;
 		clear ;
 		
 		while true
