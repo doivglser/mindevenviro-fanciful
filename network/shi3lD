@@ -28,11 +28,11 @@ whoIfacesUP(){
 
 		if [[ "$interface" =~ eno|eth ]] ;
 	then
-		whoUP="1" && source start_shield ;
+		whoUP="1" && start_shield ;
 
 		elif [[ "$interface" =~ wl|wi ]] ;
 	then
-		whoUP="2" && source start_shield ;
+		whoUP="2" && start_shield ;
 	else
 		whoUP="none" && findIface ;
 fi
