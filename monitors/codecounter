@@ -1,9 +1,7 @@
 #!/bin/bash
 # mindevenviro codecounter
 # sets the actual lines, words and chars from all shell scripts in /usr/local/bin
-
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
- 
 LANG="C" ;
 
 	if [ $EUID = 0 ] && [[ "$(ps aux | grep -v grep | grep -v geany | grep -v nano | grep sCRYPtUPdater | awk '{print $2}' | wc -l) " -ge "1" ]] && [[ $(cat /home/ivo/mindevenviro/.git/logs/refs/remotes/origin/master | grep push) != '' ]] ;

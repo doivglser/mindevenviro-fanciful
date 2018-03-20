@@ -1,17 +1,19 @@
 #!/bin/bash
 # mindevenviro connected
 # lists outgoing TCP and UDP and update to stdout by hitting enter
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
-		if [[ "$EUID" =~ 1[0-9][0-9][0-9] ]] ;
+		if [[ "$EUID" = 0 ]] ;
 	then
 		while true
 	do
 		clear ;
 		echo -e "\nupdating ..." ;
 		sleep 1;
-		netstat -an | grep -v LISTENING | grep -E "LISTEN|ESTABLISHED" ;
+		netstat -ap4ne | grep -v LISTENING | grep -E "LISTEN|ESTABLISHED" | uniq -cui ;
 		read -r ;
 done
 else
+	echo -e "USAGE: sudo connected" ;
 	exit 0 ;
 fi

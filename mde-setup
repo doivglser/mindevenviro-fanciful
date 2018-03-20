@@ -73,13 +73,20 @@ fi
 	sed '/ScriptAlias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
 	sed '/Directory /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
-	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;	
+	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
+	sed '/\/Directory /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
+	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
 	sed '/Allow/d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
 	sed '/Options /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;	
 	sed '/Order /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
+	sed '/ServerName /d' /etc/apache2/apache2.conf > $tmpfolder/apache2.conf 2>/dev/null ;
+	cp -f $tmpfolder/apache2.conf /etc/apache2/apache2.conf 2>/dev/null ;
+	sed '/127\.0\.1\.1 /d' /etc/hosts > $tmpfolder/hosts 2>/dev/null ;
+	cp -f $tmpfolder/hosts /etc/hosts 2>/dev/null ;
+	
 	rm -f /etc/apache2/sites-enabled/000-default.conf 2>/dev/null ;
 
 	# by an update clear from double entries in clamd.conf
@@ -230,6 +237,8 @@ fi
 		sleep 2 ;
 		echo -e "\n ... /etc/aliases updated, you are able to read root mails." ;
 fi
+	# set the address for apache2 http server
+	echo "127.0.1.1	$(hostname)" >> /etc/hosts ;
 
 	echo -e "\n ... set background Pictures" ;
 	unzip -o pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
@@ -312,6 +321,7 @@ fi
 		if [[ "$(cat /etc/apache2/sites-available/000-default.conf | sed -n '/\/usr\/lib\/cgi-bin\/\>/p')" = '' ]] ;
 	then
 		mkdir -p /usr/lib/cgi-bin/ 2>/dev/null;
+		sed -i "s/VirtualHost \*:80/VirtualHost 127.0.1.1:80/" /etc/apache2/sites-available/000-default.conf ;
 echo -e "\n
 ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\n
 <Directory "/usr/lib/cgi-bin">\r
