@@ -12,13 +12,13 @@ then
 do 
 	foreach=$(cat "$i" | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -l) &&
 	let lines="$lines"+"$foreach" &&
-	sed -i "s/\(\Lines=*\).*/\1$lines/" /home/$SUDO_USER/mindevenviro/docs/README.md && wait ;
+	sed -i "s/\(\Lines = *\).*/\1$lines/" /home/$SUDO_USER/mindevenviro/docs/README.md && wait ;
 	foreach1=$(cat "$i" | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -w) &&
 	let words="$words"+"$foreach1" &&
-	sed -i "s/\(\Words=*\).*/\1$words/" /home/$SUDO_USER/mindevenviro/docs/README.md && wait ;
+	sed -i "s/\(\Words = *\).*/\1$lines/" /home/$SUDO_USER/mindevenviro/docs/README.md && wait ;
 	foreach2=$(cat "$i" | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -c) &&
 	let chars="$chars"+"$foreach2" &&
-	sed -i "s/\(\Chars=*\).*/\1$chars/" /home/$SUDO_USER/mindevenviro/docs/README.md && wait ;
+	sed -i "s/\(\Chars = *\).*/\1$chars/" /home/$SUDO_USER/mindevenviro/docs/README.md && wait ;
 done
 echo -e "codecounter $(date) :: as $SUDO_USER :: in $(uname -n) :: changed: $lines Lines, $words Words, $chars Chars, in README.md" >> "/home/$SUDO_USER/.wH0rUNSon" ;
 sleep 1
