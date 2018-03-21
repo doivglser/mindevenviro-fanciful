@@ -1,14 +1,12 @@
-# M1ND3V3NV1R0
+# M1ND3V3NV1R0 (testing)
 
 		codecounter: code without blank lines and without comments
 
-Lines = 4139
+- Lines =4138
 
-Words = 
+- Words =9513
 
-Chars = 238449
-
-		codecounter END
+- Chars =238435
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
