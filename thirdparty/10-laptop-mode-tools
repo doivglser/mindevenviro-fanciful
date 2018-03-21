@@ -1,3 +1,6 @@
+#!/bin/bash
+# mindevenviro a script for pm-utils to interact with laptop-mode-tools
+
 case $1 in
     hibernate)
         /etc/init.d/laptop-mode stop
