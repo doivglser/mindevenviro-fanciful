@@ -1,6 +1,7 @@
 #!/bin/bash
 # mindevenviro codecounter
 # sets the actual lines, words and chars from all shell scripts in /home/$SUDO_USER/mindevenviro
+# without blank lines and without comments
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
 
