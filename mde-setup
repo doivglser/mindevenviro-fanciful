@@ -237,9 +237,6 @@ fi
 		sleep 2 ;
 		echo -e "\n ... /etc/aliases updated, you are able to read root mails." ;
 fi
-	# set the address for apache2 http server
-	echo "127.0.1.1	$(hostname)" >> /etc/hosts ;
-
 	echo -e "\n ... set background Pictures" ;
 	unzip -o pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
@@ -310,16 +307,23 @@ fi
 	cp -f docs/manual/* /var/www/html/testphp/ ;
 	chown -R www-data:www-data /var/www/html/ ;
 
-	echo "Alias /testphp/ /var/www/html/testphp/" >> /etc/apache2/sites-available/000-default.conf ;
-
 	echo -e "ScanOnAccess True\nOnAccessMountPath /home/$SUDO_USER/Downloads" >> /etc/clamav/clamd.conf ;
 
 	echo -e "\n ... check for cgi-bin on drive" ;
 
-		if [[ "$(cat /etc/apache2/sites-available/000-default.conf | sed -n '/\/usr\/lib\/cgi-bin\/\>/p')" = '' ]] ;
+		if [[ "$(cat /etc/apache2/sites-available/000-default.conf | sed -n '/\/usr\/lib\/cgi-bin\/\>/p')" = '' ]] || [[ "$(cat /etc/apache2/apache2.conf | sed -n '/ServerName/p')" = '' ]] ;
 	then
-		mkdir -p /usr/lib/cgi-bin/ 2>/dev/null;
-		sed -i "s/VirtualHost \*:80/VirtualHost 127.0.1.1:80/" /etc/apache2/sites-available/000-default.conf ;
+# mkdir cgi-bin
+mkdir -p /usr/lib/cgi-bin/ 2>/dev/null;
+# add a ServerName to your conf
+echo "ServerName $(hostname)" >> /etc/apache2/apache2.conf ;
+# set the address for apache2 http server
+echo "127.0.1.1	$(hostname)" >> /etc/hosts ;
+# updates the address for localhost
+sed -i "s/VirtualHost \*:80/VirtualHost 127.0.1.1:80/" /etc/apache2/sites-available/000-default.conf ;
+# does an Alias for testphp
+echo "Alias /testphp/ /var/www/html/testphp/" >> /etc/apache2/sites-available/000-default.conf ;
+# does an Alias for cgi-bin
 echo -e "\n
 ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\n
 <Directory "/usr/lib/cgi-bin">\r
@@ -396,18 +400,17 @@ VirtualAddrNetworkIPv4 10.192.0.0/10\r
 AutomapHostsOnResolve 1\r
 TransPort 9040\r
 DNSPort 53\r">>/etc/tor/torrc;
+echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
 	else
 		echo -e "\n ... tor allready configured" ;
 fi
 		# installing tor
 		apt-get -f -y -m install tor deb.torproject.org-keyring && wait ;
 		sleep 1 ;
-
-		echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
-
+	
 		echo -e "\n ... successfully_installed $(date), by $USER" | tee -a /home/$SUDO_USER/.installed ;
 		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!" ;
-		echo -e "\n ... your System will be rebooted. do you want to proceed?" ;
+		echo -e "\n ... your System will be rebooted. do you want to proceed? [y/n]: " ;
 		read -r restartORnot ;
 		
 		if [[ $restartORnot =~ y|Y|s|S|j|J ]] ;
@@ -416,7 +419,7 @@ fi
 	do
 		((restarting--)) ;
 		printf "\r I will restart in $restarting seconds ..." ; sleep 1 ;
-done && init 6 ;
+done && stop_shield --stop && init 6 ;
 
 	else
 		echo -e "\n ... OK!" ;
