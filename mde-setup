@@ -44,12 +44,10 @@ fi
 		# shutting apps and servers down
 		if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep serv-if-up | awk '{print $2}' | wc -l) " -ge "1" ]] ;
 	then
-		echo -e "\n ... shutting apps and servers down" ;
 		killall -15 serv-if-up && wait ;
 		killall -15 firefox-esr && wait ;
 		killall -15 pidgin && wait ;
 		killall -15 vlc && wait ;
-		sleep 1 ;
 fi
 # stop END
 
