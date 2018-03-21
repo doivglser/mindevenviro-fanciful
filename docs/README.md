@@ -1,6 +1,10 @@
 # M1ND3V3NV1R0 (testing TOR)
 
-* Lines=4134
+		codecounter: code without blank lines and without comments
+
+Lines = 4137
+Words = 
+Chars = 238375
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
