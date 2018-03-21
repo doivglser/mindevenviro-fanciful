@@ -1,4 +1,4 @@
-# M1ND3V3NV1R0 (testing TOR)
+# M1ND3V3NV1R0
 
 		codecounter: code without blank lines and without comments
 
@@ -25,7 +25,7 @@
 * Testing TOR: It say's after install with mde-setup: "However, it does not appear to be Tor Browser...."
 ![bild44](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_five.jpg)
 
-# M1ND3V3NV1R0 (testing TOR)
+# M1ND3V3NV1R0
 
 	 Deployment environment for web applications and 
 	 system administration, in a minimal desktop with 
