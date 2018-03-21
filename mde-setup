@@ -109,7 +109,7 @@ fi
 	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
 	sed '/ServerName /d' /etc/apache2/apache2.conf > $tmpfolder/apache2.conf 2>/dev/null ;
 	cp -f $tmpfolder/apache2.conf /etc/apache2/apache2.conf 2>/dev/null ;
-	sed '/127\.0\.1\.1 /d' /etc/hosts > $tmpfolder/hosts 2>/dev/null ;
+	sed '/127.0.1.1/d' /etc/hosts > $tmpfolder/hosts 2>/dev/null ;
 	cp -f $tmpfolder/hosts /etc/hosts 2>/dev/null ;
 	
 	rm -f /etc/apache2/sites-enabled/000-default.conf 2>/dev/null ;
