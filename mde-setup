@@ -402,6 +402,8 @@ fi
 		if [[ "$(cat /etc/tor/torrc | sed -n '/DNSPort\ 53/p')" = '' ]] ;
 	then
 echo -e "\n
+HiddenServiceDir /var/www/html/\r
+HiddenServicePort 80 127.0.1.1:80\r
 VirtualAddrNetworkIPv4 10.192.0.0/10\r
 AutomapHostsOnResolve 1\r
 TransPort 9040\r
