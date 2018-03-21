@@ -1,4 +1,5 @@
 #!/bin/bash
+# mindevenviro mysql_cp_db
 # FUNCTION: SEARCH ::
 # to search tables related with short preffixes in a database. I write something to search in tables.
 
