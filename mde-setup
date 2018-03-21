@@ -143,7 +143,6 @@ fi
 
 		while [[ "$nNuM1" != "0" ]] ;
 	do
-		clear ;
 		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;
 		fFILE=$(basename $toCopyPath) ;
 		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$fFILE" ;
