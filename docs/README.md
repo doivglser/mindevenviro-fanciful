@@ -2,7 +2,7 @@
 
 # Lines =1907
 # Words =10212
-# Chars = 65139
+# Chars = 65138
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 

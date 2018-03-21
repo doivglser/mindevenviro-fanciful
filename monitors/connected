@@ -2,7 +2,6 @@
 # mindevenviro connected 
 # lists outgoing TCP and UDP and update to stdout by hitting enter
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-
 		if [[ "$EUID" != 0 ]] ;
 	then
 		sudo "$0" ;
@@ -12,7 +11,7 @@
 		clear ;
 		echo -e "\nupdating ..." ;
 		sleep 1;
-		netstat -ap4ne | grep -v LISTENING | grep -E "LISTEN|ESTABLISHED" | uniq -cui ;
+		netstat -ap4n | grep -v LISTENING | grep -E "LISTEN|ESTABLISHED" | uniq -cui ;
 		read -r ;
 done
 fi
