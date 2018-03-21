@@ -32,6 +32,48 @@ restarting="6" ;
 		echo "USAGE: sudo mde-setup"
 		exit 0 ;
 else
+		# tmp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# tmp folder END
+
+		# shutting apps and servers down
+		if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep serv-if-up | awk '{print $2}' | wc -l) " -ge "1" ]] ;
+	then
+		echo -e "\n ... shutting apps and servers down" ;
+		killall -15 serv-if-up && wait ;
+		killall -15 firefox-esr && wait ;
+		killall -15 pidgin && wait ;
+		killall -15 vlc && wait ;
+		sleep 1 ;
+fi
+# stop END
+
+		# environinstall
+		if [[ $PWD =~ 'mindevenviro' ]] ;
+	then
+		nNuM1=$(echo "$environinstall" | wc -w) ;
+		spin2='-\|/' ;
+
+		while [[ "$nNuM1" != "0" ]] ;
+	do
+		clear ;
+		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;
+		fFILE=$(basename $toCopyPath) ;
+		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$fFILE" ;
+		sudo chown root:root "/usr/local/bin/$fFILE" ;
+		sudo chmod 4755 "/usr/local/bin/$fFILE" ;
+		sudo chmod u+s "/usr/local/bin/$fFILE" &&
+		echo -e "\n ... copying files ::\n" ;
+		i=$(( (i+1) %4 )) ; printf "\r ... ${spin2:$i:1} $fFILE ." | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
+		((nNuM1--)) ;
+done
+# environinstall END
+
 		if [ -e /root/.vendorsmac ] ;
 	then
 		echo -e ".vendors macs allready saved" ;
@@ -51,19 +93,6 @@ fi
 		touch "/root/.interfaces" ;
 		ip link | cut -f2 -d: | grep -E '\ ' | tr -d '\ ' | grep -v lo | tee "/root/.interfaces" ;
 		chmod 0664 "/root/.interfaces" ;
-fi
-		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
-	then
-		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
-	else
-		tmpfolder="/tmp" ;
-fi
-		if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep serv-if-up | awk '{print $2}' | wc -l) " -ge "1" ]] ;
-	then
-		killall -15 serv-if-up && wait ;
-		killall -15 firefox-esr && wait ;
-		killall -15 pidgin && wait ;
-		killall -15 vlc && wait ;
 fi
 	echo -e "\r\n ... clearing files" ;
 
@@ -135,24 +164,6 @@ gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add - ;
 	else
 		echo " no github.com email."
 fi
-		# install mindevenviro files to /usr/local/bin
-		if [[ $PWD =~ 'mindevenviro' ]] ;
-	then
-		nNuM1=$(echo "$environinstall" | wc -w) ;
-		spin2='-\|/' ;
-
-		while [[ "$nNuM1" != "0" ]] ;
-	do
-		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;
-		fFILE=$(basename $toCopyPath) ;
-		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$fFILE" ;
-		sudo chown root:root "/usr/local/bin/$fFILE" ;
-		sudo chmod 4755 "/usr/local/bin/$fFILE" ;
-		sudo chmod u+s "/usr/local/bin/$fFILE" &&
-		echo -e "\n ... copying files ::\n" ;
-		i=$(( (i+1) %4 )) ; printf "\r ... ${spin2:$i:1} $fFILE ." | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
-		((nNuM1--)) ;
-done
 		# install debian apps
 		nNuM2=$(echo "$myPrograms" | wc -w) ;
 
