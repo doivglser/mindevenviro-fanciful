@@ -406,7 +406,6 @@ VirtualAddrNetworkIPv4 10.192.0.0/10\r
 AutomapHostsOnResolve 1\r
 TransPort 9040\r
 DNSPort 53\r">>/etc/tor/torrc;
-echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
 	else
 		echo -e "\n ... tor allready configured" ;
 fi
