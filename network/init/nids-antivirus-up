@@ -27,10 +27,6 @@ snortUP(){
 		
 		if setsid "$nids" -i "$interface" -A None -D  -v -c /etc/snort/snort.conf 2>/dev/null 2>&1 < /dev/null &
 	then
-		# setting the resolv.conf for TOR
-		echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
-		# restarting TOR after new IP
-		/etc/init.d/tor restart && wait ;
 
 ps axu | grep -v grep | grep "$nids" > "$tmpfolder/root_mail_status" ;
 	

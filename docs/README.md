@@ -1,8 +1,8 @@
 # M1ND3V3NV1R0 (testing TOR)
 
-# Lines =4132
-# Words =60201
-# Chars = 238105
+# Lines =4130
+# Words =60190
+# Chars = 237999
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
