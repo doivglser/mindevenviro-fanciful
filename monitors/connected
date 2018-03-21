@@ -1,17 +1,28 @@
 #!/bin/bash
-# mindevenviro connected 
-# lists outgoing TCP and UDP and update to stdout by hitting enter
+# mindevenviro codecounter
+# sets the actual lines, words and chars from all shell scripts in /usr/local/bin
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-		if [[ "$EUID" != 0 ]] ;
-	then
-		sudo "$0" ;
-	else
-		while true
-	do
-		clear ;
-		echo -e "\nupdating ..." ;
-		sleep 1;
-		netstat -ap4n | grep -v LISTENING | grep -E "LISTEN|ESTABLISHED" | uniq -cui ;
-		read -r ;
+LANG="C" ;
+
+	if [ $EUID = 0 ] && [[ "$(ps aux | grep -v grep | grep -v geany | grep -v nano | grep sCRYPtUPdater | awk '{print $2}' | wc -l) " -ge "1" ]] && [[ $(cat /home/ivo/mindevenviro/.git/logs/refs/remotes/origin/master | grep push) != '' ]] ;
+then
+	# CodeCounter
+	for i in $(find /home/$USER/mindevenviro -type f | grep -vE '.git' | grep -vE 'pics|thirdparty|.js|.sqlite'); 
+do 
+	foreach=$(cat "$i" | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -l); 
+	let lines="$lines"+"$foreach"; 
+	sed -i "s/\(\# Lines *= *\).*/\1$lines/" /home/$SUDO_USER/mindevenviro/docs/README.md ;
+	foreach1=$(cat "$i" | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -l); 
+	let words="$lines"+"$foreach";
+	sed -i "s/\(\# Words *= *\).*/\1$words/" /home/$SUDO_USER/mindevenviro/docs/README.md ;
+	foreach2=$(cat "$i" | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -l); 
+	let chars="$lines"+"$foreach";
+	sed -i "s/\(\# Chars *= *\).*/\1$chars/" /home/$SUDO_USER/mindevenviro/docs/README.md ;
 done
+echo -e "codecounter $(date) :: as $SUDO_USER :: in $(uname -n) :: changed: $lines Lines, $words Words, $chars Chars, in README.md" >> "/home/$SUDO_USER/.wH0rUNSon" ;
+sleep 1
+exit 0 ;
+else
+echo -e "\n ... you must contribute to mindevenviro\r" ;
+exit 0 ;
 fi
