@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4138
+- Lines =4143
 
-- Words =60244
+- Words =60255
 
-- Chars =238452
+- Chars =238510
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 
