@@ -4,9 +4,9 @@
 
 - Lines =4138
 
-- Words =9513
+- Words =60244
 
-- Chars =238435
+- Chars =238452
 
 * I RUN A TINY COMPUTER WITH 4GB AND A 4 CORE CPU.
 

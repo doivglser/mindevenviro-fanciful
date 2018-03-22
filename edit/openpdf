@@ -1,6 +1,6 @@
 #!/bin/bash
 # mindevenviro openpdf
-# opens PDFs
+# opens PDF files in folder or recursively all, or just one.
 ###     WARNING:    DON'T EDIT ANYTHING BELOW
 LANG="C" ;
 IFS=$(echo -en "\b\n") ;
