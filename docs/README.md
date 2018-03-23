@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4154
+- Lines =4155
 
-- Words =60382
+- Words =60383
 
-- Chars =239490
+- Chars =239497
 
 # .
 
@@ -29,7 +29,8 @@
 
 * Testing TOR: I'm not sure, but if trough duckduckgo search engine says: YouTube (owned by Google) does not let you watch videos anonymously. As such, watching YouTube videos here will be tracked by YouTube/Google. 
 
-				...then they are fair enought to warn you, bevor they use world wide benches of resources to track you.
+			... then they are fair enought to warn you, bevor they 
+				  use world wide benches of resources to track you.
 
 ![bild55](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_six.jpg)
 
