@@ -5,10 +5,12 @@
 # ctrl+C cuts Ethernet Interface connection and revert to your vendors MAC-ADDRESS
 # restarts TOR service to surf anonymous
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-LANG="C" ;
-		if [ ! $EUID = 0 ] && [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " = '' ]] ;
+LANG="C";
+readonly empty='';
+		if [[ "$EUID" != 0 ]] && [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep redundanz | cut -f2 -d\ ) " != "$empty" ]] ;
 	then
-		exit 0 ;
+		echo "USAGE: sudo shi3lD, interactively puff MACs and starting up to a new circuit" ;
+		exit 0;
 else
 nnumberr="0" ;
 FILE="serv-if-up" ;
@@ -81,6 +83,9 @@ fi
 }
 
 mess4ge(){
+	
+	sudo -u "$SUDO_USER" hi_firefox-esr 2>/dev/null &
+	
 		spin='.oOo' ; i=0 ;
 		spin2='-\|/' ;
 
@@ -98,7 +103,6 @@ done
 fi
 		if [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" = "2" ]] && [[ "$(ip link show "$interface" 2>/dev/null | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" 2>/dev/null | tail -n1 2>/dev/null )" ]] ;
 	then
-		sudo -u "$SUDO_USER" firefox-esr 2>/dev/null 2>&1 < /dev/null &
 		mess4ge ;
 
 		elif [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" != "2" ]] || [[ "$(ip link show "$interface" 2>/dev/null | grep ether | awk '{print $2}')" = "$(cat /root/.vendorsmac | head -n"${whoUP}" 2>/dev/null | tail -n1 2>/dev/null)" ]] ;

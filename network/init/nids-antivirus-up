@@ -1,8 +1,8 @@
 #!/bin/bash
 # mindevenviro nids-antivirus-up
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-LANG="C" ;
-IFS=$(echo -e "\n\b") ;
+LANG="C";
+IFS=$(echo -e "\n\b");
 antivirus="clamav-daemon" ;
 nids="snort" ;
 
@@ -84,7 +84,7 @@ $(cat "$tmpfolder/root_mail_status")
 
 EOM
 
-echo ":: you got email, $antivirus fails, cannot restart $(date | awk '{print $1,$3,$4}') ::" ;
+echo ":: you got email, $antivirus fails, cannot restart $(date | awk '{print $1,$3,$4}') ::";
 
 
 fi
@@ -92,8 +92,8 @@ fi
 # clamdUP END
 
 help(){
-	echo "USAGE: sudo nids-antivirus-up --anTiVirus | nids-antivirus-up --nIDs" ;
-	exit 0 ;
+	echo "USAGE: sudo nids-antivirus-up --anTiVirus | nids-antivirus-up --nIDs";
+	exit 0;
 	}
 
 # ASK
@@ -112,5 +112,5 @@ help(){
       ;;      
   esac
 	else
-		echo "USAGE: sudo $0 --help" ;
+		echo "USAGE: sudo $0 --help";
 fi
