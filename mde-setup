@@ -93,24 +93,6 @@ fi
 		chmod 0664 "/root/.interfaces" ;
 fi
 	echo -e "\r\n ... clearing files" ;
-
-	# by an update clear from double entries in 000-default.conf
-	sed '/Alias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
-	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
-	sed '/ScriptAlias /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
-	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
-	sed '/Directory/d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
-	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
-	sed '/Allow/d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
-	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
-	sed '/Options /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
-	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;	
-	sed '/Order /d' /etc/apache2/sites-available/000-default.conf > $tmpfolder/000-default.conf 2>/dev/null ;
-	cp -f $tmpfolder/000-default.conf /etc/apache2/sites-available/000-default.conf 2>/dev/null ;
-	sed '/ServerName /d' /etc/apache2/apache2.conf > $tmpfolder/apache2.conf 2>/dev/null ;
-	cp -f $tmpfolder/apache2.conf /etc/apache2/apache2.conf 2>/dev/null ;
-	sed '/127.0.1.1/d' /etc/hosts > $tmpfolder/hosts 2>/dev/null ;
-	cp -f $tmpfolder/hosts /etc/hosts 2>/dev/null ;
 	
 	rm -f /etc/apache2/sites-enabled/000-default.conf 2>/dev/null ;
 
@@ -243,6 +225,11 @@ fi
 		sleep 2 ;
 		echo -e "\n ... /etc/aliases updated, you are able to read root mails." ;
 fi
+
+	echo -e "\n ... copy default apache2 site available" ;
+	cp -f mindevenviro/configs/000-default.conf /etc/apache2/sites-available/000-default.conf ;
+	chown -R $SUDO_USER:$SUDO_USER /etc/apache2/sites-available/000-default.conf ;
+
 	echo -e "\n ... set background Pictures" ;
 	unzip -o pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
@@ -326,18 +313,6 @@ echo "ServerName $(hostname)" >> /etc/apache2/apache2.conf ;
 # set the address for apache2 http server
 echo "127.0.1.1	$(hostname)" >> /etc/hosts ;
 # updates the address for localhost
-sed -i "s/VirtualHost \*:80/VirtualHost 127.0.1.1:80/" /etc/apache2/sites-available/000-default.conf ;
-# does an Alias for testphp
-echo "Alias /testphp/ /var/www/html/testphp/" >> /etc/apache2/sites-available/000-default.conf ;
-# does an Alias for cgi-bin
-echo -e "\n
-ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/\n
-<Directory "/usr/lib/cgi-bin">\r
-AllowOverride None\r
-Options +ExecCGI +MultiViews +SymLinksIfOwnerMatch\r
-Order allow,deny\r
-Allow from all\r
-</Directory>\n">>/etc/apache2/sites-available/000-default.conf;
 	else
 		echo -e "\n ... cgi-bin dir exists" ;
 fi

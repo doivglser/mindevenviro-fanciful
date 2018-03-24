@@ -1,6 +1,6 @@
 #!/bin/bash
 # mindevenviro Transparently anonymizing traffic through TOR for a specific user with iptables
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ###   
 
 		if [ ! $EUID = 0 ] && [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
 	then
@@ -22,5 +22,7 @@ iptables -t nat -A OUTPUT -p udp -m owner --uid-owner $SUDO_USER -m udp --dport 
 iptables -t filter -A OUTPUT -p tcp -m owner --uid-owner $SUDO_USER -m tcp --dport 9040 -j ACCEPT
 iptables -t filter -A OUTPUT -p udp -m owner --uid-owner $SUDO_USER -m udp --dport 53 -j ACCEPT
 iptables -t filter -A OUTPUT -m owner --uid-owner $SUDO_USER -j DROP
+
+iptables -t nat -A OUTPUT -p tcp --dport 80 -m owner --uid-owner www-data -j DNAT --to-destination 127.0.1.1:80
 
 fi

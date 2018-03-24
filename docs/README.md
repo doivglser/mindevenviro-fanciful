@@ -1,12 +1,12 @@
-# M1ND3V3NV1R0 (testing)
+# M1ND3V3NV1R0 (testing)   
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4434
+- Lines =4440
 
-- Words =61026
+- Words =60978
 
-- Chars =271933
+- Chars =271020
 
 # . 
 
@@ -436,16 +436,17 @@
 
 # in /var/www/html/testphp/
 
+  HELP.htlm
   README.html
 
-# Coming soon: "Cont-Sec"
+# Coming soon: "Cont-Sec"  
 
   An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, 
   C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
 
-* https://github.com/doivglser/min-dev-enviro/projects
+* https://github.com/doivglser/min-dev-enviro/projects 
 
-# Thank's google
+# Thank's google 
 
 ![LPIC-1](https://www.theurbanpenguin.com/wp-content/uploads/2016/08/LPIC-1-Medium.png)
 ![Bash](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Gnu-bash-logo.svg/245px-Gnu-bash-logo.svg.png)
