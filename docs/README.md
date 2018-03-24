@@ -434,7 +434,7 @@
 	- mde-setup
 	- set_mysql_passwd
 
-# in /var/www/html/
+# in /var/www/html/testphp/
 
   README.html
 
