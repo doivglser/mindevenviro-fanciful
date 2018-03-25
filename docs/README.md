@@ -4,9 +4,9 @@
 
 - Lines =4490
 
-- Words =61025
+- Words =61035
 
-- Chars =271166
+- Chars =271191
 
 # . 
 
@@ -27,10 +27,10 @@
 * Testing TOR: It say's after install with mde-setup: "However, it does not appear to be Tor Browser...."
 ![bild44](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_five.jpg)
 
-* Testing TOR: I'm not sure, but if trought duckduckgo search engine says: YouTube (owned by Google) does not let you watch videos anonymously. As such, watching YouTube videos here will be tracked by YouTube/Google. 
+* Testing TOR: I'm not sure, but if you search a video with duckduckgo, says google: YouTube (owned by Google) does not let you watch videos anonymously. As such, watching YouTube videos here will be tracked by YouTube/Google.
 
-			... then they are fair enought to warn you, bevor they 
-				  use world wide benches of resources to track you.
+			... then the others are fair enought to warn you, bevor 
+			they use a world wide bench of resources, to track you.
 
 ![bild55](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_six.jpg)
 
