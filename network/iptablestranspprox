@@ -17,12 +17,6 @@ iptables -A OUTPUT ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-fla
 iptables -A OUTPUT ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,FIN ACK,FIN -j DROP
 iptables -A OUTPUT ! -o lo ! -d 127.0.0.1 ! -s 127.0.0.1 -p tcp -m tcp --tcp-flags ACK,RST ACK,RST -j DROP
 
-iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner root -m tcp -j REDIRECT --to-ports 9040
-iptables -t nat -A OUTPUT -p udp -m owner --uid-owner root -m udp --dport 53 -j REDIRECT --to-ports 53
-iptables -t filter -A OUTPUT -p tcp -m owner --uid-owner root -m tcp --dport 9040 -j ACCEPT
-iptables -t filter -A OUTPUT -p udp -m owner --uid-owner root -m udp --dport 53 -j ACCEPT
-iptables -t filter -A OUTPUT -m owner --uid-owner root -j DROP
-
 iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner $SUDO_USER -m tcp -j REDIRECT --to-ports 9040
 iptables -t nat -A OUTPUT -p udp -m owner --uid-owner $SUDO_USER -m udp --dport 53 -j REDIRECT --to-ports 53
 iptables -t filter -A OUTPUT -p tcp -m owner --uid-owner $SUDO_USER -m tcp --dport 9040 -j ACCEPT
