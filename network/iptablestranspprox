@@ -23,6 +23,12 @@ iptables -t filter -A OUTPUT -p tcp -m owner --uid-owner $SUDO_USER -m tcp --dpo
 iptables -t filter -A OUTPUT -p udp -m owner --uid-owner $SUDO_USER -m udp --dport 53 -j ACCEPT
 iptables -t filter -A OUTPUT -m owner --uid-owner $SUDO_USER -j DROP
 
+iptables -t nat -A OUTPUT -p tcp -m owner --uid-owner root -m tcp -j REDIRECT --to-ports 9040
+iptables -t nat -A OUTPUT -p udp -m owner --uid-owner root -m udp --dport 53 -j REDIRECT --to-ports 53
+iptables -t filter -A OUTPUT -p tcp -m owner --uid-owner root -m tcp --dport 9040 -j ACCEPT
+iptables -t filter -A OUTPUT -p udp -m owner --uid-owner root -m udp --dport 53 -j ACCEPT
+iptables -t filter -A OUTPUT -m owner --uid-owner root -j DROP
+
 iptables -t nat -A OUTPUT -p tcp --dport 80 -m owner --uid-owner www-data -j DNAT --to-destination 127.0.1.1:80
 
 fi
