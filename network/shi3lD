@@ -84,8 +84,6 @@ fi
 
 mess4ge(){
 	
-	sudo -u "$SUDO_USER" hi_firefox-esr 2>/dev/null &
-	
 		spin='.oOo' ; i=0 ;
 		spin2='-\|/' ;
 
