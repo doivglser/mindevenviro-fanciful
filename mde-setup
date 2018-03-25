@@ -367,15 +367,10 @@ fi
 		# installing tor
 		apt-get -f -y -m install tor deb.torproject.org-keyring && wait ;
 		sleep 1 ;
-
-		sudo -u "$SUDO_USER" mkdir -p /home/ivo/hidden_service/ ;
-
 		# configuring torrc
 		if [[ "$(cat /etc/tor/torrc | sed -n '/DNSPort\ 53/p')" = '' ]] ;
 	then
 echo -e "\n
-HiddenServiceDir /home/ivo/hidden_service/
-HiddenServicePort 80 127.0.1.1:80
 VirtualAddrNetworkIPv4 10.192.0.0/10\r
 AutomapHostsOnResolve 1\r
 TransPort 9040\r
