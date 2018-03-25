@@ -104,6 +104,10 @@ fi
 	sed -e '/ServerName /d' /etc/apache2/apache2.conf >| $tmpfolder/apache2.conf 2>/dev/null ;
 	cp -f $tmpfolder/apache2.conf /etc/apache2/apache2.conf 2>/dev/null ;
 
+	# by an update clear from double entries in apache2.conf
+	sed -e '/Listen /d' /etc/apache2/apache2.conf >| $tmpfolder/apache2.conf 2>/dev/null ;
+	cp -f $tmpfolder/apache2.conf /etc/apache2/apache2.conf 2>/dev/null ;
+
 	# by an update clear from double entries in clamd.conf
 	sed -e '/ScanOnAccess /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;
@@ -312,6 +316,7 @@ fi
 mkdir -p /usr/lib/cgi-bin/ 2>/dev/null;
 # add a ServerName to your conf
 echo "ServerName $(hostname)" >> /etc/apache2/apache2.conf ;
+echo "Listen 127.0.1.1:80" >> /etc/apache2/apache2.conf ;
 # updates the address for localhost
 
 		echo -e "\n ... update apache2 configuration" ;
@@ -367,6 +372,8 @@ fi
 		if [[ "$(cat /etc/tor/torrc | sed -n '/DNSPort\ 53/p')" = '' ]] ;
 	then
 echo -e "\n
+HiddenServiceDir /var/www/html/
+HiddenServicePort 80 127.0.1.1:80
 VirtualAddrNetworkIPv4 10.192.0.0/10\r
 AutomapHostsOnResolve 1\r
 TransPort 9040\r
