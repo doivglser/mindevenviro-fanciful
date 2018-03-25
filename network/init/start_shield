@@ -118,6 +118,8 @@ done &&
 	then
 		#update /etc/resolv.conf again
 		echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
+		#enable proxy
+		a2enmod proxy_http ;
 		#restarting TOR after new IP.
 		/etc/init.d/tor stop && wait ;
 		/etc/init.d/tor start && wait ;
