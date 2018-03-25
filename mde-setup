@@ -236,7 +236,7 @@ fi
 fi
 
 	echo -e "\n ... copy default apache2 site available" ;
-	cp mindevenviro/configs/000-default.conf /etc/apache2/sites-available/ ;
+	cp configs/000-default.conf /etc/apache2/sites-available/ ;
 	chown -R $SUDO_USER:$SUDO_USER /etc/apache2/sites-available/000-default.conf ;
 
 	echo -e "\n ... set prefs.js for firefox-esr" ;
