@@ -51,6 +51,12 @@ fi
 fi
 # stop END
 
+	# update hosts and set the address for apache2 http server
+	sed -e 's/x0x/$(hostname)/g' configs/hosts  >| $tmpfolder/hosts 2>/dev/null ;
+	cp -f $tmpfolder/hosts /etc/hosts 2>/dev/null ;
+	chown root:root /etc/hosts ;
+	chmod 644 /etc/hosts ;
+
 		# environinstall
 		if [[ $PWD =~ 'mindevenviro' ]] ;
 	then
@@ -99,10 +105,6 @@ fi
 	# by an update clear from double entries in apache2.conf
 	sed -e '/ServerName /d' /etc/apache2/apache2.conf >| $tmpfolder/apache2.conf 2>/dev/null ;
 	cp -f $tmpfolder/apache2.conf /etc/apache2/apache2.conf 2>/dev/null ;
-
-	# by an update clear from double entries in hosts
-	sed -e '/127.0.1.1	/d' /etc/hosts  >| $tmpfolder/hosts 2>/dev/null ;
-	cp -f $tmpfolder/hosts /etc/hosts 2>/dev/null ;
 
 	# by an update clear from double entries in clamd.conf
 	sed -e '/ScanOnAccess /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
@@ -312,8 +314,6 @@ fi
 mkdir -p /usr/lib/cgi-bin/ 2>/dev/null;
 # add a ServerName to your conf
 echo "ServerName $(hostname)" >> /etc/apache2/apache2.conf ;
-# set the address for apache2 http server
-echo "127.0.1.1	$(hostname)" >> /etc/hosts ;
 # updates the address for localhost
 
 		echo -e "\n ... update apache2 configuration" ;
