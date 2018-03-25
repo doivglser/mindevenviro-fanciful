@@ -359,7 +359,7 @@ fi
 		rm -dRf /usr/share/nano-syntax-highlighting ;
 		rm -f /usr/share/nano/install.sh ;
 	else
-		echo -e "\n ... Improved Nano Syntax Highlighting Files allready installed.\n the mantainer doesnt update the code anymore."
+		echo -e "\n ... Improved Nano Syntax Highlighting Files allready installed.\n the mantainer doesnt update the code anymore.\n"
 fi
 		# installing tor
 		apt-get -f -y -m install tor deb.torproject.org-keyring && wait ;
@@ -402,16 +402,17 @@ fi
 	do
 		((restarting--)) ;
 		printf "\r I will restart in $restarting seconds ..." ; sleep 1 ;
-done && stop_shield --stop && init 6 ;
+done && stop_shield --stop && init 6 
 
 	else
 		echo -e "\n ... OK!" ;
-fi
 		# start serv-if-up again.
 		redundanz --redundanz &
 		# good bye
 		echo "good bye $SUDO_USER" ;
 		exit 0 ;
+fi
+
 else
 	echo -e "\n M1ND3V3NV1R0 allready installed!\n run this script from within the folder M1ND3V3NV1R0, after installation, system will restart." ;
 	echo -e "\n you should be in the M1ND3V3NV1R0 folder."
