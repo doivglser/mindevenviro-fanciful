@@ -39,7 +39,7 @@ else
 	else
 		tmpfolder="/tmp" ;
 fi
-# tmp folder END
+# tmp folder END   
 
 		# shutting apps and servers down
 		if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep serv-if-up | awk '{print $2}' | wc -l) " -ge "1" ]] ;
@@ -51,11 +51,9 @@ fi
 fi
 # stop END
 
-	# update hosts and set the address for apache2 http server
-	sed -e 's/x0x/$(hostname)/g' configs/hosts  >| $tmpfolder/hosts 2>/dev/null ;
-	cp -f $tmpfolder/hosts /etc/hosts 2>/dev/null ;
-	chown root:root /etc/hosts ;
-	chmod 644 /etc/hosts ;
+	# update /etc/hosts
+	configs/./update_hosts & 
+	wait ;
 
 		# environinstall
 		if [[ $PWD =~ 'mindevenviro' ]] ;
