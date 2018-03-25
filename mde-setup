@@ -96,6 +96,14 @@ fi
 	
 	rm -f /etc/apache2/sites-enabled/000-default.conf 2>/dev/null ;
 
+	# by an update clear from double entries in apache2.conf
+	sed -e '/ServerName /d' /etc/apache2/apache2.conf >| $tmpfolder/apache2.conf 2>/dev/null ;
+	cp -f $tmpfolder/apache2.conf /etc/apache2/apache2.conf 2>/dev/null ;
+
+	# by an update clear from double entries in hosts
+	sed -e '/127.0.1.1	/d' /etc/hosts  >| $tmpfolder/hosts 2>/dev/null ;
+	cp -f $tmpfolder/hosts /etc/hosts 2>/dev/null ;
+
 	# by an update clear from double entries in clamd.conf
 	sed -e '/ScanOnAccess /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;
@@ -108,14 +116,17 @@ fi
 	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music} ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER ;
 
-	apt-get -f -y -m install dirmngr git ;
-
 	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
 	cp -f configs/etc/sources.list /etc/apt/sources.list ;
-	
+
 	# adding an entry to /etc/apt/sources.list.d/
 	wget -q "http://deb.playonlinux.com/public.gpg" -O- | sudo apt-key add - ;
 	wget "http://deb.playonlinux.com/playonlinux_jessie.list" -O /etc/apt/sources.list.d/playonlinux.list ;
+
+	# to not install systemd related packages
+	echo -e 'Package: *systemd*\nPin: release *\nPin-Priority: -1\n' > /etc/apt/preferences.d/systemd ;
+	# install git
+	apt-get -f -y -m install dirmngr git ;
 
 	# adding tors gpg key
 gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 ;
@@ -167,8 +178,6 @@ fi
 		echo -e "\n$apPR" | tee -a "/home/$SUDO_USER/.installed" ;
 		sleep 0.5 ;
 		cp -f /usr/share/sysvinit/inittab /etc/inittab ;
-		# issuing responsiblity
-		echo -e 'Package: *systemd*\nPin: release *\nPin-Priority: -1\n' > /etc/apt/preferences.d/systemd ;
 		((nNuM2--)) ;
 else
 		echo -e "\ninstalling ${toInst}..." ;
@@ -227,12 +236,8 @@ fi
 fi
 
 	echo -e "\n ... copy default apache2 site available" ;
-	cp -f mindevenviro/configs/000-default.conf /etc/apache2/sites-available/000-default.conf ;
+	cp mindevenviro/configs/000-default.conf /etc/apache2/sites-available/ ;
 	chown -R $SUDO_USER:$SUDO_USER /etc/apache2/sites-available/000-default.conf ;
-
-	echo -e "\n ... set background Pictures" ;
-	unzip -o pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
-	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
 	echo -e "\n ... set prefs.js for firefox-esr" ;
 	prefsfolder="$(find /home/$SUDO_USER/.mozilla/ -name "*.default")" ;
@@ -300,12 +305,9 @@ fi
 	cp -f docs/manual/* /var/www/html/testphp/ ;
 	chown -R www-data:www-data /var/www/html/ ;
 
-	echo -e "ScanOnAccess True\nOnAccessMountPath /home/$SUDO_USER/Downloads" >> /etc/clamav/clamd.conf ;
+	# Antivirus
+	echo -e "ScanOnAccess True\nOnAccessMountPath /home/$SUDO_USER/Downloads" | tee -a /etc/clamav/clamd.conf ;
 
-	echo -e "\n ... check for cgi-bin on drive" ;
-
-		if [[ "$(cat /etc/apache2/sites-available/000-default.conf | sed -n '/\/usr\/lib\/cgi-bin\/\>/p')" = '' ]] || [[ "$(cat /etc/apache2/apache2.conf | sed -n '/ServerName/p')" = '' ]] ;
-	then
 # mkdir cgi-bin
 mkdir -p /usr/lib/cgi-bin/ 2>/dev/null;
 # add a ServerName to your conf
@@ -313,9 +315,7 @@ echo "ServerName $(hostname)" >> /etc/apache2/apache2.conf ;
 # set the address for apache2 http server
 echo "127.0.1.1	$(hostname)" >> /etc/hosts ;
 # updates the address for localhost
-	else
-		echo -e "\n ... cgi-bin dir exists" ;
-fi
+
 		echo -e "\n ... update apache2 configuration" ;
 		a2enmod cgid ;
 
@@ -323,14 +323,6 @@ fi
 		/etc/init.d/apache2 restart ;
 		# Apache2 setup END
 
-		echo -e "\n ... set the rights for .wH0rUNSon " ;
-
-		if [ -e /home/$SUDO_USER/.wH0rUNSon ] ;
-	then
-		echo " ... .wH0rUNSon allready installed" | tee -a "/home/$SUDO_USER/.installed" ;
-	else
-		touch "/home/$SUDO_USER/.wH0rUNSon" && chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.wH0rUNSon" && chmod 0660 "/home/$SUDO_USER/.wH0rUNSon"  | tee -a "/home/$SUDO_USER/.installed" ;
-fi
 		echo -e "\n ... installing snort " ;
 		apt-get -f -m -y --allow-change-held-packages install snort ;
 		# reconfigure all
@@ -339,10 +331,6 @@ fi
 		# add i386 arch in 64bit system, to install wine32
 		echo -e "\n ... add i386 arch in 64bit system, to install wine32" ;
 		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 ;
-
-		# cleaning the environment
-		apt-get clean &&
-		apt -f -y -m autoremove ;
 
 		if [ -e /home/$SUDO_USER/.purple/plugins/libfacebook.so ] ;
 	then
@@ -373,6 +361,10 @@ fi
 	else
 		echo -e "\n Improved Nano Syntax Highlighting Files allready installed."
 fi
+		# installing tor
+		apt-get -f -y -m install tor deb.torproject.org-keyring && wait ;
+		sleep 1 ;
+
 		# configuring torrc
 		if [[ "$(cat /etc/tor/torrc | sed -n '/DNSPort\ 53/p')" = '' ]] ;
 	then
@@ -384,10 +376,21 @@ DNSPort 53\r">>/etc/tor/torrc;
 	else
 		echo -e "\n ... tor allready configured" ;
 fi
-		# installing tor
-		apt-get -f -y -m install tor deb.torproject.org-keyring && wait ;
-		sleep 1 ;
-	
+	echo -e "\n ... set background Pictures" ;
+	unzip -o pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
+	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
+
+		echo -e "\n ... set the rights for .wH0rUNSon " ;
+
+		if [ -e /home/$SUDO_USER/.wH0rUNSon ] ;
+	then
+		echo " ... .wH0rUNSon allready installed" | tee -a "/home/$SUDO_USER/.installed" ;
+	else
+		touch "/home/$SUDO_USER/.wH0rUNSon" && chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.wH0rUNSon" && chmod 0660 "/home/$SUDO_USER/.wH0rUNSon"  | tee -a "/home/$SUDO_USER/.installed" ;
+fi
+		# cleaning the environment
+		apt-get clean &&
+		apt -f -y -m autoremove ;
 		echo -e "\n ... successfully_installed $(date), by $USER" | tee -a /home/$SUDO_USER/.installed ;
 		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!" ;
 		echo -e "\n ... your System will be rebooted. do you want to proceed? [y/n]: " ;
