@@ -321,6 +321,7 @@ echo "Listen 127.0.1.1:80" >> /etc/apache2/apache2.conf ;
 
 		echo -e "\n ... update apache2 configuration" ;
 		a2enmod cgid ;
+		a2enmod proxy_http ;
 
 		echo -e "\n ... restarting apache2 server" ;
 		/etc/init.d/apache2 restart ;
