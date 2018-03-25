@@ -359,7 +359,7 @@ fi
 		rm -dRf /usr/share/nano-syntax-highlighting ;
 		rm -f /usr/share/nano/install.sh ;
 	else
-		echo -e "\n Improved Nano Syntax Highlighting Files allready installed."
+		echo -e "\n ... Improved Nano Syntax Highlighting Files allready installed.\n the mantainer doesnt update the code anymore."
 fi
 		# installing tor
 		apt-get -f -y -m install tor deb.torproject.org-keyring && wait ;
