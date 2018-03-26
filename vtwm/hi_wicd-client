@@ -5,18 +5,6 @@ LANG="C" && hi ;
         then
 			if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_wicd-client | grep shi3lD) = '' ]] ;
 		then
-                wicd-client -n &&
-                
-			until [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep /sbin/dhclient)" != '' ]] ;
-	do
-				sleep 1 ;
-				if [[ $(netstat -ar) =~ 'default' ]] ;
-		then
-				nids-antivirus-up --nIDs &
-				exit 0 ;
-	fi
-	done
-		else
 				wicd-client -n &
 	fi
         else
