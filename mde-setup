@@ -26,6 +26,7 @@ myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf ter
 environinstall="monitors/codecounter monitors/logdiskussage monitors/connected network/iptablestranspprox network/server-monitor network/redundanz network/shi3lD network/init/start_shield network/init/stop_shield network/init/nids-antivirus-up network/init/serv-if-up edit/search edit/openpdf edit/sCRYPtUPdater vtwm/feh-bg vtwm/hi vtwm/hi_cheese vtwm/hi_brutalchess vtwm/hi_libreoffice vtwm/hi_geany vtwm/hi_gimp vtwm/hi_transmission-gtk vtwm/hi_firefox-esr vtwm/hi_playonlinux vtwm/hi_vlc vtwm/hi_wicd-client vtwm/hi_xcalc vtwm/hi_shi3lD vtwm/hi_pidgin vtwm/hi_dwecker vtwm/dwecker vtwm/takeshot maintenance/mysql_cp_db maintenance/set_mysql_passwd mde-setup " ;
 apPRn='' ;
 restarting="6" ;
+readonly empty='' ;
 
 		if [ ! $EUID = 0 ] ;
 	then
@@ -245,6 +246,12 @@ fi
 
 	echo -e "\n ... set prefs.js for firefox-esr" ;
 	prefsfolder="$(find /home/$SUDO_USER/.mozilla/ -name "*.default")" ;
+	if [[ "$prefsfolder" = "$empty" ]]
+then
+	mkdir -p /home/"$SUDO_USER"/.mozilla/firefox/tv97u0cy.default
+	chmod 700 /home/"$SUDO_USER"/.mozilla/firefox/tv97u0cy.default ;
+	prefsfolder="/home/"$SUDO_USER"/.mozilla/firefox/tv97u0cy.default" ;
+fi
 	cp -f configs/prefs.js "$prefsfolder"/ ;
 	cp -f configs/places.sqlite "$prefsfolder"/ ;
 	chmod 600 "$prefsfolder"/prefs.js ;
