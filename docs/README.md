@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4529
+- Lines =4534
 
-- Words =61369
+- Words =61374
 
-- Chars =269003
+- Chars =269068
 
 # . 
 
@@ -442,6 +442,10 @@
 
   HELP.htlm
   README.html
+
+# in /etc/X11/Xreset.d
+
+  logoutvtwm
 
 # Coming soon: "Cont-Sec"  
 
