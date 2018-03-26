@@ -153,8 +153,11 @@ gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add - ;
 	then
 		echo -e "\n REMEMBER ssh-keygen -t rsa -b 4096 -C your-email@server.tld \nto add a github.com account" | tee -a /home/$SUDO_USER/.installed ;
 	else
-		echo "eval $(ssh-agent -s)" >> /home/$SUDO_USER/.bashrc ;
-		echo "ssh-add ~/.ssh/id_rsa" >> /home/$SUDO_USER/.bashrc ;
+		cat /home/$SUDO_USER/.ssh/id_rsa.pub >| /home/$SUDO_USER/yourGitHubSSHkey ;
+		echo -e "\n REMEMBER /home/$SUDO_USER/yourGitHubSSHkey, to add as a new SSH-Key under preferences in your github.com web-account." | tee -a /home/$SUDO_USER/.installed ;
+		sed -i "s/\(eval * *\).*/\1'$(ssh-agent -s)'/" /home/$SUDO_USER/.bashrc || echo "eval $(ssh-agent -s)" >> /home/$SUDO_USER/.bashrc ;
+		sed -i "s/\(ssh-add * *\).*/\1~/.ssh/id_rsa/" /home/$SUDO_USER/.bashrc || echo "ssh-add ~/.ssh/id_rsa" >> /home/$SUDO_USER/.bashrc ;
+		sudo -u $SUDO_USER ssh -T git@github.com ;
 		sudo -u $SUDO_USER ssh-keygen -p ;
 	fi
 	else
