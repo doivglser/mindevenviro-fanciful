@@ -131,7 +131,7 @@ fi
 	# to not install systemd related packages
 	echo -e 'Package: *systemd*\nPin: release *\nPin-Priority: -1\n' > /etc/apt/preferences.d/systemd ;
 	# install
-	apt-get -f -y -m install dirmngr git sudo gksu;
+	apt-get -f -y -m install dirmngr git sudo gksu gnupg ;
 
 	# adding tors gpg key
 gpg --keyserver keys.gnupg.net --recv A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 ;
