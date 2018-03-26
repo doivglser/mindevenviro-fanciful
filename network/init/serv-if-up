@@ -33,6 +33,15 @@ WARN01="80" ;
 WARN02="85" ;
 # name vars END
 
+# message
+senddingEmail(){
+cat << EOM | sendmail root@localhost
+
+$(cat "$tmpfolder/root_mail_status")
+
+EOM
+}
+
 # checks if apache2 is up, if false restarts
 apacheUP(){
 	/etc/init.d/"$webserver" stop ;
@@ -43,22 +52,14 @@ then
 
 echo "$?" >> "$tmpfolder/root_mail_status" ;
 
-cat << EOM | sendmail root@localhost
-
-$(cat "$tmpfolder/root_mail_status")
-
-EOM
+senddingEmail &
 
 	else
 
 /etc/init.d/"$webserver" status > "$tmpfolder/root_mail_status" ;
 date "+Start Attempt $webserver, Failure Time: %H.%M" >> "$tmpfolder/root_mail_status" ;
 
-cat << EOM | sendmail root@localhost
-
-$(cat "$tmpfolder/root_mail_status")
-
-EOM
+senddingEmail &
 
 fi
 }
@@ -74,21 +75,13 @@ then
 
 	echo "$?" >> "$tmpfolder/root_mail_status" ;
 
-cat << EOM | sendmail root@localhost
-
-$(cat "$tmpfolder/root_mail_status")
-
-EOM
+senddingEmail &
 	else
 
 	/etc/init.d/"$mta" status  > "$tmpfolder/root_mail_status" ;
 	date "+Start Attempt $mta, Failure Time: %H.%M" >> "$tmpfolder/root_mail_status" ;
 
-cat << EOM | sendmail root@localhost
-
-$(cat "$tmpfolder/root_mail_status")
-
-EOM
+senddingEmail &
 fi
 }
 # sendmailUP END
@@ -102,21 +95,13 @@ then
 
 	echo "$?" >> "$tmpfolder/root_mail_status" ;
 
-cat << EOM | sendmail root@localhost
-
-$(cat "$tmpfolder/root_mail_status")
-
-EOM
+senddingEmail &
 	else
 
 	/etc/init.d/"$datenbank" status > "$tmpfolder/root_mail_status" ;
 	date "+Start Attempt $datenbank, Failure Time: %H.%M" >> "$tmpfolder/root_mail_status" ;
 
-cat << EOM | sendmail root@localhost
-
-$(cat "$tmpfolder/root_mail_status")
-
-EOM
+senddingEmail &
 fi
 }
 # mysqlUP END
