@@ -34,11 +34,11 @@ interface="$(cat "$tmpfolder"/interface)" ;
 fi
 
 # primary monitor
-primM0n=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ connected\ ' | grep primary | awk '{print $1}') ;
+primM0n=$(xrandr | sed -n '/'\ connected\ '/p' | grep -E '\ primary\ ' | awk '{print $1}') ;
 # primarys monitor Aufloesung
-aufloeprim=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ connected\ ' | sed -n 's/primary//p' | awk '{print $3}' | cut -f1 -d+) ; 
+aufloeprim=$(xrandr | grep -E '\ connected\ ' | sed -n 's/primary//p' | awk '{print $3}' | cut -f1 -d+) ; 
 # secondarys monitor
-sec0dM0n=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ connected\ ' | grep -v primary | awk '{print $1}') ;
+sec0dM0n=$(xrandr | sed -n '/'\ connected\ '/p' | grep -vE '\ primary\ ' | awk '{print $1}') ;
 # set to primary monitor
 xrandr --output "$sec0dM0n" --off && xrandr --output "$primM0n" --mode "$aufloeprim" ;
 # stop network

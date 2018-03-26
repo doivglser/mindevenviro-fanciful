@@ -110,6 +110,7 @@ fi
 		sleep 1 ;
 		iptablestranspprox &
 		sleep 1 ;
+		hi_wicd-client &
 		findIface ;
 	fi
 done
