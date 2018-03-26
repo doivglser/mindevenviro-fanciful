@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4533
+- Lines =4561
 
-- Words =60543
+- Words =60689
 
-- Chars =267393
+- Chars =268443
 
 # . 
 
