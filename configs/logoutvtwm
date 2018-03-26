@@ -1,7 +1,12 @@
 #!/bin/bash
-# mindevenviro logout
+# mindevenviro logout vtwm
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C" ;
+readonly empty='';
+		if [[ "$EUID" != "0" ]] || [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep xdm | cut -f2 -d\ ) " = "$empty" ]] ;
+	then
+		gksudo -g "$0" ;
+else
 
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
@@ -52,6 +57,7 @@ killall -15 xterm && wait ;
 sleep 1 ;
 killall -15 terminator && wait ;
 sleep 1 ;
-rm -f $tmpfolder/*  ;
+rm -f $tmpfolder/* ;
 exit 0 ;
 #
+fi
