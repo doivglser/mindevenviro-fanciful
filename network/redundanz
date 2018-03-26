@@ -62,7 +62,7 @@ mmonitor(){
 		if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
 	then
 		start_up;
-		watch -n5 "$FILE2" && clear ;
+		watch -n5 "$FILE2" ;
 fi
 done
 }
