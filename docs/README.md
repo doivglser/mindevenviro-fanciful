@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4515
+- Lines =4525
 
-- Words =61201
+- Words =61283
 
-- Chars =267580
+- Chars =268070
 
 # . 
 
@@ -108,6 +108,10 @@
 	  "netstat -ar | grep default", is true.
 
 # PROBLEMS:
+
+* "interface" shi3lD have an option to choose between Ifaces, that option must be automated.
+
+		interface="$(cat "$tmpfolder"/interface)" ;
 
 * no workaround to install wifi firmware. (I recommend a dd-wrt router as client over ethernet)
 
