@@ -166,8 +166,8 @@ menu "logoutShutdown"
 {
 "   lock"		f.exec "exec xscreensaver-command -lock &"
 "   exit"		f.quit
-"   reboot"       f.exec "gksudo init 6 &"
-"	poweroff"      f.exec "gksudo init 0 &"
+"   reboot"		f.exec "gksudo init 6 &"
+"	poweroff"	f.exec "gksudo init 0 &"
 }
 
 menu "main"
@@ -194,6 +194,6 @@ menu "main"
 "   take shot"		f.exec "exec /usr/local/bin/takeshot &"
 "   refresh"	f.restart
 "   kill"		f.destroy
-":: _/\\/ °--|=>   O ::"  f.title
+""  f.title
 "logout/shutdown"	f.menu "logoutShutdown"
 }
