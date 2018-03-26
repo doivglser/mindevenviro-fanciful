@@ -166,8 +166,8 @@ menu "logoutShutdown"
 {
 "   lock"		f.exec "exec xscreensaver-command -lock &"
 "   exit"		f.quit
-"   reboot"		f.exec "gksudo init 6 &"
-"	poweroff"	f.exec "gksudo init 0 &"
+"   reboot"		f.exec "gksudo -gm REBOOT? init 6 &"
+"	poweroff"	f.exec "gksudo -gm POWEROFF? init 0 &"
 }
 
 menu "main"

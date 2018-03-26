@@ -7,7 +7,7 @@ LANG="C" && hi;
         then
 				if [ $EUID != 0 ] ;
 		then
-				gksudo -g "$0" ;
+				gksudo  -gm password "$0" ;
 		else
                 xterm -title shi3lD -fg green -geometry 80x15+20-20 -e shi3lD &
                 sleep 1 ;
