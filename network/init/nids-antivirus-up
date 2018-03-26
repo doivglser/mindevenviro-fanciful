@@ -8,8 +8,8 @@ antivirus="clamav-daemon" ;
 nids="snort" ;
 readonly empty='';
 
-	if [ $EUID = 0 ] ;
-then
+		if [[ "$EUID" != "0" ]] || [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep redundanz | cut -f2 -d\ ) " = "$empty" ]] ;
+	then
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
 	then
@@ -119,5 +119,5 @@ help(){
   esac
 
 	else
-		echo "USAGE: sudo $0 --help";
+		echo "USAGE: sudo redundanz --help";
 fi
