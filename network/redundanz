@@ -10,8 +10,6 @@ readonly empty="" ;
 		echo "USAGE: sudo redundanz -h" ;
 else
 
-trap 'exitH4ndl3r' SIGINT ;
-
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ;
 	then
@@ -64,8 +62,7 @@ mmonitor(){
 		if [ -e "/home/$SUDO_USER/.installed" ] && [[ $1 = '' ]] ;
 	then
 		start_up;
-		sleep 1;
-		watch -n5 "$FILE2" ;
+		watch -n5 "$FILE2" && clear ;
 fi
 done
 }
