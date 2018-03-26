@@ -1,7 +1,6 @@
 #!/bin/bash
 # mindevenviro nids-antivirus-up
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-#set -x
 LANG="C";
 IFS=$(echo -e "\n\b");
 antivirus="clamav-daemon" ;
@@ -10,6 +9,8 @@ readonly empty='';
 
 		if [[ "$EUID" != "0" ]] || [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep redundanz | cut -f2 -d\ ) " = "$empty" ]] ;
 	then
+		echo "USAGE: sudo redundanz --help";
+	else
 # temp folder
 		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
 	then
@@ -117,7 +118,4 @@ help(){
       help "$@" ;
       ;;      
   esac
-
-	else
-		echo "USAGE: sudo redundanz --help";
 fi
