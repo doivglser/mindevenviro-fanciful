@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4550
+- Lines =4556
 
-- Words =60686
+- Words =60742
 
-- Chars =268287
+- Chars =268627
 
 # . 
 
@@ -233,7 +233,11 @@
   
 * calculator
 
-  xcalc, a scientific calculator desktop accessory;
+  xcalc, a scientific calculator desktop accessory	
+
+* wireshark
+
+  Wireshark is a network "sniffer" - a tool that captures and analyzes packets off the wire. Wireshark can decode too many protocols to list here. 
 
 * libreoffice
 
