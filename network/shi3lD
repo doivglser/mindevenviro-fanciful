@@ -93,9 +93,9 @@ mess4ge(){
 		sleep .5 ; i=$(( (i+1) %4 )) ; printf "\r ${spin2:$i:1}${spin:$i:1} UPTIME: $nnumberr" ; sleep .4 ; printf "\r" ;
 done
 }
-		while trap 'exitHandler' SIGINT ;
+		while trap 'exitHandler' SIGINT;
 	do
-		if [[ ! $(netstat -ar) =~ 'default' ]] ;
+		if [[ ! $(netstat -ar) =~ 'default' ]];
 	then
 		echo " no internet - " ;
 fi
@@ -107,10 +107,10 @@ fi
 	then
 		stop_shield --stop &
 		wait ;
+		sudo -u "$SUDO_USER" hi_wicd-client &
 		sleep 1 ;
 		iptablestranspprox &
 		sleep 1 ;
-		sudo -u "$SUDO_USER" hi_wicd-client &
 		findIface ;
 	fi
 done
