@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4539
+- Lines =4543
 
-- Words =60548
+- Words =60569
 
-- Chars =267517
+- Chars =267645
 
 # . 
 
@@ -108,6 +108,8 @@
 	  "netstat -ar | grep default", is true.
 
 # PROBLEMS:
+
+* for the moment shi3lD works only for WiFi Interfaces.
 
 * "interface" shi3lD have an option to choose between Ifaces, that option must be automated.
 
