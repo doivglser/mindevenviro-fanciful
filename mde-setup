@@ -165,9 +165,17 @@ gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add - ;
 	else
 		echo " no github.com email."
 fi
+		# install debian apps
+		nNuM2=$(echo "$myPrograms" | wc -w) ;
 
-mde_installer(){
+		until [[ "$nNuM2" = "0" ]] ;
+	do
+		toInst=$(awk '{print $'"$nNuM2"'}'<<<"$myPrograms") ;
 
+		if [[ "$(dpkg -l | awk '{print $2}' | sed -n "/^$toInst$/p")" != '' ]] ;
+	then
+		printf "\r ... testing for apps, $nNuM2 remaining" ; sleep .1 ; ((nNuM2--)) ;
+	else
 		if [[ "$toInst" = "sysvinit-core" ]] ;
 	then
 		# change the physiology to original
@@ -189,19 +197,6 @@ else
 		sleep 0.5 ;
 		((nNuM2--)) ;
 fi
-
-}
-		# install debian apps
-		nNuM2=$(echo "$myPrograms" | wc -w) ;
-		toInst=$(awk '{print $'"$nNuM2"'}'<<<"$myPrograms") ;
-
-		until [[ "$nNuM2" = "0" ]] ;
-	do
-		if [[ "$(dpkg -l | awk '{print $2}' | sed -n "/^$toInst$/p")" != '' ]] ;
-	then
-		printf "\r ... testing for apps, $nNuM2 remaining" ; sleep .2 && ((nNuM2--));
-	else
-		mde_installer && ((nNuM2--));
 fi
 		if [ "$nNuM2" = "0" ]
 	then
