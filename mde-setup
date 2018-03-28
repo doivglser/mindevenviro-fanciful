@@ -75,7 +75,7 @@ fi
 		((nNuM1--)) ;
 done
 
-# environinstall END .
+# environinstall END ...
 
 		if [ -e /root/.vendorsmac ] ;
 	then
