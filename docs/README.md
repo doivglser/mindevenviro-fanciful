@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4535
+- Lines =4539
 
-- Words =60538
+- Words =60557
 
-- Chars =267329
+- Chars =267544
 
 # . 
 
@@ -351,6 +351,10 @@
 
   To install and update mindevenviro.
 
+* tor__(test_tor_connexion).pl (thirdparty)
+
+  something thirdparty, to check tor connection.
+  
 # SHELL SCRIPTS DOT FILES AND CONTENT
 
 # in /root
@@ -426,6 +430,7 @@
 	- hi_wicd-client
 	- hi_xcalc
 	- takeshot
+	- tor__(test_tor_connexion).pl (thirdparty)
 
  monitoring|reliability
 

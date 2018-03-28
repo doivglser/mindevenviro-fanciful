@@ -22,7 +22,7 @@ excULEC0D3s="SC1090,SC2140,SC2012,SC2002,SC2009,SC2172,SC2162,SC2010,SC2126,SC20
 
 # update path
 bashupdate_path="/usr/local/bin" ;
-perlupdate_path="/usr/lib/cgi-bin" ;
+perlupdate_path="/usr/local/bin" ;
 phpupdate_path="/var/www/html/testphp" ;
 conffiles_path="/etc" ;
 # update path END
@@ -293,6 +293,7 @@ fi
 			echo -e "\nnothing to update.\n" ;
 		else
 			echo -e "\n$listONme appears to be ok" ;
+			perl -i -pe 'y|\r||d' "$listONme" ;
 			copyToPath "$@" ;
 		fi
 }
