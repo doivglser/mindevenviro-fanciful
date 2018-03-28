@@ -74,7 +74,8 @@ fi
 		i=$(( (i+1) %4 )) ; printf "\r ... ${spin2:$i:1} $fFILE ." | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
 		((nNuM1--)) ;
 done
-# environinstall END
+
+# environinstall END .
 
 		if [ -e /root/.vendorsmac ] ;
 	then
