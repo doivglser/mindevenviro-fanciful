@@ -255,11 +255,8 @@ then
 	prefsfolder="/home/"$SUDO_USER"/.mozilla/firefox/tv97u0cy.default" ;
 fi
 	cp -f configs/prefs.js "$prefsfolder"/ ;
-	cp -f configs/places.sqlite "$prefsfolder"/ ;
 	chmod 600 "$prefsfolder"/prefs.js ;
-	chmod 600 "$prefsfolder"/places.sqlite ;
 	chown $SUDO_USER:$SUDO_USER "$prefsfolder"/prefs.js ;
-	chown $SUDO_USER:$SUDO_USER "$prefsfolder"/places.sqlite ;
 
 	echo -e "\n ... copy logoutvtwm" ;
 	cp -f configs/logoutvtwm /etc/X11/Xreset.d/ ;
