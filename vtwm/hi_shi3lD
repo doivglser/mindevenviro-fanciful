@@ -5,13 +5,13 @@
 # tor
 # snort
 # clamd
-# have fun!
+# have fun!!!
 LANG="C" && hi; 
 	                if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_shi3lD | grep shi3lD) = '' ]] ;
         then
-				if [ $EUID != 0 ] ;
+				if [ $EUID != 0 ];
 		then
-				gksudo  -gm shi3lD "$0" ;
+				gksudo -gm shi3lD "$0";
 		else
                 xterm -title shi3lD -fg green -geometry 80x15+20-20 -e shi3lD &
                 sleep 1 ;

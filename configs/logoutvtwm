@@ -5,7 +5,7 @@ LANG="C" ;
 readonly empty='';
 		if [[ "$EUID" != "0" ]] || [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep xdm | cut -f2 -d\ ) " = "$empty" ]] ;
 	then
-		gksudo -g "$0" ;
+		gksudo -gm logout? "$0" ;
 else
 
 # temp folder
