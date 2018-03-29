@@ -69,7 +69,7 @@ fi
 		sudo chmod 4755 "/usr/local/bin/$fFILE" ;
 		sudo chmod u+s "/usr/local/bin/$fFILE" &&
 		echo -e "\n ... copying files ::\n" ;
-		i=$(( (i+1) %4 )) ; printf "\r ... ${spin2:$i:1} $fFILE ." | tee -a "/home/$SUDO_USER/.installed" ; sleep .3 ;
+		i=$(( (i+1) %4 )) ; printf "\r ... ${spin2:$i:1} $fFILE ." | tee -a "/home/$SUDO_USER/.installed" ; sleep .1 ;
 		((nNuM1--)) ;
 done
 
@@ -139,11 +139,11 @@ gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add - ;
 	echo -e "\n ... update upgrade clean and autoremove" ;
 	apt-get update && apt-get -f -y -m --allow-change-held-packages upgrade ;
 
-	printf "your email-address on github.com: "; read eM4il
+	printf "your email-address on github.com: "; read eM4il ;
 
 		if	[[ "$eM4il" != '' ]] ;
 	then
-		sudo -u $SUDO_USER ssh-keygen -t rsa -b 4096 -C "$eM4il"
+		sudo -u $SUDO_USER ssh-keygen -t rsa -b 4096 -C "$eM4il" ;
 		eX1tC0de=$(echo $?) ;
 		wait ;
 
@@ -172,7 +172,7 @@ fi
 
 		if [[ "$(dpkg -l | awk '{print $2}' | sed -n "/^$toInst$/p")" != '' ]] ;
 	then
-		printf "\r ... testing for apps, $nNuM2 remaining" ; sleep .3 ; ((nNuM2--)) ;
+		printf "\r ... testing for apps, $nNuM2 remaining" ; sleep .1 ; ((nNuM2--)) ;
 	else
 		if [[ "$toInst" = "sysvinit-core" ]] ;
 	then
