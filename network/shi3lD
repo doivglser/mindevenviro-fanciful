@@ -1,9 +1,10 @@
 #!/bin/bash
 # mindevenviro shi3lD
-# Changes your MAC-ADDRESS and do a list of usable and not usable MAC-ADDRESSES in $HOME
-# restart clamd and snort if failure, cuts the Ethernet Interface connection while starting up, (use wicd to reconnect)
-# ctrl+C cuts Ethernet Interface connection and revert to your vendors MAC-ADDRESS
-# restarts TOR service to surf anonymous
+# Changes your MAC-ADDRESS and deos a list of usable and not usable MAC-ADDRESSES in $HOME.
+# Restarts clamd and snort if failures, cuts the connected Interface connection while starting up. 
+# (use wicd to reconnect). ctrl+C cuts connected Interface connection
+# and reverts the Interface to your vendors MAC-ADDRESS.
+# For a new connection, shi3lD restarts TOR and Snort services to surf anonymously
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 LANG="C";
 readonly empty='';
