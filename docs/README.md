@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4441
+- Lines =4449
 
-- Words =60390
+- Words =60427
 
-- Chars =255495
+- Chars =255789
 
 # . 
 
@@ -210,11 +210,17 @@
 
 "refresh" * Restarts VTWM on opened $USER session.
 
-"lock" * Locks the screen. xscreensaver prompt for $USER password.
-
 "kill" * Click with the cross pointer on a window to end process.
 
+* logout/shutdown
+
+"lock" * Locks the screen. xscreensaver prompt for $USER password.
+
 "exit" * Quits VTWM. XDM login screen, returns.
+
+"reboot" * reboot computer
+
+"poweroff" * halt computer
 
 # VTWM Menu:
 
