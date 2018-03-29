@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4439
+- Lines =4441
 
-- Words =60492
+- Words =60478
 
-- Chars =256001
+- Chars =255806
 
 # . 
 
@@ -147,37 +147,40 @@
 
   Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
   
+  * GitHub
+
   Improved Nano Syntax Highlighting Files: ![scopatz nanorc](https://github.com/scopatz/nanorc)
   
   Facebook protocol plugin for libpurple (moved from jgeboski/purple-facebook): ![dequis purple-facebook](https://github.com/dequis/purple-facebook)
-  
-  uBlock Origin - An efficient blocker for Chromium and Firefox. Fast and lean: ![gorhill uBlock](https://github.com/gorhill/uBlock)
 
-  debian:
+  * Debian GNU/Linux 9
 
-	wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf 
-	terminator playonlinux wine64 wine64-tools wine64-preloader mercurial 
-	libpurple-dev libpurple0 libjson-glib-dev pidgin xul-ext-ublock-origin 
-	firefox-esr vlc feh xclip geany transmission boinc-screensaver wireshark 
-	vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg openvpn zip rar 
-	openssl nmap clamav-freshclam clamav-milter clamdscan clamav-daemon 
-	clamav-base clamav mysql-client mysql-server php7.0 php7.0-cli php7.0-mcrypt 
-	php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml 
-	php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww 
-	apache2 sendmail python-gtk2-dbg shellcheck liblwp-protocol-socks-perl 
-	libcgi-pm-perl perl nmon fortunes figlet mc mutt eject nano pm-utils 
-	fancontrol thermald laptop-mode-tools cpufrequtils sysvinit-core 
+	wicd brutalchess libreoffice-writer tidy cheese gimp 
+	scrot mupdf terminator playonlinux wine64 wine64-tools 
+	wine64-preloader mercurial libpurple-dev libpurple0 
+	libjson-glib-dev pidgin xul-ext-noscript xul-ext-https-everywhere 
+	xul-ext-ublock-origin firefox-esr vlc feh xclip geany 
+	transmission xscreensaver wireshark vtwm oss-compat 
+	alsa-utils xcompmgr x11-apps xdm xorg openvpn zip rar 
+	openssl nmap clamav-freshclam clamav-milter clamdscan 
+	clamav-daemon clamav-base clamav mysql-client mysql-server 
+	php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl 
+	php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline 
+	php7.0-opcache php7.0-json php7.0-gd dwww apache2 sendmail 
+	python-gtk2-dbg shellcheck liblwp-protocol-socks-perl libcgi-pm-perl 
+	perl nmon fortunes figlet mc mutt eject nano pm-utils fancontrol 
+	thermald laptop-mode-tools cpufrequtils sysvinit-core 
 	dirmngr git sudo gksu gnupg tor deb.torproject.org-keyring snort
 
 * while installing
-   
-   Sometimes debian has updates, you may read if you need a restart, or
+
+   Sometimes debian has updates, you may read bevor, if you need a restart, then
    
    you can aprove to login in to your github.com account, or just hit enter,
    
-   for new install, or for an update AND OR an system upgrade.
+   for new install, for an update AND OR an to upgrade the system.
    
-   Apt is marked to not install systemd related packages.
+   The apt-get package manager is marked to, not install systemd related packages.
 
 # USAGE On VTWM:
 
