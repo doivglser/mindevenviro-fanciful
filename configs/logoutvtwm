@@ -5,7 +5,8 @@ LANG="C" ;
 readonly empty='';
 		if [[ "$EUID" != "0" ]] || [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep xdm | cut -f2 -d\ ) " = "$empty" ]] ;
 	then
-		gksudo -gm logout? "$0" ;
+		echo -e " ... use \"exit\" from the \"VTWM-Menu\" or press F1 on your keyboard to log out." ;
+		exit 0;
 else
 
 # temp folder
