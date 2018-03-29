@@ -6,7 +6,7 @@
 
 - Words =60478
 
-- Chars =255806
+- Chars =255813
 
 # . 
 
@@ -174,13 +174,13 @@
 
 * while installing
 
-   Sometimes debian has updates, you may read bevor, if you need a restart, then
-   
-   you can aprove to login in to your github.com account, or just hit enter,
-   
-   for new install, for an update AND OR an to upgrade the system.
-   
-   The apt-get package manager is marked to, not install systemd related packages.
+  Sometimes debian has updates, read the stdout please, if you need a restart, 
+  
+  or you can aprove to login in to your github.com account, than just hit enter, 
+  
+  for new install, for an update AND OR an to upgrade the system. The apt-get 
+  
+  package manager is marked to, not install systemd related packages.
 
 # USAGE On VTWM:
 
