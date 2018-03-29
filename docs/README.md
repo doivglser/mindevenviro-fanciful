@@ -6,7 +6,7 @@
 
 - Words =60478
 
-- Chars =255813
+- Chars =255811
 
 # . 
 
@@ -286,7 +286,7 @@
 
 # USAGE in Terminator:
 
-	OPEN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW
+	RUN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW
 
 * openpdf (shell script)
 
