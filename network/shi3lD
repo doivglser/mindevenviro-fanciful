@@ -1,11 +1,14 @@
 #!/bin/bash
 # mindevenviro shi3lD
-# Changes your MAC-ADDRESS and deos a list of usable and not usable MAC-ADDRESSES in $HOME.
-# Restarts clamd and snort if failures, cuts the connected Interface connection while starting up. 
-# (use wicd to reconnect). ctrl+C cuts connected Interface connection
-# and reverts the Interface to your vendors MAC-ADDRESS.
-# For a new connection, shi3lD restarts TOR and Snort services to surf anonymously
+# Changes your MAC-ADDRESS and does a list of usable and not usable MAC-ADDRESSES in $HOME.
+# Restarts clamd and snort if failures, cuts the connected Interface connection 
+# while, changing the MAC-ADDRESS (use wicd to reconnect). ctrl+C cuts 
+# connected Interface connection and reverts the Interface to your vendors 
+# MAC-ADDRESS. For a new connection, shi3lD restarts TOR 
+# and Snort services to surf anonymously
+#
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
 LANG="C";
 readonly empty='';
 		if [[ "$EUID" != 0 ]] && [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep redundanz | cut -f2 -d\ ) " != "$empty" ]] ;
@@ -13,11 +16,11 @@ readonly empty='';
 		echo "USAGE: sudo shi3lD, interactively puff MACs and starting up to a new circuit" ;
 		exit 0;
 else
-nnumberr="0" ;
-FILE="serv-if-up" ;
+nnumberr="0";
+FILE="serv-if-up";
 
 # temp folder
-		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]]; 
 	then
 		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
 	else
