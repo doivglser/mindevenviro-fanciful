@@ -4,7 +4,7 @@
 
 - Lines =4470
 
-- Words =60498
+- Words =60496
 
 - Chars =256400
 
@@ -172,13 +172,13 @@
 	thermald laptop-mode-tools cpufrequtils sysvinit-core 
 	dirmngr git sudo gksu gnupg tor deb.torproject.org-keyring snort
 
-* while installing
+* running "mde-setup"
 
   Sometimes debian has updates, read the stdout please, if you need a restart, 
   
   or you can aprove to login in to your github.com account, than just hit enter, 
   
-  for new install, for an update AND OR an to upgrade the system. The apt-get 
+  for new install, for an update AND OR to upgrade the system. The apt-get 
   
   package manager is marked to, not install systemd related packages.
 
