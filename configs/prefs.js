@@ -26,7 +26,7 @@ user_pref("browser.cache.disk.filesystem_reported", 1);
 user_pref("browser.cache.disk.smart_size.first_run", false);
 user_pref("browser.cache.disk.smart_size.use_old_max", false);
 user_pref("browser.cache.frecency_experiment", 4);
-user_pref("browser.ctrlTab.previews", true);
+user_pref("browser.ctrlTab.previews", false);
 user_pref("browser.download.importedFromSqlite", true);
 user_pref("browser.download.lastDir", "/home/ivo/Downloads");
 user_pref("browser.download.panel.shown", true);
