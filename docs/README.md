@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4451
+- Lines =4455
 
-- Words =60532
+- Words =60549
 
-- Chars =256581
+- Chars =256685
 
 # . 
 
@@ -125,6 +125,8 @@
 	       "sudo dpkg --configure -a" with the name of your interface.
 
 # Requirements:
+
+- A screen resolution of at least: 1280x800
 
 - A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for Fedora, CentOS and MacOSX)
 - Choose netinst CD image, and burn it on a blank CD-R.
