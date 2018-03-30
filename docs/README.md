@@ -6,7 +6,7 @@
 
 - Words =60496
 
-- Chars =256404
+- Chars =256400
 
 # . 
 
@@ -73,10 +73,10 @@
 
 ... After typing the message, "Cont-Sec" applies to md5 encryption for each letter and number corresponding to the "E-Mail-Code-Fragments" that matches the "picture-match-key" with your buddies....
 
-		ivo@x0x:~$ $ escapedSpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<\title\>\<style"
-		ivo@x0x:~$ a=$(openssl passwd -1 "$escapedSpamCodeSegment")
-		ivo@x0x:~$ echo $a
-		$1$2cURl/G9$u7fHYYfdry0F8ZHpMf8/8/
+	ivo@x0x:~$ $ escapedSpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<\title\>\<style"
+	ivo@x0x:~$ a=$(openssl passwd -1 "$escapedSpamCodeSegment")
+	ivo@x0x:~$ echo $a
+	$1$2cURl/G9$u7fHYYfdry0F8ZHpMf8/8/
 
 * mindevenviro
 
