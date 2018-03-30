@@ -413,6 +413,8 @@ fi
 		echo -e "\n ... your System will be rebooted. do you want to proceed? [y/n]: " ;
 		read -r restartORnot ;
 		
+		pwmconfig ;
+		
 		if [[ $restartORnot =~ y|Y|s|S|j|J ]] ;
 	then
 		until [[ $restarting = 0 ]] ;
