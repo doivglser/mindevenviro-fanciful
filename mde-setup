@@ -405,6 +405,9 @@ fi
 	else
 		touch "/home/$SUDO_USER/.wH0rUNSon" && chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.wH0rUNSon" && chmod 0660 "/home/$SUDO_USER/.wH0rUNSon"  | tee -a "/home/$SUDO_USER/.installed" ;
 fi
+		# cooling
+		pwmconfig ;
+
 		# cleaning the environment
 		apt-get clean &&
 		apt -f -y -m autoremove ;
@@ -412,8 +415,6 @@ fi
 		echo -e "\n ... Congratulations we have M1ND3V3NV1R0 successfully installed!" ;
 		echo -e "\n ... your System will be rebooted. do you want to proceed? [y/n]: " ;
 		read -r restartORnot ;
-		
-		pwmconfig ;
 		
 		if [[ $restartORnot =~ y|Y|s|S|j|J ]] ;
 	then
