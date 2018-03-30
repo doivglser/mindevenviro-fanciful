@@ -33,6 +33,8 @@ changepass(){
 		sleep 2 ;
 		stop_mysql ;
 		sleep 2 ;
+		killall -9 mysqld_safe ;
+		sleep 2 ;
 		echo "starting mysql to maintenance" ;
 		sudo mysqld_safe --skip-grant-tables &
 		sleep 5 ;
@@ -41,6 +43,7 @@ changepass(){
 		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;"
 		stop_mysql ;
 		echo -e "\n ... update mysql root passwords" ;
+		sleep 2 ;
 		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf;
 		sed -i "s/\(plugin_password *= *\).*/\1/" /etc/mysql_cp_db_password.conf;
 		/etc/init.d/mysql start;
