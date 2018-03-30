@@ -38,6 +38,8 @@ snortUP(){
     then
 		if [[ $(ps ax | grep -v grep | grep -v nano | grep -v geany | grep "$nids") = '' ]] ;
 	then
+		/etc/init.d/"$nids" stop ;
+		sleep 2 ;
 		/etc/init.d/"$nids" start -i "$interface" -A None -D 2>/dev/null 2>&1 < /dev/null &
 		
 		if setsid "$nids" -i "$interface" -A None -D  -v -c /etc/snort/snort.conf 2>/dev/null 2>&1 < /dev/null &
@@ -65,6 +67,9 @@ fi
 clamdUP(){
 		if [[ $(ps ax | grep -v grep | grep -v nano | grep -v geany | grep "$antivirus") = '' ]] ;
 	then
+		/etc/init.d/"$antivirus" stop ;
+		sleep 2 ;
+
 		if /etc/init.d/"$antivirus" start >| "$tmpfolder/root_mail_status" ;
 then
 
