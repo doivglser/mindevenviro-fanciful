@@ -2,18 +2,19 @@
 # mindevenviro set_mysql_passwd
 # sets the root password for mariadb
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-# 
+#
 LANG=C ;
+#
 		if [ $EUID != 0 ] ;
 	then
 		echo "please sudo"
 		exit 0 ;
 	else
-		mysqlconn="mysql -u root" ;
+		mysqlconn="sudo mysql -u root";
 help(){
 shift 0 ;
 echo -e "hello $SUDO_USER\nset new mariadb root password\n" ;
-echo -e "Usage: $0 [--password] [password_value]\r" ;
+echo -e "Usage: $0 [--password] [password_value]\r";
 exit 0 ;
 }		
 
@@ -40,10 +41,10 @@ changepass(){
 		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;"
 		stop_mysql ;
 		echo -e "\n ... update mysql root passwords" ;
-		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf ;
-		sed -i "s/\(plugin_password *= *\).*/\1/" /etc/mysql_cp_db_password.conf ;
-		/etc/init.d/mysql start ;
-		echo -e "\n - stopping serv-if-up\n"
+		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf;
+		sed -i "s/\(plugin_password *= *\).*/\1/" /etc/mysql_cp_db_password.conf;
+		/etc/init.d/mysql start;
+		echo -e "\n - stopping serv-if-up\n";
 		nice -14 setsid serv-if-up >/dev/null 2> /dev/null &
 		echo " done !" ;
 		exit 0 ;

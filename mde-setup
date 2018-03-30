@@ -132,6 +132,7 @@ fi
 	# to not install systemd related packages
 	echo -e 'Package: *systemd*\nPin: release *\nPin-Priority: -1\n' > /etc/apt/preferences.d/systemd ;
 	# install
+	apt --fix-broken install ;
 	apt-get -f -y -m install dirmngr git sudo gksu gnupg ;
 
 	# adding tors gpg key
@@ -190,11 +191,19 @@ fi
 else
 		echo -e "\ninstalling ${toInst}..." ;
 		apt-get -f -m -y --allow-change-held-packages install "$toInst" | tee -a "/home/$SUDO_USER/.installed" ;
+		eX1tC0de=$(echo $?);
+		wait;
+
+		if [[ "$eX1tC0de" != 0 ]];
+	then
+		apt --fix-broken install ;
+	else
 		wait ;
 		sleep 1 ;
 		apPR="$toInst, INSTALLED!" ;
 		echo -e "\n$apPR" | tee -a "/home/$SUDO_USER/.installed" ;
 		((nNuM2--)) ;
+	fi
 fi
 fi
 		if [ "$nNuM2" = "0" ]
