@@ -6,7 +6,7 @@
 
 - Words =60743
 
-- Chars =258838
+- Chars =258842
 
 # . 
 
@@ -366,7 +366,7 @@
 
   To set up the MariaDB root password, enter a friendly password, only: numbers,lower-case,upper-case, 10 digits.
 
-* install (shell script)
+* mde-setup (shell script)
 
   To install and update mindevenviro.
 
