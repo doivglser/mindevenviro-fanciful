@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4471
+- Lines =4473
 
-- Words =60677
+- Words =60717
 
-- Chars =258503
+- Chars =258625
 
 # . 
 
@@ -73,10 +73,12 @@
 
 ... After typing the message, "Cont-Sec" applies to md5 encryption for each letter and number corresponding to the "E-Mail-Code-Fragments" that matches the "picture-match-key" with your buddies....
 
-	ivo@x0x:~$ $ escapedSpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<\title\>\<style"
-	ivo@x0x:~$ a=$(openssl passwd -1 "$escapedSpamCodeSegment")
-	ivo@x0x:~$ echo $a
+	escapedSpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<\title\>\<style"
+	a=$(I SEARCH SOMETHING ELSE)
+	echo $a
 	$1$2cURl/G9$u7fHYYfdry0F8ZHpMf8/8/
+	
+	- I WILL TRY TO DO THE SIMPLE WAY TO CIPHER THE TEXT AS I WROTE, AND APPLY OTHER TECNICHES TO DECRYPT THE MESSAGE.
 
 * mindevenviro
 
