@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4477
+- Lines =4481
 
-- Words =60717
+- Words =60733
 
-- Chars =258628
+- Chars =258683
 
 # . 
 
@@ -71,9 +71,9 @@
 
 * "![Cont-Sec](https://github.com/doivglser/mindevenviro/projects)" Secure-Email-Solution
 
-	... After typing the message, "Cont-Sec" applies to md5 encryption for 
-	each letter and number corresponding to the "E-Mail-Code-Fragments" 
-	that matches the "picture-match-key" with your buddies....
+		....mber. After writing the  message, "Cont-Sec" applies a special cipher 
+		for each letter and number corresponding to the "Email Code Snippets" that match 
+		Your "image matching key", made in consultation with a fr....
 
 		SpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<\title\>\<style"
 		a=$(I SEARCH SOMETHING ELSE)
