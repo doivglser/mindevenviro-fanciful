@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4484
+- Lines =4486
 
-- Words =60743
+- Words =60748
 
-- Chars =258842
+- Chars =258892
 
 # . 
 
@@ -447,6 +447,7 @@
 	- hi_transmission-gtk
 	- hi_vlc
 	- hi_wicd-client
+	- hi_wireshark
 	- hi_xcalc
 	- takeshot
 	- tor__(test_tor_connexion).pl (thirdparty)
