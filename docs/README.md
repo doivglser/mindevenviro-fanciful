@@ -6,7 +6,7 @@
 
 - Words =60717
 
-- Chars =258624
+- Chars =258628
 
 # . 
 
@@ -75,10 +75,10 @@
 	each letter and number corresponding to the "E-Mail-Code-Fragments" 
 	that matches the "picture-match-key" with your buddies....
 
-	SpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<\title\>\<style"
-	a=$(I SEARCH SOMETHING ELSE)
-	echo $a
-	$1$2cURl/G9$u7fHYYfdry0F8ZHpMf8/8/
+		SpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<\title\>\<style"
+		a=$(I SEARCH SOMETHING ELSE)
+		echo $a
+		$1$2cURl/G9$u7fHYYfdry0F8ZHpMf8/8/
 	
 	- I WILL TRY TO DO THE SIMPLE WAY TO CIPHER THE TEXT AS I 
 	  WROTE, AND APPLY OTHER TECNICHES TO DECRYPT THE MESSAGE.
