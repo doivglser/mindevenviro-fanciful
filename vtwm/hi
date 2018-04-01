@@ -11,15 +11,15 @@ xcompmgr -c &
 xsetroot -solid yellow &
 terminator &
 feh-bg &
-sleep 2 ;
-transset --name "mind eve n viro" .8 ;
+sleep 5;
+transset --name "mind eve n viro" .8;
 }
 		if [[ $(ps axu | grep -v grep | grep terminator) = '' ]] && \
 		[[ $(ps axu | grep -v grep | grep xload) != '' ]] && \
 		[[ $(ps axu | grep -v grep | grep xscreensaver) != '' ]] ;
 	then
 		terminator &
-		sleep 3;
+		sleep 4 ;
 		transset --name "mind eve n viro" .8 && wait && exit 0 ;
 
 		elif [[ $(ps axu | grep -v grep | grep oclock) = '' ]] || \
@@ -28,5 +28,5 @@ transset --name "mind eve n viro" .8 ;
 	then
 		to_star_up && wait && exit 0 ;
 	else
-		exit 0 ;
+		exit 0;
 fi
