@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4442
+- Lines =4454
 
-- Words =60730
+- Words =60802
 
-- Chars =254393
+- Chars =254824
 
 # . 
 
@@ -76,12 +76,26 @@
 		Your "image matching key", made in consultation with a fr....
 
 		SpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<\title\>\<style"
-		a=$(I SEARCH SOMETHING ELSE)
-		echo $a
-		$1$2cURl/G9$u7fHYYfdry0F8ZHpMf8/8/
+	a=$(nICE_Encryption -l a $SpamCodeSegment)
+	echo $a
+	$1$2cURl/G9$u7fHYYfdry0F8ZHpMf8/8/
 	
 	- I WILL TRY TO DO THE SIMPLE WAY TO CIPHER THE TEXT AS I 
 	  WROTE, AND APPLY OTHER TECNICHES TO DECRYPT THE MESSAGE.
+	  
+	  I try to write a "nICE_Encryption -l a $3" script, 
+	  
+	  + where "$1" is:
+	  
+	  -le letter, -n number, -u upper case, -lo lower case, -s space.
+	  
+	  + And "$2" is:
+	  
+	  [a-zA-Z0-9\-\_\?\¿\ \.\*\#]* or a space.
+	  
+	  + And "$3" is:
+	  
+	  $3=$SpamCodeSegment ;
 
 * mindevenviro
 
