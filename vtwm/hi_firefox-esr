@@ -1,17 +1,17 @@
 #!/bin/bash
 # startup file on /usr/local/bin
-LANG="C" && hi; 
+LANG="C"; 
 
 		if [[ ! $(netstat -ar) =~ 'default' ]] ;
 	then
 		xmessage -center -buttons Ok:0 -default Ok -nearmouse "no Internet, connect with sh13lD" -timeout 7 &
-		exit 0; 
+		hi && exit 0 ; 
 else
                 if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_firefox-esr | grep firefox-esr) = '' ]] ;
         then
                 firefox-esr 2>/dev/null & 
-                exit 0 ;
+                hi && exit 0 ;
         else
-                exit 0 ;
+                hi && exit 0 ;
 fi
 fi

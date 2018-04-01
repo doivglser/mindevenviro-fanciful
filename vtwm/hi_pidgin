@@ -1,21 +1,21 @@
 #!/bin/bash
 # startup file on /usr/local/bin
 # mindevenviro pidgin   
-LANG="C" && hi; 
+LANG="C"; 
 IFS=$(echo -en "\b\n") ;
 
 		if [[ ! $(netstat -ar) =~ 'default' ]] ;
 	then
 		xmessage -center -buttons Ok:0 -default Ok -nearmouse "open first "shi3lD" from the menu" -timeout 7 &
-		exit 0; 
+		hi && exit 0 ; 
 else
 		if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_pidgin | grep pidgin) = '' ]] ;
 	then
 		pidgin 2>/dev/null &
 		sleep 1 ;
 		transset --name "Buddy List" .7 ;
-		exit 0; 
+		hi && exit 0 ;
 	else
-		exit 0; 
+		hi && exit 0 ;
 fi
 fi

@@ -1,9 +1,9 @@
 #!/bin/bash
 # startup file on /usr/local/bin
-LANG="C" && hi; 
+LANG="C"; 
                 if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_wicd-client | grep wicd-client) = '' ]] ;
         then
 				wicd-client -n &
-				exit 0; 
+				hi && exit 0 ;
 fi
 

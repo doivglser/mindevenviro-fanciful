@@ -6,7 +6,7 @@
 # snort
 # clamd
 # have fun!!!
-LANG="C" && hi; 
+LANG="C"; 
 	                if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_shi3lD | grep shi3lD) = '' ]] ;
         then
 				if [ $EUID != 0 ];
@@ -22,11 +22,11 @@ LANG="C" && hi;
 				xterm -title redundanz -fg green -geometry 110x15+507-20 -e redundanz --monitor &
 				sleep 1 ;
 				sudo -u "$SUDO_USER" transset --name redundanz .7
-                exit 0 ;
+                sudo -u "$SUDO_USER" hi && exit 0 ;
         else
-				exit 0; 
+				sudo -u "$SUDO_USER" hi && exit 0 ; 
 		fi
 fi
 		else
-				exit 0; 
+				sudo -u "$SUDO_USER" hi && exit 0 ; 
 fi
