@@ -1,0 +1,13 @@
+#!/bin/bash
+# startup file in /usr/local/bin for .twmrc
+LANG="C" && hi &  
+		if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_terminator | grep terminator) = '' ]] ;
+	then
+		terminator &
+		sleep 4 ;
+		transset --name "mind eve n viro" .8 && wait && exit 0 ;
+	else
+		exit 0 ;
+fi
+
+

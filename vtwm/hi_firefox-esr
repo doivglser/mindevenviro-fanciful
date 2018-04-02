@@ -1,5 +1,5 @@
 #!/bin/bash
-# startup file on /usr/local/bin
+# startup file in /usr/local/bin for .twmrc
 LANG="C" && hi &  
 
 		if [[ ! $(netstat -ar) =~ 'default' ]] ;
