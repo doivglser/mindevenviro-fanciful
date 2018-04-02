@@ -9,7 +9,6 @@ xload -g 55x50-12+91 -fg "grey" -bg "black" -bw 1 &
 setsid xscreensaver -display :0 -no-splash >/dev/null 2>&1 < /dev/null &
 xcompmgr -c &
 xsetroot -solid yellow &
-sleep 1 ;
 feh-bg &
 }
 		if [[ $(ps ax | grep -v grep | grep xload) = '' ]] && [[ $(ps ax | grep -v grep | grep oclock) = '' ]] || [[ $(ps ax | grep -v grep | grep xscreensaver) = '' ]] ;
