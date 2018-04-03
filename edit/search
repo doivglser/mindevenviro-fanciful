@@ -13,6 +13,7 @@
 LANG="C" ;
 FILE="search" ;
 line='' ;
+readonly empty='' ;
 #exithandler
 exitHandl3R(){
 	searchStat ;
@@ -79,7 +80,15 @@ searchStat(){
 eingabe(){
 trap 'exitHandl3R' SIGINT ;
 pause=0 ;
-for lines in $(find $path -regex '[a-zA-Z0-9\ \/\._].*' -type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g' | grep -E "$suffixx"$ 2>/dev/null) ;
+
+		if [[ "$parameter" = "$empty" ]] ;
+	then
+		parameter="-regex '[a-zA-Z0-9\ \/\._].*'" ;
+else
+	parameter="-name *$3*" ;
+fi
+
+for lines in $(find $path $parameter -type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g' | grep -E "$suffixx"$ 2>/dev/null) ;
 	do
 		if [[ $pause = 1 ]] ;
 	then
@@ -94,12 +103,13 @@ done && searchStat ;
   case "$1" in
         -s|--search)
       path=$2
-      suffixx=$3
-      togrep=$4
-      exclud3=$5
-      toshiffta=$(echo "$path $suffixx $togrep $exclud3" | wc -w) ;
+      parameter=$3
+      suffixx=$4
+      togrep=$5
+      exclud3=$6
+      toshiffta=$(echo "$path $parameter $suffixx $togrep $exclud3" | wc -w) ;
       shift "$toshiffta" ;
-      eingabe ;
+      eingabe "$@" ;
       ;;
    -h|--help)
       toshiffta=0 ;
@@ -111,6 +121,6 @@ done && searchStat ;
 	then
 		echo "Try '$0 --help' for more information."
 	else
-		eingabe ;
+		eingabe "$@" ;
 	fi
 fi
