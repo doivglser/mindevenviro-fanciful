@@ -12,6 +12,7 @@
  * 
  */
 
+user_pref("browser.startup.homepage", "https://check.torproject.org/");
 user_pref("browser.bookmarks.restore_default_bookmarks", false);
 user_pref("browser.cache.disk.smart_size.first_run", false);
 user_pref("browser.cache.disk.smart_size.use_old_max", false);
