@@ -3,16 +3,10 @@
 LANG="C" && hi &  
 IFS=$(echo -en "\b\n") ;
 
-		if [[ ! "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] && [[ ! $(netstat -ar) =~ 'default' ]] ;
-	then
-		xmessage -center -buttons Ok:0 -default Ok -nearmouse "open first "shi3lD" from the menu" -timeout 7 &
-		exit 0 ; 
-else
 		if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_gimp | grep gimp) = '' ]] ;
         then
                 gimp &
                 exit 0 ;
         else
                 exit 0 ;
-fi
 fi
