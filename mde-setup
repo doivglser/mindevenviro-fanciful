@@ -267,6 +267,9 @@ then
 	cp -f configs/profiles.ini /home/"$SUDO_USER"/.mozilla/firefox/ ;
 	chmod 600 /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
 	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
+	cp -f configs/prefs.js "$prefsfolder"/ ;
+	chmod 600 "$prefsfolder"/prefs.js ;
+	chown $SUDO_USER:$SUDO_USER "$prefsfolder"/prefs.js ;
 else
 	cp -f configs/prefs.js "$prefsfolder"/ ;
 	chmod 600 "$prefsfolder"/prefs.js ;
