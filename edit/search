@@ -5,6 +5,7 @@
 # openpdf works better
 ###     WARNING:    DON'T EDIT ANYTHING BELOW	###
 set -x
+
 				if [ "$EUID" != 0 ] ;
 			then
 				echo "sudo search -h :: please"
@@ -27,13 +28,19 @@ display(){
 	
 		if [[ $(echo "$line" | xargs file) =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
 	then
-			if [[ "$exclud3" != '' ]] ;
+			if [[ "$exclud3Flag" = "-e" ]] ;
 		then
 			patternANDexclude="$(echo $line | xargs grep $togrep && echo $line | xargs | grep -v $exclud3)" ;
 			tosearCH=$patternANDexclude ;
 		else
+			if [[ "$togrepFlag" = "-g" ]] ;
+		then
 			patternOnly="$(echo $line | xargs grep $togrep)" ;
 			tosearCH=$patternOnly ;
+		else
+			lineNUR="$(echo $line)" ;
+			tosearCH=$lineNUR ;
+		fi
 	fi
 			if [[ "$tosearCH" != '' ]] ;
 		then
@@ -61,13 +68,20 @@ fi
 
 help(){
 shift 0 ;
-echo -e "Usage: $0 [-s|--search] [PATH] [TOSEARCH]|[*] [FILE-SUFFIX] [TOGREP] [TOEXCLUDE] || [-h|--help]\r
+echo -e "Usage: $0 [-s|--search] [PATH] [TOSEARCH]|-a [*] [FILE-SUFFIX] [TOGREP] [TOEXCLUDE] || [-h|--help]\r
 sudo this script:\r
 SEARCH THE DRIVE\r
  This script searches your drive\r
  for everything in it, and displays\r
  only text in the less viewer.\r
- Finds: log files, example code, etc.\r" ;
+ Finds: log files, example code, etc.\r
+ -s: search flag\r
+ [PATH]: local filesystem\r
+ [TOSEARCH]: search pattern\r
+ [-a] [*]: search flag \"ALL\" with \"*\"\r
+ [FILE-SUFFIX]: file suffix without dot\r
+ [TOGREP]: search a word in file\r
+ [TOEXCLUDE]: a word you want to exclude from your search results.\n" ; 
  # SUDO_USER workflow control
 exit 0 ;
 	}
@@ -80,15 +94,27 @@ eingabe(){
 trap 'exitHandl3R' SIGINT ;
 pause=0 ;
 
-		if [[ "$parameter" = "A" ]] ;
+		if [[ "$parameter" = "-a" ]] ;
 	then
-		parameter="*" ;
-		toSearch="-name $parameter"
+	toSearch="\"-\"name \"*\"" ;
 else
-	toSearch="-name $parameter" ;
+	toSearch="\"-\"name \"*$parameter*\"" ;
 fi
 
-for lines in $(find $path $toSearch -type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g' | grep -E "$suffixx"$ 2>/dev/null) ;
+declare -a searchPartOne="find $path \"${toSearch#2}\"" ;
+declare -a searchPartTwo="-type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g'" ;
+declare -a searchPartThree=" | grep -E \"$suffixx\"$ 2>/dev/null" ;
+
+		if [[ "$suffixx" = '' ]] ;
+	then
+	searchQuery="( $(${searchPartOne#3} ${searchPartTwo#12}) )" ;
+	searchIndex="2" ;
+else
+	searchQuery="( $(${searchPartOne#3} ${searchPartTwo#12} ${searchPartThree#5}) )" ;
+	searchIndex="3" ;
+fi
+
+		for lines in ${searchQuery#"$searchIndex"} ;
 	do
 		if [[ $pause = 1 ]] ;
 	then
@@ -101,17 +127,19 @@ done && searchStat ;
 
 # ASK
   case "$1" in
-        -s|--search)
+      -s|--search)
       path=$2
       parameter=$3
       suffixx=$4
-      togrep=$5
-      exclud3=$6
-      toshiffta=$(echo "$path $parameter $suffixx $togrep $exclud3" | wc -w) ;
+      togrepFlag=$5
+      togrep=$6
+      exclud3Flag=$7
+      exclud3=$8
+      toshiffta=$(echo "$path $parameter $suffixx $togrepFlag $togrep $exclud3Flag $exclud3" | wc -w) ;
       shift "$toshiffta" ;
       eingabe "$@" ;
       ;;
-   -h|--help)
+      -h|--help)
       toshiffta=0 ;
       shift "$toshiffta" ;
       help ;
