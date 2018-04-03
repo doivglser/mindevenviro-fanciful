@@ -263,14 +263,14 @@ then
 	mkdir -p /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default
 	chmod 700 /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default ;
 	prefsfolder="/home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default" ;
-	cp -f configs/profiles.ini "$prefsfolder"/ ;
-	chmod 600 "$prefsfolder"/profiles.ini ;
-	chown $SUDO_USER:$SUDO_USER "$prefsfolder"/profiles.ini ;
-fi
+	cp -f configs/profiles.ini /home/"$SUDO_USER"/.mozilla/firefox/ ;
+	chmod 600 /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
+	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
+else
 	cp -f configs/prefs.js "$prefsfolder"/ ;
 	chmod 600 "$prefsfolder"/prefs.js ;
 	chown $SUDO_USER:$SUDO_USER "$prefsfolder"/prefs.js ;
-
+fi
 	echo -e "\n ... copy logoutvtwm" ;
 	cp -f configs/logoutvtwm /etc/X11/Xreset.d/ ;
 	chmod a+x /etc/X11/Xreset.d/logoutvtwm ;
