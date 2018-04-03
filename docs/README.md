@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines and without comments
 
-- Lines =4489
+- Lines =4491
 
-- Words =60830
+- Words =60847
 
-- Chars =258555
+- Chars =258670
 
 # . 
 
@@ -99,15 +99,22 @@
 
 * mindevenviro
 
-	  	to implement "Cont-Sec" to mindevenviro
-	  	"mindevenviro.rules": "alert/drop rules"
-	  	better entries for log .wH0rUNSon
-	  	to write without exclude codes from shellcheck
+
 	  	portability to: Debian, Fedora, CentOS, and MacOS
-	  	to add a "Joomla CMS" to localhost
-	  	to search for the right MySQL syntax 
+	  	to write without exclude codes from shellcheck
 	  	"iptables psad fwsnort": tcp-wrapper
-			  to implement "logger" "pipestatus" "ncurses" "GUI's"
+	  	to implement "logger" "pipestatus" "ncurses" "GUI's"
+	  	"mindevenviro.rules": "alert/drop rules" for snort
+	  	better entries for log .wH0rUNSon
+	  	to search for the right MySQL syntax 
+	  	to add a "Joomla CMS" to localhost
+
+	  	to write a unix socket server, to handle http_headers 
+	  	reffering user-agent, and redirect to TOR.
+
+
+	  	to implement "Cont-Sec" to mindevenviro
+
 
 * sCRYPtUPdater
 
