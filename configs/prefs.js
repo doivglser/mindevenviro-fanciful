@@ -7,9 +7,8 @@
  *
  * To make a manual change to preferences, you can visit the URL about:config
  * 
- * Adapted for mindevenviro, all plugins where with apt installed
- * 
- * March 2018 doivglser github.com
+ * Adapted for mindevenviro, all plugins where installed with apt-get from a
+ * debian archive, March 2018 github.com/doivglser
  * 
  */
 
@@ -43,8 +42,6 @@ user_pref("browser.preferences.advanced.selectedTabIndex", 0);
 user_pref("browser.privatebrowsing.autostart", true);
 user_pref("browser.reader.detectedFirstArticle", true);
 user_pref("browser.rights.3.shown", true);
-user_pref("browser.safebrowsing.provider.google.lastupdatetime", "1517819074501");
-user_pref("browser.safebrowsing.provider.google.nextupdatetime", "1517820864501");
 user_pref("browser.safebrowsing.provider.mozilla.lastupdatetime", "1522305720468");
 user_pref("browser.safebrowsing.provider.mozilla.nextupdatetime", "1522309320468");
 user_pref("browser.search.update", false);
@@ -60,23 +57,11 @@ user_pref("browser.uiCustomization.state", "{\"placements\":{\"PanelUI-contents\
 user_pref("browser.urlbar.daysBeforeHidingSuggestionsPrompt", 0);
 user_pref("browser.urlbar.lastSuggestionsPromptDate", 20180206);
 user_pref("capability.policy.maonoscript.sites", "about: about:addons about:blank about:blocked about:certerror about:config about:crashes about:feeds about:home about:memory about:neterror about:plugins about:preferences about:privatebrowsing about:sessionrestore about:srcdoc about:support blob: chrome: mediasource: moz-extension: moz-safe-about: resource:");
-user_pref("datareporting.policy.dataSubmissionPolicyAcceptedVersion", 2);
-user_pref("datareporting.policy.dataSubmissionPolicyNotifiedTime", "1522295645560");
-user_pref("datareporting.sessions.current.activeTicks", 62);
-user_pref("datareporting.sessions.current.clean", true);
-user_pref("datareporting.sessions.current.firstPaint", 5779);
-user_pref("datareporting.sessions.current.main", 30);
-user_pref("datareporting.sessions.current.sessionRestored", 5536);
-user_pref("datareporting.sessions.current.startTime", "1522305699551");
-user_pref("datareporting.sessions.current.totalTime", 320);
-user_pref("datareporting.sessions.currentIndex", 1);
-user_pref("datareporting.sessions.previous.0", "{\"s\":1522295578930,\"a\":65,\"t\":371,\"c\":false,\"m\":30,\"fp\":2139,\"sr\":6635}");
 user_pref("e10s.rollout.cohort", "optedOut");
 user_pref("e10s.rollout.cohortSample", "0.859832");
 user_pref("experiments.activeExperiment", false);
 user_pref("extensions.blocklist.pingCountTotal", 43);
 user_pref("extensions.blocklist.pingCountVersion", 2);
-user_pref("extensions.bootstrappedAddons", "{\"e10srollout@mozilla.org\":{\"version\":\"1.10\",\"type\":\"extension\",\"descriptor\":\"/usr/lib/firefox-esr/browser/features/e10srollout@mozilla.org.xpi\",\"multiprocessCompatible\":true,\"runInSafeMode\":true,\"dependencies\":[],\"hasEmbeddedWebExtension\":false},\"aushelper@mozilla.org\":{\"version\":\"2.0\",\"type\":\"extension\",\"descriptor\":\"/usr/lib/firefox-esr/browser/features/aushelper@mozilla.org.xpi\",\"multiprocessCompatible\":true,\"runInSafeMode\":true,\"dependencies\":[],\"hasEmbeddedWebExtension\":false},\"webcompat@mozilla.org\":{\"version\":\"1.0\",\"type\":\"extension\",\"descriptor\":\"/usr/lib/firefox-esr/browser/features/webcompat@mozilla.org.xpi\",\"multiprocessCompatible\":true,\"runInSafeMode\":true,\"dependencies\":[],\"hasEmbeddedWebExtension\":false},\"firefox@getpocket.com\":{\"version\":\"1.0.5\",\"type\":\"extension\",\"descriptor\":\"/usr/lib/firefox-esr/browser/features/firefox@getpocket.com.xpi\",\"multiprocessCompatible\":true,\"runInSafeMode\":true,\"dependencies\":[],\"hasEmbeddedWebExtension\":false},\"uBlock0@raymondhill.net\":{\"version\":\"1.10.4\",\"type\":\"extension\",\"descriptor\":\"/usr/share/xul-ext/ublock-origin\",\"multiprocessCompatible\":true,\"runInSafeMode\":false,\"dependencies\":[],\"hasEmbeddedWebExtension\":false}}");
 user_pref("extensions.databaseSchema", 19);
 user_pref("extensions.e10s.rollout.blocklist", "{dc572301-7619-498c-a57d-39143191b318};support@lastpass.com;");
 user_pref("extensions.e10s.rollout.hasAddon", true);
@@ -103,7 +88,6 @@ user_pref("extensions.ui.lastCategory", "addons://discover/");
 user_pref("extensions.ui.locale.hidden", true);
 user_pref("extensions.update.autoUpdateDefault", false);
 user_pref("extensions.webextensions.uuids", "{}");
-user_pref("extensions.xpiState", "{\"app-system-defaults\":{\"e10srollout@mozilla.org\":{\"d\":\"/usr/lib/firefox-esr/browser/features/e10srollout@mozilla.org.xpi\",\"e\":true,\"v\":\"1.10\",\"st\":1522105425000},\"aushelper@mozilla.org\":{\"d\":\"/usr/lib/firefox-esr/browser/features/aushelper@mozilla.org.xpi\",\"e\":true,\"v\":\"2.0\",\"st\":1522105425000},\"webcompat@mozilla.org\":{\"d\":\"/usr/lib/firefox-esr/browser/features/webcompat@mozilla.org.xpi\",\"e\":true,\"v\":\"1.0\",\"st\":1522105425000},\"firefox@getpocket.com\":{\"d\":\"/usr/lib/firefox-esr/browser/features/firefox@getpocket.com.xpi\",\"e\":true,\"v\":\"1.0.5\",\"st\":1522105425000}},\"app-global\":{\"{972ce4c6-7e08-4474-a285-3208198ce6fd}\":{\"d\":\"/usr/lib/firefox-esr/browser/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}.xpi\",\"e\":false,\"v\":\"52.7.3\",\"st\":1522105425000}},\"app-system-share\":{\"uBlock0@raymondhill.net\":{\"d\":\"/usr/share/xul-ext/ublock-origin\",\"e\":true,\"v\":\"1.10.4\",\"st\":1517584797000,\"mt\":1484022851000},\"{73a6fe31-595d-460b-a920-fcc0f8843232}\":{\"d\":\"/usr/share/xul-ext/noscript\",\"e\":true,\"v\":\"2.9.0.14\",\"st\":1522305650000,\"mt\":1470643768000},\"https-everywhere-eff@eff.org\":{\"d\":\"/usr/share/xul-ext/https-everywhere\",\"e\":true,\"v\":\"5.2.8\",\"st\":1522305646000,\"mt\":1385856000000}}}");
 user_pref("idle.lastDailyNotification", 1521474704);
 user_pref("lightweightThemes.persisted.footerURL", false);
 user_pref("lightweightThemes.persisted.headerURL", false);
@@ -164,3 +148,4 @@ user_pref("toolkit.startup.last_success", 1522305699);
 user_pref("toolkit.telemetry.cachedClientID", "9a80c85e-fdfa-491e-9f0d-665f500f554a");
 user_pref("toolkit.telemetry.previousBuildID", "20180326230345");
 user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
+user_pref("browser.search.selectedEngine", "DuckDuckGo");

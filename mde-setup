@@ -256,11 +256,16 @@ fi
 
 	echo -e "\n ... set prefs.js for firefox-esr" ;
 	prefsfolder="$(find /home/$SUDO_USER/.mozilla/ -name "*.default")" ;
+
+	# if you delete it accidentally
 	if [[ "$prefsfolder" = "$empty" ]]
 then
-	mkdir -p /home/"$SUDO_USER"/.mozilla/firefox/tv97u0cy.default
-	chmod 700 /home/"$SUDO_USER"/.mozilla/firefox/tv97u0cy.default ;
-	prefsfolder="/home/"$SUDO_USER"/.mozilla/firefox/tv97u0cy.default" ;
+	mkdir -p /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default
+	chmod 700 /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default ;
+	prefsfolder="/home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default" ;
+	cp -f configs/profiles.ini "$prefsfolder"/ ;
+	chmod 600 "$prefsfolder"/profiles.ini ;
+	chown $SUDO_USER:$SUDO_USER "$prefsfolder"/profiles.ini ;
 fi
 	cp -f configs/prefs.js "$prefsfolder"/ ;
 	chmod 600 "$prefsfolder"/prefs.js ;
