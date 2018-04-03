@@ -260,8 +260,9 @@ fi
 	# if you delete it accidentally
 	if [[ "$prefsfolder" = "$empty" ]]
 then
-	mkdir -p /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default
+	mkdir -p /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default ;
 	chmod 700 /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default ;
+	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default ; 
 	prefsfolder="/home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default" ;
 	cp -f configs/profiles.ini /home/"$SUDO_USER"/.mozilla/firefox/ ;
 	chmod 600 /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
