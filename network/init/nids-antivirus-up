@@ -40,9 +40,9 @@ snortUP(){
 	then
 		/etc/init.d/"$nids" stop ;
 		sleep 2 ;
-		/etc/init.d/"$nids" start -i "$interface" -A None -D 2>/dev/null 2>&1 < /dev/null &
+		/etc/init.d/"$nids" start -i "$interface" -A None -D 2>/dev/null &
 		
-		if setsid "$nids" -i "$interface" -A None -D  -v -c /etc/snort/snort.conf 2>/dev/null 2>&1 < /dev/null &
+		if setsid "$nids" -i "$interface" -A None -D  -v -c /etc/snort/snort.conf 2>/dev/null &
 	then
 
 ps axu | grep -v grep | grep "$nids" >| "$tmpfolder/root_mail_status" ;

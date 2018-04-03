@@ -6,7 +6,6 @@
 # snort
 # clamd
 # have fun!!!
-#
 LANG="C" && hi & 
 	                if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_shi3lD | grep shi3lD) = '' ]] ;
         then
@@ -23,11 +22,11 @@ LANG="C" && hi &
 				xterm -title redundanz -fg green -geometry 110x15+507-20 -e redundanz --monitor &
 				sleep 2 ;
 				sudo -u "$SUDO_USER" transset --name redundanz .7
-                sudo -u "$SUDO_USER" exit 0 ;
+                exit 0 ;
         else
-				sudo -u "$SUDO_USER" exit 0 ; 
+				exit 0 ; 
 		fi
 fi
 		else
-				sudo -u "$SUDO_USER" exit 0 ; 
+				exit 0 ; 
 fi

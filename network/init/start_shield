@@ -102,7 +102,7 @@ countDown="15";
 		while [[ "$stoppuff_MACs" != "stop" ]] ;
 	do
 		stop_shield --stop &
-		echo -e "puffing MACs ...\n" ;
+		echo -e "\npuffing MACs ...\n";
 		sleep 1 ;
 		neWMacAdr=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//') &&
 		sudo ip link set dev "$interface" address "$neWMacAdr" &&
@@ -126,6 +126,7 @@ done &&
 		#restarting clamAV or snort.
 		ifUPAntiVirusFireWall ;
 	else
+		echo -e "\r ...\n" ;
 		echo "no connection with this $(ip link show "$interface" | grep ether | awk '{print $2}'), I try again ..." && writem4c_SelfAssigned ;
 fi
 countDown="15";

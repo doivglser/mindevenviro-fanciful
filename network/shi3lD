@@ -111,7 +111,7 @@ fi
 	then
 		stop_shield --stop &
 		wait ;
-		sudo -u "$SUDO_USER" hi_wicd-client &
+		sudo -u "$SUDO_USER" hi_wicd-client 2>/dev/null &
 		sleep 1 ;
 		iptablestranspprox &
 		sleep 1 ;
