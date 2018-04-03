@@ -4,7 +4,7 @@
 # problems with spaces IFS var
 # openpdf works better
 ###     WARNING:    DON'T EDIT ANYTHING BELOW	###
-
+set -x
 				if [ "$EUID" != 0 ] ;
 			then
 				echo "sudo search -h :: please"
@@ -13,7 +13,6 @@
 LANG="C" ;
 FILE="search" ;
 line='' ;
-readonly empty='' ;
 #exithandler
 exitHandl3R(){
 	searchStat ;
@@ -62,7 +61,7 @@ fi
 
 help(){
 shift 0 ;
-echo -e "Usage: $0 [-s|--search] [PATH] [FILE-SUFFIX] [TOGREP] [TOEXCLUDE] || [-h|--help]\r
+echo -e "Usage: $0 [-s|--search] [PATH] [TOSEARCH]|[*] [FILE-SUFFIX] [TOGREP] [TOEXCLUDE] || [-h|--help]\r
 sudo this script:\r
 SEARCH THE DRIVE\r
  This script searches your drive\r
@@ -81,14 +80,15 @@ eingabe(){
 trap 'exitHandl3R' SIGINT ;
 pause=0 ;
 
-		if [[ "$parameter" = "$empty" ]] ;
+		if [[ "$parameter" = "A" ]] ;
 	then
-		parameter="-regex '[a-zA-Z0-9\ \/\._].*'" ;
+		parameter="*" ;
+		toSearch="-name $parameter"
 else
-	parameter="-name *$3*" ;
+	toSearch="-name $parameter" ;
 fi
 
-for lines in $(find $path $parameter -type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g' | grep -E "$suffixx"$ 2>/dev/null) ;
+for lines in $(find $path $toSearch -type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g' | grep -E "$suffixx"$ 2>/dev/null) ;
 	do
 		if [[ $pause = 1 ]] ;
 	then
