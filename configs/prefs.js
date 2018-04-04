@@ -8,10 +8,9 @@
  * To make a manual change to preferences, you can visit the URL about:config
  */
 
-// US specific default (used as a fallback if the geoSpecificDefaults request fails).
-user_pref("browser.search.defaultenginename", "data:text/plain,browser.search.defaultenginename=DuckDuckGo-mindevenviro");
-user_pref("browser.search.selectedEngine", "DuckDuckGo-mindevenviro");
-user_pref("keyword.URL", "https://duckduckgo.com/?q=");
+pref("browser.search.defaultenginename", "data:text/plain,browser.search.defaultenginename=DuckDuckGo");
+pref("browser.search.selectedEngine", "DuckDuckGo");
+pref("keyword.URL", "https://duckduckgo.com/?q=");
 user_pref("browser.startup.homepage", "https://check.torproject.org/");
 user_pref("lightweightThemes.persisted.footerURL", false);
 user_pref("lightweightThemes.persisted.headerURL", false);
