@@ -6,29 +6,43 @@
  * the changes will be overwritten when the application exits.
  *
  * To make a manual change to preferences, you can visit the URL about:config
- * 
- * mindevenviro nice start
- * 
  */
 
 user_pref("accessibility.typeaheadfind.flashBar", 0);
+user_pref("app.update.lastUpdateTime.addon-background-update-timer", 0);
+user_pref("app.update.lastUpdateTime.blocklist-background-update-timer", 0);
+user_pref("app.update.lastUpdateTime.browser-cleanup-thumbnails", 1522804255);
+user_pref("app.update.lastUpdateTime.experiments-update-timer", 0);
+user_pref("app.update.lastUpdateTime.search-engine-update-timer", 1522804304);
+user_pref("app.update.lastUpdateTime.xpi-signature-verification", 0);
 user_pref("browser.bookmarks.restore_default_bookmarks", false);
+user_pref("browser.cache.disk.capacity", 358400);
+user_pref("browser.cache.disk.filesystem_reported", 1);
 user_pref("browser.cache.disk.smart_size.first_run", false);
 user_pref("browser.cache.disk.smart_size.use_old_max", false);
+user_pref("browser.cache.frecency_experiment", 4);
 user_pref("browser.download.importedFromSqlite", true);
 user_pref("browser.download.lastDir", "~/Downloads");
 user_pref("browser.download.panel.shown", true);
 user_pref("browser.migrated-sync-button", true);
+user_pref("browser.migration.version", 42);
 user_pref("browser.newtabpage.enhanced", false);
+user_pref("browser.newtabpage.storageVersion", 1);
+user_pref("browser.pagethumbnails.storage_version", 3);
+user_pref("browser.places.smartBookmarksVersion", 8);
 user_pref("browser.reader.detectedFirstArticle", true);
 user_pref("browser.rights.3.shown", true);
+user_pref("browser.safebrowsing.provider.google.lastupdatetime", "1522804268228");
+user_pref("browser.safebrowsing.provider.google.nextupdatetime", "1522806077228");
+user_pref("browser.safebrowsing.provider.mozilla.lastupdatetime", "1522804230466");
+user_pref("browser.safebrowsing.provider.mozilla.nextupdatetime", "1522807830466");
 user_pref("browser.search.suggest.enabled", false);
 user_pref("browser.search.update", false);
 user_pref("browser.sessionstore.upgradeBackup.latestBuildID", "20180326230345");
 user_pref("browser.shell.checkDefaultBrowser", true);
-user_pref("browser.shell.mostRecentDateSetAsDefault", "1522563592");
-user_pref("browser.slowStartup.averageTime", 6944);
-user_pref("browser.slowStartup.samples", 4);
+user_pref("browser.shell.mostRecentDateSetAsDefault", "1522804276");
+user_pref("browser.slowStartup.averageTime", 2965);
+user_pref("browser.slowStartup.samples", 1);
 user_pref("browser.startup.homepage", "https://check.torproject.org/");
 user_pref("browser.startup.homepage_override.buildID", "20180326230345");
 user_pref("browser.startup.homepage_override.mstone", "52.7.3");
@@ -36,7 +50,17 @@ user_pref("browser.tabs.loadInBackground", false);
 user_pref("browser.tabs.remote.autostart.2", false);
 user_pref("browser.uiCustomization.state", "{\"placements\":{\"PanelUI-contents\":[\"edit-controls\",\"zoom-controls\",\"new-window-button\",\"privatebrowsing-button\",\"save-page-button\",\"print-button\",\"history-panelmenu\",\"fullscreen-button\",\"find-button\",\"preferences-button\",\"add-ons-button\",\"developer-button\",\"sync-button\"],\"addon-bar\":[\"addonbar-closebutton\",\"status-bar\"],\"PersonalToolbar\":[\"personal-bookmarks\"],\"nav-bar\":[\"urlbar-container\",\"search-container\",\"bookmarks-menu-button\",\"downloads-button\",\"home-button\",\"jid1-hav2inxanqpiea_jetpack-browser-action\",\"_026cca71-a2e2-4020-840d-f2759849d62e_-browser-action\",\"firefox-extension_sourcegraph_com-browser-action\",\"insight_insight_io-browser-action\",\"pocket-button\",\"https-everywhere_eff_org-browser-action\",\"ublock0-button\",\"https-everywhere-button\",\"noscript-tbb\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"toolbar-menubar\":[\"menubar-items\"]},\"seen\":[\"pocket-button\",\"https-everywhere_eff_org-browser-action\",\"ublock0-button\",\"developer-button\"],\"dirtyAreaCache\":[\"addon-bar\",\"PersonalToolbar\",\"nav-bar\",\"TabsToolbar\",\"toolbar-menubar\",\"PanelUI-contents\"],\"currentVersion\":6,\"newElementCount\":0}");
 user_pref("capability.policy.maonoscript.sites", "about: about:addons about:blank about:blocked about:certerror about:config about:crashes about:feeds about:home about:memory about:neterror about:plugins about:preferences about:privatebrowsing about:sessionrestore about:srcdoc about:support blob: chrome: mediasource: moz-extension: moz-safe-about: resource:");
-user_pref("datareporting.sessions.current.clean", false);
+user_pref("datareporting.policy.dataSubmissionPolicyAcceptedVersion", 2);
+user_pref("datareporting.policy.dataSubmissionPolicyNotifiedTime", "1522804286132");
+user_pref("datareporting.sessions.current.activeTicks", 9);
+user_pref("datareporting.sessions.current.clean", true);
+user_pref("datareporting.sessions.current.firstPaint", 3187);
+user_pref("datareporting.sessions.current.main", 22);
+user_pref("datareporting.sessions.current.sessionRestored", 3002);
+user_pref("datareporting.sessions.current.startTime", "1522804273133");
+user_pref("datareporting.sessions.current.totalTime", 44);
+user_pref("datareporting.sessions.currentIndex", 1);
+user_pref("datareporting.sessions.previous.0", "{\"s\":1522804223298,\"a\":8,\"t\":45,\"c\":true,\"m\":25,\"fp\":3803,\"sr\":3457}");
 user_pref("e10s.rollout.cohort", "optedOut");
 user_pref("e10s.rollout.cohortSample", "0.859832");
 user_pref("experiments.activeExperiment", false);
@@ -77,10 +101,7 @@ user_pref("lightweightThemes.persisted.headerURL", false);
 user_pref("lightweightThemes.recommendedThemes", "[]");
 user_pref("lightweightThemes.selectedThemeID", "recommended-3");
 user_pref("lightweightThemes.usedThemes", "[{\"id\":\"recommended-3\",\"name\":\"Linen Light\",\"headerURL\":\"resource:///chrome/browser/content/browser/defaultthemes/3.header.png\",\"footerURL\":\"resource:///chrome/browser/content/browser/defaultthemes/3.footer.png\",\"accentcolor\":\"#ada8a8\",\"iconURL\":\"resource:///chrome/browser/content/browser/defaultthemes/3.icon.png\",\"previewURL\":\"resource:///chrome/browser/content/browser/defaultthemes/3.preview.png\",\"author\":\"DVemer\",\"description\":\"Linen Light is (C) DVemer. Available under CC-BY-SA. No warranty.\",\"homepageURL\":\"https://addons.mozilla.org/firefox/addon/linen-light/\",\"version\":\"1.0\"},{\"id\":\"recommended-4\",\"name\":\"Pastel Gradient\",\"headerURL\":\"resource:///chrome/browser/content/browser/defaultthemes/4.header.png\",\"footerURL\":\"resource:///chrome/browser/content/browser/defaultthemes/4.footer.png\",\"textcolor\":\"#000000\",\"accentcolor\":\"#000000\",\"iconURL\":\"resource:///chrome/browser/content/browser/defaultthemes/4.icon.png\",\"previewURL\":\"resource:///chrome/browser/content/browser/defaultthemes/4.preview.png\",\"author\":\"darrinhenein\",\"description\":\"Pastel Gradient is (C) darrinhenein. Available under CC-BY. No warranty.\",\"homepageURL\":\"https://addons.mozilla.org/firefox/addon/pastel-gradient/\",\"version\":\"1.0\"},{\"id\":\"recommended-5\",\"name\":\"Carbon Light\",\"headerURL\":\"resource:///chrome/browser/content/browser/defaultthemes/5.header.png\",\"footerURL\":\"resource:///chrome/browser/content/browser/defaultthemes/5.footer.png\",\"textcolor\":\"#3b3b3b\",\"accentcolor\":\"#2e2e2e\",\"iconURL\":\"resource:///chrome/browser/content/browser/defaultthemes/5.icon.jpg\",\"previewURL\":\"resource:///chrome/browser/content/browser/defaultthemes/5.preview.jpg\",\"author\":\"Jaxivo\",\"description\":\"Carbon Light is (C) Jaxivo. Available under CC-BY-SA. No warranty.\",\"homepageURL\":\"https://addons.mozilla.org/firefox/addon/carbon-light/\",\"version\":\"1.0\"},{\"id\":\"recommended-1\",\"name\":\"A Web Browser Renaissance\",\"headerURL\":\"resource:///chrome/browser/content/browser/defaultthemes/1.header.jpg\",\"footerURL\":\"resource:///chrome/browser/content/browser/defaultthemes/1.footer.jpg\",\"textcolor\":\"#000000\",\"accentcolor\":\"#f2d9b1\",\"iconURL\":\"resource:///chrome/browser/content/browser/defaultthemes/1.icon.jpg\",\"previewURL\":\"resource:///chrome/browser/content/browser/defaultthemes/1.preview.jpg\",\"author\":\"Sean.Martell\",\"description\":\"A Web Browser Renaissance is (C) Sean.Martell. Available under CC-BY-SA. No warranty.\",\"homepageURL\":\"https://addons.mozilla.org/firefox/addon/a-web-browser-renaissance/\",\"version\":\"0\",\"updateDate\":1521504071324,\"installDate\":1521504071324},{\"id\":\"recommended-2\",\"name\":\"Space Fantasy\",\"headerURL\":\"resource:///chrome/browser/content/browser/defaultthemes/2.header.jpg\",\"footerURL\":\"resource:///chrome/browser/content/browser/defaultthemes/2.footer.jpg\",\"textcolor\":\"#ffffff\",\"accentcolor\":\"#d9d9d9\",\"iconURL\":\"resource:///chrome/browser/content/browser/defaultthemes/2.icon.jpg\",\"previewURL\":\"resource:///chrome/browser/content/browser/defaultthemes/2.preview.jpg\",\"author\":\"fx5800p\",\"description\":\"Space Fantasy is (C) fx5800p. Available under CC-BY-SA. No warranty.\",\"homepageURL\":\"https://addons.mozilla.org/firefox/addon/space-fantasy/\",\"version\":\"1.0\",\"updateDate\":1521503855232,\"installDate\":1521503855232}]");
-user_pref("media.gmp-gmpopenh264.abi", "x86_64-gcc3");
 user_pref("media.gmp-gmpopenh264.enabled", true);
-user_pref("media.gmp-gmpopenh264.lastUpdate", 1517679226);
-user_pref("media.gmp-gmpopenh264.version", "1.6");
 user_pref("media.gmp-manager.buildID", "20180326230345");
 user_pref("media.gmp-manager.lastCheck", 1522500825);
 user_pref("media.gmp.storage.version.observed", 1);
@@ -94,6 +115,7 @@ user_pref("network.prefetch-next", false);
 user_pref("noscript.ABE.migration", 1);
 user_pref("noscript.global", true);
 user_pref("noscript.gtemp", "");
+user_pref("noscript.subscription.lastCheck", -1909106452);
 user_pref("noscript.temp", "");
 user_pref("noscript.version", "2.9.0.14");
 user_pref("noscript.visibleUIChecked", true);
@@ -120,6 +142,7 @@ user_pref("services.sync.prefs.sync.extensions.ublock0.cloudStorage.whitelistPan
 user_pref("services.sync.tabs.lastSync", "0");
 user_pref("services.sync.tabs.lastSyncLocal", "0");
 user_pref("signon.importedFromSqlite", true);
+user_pref("toolkit.startup.last_success", 1522804273);
 user_pref("toolkit.telemetry.cachedClientID", "9a80c85e-fdfa-491e-9f0d-665f500f554a");
 user_pref("toolkit.telemetry.previousBuildID", "20180326230345");
-user_pref("toolkit.telemetry.reportingpolicy.firstRun", true);
+user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
