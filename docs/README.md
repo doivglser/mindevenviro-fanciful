@@ -6,7 +6,7 @@
 
 - Words =60648
 
-- Chars =246846
+- Chars =246848
 
 # . 
 
@@ -109,7 +109,7 @@
 	  	to search for the right MySQL syntax 
 	  	to add a "Joomla CMS" to localhost
 
-	  	to write a unix socket server, to handle http_headers 
+	  	to write an unix socket server, to handle http_headers 
 	  	reffering user-agent, and redirect to TOR.
 
 
