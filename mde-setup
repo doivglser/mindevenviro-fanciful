@@ -255,24 +255,19 @@ fi
 	chown -R $SUDO_USER:$SUDO_USER /etc/apache2/sites-available/000-default.conf ;
 
 	echo -e "\n ... settings for firefox-esr" ;
-	prefsfolder="$(find /home/$SUDO_USER/.mozilla/ -name "*.default")" ;
-	rm -fdR "$prefsfolder" ;
 
-	# if you delete it accidentally
-	if [[ "$prefsfolder" = "$empty" ]]
-then
+	rm -fdR /home/"$SUDO_USER"/.mozilla/firefox/*.default ;
 	mkdir -p /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default ;
 	chmod 700 /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default ;
 	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default ; 
-	prefsfolder="/home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default" ;
 	cp -f configs/profiles.ini /home/"$SUDO_USER"/.mozilla/firefox/ ;
 	chmod 600 /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
 	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
-	cp -f configs/prefs.js "$prefsfolder"/prefs.js ;
+	cp -f configs/prefs.js /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default/ ;
 	cp -f configs/duckduckgo.xml /usr/share/firefox-esr/distribution/searchplugins/common/ ;
-	chmod 600 "$prefsfolder"/* ;
-	chown $SUDO_USER:$SUDO_USER "$prefsfolder"/* ;
-fi
+	chmod 600 /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default/* ;
+	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default/* ;
+
 	echo -e "\n ... copy logoutvtwm" ;
 	cp -f configs/logoutvtwm /etc/X11/Xreset.d/ ;
 	chmod a+x /etc/X11/Xreset.d/logoutvtwm ;
