@@ -1,10 +1,8 @@
-<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/">
-<ShortName>duckduckgo</ShortName>
-<Description>duckduckgo Search</Description>
-<InputEncoding>UTF-8</InputEncoding>
-<Image width="16" height="16">data:image/x-icon;base64,[*redacted image code*]</Image>
-<Url type="text/html" method="GET" template="https://duckduckgo.com/?paramName1=paramValue1&amp;q={searchTerms}">
-</Url>
-<SearchForm>https://duckduckgo.com/</SearchForm>
+<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/" xmlns:os="http://a9.com/-/spec/opensearch/1.1/">
+<os:ShortName>DuckDuckGo-mindevenviro</os:ShortName>
+<os:Description>Encrypted DuckDuckGo with encrypted Google Suggest</os:Description>
+<os:InputEncoding>UTF-8</os:InputEncoding>
+<os:Image height="16" width="16" type="image/x-icon">https://duckduckgo.com/favicon.ico</os:Image>
+<os:Url type="text/html" method="GET" template="https://duckduckgo.com/?paramName1=paramValue1&amp;q={searchTerms}"/>
+<SearchForm>https://duckduckgo.com</SearchForm>
 </SearchPlugin>
-
