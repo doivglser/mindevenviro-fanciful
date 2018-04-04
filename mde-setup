@@ -268,7 +268,7 @@ then
 	cp -f configs/profiles.ini /home/"$SUDO_USER"/.mozilla/firefox/ ;
 	chmod 600 /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
 	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
-	cp -f configs/firefox-esr.js /etc/firefox-esr/firefox-esr.js ;
+	cp -f configs/prefs.js "$prefsfolder"/prefs.js ;
 	cp -f configs/duckduckgo.xml /usr/share/firefox-esr/distribution/searchplugins/common/ ;
 	chmod 600 "$prefsfolder"/* ;
 	chown $SUDO_USER:$SUDO_USER "$prefsfolder"/* ;
