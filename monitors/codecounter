@@ -1,12 +1,12 @@
 #!/bin/bash
 # mindevenviro codecounter
 # sets the actual lines, words and chars from all code in /home/$SUDO_USER/mindevenviro
-###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
-LANG="C" ;
+###     WARNING:    DON'T EDIT ANYTHING BELOW       ### 
+LANG="C" ; 
 	if [ $EUID = 0 ] && [[ "$(ps aux | grep -v grep | grep -v geany | grep -v nano | grep sCRYPtUPdater | awk '{print $2}' | wc -l) " -ge "1" ]] && [[ $(cat /home/ivo/mindevenviro/.git/logs/refs/remotes/origin/master | grep push) != '' ]] ;
 then
 	# CodeCounter
-	for i in $(find /home/$SUDO_USER/mindevenviro -type f | grep -vE '.git' | grep -vE 'pics|thirdparty|.sqlite'); 
+	for i in $(find /home/$SUDO_USER/mindevenviro -type f | grep -vE '.git' | grep -vE 'pics|thirdparty'); 
 do 
 	foreachwcl=$(cat "$i" | grep -vE '#' | tr -d '\b' | sed -e '/^\s*$/d' | wc -l) &&
 	let lines="$lines"+"$foreachwcl" &&

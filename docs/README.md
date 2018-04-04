@@ -1,12 +1,12 @@
 # M1ND3V3NV1R0 (testing)   
 
-		codecounter: code without blank lines and without comments
+		codecounter: code without blank lines, without comments and without thirdparty
 
 - Lines =4399
 
-- Words =60644
+- Words =60648
 
-- Chars =246813
+- Chars =246846
 
 # . 
 
