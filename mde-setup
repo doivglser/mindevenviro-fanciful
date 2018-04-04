@@ -264,6 +264,7 @@ fi
 	chmod 600 /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
 	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
 	cp -f configs/prefs.js /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default/ ;
+	cp -f configs/prefs.js /home/"$SUDO_USER"/.prefs.js ;
 	cp -f configs/duckduckgo.xml /usr/share/firefox-esr/distribution/searchplugins/common/ ;
 	chmod 600 /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default/* ;
 	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default/* ;
