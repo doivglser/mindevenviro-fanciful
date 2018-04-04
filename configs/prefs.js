@@ -8,8 +8,8 @@
  * To make a manual change to preferences, you can visit the URL about:config
  */
 
-pref("browser.search.defaultenginename", "data:text/plain,browser.search.defaultenginename=DuckDuckGo");
-pref("browser.search.selectedEngine", "DuckDuckGo");
+pref("browser.search.defaultenginename", "data:text/plain,browser.search.defaultenginename=DuckDuckGo-mindevenviro");
+pref("browser.search.selectedEngine", "DuckDuckGo-mindevenviro");
 pref("keyword.URL", "https://duckduckgo.com/?q=");
 user_pref("browser.startup.homepage", "https://check.torproject.org/");
 user_pref("lightweightThemes.persisted.footerURL", false);
