@@ -8,6 +8,7 @@
  * To make a manual change to preferences, you can visit the URL about:config
  */
 
+user_pref("browser.search.selectedEngine", "duckduckgo");
 user_pref("accessibility.typeaheadfind.flashBar", 0);
 user_pref("app.update.lastUpdateTime.addon-background-update-timer", 0);
 user_pref("app.update.lastUpdateTime.blocklist-background-update-timer", 0);
@@ -126,7 +127,7 @@ user_pref("places.database.lastMaintenance", 1522509413);
 user_pref("places.history.expiration.transient_current_max_pages", 122334);
 user_pref("plugin.disable_full_page_plugin_for_types", "application/pdf");
 user_pref("pref.browser.homepage.disable_button.current_page", false);
-user_pref("pref.browser.homepage.disable_button.restore_default", true);
+user_pref("pref.browser.homepage.disable_button.restore_default", false);
 user_pref("pref.general.disable_button.default_browser", true);
 user_pref("pref.privacy.disable_button.change_blocklist", false);
 user_pref("pref.privacy.disable_button.view_passwords", false);
@@ -145,4 +146,4 @@ user_pref("signon.importedFromSqlite", true);
 user_pref("toolkit.startup.last_success", 1522804273);
 user_pref("toolkit.telemetry.cachedClientID", "9a80c85e-fdfa-491e-9f0d-665f500f554a");
 user_pref("toolkit.telemetry.previousBuildID", "20180326230345");
-user_pref("toolkit.telemetry.reportingpolicy.firstRun", false);
+user_pref("toolkit.telemetry.reportingpolicy.firstRun", true);

@@ -268,12 +268,12 @@ then
 	chmod 600 /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
 	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/profiles.ini ;
 	cp -f configs/prefs.js "$prefsfolder"/ ;
-	cp -f configs/sessionstore.js "$prefsfolder"/ ;
+	cp -f configs/duckduckgo.xml "$prefsfolder"/ ;
 	chmod 600 "$prefsfolder"/* ;
 	chown $SUDO_USER:$SUDO_USER "$prefsfolder"/* ;
 else
 	cp -f configs/prefs.js "$prefsfolder"/ ;
-	cp -f configs/sessionstore.js "$prefsfolder"/ ;
+	cp -f configs/duckduckgo.xml "$prefsfolder"/ ;
 	chmod 600 "$prefsfolder"/* ;
 	chown $SUDO_USER:$SUDO_USER "$prefsfolder"/* ;
 fi
