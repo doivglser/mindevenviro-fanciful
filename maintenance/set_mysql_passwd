@@ -18,45 +18,40 @@ echo -e "Usage: $0 [--password] [password_value]\r";
 exit 0 ;
 }		
 
-stop_mysql(){
+stopmysql(){
+		killall -15 serv-if-up 2>/dev/null ;
+		
 		for tokill in $(ps aux | grep -v grep | grep -v set_mysql_passwd | grep mysql | awk '{print $2}') ;
 	do
-		sudo kill -15 "$tokill" 2>/dev/null
-	done
+		kill -9 "$tokill" 2>/dev/null ;
+	done;
+		for tokill in $(ps aux | grep -v grep | grep -v set_mysql_passwd | grep mysqld_safe | awk '{print $2}') ;
+	do
+		kill -9 "$tokill" 2>/dev/null ;
+	done;
 	}
 
 changepass(){
 		if	[[ "$mysqlnewpass" != '' ]] ;
 	then
-		echo -e "\n - stopping serv-if-up\n"
-		killall -15 serv-if-up ;
-		sleep 1 ;
-		stop_mysql ;
-		sleep 1 ;
-		killall -15 mysqld_safe ;
-		sleep 1
-		killall -9 mysqld_safe ;
-		sleep 1 ;
+		stopmysql ;
 		echo "starting mysql to maintenance" ;
-		sudo mysqld_safe --skip-grant-tables &
-		sleep 4 ;
+		mysqld_safe --skip-grant-tables &
+		sleep 3 ;
 		$mysqlconn -e "use mysql; update mysql.user set password=password('$mysqlnewpass') where user='root';"
-		$mysqlconn -e "use mysql; update mysql.user set plugin='' where user='root';"
 		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;"
-		stop_mysql ;
-		echo -e "\n ... update mysql root passwords" ;
-		sleep 2 ;
+		killall -9 mysqld_safe && wait ; 
+		echo "... update mysql root passwords" ;
 		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf;
-		sed -i "s/\(plugin_password *= *\).*/\1/" /etc/mysql_cp_db_password.conf;
+		echo "starting mysql and serv-if-up";
 		/etc/init.d/mysql start;
-		echo -e "\n - stopping serv-if-up\n";
 		nice -14 setsid serv-if-up >/dev/null 2> /dev/null &
-		echo " done !" ;
-		exit 0 ;
+		echo "done!";
+		exit 0;
 	else
-		echo "you must enter a password" ;
-		echo "USAGE: $0 --help" ;
-		exit 0
+		echo "you must enter a password";
+		echo "USAGE: $0 --help";
+		exit 0;
 fi
 }
 
