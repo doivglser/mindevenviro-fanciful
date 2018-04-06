@@ -2,11 +2,6 @@
 # startup file in /usr/local/bin for .twmrc
 LANG="C" && hi &  
 
-		if [[ ! $(netstat -ar) =~ 'default' ]] ;
-	then
-		xmessage -center -buttons Ok:0 -default Ok -nearmouse "open first "shi3lD" from the menu" -timeout 7 &
-		exit 0 ; 
-else
                 if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_playonlinux | grep playonlinux) = '' ]] ;
         then
                 playonlinux &
@@ -14,5 +9,3 @@ else
         else
                 exit 0 ;
 fi
-fi
-
