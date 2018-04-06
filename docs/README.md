@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines, without comments and without thirdparty
 
-- Lines =4410
+- Lines =4416
 
-- Words =60682
+- Words =60700
 
-- Chars =247878
+- Chars =248192
 
 # . 
 
@@ -33,6 +33,9 @@
 			they use a world wide bench of resources, to track you.
 
 ![bild55](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_six.jpg)
+
+* A little workspace, sufficient.
+![bild44](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_seven.jpg)
 
 # M1ND3V3NV1R0
 
