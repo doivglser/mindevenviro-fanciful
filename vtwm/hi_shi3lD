@@ -13,18 +13,18 @@ LANG="C" && hi &
 		then
 				gksudo -gm shi3lD "$0";
 		else
-                xterm -title shi3lD -fg green -geometry 80x15+20-20 -e shi3lD &
+                xterm -title shi3lD-monitor -fg green -geometry 80x15+20-20 -e shi3lD &
                 sleep 2 ;
-                sudo -u "$SUDO_USER" transset --name shi3lD .7 ;
+                sudo -u "$SUDO_USER" transset --name shi3lD-monitor .7;
 
 	                if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_shi3lD | grep redundanz) = '' ]] ;
         then
-				xterm -title redundanz -fg green -geometry 110x15+507-20 -e redundanz --monitor &
+				xterm -title redundanz-monitor -fg green -geometry 110x15+507-20 -e redundanz --monitor &
 				sleep 2 ;
-				sudo -u "$SUDO_USER" transset --name redundanz .7
-                exit 0 ;
+				sudo -u "$SUDO_USER" transset --name redundanz-monitor .7;
+                exit 0;
         else
-				exit 0 ; 
+				exit 0; 
 		fi
 fi
 		else
