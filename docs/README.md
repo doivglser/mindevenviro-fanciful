@@ -85,11 +85,11 @@
 	- I WILL TRY TO DO THE SIMPLE WAY TO CIPHER THE TEXT AS I 
 	  WROTE, AND APPLY OTHER TECNICHES TO DECRYPT THE MESSAGE.
 	  
-	  I try to write a "nICE_Encryption -l a $3" script, 
+	  I try to write a " nICE_Encryption -le a $3 " script, 
 	  
 	  + where "$1" is:
 	  
-	  -le letter, -n number, -u upper case, -lo lower case, -s space.
+	  -le letter, -n number, -u upper case, -lo lower case, -s space. FLAG
 	  
 	  + And "$2" is:
 	  
@@ -98,6 +98,9 @@
 	  + And "$3" is:
 	  
 	  $3=$SpamCodeSegment ;
+	  
+	  The recipient recieves a Picture, that illustrates, segments of pictures 
+	  that correspond to the "Email Code Snippets" from the "image matching key".
 
 * mindevenviro
 
