@@ -14,7 +14,7 @@ my $ua = LWP::UserAgent->new(
 print "\n  ~ Tor Connection Work !\n\n";
 
 for (;;) {  
-$ua->proxy([qw/ http https /] => 'socks://127.0.0.1:9150'); # Tor browser socks
+$ua->proxy([qw/ http https /] => 'socks://127.0.0.1:9040'); # Tor browser socks (MODIFIED TESTING doivglser)
 my $rsp = $ua->get('http://mon-ip.fr/')->content;
 if($rsp =~ m/<h1 style=\"font-size:38px;font-family:Arial;color:white;margin:0px;margin-left:57px\">(.*?)<\/h1>/g) {
  
