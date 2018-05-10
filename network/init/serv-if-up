@@ -1,9 +1,13 @@
 #!/bin/bash
 # mindevenviro serv-if-up
 # serv-if-up (daemon) : restarts servers and notify
+
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
 LANG="C";
 readonly empty='';
+readonly empty02='';
+
 		if [[ "$EUID" != "0" ]] || [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep redundanz | cut -f2 -d\ ) " = "$empty" ]] ;
 	then
 		echo "Hi $USER, this script restart servers and notify if error and or success" ;
@@ -27,7 +31,6 @@ webserver="apache2" ;
 datenbank="mysql" ;
 mta="sendmail" ;
 mailer="sendmail" ;
-empty02='' ;
 noHome="No Home Partition on this computer" ;
 WARN01="80" ;
 WARN02="85" ;
