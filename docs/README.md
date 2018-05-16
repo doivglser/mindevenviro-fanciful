@@ -29,8 +29,9 @@
 
 * Testing TOR: I'm not sure, but if you search a video with duckduckgo, says google: YouTube (owned by Google) does not let you watch videos anonymously. As such, watching YouTube videos here will be tracked by YouTube/Google.
 
- 			... then the others are fair enought to warn you, bevor 
- 			they use a world wide bench of resources, to track you.
+ 			... then the others are fair enought to warn you, 
+			bevor they use a world wide bench of resources, to track you.
+
 ![bild55](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_six.jpg)
 
 * A little workspace, sufficient.
