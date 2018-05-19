@@ -1,4 +1,4 @@
-# M1ND3V3NV1R0 (testing)   
+# M1ND3V3NV1R0 (testing v0.1.1B)
 
 		codecounter: code without blank lines, without comments and without thirdparty
 
@@ -37,7 +37,7 @@
 * A little workspace, sufficient.
 ![bild44](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_seven.jpg)
 
-# M1ND3V3NV1R0
+# M1ND3V3NV1R0 (testing v0.1.1B)
 
 	 Deployment environment for web applications and 
 	 system administration, in a minimal desktop with 
