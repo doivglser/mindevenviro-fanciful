@@ -47,7 +47,7 @@
 
 # TODO:
 
-* "![Cont-Sec](https://github.com/doivglser/mindevenviro/projects)" Secure-Email-Solution
+## "![Cont-Sec](https://github.com/doivglser/mindevenviro/projects)" Secure-Email-Solution
 
 		....mber. After writing the  message, "Cont-Sec" applies a special cipher 
 		for each letter and number corresponding to the "Email Code Snippets" that match 
@@ -79,8 +79,8 @@
 	  The recipient recieves a Picture, that illustrates, segments of pictures 
 	  that correspond to the "Email Code Snippets" from the "image matching key".
 
-* mindevenviro
 
+## mindevenviro
 
 	  	portability to: Debian, Fedora, CentOS, and MacOS
 	  	to write without exclude codes from shellcheck
@@ -94,9 +94,9 @@
 	  	to write an unix socket server, to handle http_headers 
 	  	reffering user-agent, and redirect to TOR.
 
-
 	  	to implement "Cont-Sec" to mindevenviro
 
+# PROBLEMS:
 
 * sCRYPtUPdater
 
@@ -109,13 +109,6 @@
 	  "exit handler", if $REPLY from "exit handler" is = "n", 
 	    reset workflow interval, if $REPLY 
 	      from "exit handler" is = "y" exit.
-
-* shi3lD
-
-  	to change the user-agent, if 
-	  "netstat -ar | grep default", is true.
-
-# PROBLEMS:
 
 * for the moment shi3lD works only for WiFi Interfaces.
 
