@@ -48,7 +48,7 @@
 
 - Antivirus engine ClamAV and NIDS solution Snort.
 
-- Checks syntax with "python -m pgb", "perl -wc", "shellcheck -e", "php -l" and "tidy -e -q".
+- Syntaxcheck: "python -m pgb | perl -wc | shellcheck -e | php -l | tidy -e -q".
 
 - Changes MAC's, to obtain a new IP, by quit reverts the connected interface, to vendor's MAC.
 
@@ -79,6 +79,7 @@
 		Your "image matching key", made in consultation with a fr....
 
 		SpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<\title\>\<style"
+
 	a=$(nICE_Encryption -l a $SpamCodeSegment)
 	echo $a
 	$1$2cURl/G9$u7fHYYfdry0F8ZHpMf8/8/
@@ -506,7 +507,7 @@
 
 * https://github.com/doivglser/min-dev-enviro/projects 
 
-# Thank's google 
+# Thank's:
 
 ![LPIC-1](https://www.theurbanpenguin.com/wp-content/uploads/2016/08/LPIC-1-Medium.png)
 ![Bash](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Gnu-bash-logo.svg/245px-Gnu-bash-logo.svg.png)
