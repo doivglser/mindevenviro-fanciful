@@ -1,6 +1,6 @@
 # M1ND3V3NV1R0 (testing v0.1.1B)
 
-		codecounter: code without blank lines, without comments and without thirdparty
+		codecounter: code without blank lines, without comments and without thirdparty (not yet updated)
 
 - Lines =4404
 
