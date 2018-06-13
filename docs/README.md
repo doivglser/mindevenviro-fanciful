@@ -96,19 +96,25 @@
 
 	  	to implement "Cont-Sec" to mindevenviro
 
+## sCRYPtUPdater
+
+  	To search for brackets and braces, to split the 
+	  content of the source code into short code snippets.
+	
+  	To refer to the "exit handler"If the 
+	 workflow interval in minutes is over
+	  if $REPLY from "exit handler" is = "n", 
+	    reset workflow interval, if $REPLY 
+	      from "exit handler" is = "y" exit.
+
 # PROBLEMS:
 
 * sCRYPtUPdater
 
-  	To search for brackets and braces, to split the 
-	  content of the source code into short code snippets.
-	    Make sure you change more than 1 byte, so if you 
-	      only change one character, then please add a space.
+      Make sure you change more than 1 byte, so if you 
+       only change one character, then please add a space.
   
-  	If the workflow interval in minutes is over, refer to the 
-	  "exit handler", if $REPLY from "exit handler" is = "n", 
-	    reset workflow interval, if $REPLY 
-	      from "exit handler" is = "y" exit.
+        If interval in minutes is over, Ctrl-C to exit.
 
 * for the moment shi3lD works only for WiFi Interfaces.
 
