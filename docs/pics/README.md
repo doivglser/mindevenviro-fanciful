@@ -1,0 +1,8 @@
+![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/title.png)
+![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_one.jpg)
+![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_two.jpg)
+![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_three.jpg)
+![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_five.jpg)
+![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_six.jpg)
+![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_seven.jpg)
+![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/footer.png)
