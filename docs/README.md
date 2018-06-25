@@ -10,7 +10,9 @@
 
 # . 
 
-![bild033](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_four.jpg)
+![](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_four.jpg)
+
+## ![SCREENSHOTS](https://github.com/doivglser/mindevenviro/blob/master/docs/pics/index.md)
 
 # M1ND3V3NV1R0 (testing v0.1.1B)
 
