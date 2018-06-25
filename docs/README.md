@@ -109,6 +109,10 @@
 
 # PROBLEMS:
 
+* search
+
+      I don't remember, I have no computer to update.
+
 * sCRYPtUPdater
 
       Make sure you change more than 1 byte, so if you 
@@ -199,9 +203,9 @@
 
 "F1 on the desktop" * quit's VTWM (refers to logout)
 
-"grenn button left corner on title-bar" * iconize window
+"green button left corner on title-bar" * iconize window
 
-"grenn button right corner on title-bar" * resize window
+"green button right corner on title-bar" * resize window
 
 "Right click on the Desktop" * Change Background
   
