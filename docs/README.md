@@ -84,7 +84,7 @@
 
 ## mindevenviro
 
-	  	portability to: Debian, Fedora, CentOS, and MacOS
+	  	portability to: Debian, CentOS, and MacOS
 	  	to write without exclude codes from shellcheck
 	  	"iptables psad fwsnort": tcp-wrapper
 	  	to implement "logger" "pipestatus" "ncurses" "GUI's"
@@ -145,7 +145,7 @@
 
 - A screen resolution of at least: 1280x800
 
-- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for Fedora, CentOS and MacOSX)
+- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS and MacOSX)
 - Choose netinst CD image, and burn it on a blank CD-R.
 - Debian 9 GNU/Linux Stretch: (https://www.debian.org/releases/stretch/debian-installer)
 
