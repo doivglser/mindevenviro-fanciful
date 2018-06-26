@@ -61,14 +61,14 @@
 	echo $a
 	$1$2cURl/G9$u7fHYYfdry0F8ZHpMf8/8/
 	
-	- I WILL TRY TO DO THE SIMPLE WAY TO CIPHER THE TEXT AS I 
-	  WROTE, AND APPLY OTHER TECNICHES TO DECRYPT THE MESSAGE.
+	- I WILL TRY TO DO THE SIMPLE WAY TO CIPHER THE TEXT AS I WROTE,
+          AND APPLY OTHER TECHNIQUES TO DECRYPT THE MESSAGE.
 	  
 	  I try to write a " nICE_Encryption -le a $3 " script, 
 	  
 	  + where "$1" is:
 	  
-	  -le letter, -n number, -u upper case, -lo lower case, -s space. FLAG
+	  FLAGS: -le letter, -n number, -u upper case, -lo lower case, -s space
 	  
 	  + And "$2" is:
 	  
