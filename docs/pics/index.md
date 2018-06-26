@@ -1,7 +1,6 @@
 ![](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/footer.png)
 ![](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_one.jpg)
 ![](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_two.jpg)
-![](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_three.jpg)
 ![](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_five.jpg)
 ![](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_six.jpg)
 ![](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_seven.jpg)
