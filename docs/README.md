@@ -100,7 +100,7 @@
 
 ## sCRYPtUPdater
 
-                To search for brackets and braces, to split the 
+		To search for brackets and braces, to split the 
 		content of the source code into short code snippets.
 		To refer to the "exit handler"If the 
 		workflow interval in minutes is over
