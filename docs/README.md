@@ -100,14 +100,14 @@
 
 ## sCRYPtUPdater
 
-  	To search for brackets and braces, to split the 
+  	  To search for brackets and braces, to split the 
 	  content of the source code into short code snippets.
-	
-  	To refer to the "exit handler"If the 
-	 workflow interval in minutes is over
+
+  	  To refer to the "exit handler"If the 
+	  workflow interval in minutes is over
 	  if $REPLY from "exit handler" is = "n", 
-	    reset workflow interval, if $REPLY 
-	      from "exit handler" is = "y" exit.
+	  reset workflow interval, if $REPLY 
+	  from "exit handler" is = "y" exit.
 
 # PROBLEMS:
 
