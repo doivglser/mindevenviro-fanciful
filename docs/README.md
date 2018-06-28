@@ -121,25 +121,26 @@
 
 * sCRYPtUPdater
 
-       Make sure you change more than 1 byte, so if you 
-       only change one character, then please add a space.
+		Make sure you change more than 1 byte, so if you 
+		only change one character, then please add a space.
   
-       If interval in minutes is over, Ctrl-C to exit.
+		If interval in minutes is over, Ctrl-C to exit.
 
 * for the moment shi3lD works only for WiFi Interfaces.
+
+		no workaround to install wifi firmware. 
+		(I recommend a dd-wrt router as client over ethernet)
 
 		"interface" shi3lD have an option to choose 
 		between Ifaces, that option must be automated.
 		interface="$(cat "$tmpfolder"/interface)" ;
 
-* no workaround to install wifi firmware. (I recommend a dd-wrt router as client over ethernet)
-
 * while installing:
 
-	  while installing snort: debconf asks for 
-	    interface eth0 no workaround for "eno[0-9]" 
-	      interfaces. Take a look in to "ip route show" and 
-	       "sudo dpkg --configure -a" with the name of your interface.
+		while installing snort: debconf asks for 
+		interface eth0 no workaround for "eno[0-9]" 
+		interfaces. Take a look in to "ip route show" and 
+		"sudo dpkg --configure -a" with the name of your interface.
 
 # Requirements:
 
