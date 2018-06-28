@@ -100,14 +100,13 @@
 
 ## sCRYPtUPdater
 
-  	  To search for brackets and braces, to split the 
-	  content of the source code into short code snippets.
-
-  	  To refer to the "exit handler"If the 
-	  workflow interval in minutes is over
-	  if $REPLY from "exit handler" is = "n", 
-	  reset workflow interval, if $REPLY 
-	  from "exit handler" is = "y" exit.
+                To search for brackets and braces, to split the 
+		content of the source code into short code snippets.
+		To refer to the "exit handler"If the 
+		workflow interval in minutes is over
+		if $REPLY from "exit handler" is = "n", 
+		reset workflow interval, if $REPLY 
+		from "exit handler" is = "y" exit.
 
 # PROBLEMS:
 
@@ -122,15 +121,15 @@
 
 * sCRYPtUPdater
 
-      Make sure you change more than 1 byte, so if you 
+       Make sure you change more than 1 byte, so if you 
        only change one character, then please add a space.
   
-        If interval in minutes is over, Ctrl-C to exit.
+       If interval in minutes is over, Ctrl-C to exit.
 
 * for the moment shi3lD works only for WiFi Interfaces.
 
-* "interface" shi3lD have an option to choose between Ifaces, that option must be automated.
-
+		"interface" shi3lD have an option to choose 
+		between Ifaces, that option must be automated.
 		interface="$(cat "$tmpfolder"/interface)" ;
 
 * no workaround to install wifi firmware. (I recommend a dd-wrt router as client over ethernet)
