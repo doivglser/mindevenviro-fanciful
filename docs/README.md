@@ -1,4 +1,4 @@
-# M1ND3V3NV1R0 (testing v0.1.1B)
+# M1ND3V3NV1R0 DevOps (testing v0.1.1B)
 
 		codecounter: code without blank lines, without comments and without thirdparty (not yet updated)
 
@@ -14,7 +14,7 @@
 
 ## ![SCREENSHOTS](https://github.com/doivglser/mindevenviro/blob/master/docs/pics/index.md)
 
-# M1ND3V3NV1R0 (testing v0.1.1B)
+# M1ND3V3NV1R0 DevOps (testing v0.1.1B)
 
 	 Deployment environment for web applications and 
 	 system administration, in a minimal desktop with 
