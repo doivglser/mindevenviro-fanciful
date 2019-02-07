@@ -21,6 +21,8 @@
 	 antivirus, NIDS and a great multimedia experience, 
 	 without systemd and with TOR. (for one "$USER").
 
+* Soon for CentOS, MacOSX and Windows
+
 - VTWM minimal tweak, Xorg session with xdm.
 
 - Antivirus engine ClamAV and NIDS solution Snort.
