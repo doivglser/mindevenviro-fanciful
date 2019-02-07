@@ -148,7 +148,7 @@
 
 - A screen resolution of at least: 1280x800
 
-- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS and MacOSX and Windows)
+- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS, MacOSX and Windows)
 - Choose netinst CD image, and burn it on a blank CD-R.
 - Debian 9 GNU/Linux Stretch: (https://www.debian.org/releases/stretch/debian-installer)
 
