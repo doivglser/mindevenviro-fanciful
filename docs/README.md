@@ -148,7 +148,7 @@
 
 - A screen resolution of at least: 1280x800
 
-- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS and MacOSX)
+- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS and MacOSX and Windows)
 - Choose netinst CD image, and burn it on a blank CD-R.
 - Debian 9 GNU/Linux Stretch: (https://www.debian.org/releases/stretch/debian-installer)
 
@@ -165,7 +165,13 @@
 
 # Install
 
-* "user@host:~/mindevenviro$ sudo mde-setup"
+* After base-install, "user@host:~sudo apt-get -y -f --fix-missing install git"
+
+* "user@host:~git clone git@github.com:doivglser/mindevenviro-debian.git"
+
+* "cd mindevenviro-debian" 
+
+* "user@host:~/mindevenviro-debian/sudo mde-setup"
 
   Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
   
@@ -196,13 +202,16 @@
 
 * running "mde-setup" 
 
-  Sometimes debian has updates, read the stdout please, if you need a restart, 
+  Sometimes debian has updates, read the stdout please, sometimes it needs a restart. 
   
-  or you can aprove to login in to your github.com account, than just hit enter, 
+  You can aprove to login in to your github.com account, or just hit enter. 
   
-  for new install, for an update AND OR, to upgrade the system. The apt-get 
+  Use "mde-setup" from the "mindevenviro-debian" folder, for a new install, 
+  
+  for an update AND OR, to upgrade the system. The apt-get 
   
   package manager is marked to, not install systemd related packages.
+  
 
 # USAGE On VTWM:
 
