@@ -2,38 +2,38 @@
 
 # mindevenviro "mde-setup" (install script; "mind eve n viro" SETUP)
 
-#    		working version: 			March 2018 ZH. 
+# working version:			March 2018 ZH. 
 #
-# 			migration from OSX:			I had March 2017, a mid. 2012 Powerbook Pro with HomeBrew, 
-#                               		clamd, snort, nmap-monitoring, a MAC changer for all interfaces 
-#                               		and a syntax-editor, writen in shell (bash).
-#										I had many other scripts I haven't updated into my github account,
-#										but "sCRYPtUPdater" & "mindevenviro" = (minimal deployment environment)
+# migration from OSX:		I had March 2017, a mid. 2012 Powerbook Pro with HomeBrew, 
+#							clamd, snort, nmap-monitoring, a MAC changer for all interfaces 
+#							and a syntax-editor, writen in shell (bash).
+#							I had many other scripts I haven't updated into my github account,
+#							but "sCRYPtUPdater" & "mindevenviro" = (minimal deployment environment)
 #
-#			Readings:					LPI Linux certification in a nutshell (English)
-#										LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute (German)
+# Readings:					LPI Linux certification in a nutshell (English)
+#							LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute (German)
 #
-#			Certs:						LPIC-1 Test 1, in the Migros Club Schule Basel, PearsonVUE (Oct. 2014)
-#										LPIC-1 Test 2, in Lima Peru ISIL Campus San Isidro, PearsonVUE (Sept. 2016)
-#										Certification is valid until Sept. 2021.
-# Locations:
+# Certs:					LPIC-1 Test 1, in the Migros Club Schule Basel, PearsonVUE (Oct. 2014)
+#							LPIC-1 Test 2, in Lima Peru ISIL Campus San Isidro, PearsonVUE (Sept. 2016)
+#							Certification is valid until Sept. 2021.
+#			::Locations::
 #
-#			HZ Peru:					Kamin, Suppe, Brot, Tabak, 3.5 CHF pro Tag Job (2016)
+# HZ Peru:					Kamin, Suppe, Brot, Tabak, 3.5 CHF pro Tag Job (2016)
 #
-#			BS Schweiz:     			I thought about the wohle year... (2017)
+# BS Schweiz:				I thought about the wohle year... (2017)
 #
-#			* STORY LM Peru:        	I wasted mindevenviro away, in October 2017. 
-#										I had some special encodings, like a code from 
-#										outer space in the Putty interface. After entering 
-#										"Reset" in the console, the alien code persists, 
-#										until the SSH connection, has been disconnected from 
-#										myne Windows machine. The Linuxzoo server in the UK 
-#										where closed to me. The web link from Facebook to 
-#										the Linuxzoo server where blocked by Facebook.
+# * STORY LM Peru:			I wasted mindevenviro away, in October 2017. 
+#							I had some special encodings, like a code from 
+#							outer space in the Putty interface. After entering 
+#							"Reset" in the console, the alien code persists, 
+#							until the SSH connection, has been disconnected from 
+#							myne Windows machine. The Linuxzoo server in the UK 
+#							where closed to me. The web link from Facebook to 
+#							the Linuxzoo server where blocked by Facebook. No Sumerians appear.
 #
-#			ZH CH:						They have Wifi and NIC, and now it is, "mind eve n viro" March 2018, 
+# ZH CH:					They have Wifi and NIC, and now it is, "mind eve n viro" March 2018, 
 #
-#			Thank's:					"Pinehead.tv Linux Academy", "Fernschule Weber DE", "REVAMP-IT in ZH CH" "Brothuuse ZH".
+# Thank's:					"Pinehead.tv Linux Academy", "Fernschule Weber DE", "REVAMP-IT in ZH CH", "Brothuuse ZH", my Tablet.
 
 ###    WARNING: DON'T EDIT ANYTHING BELOW !!!    ###
 
@@ -41,7 +41,7 @@ LANG="C";
 
 myPrograms="brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader mercurial libpurple-dev libpurple0 libjson-glib-dev pidgin xul-ext-noscript xul-ext-https-everywhere xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver wireshark vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg openvpn zip rar openssl nmap clamav-freshclam clamav-milter clamav-testfiles clamdscan clamassassin clamav clamav-base clamav-daemon php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 libmariadbclient-dev-compat default-libmysqlclient-dev mariadb-client mariadb-common mariadb-server sendmail python-gtk2-dbg shellcheck liblwp-protocol-socks-perl libcgi-pm-perl perl nmon figlet mc mutt eject nano pm-utils fancontrol thermald laptop-mode-tools cpufrequtils sysvinit-core wicd " ;
 
-environinstall="monitors/codecounter monitors/logdiskussage monitors/connected network/iptablestranspprox network/server-monitor network/redundanz network/shi3lD network/init/start_shield network/init/stop_shield network/init/nids-antivirus-up network/init/serv-if-up edit/search edit/openpdf edit/sCRYPtUPdater vtwm/feh-bg vtwm/hi vtwm/hi_cheese vtwm/hi_brutalchess vtwm/hi_libreoffice vtwm/hi_geany vtwm/hi_gimp vtwm/hi_transmission-gtk vtwm/hi_firefox-esr vtwm/hi_playonlinux vtwm/hi_vlc vtwm/hi_wicd-client vtwm/hi_xcalc vtwm/hi_shi3lD vtwm/hi_pidgin vtwm/hi_dwecker vtwm/hi_wireshark vtwm/dwecker vtwm/takeshot maintenance/mysql_cp_db maintenance/set_mysql_passwd thirdparty/tor__(test_tor_connexion).pl mde-setup " ;
+environinstall="monitors/codecounter monitors/logdiskussage monitors/connected network/iptablestranspprox network/server-monitor network/redundanz network/shi3lD network/init/start_shield network/init/stop_shield network/init/nids-antivirus-up network/init/serv-if-up edit/search edit/openpdf edit/sCRYPtUPdater vtwm/feh-bg vtwm/hi vtwm/hi_cheese vtwm/hi_brutalchess vtwm/hi_terminator vtwm/hi_libreoffice vtwm/hi_geany vtwm/hi_gimp vtwm/hi_transmission-gtk vtwm/hi_firefox-esr vtwm/hi_playonlinux vtwm/hi_vlc vtwm/hi_wicd-client vtwm/hi_xcalc vtwm/hi_shi3lD vtwm/hi_pidgin vtwm/hi_dwecker vtwm/hi_wireshark vtwm/dwecker vtwm/takeshot maintenance/mysql_cp_db maintenance/set_mysql_passwd thirdparty/tor__(test_tor_connexion).pl mde-setup " ;
 
 restarting="6";
 
@@ -235,21 +235,21 @@ done
 
 ### 	remove systemd
 
-		if [[ $(dpkg -l | awk '{print $2}' | sed -n '/systemd/p') =~ "systemd:"|"libsystemd0:" ]] ;
+		if [[ $(dpkg -l | awk '{print $2}' | sed -n '/systemd/p') =~ systemd|libsystemd0: ]] ;
 	then
-		if [[ "$(dpkg -l | grep systemd | awk '{print $2}')" =~ systemd:i386 ]] ;
+		if [[ "$(dpkg -l | grep systemd | awk '{print $2}')" =~ systemd:i386|libsystemd0:i386|systemd ]] ;
 	then
 		arch="i386" ;
 		echo -e "\nremove odd characters\r";
-		apt-get -f -m -y remove --purge --auto-remove systemd:$arch ;
+		apt-get -f -m -y remove --purge --auto-remove systemd* ;
 		echo -e "\nupdate hwdb --usr\r";
 		sudo systemd-hwdb --usr update
 
-		elif [[ "$(dpkg -l | grep systemd | awk '{print $2}')" =~ systemd:amd64 ]] ;
+		elif [[ "$(dpkg -l | grep systemd | awk '{print $2}')" =~ systemd:amd64|libsystemd0:amd64|systemd ]] ;
 	then
 		arch="amd64" ;
 		echo -e "\nremove odd characters\r";
-		apt-get -f -m -y remove --purge --auto-remove systemd:$arch ;
+		apt-get -f -m -y remove --purge --auto-remove systemd* ;
 		echo -e "\nupdate hwdb --usr\r";
 		sudo systemd-hwdb --usr update
 	else
