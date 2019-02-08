@@ -1,45 +1,44 @@
 #!/bin/bash
 
 # mindevenviro "mde-setup" (install script; "mind eve n viro" SETUP)
-#
-# working version: 		March 2018 ZH. 
+
+#    working version: 			March 2018 ZH. 
 #
 # migration from OSX:           I had March 2017, a mid. 2012 Powerbook Pro with HomeBrew, 
 #                               clamd, snort, nmap-monitoring, a MAC changer for all interfaces 
 #                               and a syntax-editor, writen in shell (bash).
-#				I had many other scripts I haven't updated into my github account,
-#				but "sCRYPtUPdater" & "mindevenviro" = (minimal deployment environment)
+#								I had many other scripts I haven't updated into my github account,
+#								but "sCRYPtUPdater" & "mindevenviro" = (minimal deployment environment)
 #
-#			Readings:	LPI Linux certification in a nutshell (English)
-#					LPIC-1: Vorbereitung auf die Pruefung des 
-#                                       Linux Professional Institute (German)
+#			Readings:			LPI Linux certification in a nutshell (English)
+#								LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute (German)
 #
-#			Certs:		LPIC-1 Test 1, in the Migros Club Schule Basel, PearsonVUE (Oct. 2014)
-#					LPIC-1 Test 2, in Lima Peru ISIL Campus San Isidro, PearsonVUE (Sept. 2016)
-#					Ceritfication is valid until Sept. 2021.
+#			   Certs:			LPIC-1 Test 1, in the Migros Club Schule Basel, PearsonVUE (Oct. 2014)
+#								LPIC-1 Test 2, in Lima Peru ISIL Campus San Isidro, PearsonVUE (Sept. 2016)
+#								Certification is valid until Sept. 2021.
 # Locations:
-#			HZ Peru:	Kamin, Suppe, Brot, Tabak, 3.5 CHF pro Tag Job (2016)
+#			 HZ Peru:			Kamin, Suppe, Brot, Tabak, 3.5 CHF pro Tag Job (2016)
 #
-#			BS Schweiz:     I thought about the wohle year... (2017)
+#		  BS Schweiz:     		I thought about the wohle year... (2017)
 #
-#     ::  STORY  ::     LM Peru:        I wasted mindevenviro away, in October 2017. 
-#                                       I had some special encodings, like a code from 
-#                                       outer space in the Putty interface. After entering 
-#                                       "Reset" in the console, the alien code persists, 
-#                                       until the SSH connection, has been disconnected from 
-#                                       myne Windows machine. The Linuxzoo server in the UK 
-#                                       where closed to me. The web link from Facebook to 
-#                                       the Linuxzoo server where blocked by Facebook.
+#    * STORY LM Peru:        	I wasted mindevenviro away, in October 2017. 
+#								I had some special encodings, like a code from 
+#								outer space in the Putty interface. After entering 
+#								"Reset" in the console, the alien code persists, 
+#								until the SSH connection, has been disconnected from 
+#								myne Windows machine. The Linuxzoo server in the UK 
+#								where closed to me. The web link from Facebook to 
+#								the Linuxzoo server where blocked by Facebook.
 #
-#			ZH CH:          They have Wifi and NIC, and now it is, "mind eve n viro" March 2018, 
+#			   ZH CH:			They have Wifi and NIC, and now it is, "mind eve n viro" March 2018, 
 #
-#			Thank's:        "Pinehead.tv Linux Academy", "Fernschule Weber DE", "REVAMP-IT in ZH CH" "Brothuuse ZH".
+#			 Thank's:			"Pinehead.tv Linux Academy", "Fernschule Weber DE", "REVAMP-IT in ZH CH" "Brothuuse ZH".
 
 ###    WARNING: DON'T EDIT ANYTHING BELOW !!!    ###
 
 LANG="C";
 
-myPrograms="wicd brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader mercurial libpurple-dev libpurple0 libjson-glib-dev pidgin xul-ext-noscript xul-ext-https-everywhere xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver wireshark vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg openvpn zip rar openssl nmap clamav-freshclam clamav-milter clamav-testfiles clamdscan clamassassin clamav clamav-base clamav-daemon php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 libmariadbclient-dev-compat default-libmysqlclient-dev mariadb-client mariadb-common mariadb-server sendmail python-gtk2-dbg shellcheck liblwp-protocol-socks-perl libcgi-pm-perl perl nmon figlet mc mutt eject nano pm-utils fancontrol thermald laptop-mode-tools cpufrequtils sysvinit-core " ;
+myPrograms="brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader mercurial libpurple-dev libpurple0 libjson-glib-dev pidgin xul-ext-noscript xul-ext-https-everywhere xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver wireshark vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg openvpn zip rar openssl nmap clamav-freshclam clamav-milter clamav-testfiles clamdscan clamassassin clamav clamav-base clamav-daemon php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 libmariadbclient-dev-compat default-libmysqlclient-dev mariadb-client mariadb-common mariadb-server sendmail python-gtk2-dbg shellcheck liblwp-protocol-socks-perl libcgi-pm-perl perl nmon figlet mc mutt eject nano pm-utils fancontrol thermald laptop-mode-tools cpufrequtils sysvinit-core wicd " ;
 
 environinstall="monitors/codecounter monitors/logdiskussage monitors/connected network/iptablestranspprox network/server-monitor network/redundanz network/shi3lD network/init/start_shield network/init/stop_shield network/init/nids-antivirus-up network/init/serv-if-up edit/search edit/openpdf edit/sCRYPtUPdater vtwm/feh-bg vtwm/hi vtwm/hi_cheese vtwm/hi_brutalchess vtwm/hi_libreoffice vtwm/hi_geany vtwm/hi_gimp vtwm/hi_transmission-gtk vtwm/hi_firefox-esr vtwm/hi_playonlinux vtwm/hi_vlc vtwm/hi_wicd-client vtwm/hi_xcalc vtwm/hi_shi3lD vtwm/hi_pidgin vtwm/hi_dwecker vtwm/hi_wireshark vtwm/dwecker vtwm/takeshot maintenance/mysql_cp_db maintenance/set_mysql_passwd thirdparty/tor__(test_tor_connexion).pl mde-setup " ;
 
@@ -49,7 +48,7 @@ readonly empty='';
 
 		if [ ! $EUID = 0 ];
 	then
-		echo "USAGE: sudo mde-setup"
+		echo "USAGE: sudo mde-setup, don't run as root!"
 		exit 0 ;
 else
 		# tmp folder
@@ -84,7 +83,7 @@ fi
 
 		while [[ "$nNuM1" != "0" ]] ;
 	do
-		clear ;
+		echo ".";
 		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;
 		fFILE=$(basename $toCopyPath) ;
 		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$fFILE" ;
@@ -200,7 +199,7 @@ fi
 	else
 		if [[ "$toInst" = "sysvinit-core" ]] ;
 	then
-		# change the physiology to original
+		echo -e "\rchange the physiology to original\n" ;
 		apt-get -f -m -y --allow-change-held-packages install "$toInst" | tee -a "/home/$SUDO_USER/.installed" ;
 		wait ;
 		sleep 1 ;
@@ -209,7 +208,7 @@ fi
 		cp -f /usr/share/sysvinit/inittab /etc/inittab ;
 		((nNuM2--)) ;
 else
-		echo -e "\ninstalling ${toInst}..." ;
+		echo -e "\ninstalling ${toInst}...\n\r" ;
 		apt-get -f -m -y --allow-change-held-packages install "$toInst" | tee -a "/home/$SUDO_USER/.installed" ;
 		eX1tC0de=$(echo $?);
 		wait;
@@ -221,7 +220,7 @@ else
 		wait ;
 		sleep 1 ;
 		apPR="$toInst, INSTALLED!" ;
-		echo -e "\n$apPR" | tee -a "/home/$SUDO_USER/.installed" ;
+		echo -e "\n$apPR\n" | tee -a "/home/$SUDO_USER/.installed" ;
 		((nNuM2--)) ;
 	fi
 fi
@@ -240,17 +239,17 @@ done
 		if [[ "$(dpkg -l | grep systemd | awk '{print $2}')" =~ systemd:i386 ]] ;
 	then
 		arch="i386" ;
-		# remove odd characters
+		echo -e "\nremove odd characters\r";
 		apt-get -f -m -y remove --purge --auto-remove systemd:$arch ;
-		# update hwdb --usr
+		echo -e "\nupdate hwdb --usr\r";
 		sudo systemd-hwdb --usr update
 
 		elif [[ "$(dpkg -l | grep systemd | awk '{print $2}')" =~ systemd:amd64 ]] ;
 	then
 		arch="amd64" ;
-		# remove odd characters
+		echo -e "\nremove odd characters\r";
 		apt-get -f -m -y remove --purge --auto-remove systemd:$arch ;
-		# update hwdb --usr
+		echo -e "\nupdate hwdb --usr\r";
 		sudo systemd-hwdb --usr update
 	else
 		echo -e "\n ... systemd allready removed" ;
@@ -270,11 +269,11 @@ fi
 		echo -e "\n ... /etc/aliases updated, you are able to read root mails." ;
 fi
 
-	echo -e "\n ... copy default apache2 site available" ;
+	echo -e "\n ... copy default apache2 site available...\n\r" ;
 	cp configs/000-default.conf /etc/apache2/sites-available/ ;
 	chown -R $SUDO_USER:$SUDO_USER /etc/apache2/sites-available/000-default.conf ;
 
-	echo -e "\n ... settings for firefox-esr" ;
+	echo -e "\n ... settings for firefox-esr...\n\r" ;
 
 	rm -fdR /home/"$SUDO_USER"/.mozilla/firefox/*.default ;
 	mkdir -p /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default ;
@@ -289,57 +288,57 @@ fi
 	chmod 600 /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default/* ;
 	chown $SUDO_USER:$SUDO_USER /home/"$SUDO_USER"/.mozilla/firefox/ar37ud1e.default/* ;
 
-	echo -e "\n ... copy logoutvtwm" ;
+	echo -e "\n ... copy logoutvtwm...\n\r" ;
 	cp -f configs/logoutvtwm /etc/X11/Xreset.d/ ;
 	chmod a+x /etc/X11/Xreset.d/logoutvtwm ;
 
-	echo -e "\n ... update pm-utils script to interact with laptop-mode-tools" ;
+	echo -e "\n ... update pm-utils script to interact with laptop-mode-tools...\n\r" ;
 	cp -f thirdparty/10-laptop-mode-tools /etc/pm/sleep.d/ ;
 	chmod a+x /etc/pm/sleep.d/10-laptop-mode-tools ;
 
-	echo -e "\n ... copy VLC skin" ;
+	echo -e "\n ... copy VLC skin...\n\r" ;
 	cp -f thirdparty/MyVLCtheme.vlt /usr/share/vlc/skins2/ ;
 	chmod 755 /usr/share/vlc/skins2/MyVLCtheme.vlt ;
 	chown -R $SUDO_USER:$SUDO_USER /usr/share/vlc/skins2/MyVLCtheme.vlt ;
 
-	echo -e "\n ... installing flash player for linux" ;
+	echo -e "\n ... installing flash player for linux...\n\r" ;
 	tar -xf /home/$SUDO_USER/mindevenviro/thirdparty/flash_player_npapi_linux.x86_64.tar.gz ;
 	cp -f libflashplayer.so /usr/lib/mozilla/plugins/ ;
 	cp -rf usr/* /usr/ ;
 	rm -dRf LGPL/ usr/ libflashplayer.so license.pdf readme.txt ;
 
-	echo -e "\n ... copy .bashrc" ;
+	echo -e "\n ... copy .bashrc...\n\r" ;
 	cp -f configs/bashrc /home/$SUDO_USER/.bashrc ;
 	chmod 644 /home/$SUDO_USER/.bashrc ;
 
-	echo -e "\n ... copy mindevenviro.xpm" ;
+	echo -e "\n ... copy mindevenviro.xpm...\n\r" ;
 	cp -f pictures/mindevenviro.xpm /usr/share/X11/xdm/pixmaps/mindevenviro.xpm ;
 	chmod 644 /usr/share/X11/xdm/pixmaps/mindevenviro.xpm ;
 
-	echo -e "\n ... copy Xresources" ;
+	echo -e "\n ... copy Xresources...\n\r" ;
 	cp -f configs/debian/Xresources /etc/X11/xdm/ ;
 	chmod 755 /etc/X11/xdm/Xresources ;
 
-	echo -e "\n ... copy the .xscreensaver file to /home/$SUDO_USER" ;
+	echo -e "\n ... copy the .xscreensaver file to /home/$SUDO_USER...\n\r" ;
 	cp -f configs/debian/xscreensaver  /home/$SUDO_USER/.xscreensaver ;
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.xscreensaver ;
 
-	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/" ;
+	echo -e "\n ... copy the ini file to /home/$SUDO_USER/.config/mc/...\n\r" ;
 	mkdir -p /home/$SUDO_USER/.config/mc 2>/dev/null ;
 	cp -f configs/ini /home/$SUDO_USER/.config/mc/ini ;
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config ;
 
-	echo -e "\n ... copy the config file to /home/$SUDO_USER/.config/terminator/config" ;
+	echo -e "\n ... copy the config file to /home/$SUDO_USER/.config/terminator/config...\n\r" ;
 	mkdir -p /home/$SUDO_USER/.config/terminator 2>/dev/null ;
 	cp -f configs/config /home/$SUDO_USER/.config/terminator/config ;
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config ;
 
-	echo -e "\n ... copy the .twmrc file to /home/$SUDO_USER" ;
+	echo -e "\n ... copy the .twmrc file to /home/$SUDO_USER...\n\r" ;
 	cp -f configs/twmrc /home/$SUDO_USER/.twmrc ;
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.twmrc ;
 
 	# Apache2 setup
-	echo -e "\n ... set the upload path for PHP scripts" ;
+	echo -e "\n ... set the upload path for PHP scripts...\n\r" ;
 	rm -f /var/www/html/index*
 	mkdir -p /var/www/html/{testphp,pics} ; 2>/dev/null ;
 	cp -f docs/pics/* /var/www/html/pics/ ;
@@ -347,7 +346,7 @@ fi
 	chown -R www-data:www-data /var/www/html/ ;
 
 	# Antivirus
-	echo -e "ScanOnAccess True\nOnAccessMountPath /home/$SUDO_USER/Downloads" | tee -a /etc/clamav/clamd.conf ;
+	echo -e "ScanOnAccess True\nOnAccessMountPath /home/$SUDO_USER/Downloads...\n\r" | tee -a /etc/clamav/clamd.conf ;
 
 # mkdir cgi-bin
 mkdir -p /usr/lib/cgi-bin/ 2>/dev/null;
@@ -356,21 +355,21 @@ echo "ServerName $(hostname)" >> /etc/apache2/apache2.conf ;
 echo "Listen 127.0.1.1:80" >> /etc/apache2/apache2.conf ;
 # updates the address for localhost
 
-		echo -e "\n ... update apache2 configuration" ;
+		echo -e "\n ... update apache2 configuration...\n\r" ;
 		a2enmod cgid ;
 		a2enmod proxy_http ;
 
-		echo -e "\n ... restarting apache2 server" ;
+		echo -e "\n ... restarting apache2 server...\n\r" ;
 		/etc/init.d/apache2 restart ;
 		# Apache2 setup END
 
-		echo -e "\n ... installing snort " ;
+		echo -e "\n ... installing snort...\n\r" ;
 		apt-get -f -m -y --allow-change-held-packages install snort ;
 		# reconfigure all
-		echo -e "\n ... reconfiguring installed packages " ;
+		echo -e "\n ... reconfiguring installed packages...\n\r" ;
 		dpkg --configure -a ;
 		# add i386 arch in 64bit system, to install wine32
-		echo -e "\n ... add i386 arch in 64bit system, to install wine32" ;
+		echo -e "\n ... add i386 arch in 64bit system, to install wine32...\n\r" ;
 		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 ;
 
 		if [ -e /home/$SUDO_USER/.purple/plugins/libfacebook.so ] ;
@@ -378,16 +377,16 @@ echo "Listen 127.0.1.1:80" >> /etc/apache2/apache2.conf ;
 		echo -e "\n ... If you want to update the facebook plugin, then please,\n do: rm /home/$SUDO_USER/.purple/plugins/libfacebook.so\n" ;
 	else
 		# apply facebook video/audio/text pidgin plugin purple-facebook
-		echo -e "\n ... apply facebook video/audio/text pidgin plugin purple-facebook" ;
+		echo -e "\n ... apply facebook video/audio/text pidgin plugin purple-facebook...\n\r" ;
 		cd thirdparty || exit 2 ;
 		git clone https://github.com/dequis/purple-facebook.git ;
 		cd purple-facebook || exit 2 ;
 		./autogen.sh ;
-		echo -e "\n ... compiling the code" ;
+		echo -e "\n ... compiling the code...\n\r" ;
 		make && wait ;
 		make install && wait ;
 		mkdir -p /home/$SUDO_USER/.purple/plugins ;
-		echo -e "\n ... copying the plugin to /home/$SUDO_USER" ;
+		echo -e "\n ... copying the plugin to /home/$SUDO_USER...\n\r" ;
 		cp -f pidgin/libpurple/protocols/facebook/.libs/libfacebook.so /home/$SUDO_USER/.purple/plugins ;
 		cd ../../ || exit 2 ;
 		rm -dRf thirdparty/purple-facebook ;
@@ -414,17 +413,17 @@ AutomapHostsOnResolve 1\r
 TransPort 9040\r
 DNSPort 53\r">>/etc/tor/torrc;
 	else
-		echo -e "\n ... tor allready configured" ;
+		echo -e "\n ... tor allready configured...\n\r" ;
 fi
-	echo -e "\n ... set background Pictures" ;
+	echo -e "\n ... set background Pictures...\n\r" ;
 	unzip -o pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
 	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
 
-		echo -e "\n ... set the rights for .wH0rUNSon " ;
+		echo -e "\n ... set the rights for .wH0rUNSon...\n\r" ;
 
 		if [ -e /home/$SUDO_USER/.wH0rUNSon ] ;
 	then
-		echo " ... .wH0rUNSon allready installed" | tee -a "/home/$SUDO_USER/.installed" ;
+		echo " ... .wH0rUNSon allready installed...\n\r" | tee -a "/home/$SUDO_USER/.installed" ;
 	else
 		touch "/home/$SUDO_USER/.wH0rUNSon" && chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.wH0rUNSon" && chmod 0660 "/home/$SUDO_USER/.wH0rUNSon"  | tee -a "/home/$SUDO_USER/.installed" ;
 fi
