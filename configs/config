@@ -1,14 +1,17 @@
 [global_config]
   broadcast_default = off
   enabled_plugins = ,
-  extra_styling = True
+  extra_styling = False
   focus = mouse
-  homogeneous_tabbar = True
+  handle_size = 1
+  putty_paste_style = True
   scroll_tabbar = True
   tab_position = bottom
   title_font = Sans 10
+  title_inactive_fg_color = "#555753"
   title_receive_bg_color = "#f57900"
   title_transmit_bg_color = "#000000"
+  title_transmit_fg_color = "#cc0000"
   title_use_system_font = False
 [keybindings]
 [layouts]
@@ -20,7 +23,7 @@
       order = 0
       parent = ""
       position = 21:20
-      size = 1151, 556
+      size = 1151, 516
       title = mind eve n viro
       type = Window
     [[[child1]]]
@@ -53,7 +56,7 @@
       profile = default
       type = Terminal
     [[[terminal5]]]
-      command = 
+      command = ""
       order = 5
       parent = child1
       profile = default

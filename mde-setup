@@ -2,37 +2,37 @@
 
 # mindevenviro "mde-setup" (install script; "mind eve n viro" SETUP)
 
-#    working version: 			March 2018 ZH. 
+#    working version: 		March 2018 ZH. 
 #
 # migration from OSX:           I had March 2017, a mid. 2012 Powerbook Pro with HomeBrew, 
 #                               clamd, snort, nmap-monitoring, a MAC changer for all interfaces 
 #                               and a syntax-editor, writen in shell (bash).
-#								I had many other scripts I haven't updated into my github account,
-#								but "sCRYPtUPdater" & "mindevenviro" = (minimal deployment environment)
+#				I had many other scripts I haven't updated into my github account,
+#				but "sCRYPtUPdater" & "mindevenviro" = (minimal deployment environment)
 #
 #			Readings:			LPI Linux certification in a nutshell (English)
-#								LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute (German)
+#							LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute (German)
 #
-#			   Certs:			LPIC-1 Test 1, in the Migros Club Schule Basel, PearsonVUE (Oct. 2014)
-#								LPIC-1 Test 2, in Lima Peru ISIL Campus San Isidro, PearsonVUE (Sept. 2016)
-#								Certification is valid until Sept. 2021.
+#			Certs:				LPIC-1 Test 1, in the Migros Club Schule Basel, PearsonVUE (Oct. 2014)
+#							LPIC-1 Test 2, in Lima Peru ISIL Campus San Isidro, PearsonVUE (Sept. 2016)
+#							Certification is valid until Sept. 2021.
 # Locations:
-#			 HZ Peru:			Kamin, Suppe, Brot, Tabak, 3.5 CHF pro Tag Job (2016)
+#			HZ Peru:			Kamin, Suppe, Brot, Tabak, 3.5 CHF pro Tag Job (2016)
 #
-#		  BS Schweiz:     		I thought about the wohle year... (2017)
+#			BS Schweiz:     		I thought about the wohle year... (2017)
 #
-#    * STORY LM Peru:        	I wasted mindevenviro away, in October 2017. 
-#								I had some special encodings, like a code from 
-#								outer space in the Putty interface. After entering 
-#								"Reset" in the console, the alien code persists, 
-#								until the SSH connection, has been disconnected from 
-#								myne Windows machine. The Linuxzoo server in the UK 
-#								where closed to me. The web link from Facebook to 
-#								the Linuxzoo server where blocked by Facebook.
+#			* STORY LM Peru:        	I wasted mindevenviro away, in October 2017. 
+#							I had some special encodings, like a code from 
+#							outer space in the Putty interface. After entering 
+#							"Reset" in the console, the alien code persists, 
+#							until the SSH connection, has been disconnected from 
+#							myne Windows machine. The Linuxzoo server in the UK 
+#							where closed to me. The web link from Facebook to 
+#							the Linuxzoo server where blocked by Facebook.
 #
-#			   ZH CH:			They have Wifi and NIC, and now it is, "mind eve n viro" March 2018, 
+#			ZH CH:				They have Wifi and NIC, and now it is, "mind eve n viro" March 2018, 
 #
-#			 Thank's:			"Pinehead.tv Linux Academy", "Fernschule Weber DE", "REVAMP-IT in ZH CH" "Brothuuse ZH".
+#			Thank's:			"Pinehead.tv Linux Academy", "Fernschule Weber DE", "REVAMP-IT in ZH CH" "Brothuuse ZH".
 
 ###    WARNING: DON'T EDIT ANYTHING BELOW !!!    ###
 
@@ -83,7 +83,7 @@ fi
 
 		while [[ "$nNuM1" != "0" ]] ;
 	do
-		echo ".";
+		clear ;
 		toCopyPath=$(awk '{print $'"$nNuM1"'}'<<<"$environinstall") ;
 		fFILE=$(basename $toCopyPath) ;
 		sudo cp -f "$PWD/$toCopyPath" "/usr/local/bin/$fFILE" ;
@@ -372,35 +372,6 @@ echo "Listen 127.0.1.1:80" >> /etc/apache2/apache2.conf ;
 		echo -e "\n ... add i386 arch in 64bit system, to install wine32...\n\r" ;
 		sudo dpkg --add-architecture i386 && sudo apt-get update && sudo apt-get -f -y -m --allow-change-held-packages install wine32 ;
 
-		if [ -e /home/$SUDO_USER/.purple/plugins/libfacebook.so ] ;
-	then
-		echo -e "\n ... If you want to update the facebook plugin, then please,\n do: rm /home/$SUDO_USER/.purple/plugins/libfacebook.so\n" ;
-	else
-		# apply facebook video/audio/text pidgin plugin purple-facebook
-		echo -e "\n ... apply facebook video/audio/text pidgin plugin purple-facebook...\n\r" ;
-		cd thirdparty || exit 2 ;
-		git clone https://github.com/dequis/purple-facebook.git ;
-		cd purple-facebook || exit 2 ;
-		./autogen.sh ;
-		echo -e "\n ... compiling the code...\n\r" ;
-		make && wait ;
-		make install && wait ;
-		mkdir -p /home/$SUDO_USER/.purple/plugins ;
-		echo -e "\n ... copying the plugin to /home/$SUDO_USER...\n\r" ;
-		cp -f pidgin/libpurple/protocols/facebook/.libs/libfacebook.so /home/$SUDO_USER/.purple/plugins ;
-		cd ../../ || exit 2 ;
-		rm -dRf thirdparty/purple-facebook ;
-fi
-		if [[ $(ls -sh /usr/share/nano | grep -E 'Readme.rst') = '' ]] ;
-	then
-		mkdir -p /usr/share/nano-syntax-highlighting ;
-		git clone https://github.com/scopatz/nanorc.git /usr/share/nano-syntax-highlighting/
-		cp -f /usr/share/nano-syntax-highlighting/* /usr/share/nano ;
-		rm -dRf /usr/share/nano-syntax-highlighting ;
-		rm -f /usr/share/nano/install.sh ;
-	else
-		echo -e "\n ... Improved Nano Syntax Highlighting Files allready installed.\n the mantainer doesnt update the code anymore.\n"
-fi
 		# installing tor
 		apt-get -f -y -m install tor deb.torproject.org-keyring && wait ;
 		sleep 1 ;
