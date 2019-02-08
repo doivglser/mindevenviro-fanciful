@@ -5,35 +5,35 @@
 # working version:			March 2018 ZH. 
 #
 # migration from OSX:		I had March 2017, a mid. 2012 Powerbook Pro with HomeBrew, 
-#							clamd, snort, nmap-monitoring, a MAC changer for all interfaces 
-#							and a syntax-editor, writen in shell (bash).
-#							I had many other scripts I haven't updated into my github account,
-#							but "sCRYPtUPdater" & "mindevenviro" = (minimal deployment environment)
+#				clamd, snort, nmap-monitoring, a MAC changer for all interfaces 
+#				and a syntax-editor, writen in shell (bash).
+#				I had many other scripts I haven't updated into my github account,
+#				but "sCRYPtUPdater" & "mindevenviro" = (minimal deployment environment)
 #
-# Readings:					LPI Linux certification in a nutshell (English)
-#							LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute (German)
+# Readings:			LPI Linux certification in a nutshell (English)
+#				LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute (German)
 #
-# Certs:					LPIC-1 Test 1, in the Migros Club Schule Basel, PearsonVUE (Oct. 2014)
-#							LPIC-1 Test 2, in Lima Peru ISIL Campus San Isidro, PearsonVUE (Sept. 2016)
-#							Certification is valid until Sept. 2021.
-#			::Locations::
+# Certs:			LPIC-1 Test 1, in the Migros Club Schule Basel, PearsonVUE (Oct. 2014)
+#				LPIC-1 Test 2, in Lima Peru ISIL Campus San Isidro, PearsonVUE (Sept. 2016)
+#				Certification is valid until Sept. 2021.
+# ::Locations::
 #
-# HZ Peru:					Kamin, Suppe, Brot, Tabak, 3.5 CHF pro Tag Job (2016)
+# HZ Peru:			Kamin, Suppe, Brot, Tabak, 3.5 CHF pro Tag Job (2016)
 #
-# BS Schweiz:				I thought about the wohle year... (2017)
+# BS Schweiz:			I thought about the wohle year... (2017)
 #
-# * STORY LM Peru:			I wasted mindevenviro away, in October 2017. 
-#							I had some special encodings, like a code from 
-#							outer space in the Putty interface. After entering 
-#							"Reset" in the console, the alien code persists, 
-#							until the SSH connection, has been disconnected from 
-#							myne Windows machine. The Linuxzoo server in the UK 
-#							where closed to me. The web link from Facebook to 
-#							the Linuxzoo server where blocked by Facebook. No Sumerians appear.
+# * STORY LM Peru:		I wasted mindevenviro away, in October 2017. 
+#				I had some special encodings, like a code from 
+#				outer space in the Putty interface. After entering 
+#				"Reset" in the console, the alien code persists, 
+#				until the SSH connection, has been disconnected from 
+#				myne Windows machine. The Linuxzoo server in the UK 
+#				where closed to me. The web link from Facebook to 
+#				the Linuxzoo server where blocked by Facebook. No Sumerians appear.
 #
-# ZH CH:					They have Wifi and NIC, and now it is, "mind eve n viro" March 2018, 
+# ZH CH:			They have Wifi and NIC, and now it is, "mind eve n viro" March 2018, 
 #
-# Thank's:					"Pinehead.tv Linux Academy", "Fernschule Weber DE", "REVAMP-IT in ZH CH", "Brothuuse ZH", my Tablet.
+# Thank's:			"Pinehead.tv Linux Academy", "Fernschule Weber DE", "REVAMP-IT in ZH CH", "Brothuuse ZH", my Tablet.
 
 ###    WARNING: DON'T EDIT ANYTHING BELOW !!!    ###
 
