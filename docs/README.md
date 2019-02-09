@@ -1,12 +1,12 @@
 # M1ND3V3NV1R0 DevOps (testing v0.1.1B)
 
-		codecounter: code without blank lines, without comments and without thirdparty (not yet updated)
+		codecounter: code without blank lines, without comments and without thirdparty
 
 - Lines =4357
 
-- Words =60303
+- Words =60300
 
-- Chars =245244
+- Chars =245226
 
 # . 
 
