@@ -27,19 +27,14 @@ beep(){
 
 		while true
 	do
-		for i in $(seq 0 3 99) ;
-	do
 		if [[ "$seconds" != "0" ]] ;
 	then
 		((seconds--)) ;
-		sleep 1 ;
-		echo $i | dialog --gauge "soon beep..." 10 60 5; 
-		echo $seconds
+		sleep 1 && figlet $seconds ;
 	else
 		clear ;
 		beep ;
 fi
-	done
 done
 fi
 fi
