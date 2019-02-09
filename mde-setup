@@ -255,6 +255,12 @@ fi
 	cp vtwm/wakeup.mp3 /home/$SUDO_USER/.config/ ;
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config/wakeup.mp3 ;
 
+	echo -e "\n ... copy welcome tune...\n\r" ;
+	cp vtwm/beneathTheRedHouse.m3u /home/$SUDO_USER/.config/ ;
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config/beneathTheRedHouse.m3u ;
+	cp vtwm/beneathTheRedHouse.m4a /home/$SUDO_USER/.config/ ;
+	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config/beneathTheRedHouse.m4a ;
+
 	echo -e "\n ... copy default apache2 site available...\n\r" ;
 	cp configs/000-default.conf /etc/apache2/sites-available/ ;
 	chown -R $SUDO_USER:$SUDO_USER /etc/apache2/sites-available/000-default.conf ;
