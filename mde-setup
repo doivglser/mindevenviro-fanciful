@@ -187,7 +187,9 @@ gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | sudo apt-key add - ;
 	else
 		echo " no github.com email."
 fi
-		# install debian apps
+
+### install debian apps
+		
 		nNuM2=$(echo "$myPrograms" | wc -w) ;
 
 		until [[ "$nNuM2" = "0" ]] ;
@@ -216,11 +218,6 @@ fi
 fi
 		if [ "$nNuM2" = "0" ]
 	then
-		echo -e "\n ... apt-get done.";
-		sleep 2;
-fi
-done
-
 ### 	install sysvinit-core and remove systemd
 
 		echo -e "\rchange the physiology to original\n" ;
@@ -236,6 +233,10 @@ done
 		systemd-hwdb --usr update ;
 		wait ;
 		echo -e "\nsystemd removed !\n";
+		echo -e "\n ... apt-get done.\n";
+		sleep 3;
+fi
+done
 
 # install END
 
