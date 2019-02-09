@@ -176,12 +176,6 @@
 * "user@host:~/mindevenviro-debian/sudo mde-setup"
 
   Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
-  
-  * GitHub
-
-  Improved Nano Syntax Highlighting Files: ![scopatz nanorc](https://github.com/scopatz/nanorc)
-  
-  Facebook protocol plugin for libpurple (moved from jgeboski/purple-facebook): ![dequis purple-facebook](https://github.com/dequis/purple-facebook)
 
   * Debian GNU/Linux 9
 
@@ -299,15 +293,13 @@
 
   pidgin, graphical multi-protocol instant messaging client.
   
-  	facebook plugin from dequis/purple-facebook.git
-  
 * brutalchess
 
   3D chess game with reflection of the chessmen
 
 * playOnLinux
 
-  PlayOnLinux manage's: win32 and win64 applications, (like Reason 5)
+  PlayOnLinux manage's: win64 applications, (like Reason 5)
 
 * firefox-ESR
 
@@ -337,7 +329,7 @@
 
 * search (shell script)
 
-  search by path and file suffix, if grep true open file
+  search by path and file suffix, if grep true open file (doesn't work at the moment)
 
 * mysql_cp_db (shell script)
 
@@ -390,7 +382,7 @@
 
 * set_mysql_passwd (shell script)
 
-  To set up the MariaDB root password, enter a friendly password, only: numbers,lower-case,upper-case, 10 digits.
+  To set up the MariaDB root password, enter a friendly password, only: numbers,lower-case,upper-case, only "8" digits.
 
 * mde-setup (shell script)
 
