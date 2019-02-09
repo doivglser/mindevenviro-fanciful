@@ -21,9 +21,9 @@ beep(){
 	then
 		exit 0 ;
 	else
-		let seconds="$result"*30
-		exitcode=$?;
-		exec 3>&-;
+		let seconds="$result"*60
+		exitcode=$? ;
+		exec 3>&- ;
 
 		while true
 	do
