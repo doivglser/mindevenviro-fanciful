@@ -376,7 +376,7 @@ fi
 
 		if [ -e /home/$SUDO_USER/.wH0rUNSon ] ;
 	then
-		echo " ... .wH0rUNSon allready installed...\n\r" | tee -a "/home/$SUDO_USER/.installed" ;
+		echo -e "...wH0rUNSon allready installed...\n" | tee -a "/home/$SUDO_USER/.installed" ;
 	else
 		touch "/home/$SUDO_USER/.wH0rUNSon" && chown $SUDO_USER:$SUDO_USER "/home/$SUDO_USER/.wH0rUNSon" && chmod 0660 "/home/$SUDO_USER/.wH0rUNSon"  | tee -a "/home/$SUDO_USER/.installed" ;
 fi
