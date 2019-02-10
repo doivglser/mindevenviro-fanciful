@@ -98,7 +98,7 @@ fi
 
 # checks if tor is up, if false restarts
 torUP(){
-		if [[ ! $(/etc/init.d/tor status) =~ 'running' ]] ;
+		if [[ ! /etc/init.d/tor status =~ 'running' ]] ;
 	then
 		/etc/init.d/"$relaynodes" stop ;
 		wait ;
