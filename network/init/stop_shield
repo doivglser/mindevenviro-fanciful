@@ -23,12 +23,12 @@ fi
 stop_Ppp(){
 		echo -e " ... stopping connections\n" ;
 		killall -15 dhclient 2>/dev/null && wait ;
+		killall -15 wpa_supplicant 2>/dev/null && wait ;
+		sudo ip link set dev "$(cat "$tmpfolder"/interface)" down && wait ;
 		killall -15 firefox-esr 2>/dev/null && wait ;
 		killall -15 pidgin 2>/dev/null && wait ;
 		killall -15 vlc 2>/dev/null && wait ;
 		killall -15 tor 2>/dev/null && wait ;
-		sleep 1 ;
-		sudo ip link set dev "$(cat "$tmpfolder"/interface)" down && sleep 1 ;
 }
 
 # ASK
