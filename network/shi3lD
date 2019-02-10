@@ -1,5 +1,5 @@
 #!/bin/bash
-# mindevenviro shi3lD
+# mindevenviro-debian shi3lD
 # Changes your MAC-ADDRESS and does a list of usable and not usable MAC-ADDRESSES in $HOME.
 # Restarts clamd and snort if failures, cuts the connected Interface connection 
 # while, changing the MAC-ADDRESS (use wicd to reconnect). ctrl+C cuts 
@@ -45,7 +45,7 @@ fi
 }
 
 findIface(){
-		clear ;
+		#clear ;
 		echo -e "\n :: D A N G E R nO shi3lD ::" ;
 		echo -e " :: .changing macaddress. :: \n" ;
 		printf "[W]iFi | [E]thernet type in: " ; read -r REPLY ;

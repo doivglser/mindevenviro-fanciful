@@ -1,5 +1,5 @@
 #!/bin/bash
-# mindevenviro-debian start_shield
+# mindevenviro start_shield
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW   !!!    ###
 
@@ -140,7 +140,7 @@ done
     	echo "" ;
 		printf "\r starting up... " ; sleep 3 ;
         writem4c_Connected ;
-		clear ;
+		#clear ;
         echo -e "\n - WE HAVE shi3lD ::\n" ;
         echo -e " done ! we go throught $(netstat -ar | grep -v grep | grep default | awk '{print $2}') \n $(ip route | grep -v grep | grep src) \n and $interface has now this MAC-Address: $(ip link show "$interface" | grep ether | awk '{print $2}')\n" ;
         stopLoop="1" ;

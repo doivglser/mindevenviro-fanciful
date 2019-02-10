@@ -1,6 +1,7 @@
 #!/bin/bash
-# mindevenviro nids-antivirus-up
+# mindevenviro-debian nids-antivirus-up
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
+
 LANG="C";
 IFS=$(echo -e "\n\b");
 antivirus="clamav-daemon" ;
