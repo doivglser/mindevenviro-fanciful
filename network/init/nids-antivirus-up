@@ -5,6 +5,7 @@ LANG="C";
 IFS=$(echo -e "\n\b");
 antivirus="clamav-daemon" ;
 nids="snort" ;
+relaynodes="tor" ;
 readonly empty='';	if [[ "$EUID" != "0" ]] || [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep redundanz | cut -f2 -d\ ) " = "$empty" ]] ;
 	then
 		echo "USAGE: sudo redundanz --help";
@@ -98,6 +99,41 @@ fi
 }
 # clamdUP END
 
+# checks if tor is up, if false restarts
+clamdUP(){
+		if [[ $(ps ax | grep -v grep | grep -v nano | grep -v geany | grep "$relaynodes") = '' ]] ;
+	then
+		/etc/init.d/"$relaynodes" stop ;
+		sleep 2 ;
+
+		if /etc/init.d/"$relaynodes" start >| "$tmpfolder/root_mail_status" ;
+then
+
+/etc/init.d/"$relaynodes" status >> "$tmpfolder/root_mail_status" ;
+
+echo "$?" >> "$tmpfolder/root_mail_status" ;
+
+echo ":: $relaynodes fails, but restartet successfully, you got an email $(date | awk '{print $1,$3,$4}') ::" ;
+
+senddingEmail &
+else
+
+/etc/init.d/"$relaynodes" status >| "$tmpfolder/root_mail_status" ;
+date "+Start Attempt $relaynodes, Failure Time: %H.%M" >> "$tmpfolder/root_mail_status" ;
+
+senddingEmail &
+
+
+echo ":: you got email, $relaynodes fails, cannot restart $(date | awk '{print $1,$3,$4}') ::";
+
+
+fi
+	else
+		echo "$relaynodes is running..." ;
+fi
+}
+# torUP END
+
 help(){
 	echo "USAGE: sudo nids-antivirus-up --anTiVirus | nids-antivirus-up --nIDs";
 	exit 0;
@@ -112,6 +148,10 @@ help(){
 	    --nIDs)
       shift 1 ;
       snortUP "$@" ;
+      ;;
+	    --tor)
+      shift 1 ;
+      torUP "$@" ;
       ;;
 	    --help)
       shift 1 ;

@@ -93,6 +93,11 @@ ifUPAntiVirusFireWall(){
 		nids-antivirus-up --nIDs &
 		printf "\r restarting Snort..." ; sleep 1 ;
 	fi
+		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
+    then
+		nids-antivirus-up --tor &
+		printf "\r restarting Tor..." ; sleep 1 ;
+	fi
 fi
 done ;
 }
@@ -122,10 +127,7 @@ done &&
 		echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
 		#enable proxy
 		a2enmod proxy_http ;
-		#restarting TOR after new IP.
-		/etc/init.d/tor stop && wait ;
-		/etc/init.d/tor start && wait ;
-		#restarting clamAV or snort.
+		#restarting clamAV or snort AND tor.
 		ifUPAntiVirusFireWall ;
 	else
 		echo -e "\r ...\n" ;
