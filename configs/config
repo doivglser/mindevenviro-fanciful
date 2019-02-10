@@ -1,12 +1,12 @@
 [global_config]
   broadcast_default = off
   enabled_plugins = ,
-  extra_styling = False
+  extra_styling = True
   focus = mouse
   handle_size = 1
   putty_paste_style = True
   scroll_tabbar = True
-  tab_position = bottom
+  tab_position = hidden
   title_font = Sans 10
   title_inactive_fg_color = "#555753"
   title_receive_bg_color = "#f57900"
