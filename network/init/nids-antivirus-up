@@ -100,7 +100,7 @@ fi
 # clamdUP END
 
 # checks if tor is up, if false restarts
-clamdUP(){
+torUP(){
 		if [[ $(ps ax | grep -v grep | grep -v nano | grep -v geany | grep "$relaynodes") = '' ]] ;
 	then
 		/etc/init.d/"$relaynodes" stop ;

@@ -90,13 +90,10 @@ ifUPAntiVirusFireWall(){
 	then
 		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
     then
-		nids-antivirus-up --nIDs &
-		printf "\r restarting Snort..." ; sleep 1 ;
-	fi
-		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
-    then
 		nids-antivirus-up --tor &
 		printf "\r restarting Tor..." ; sleep 1 ;
+		nids-antivirus-up --nIDs &
+		printf "\r restarting Snort..." ; sleep 1 ;
 	fi
 fi
 done ;
