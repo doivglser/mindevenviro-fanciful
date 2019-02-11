@@ -29,9 +29,9 @@ beep(){
 	do
 		if [[ "$seconds" != "0" ]] ;
 	then
-		clear ;
-		((seconds--)) ;
-		sleep 1 && figlet $seconds ;
+		((seconds--));
+		sleep 1 && figlet $seconds;
+		clear;
 	else
 		clear ;
 		beep ;
