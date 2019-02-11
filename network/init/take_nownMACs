@@ -1,0 +1,20 @@
+#!/bin/bash
+# mindevenviro-debian take_nownMACs
+
+###     WARNING:    DON'T EDIT ANYTHING BELOW   !!!    ###
+
+LANG="C";
+IFS=$(echo -e "\n\b");
+readonly empty='';
+
+if [[ "$EUID" != "0" ]] || [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep redundanz | cut -f2 -d\ ) " = "$empty" ]] ;
+	then
+		echo "USAGE: sudo shi3lD, restarts all services to a new circuit." ;
+		exit 0;
+else
+	if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
+then
+	nownMACs=$(cat /$HOME/Feb2019.mac_recieves_dhcp_lease | cut -f1 -d\  | sort -R | head -n 1)
+	echo $nownMACs ;
+fi
+fi

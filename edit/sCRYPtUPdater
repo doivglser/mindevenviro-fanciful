@@ -107,8 +107,8 @@ fi
 
 touchtoC0pyinbin(){
 
-			echo "new" ; printf "..%s.." "$toC0pyIS" ;
-			echo -e "\n" ;
+			echo -e "\033[1;32m new" ; printf "..%s.." "$toC0pyIS" ;
+			echo -e "\033[1;32m\n" ;
 			printf "type 'touch' here: " ; read -r ;
 
 			if [[ "$REPLY" = "touch" ]] ;
@@ -116,7 +116,7 @@ touchtoC0pyinbin(){
 			touch "$path_to_update/$toC0pyIS" ;
 			diffANDchecksyntax "$@" ;
 		else
-			echo -e "\ntype correctly" ;
+			echo -e "\033[0;35m \ntype correctly" ;
 		fi
 }
 
@@ -135,7 +135,7 @@ copyToPath(){
 			sudo chown www-data:www-data "$path_to_update/$toC0pyIS" ;
 			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
+			echo -e "\033[1;33m $toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
 			maincall "$@"
 
 			elif [[ "$listONmeIS" =~ PHP ]] ;
@@ -145,7 +145,7 @@ copyToPath(){
 			sudo chown www-data:www-data "$path_to_update/$toC0pyIS" ;
 			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
+			echo -e "\033[1;33m $toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
 			maincall "$@"
 
 			elif [[ "$listONmeIS" =~ Perl ]] ;
@@ -155,7 +155,7 @@ copyToPath(){
 			sudo chown www-data:www-data "$path_to_update/$toC0pyIS" ;
 			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
+			echo -e "\033[1;33m $toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
 			maincall "$@"
 
 			elif [[ "$listONmeIS" =~ Bourne-Again ]] ;
@@ -166,7 +166,7 @@ copyToPath(){
 			sudo chmod 4755 "$path_to_update/$toC0pyIS" ;
 			sudo chmod u+s "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
+			echo -e "\033[1;33m $toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
 			maincall "$@"
 
 			elif [[ "$listONmeIS" =~ Python ]] ;
@@ -176,7 +176,7 @@ copyToPath(){
 			sudo chown root:root "$path_to_update/$toC0pyIS" ;
 			sudo chmod 0755 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
+			echo -e "\033[1;33m $toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified ;
 			maincall "$@"
 
 			elif [[ "$fF1l3suffix" = conf ]] ;
@@ -186,13 +186,13 @@ copyToPath(){
 			sudo chown root:root "$path_to_update/$toC0pyIS" ;
 			sudo chmod 0644 "$path_to_update/$toC0pyIS" ;
 			figlet $toC0pyIS ;
-			echo -e "$toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified
+			echo -e "\033[1;33m $toC0pyIS updated: $(date | awk '{print $4}')\n" | tee -a $tmpfolder/modified
 			maincall "$@"
 		else
 			echo -e "\nYour scripts should have a SheBang entry on the first line. \n#!/usr/bin/env perl OR #!/bin/bash OR #!/usr/bin/env python OR <php OR <PHP \n On Windows additionally a file suffix correspondent to the SheBang. \n" ;
 		fi
 		else
-			echo ":: nothing updated" ;
+			echo "\033[1;31m :: nothing updated" ;
 			maincall "$@"
 	fi
 fi
@@ -210,7 +210,7 @@ fi
 diffANDchecksyntax(){
 ch3kingSnx='' ;
 
-			echo -e "\n DIFF OF: $toC0pyIS\n\n" ;
+			echo -e "\033[0;32m \n DIFF OF: $toC0pyIS\n\n" ;
 			read -r -p "waiting..." ;
 			diff -i "$listONme" "$path_to_update/$toC0pyIS" 2>/dev/null ;
 			exitc0de=$(echo $?) ;
@@ -283,16 +283,16 @@ fi
 				then
 					nano "$listONme" && diffANDchecksyntax "$@" ;
 			else
-					echo -e "\n :: REMEMBER ::  $listONme\n" ;
+					echo -e "\033[0;35m \n :: REMEMBER ::  $listONme\n" ;
 					ch3kingSnx='' ;
 				fi
 	fi
 			# copy if no error else nothing to update
 					if [[ $ch3kingSnx = '' ]] ;
 		then
-			echo -e "\nnothing to update.\n" ;
+			echo -e "\033[0;36m \nnothing to update.\n" ;
 		else
-			echo -e "\n$listONme appears to be ok" ;
+			echo -e "\033[0;32m \n $listONme appears to be ok" ;
 			perl -i -pe 'y|\r||d' "$listONme" ;
 			copyToPath "$@" ;
 		fi
@@ -326,11 +326,11 @@ maincall(){
 	else
 		bYT3S="bytes" ;
 fi
-		echo -e "\nYou changed $listONmest4tus $bYT3S" && read -r -p "waiting..." ;
+		echo -e "\033[1;31m \nYou changed $listONmest4tus $bYT3S" && read -r -p "waiting..." ;
 		sC4n "$@" ;
 	else
 		listONmest4tus="0" ;
-		echo -e "\nno.changes" && read -r -p "waiting..." ;
+		echo -e "\033[1;34m \nno.changes" && read -r -p "waiting..." ;
 		sC4n "$@" ;
 fi
 	else
