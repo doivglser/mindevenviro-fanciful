@@ -45,7 +45,7 @@ fi
 }
 
 findIface(){
-		#clear ;
+		clear ;
 		echo -e "\n :: D A N G E R nO shi3lD ::" ;
 		echo -e " :: .changing macaddress. :: \n" ;
 		printf "[W]iFi | [E]thernet type in: " ; read -r REPLY ;
