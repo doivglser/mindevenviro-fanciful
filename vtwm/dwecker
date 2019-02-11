@@ -31,7 +31,6 @@ beep(){
 	then
 		((seconds--));
 		sleep 1 && figlet $seconds;
-		clear;
 	else
 		clear ;
 		beep ;
