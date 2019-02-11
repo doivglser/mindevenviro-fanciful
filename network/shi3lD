@@ -34,12 +34,15 @@ whoIfacesUP(){
 
 		if [[ "$interface" =~ eno|eth ]] ;
 	then
+		stop_shield --stop &
 		whoUP="1" && start_shield ;
 
 		elif [[ "$interface" =~ wl|wi ]] ;
 	then
+		stop_shield --stop &
 		whoUP="2" && start_shield ;
 	else
+		stop_shield --stop &
 		whoUP="none" && findIface ;
 fi
 }
@@ -109,7 +112,6 @@ fi
 
 		elif [[ "$(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | grep -E 'snort|clamd' | wc -l | tr -d ' ')" != "2" ]] || [[ "$(ip link show "$interface" 2>/dev/null | grep ether | awk '{print $2}')" = "$(cat /root/.vendorsmac | head -n"${whoUP}" 2>/dev/null | tail -n1 2>/dev/null)" ]] ;
 	then
-		wait ;
 		sudo -u "$SUDO_USER" hi_wicd-client 2>/dev/null &
 		sleep 1 ;
 		iptablestranspprox &

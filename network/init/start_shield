@@ -105,7 +105,6 @@ countDown="30";
 
 		while [[ "$stoppuff_MACs" != "stop" ]] ;
 	do
-		stop_shield --stop &
 		echo -e "\npuffing MACs ...\n";
 		sleep 1 ;
 		neWMacAdr=$(openssl rand -hex 6 | sed 's/\(..\)/\1:/g; s/.$//') &&
