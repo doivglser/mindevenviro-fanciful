@@ -101,6 +101,7 @@ sec0dM0n=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ c
 # aliass
 alias ls='ls --color=auto -sh'
 alias help='man'
+alias clean='sudo killall -15 cheese ; sudo killall -15 vlc ; sudo killall -15 cvlc ;'
 alias newSSHkey='xclip -sel clip < yourGitHubSSHkey'
 alias upload='git status && git add . && git commit -a'
 alias down='xrandr --output "$sec0dM0n" --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 0'
@@ -109,6 +110,6 @@ alias emptmail='truncate -s 0 /var/mail/ivo'
 alias reboot='xrandr --output "$sec0dM0n" --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 6'
 alias secmon='xrandr --output "$sec0dM0n" --auto --scale 1x1 --output "$primM0n" --mode "$aufloeprim" --scale 1x1 --left-of "$sec0dM0n" && feh-bg;'
 alias secmonOFF='xrandr --output "$sec0dM0n" --off && xrandr --output "$primM0n" --mode "$aufloeprim"'
-alias welcomesound='cvlc --playlist-autostart $HOME/.config/beneathTheRedHouse.m3u 2>/dev/null &'
+alias welcomesound='cvlc --playlist-autostart $HOME/.config/beneathTheRedHouse.m3u --play-and-stop 2>/dev/null &'
 alias | sed -n 's/alias //p ;' ;
 cd && pwd && date ;
