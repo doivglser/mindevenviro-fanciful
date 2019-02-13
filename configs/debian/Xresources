@@ -5,9 +5,9 @@ CtrlR: abort-display()\n\
 F1: set-session-argument(failsafe) finish-field()\n\
 CtrlReturn: set-session-argument(failsafe) finish-field()\n\
 Return: set-session-argument() finish-field()
-xlogin*borderWidth: 10
-xlogin*greeting: mid eve n viro
-xlogin*geometry: 750x600+10+10
+xlogin*borderWidth: 30
+xlogin*greeting:
+xlogin*geometry: 410x700+5+5
 xlogin*namePrompt: :
 xlogin*fail: #@!
 #ifdef COLOR
@@ -17,12 +17,12 @@ xlogin*failColor: #ff0000
 *Background: #000000
 #else
 xlogin*Foreground: #1e1e1e
-xlogin*Background: black
+xlogin*Background: #c9c9c9
 #endif
-XConsole.verbose:       true
+XConsole.verbose:       false
 XConsole*iconic:        true
 XConsole*font:          fixed
 Chooser*allowShellResize:       false
-Chooser*viewport.forceBars:     true
+Chooser*viewport.forceBars:     false
 Chooser*list.font:               -*-*-medium-r-normal-*-*-20-*-*-c-*-iso8859-1
 Chooser*Command.font:            *-new century schoolbook-bold-r-normal-*-20-*
