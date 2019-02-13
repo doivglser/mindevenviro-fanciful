@@ -133,21 +133,21 @@ help(){
 
 # ASK
   case "$1" in
-        --anTiVirus)
+        --antivirus)
       shift 1;
-      clamdUP "$@" ;
+      clamdUP "$@";
       ;;
-	    --nIDs)
+	    --nids)
       shift 1 ;
-      snortUP "$@" ;
+      snortUP "$@";
       ;;
 	    --tor)
       shift 1 ;
-      torUP "$@" ;
+      torUP "$@";
       ;;
 	    --help)
       shift 1 ;
-      help "$@" ;
+      help "$@";
       ;;
   esac
 fi

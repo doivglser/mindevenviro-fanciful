@@ -83,17 +83,17 @@ ifUPAntiVirusFireWall(){
 	do
 		if [[ "$(ps aux | grep -v grep | grep clamd | grep -v nano | awk '{print $11}')" != "$antivirus" ]]
 	then
-		nids-antivirus-up --anTiVirus &
-		printf "\r restarting ClamAV..." ; sleep 1 ;
+		nids-antivirus-up --antivirus &
+		printf "\r restarting ClamAV..." ; sleep 1;
 	fi
 	    if [[ "$(ps aux | grep -v grep | grep snort | grep -v nano | awk '{print $11}')" != "$nids" ]]
 	then
 		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
     then
 		nids-antivirus-up --tor &
-		printf "\r restarting Tor..." ; sleep 1 ;
-		nids-antivirus-up --nIDs &
-		printf "\r restarting Snort..." ; sleep 1 ;
+		printf "\r restarting Tor..." ; sleep 1;
+		nids-antivirus-up --nids &
+		printf "\r restarting Snort..." ; sleep 1;
 	fi
 fi
 done ;

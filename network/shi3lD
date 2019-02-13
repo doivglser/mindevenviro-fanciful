@@ -114,7 +114,6 @@ fi
 	then
 		sudo -u "$SUDO_USER" hi_wicd-client 2>/dev/null &
 		sleep 1 ;
-		sleep 1 ;
 		findIface ;
 	fi
 done
