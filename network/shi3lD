@@ -102,10 +102,6 @@ done
 }
 		while trap 'exitHandler' SIGINT;
 	do
-		if [[ ! $(netstat -ar) =~ 'default' ]];
-	then
-		echo " no internet - " ;
-fi
 		if [[ "$(ip link show "$interface" 2>/dev/null | grep ether | awk '{print $2}')" = "$(cat /root/.vendorsmac | head -n"${whoUP}" 2>/dev/null | tail -n1 2>/dev/null)" ]] ;
 	then
 		sudo -u "$SUDO_USER" hi_wicd-client 2>/dev/null &
