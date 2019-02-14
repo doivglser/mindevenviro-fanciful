@@ -81,7 +81,7 @@ exitHandler(){
 		echo -e "\n You where surfing with this MAC: \n $(find /home/"$SUDO_USER"/* -name "*mac_recieves_dhcp_lease*" | grep "$(date | awk '{print $2,$6}' | sed 's/\ //g')" | xargs cat | tail -n1)\n\n your network down." &&
 		killall -15 dhclient 2>/dev/null &&
 
-		exit 0 ;
+		findIface ;
 
 		elif [[ $REPLY =~ n|N|\  ]] ;
 	then
