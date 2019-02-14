@@ -5,6 +5,9 @@
 
 LANG="C";
 IFS=$(echo -e "\n\b");
+homeordner="/home/${SUDO_USER}/" ;
+antivirus="/usr/sbin/clamd" ;
+nids="/usr/sbin/snort" ;
 readonly empty='';
 
 if [[ "$EUID" != "0" ]] || [[ "$(ps ax | grep -v grep | grep -v nano | grep -v geany| grep redundanz | cut -f2 -d\ ) " = "$empty" ]] ;
@@ -14,7 +17,86 @@ if [[ "$EUID" != "0" ]] || [[ "$(ps ax | grep -v grep | grep -v nano | grep -v g
 else
 	if [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany | grep shi3lD | awk '{print $2}' | wc -l) " -ge "1" ]] ;
 then
-	nownMACs=$(cat /$HOME/Feb2019.mac_recieves_dhcp_lease | cut -f1 -d\  | sort -R | head -n 1)
-	echo $nownMACs ;
+
+# temp folder
+		if [[ "$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" != '' ]] ; 
+	then
+		tmpfolder="$(df -h | grep -E shm$ | cut -f2 -d% | tr -d '\ ')" ;
+	else
+		tmpfolder="/tmp" ;
+fi
+# temp folder END
+
+		interface="$(cat "$tmpfolder"/interface)" ;
+
+		if [[ "$interface" =~ eno|eth ]] ;
+	then
+		whoUP="1" ;
+
+		elif [[ "$interface" =~ wl|wi ]] ;
+	then
+		whoUP="2" ;
+	else
+		whoUP="none" ;
+fi
+
+ifUPAntiVirusFireWall(){
+		stoppuff_MACs="stop" ;
+
+		until [[ $(ps aux | grep -E -i -w 'snort|clamd' | grep -v grep | awk '{print $11}' | wc -l | tr -d ' ') = "2" ]] ;
+	do
+		if [[ "$(ps aux | grep -v grep | grep clamd | grep -v nano | awk '{print $11}')" != "$antivirus" ]]
+	then
+		nids-antivirus-up --antivirus &
+		printf "\r restarting ClamAV..." ; sleep 1;
+	fi
+	    if [[ "$(ps aux | grep -v grep | grep snort | grep -v nano | awk '{print $11}')" != "$nids" ]]
+	then
+		if [[ $(netstat -ar) =~ 'default' ]] ; # looks in the routing table for an internet connection
+    then
+		nids-antivirus-up --tor &
+		printf "\r restarting Tor..." ; sleep 1;
+		nids-antivirus-up --nids &
+		printf "\r restarting Snort..." ; sleep 1;
+	fi
+fi
+done ;
+}
+	stoppuff_MACs="stop" ;
+    stopLoop="1" ;
+	countDown="30";
+
+		while [[ "$stoppuff_MACs" != "stop" ]] ;
+	do
+		stop_shield --stop &
+		wait && sleep 1 ;
+		echo -e "\npuffing MACs ...\n";
+		nownMACs=$(cat "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" | cut -f1 -d\  | sort -R | head -n 1) &&
+		sudo ip link set dev "$interface" address "$nownMACs" &&
+		sudo ip link set dev "$interface" up && wait &&
+		echo "trying with this $(ip link show "$interface" | grep ether | awk '{print $2}')" &&
+
+		until [[ "$(ps aux | grep -v grep | grep -v nano | grep -v geany| grep /sbin/dhclient)" != '' ]] || [[ "$countDown" = "0" ]] ;
+	do
+		((countDown--)) ;
+		printf "\rplease RECONECT with network (wicd) $countDown -" ; sleep 1 ;
+done &&
+		if [[ $(netstat -ar) =~ 'default' ]] && [[ "$(ip link show "$interface" | grep ether | awk '{print $2}')" != "$(cat /root/.vendorsmac | head -n"${whoUP}" | tail -n1)" ]] ;
+	then
+		#update /etc/resolv.conf again
+		echo "nameserver 127.0.0.1" >| /etc/resolv.conf ;
+		#enable proxy
+		a2enmod proxy_http ;
+		#restarting clamAV or snort AND tor.
+		ifUPAntiVirusFireWall ;
+fi
+done
+		iptablestranspprox &
+    	echo "" ;
+		printf "\r starting up... " ; sleep 3 ;
+		clear ;
+        echo -e "\n - WE HAVE shi3lD ::\n" ;
+        echo -e " done ! we go throught $(netstat -ar | grep -v grep | grep default | awk '{print $2}') \n $(ip route | grep -v grep | grep src) \n and $interface has now this MAC-Address: $(ip link show "$interface" | grep ether | awk '{print $2}')\n" ;
+
 fi
 fi
