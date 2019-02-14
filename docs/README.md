@@ -212,10 +212,12 @@
 # USAGE On VTWM:
 
 * Login to X
-  
-"F12 on active window" * circles windows up
 
 "F1 on the desktop" * quit's VTWM (refers to logout)
+
+"F2 on active window" * circles windows up
+
+"F3 on active window" * circles windows down
 
 "green button left corner on title-bar" * iconize window
 

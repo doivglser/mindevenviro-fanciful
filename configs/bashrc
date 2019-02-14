@@ -101,7 +101,7 @@ sec0dM0n=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ c
 # aliass
 alias ls='ls --color=auto -sh'
 alias help='man'
-alias clean='sudo killall -15 cheese ; sudo killall -15 vlc ; sudo killall -15 cvlc ;'
+alias clean='sudo killall -15 cheese ; sudo killall -15 vlc ; sudo killall -15 cvlc ; sudo killall -15 wireshark'
 alias newSSHkey='xclip -sel clip < yourGitHubSSHkey'
 alias upload='git status && git add . && git commit -a'
 alias down='xrandr --output "$sec0dM0n" --off ; sudo ip link set dev "$(cat "$tmpfolder"/interface)" down ; sleep 1 ; sudo init 0'
