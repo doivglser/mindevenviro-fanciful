@@ -115,7 +115,7 @@ countDown="30";
 
 		((countUP++)) ;
 		
-		if [[ "$countUP" = "5" ]] ;
+		if [[ "$countUP" = "5" ]] && [[ -e "${homeordner}$(date | awk '{print $2,$6}' | sed 's/\ //g').mac_recieves_dhcp_lease" ]] ;
 	then
 		take_nownMACs &
 	fi
