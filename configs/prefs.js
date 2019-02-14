@@ -11,6 +11,7 @@
 pref("browser.search.defaultenginename", "data:text/plain,browser.search.defaultenginename=DuckDuckGo-mindevenviro");
 pref("browser.search.selectedEngine", "DuckDuckGo-mindevenviro");
 pref("keyword.URL", "https://duckduckgo.com/?q=");
+user_pref("network.cookie.cookieBehavior", 2);
 user_pref("browser.startup.homepage", "https://check.torproject.org/");
 user_pref("lightweightThemes.persisted.footerURL", false);
 user_pref("lightweightThemes.persisted.headerURL", false);
