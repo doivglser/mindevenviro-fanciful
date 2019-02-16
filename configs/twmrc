@@ -123,7 +123,7 @@ Button3 = : iconmgr : f.warp
 
 Button1 = : virtual | desktop : f.movescreen
 
-"F12" =	: window	: f.circledown
+"F9" =	: window	: f.circledown
 "F1" = : root : f.quit
 
 Cursors {

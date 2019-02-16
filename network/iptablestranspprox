@@ -8,6 +8,9 @@
 		exit 0 ;
 else
 
+iptables -t nat -A OUTPUT -p udp --dport 5000 -m owner --uid-owner $SUDO_USER -j DNAT --to-destination 127.0.0.1:53
+iptables -t nat -A OUTPUT -p tcp --dport 5000 -m owner --uid-owner $SUDO_USER -j DNAT --to-destination 127.0.0.1:9040
+
 iptables -A OUTPUT -m conntrack --ctstate INVALID -j DROP
 iptables -A OUTPUT -m state --state INVALID -j LOG --log-prefix "Transproxy state leak blocked: " --log-uid
 iptables -A OUTPUT -m state --state INVALID -j DROP

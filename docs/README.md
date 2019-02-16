@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines, without comments and without thirdparty
 
-- Lines =4487
+- Lines =4548
 
-- Words =61949
+- Words =62263
 
-- Chars =258106
+- Chars =261135
 
 # . 
 
@@ -215,7 +215,7 @@
 
 "F1 on the desktop" * quit's VTWM (refers to logout)
 
-"F12 on active window" * circles windows down
+"F9 on active window" * circles windows down
 
 "green button left corner on title-bar" * iconize window
 
