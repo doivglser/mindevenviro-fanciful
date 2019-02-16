@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # mindevenviro "mde-setup" (install script; "mind eve n viro" SETUP)
 
 # working version:			March 2018 ZH. 
@@ -71,6 +70,9 @@ fi
 		killall -15 vlc && wait ;
 fi
 # stop END
+
+	# enable port forwarding
+	echo "1" > /proc/sys/net/ipv4/ip_forward;
 
 	# update /etc/hosts
 	configs/./update_hosts & 
