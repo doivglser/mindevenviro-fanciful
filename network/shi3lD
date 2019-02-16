@@ -1,5 +1,7 @@
 #!/bin/bash
+
 # mindevenviro-debian shi3lD
+
 # Changes your MAC-ADDRESS and does a list of usable and not usable MAC-ADDRESSES in $HOME.
 # Restarts clamd and snort if failures, cuts the connected Interface connection 
 # while, changing the MAC-ADDRESS (use wicd to reconnect). ctrl+C cuts 
@@ -27,6 +29,9 @@ FILE="serv-if-up";
 		tmpfolder="/tmp" ;
 fi
 # temp folder END
+
+# enable ip forwarding
+echo "1" > /proc/sys/net/ipv4/ip_forward
 
 whoIfacesUP(){
 # which interface is trought the default route to the internet connected
