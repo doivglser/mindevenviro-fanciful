@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # mindevenviro "mde-setup" (install script; "mind eve n viro" SETUP)
 
 # working version:			March 2018 ZH. 
@@ -291,9 +292,9 @@ fi
 	chmod a+x /etc/pm/sleep.d/10-laptop-mode-tools ;
 
 	echo -e "\n ... copy VLC skin...\n\r" ;
-	cp -f thirdparty/MyVLCtheme.vlt /usr/share/vlc/skins2/ ;
-	chmod 755 /usr/share/vlc/skins2/MyVLCtheme.vlt ;
-	chown -R $SUDO_USER:$SUDO_USER /usr/share/vlc/skins2/MyVLCtheme.vlt ;
+	cp -f thirdparty/STRYPER-VLC.vlt /usr/share/vlc/skins2/ ;
+	chmod 755 /usr/share/vlc/skins2/STRYPER-VLC.vlt ;
+	chown -R $SUDO_USER:$SUDO_USER /usr/share/vlc/skins2/STRYPER-VLC.vlt ;
 
 	echo -e "\n ... installing flash player for linux...\n\r" ;
 	tar -xf /home/$SUDO_USER/mindevenviro/thirdparty/flash_player_npapi_linux.x86_64.tar.gz ;
