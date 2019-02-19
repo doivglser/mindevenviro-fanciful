@@ -261,8 +261,9 @@ fi
 	echo -e "\n ... copy VLC skin...\n\r" ;
 	cp -f thirdparty/default.vlt /usr/share/vlc/skins2/ ;
 	chmod 755 /usr/share/vlc/skins2/default.vlt ;
-
-	chown -R $SUDO_USER:$SUDO_USER /usr/share/vlc/skins2/STRYPER-VLC.vlt ;	echo -e "\n ... copy welcome tune...\n\r" ;
+	chown -R $SUDO_USER:$SUDO_USER /usr/share/vlc/skins2/default.vlt ;	
+	
+	echo -e "\n ... copy welcome tune...\n\r" ;
 	cp vtwm/beneathTheRedHouse.m3u /home/$SUDO_USER/.config/ ;
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config/beneathTheRedHouse.m3u ;
 	cp vtwm/beneathTheRedHouse.m4a /home/$SUDO_USER/.config/ ;
