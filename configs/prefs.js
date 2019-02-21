@@ -13,6 +13,7 @@ pref("browser.search.defaultenginename", "data:text/plain,browser.search.default
 pref("browser.search.selectedEngine", "DuckDuckGo-mindevenviro");
 pref("keyword.URL", "https://duckduckgo.com/?q=");
 user_pref("network.cookie.cookieBehavior", 2);
+user_pref(“general.useragent.override”,”Mozilla/5.0 (Windows NT 6.1;rv52.0) Gecko 20100101 Firefox/52.0 (Tor Browser Bundle)”);
 user_pref("browser.startup.homepage", "https://check.torproject.org/");
 user_pref("lightweightThemes.persisted.footerURL", false);
 user_pref("lightweightThemes.persisted.headerURL", false);
