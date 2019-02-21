@@ -91,6 +91,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+TZ='Europe/London'; export TZ
+
 set -o noclobber
 # primary monitor
 primM0n=$(xrandr | grep -E 'eDP-1|VGA-1|HDMI-1|DP-1|HDMI-2|DP-2' | grep -E '\ connected\ ' | grep primary | awk '{print $1}') ;
