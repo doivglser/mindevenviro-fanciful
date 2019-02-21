@@ -96,7 +96,7 @@ NoTitle {
 }
 
 #
-# Functions and Bindings
+#Functions and Bindings@
 #
 
 Function "move-or-lower" { f.move f.deltastop f.lower }
@@ -123,7 +123,7 @@ Button3 = : iconmgr : f.warp
 
 Button1 = : virtual | desktop : f.movescreen
 
-"F9" =	: window	: f.circledown
+"F12" =	: window	: f.circledown
 "F1" = : root : f.quit
 
 Cursors {
