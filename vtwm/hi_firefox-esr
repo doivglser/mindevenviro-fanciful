@@ -11,7 +11,7 @@ LANG="C" && hi &
 else
                 if [[ $(ps axu | grep -v grep | grep -v nano | grep -v geany | grep -v hi_firefox-esr | grep firefox-esr) = '' ]] ;
         then
-				cp -f /home/"$USER"/mindevenviro-debian/configs/prefs.js /home/"$USER"/.prefs.js ;
+				cp -f /home/"$USER"/mindevenviro-fanciful/configs/prefs.js /home/"$USER"/.prefs.js ;
                 firefox-esr 2>/dev/null &
                 sleep 2 ; wait ;
 				cp -f /home/"$USER"/.prefs.js /home/"$USER"/.mozilla/firefox/ar37ud1e.default/prefs.js ; 

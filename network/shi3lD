@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# mindevenviro-debian shi3lD
+# mindevenviro-fanciful shi3lD
 
 # Changes your MAC-ADDRESS and does a list of usable and not usable MAC-ADDRESSES in $HOME.
 # Restarts clamd and snort if failures, cuts the connected Interface connection 

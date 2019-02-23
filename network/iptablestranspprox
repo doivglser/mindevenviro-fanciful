@@ -1,5 +1,5 @@
 #!/bin/bash
-# mindevenviro-debian Transparently anonymizing traffic through TOR for a specific user with iptables
+# mindevenviro-fanciful Transparently anonymizing traffic through TOR for a specific user with iptables
 
 ###     WARNING:    DON'T EDIT ANYTHING BELOW       ###
 
