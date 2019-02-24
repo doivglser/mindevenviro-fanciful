@@ -1,12 +1,12 @@
 #!/bin/bash
 # changes the background in vtwm, with pictures from folder Pictures
-# . I will update some pictures
-LANG="C" ;
+# . I will update some pictures soonly
+LANG="C";
 IFS=$(echo -en "\b\n") ;
 		if [ $EUID != 0 ] ;
 	then
-		for back in $(find $HOME/Pictures/. -type f | grep -E 'jpg|png|gif|xpm|tiff|JPG|PNG|jpeg|JPEG' | sed 's/\ /\\ /g' | sort -R | head -n1) ;
+		for back in $(find $HOME/wallpapers -type f | grep -E 'jpg|png|gif|xpm|tiff|JPG|PNG|jpeg|JPEG' | sed 's/\ /\\ /g' | sort -R | head -n1);
 	do
-		echo "$back" | xargs feh --bg-scale && exit 0 ;
+		echo "$back" | xargs feh --bg-scale && exit 0;
 done
 fi

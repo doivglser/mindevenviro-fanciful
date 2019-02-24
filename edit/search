@@ -1,37 +1,33 @@
 #!/bin/bash
 # mindevenviro search
-#TODO: 
-# problems with spaces IFS var
-# openpdf works better
 ###     WARNING:    DON'T EDIT ANYTHING BELOW	###
 set -x
-
 				if [ "$EUID" != 0 ] ;
 			then
 				echo "sudo search -h :: please"
 		else
 
-LANG="C" ;
-FILE="search" ;
-line='' ;
-lines='' ;
+LANG="C";
+IFS=$(echo -en "\n\b") ;
+FILE="search";
+line='';
+lines='';
 
 help(){
 shift 0 ;
-echo -e "Usage: $0 [-s|--search] [PATH] [TOSEARCH]|-a [*] [FILE-SUFFIX] [TOGREP] [TOEXCLUDE] || [-h|--help]\r
-sudo this script:\r
+echo -e "\nUsage: sudo search [PATH] [SEARCHPATTERN]| OR [-a] [-g TOGREP] [-e TOEXCLUDE]\n
+sudo this script:\n
 SEARCH THE DRIVE\r
  This script searches your drive\r
  for everything in it, and displays\r
  only text in the less viewer.\r
- Finds: log files, example code, etc.\r
- -s: search flag\r
+ or open a PDF if finds PDF's\n
+ Finds: log files, example code, etc.\n
  [PATH]: local filesystem\r
- [TOSEARCH]: search pattern\r
- [-a] [*]: search flag \"ALL\" with \"*\"\r
- [FILE-SUFFIX]: file suffix without dot\r
- [TOGREP]: search a word in file\r
- [TOEXCLUDE]: a word you want to exclude from your search results.\n" ; 
+ [SEARCHPATTERN]: some pattern to search, one word\r
+ [-a]: search flag \"ALL\" as a globe \"*\"\r
+ [TOGREP]: -g flag and a word to grep\r
+ [TOEXCLUDE]: -e flag and a word you don't want to be in the search results.\n" ; 
  # SUDO_USER workflow control
 exit 0 ;
 	}
@@ -44,31 +40,41 @@ exitHandl3R(){
 
 display(){
 # display
+trap 'exitHandl3R' SIGINT ;
+
 		while read line ;
 	do
 		wait ;
-	
+###main	
 		if [[ $(echo "$line" | xargs file) =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
 	then
-			if [[ "$exclud3Flag" = "-e" ]] ;
-		then
-			patternANDexclude="$(echo $line | xargs grep $togrep && echo $line | xargs | grep -v $exclud3)" ;
-			tosearCH=$patternANDexclude ;
-		else
+###1
 			if [[ "$togrepFlag" = "-g" ]] ;
 		then
 			patternOnly="$(echo $line | xargs grep $togrep)" ;
 			tosearCH=$patternOnly ;
-		else
+
+			elif [[ "$exclud3Flag" = "-e" ]] && [[ "$togrepFlag" = "-g" ]] ;
+		then
+			patternANDexclude="$(echo $line | xargs grep $togrep && echo $line | xargs | grep -v $exclud3)" ;
+			tosearCH=$patternANDexclude ;
+			
+			elif [[ "$exclud3Flag" = "-e" ]] || [[ "$togrepFlag" = "-g" ]] ;
+		then
+			patternOnly="$(echo $line | xargs grep $togrep)" ;
+			tosearCH=$patternOnly ;
+	else
 			lineNUR="$(echo $line)" ;
 			tosearCH=$lineNUR ;
-		fi
-	fi
+fi
+###1
+
+###2
 			if [[ "$tosearCH" != '' ]] ;
 		then
 			uS3F=$(ls -sl "$line" | awk '{print $4}' | tr -d '\ ');
 			
-			if [[ ! $(echo "$line" | xargs file) =~ PDF ]] ;
+			elif [[ ! $(echo "$line" | xargs file) =~ PDF ]] ;
 		then
 			sudo -u "$uS3F" less $line;
 			pause=1 ;
@@ -76,16 +82,18 @@ display(){
 			sudo -u "$uS3F" mupdf $line 2>/dev/null ;
 			pause=1 ;
 		fi
+###2
+			elif [[ ! $(echo "$line" | xargs file) =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
+		then
+			echo -e " ... no PDF|PHP|script|ASCII|text|TEXT|HTML|XML \r" ;
+			pause=0 ;
 		else
 			echo -e " ... $(echo $line | xargs file) :: - nothing to show\r" ;
 			pause=0 ;
 fi
-		else
-			echo -e " ... no PDF|PHP|script|ASCII|text|TEXT|HTML|XML \r" ;
-			pause=0 ;
-fi
 	done <<<"$lines" ;
-# 					display END
+
+#display END
 }
 
 preP4re(){
@@ -103,59 +111,50 @@ done < <(find ${searchQuery#$searchIndex})
 }
 
 eingabe(){
-trap 'exitHandl3R' SIGINT ;
 pause=0 ;
 
-		if [[ "$parameter" = "-a" ]] ;
+		if [[ "$globeallflag" = "-a" ]] ;
 	then
-	toSearch="\"-\"name \"*\"" ;
+	toSearch="-name *";
 else
-	toSearch="\"-\"name \"*$parameter*\"" ;
+	toSearch="-name *$tos3arch*" ;
 fi
 
-declare -A searchPartOne="( $path \"${toSearch#2}\" )" ;
-declare -A searchPartTwo="( -type f 2>/dev/null | sed 's/\ /\\ /g' | sed 's/(/\(/g' | sed 's/)/\)/g' )" ;
-declare -A searchPartThree="( | grep -E \"$suffixx\"$ 2>/dev/null )" ;
-
-		if [[ "$suffixx" = '' ]] ;
+		if [[ "$togrep" != '' ]] && [[ "$exclud3" = '' ]];
 	then
-	declare -A searchQuery=+"( $("${searchPartOne#3}" "${searchPartTwo#12}") )" ;
-	searchIndex="2" ;
-else
-	declare -A searchQuery=+"( $("${searchPartOne#3}" "${searchPartTwo#12}" "${searchPartThree#5}") )" ;
-	searchIndex="3" ;
+		searchPartone="$path $toSearch -type f | sed 's/\ /\\ /g' | grep -E $togrep ";
+		searchQuery="$searchPartone" ;
+
+		elif [[ "$exclud3" != '' ]] && [[ "$togrep" != '' ]];
+	then
+		searchPartTwo="$path $toSearch -type f | sed 's/\ /\\ /g' | grep -E $togrep | grep -vE $exclud3";
+		searchQuery="$searchPartTwo";
 fi
-#declare -p searchQuery ;
 preP4re ;
 }
 
 searchStat(){
-	echo -e "search $(date) :: as $SUDO_USER :: in $(uname -n) :: $path $suffixx $togrep $exclud3 ::" >>"/home/$SUDO_USER/.wH0rUNSon" && wait ;
+	echo -e "search $(date) :: as $SUDO_USER :: in $(uname -n) :: $path $exclud3 $togrep $exclud3 ::" >>"/home/$SUDO_USER/.wH0rUNSon" && wait ;
 }
 # ASK
+togrepFlag="-g";
+exclud3Flag="-e";
+
   case "$1" in
-      -s|--search)
-      path=$2
-      parameter=$3
-      suffixx=$4
-      togrepFlag=$5
-      togrep=$6
-      exclud3Flag=$7
-      exclud3=$8
-      toshiffta=$(echo "$path $parameter $suffixx $togrepFlag $togrep $exclud3Flag $exclud3" | wc -w) ;
-      shift "$toshiffta" ;
-      eingabe "$@" ;
-      ;;
-      -h|--help)
-      toshiffta=0 ;
-      shift "$toshiffta" ;
-      help ;
-      ;;
+		-s|--search)
+        path=$2
+        globeallflag=$3
+        tos3arch=$globeallflag
+        togrep=$5
+        exclud3=$7
+        toshiffta=$(echo "$1 $path $globeallflag $tos3arch $togrep $exclud3" | wc -w) ;
+        shift "$toshiffta" ;
+        eingabe "$@" ;
+        ;;
+        -h|--help)
+        toshiffta=0 ;
+        shift "$toshiffta" ;
+        help ;
+        ;;
   esac
-		if [[ ! $1 = '-s|--search|-h|--help' ]] ;
-	then
-		echo "Try '$0 --help' for more information."
-	else
-		eingabe "$@" ;
-	fi
 fi

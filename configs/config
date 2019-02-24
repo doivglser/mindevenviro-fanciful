@@ -18,12 +18,12 @@
   [[default]]
     [[[child0]]]
       fullscreen = False
-      last_active_window = True
-      maximised = False
+      last_active_window = False
+      maximised = True
       order = 0
       parent = ""
-      position = 21:20
-      size = 1151, 516
+      position = 21:780
+      size = 1151, 700
       title = mind eve n viro
       type = Window
     [[[child1]]]

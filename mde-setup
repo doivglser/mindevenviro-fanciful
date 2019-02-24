@@ -37,7 +37,7 @@
 
 ###    WARNING: DON'T EDIT ANYTHING BELOW !!!    ###
 
-LANG="C";
+LANG="C" ;
 
 myPrograms="brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 wine64-tools wine64-preloader mercurial libpurple-dev libpurple0 libjson-glib-dev pidgin xul-ext-noscript xul-ext-https-everywhere xul-ext-ublock-origin firefox-esr vlc feh xclip geany transmission xscreensaver wireshark dialog x11-utils vtwm oss-compat alsa-utils xcompmgr x11-apps xdm xorg openvpn zip rar openssl nmap clamav-freshclam clamav-milter clamav-testfiles clamdscan clamassassin clamav clamav-base clamav-daemon php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline php7.0-opcache php7.0-json php7.0-gd dwww apache2 libmariadbclient-dev-compat default-libmysqlclient-dev mariadb-client mariadb-common mariadb-server sendmail python-mechanize python-gtk2-dbg shellcheck liblwp-protocol-socks-perl libcgi-pm-perl perl nmon figlet mc mutt eject nano pm-utils fancontrol thermald laptop-mode-tools cpufrequtils wicd " ;
 
@@ -147,9 +147,9 @@ fi
 	sed -e '/OnAccessMountPath /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;
 
-	echo -e "\n ... create /home/$SUDO_USER Directories" ;
-	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music} ;
-	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER ;
+	echo -e "\n ... create /home/$SUDO_USER Directories";
+	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music};
+	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER;
 
 	echo -e "\n ... I'm going to install programs\n ... copy sources.list" ;
 	cp -f configs/etc/sources.list /etc/apt/sources.list ;
@@ -343,7 +343,7 @@ fi
 	rm -f /var/www/html/index*
 	mkdir -p /var/www/html/{testphp,pics} ; 2>/dev/null ;
 	cp -f docs/pics/* /var/www/html/pics/ ;
-	cp -f docs/manual/* /var/www/html/testphp/ ;
+	cp -f docs/* /var/www/html/testphp/ ;
 	chown -R www-data:www-data /var/www/html/ ;
 
 	# Antivirus
@@ -388,8 +388,10 @@ DNSPort 53\r">>/etc/tor/torrc;
 		echo -e "\n ... tor allready configured...\n\r" ;
 fi
 	echo -e "\n ... set background Pictures...\n\r" ;
-	unzip -o pictures/wallpapers.zip -d /home/$SUDO_USER/Pictures ;
-	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/Pictures/* ;
+	mkdir -p /home/$SUDO_USER/wallpapers 2>/dev/null ;
+	unzip -o pictures/wallpapers.zip -d /home/$SUDO_USER/wallpapers ;
+	chown -R $SUDO_USER:$SUDO_USER /home/$SUDO_USER/wallpapers/* ;
+	chmod 0755 /home/$SUDO_USER/wallpapers/* ;
 
 		echo -e "\n ... set the rights for .wH0rUNSon...\n\r" ;
 

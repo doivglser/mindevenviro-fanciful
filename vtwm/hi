@@ -10,6 +10,8 @@ setsid xscreensaver -display :0 -no-splash >/dev/null 2>&1 < /dev/null &
 xcompmgr -c &
 xsetroot -solid yellow &
 feh-bg &
+sleep 5;
+terminator &
 }
 		if [[ $(ps ax | grep -v grep | grep xload) = '' ]] && [[ $(ps ax | grep -v grep | grep oclock) = '' ]] || [[ $(ps ax | grep -v grep | grep xscreensaver) = '' ]] ;
 	then
