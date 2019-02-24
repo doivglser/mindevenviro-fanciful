@@ -343,7 +343,7 @@ fi
 	rm -f /var/www/html/index*
 	mkdir -p /var/www/html/{testphp,pics} ; 2>/dev/null ;
 	cp -f docs/pics/* /var/www/html/pics/ ;
-	cp -f docs/* /var/www/html/testphp/ ;
+	cp -f configs/README.html /var/www/html/testphp/ ;
 	chown -R www-data:www-data /var/www/html/ ;
 
 	# Antivirus
