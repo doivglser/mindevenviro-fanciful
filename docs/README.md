@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines, without comments and without thirdparty
 
-- Lines =4150
+- Lines =4038
 
-- Words =60730
+- Words =59851
 
-- Chars =244475
+- Chars =238298
 
 # . 
 
@@ -278,16 +278,6 @@
 * libreoffice
 
   Libreoffice Writer
-  
-* terminator (Multiple GNOME terminals in one window.)
-
-  "ctrl+PageUP" cycles TAB to right
-  
-  "ctrl+PageDOWN" cycles TAB to left
-  
-  "ctrl+TAB" swap's between Panned TAB's
-  
-  "ctrl+shift+T" does a new TAB.
 
 * messenger
 
@@ -316,6 +306,16 @@
   fast and lightweight IDE
 
 # USAGE in Terminator:
+
+* terminator (Multiple GNOME terminals in one window.)
+
+  "ctrl+PageUP" cycles TAB to right
+  
+  "ctrl+PageDOWN" cycles TAB to left
+  
+  "ctrl+TAB" swap's between Panned TAB's
+  
+  "ctrl+shift+T" does a new TAB.
 
 	RUN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW
 
