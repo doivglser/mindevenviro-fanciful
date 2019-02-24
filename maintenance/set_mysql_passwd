@@ -10,7 +10,7 @@ LANG=C ;
 		echo "please sudo"
 		exit 0 ;
 	else
-		mysqlconn="sudo mysql -u root";
+		mysqlconn="mysql -u root";
 help(){
 shift 0 ;
 echo -e "hello $SUDO_USER\nset new mariadb root password\n" ;
@@ -19,39 +19,63 @@ exit 0 ;
 }		
 
 stopmysql(){
-		killall -15 serv-if-up 2>/dev/null ;
+
+		/etc/init.d/mysql stop && wait ;
+
+		killall -15 serv-if-up 2>/dev/null && wait ;
 		
 		for tokill in $(ps aux | grep -v grep | grep -v set_mysql_passwd | grep mysql | awk '{print $2}') ;
 	do
-		kill -9 "$tokill" 2>/dev/null ;
+		kill -15 "$tokill" 2>/dev/null ;
 	done;
-		for tokill in $(ps aux | grep -v grep | grep -v set_mysql_passwd | grep mysqld_safe | awk '{print $2}') ;
+		for tokill3 in $(ps aux | grep -v grep | grep -v set_mysql_passwd | grep mysqld_safe | awk '{print $2}') ;
 	do
-		kill -9 "$tokill" 2>/dev/null ;
+		kill -15 "$tokill3" 2>/dev/null ;
+	done;
+		for tokill4r in $(ps aux | grep -v grep | grep -v set_mysql_passwd | grep serv-if-up | awk '{print $2}') ;
+	do
+		kill -15 "$tokill4r" 2>/dev/null ;
 	done;
 	}
 
 changepass(){
+
 		if	[[ "$mysqlnewpass" != '' ]] ;
 	then
 		stopmysql ;
-		echo "starting mysql to maintenance" ;
-		mysqld_safe --skip-grant-tables &
+		
+		echo -e "\nstarting mysqld_safe to maintenance, please wait...\n" ;
+		
+		sudo mysqld_safe --skip-grant-tables 2> /dev/null &
+		
+		sleep 15 ;
+
+		echo -e "\nGoing to change the password\n" ;
+
+		$mysqlconn -e "use mysql; update mysql.user set password=password('$mysqlnewpass') where user='root';" && sleep 3;
+		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;" && sleep 3 ;
+		
 		sleep 3 ;
-		$mysqlconn -e "use mysql; update mysql.user set password=password('$mysqlnewpass') where user='root';"
-		$mysqlconn -e "use mysql; FLUSH PRIVILEGES;"
-		killall -9 mysqld_safe && wait ; 
-		echo "... update mysql root passwords" ;
+		
+		killall -15 mysqld_safe && wait && sleep 3 ; 
+		
+		echo -e "\nupdating mysql root passwords...\n" ;
 		sed -i "s/\(p4SSWORD *= *\).*/\1$mysqlnewpass/" /etc/mysql_cp_db_password.conf;
-		echo "starting mysql and serv-if-up";
-		/etc/init.d/mysql start;
-		nice -14 setsid serv-if-up >/dev/null 2> /dev/null &
-		echo "done!";
+		
+		echo -e "\nrestarting mysql...\n";
+		/etc/init.d/mysql start && wait ;
+
+		echo -e "\nrestarting serv-if-up...\n";
+		setsid serv-if-up 2>/dev/null 2>&1 < /dev/null &
+
+		sleep 3;
+
+		echo -e "\ndone!\n";
 		exit 0;
 	else
 		echo "you must enter a password";
 		echo "USAGE: $0 --help";
-		exit 0;
+		exit 1;
 fi
 }
 

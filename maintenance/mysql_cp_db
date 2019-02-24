@@ -28,6 +28,8 @@ LANG=C ;
 p4SSWORD='' ;
 		if [ $EUID != 0 ]
 	then
+		echo -e "\nPlease sudo this $1 :) \r" ;
+	else
 
 FILE="mysql_cp_db" ;
 
@@ -58,7 +60,7 @@ source "$configfile" ;
 # where is program
 dbserver=$(whereis mysql | cut -f2 -d: | awk '{print $1}');
 # var for connect
-mysqlconn="$dbserver -u root -p$p4SSWORD" ;
+mysqlconn="$dbserver -u root -p"$p4SSWORD"" ;
 #
 
 echo -e "mysql_cp_db $(date) :: as $USER :: in $(uname -n) :: in $HOME :: WORK -" >>"$HOME/.wH0rUNSon" ;
@@ -305,6 +307,4 @@ else
 fi
 
 # 		greeting END
-	else
-		echo -e " Please dont sudo this :) \r" ;
 fi

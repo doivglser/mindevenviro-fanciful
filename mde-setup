@@ -117,6 +117,16 @@ fi
 		ip link | cut -f2 -d: | grep -E '\ ' | tr -d '\ ' | grep -v lo | tee "/root/.interfaces" ;
 		chmod 0664 "/root/.interfaces" ;
 fi
+	# set conf file for mysql maintenance
+	
+		if [[ "$(ls /etc/*)" =~ mysql_cp_db_password.conf ]];
+	then
+		echo -e "\n/etc/mysql_cp_db_password.conf allready exists\n" ;
+	else
+		cp -f configs/etc/mysql_cp_db_password.conf /etc/mysql_cp_db_password.conf ;  
+fi
+
+	
 	echo -e "\r\n ... clearing files" ;
 	
 	rm -f /etc/apache2/sites-enabled/000-default.conf 2>/dev/null ;

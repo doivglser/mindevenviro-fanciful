@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines, without comments and without thirdparty
 
-- Lines =4447
+- Lines =4462
 
-- Words =61765
+- Words =61854
 
-- Chars =255547
+- Chars =256192
 
 # . 
 
@@ -169,11 +169,11 @@
 
 * After base-install, "user@host:~sudo apt-get -y -f --fix-missing install git"
 
-* "user@host:~git clone git@github.com:doivglser/mindevenviro-debian.git"
+* "user@host:~git clone https://github.com/doivglser/mindevenviro-fanciful.git"
 
-* "cd mindevenviro-debian" 
+* "cd mindevenviro-fanciful" 
 
-* "user@host:~/mindevenviro-debian/sudo mde-setup"
+* "user@host:~/mindevenviro-fanciful/sudo mde-setup"
 
   Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
 
@@ -202,7 +202,7 @@
   
   You can aprove to login in to your github.com account, or just hit enter. 
   
-  Use "mde-setup" from the "mindevenviro-debian" folder, for a new install, 
+  Use "mde-setup" from the "mindevenviro-fanciful" folder, for a new install, 
   
   for an update AND OR, to upgrade the system. The apt-get 
   
@@ -338,7 +338,7 @@
 	    To restore database from ~/[databasename].sql
 	     To delete zombie ID's because "lost php, xml"
   
-* redundanz (shell script)
+* redundanz (shell script)  
 
   Puts serv-if-up daemon up and monitors servers reliability.
   
