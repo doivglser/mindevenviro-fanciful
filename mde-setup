@@ -264,7 +264,8 @@ fi
 	cp vtwm/wakeup.mp3 /home/$SUDO_USER/.config/ ;
 	chown $SUDO_USER:$SUDO_USER /home/$SUDO_USER/.config/wakeup.mp3 ;
 	
-	echo -e "\n ... copy VLC skin...\n\r" ;
+	echo -e "\n ... copy VLC skin, playlist-to-overwrite, must be the same name...\n\r" ;
+	cp configs/myMusic.m3u /home/$SUDO_USER/Music/ 2>/dev/null ;
 	cp -f thirdparty/default.vlt /usr/share/vlc/skins2/ ;
 	chmod 755 /usr/share/vlc/skins2/default.vlt ;
 	chown -R $SUDO_USER:$SUDO_USER /usr/share/vlc/skins2/default.vlt ;	
@@ -350,7 +351,7 @@ fi
 	echo -e "ScanOnAccess True\nOnAccessMountPath /home/$SUDO_USER/Downloads...\n\r" | tee -a /etc/clamav/clamd.conf ;
 
 # mkdir cgi-bin
-mkdir -p /usr/lib/cgi-bin/ 2>/dev/null;
+mkdir -p /usr/lib/cgi-bin/ 2>/dev/null ;
 # add a ServerName to your conf
 echo "ServerName $(hostname)" >> /etc/apache2/apache2.conf ;
 echo "Listen 127.0.1.1:80" >> /etc/apache2/apache2.conf ;

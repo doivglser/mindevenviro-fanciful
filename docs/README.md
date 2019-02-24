@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines, without comments and without thirdparty
 
-- Lines =4038
+- Lines =5224
 
-- Words =59851
+- Words =61090
 
-- Chars =238298
+- Chars =292321
 
 # . 
 
@@ -48,103 +48,6 @@
 - Transparently anonymizing traffic through TOR for a specific user with iptables.
 
 - For programmers and administrators.
-
-# TODO:
-
-## "![Cont-Sec](https://github.com/doivglser/mindevenviro/projects)" Secure-Email-Solution
-
-		....mber. After writing the  message, "Cont-Sec" applies a special cipher 
-		for each letter and number corresponding to the "Email Code Snippets" that match 
-		Your "image matching key", made in consultation with a fr....
-
-		SpamCodeSegment="\<html\>\<title\>spam\ very\ boring\ but\ usefull\<\title\>\<style"
-
-	a=$(nICE_Encryption -le a $SpamCodeSegment)
-
-	echo $a
-
-	$1$2cURl/G9$u7fHYYfdry0F8ZHpMf8/8/
-	
-	- I WILL TRY TO DO THE SIMPLE WAY TO CIPHER THE TEXT AS I WROTE,
-          AND APPLY OTHER TECHNIQUES TO DECRYPT THE MESSAGE.
-	  
-	  I try to write a " nICE_Encryption -le a $3 " script, 
-	  
-	  + where "$1" is:
-	  
-	  FLAGS: -le letter, -n number, -u upper case, -lo lower case, -s space
-	  
-	  + And "$2" is:
-	  
-	  [a-zA-Z0-9\-\_\?\¿\ \.\*\#]* or a space.
-	  
-	  + And "$3" is:
-	  
-	  $3=$SpamCodeSegment ;
-	  
-	  The recipient recieves a Picture, that illustrates, segments of pictures 
-	  that correspond to the "Email Code Snippets" from the "image matching key".
-
-
-## mindevenviro
-
-	  	portability to: Debian, CentOS, and MacOS
-	  	to write without exclude codes from shellcheck
-	  	"iptables psad fwsnort": tcp-wrapper
-	  	to implement "logger" "pipestatus" "ncurses" "GUI's"
-	  	"mindevenviro.rules": "alert/drop rules" for snort
-	  	better entries for log .wH0rUNSon
-	  	to search for the right MySQL syntax 
-	  	to add a "Joomla CMS" to localhost
-
-	  	to write an unix socket server, to handle http_headers 
-	  	reffering user-agent, and redirect to TOR.
-
-	  	to implement "Cont-Sec" to mindevenviro
-
-## sCRYPtUPdater
-
-		To search for brackets and braces, to split the 
-		content of the source code into short code snippets.
-		To refer to the "exit handler"If the 
-		workflow interval in minutes is over
-		if $REPLY from "exit handler" is = "n", 
-		reset workflow interval, if $REPLY 
-		from "exit handler" is = "y" exit.
-
-# PROBLEMS:
-
-* "update_hosts" and "hosts"
-
-      You have double entries in your hosts file, 
-      I should have an apartement, a computer and money to eat something.
-
-* search
-
-      I don't remember, I have no computer to update.
-
-* sCRYPtUPdater
-
-		Make sure you change more than 1 byte, so if you 
-		only change one character, then please add a space.
-  
-		If interval in minutes is over, Ctrl-C to exit.
-
-* for the moment shi3lD works only for WiFi Interfaces.
-
-		no workaround to install wifi firmware. 
-		(I recommend a dd-wrt router as client over ethernet)
-
-		"interface" shi3lD have an option to choose 
-		between Ifaces, that option must be automated.
-		interface="$(cat "$tmpfolder"/interface)" ;
-
-* while installing:
-
-		while installing snort: debconf asks for 
-		interface eth0 no workaround for "eno[0-9]" 
-		interfaces. Take a look in to "ip route show" and 
-		"sudo dpkg --configure -a" with the name of your interface.
 
 # Requirements:
 
@@ -209,9 +112,14 @@
   package manager is marked to, not install systemd related packages.
   
 
-# USAGE On VTWM:
+# USAGE | NAVIGATION On VTWM:
 
 * Login to X
+
+		Click with the mouse in the lower right corner of the screen on a 
+		four-cornered small frame and just drag the mouse to a corner 
+		and let go. The middle area is reserved for the TV, the placeholder 
+		for the program windows on the TV screen.
 
 "F1 on the desktop" * quit's VTWM (refers to logout)
 
@@ -489,34 +397,3 @@
 # in /etc/X11/Xreset.d
 
   logoutvtwm
-
-# Coming soon: "Cont-Sec"  
-
-  An anonym e-mail solution and a volatile secure account on a RAM-Disk. I want to use phyton, because of some C, 
-  C++ libraries. I want to build the GUI in GTK+, because GTK+ is portable.
-
-* https://github.com/doivglser/min-dev-enviro/projects 
-
-# Thank's:
-
-![LPIC-1](https://www.theurbanpenguin.com/wp-content/uploads/2016/08/LPIC-1-Medium.png)
-![Bash](https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Gnu-bash-logo.svg/245px-Gnu-bash-logo.svg.png)
-![MC](https://midnight-commander.org/chrome/site/MidnightCommander.png)
-![vtwm](http://www.xwinman.org/images/vtwm.gif)
-![mutt](https://upload.wikimedia.org/wikipedia/commons/e/ef/Mutt.gif)
-![Debian](https://www.notebookcheck.net/fileadmin/_processed_/a/4/csm_Debian_logo_81d29e8578.jpg)
-![ClamAV](https://www.clamav.net/assets/clamav-trademark.png)
-![gnu nano](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Gnu-nano.svg/256px-Gnu-nano.svg.png)
-![Apache](http://www.linuxbrigade.com/wp-content/uploads/2014/06/apache318x260.png)
-![playonlinux](http://www.playonlinux.com/images/uploads/196.jpg?w=240)
-![github](http://www.toolswatch.org/wp-content/uploads/2014/09/logo_GitHub.jpg)
-![VLC](https://nightlies.videolan.org/cone-soppera10.png)
-![FIREFOX-ESR](http://lh4.googleusercontent.com/-ES6QFwghMpc/Tz5DbjB7zlI/AAAAAAAAA9o/T13MxP5CUrc/s1600/Firefox-ESR.png)
-![stackoverflow](http://devlup.com/wp-content/uploads/2011/06/stackoverflow.png)
-![transmission](https://itsfoss.com/wp-content/uploads/2015/08/transmission-logo.png)
-![Snort](https://www.snort.org/assets/SnortTM.png)
-![geany](https://www.linux.com/var/uploads/Image/articles/139882-2.jpg)
-![PHP/MySQL](https://disenowebakus.net/imagenes/articulos/aprender-php-mysql-bases-de-datos-paginas-web-dinamicas.jpg)
-![Python](http://www.coderdojo-helmond.nl/wp-content/uploads/2015/10/python-programming-assignment-help.png)
-![Perl](https://www.textmagic.com/wp-content/themes/textmagic-genesis/assets/vendor/textmagic/marketing/images/api/prog-lang-logos/perl.png)
-![terminator](https://i.ytimg.com/vi/mMak2VzRbmc/maxresdefault.jpg)

@@ -2,7 +2,7 @@
 # mindevenviro search
 ###     WARNING:    DON'T EDIT ANYTHING BELOW	###
 set -x
-				if [ "$EUID" != 0 ] ;
+				if [[ "$EUID" != 0 ]] ;
 			then
 				echo "sudo search -h :: please"
 		else
@@ -15,7 +15,7 @@ lines='';
 
 help(){
 shift 0 ;
-echo -e "\nUsage: sudo search [PATH] [SEARCHPATTERN]| OR [-a] [-g TOGREP] [-e TOEXCLUDE]\n
+echo -e "\nUsage: sudo search -s [PATH] [SEARCHPATTERN]| OR [-a] [-g TOGREP] [-e TOEXCLUDE]\n
 sudo this script:\n
 SEARCH THE DRIVE\r
  This script searches your drive\r
@@ -112,7 +112,8 @@ done < <(find ${searchQuery#$searchIndex})
 
 eingabe(){
 pause=0 ;
-
+globeallflag="-a";
+tos3arch="$3";
 		if [[ "$globeallflag" = "-a" ]] ;
 	then
 	toSearch="-name *";
@@ -143,18 +144,14 @@ exclud3Flag="-e";
   case "$1" in
 		-s|--search)
         path=$2
-        globeallflag=$3
-        tos3arch=$globeallflag
-        togrep=$5
-        exclud3=$7
-        toshiffta=$(echo "$1 $path $globeallflag $tos3arch $togrep $exclud3" | wc -w) ;
-        shift "$toshiffta" ;
+        togrep=$3
+        exclud3=$4
+        shift "$(echo "$path $togrep $exclud3" | wc -w)" ;
         eingabe "$@" ;
         ;;
         -h|--help)
         toshiffta=0 ;
         shift "$toshiffta" ;
-        help ;
         ;;
-  esac
+esac
 fi
