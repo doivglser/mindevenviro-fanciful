@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines, without comments and without thirdparty
 
-- Lines =4462
+- Lines =4461
 
-- Words =61854
+- Words =61850
 
-- Chars =256192
+- Chars =256171
 
 # . 
 
@@ -173,11 +173,11 @@
 
 * "cd mindevenviro-fanciful" 
 
-* "user@host:~/mindevenviro-fanciful/sudo mde-setup"
+* "user@host:~/mindevenviro-fanciful/sudo ./mde-setup"
 
   Installs the "deployment environment" and the "minimal desktop" with "antivirus and NIDS":
 
-  * Debian GNU/Linux 9
+### Debian GNU/Linux 9
 
 	wicd brutalchess libreoffice-writer tidy cheese gimp 
 	scrot mupdf terminator playonlinux wine64 wine64-tools 
