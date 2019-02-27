@@ -63,14 +63,6 @@
 		
 # PROBLEMS:
 
-* "update_hosts" and "hosts"
-
-      You have double entries in your hosts file, 
-      I should have an apartement, a computer and money to eat something.
-
-* search
-
-      I don't remember, I have no computer to update.
 
 * sCRYPtUPdater
 

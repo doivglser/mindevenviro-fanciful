@@ -237,7 +237,7 @@
 
 * search (shell script)
 
-  search by path and file suffix, if grep true open file (doesn't work at the moment)
+  search by path and if grep true open's a file to edit or to take a look, you can exclude files, from search output with a word.
 
 * mysql_cp_db (shell script)
 
