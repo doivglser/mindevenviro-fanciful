@@ -2,15 +2,11 @@
 # mindevenviro-windows search
 # I use dos2unix to convert file endings
 ###	WARNING: DON'T EDIT ANYTHING BELOW ###
-#set -x
+
 LANG="C";
 IFS="$(echo -en "\n\b")" ;
 line='';
 pause="0";
-path=''
-exclud3=''
-togrep=''
-exclud3=''
 			if [[ "$EUID" != "0" ]] ;
 		then
 	echo -e "sudo search -h :: please\n" ;
@@ -63,96 +59,78 @@ display(){
 			# uS3F is the owner of the file
 			uS3F=$(ls -sl "$filename" | awk '{print $4}' | tr -d '\ ');
 ###
-			if [[ $(echo "$filename" | xargs basename | sed 's/\./\ /g' | awk '{print $2}') =~ conf|ini|config ]] ;
-		then
-				pause="1" ;
-				sudo -u "$uS3F" nano "$filename" && return ;
-
-				if [[ ! $(echo "$filename" | xargs file) =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] ;
+				if [[ $(echo "$filename" | xargs basename | sed 's/\./\ /g' | awk '{print $2}') =~ 'conf'|'ini'|'config' ]] \
+				&& [[ ! $(echo "$filename" | xargs file) =~ 'shared'|'dynamically'|'interpreter' ]]; # to not open binaries
 			then
 				pause="1" ;
+				opener="nano";
+				return ;
+
+				# count with dd magic number 20 to determine the file type to be editet and not to open binaries
+				elif [[ $(dd if="$filename" bs=20 count=1 | tr '\0' '\n') =~ 'bash'|'perl'|'php'|'python'|'sh' ]] \
+				&& [[ ! $(echo "$filename" | xargs file) =~ 'shared'|'dynamically'|'interpreter' ]];
+			then
+				pause="1" ;
+				opener="nano";
+				return ;
+
+				elif [[ ! $(echo "$filename" | xargs file) =~ PDF|PHP|script|ASCII|text|TEXT|HTML|XML ]] \
+				&& [[ ! $(echo "$filename" | xargs file) =~ 'shared'|'dynamically'|'interpreter' ]];
+			then
+				pause="0" ;
 				echo -e " ... no PDF|PHP|script|ASCII|text|TEXT|HTML|XML \r" ;
 			else
-				pause="1" ;
-				echo -e " ... $(echo $filename | xargs file) :: - nothing to show\r" ;
+				pause="0" ;
+				echo -e " ... $(echo $filename | xargs file) ::\r" ;
 		fi
 ###
-			if [[ ! $(echo "$filename" | xargs basename | sed 's/\./\ /g' | awk '{print $2}') =~ conf|ini|config ]] ;
+			if [[ ! $(echo "$filename" | xargs basename | sed 's/\./\ /g' | awk '{print $2}') =~ 'conf'|'ini'|'config' ]] \
+				&& [[ ! $(echo "$filename" | xargs file) =~ 'shared'|'dynamically'|'interpreter' ]] ;
 		then
 			pause="1" ;
-			sudo -u "$uS3F" less "$line" && return ;
-		else
-			if [[ $(dpkg -l | grep mupdf | awk '{print $2}') != '' ]] && [[ $(echo "$filename" | xargs file) =~ PDF ]] ;
+			opener="less";
+			return ;
+		
+			elif [[ $(dpkg -l | grep mupdf | awk '{print $2}') != '' ]] && [[ $(echo "$filename" | xargs file) =~ PDF ]] ;
 		then
 			pause="1" ;
-			sudo -u "$uS3F" mupdf "$filename" && return ;
+			opener="mupdf";
+			return ;
 		else
-			pause="1" ;
+			pause="0" ;
 			echo -e " ... no PDF viewer installed, or you are in Windows \r" ;
-			echo -e " ... $(echo $filename | xargs file) :: - nothing to show\r" ;
+			echo -e " ... $(echo $filename | xargs file) ::\r" ;
 		fi
-	fi
-				else
-					return ;
-fi
 ###
 #display END
 }
 
-# search query 1
-eingabe1(){
-#echo "eingabe function 2"
+# search query
+eingabe(){
+#echo "eingabe function"
 
 		while read line
 	do
-		if [ $pause = 1 ] ;
-	then
 		if [[ "$togrep" != '' ]] && [[ "$exclud3" = '' ]] ;
 	then
 		filename=$line;
 		cat $line | grep -E $togrep >| "$tmpfolder/line.search" ;
 		echo $filename >> "$tmpfolder/line.search" ;
 		line="$tmpfolder/line.search" ;
-		printf " ... continue ... " ; read -p -r ;
-		wait ;
-		display ;
-
-		elif [[ "$exclud3" != '' ]] && [[ "$togrep" != '' ]] ;
+		
+		if [[ ! $(echo $tmpfolder/line.search | xargs file | cut -f2 -d:) =~ '(no magic)'|'empty' ]];
 	then
-		filename=$line;
-		cat $line | grep -E $togrep | grep -vE $exclud3 >| "$tmpfolder/line.search" ;
-		echo $filename >> "$tmpfolder/line.search" ;
-		line="$tmpfolder/line.search" ;
-		printf " ... continue ... " ; read -p -r ;
-		wait ;
 		display ;
-	fi
 fi
-done<<<"$line";
-}
-
-# search query 2
-eingabe2(){
-#echo "eingabe function 2"
-
-		while read line
-	do
-		if [ $pause = 0 ] ;
-	then
-		if [[ "$togrep" != '' ]] && [[ "$exclud3" = '' ]] ;
-	then
-		filename=$line;
-		cat $line | grep -E $togrep >| "$tmpfolder/line.search" ;
-		echo $filename >> "$tmpfolder/line.search" ;
-		line="$tmpfolder/line.search" ;
-		display ;
-
 		elif [[ "$exclud3" != '' ]] && [[ "$togrep" != '' ]] ;
 	then
 		filename=$line;
 		cat $line | grep -E $togrep | grep -vE $exclud3 >| "$tmpfolder/line.search" ;
 		echo $filename >> "$tmpfolder/line.search" ;
 		line="$tmpfolder/line.search" ;
+		
+		if [[ ! $(echo $tmpfolder/line.search | xargs file | cut -f2 -d:) =~ '(no magic)'|'empty' ]];
+	then
 		display ;
 	fi
 fi
@@ -171,20 +149,23 @@ exclud3="$5";
 
 			if  [[ "$exclud3" != '' ]] || [[ "$togrep" != '' ]] ;
 		then
-				while read line
+				for line in $(find $searchP4th -name *$searchP4ttern* -type f) ;
 			do
 				if [ $pause = 1 ] ;
 			then
-				printf " ... to continue: " ; read -r ;
-				eingabe1 ;
+				sudo -u "$uS3F" "$opener" "$filename" ;
+				sleep 1 ;
+				echo "-" ;
+				printf " ...enter to continue: " ; read -r ;
+				echo "-" ;
+				eingabe ;
 			fi
 			
 				if [ $pause = 0 ] ;
 			then
-				printf " ... to continue: " ; read -r ;
-				eingabe2 ;
+				eingabe ;
 			fi
-			done<<<"$(find "$searchP4th" -name "*$searchP4ttern*" -type f)" ;
+			done
 	else
 			help_function ;
 fi
@@ -205,6 +186,3 @@ fi
 esac
 # ASK END
 fi
-
-#readonly empty=" empty" ;
-#[[ $(echo $tmpfolder/line.search | xargs file | cut -f2 -d:) = $empty ]] ||
