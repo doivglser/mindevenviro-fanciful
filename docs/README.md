@@ -2,17 +2,21 @@
 
 		codecounter: code without blank lines, without comments and without thirdparty
 
-- Lines =4176
+- Lines =4180
 
-- Words =60558
+- Words =60578
 
-- Chars =243376
+- Chars =243492
 
 # . 
 
 ![](https://raw.githubusercontent.com/doivglser/mindevenviro/master/docs/pics/addjus_four.jpg)
 
-## ![SCREENSHOTS](https://github.com/doivglser/mindevenviro/blob/master/docs/pics/index.md)
+## ![ SCREENSHOTS ](https://github.com/doivglser/mindevenviro/blob/master/docs/pics/index.md)
+
+## ![ THANKS ](https://github.com/doivglser/mindevenviro-fanciful/blob/master/docs/THANKS.md)
+
+## ![ TODO ](https://github.com/doivglser/mindevenviro-fanciful/blob/master/docs/TODO.md)
 
 # M1ND3V3NV1R0-FANCIFUL DevOps (testing v0.1.1B)
 
