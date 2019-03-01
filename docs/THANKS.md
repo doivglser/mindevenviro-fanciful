@@ -18,6 +18,7 @@
 ![Apache](http://www.linuxbrigade.com/wp-content/uploads/2014/06/apache318x260.png)
 ![playonlinux](http://www.playonlinux.com/images/uploads/196.jpg?w=240)
 ![github](http://www.toolswatch.org/wp-content/uploads/2014/09/logo_GitHub.jpg)
+![stackExchange:AskUbuntu](https://raw.githubusercontent.com/doivglser/mindevenviro-fanciful/master/docs/pics/stackexchange_askubuntu.png)
 ![VLC](https://nightlies.videolan.org/cone-soppera10.png)
 ![FIREFOX-ESR](http://lh4.googleusercontent.com/-ES6QFwghMpc/Tz5DbjB7zlI/AAAAAAAAA9o/T13MxP5CUrc/s1600/Firefox-ESR.png)
 ![stackoverflow](http://devlup.com/wp-content/uploads/2011/06/stackoverflow.png)

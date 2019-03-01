@@ -2,11 +2,11 @@
 
 		codecounter: code without blank lines, without comments and without thirdparty
 
-- Lines =4180
+- Lines =4196
 
-- Words =60578
+- Words =60646
 
-- Chars =243492
+- Chars =244168
 
 # . 
 
@@ -25,29 +25,29 @@
 	 antivirus, NIDS and a great multimedia experience, 
 	 without systemd and with TOR. (for one "$USER").
 
-* Soon for CentOS, MacOSX and Windows
+* Soon for MacOSX and CentOS
 
 - VTWM minimal tweak, Xorg session with xdm.
 
 - Antivirus engine ClamAV and NIDS solution Snort.
 
-- Syntaxcheck: "python -m pgb | perl -wc | shellcheck -e | php -l | tidy -e -q".
+- Syntaxcheck: "python -m pgb | perl -wc | bash -n | php -l | tidy -e -q".
 
 - Changes MAC's, to obtain a new IP, by quit reverts the connected interface, to vendor's MAC.
 
 - Web surfing with Firefox-ESR and local/web media experience with VLC.
 
-- PlayOnLinux, to install win32 and win64 MS-Windows applications.
+- PlayOnLinux, to install win64 MS-Windows applications.
 
 - Libreoffice, Geany, Terminator, Transmission, Cheese, Brutalchess, GIMP, WiCD
 
-- Restarts apache2, mysqld, sendmail, snort, clamd.
+- Restarts apache2, mysqld, sendmail, snort, clamd, tor
 
 - Search script and MySQL(MariaDB) maintainers script.
 
 - Volatile $tmpfolder on /dev/shm 
 
-- ScanOnAccess from ClamAV to ~/Downloads
+- ScanOnAccess from ClamAV to "/" and to "/home/"
 
 - Transparently anonymizing traffic through TOR for a specific user with iptables.
 
@@ -86,22 +86,17 @@
 
 ### Debian GNU/Linux 9
 
-	wicd brutalchess libreoffice-writer tidy cheese gimp 
-	scrot mupdf terminator playonlinux wine64 wine64-tools 
-	wine64-preloader mercurial libpurple-dev libpurple0 
-	libjson-glib-dev pidgin xul-ext-noscript xul-ext-https-everywhere 
-	xul-ext-ublock-origin firefox-esr vlc feh xclip geany 
-	transmission xscreensaver wireshark vtwm oss-compat 
-	alsa-utils xcompmgr x11-apps xdm xorg openvpn zip rar 
-	openssl nmap clamav-freshclam clamav-milter clamdscan 
-	clamav-daemon clamav-base clamav mysql-client mysql-server 
-	php7.0 php7.0-cli php7.0-mcrypt php7.0-intl php7.0-mysql php7.0-curl 
-	php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline 
-	php7.0-opcache php7.0-json php7.0-gd dwww apache2 sendmail 
-	python-gtk2-dbg shellcheck liblwp-protocol-socks-perl libcgi-pm-perl 
-	perl nmon fortunes figlet mc mutt eject nano pm-utils fancontrol 
-	thermald laptop-mode-tools cpufrequtils sysvinit-core 
-	dirmngr git sudo gksu gnupg tor deb.torproject.org-keyring snort
+	brutalchess libreoffice-writer tidy cheese gimp scrot mupdf terminator playonlinux wine64 
+	wine64-tools wine64-preloader mercurial libpurple-dev libpurple0 libjson-glib-dev pidgin 
+	xul-ext-noscript xul-ext-https-everywhere xul-ext-ublock-origin firefox-esr vlc feh xclip 
+	geany transmission xscreensaver wireshark dialog x11-utils vtwm oss-compat alsa-utils xcompmgr 
+	x11-apps xdm xorg openvpn zip rar openssl nmap clamav-freshclam clamav-milter clamav-testfiles 
+	clamdscan clamassassin clamav clamav-base clamav-daemon apparmor-utils php7.0 php7.0-cli php7.0-mcrypt 
+	php7.0-intl php7.0-mysql php7.0-curl php7.0-gd php7.0-soap php7.0-xml php7.0-zip php7.0-readline 
+	php7.0-opcache php7.0-json php7.0-gd dwww apache2 libmariadbclient-dev-compat default-libmysqlclient-dev 
+	mariadb-client mariadb-common mariadb-server sendmail python-mechanize python-gtk2-dbg shellcheck 
+	liblwp-protocol-socks-perl libcgi-pm-perl perl nmon figlet mc mutt eject nano pm-utils fancontrol 
+	thermald laptop-mode-tools cpufrequtils wicd 
 
 * running "mde-setup" 
 

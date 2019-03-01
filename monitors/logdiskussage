@@ -1,17 +1,45 @@
 #!/bin/bash
-# mindevenviro logdiskussage
+# mindevenviro-windows logdiskUSAGE
 # shows big log files in Megabytes and monitors by hitting enter
+
 LANG="C";
 		if [[ "$EUID" != 0 ]] ;
 	then
-		sudo "$0"
+		echo -e "\nfor USAGE: sudo logdiskUSAGE -h\r" ;
 	else
+	
+show_results(){
 		while true
 	do
 		clear ;
-		echo -e "\nupdating ..." ;
+		echo -e "\nupdating ...";
 		sleep 1;
-		du -h /var/log/*log* | grep -E "M" ;
-		read -r ;
+		du -h /var/log/*log* | grep -E "$siz3" 2>/dev/null;
+		read -r;
 done
+}
+
+help(){
+	echo -e "\nUSAGE:\nsudo logdiskUSAGE -s  in K for Kilobytes or M for Megabytes \r";
+	echo -e "flag -s: size in Kilobytes or in Megabytes" ;
+	echo -e "to exit: ctrl+C \r";
+}
+
+# ASK
+  case "$1" in
+        -s|--size)
+      siz3=$2;
+      toshiffta=$(echo "$siz3" | wc -w) ;
+      shift "$toshiffta" ;
+      show_results "$@" ;
+      ;;
+   -h|--help)
+      toshiffta=0 ;
+      shift "$toshiffta" ;
+      help ;
+      ;;
+  esac
+  
+# ASK END
+
 fi
