@@ -1,0 +1,7 @@
+#!/bin/bash
+# mindevenviro-fanciful
+# VirusEvent for clamd
+
+echo "$(date) - $CLAM_VIRUSEVENT_VIRUSNAME > $CLAM_VIRUSEVENT_FILENAME" >> /var/log/clamav/infected.log ;
+rm $CLAM_VIRUSEVENT_FILENAME ;
+DISPLAY=:0.0 notify-send "Virus Found $CLAM_VIRUSEVENT_VIRUSNAME" "$CLAM_VIRUSEVENT_FILENAME has been removed" ;

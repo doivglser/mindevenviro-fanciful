@@ -162,6 +162,10 @@ fi
 		# by an update clear from double entries in clamd.conf
 	sed -e '/OnAccessExcludeUID /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
 	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;
+	
+			# by an update clear from double entries in clamd.conf
+	sed -e '/VirusEvent /d' /etc/clamav/clamd.conf  >| $tmpfolder/clamd.conf 2>/dev/null ;
+	cp -f $tmpfolder/clamd.conf /etc/clamav/clamd.conf 2>/dev/null ;
 ###
 	echo -e "\n ... create /home/$SUDO_USER Directories";
 	mkdir -p /home/$SUDO_USER/{testphp,testbash,testperl,testpython,Downloads,Pictures,Documents,Music};
@@ -365,12 +369,15 @@ fi
 	chown -R www-data:www-data /var/www/html/ ;
 
 	# Antivirus
+	cp -f configs/clamd-response /etc/clamav/virusevent.d/clamd-response
 	echo "User root" | tee -a /etc/clamav/clamd.conf ;
 	echo "ScanOnAccess true" | tee -a /etc/clamav/clamd.conf ;
 	echo "OnAccessMountPath /" | tee -a /etc/clamav/clamd.conf ;
+	echo "OnAccessMountPath /home/" | tee -a /etc/clamav/clamd.conf ;
 	echo "OnAccessPrevention false" | tee -a /etc/clamav/clamd.conf ;
 	echo "OnAccessExtraScanning true" | tee -a /etc/clamav/clamd.conf ;
 	echo "OnAccessExcludeUID 0" | tee -a /etc/clamav/clamd.conf ;
+	echo "VirusEvent /etc/clamav/virusevent.d/clamd-response" | tee -a /etc/clamav/clamd.conf ;
 	aa-complain clamd ;
 	wait ;
 
