@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# mindevenviro "mde-setup" (install script; "mind eve n viro" SETUP)
+# mindevenviro-fanciful "mde-setup" (install script; "mind eve n viro" SETUP)
 
 # working version:			March 2018 ZH. 
 #
@@ -8,7 +8,7 @@
 #				clamd, snort, nmap-monitoring, a MAC changer for all interfaces 
 #				and a syntax-editor, writen in shell (bash).
 #				I had many other scripts I haven't updated into my github account,
-#				but "sCRYPtUPdater" & "mindevenviro" = (minimal deployment environment)
+#				but "sCRYPtUPdater" & "mindevenviro-fanciful" = (minimal deployment environment)
 #
 # Readings:			LPI Linux certification in a nutshell (English)
 #				LPIC-1: Vorbereitung auf die Pruefung des Linux Professional Institute (German)
@@ -22,7 +22,7 @@
 #
 # BS Schweiz:			I thought about the wohle year... (2017)
 #
-# * STORY LM Peru:		I wasted mindevenviro away, in October 2017. 
+# * STORY LM Peru:		I wasted mindevenviro-fanciful away, in October 2017. 
 #				I had some special encodings, like a code from 
 #				outer space in the Putty interface. After entering 
 #				"Reset" in the console, the alien code persists, 
@@ -76,7 +76,7 @@ fi
 	echo "1" > /proc/sys/net/ipv4/ip_forward;
 
 		# environinstall
-		if [[ $PWD =~ 'mindevenviro' ]] ;
+		if [[ $PWD =~ 'mindevenviro-fanciful' ]] ;
 	then
 		nNuM1=$(echo "$environinstall" | wc -w) ;
 		spin2='-\|/' ;
@@ -325,7 +325,7 @@ fi
 	chmod a+x /etc/pm/sleep.d/10-laptop-mode-tools ;
 
 	echo -e "\n ... installing flash player for linux...\n\r" ;
-	tar -xf /home/$SUDO_USER/mindevenviro/thirdparty/flash_player_npapi_linux.x86_64.tar.gz ;
+	tar -xf /home/$SUDO_USER/mindevenviro-fanciful/thirdparty/flash_player_npapi_linux.x86_64.tar.gz ;
 	cp -f libflashplayer.so /usr/lib/mozilla/plugins/ ;
 	cp -rf usr/* /usr/ ;
 	rm -dRf LGPL/ usr/ libflashplayer.so license.pdf readme.txt ;
@@ -334,9 +334,9 @@ fi
 	cp -f configs/bashrc /home/$SUDO_USER/.bashrc ;
 	chmod 644 /home/$SUDO_USER/.bashrc ;
 
-	echo -e "\n ... copy mindevenviro.xpm...\n\r" ;
-	cp -f pictures/mindevenviro.xpm /usr/share/X11/xdm/pixmaps/mindevenviro.xpm ;
-	chmod 644 /usr/share/X11/xdm/pixmaps/mindevenviro.xpm ;
+	echo -e "\n ... copy mindevenviro-fanciful.xpm...\n\r" ;
+	cp -f pictures/mindevenviro-fanciful.xpm /usr/share/X11/xdm/pixmaps/mindevenviro-fanciful.xpm ;
+	chmod 644 /usr/share/X11/xdm/pixmaps/mindevenviro-fanciful.xpm ;
 
 	echo -e "\n ... copy Xresources...\n\r" ;
 	cp -f configs/debian/Xresources /etc/X11/xdm/ ;
