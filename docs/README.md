@@ -57,7 +57,7 @@
 
 - A screen resolution of at least: 1280x800
 
-- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS, MacOSX and Windows)
+- A fresh base-install of Debian GNU/Linux 9 Stretch. (soon for CentOS and MacOSX)
 - Choose netinst CD image, and burn it on a blank CD-R.
 - Debian 9 GNU/Linux Stretch: (https://www.debian.org/releases/stretch/debian-installer)
 
@@ -224,7 +224,7 @@
   
   "ctrl+shift+T" does a new TAB.
 
-	RUN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW
+	  RUN THE FOLLOWING SHELL SCRIPTS IN THE TERMINATOR WINDOW
 
 * openpdf (shell script)
 
@@ -255,9 +255,9 @@
 
   USAGE:
 
-  "sudo nids-antivirus-up --nIDs" puts snort up for active interface.
+  "sudo nids-antivirus-up --nids" puts snort up for active interface.
   
-  "sudo nids-antivirus-up --anTiVirus" restarts clamav-daemon.
+  "sudo nids-antivirus-up --antivirus" restarts clamav-daemon.
   
 * shi3lD (shell script)
 
@@ -390,7 +390,6 @@
 
 # in /var/www/html/testphp/
 
-  HELP.htlm
   README.html
 
 # in /etc/X11/Xreset.d
