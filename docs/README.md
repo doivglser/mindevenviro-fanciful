@@ -100,15 +100,11 @@
 
 * running "mde-setup" 
 
-  Sometimes debian has updates, read the stdout please, sometimes it needs a restart. 
-  
-  You can aprove to login in to your github.com account, or just hit enter. 
-  
-  Use "mde-setup" from the "mindevenviro-fanciful" folder, for a new install, 
-  
-  for an update AND OR, to upgrade the system. The apt-get 
-  
-  package manager is marked to, not install systemd related packages.
+  	Sometimes debian has updates, read the stdout please, sometimes it needs a restart. 
+  	You can aprove to login in to your github.com account, or just hit enter. 
+  	Use "mde-setup" from the "mindevenviro-fanciful" folder, for a new install, 
+  	for an update AND OR, to upgrade the system. The apt-get 
+  	package manager is marked to, not install systemd related packages.
   
 
 # USAGE | NAVIGATION On VTWM:
