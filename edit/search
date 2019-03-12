@@ -149,7 +149,7 @@ fi
 			fi
 				if [[ "$exclud3" = '' ]] && [[ "$togrep" != '' ]] ;
 			then
-				echo "$line" | xargs cat | grep -E "$togrep" | grep -vE "$exclud3" ;
+				echo "$line" | xargs cat | grep -E "$togrep" ;
 				exitc0de=$(echo $?) ;
 			fi
 				if [[ $exitc0de = 0 ]] ;
