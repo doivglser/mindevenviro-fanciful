@@ -1,6 +1,8 @@
 # M1ND3V3NV1R0-FANCIFUL DevOps 1.0.0
 
-		codecounter: code without blank lines, without comments and without thirdparty
+		codecounter: code without blank lines, 
+		without comments and without thirdparty
+		not yet updated, because of mexx
 
 - Lines =4204
 
