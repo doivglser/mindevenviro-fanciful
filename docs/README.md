@@ -18,7 +18,7 @@
 
 ## ![ TODO ](https://github.com/doivglser/mindevenviro-fanciful/blob/master/docs/TODO.md)
 
-# M1ND3V3NV1R0-FANCIFUL DevOps (testing v0.1.1B)
+# M1ND3V3NV1R0-FANCIFUL DevOps 1.0.0
 
 	 Deployment environment for web applications and 
 	 system administration, in a minimal desktop with 
