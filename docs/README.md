@@ -1,4 +1,4 @@
-# M1ND3V3NV1R0-FANCIFUL DevOps (testing v1.0.0.b)
+# M1ND3V3NV1R0-FANCIFUL DevOps 1.0.0
 
 		codecounter: code without blank lines, without comments and without thirdparty
 
