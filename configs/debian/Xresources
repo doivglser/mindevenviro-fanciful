@@ -1,5 +1,5 @@
 ! $XConsortium: Xresources /main/8 1996/11/11 09:24:46 swick $
-xlogin*logoFileName: /usr/share/X11/xdm/pixmaps/mindevenviro.xpm
+xlogin*logoFileName: /usr/share/X11/xdm/pixmaps/mindevenviro-fanciful.xpm
 xlogin*login.translations: #override\
 CtrlR: abort-display()\n\
 F1: set-session-argument(failsafe) finish-field()\n\
